@@ -1,7 +1,13 @@
 import { Redirect, Route } from 'react-router-dom';
 import { IonApp, IonRouterOutlet } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
+import { IonTabs, IonTabBar, IonTabButton, IonIcon, IonLabel, IonBadge } from '@ionic/react';
+import { home, triangle, ellipse, square, bookmarks } from 'ionicons/icons';
+import Tuner from './pages/Tuner';
+import Comparator from './pages/Comparator';
 import Home from './pages/Home';
+import Sheets from './pages/Sheets';
+import Learn from './pages/Learn';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -25,16 +31,52 @@ import './theme/variables.css';
 const App: React.FC = () => (
   <IonApp>
     <IonReactRouter>
-      <IonRouterOutlet>
-        <Route exact path="/home">
-          <Home />
-        </Route>
-        <Route exact path="/">
-          <Redirect to="/home" />
-        </Route>
-      </IonRouterOutlet>
+      <IonTabs>
+        <IonRouterOutlet>
+          <Route exact path="/tuner">
+            <Tuner />
+          </Route>
+          <Route exact path="/comparator">
+            <Comparator />
+          </Route>
+          <Route exact path="/home">
+            <Home />
+          </Route>
+          <Route exact path="/sheets">
+            <Sheets />
+          </Route>
+          <Route exact path="/learn">
+            <Learn />
+          </Route>
+          <Route exact path="/">
+            <Redirect to="/home" />
+          </Route>
+        </IonRouterOutlet>
+        <IonTabBar slot="bottom">
+          <IonTabButton tab="tuner" href="/tuner">
+            <IonIcon icon={triangle} />
+            <IonLabel>Tab 1</IonLabel>
+          </IonTabButton>
+          <IonTabButton tab="comparator" href="/comparator">
+            <IonIcon icon={ellipse} />
+            <IonLabel>Tab 2</IonLabel>
+          </IonTabButton>
+          <IonTabButton tab="home" href="/home">
+            <IonIcon icon={home} />
+            <IonLabel>Tab 3</IonLabel>
+          </IonTabButton>
+          <IonTabButton tab="sheets" href="/sheets">
+            <IonIcon icon={square} />
+            <IonLabel>Tab 4</IonLabel>
+          </IonTabButton>
+          <IonTabButton tab="learn" href="/learn">
+            <IonIcon icon={bookmarks} />
+            <IonLabel>Tab 5</IonLabel>
+          </IonTabButton>
+        </IonTabBar>
+      </IonTabs>
     </IonReactRouter>
-  </IonApp>
+  </IonApp >
 );
 
 export default App;
