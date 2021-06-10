@@ -1,38 +1,28 @@
 
 import * as Tone from 'tone'
-import { useState } from 'react';
-import { IonButton, IonInput, IonItem, IonItemDivider } from '@ionic/react';
+import { useState, useRef, useEffect } from 'react';
+import { IonButton, IonInput, IonItem, IonItemDivider, createGesture } from '@ionic/react';
+
+import './Pitch.css';
 
 const Pitch: React.FC = () => {
 
+    const A3 = useRef<HTMLDivElement | null>(null);
+
     const [testDisplay, updateTestDisplay] = useState("Default");
-    const [number, setNumber] = useState<number>(440);
-    //const [endTime, updateEndTime] = useState(1); 
+    const [A_note, setA_Note] = useState<number>(440);
 
     const osc = new Tone.Oscillator({
         type: "sine",
-        frequency: number,
-        volume: -32
+        frequency: A_note,
+        volume: -16
     }).toDestination();
     
-/*
-    document.querySelector('button')?.addEventListener('click', async () => {
-        await Tone.start()
-        console.log('audio is ready')
-        updateTestDisplay("INIT");
-    })
-*/
-/*
-    const pitchInit = () => {
-        Tone.start()
-        updateTestDisplay("INIT");
-    }
-*/
     const pitchPlay = () => {
         updateTestDisplay("play");
         Tone.Transport.scheduleRepeat((time) => {
             console.log(time);
-            osc.start(time).stop(time+0.25);
+            osc.start(time).stop(time+0.3);
         }, '8n');
         Tone.Transport.start();
     }    
@@ -40,17 +30,49 @@ const Pitch: React.FC = () => {
     const pitchStop = () => {
         updateTestDisplay("stop");        
         Tone.Transport.stop();
-        //osc.stop();
         Tone.Transport.cancel();
     }
-
-    const setNote = (n: string) => {
-        console.log(n)
-        if(n !== undefined){
-            setNumber(parseFloat(n))
-        }
-    }
   
+    useEffect(() => {
+        let c = A3.current!;
+        console.log(c);
+        
+        const gesture = createGesture({
+          el: c,
+          gestureName: "longpress",
+          threshold:0,
+          onStart: event => { onStart();},
+          onEnd: event => { onEnd();}
+        });
+    
+        let beginPress : number;
+        // enable the gesture for the item
+        
+
+        const onStart = () => {
+            console.log("Debut");
+            beginPress = Date.now();
+            console.log("Begin : "+beginPress);
+        } 
+
+        const onEnd = () => {
+            let endPress = Date.now();
+            console.log("End : "+beginPress);
+            console.log(endPress-beginPress);
+            if(endPress-beginPress>500){
+                c.style.setProperty("background",switchColor());
+            }
+        } 
+
+        const switchColor = () => {
+            return((c.style.getPropertyValue("background") === "red")?"green":"red");
+        }
+
+        gesture.enable(true);
+
+      }, []);
+
+
     return (
     <div className="container">
       <p><strong>{testDisplay}</strong></p>
@@ -65,18 +87,24 @@ const Pitch: React.FC = () => {
                 min="0" 
                 max="44100" 
                 type="number" 
-                value={number} 
+                value={A_note} 
                 placeholder="Enter Number" 
                 onIonChange={(e) => {
-                    if(e.detail.value !== number.toString()){
+                    if(e.detail.value !== A_note.toString()){
                         (e.detail.value !== undefined && e.detail.value !== null && e.detail.value !== "")?
-                        setNote(e.detail.value!):
-                        setNote('0');
+                        setA_Note(parseFloat(e.detail.value!)):
+                        setA_Note(0);
                     }
                 }}>
             </IonInput>
-            <p><strong>{number}</strong></p>
+            <p><strong>{A_note}</strong></p>
           </IonItem>
+          <div id="rectangle">
+              <div id="A3" ref={A3}> A3 </div>
+              <IonButton id="B3"> B3 </IonButton>
+              <IonButton id="C3"> C3 </IonButton>
+              <IonButton id="D3"> D3 </IonButton>
+          </div>
     </div>
   );
 };
