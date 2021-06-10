@@ -8,7 +8,6 @@ const ExploreContainer: React.FC<ContainerProps> = () => {
     <div className="container">
       <Pitch />
     </div>
-    
   );
 };
 

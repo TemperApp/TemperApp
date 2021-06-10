@@ -1,5 +1,19 @@
-#A3 {
-  width: 200px;
-  height: 200px;
-  background-color: red;
+#note {
+  width: 50px;
+  height: 50px;
+  background-color: grey;
+  border: 1px solid yellow;
+}
+
+#PitchContainer {
+  background-color: orange;
+  margin-top: 0px;
+}
+
+#TunerContainer {
+  background-color: purple;
+}
+
+.PitchActive {
+  background-color: red !important;
 }
