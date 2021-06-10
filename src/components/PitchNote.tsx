@@ -39,12 +39,7 @@ const PitchNote: React.FC< {name:string, frequency:number} > = ({name, frequency
                 (c.classList.contains("PitchActive"))?c.classList.remove("PitchActive"):c.classList.add("PitchActive"); 
             }
         } 
-
-        const switchColor = () => {
-            console.log(c);
-            return((c.style.getPropertyValue("background") === "red")?"green":"red");
-        }
-
+        
         gesture.enable(true);
 
       }, []);
