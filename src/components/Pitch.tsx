@@ -62,19 +62,18 @@ const Pitch: React.FC = () => {
       <IonItemDivider>Number type input</IonItemDivider>
           <IonItem>
             <IonInput 
-                min="1" 
+                min="0" 
                 max="44100" 
                 type="number" 
                 value={number} 
                 placeholder="Enter Number" 
-                onIonChange={e => {
-                    console.log(e)
-                    if(e.detail.value !== undefined && e.detail.value !== null){
-                        setNote(e.detail.value!);
+                onIonChange={(e) => {
+                    if(e.detail.value !== number.toString()){
+                        (e.detail.value !== undefined && e.detail.value !== null && e.detail.value !== "")?
+                        setNote(e.detail.value!):
+                        setNote('0');
                     }
-                    
-                }
-                }>
+                }}>
             </IonInput>
             <p><strong>{number}</strong></p>
           </IonItem>
