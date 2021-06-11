@@ -1,53 +1,45 @@
-
-import * as Tone from 'tone'
+import React from 'react';
 import { useState, useRef, useEffect } from 'react';
 import { createGesture } from '@ionic/react';
-
 import './Pitch.css';
 
-const PitchNote: React.FC< {name:string, frequency:number} > = ({name, frequency}) => {
+type DivOrNullType = HTMLDivElement | null;
 
-    const note = useRef<HTMLDivElement | null>(null);
+type PitchNoteProps = {
+  active: boolean,
+  name: string,
+  frequency: number,
+  onChange: (name: string) => void,
+}
+
+const PitchNote: React.FC<PitchNoteProps> = ({ active, name, frequency, onChange }) => {
+
+  const note = useRef<DivOrNullType>(null);
   
-    useEffect(() => {
-        let c = note.current!;
-        console.log(c);
-        
-        const gesture = createGesture({
-          el: c,
-          gestureName: "longpress",
-          threshold:0,
-          onStart: event => { onStart();},
-          onEnd: event => { onEnd();}
-        });
-    
-        let beginPress : number;
-        // enable the gesture for the item
-        
-        const onStart = () => {
-            console.log("Debut");
-            beginPress = Date.now();
-            console.log("Begin : "+beginPress);
-        } 
+  useEffect(() => {
+    const c = note.current!;
+    let beginPress: number;
+    console.log(c);
 
-        const onEnd = () => {
-            let endPress = Date.now();
-            console.log("End : "+beginPress);
-            console.log(endPress-beginPress);
-            if(endPress-beginPress>500){
-                console.log(c.classList);
-                (c.classList.contains("PitchActive"))?c.classList.remove("PitchActive"):c.classList.add("PitchActive"); 
-            }
-        } 
-        
-        gesture.enable(true);
+    const gesture = createGesture({
+      el: c,
+      gestureName: "longpress",
+      threshold: 0,
+      onStart: () => { beginPress = Date.now() },
+      onEnd: () => {
+        if (Date.now() - beginPress < 500)
+          return;
 
-      }, []);
+        onChange(name);
+      }
+    });
+    gesture.enable(true);
+  }, []);
 
 
-    return (
-        <div id="note" ref={note}> {name} : {frequency}</div>
-    );
+  return (
+    <div id="note" className={(active) ? "PitchActive" : ""} ref={note}> {name} : {frequency}</div>
+  );
 };
 
 export default PitchNote;

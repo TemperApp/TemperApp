@@ -10,6 +10,7 @@ const Pitch: React.FC = () => {
 
   const [testDisplay, updateTestDisplay] = useState("Default");
   const [A_note, setA_Note] = useState<number>(440);
+  const [selected, setSelected] = useState<string>("");
 
   const pitchPlay = () => {
     updateTestDisplay("play");
@@ -43,24 +44,34 @@ const Pitch: React.FC = () => {
 
       <div id="PitchContainer">
         <PitchNote
+          active={"A3" === selected}
           name="A3"
           frequency={A_note}
+          onChange={(name) => setSelected(name)}
         />
         <PitchNote
+          active={"B3" === selected}
           name="B3"
           frequency={A_note}
+          onChange={(name) => setSelected(name)}
         />
         <PitchNote
+          active={"B4" === selected}
           name="B4"
           frequency={A_note}
+          onChange={(name) => setSelected(name)}
         />
         <PitchNote
+          active={"C4" === selected}
           name="C4"
           frequency={A_note}
+          onChange={(name) => setSelected(name)}
         />
         <PitchNote
+          active={"D4" === selected}
           name="D4"
           frequency={A_note}
+          onChange={(name) => setSelected(name)}
         />
       </div>
     </div>
