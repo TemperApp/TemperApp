@@ -35,7 +35,7 @@ class SoundEngine {
     Tone.Transport.start();
   }
 
-  public static stopAndplay(freq: number): void {
+  public static stopAndPlay(freq: number): void {
     this.stop();
     this.play(freq);
   }
