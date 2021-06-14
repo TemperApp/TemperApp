@@ -5,13 +5,14 @@ import SoundEngine from '../engine/SoundEngine';
 
 import './Pitch.css';
 import PitchNote from './PitchNote';
-import {NoteState, NotesCircleState} from './Types'
+import {NoteState, NotesCircleState, TunerMode} from './Types'
 
 const Pitch: React.FC = () => {
 
   const [testDisplay, updateTestDisplay] = useState("Default");
   const [A_note, setA_Note] = useState<number>(440);
   const [selected, setSelected] = useState<NotesCircleState>({note: "", state: NoteState.Unselected} );
+  const [tunerMode, setTunerMode] = useState<TunerMode>(TunerMode.TuningFork);
 
   const pitchPlay = () => {
     updateTestDisplay("play");
@@ -23,12 +24,18 @@ const Pitch: React.FC = () => {
     SoundEngine.stop();
   }
 
+  const switchTunerMode = () => {
+    (tunerMode===TunerMode.TuningFork)?setTunerMode(TunerMode.Bpm):setTunerMode(TunerMode.TuningFork)
+  }
+
   return (
     <div id="TunerContainer">
       <div>
         <p><strong>{testDisplay}</strong></p>
         <IonButton id="play" onClick={pitchPlay}>Play</IonButton>
         <IonButton id="stop" onClick={pitchStop}>Stop</IonButton>
+        <IonButton id="switch" onClick={switchTunerMode}>Switch</IonButton>
+        <p><strong>Mode : {tunerMode}</strong></p>
       </div>
       <div>
         <IonItemDivider>Number type input</IonItemDivider>
