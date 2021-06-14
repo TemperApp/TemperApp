@@ -5,12 +5,13 @@ import SoundEngine from '../engine/SoundEngine';
 
 import './Pitch.css';
 import PitchNote from './PitchNote';
+import {NoteState, NotesCircleState} from './Types'
 
 const Pitch: React.FC = () => {
 
   const [testDisplay, updateTestDisplay] = useState("Default");
   const [A_note, setA_Note] = useState<number>(440);
-  const [selected, setSelected] = useState<string>("");
+  const [selected, setSelected] = useState<NotesCircleState>({note: "", state: NoteState.Unselected} );
 
   const pitchPlay = () => {
     updateTestDisplay("play");
@@ -44,34 +45,39 @@ const Pitch: React.FC = () => {
 
       <div id="PitchContainer">
         <PitchNote
-          active={"A3" === selected}
+          active={"A3" === selected.note}
           name="A3"
+          state = {selected.state}
           frequency={A_note}
-          onChange={(name) => setSelected(name)}
+          onChange={({note, state}:NotesCircleState) => {setSelected({note,state})}}
         />
         <PitchNote
-          active={"B3" === selected}
+          active={"B3" === selected.note}
           name="B3"
+          state = {selected.state}
           frequency={A_note}
-          onChange={(name) => setSelected(name)}
+          onChange={({note, state}:NotesCircleState) => {setSelected({note,state})}}
         />
         <PitchNote
-          active={"B4" === selected}
+          active={"B4" === selected.note}
           name="B4"
+          state = {selected.state}
           frequency={A_note}
-          onChange={(name) => setSelected(name)}
+          onChange={({note, state}:NotesCircleState) => {setSelected({note,state})}}
         />
         <PitchNote
-          active={"C4" === selected}
+          active={"C4" === selected.note}
           name="C4"
+          state = {selected.state}
           frequency={A_note}
-          onChange={(name) => setSelected(name)}
+          onChange={({note, state}:NotesCircleState) => {setSelected({note,state})}}
         />
         <PitchNote
-          active={"D4" === selected}
+          active={"D4" === selected.note}
           name="D4"
+          state = {selected.state}
           frequency={A_note}
-          onChange={(name) => setSelected(name)}
+          onChange={({note, state}:NotesCircleState) => {setSelected({note,state})}}
         />
       </div>
     </div>

@@ -17,3 +17,7 @@
 .PitchActive {
   background-color: red !important;
 }
+
+.OctaveActive {
+  background-color: blue !important;
+}

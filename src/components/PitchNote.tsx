@@ -3,17 +3,19 @@ import { useState, useRef, useEffect } from 'react';
 import { createGesture } from '@ionic/react';
 import './Pitch.css';
 import SoundEngine from '../engine/SoundEngine';
+import {NoteState, NotesCircleState} from './Types'
 
 type DivOrNullType = HTMLDivElement | null;
 
 type PitchNoteProps = {
   active: boolean,
   name: string,
+  state: NoteState,
   frequency: number,
-  onChange: (name: string) => void,
+  onChange: (ncs: NotesCircleState) => void,
 }
 
-const PitchNote: React.FC<PitchNoteProps> = ({ active, name, frequency, onChange }) => {
+const PitchNote: React.FC<PitchNoteProps> = ({ active, name, state, frequency, onChange }) => {
 
   const pitchPlay = (f: number) => {
     SoundEngine.stopAndPlay(f);
@@ -36,10 +38,12 @@ const PitchNote: React.FC<PitchNoteProps> = ({ active, name, frequency, onChange
       threshold: 0,
       onStart: () => { beginPress = Date.now()  },
       onEnd: () => {
-        if(Date.now() - beginPress < 500) 
+        if(Date.now() - beginPress < 500){
           pitchPlay(frequency)
+          onChange({note : name, state : NoteState.Normal});
+        }
         else{
-          onChange(name); 
+          onChange({note : name, state : NoteState.Octave});
           pitchPlay(frequency*2)
         };
       }
@@ -49,7 +53,7 @@ const PitchNote: React.FC<PitchNoteProps> = ({ active, name, frequency, onChange
 
 
   return (
-    <div id="note" className={(active) ? "PitchActive" : ""} ref={note}> {name} : {frequency}</div>
+    <div id="note" className={(active) ? ((state == NoteState.Normal)? "PitchActive" : "OctaveActive" ) : ""} ref={note}> {name} : {frequency}</div>
   );
 };
 
