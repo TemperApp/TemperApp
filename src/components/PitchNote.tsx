@@ -32,7 +32,10 @@ const PitchNote: React.FC<PitchNoteProps> = ({ active, name, state, frequency, m
   const NoteClassName = () => {
     console.log(" Note traitée "+name.name+name.octave+"  en mode : "+mode);
     if(mode === TunerMode.Bpm){
-      if(noteBpm1 === name){
+      console.log(noteBpm1);
+      console.log(noteBpm2);
+      console.log(name);
+      if(noteBpm1 == name){
         if(noteBpm1.octave === 3){
           console.log("PA1");
           return "PitchActive"
@@ -54,7 +57,7 @@ const PitchNote: React.FC<PitchNoteProps> = ({ active, name, state, frequency, m
           }
         }
         else{
-          console.log("Nothing1");
+         console.log("Nothing1");
           return ""
         }
       }
@@ -63,20 +66,20 @@ const PitchNote: React.FC<PitchNoteProps> = ({ active, name, state, frequency, m
       if(mode === TunerMode.TuningFork){
         if(active){
           if(state == NoteState.Normal){
-            console.log("PA3");
+//            console.log("PA3");
             return "PitchActive"
           }
           else{
-            console.log("OA3");
+//            console.log("OA3");
             return "OctaveActive"
           }
         }
         else{
-          console.log("Nothing2");
+//          console.log("Nothing2");
           return ""
         }
       }else{
-        console.log("Nothing3");
+//        console.log("Nothing3");
         return ""
       }
     }
@@ -87,69 +90,40 @@ const PitchNote: React.FC<PitchNoteProps> = ({ active, name, state, frequency, m
   useEffect(() => {
     const c = note.current!;
     let beginPress: number;
-    //console.log(c);
-    console.log("USE EFFECT : en mode " + mode);
 
-    const gestureTuningFork = createGesture({
+    const gesture = createGesture({
       el: c,
-      gestureName: "longpress_tuning_fork",
+      gestureName: "longpress",
       threshold: 0,
-      onStart: () => { beginPress = Date.now()  },
+      onStart: () => { beginPress = Date.now(); console.log(noteBpm1); console.log(noteBpm2)  },
       onEnd: () => {
-        console.log("------ GESTION MOUVEMENT en mode Diapason");
-        if(Date.now() - beginPress < 500){
-          pitchPlay(frequency)
-          onChange({note : name, state : NoteState.Normal, noteBpm1 : {name: "", octave: 0}, noteBpm2 : {name: "", octave: 0} });
-        }
-        else{
-          onChange({note : name, state : NoteState.Octave, noteBpm1 : {name: "", octave: 0}, noteBpm2 : {name: "", octave: 0}});
-          pitchPlay(frequency*2)
-        };
-      }
-    });
-
-    const gestureBPM = createGesture({
-      el: c,
-      gestureName: "longpress_bpm",
-      threshold: 0,
-      onStart: () => { beginPress = Date.now()  },
-      onEnd: () => {
-        console.log("------ GESTION MOUVEMENT en mode BPM");
         if(Date.now() - beginPress < 500){
           pitchPlay(frequency)
           if(noteBpm1.octave === 0){
-            onChange({note : name, state : NoteState.Unselected, noteBpm1 : {name: name.name, octave: name.octave}, noteBpm2 : {name: "", octave: 0} });
+            console.log("première note");
+            console.log(noteBpm1.octave);
+            onChange({note : name, state : NoteState.Normal, noteBpm1 : {name: name.name, octave: name.octave}, noteBpm2 : {name: "", octave: 0} });
           }
           else{
-            onChange({note : name, state : NoteState.Unselected, noteBpm1 : {name: noteBpm1.name, octave: noteBpm1.octave}, noteBpm2 : {name: name.name, octave: name.octave} });
+            console.log("deuxième note")
+            onChange({note : name, state : NoteState.Normal, noteBpm1 : {name: noteBpm1.name, octave: noteBpm1.octave}, noteBpm2 : {name: name.name, octave: name.octave} });
           }
         }
         else{
           pitchPlay(frequency*2)
           if(noteBpm1.octave === 0){
-            onChange({note : name, state : NoteState.Unselected, noteBpm1 : {name: name.name, octave: 4}, noteBpm2 : {name: "", octave: 0} });
+            onChange({note : name, state : NoteState.Octave, noteBpm1 : {name: name.name, octave: 4}, noteBpm2 : {name: "", octave: 0} });
           }
           else{
-            onChange({note : name, state : NoteState.Unselected, noteBpm1 : {name: noteBpm1.name, octave: noteBpm1.octave}, noteBpm2 : {name: name.name, octave: 4} });
+            onChange({note : name, state : NoteState.Octave, noteBpm1 : {name: noteBpm1.name, octave: noteBpm1.octave}, noteBpm2 : {name: name.name, octave: 4} });
           }
         };
       }
     });
 
-    if(mode === TunerMode.TuningFork){
-      console.log("activation diapason")
-      gestureBPM.enable(false);
-      gestureTuningFork.enable(true);
-    }
-    else{
-      if(mode === TunerMode.Bpm){
-        console.log("activation bpm")
-        gestureBPM.enable(true);
-        gestureTuningFork.enable(false);
-      }
-    }
-
-  }, [mode]);
+    gesture.enable(true);
+    
+  }, [noteBpm1,noteBpm2]);
 
 
   return (
