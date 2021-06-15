@@ -5,13 +5,13 @@ import SoundEngine from '../engine/SoundEngine';
 
 import './Pitch.css';
 import PitchNote from './PitchNote';
-import {NoteState, NotesCircleState, TunerMode} from './Types'
+import {NoteState, NotesCircleState, TunerMode, Note} from './Types'
 
 const Pitch: React.FC = () => {
 
   const [testDisplay, updateTestDisplay] = useState("Default");
   const [A_note, setA_Note] = useState<number>(440);
-  const [selected, setSelected] = useState<NotesCircleState>({note: "", state: NoteState.Unselected} );
+  const [selected, setSelected] = useState<NotesCircleState>({note: {name: "", octave: 0}, state: NoteState.Unselected, noteBpm1:{name: "", octave: 0}, noteBpm2:{name: "", octave: 0}} );
   const [tunerMode, setTunerMode] = useState<TunerMode>(TunerMode.TuningFork);
 
   const pitchPlay = () => {
@@ -28,6 +28,10 @@ const Pitch: React.FC = () => {
     (tunerMode===TunerMode.TuningFork)?setTunerMode(TunerMode.Bpm):setTunerMode(TunerMode.TuningFork)
   }
 
+  const displaySelected = () => {
+    console.log(selected)
+  }
+
   return (
     <div id="TunerContainer">
       <div>
@@ -35,6 +39,7 @@ const Pitch: React.FC = () => {
         <IonButton id="play" onClick={pitchPlay}>Play</IonButton>
         <IonButton id="stop" onClick={pitchStop}>Stop</IonButton>
         <IonButton id="switch" onClick={switchTunerMode}>Switch</IonButton>
+        <IonButton id="play" onClick={displaySelected}>Note selectionné </IonButton>
         <p><strong>Mode : {tunerMode}</strong></p>
       </div>
       <div>
@@ -52,39 +57,54 @@ const Pitch: React.FC = () => {
 
       <div id="PitchContainer">
         <PitchNote
-          active={"A3" === selected.note}
-          name="A3"
+          active={selected.note.name === "A" && selected.note.octave === 3}
+          name = {{name: "A", octave: 3}}
           state = {selected.state}
           frequency={A_note}
-          onChange={({note, state}:NotesCircleState) => {setSelected({note,state})}}
+          mode = {tunerMode}
+          noteBpm1 = {selected.noteBpm1}
+          noteBpm2 = {selected.noteBpm2}
+          onChange={({note, state, noteBpm1, noteBpm2}:NotesCircleState) => {setSelected({note,state,noteBpm1,noteBpm2})}}
         />
         <PitchNote
-          active={"B3" === selected.note}
-          name="B3"
+          active={selected.note.name === "B" && selected.note.octave === 3}
+          name = {{name: "B", octave: 3}}
           state = {selected.state}
-          frequency={A_note}
-          onChange={({note, state}:NotesCircleState) => {setSelected({note,state})}}
+          frequency={A_note*0.95}
+          mode = {tunerMode}
+          noteBpm1 = {selected.noteBpm1}
+          noteBpm2 = {selected.noteBpm2}
+          onChange={({note, state, noteBpm1, noteBpm2}:NotesCircleState) => {setSelected({note,state,noteBpm1,noteBpm2})}}
         />
         <PitchNote
-          active={"B4" === selected.note}
-          name="B4"
+          active={selected.note.name === "C" && selected.note.octave === 3}
+          name = {{name: "C", octave: 3}}
           state = {selected.state}
-          frequency={A_note}
-          onChange={({note, state}:NotesCircleState) => {setSelected({note,state})}}
+          frequency={A_note*0.90}
+          mode = {tunerMode}
+          noteBpm1 = {selected.noteBpm1}
+          noteBpm2 = {selected.noteBpm2}
+          onChange={({note, state, noteBpm1, noteBpm2}:NotesCircleState) => {setSelected({note,state,noteBpm1,noteBpm2})}}
         />
         <PitchNote
-          active={"C4" === selected.note}
-          name="C4"
+          active={selected.note.name === "D" && selected.note.octave === 3}
+          name = {{name: "D", octave: 3}}
           state = {selected.state}
-          frequency={A_note}
-          onChange={({note, state}:NotesCircleState) => {setSelected({note,state})}}
+          frequency={A_note*0.85}
+          mode = {tunerMode}
+          noteBpm1 = {selected.noteBpm1}
+          noteBpm2 = {selected.noteBpm2}
+          onChange={({note, state, noteBpm1, noteBpm2}:NotesCircleState) => {setSelected({note,state,noteBpm1,noteBpm2})}}
         />
         <PitchNote
-          active={"D4" === selected.note}
-          name="D4"
+          active={selected.note.name === "E" && selected.note.octave === 3}
+          name = {{name: "E", octave: 3}}
           state = {selected.state}
-          frequency={A_note}
-          onChange={({note, state}:NotesCircleState) => {setSelected({note,state})}}
+          frequency={A_note*0.80}
+          mode = {tunerMode}
+          noteBpm1 = {selected.noteBpm1}
+          noteBpm2 = {selected.noteBpm2}
+          onChange={({note, state, noteBpm1, noteBpm2}:NotesCircleState) => {setSelected({note,state,noteBpm1,noteBpm2})}}
         />
       </div>
     </div>

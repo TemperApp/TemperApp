@@ -5,9 +5,16 @@ export enum NoteState {
     Octave
   }
 
+export type Note = {
+    name: String,
+    octave: Number
+}
+
 export type NotesCircleState = {
-    note: String,
-    state: NoteState
+    note: Note,
+    state: NoteState,
+    noteBpm1 : Note,
+    noteBpm2 : Note
 }
 
 export enum TunerMode {
