@@ -6,17 +6,21 @@ import * as Tone from 'tone';
 class SoundEngine {
 
   private static instance: SoundEngine;
-  private volume: number = -36;
-  private synth: Tone.Synth;
+  private volume: number = -24;
+  private synth: Tone.AMSynth;
 
   private constructor() {
     Tone.Destination.volume.value = this.volume;
-    this.synth = new Tone.Synth({
+    this.synth = new Tone.AMSynth({
+      harmonicity: 0.008,
       oscillator: {
         type: 'sine'
       },
+      modulation : {
+        type : 'sine'
+      },
       envelope: {
-        attack: 0.05,
+        attack: 0.005,
         decay: 1,
         sustain: 1,
         release: 0.2
