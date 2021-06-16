@@ -5,14 +5,15 @@ import SoundEngine from '../engine/SoundEngine';
 
 import './Pitch.css';
 import PitchNote from './PitchNote';
-import {NoteState, NotesCircleState, TunerMode, Note} from './Types'
+import {NoteState, NotesCircleState, TunerMode, Note, NotesCircleStateBuffer} from './Types'
 
 const Pitch: React.FC = () => {
 
   const [testDisplay, updateTestDisplay] = useState("Default");
   const [A_note, setA_Note] = useState<number>(440);
-  const [selected, setSelected] = useState<NotesCircleState>({note: {name: "", octave: 0}, state: NoteState.Unselected, noteBpm1:{name: "", octave: 0}, noteBpm2:{name: "", octave: 0}} );
+  const [selected, setSelected] = useState<NotesCircleState>({note: {name: "", octave: 0}, state: NoteState.Unselected});
   const [tunerMode, setTunerMode] = useState<TunerMode>(TunerMode.TuningFork);
+  const [noteBuffer, setNoteBuffer] = useState<NotesCircleStateBuffer>({ noteBpm1: {name:"",octave:0}, noteBpm2: {name:"",octave:0} })
 
   const pitchPlay = () => {
     updateTestDisplay("play");
@@ -59,52 +60,52 @@ const Pitch: React.FC = () => {
         <PitchNote
           active={selected.note.name === "A" && selected.note.octave === 3}
           name = {{name: "A", octave: 3}}
-          state = {selected.state}
+          state = {selected}
           frequency={A_note}
           mode = {tunerMode}
-          noteBpm1 = {selected.noteBpm1}
-          noteBpm2 = {selected.noteBpm2}
-          onChange={({note, state, noteBpm1, noteBpm2}:NotesCircleState) => {setSelected({note,state,noteBpm1,noteBpm2})}}
+          noteBuffer = {noteBuffer}
+          onSetBuffer={({noteBpm1,noteBpm2}:NotesCircleStateBuffer) => setNoteBuffer({noteBpm1, noteBpm2})}
+          onChange={({note, state}:NotesCircleState) => {setSelected({note,state})}}
         />
         <PitchNote
           active={selected.note.name === "B" && selected.note.octave === 3}
           name = {{name: "B", octave: 3}}
-          state = {selected.state}
+          state = {selected}
           frequency={A_note*0.95}
           mode = {tunerMode}
-          noteBpm1 = {selected.noteBpm1}
-          noteBpm2 = {selected.noteBpm2}
-          onChange={({note, state, noteBpm1, noteBpm2}:NotesCircleState) => {setSelected({note,state,noteBpm1,noteBpm2})}}
+          noteBuffer = {noteBuffer}
+          onSetBuffer={({noteBpm1,noteBpm2}:NotesCircleStateBuffer) => setNoteBuffer({noteBpm1, noteBpm2})}
+          onChange={({note, state}:NotesCircleState) => {setSelected({note,state})}}
         />
         <PitchNote
           active={selected.note.name === "C" && selected.note.octave === 3}
           name = {{name: "C", octave: 3}}
-          state = {selected.state}
+          state = {selected}
           frequency={A_note*0.90}
           mode = {tunerMode}
-          noteBpm1 = {selected.noteBpm1}
-          noteBpm2 = {selected.noteBpm2}
-          onChange={({note, state, noteBpm1, noteBpm2}:NotesCircleState) => {setSelected({note,state,noteBpm1,noteBpm2})}}
+          noteBuffer = {noteBuffer}
+          onSetBuffer={({noteBpm1,noteBpm2}:NotesCircleStateBuffer) => setNoteBuffer({noteBpm1, noteBpm2})}
+          onChange={({note, state}:NotesCircleState) => {setSelected({note,state})}}
         />
         <PitchNote
           active={selected.note.name === "D" && selected.note.octave === 3}
           name = {{name: "D", octave: 3}}
-          state = {selected.state}
+          state = {selected}
           frequency={A_note*0.85}
           mode = {tunerMode}
-          noteBpm1 = {selected.noteBpm1}
-          noteBpm2 = {selected.noteBpm2}
-          onChange={({note, state, noteBpm1, noteBpm2}:NotesCircleState) => {setSelected({note,state,noteBpm1,noteBpm2})}}
+          noteBuffer = {noteBuffer}
+          onSetBuffer={({noteBpm1,noteBpm2}:NotesCircleStateBuffer) => setNoteBuffer({noteBpm1, noteBpm2})}
+          onChange={({note, state}:NotesCircleState) => {setSelected({note,state})}}
         />
         <PitchNote
           active={selected.note.name === "E" && selected.note.octave === 3}
           name = {{name: "E", octave: 3}}
-          state = {selected.state}
+          state = {selected}
           frequency={A_note*0.80}
           mode = {tunerMode}
-          noteBpm1 = {selected.noteBpm1}
-          noteBpm2 = {selected.noteBpm2}
-          onChange={({note, state, noteBpm1, noteBpm2}:NotesCircleState) => {setSelected({note,state,noteBpm1,noteBpm2})}}
+          noteBuffer = {noteBuffer}
+          onSetBuffer={({noteBpm1,noteBpm2}:NotesCircleStateBuffer) => setNoteBuffer({noteBpm1, noteBpm2})}
+          onChange={({note, state}:NotesCircleState) => {setSelected({note,state})}}
         />
       </div>
     </div>
