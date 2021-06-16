@@ -4,7 +4,7 @@ import { createGesture } from '@ionic/react';
 import './Pitch.css';
 import SoundEngine from '../engine/SoundEngine';
 import {NoteState, NotesCircleState, TunerMode, Note, NotesCircleStateBuffer} from './Types'
-import Tuner from '../pages/Tuner';
+import Tune from '../pages/Tune';
 
 type DivOrNullType = HTMLDivElement | null;
 

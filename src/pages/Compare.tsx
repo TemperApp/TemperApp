@@ -1,13 +1,13 @@
 import React from 'react';
 import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/react';
-import './Comparator.css';
+import './Compare.css';
 
-const Comparator: React.FC = () => {
+const Compare: React.FC = () => {
   return (
     <IonPage>
       <IonHeader>
         <IonToolbar>
-          <IonTitle>Comparator</IonTitle>
+          <IonTitle>Compare</IonTitle>
         </IonToolbar>
       </IonHeader>
       <IonContent fullscreen>
@@ -21,4 +21,4 @@ const Comparator: React.FC = () => {
   );
 };
 
-export default Comparator;
+export default Compare;

@@ -1,0 +1,18 @@
+.tuner-mode-toggle-btn {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+.tuner-mode-toggle-btn ion-button {
+  margin: 0;
+  border-radius: 0;
+}
+.tuner-mode-toggle-btn .btn-option-bpm {
+  
+}
+
+.tuner-mode-toggle-btn .btn-option-tuningfork {
+  
+}

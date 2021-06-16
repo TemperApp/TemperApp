@@ -8,8 +8,8 @@ import { home, triangle, ellipse, square, bookmarks } from 'ionicons/icons';
 
 import { useSQLite } from 'react-sqlite-hook/dist';
 
-import Tuner from './pages/Tuner';
-import Comparator from './pages/Comparator';
+import Tune from './pages/Tune';
+import Compare from './pages/Compare';
 import Home from './pages/Home';
 import Sheets from './pages/Sheets';
 import Learn from './pages/Learn';
@@ -60,11 +60,11 @@ const App: React.FC = () => {
       <IonReactRouter>
         <IonTabs onIonTabsWillChange={(e) => SoundEngine.stop()} >
           <IonRouterOutlet>
-            <Route exact path="/tuner">
-              <Tuner />
+            <Route exact path="/Tune">
+              <Tune />
             </Route>
-            <Route exact path="/comparator">
-              <Comparator />
+            <Route exact path="/compare">
+              <Compare />
             </Route>
             <Route exact path="/home">
               <Home />
@@ -80,11 +80,11 @@ const App: React.FC = () => {
             </Route>
           </IonRouterOutlet>
           <IonTabBar slot="bottom">
-            <IonTabButton tab="tuner" href="/tuner">
+            <IonTabButton tab="tune" href="/tune">
               <IonIcon icon={triangle} />
               <IonLabel>Tab 1</IonLabel>
             </IonTabButton>
-            <IonTabButton tab="comparator" href="/comparator">
+            <IonTabButton tab="compare" href="/compare">
               <IonIcon icon={ellipse} />
               <IonLabel>Tab 2</IonLabel>
             </IonTabButton>

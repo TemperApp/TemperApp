@@ -1,11 +1,11 @@
 import React from 'react';
-import { useState, useRef, useEffect } from 'react';
-import { IonButton, IonInput, IonItem, IonItemDivider } from '@ionic/react';
+import { useState } from 'react';
+import { IonButton, IonInput, IonItemDivider } from '@ionic/react';
 import SoundEngine from '../engine/SoundEngine';
 
 import './Pitch.css';
 import PitchNote from './PitchNote';
-import {NoteState, NotesCircleState, TunerMode, Note, NotesCircleStateBuffer} from './Types'
+import {NoteState, NotesCircleState, TunerMode, NotesCircleStateBuffer} from './Types'
 
 const Pitch: React.FC = () => {
 
@@ -72,36 +72,6 @@ const Pitch: React.FC = () => {
           name = {{name: "B", octave: 3}}
           state = {selected}
           frequency={A_note*0.95}
-          mode = {tunerMode}
-          noteBuffer = {noteBuffer}
-          onSetBuffer={({noteBpm1,noteBpm2}:NotesCircleStateBuffer) => setNoteBuffer({noteBpm1, noteBpm2})}
-          onChange={({note, state}:NotesCircleState) => {setSelected({note,state})}}
-        />
-        <PitchNote
-          active={selected.note.name === "C" && selected.note.octave === 3}
-          name = {{name: "C", octave: 3}}
-          state = {selected}
-          frequency={A_note*0.90}
-          mode = {tunerMode}
-          noteBuffer = {noteBuffer}
-          onSetBuffer={({noteBpm1,noteBpm2}:NotesCircleStateBuffer) => setNoteBuffer({noteBpm1, noteBpm2})}
-          onChange={({note, state}:NotesCircleState) => {setSelected({note,state})}}
-        />
-        <PitchNote
-          active={selected.note.name === "D" && selected.note.octave === 3}
-          name = {{name: "D", octave: 3}}
-          state = {selected}
-          frequency={A_note*0.85}
-          mode = {tunerMode}
-          noteBuffer = {noteBuffer}
-          onSetBuffer={({noteBpm1,noteBpm2}:NotesCircleStateBuffer) => setNoteBuffer({noteBpm1, noteBpm2})}
-          onChange={({note, state}:NotesCircleState) => {setSelected({note,state})}}
-        />
-        <PitchNote
-          active={selected.note.name === "E" && selected.note.octave === 3}
-          name = {{name: "E", octave: 3}}
-          state = {selected}
-          frequency={A_note*0.80}
           mode = {tunerMode}
           noteBuffer = {noteBuffer}
           onSetBuffer={({noteBpm1,noteBpm2}:NotesCircleStateBuffer) => setNoteBuffer({noteBpm1, noteBpm2})}
