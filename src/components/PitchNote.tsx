@@ -61,6 +61,7 @@ const PitchNote: React.FC<PitchNoteProps> = ({ active, name, state, frequency, m
             {
               console.log("buffer vide");
               onSetBuffer({noteBpm1: {name:name.name,octave:name.octave}, noteBpm2: {name:"",octave:0}});
+              onChange( {note: {name: "", octave: 0}, state: NoteState.Unselected});
               return "BpmPitchActive"
             }
             else if(noteBuffer.noteBpm1.octave !== 0 && noteBuffer.noteBpm2.octave  === 0) // buffer contient déjà une valeur
@@ -68,6 +69,7 @@ const PitchNote: React.FC<PitchNoteProps> = ({ active, name, state, frequency, m
               console.log("buffer 1 - note");
               //let buffer = {noteBpm1: {name: noteBuffer.noteBpm1.name,octave: noteBuffer.noteBpm1.octave}, noteBpm2: {name:name.name,octave:name.octave}}
               onSetBuffer({noteBpm1: {name: noteBuffer.noteBpm1.name,octave: noteBuffer.noteBpm1.octave}, noteBpm2: {name:name.name,octave:name.octave}});
+              onChange( {note: {name: "", octave: 0}, state: NoteState.Unselected});
               return "BpmPitchActive"
             }
             else // buffer plein (on le vide et on remplace par la valeur de la note 
@@ -75,6 +77,7 @@ const PitchNote: React.FC<PitchNoteProps> = ({ active, name, state, frequency, m
             {
               console.log("buffer 2 - notes");
               onSetBuffer({noteBpm1: {name:name.name,octave:name.octave}, noteBpm2: {name:"",octave:0}});
+              onChange( {note: {name: "", octave: 0}, state: NoteState.Unselected});
               return "BpmPitchActive"
             }
           }
@@ -83,18 +86,21 @@ const PitchNote: React.FC<PitchNoteProps> = ({ active, name, state, frequency, m
               if(noteBuffer.noteBpm1.octave === 0 && noteBuffer.noteBpm2.octave  === 0) // buffer vide
               {
                 onSetBuffer({noteBpm1: {name:name.name,octave:4}, noteBpm2: {name:"",octave:0}});
+                onChange( {note: {name: "", octave: 0}, state: NoteState.Unselected});
                 return "BpmPitchActive"
               }
               else if(noteBuffer.noteBpm1.octave !== 0 && noteBuffer.noteBpm2.octave  === 0) // buffer contient déjà une valeur
               {
                 //let buffer = {noteBpm1: {name: noteBuffer.noteBpm1.name,octave: noteBuffer.noteBpm1.octave}, noteBpm2: {name:name.name,octave:name.octave}}
                 onSetBuffer({noteBpm1: {name: noteBuffer.noteBpm1.name,octave: noteBuffer.noteBpm1.octave}, noteBpm2: {name:name.name,octave:4}});
+                onChange( {note: {name: "", octave: 0}, state: NoteState.Unselected});
                 return "BpmPitchActive"
               }
               else // buffer plein (on le vide et on remplace par la valeur de la note 
                   // c'est la meme étape que le buffer vide mais peut etre qu'on souhaitera un fonctionnement différent à l'avenir)
               {
                 onSetBuffer({noteBpm1: {name:name.name,octave:4}, noteBpm2: {name:"",octave:0}});
+                onChange( {note: {name: "", octave: 0}, state: NoteState.Unselected});
                 return "BpmPitchActive"
               }
             }
@@ -132,6 +138,8 @@ const PitchNote: React.FC<PitchNoteProps> = ({ active, name, state, frequency, m
         else{
           //  onChange({note : name, state : NoteState.Octave, noteBpm1 : {name: name.name, octave: 4}, noteBpm2 : {name: "", octave: 0} });
           onChange({note: name, state: NoteState.Octave});
+          //{note: {name: "", octave: 0}, state: NoteState.Unselected}
+          
           console.log("clic long");
         };
       }
