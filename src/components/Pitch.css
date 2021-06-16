@@ -21,3 +21,11 @@
 .OctaveActive {
   background-color: blue !important;
 }
+
+.BpmPitchActive {
+  background-color: orange !important;
+}
+
+.BpmOctaveActive {
+  background-color: green !important;
+}

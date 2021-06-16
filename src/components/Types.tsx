@@ -13,8 +13,11 @@ export type Note = {
 export type NotesCircleState = {
     note: Note,
     state: NoteState,
-    noteBpm1 : Note,
-    noteBpm2 : Note
+}
+
+export type NotesCircleStateBuffer = {
+    noteBpm1: Note,
+    noteBpm2: Note,
 }
 
 export enum TunerMode {
