@@ -6,8 +6,8 @@ export enum NoteAlter {
 
 
 const ASPN_TO_SYLLABLES: {[idx:string]: string } = {
-  A:"La", B:"Si", C:"Do", D:"Ré", E:"Mi", F:"Fa", G:"Sol", H:"Si",
-  a:"La", b:"Si", c:"Do", d:"Ré", e:"Mi", f:"Fa", g:"Sol", h:"Si",
+  A:"La", B:"Si", C:"Do", D:"Ré", E:"Mi", F:"Fa", G:"Sol",
+  a:"La", b:"Si", c:"Do", d:"Ré", e:"Mi", f:"Fa", g:"Sol",
 }
 
 const SYLLABLES_TO_ASPN: {[idx:string]: string } = {
