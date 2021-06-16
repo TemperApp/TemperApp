@@ -7,7 +7,7 @@ class SoundEngine {
 
   private static instance: SoundEngine;
   private synth: Tone.AMSynth;
-  private freq: number = 0; // default temp value
+  private freq: number = 440; // default temp value
 
   private constructor() {
     SoundEngine.volume(-24);
@@ -55,20 +55,20 @@ class SoundEngine {
   }
 
 
-  public static volume(volume: number): number {
+  public static volume(volume = Tone.Destination.volume.value): number {
     return Tone.Destination.volume.value = volume;
   }
 
 
   public static setPulseBPM(pulseBPM: number): void {
-    const carrierFreq = this.get().freq;
-    const harmonicity = (carrierFreq + pulseBPM/60) / carrierFreq - 1 ;
-    this.get().synth.harmonicity.value = harmonicity;
+    this.setPulseBPS(pulseBPM/60);
   }
 
 
   public static setPulseBPS(pulseBPS: number): void {
-    this.setPulseBPM(pulseBPS*60);
+    const carrierFreq = this.get().freq;
+    const harmonicity = (carrierFreq + pulseBPS) / carrierFreq - 1 ;
+    this.get().synth.harmonicity.value = harmonicity;
   }
 }
 
