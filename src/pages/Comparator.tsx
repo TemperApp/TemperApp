@@ -1,6 +1,7 @@
 import React from 'react';
 import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/react';
 import './Comparator.css';
+import PitchCircle from "../components/Tuner/PitchCircle"
 
 const Comparator: React.FC = () => {
   return (
@@ -16,6 +17,7 @@ const Comparator: React.FC = () => {
             <IonTitle size="large">Comparateur</IonTitle>
           </IonToolbar>
         </IonHeader>
+        < PitchCircle/>
       </IonContent>
     </IonPage>
   );

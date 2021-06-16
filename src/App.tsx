@@ -6,7 +6,7 @@ import { IonReactRouter } from '@ionic/react-router';
 import { IonTabs, IonTabBar, IonTabButton, IonIcon, IonLabel } from '@ionic/react';
 import { home, triangle, ellipse, square, bookmarks } from 'ionicons/icons';
 
-import { useSQLite } from 'react-sqlite-hook/dist';
+//import { useSQLite } from 'react-sqlite-hook/dist';
 
 import Tuner from './pages/Tuner';
 import Comparator from './pages/Comparator';
@@ -45,6 +45,7 @@ const App: React.FC = () => {
   const [existConn, setExistConn] = useState(false);
   existingConn = {existConn: existConn, setExistConn: setExistConn};
 
+  /*
   const {echo, getPlatform, createConnection, closeConnection,
     retrieveConnection, retrieveAllConnections, closeAllConnections,
     addUpgradeStatement, importFromJson, isJsonValid, copyFromAssets,
@@ -54,6 +55,7 @@ const App: React.FC = () => {
     retrieveConnection, retrieveAllConnections, closeAllConnections,
     addUpgradeStatement, importFromJson, isJsonValid, copyFromAssets,
     isAvailable};
+  */
     
   return (
     <IonApp>

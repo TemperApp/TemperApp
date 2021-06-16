@@ -1,7 +1,10 @@
 import React from 'react';
+
+import PitchCircleSVG from './PitchCircleSVG';
+
 const PitchCircle: React.FC = () => {
   return (
-    <div></div>
+    <PitchCircleSVG />
   );
 };
 export default PitchCircle;
