@@ -1,7 +1,13 @@
 import React from 'react';
-const PitchCircleButtonSVG: React.FC = () => {
+
+type PitchCircleButtonSVGProps = {
+  position: string,
+}
+
+const PitchCircleButtonSVG: React.FC<PitchCircleButtonSVGProps> = ({position}) => {
   return (
-    <div></div>
+    <path fill="#F5FBFB" stroke="#A7C5C3" strokeOpacity=".5" strokeWidth="2" d={position}/>
   );
 };
+
 export default PitchCircleButtonSVG;
