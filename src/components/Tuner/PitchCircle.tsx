@@ -4,7 +4,9 @@ import PitchCircleSVG from './PitchCircleSVG';
 
 const PitchCircle: React.FC = () => {
   return (
-    <PitchCircleSVG />
+    <PitchCircleSVG 
+      tunerMode = "TuningFork"
+    />
   );
 };
 export default PitchCircle;

@@ -3,16 +3,29 @@ import React, { useRef } from 'react';
 type DivOrNullType = SVGPathElement | null;
 
 type PitchCircleButtonSVGProps = {
+  noteName: string,
   position: string,
-  active: boolean
+  active: boolean,
+  onChange : (state: boolean) => void,
+  currentNote : (noteName : string) => void,
 }
 
-const PitchCircleButtonSVG: React.FC<PitchCircleButtonSVGProps> = ({position, active}) => {
+const PitchCircleButtonSVG: React.FC<PitchCircleButtonSVGProps> = ({noteName, position, active, onChange, currentNote}) => {
 
   const note = useRef<DivOrNullType>(null);
 
+  const activeNote = () => { 
+    onChange(true);
+    currentNote(noteName);
+  }
+
+  const disableNote = () => { 
+    onChange(false);
+    currentNote('');
+  }
+
   const handleClick = () => {
-    console.log("click");
+    (active === false) ? activeNote() : disableNote();
   }
 
   
