@@ -9,7 +9,7 @@ import {
   play, pause, swapHorizontal, playCircle,
   volumeOff, volumeHigh
 } from 'ionicons/icons'
-import { TEMPERAMENTS_NAME } from '../model/Temperament';
+import { temperaments, TemperamentType } from '../model/Temperament';
 import './Tuner.css';
 
 const Tuner: React.FC = () => {
@@ -40,7 +40,7 @@ const Tuner: React.FC = () => {
             <IonSelect
               value={temperament} placeholder="Tempérament"
               onIonChange={e => setTemperament(e.detail.value)}>
-              {TEMPERAMENTS_NAME.map((t: { name: string, slugName: string }) =>
+              {temperaments.map((t: TemperamentType) =>
                 <IonSelectOption key={t.slugName} value={t.slugName}>{t.name}</IonSelectOption>
               )}
             </IonSelect>

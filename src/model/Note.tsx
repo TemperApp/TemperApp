@@ -1,3 +1,19 @@
+export enum NoteAsString {
+  C = "C",
+  C_sharp = "C_sharp",
+  D = "D",
+  E_flat = "E_flat",
+  E = "E",
+  F = "F",
+  F_sharp = "F_sharp",
+  G = "G",
+  G_sharp = "G_sharp",
+  A = "A",
+  B_flat = "B_flat",
+  B = "B",
+};
+
+
 export enum NoteAlter {
   NONE,
   FLAT = "b",  // ♭
@@ -30,26 +46,38 @@ export class Note implements INote {
   alter: NoteAlter;
   octave: number;
 
-  /**
-   * Creates a note
-   * @param char letter representing the note
-   * @param alter note alteration
-   * @param octave octave number in the American Std.
-   * Pitch Notation
-   */
-  constructor(char: string, alter: NoteAlter, octave: number) {
+  private constructor(char: string, alter: NoteAlter, octave: number) {
+    if (-1 === char.search(/A|B|C|D|E|F|G/))
+      throw `Error: Invalid note character: ${char}`;
+    if (octave < 0 || octave > 10)
+      throw `Error: Octave must be between 0 and 10: found ${octave}`;
+
     this.char = char;
     this.alter = alter;
     this.octave = octave;
   }
 
-  static parse(str: string): Note | null {
-    const octave: number = Number(str.slice(-1));
-    
-    if (isNaN(octave)) {
-      console.warn(`Failed to parse "${str}": Cannot read octave`)
+  /**
+   * Creates a note
+   * @param char letter representing the note
+   * @param alter note alteration
+   * @param octave octave number according to
+   * the American Std. Pitch Notation
+   */
+  static create(char: string, alter: NoteAlter, octave = 4): Note | null {
+    try {
+      return new Note(char, alter, octave);
+    } catch (error) {
+      console.warn(error);
       return null;
     }
+  }
+
+  static parse(str: string): Note | null {
+    const octave: number = 
+      (!isNaN(Number(str.slice(-1))))
+      ? Number(str.slice(-1))
+      : 4;
 
     let char: string;
     let alter: NoteAlter;
@@ -138,18 +166,18 @@ export class Note implements INote {
 
 
 export const FIFTHS: Array<Note> = [
-  new Note("C", NoteAlter.NONE, 4),
-  new Note("G", NoteAlter.NONE, 4),
-  new Note("D", NoteAlter.NONE, 4),
-  new Note("A", NoteAlter.NONE, 4),
-  new Note("E", NoteAlter.NONE, 4),
-  new Note("B", NoteAlter.NONE, 4),
-  new Note("F", NoteAlter.SHARP, 4),
-  new Note("C", NoteAlter.SHARP, 4),
-  new Note("G", NoteAlter.SHARP, 4),
-  new Note("E", NoteAlter.FLAT, 4),
-  new Note("B", NoteAlter.FLAT, 4),
-  new Note("F", NoteAlter.NONE, 4),
+  Note.create("C", NoteAlter.NONE , 4)!,
+  Note.create("G", NoteAlter.NONE , 4)!,
+  Note.create("D", NoteAlter.NONE , 4)!,
+  Note.create("A", NoteAlter.NONE , 4)!,
+  Note.create("E", NoteAlter.NONE , 4)!,
+  Note.create("B", NoteAlter.NONE , 4)!,
+  Note.create("F", NoteAlter.SHARP, 4)!,
+  Note.create("C", NoteAlter.SHARP, 4)!,
+  Note.create("G", NoteAlter.SHARP, 4)!,
+  Note.create("E", NoteAlter.FLAT , 4)!,
+  Note.create("B", NoteAlter.FLAT , 4)!,
+  Note.create("F", NoteAlter.NONE , 4)!,
 ];
 
 export default Note;

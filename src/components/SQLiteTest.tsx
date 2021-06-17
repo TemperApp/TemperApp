@@ -1,6 +1,8 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
 import { sqlite, existingConn } from '../App';
+import { temperaments } from '../model/Temperament'
+import { NoteAsString } from '../model/Note'
 
 const SQLiteTest: React.FC = () => {
 
@@ -15,14 +17,40 @@ const SQLiteTest: React.FC = () => {
           const db = await sqlite.createConnection("db", false, "no-encryption", 1);
           await db.open();
 
-          await db.execute(`DROP TABLE users`);
+          let ret: any;
 
-          let ret = await db.execute(`CREATE TABLE users (
-            id      INTEGER PRIMARY KEY AUTOINCREMENT,
-            name    VARCHAR(70),
-            email   VARCHAR(70),
-            age     INTEGER,
-            company VARCHAR(70)
+          await db.execute(`DROP TABLE temperament`);
+          await db.execute(`DROP TABLE note`);
+          await db.execute(`DROP TABLE corresponds`);
+
+          ret = await db.execute(`
+          CREATE TABLE temperament (
+            idTemperament   INTEGER PRIMARY KEY AUTOINCREMENT,
+            name            VARCHAR(70),
+            slugName        VARCHAR(70)
+          )`);
+          if (ret.changes.changes < 0) {
+            print(`ERR: Execute changes: ${ret.changes.changes}`);
+            return false;
+          }
+
+          ret = await db.execute(`
+          CREATE TABLE note (
+            noteSymbol   VARCHAR(7) PRIMARY KEY NOT NULL
+          )`);
+          if (ret.changes.changes < 0) {
+            print(`ERR: Execute changes: ${ret.changes.changes}`);
+            return false;
+          }
+
+          ret = await db.execute(`
+          CREATE TABLE corresponds (
+            idTemperament   INTEGER NOT NULL,
+            noteSymbol      VARCHAR(7) NOT NULL,
+            deviation       REAL NOT NULL,
+            cpExp5th        VARCHAR(10) NOT NULL,
+            csExp3rd        VARCHAR(10) NOT NULL,
+            PRIMARY KEY (idTemperament, noteSymbol)
           )`);
           if (ret.changes.changes < 0) {
             print(`ERR: Execute changes: ${ret.changes.changes}`);
@@ -31,19 +59,35 @@ const SQLiteTest: React.FC = () => {
 
           await db.createSyncTable();
           await db.setSyncDate((new Date(Date.now())).toISOString());
+          
+          // Populate 'note'
+          for (let note in NoteAsString) {
+            ret = await db.run(
+              "INSERT INTO note (noteSymbol) VALUES (?)",
+              [note]);
+          }
 
-          ret = await db.run(
-            "INSERT INTO users (name,email,age,company) VALUES (?,?,?,?)",
-            ['Jean', 'jean@hotmail.fr', 29, 'Damcom']);
+          // Populate 'temperament'
+          for (let t of temperaments) {
+            ret = await db.run(
+              "INSERT INTO temperament (idTemperament,name,slugName) VALUES (?,?,?)",
+              [t.idTemperament, t.name, t.slugName]);
 
-          ret = await db.run(
-            "INSERT INTO users (name,email,age,company) VALUES (?,?,?,?)",
-            ['Marine', 'macham@gmail.com', 29, 'Haaz']);
+            for (let note in NoteAsString) {
+              // Populate 'corresponds'
+              ret = await db.run(
+                `INSERT INTO corresponds (idTemperament,
+                  noteSymbol, deviation, cpExp5th, csExp3rd)
+                  VALUES (?,?,?,?,?)`,
+                [t.idTemperament, note, t.deviation[note],
+                t.cpExp5th[note], t.csExp3rd[note] ]
+              );
+            }
+          }
 
-          ret = await db.query("SELECT * FROM users;");
+          ret = await db.query("SELECT * FROM corresponds;");
 
           setLogs((logs) => logs.concat(JSON.stringify(ret)));
-
           existingConn.setExistConn(true);
           return true;
         } catch (err) {
