@@ -1,11 +1,14 @@
 import React from 'react';
 import { useState } from 'react';
 import {
-  IonGrid, IonCol, IonRow,
+  IonFooter, IonGrid, IonCol, IonRow,
   IonButton, IonIcon, IonSelect, IonSelectOption,
-  IonInput, IonItem, IonLabel, IonToggle
+  IonInput, IonItem, IonLabel
 } from '@ionic/react';
-import { play, pause, swapHorizontal, playCircle, volumeOff, volumeHigh } from 'ionicons/icons'
+import {
+  play, pause, swapHorizontal, playCircle,
+  volumeOff, volumeHigh
+} from 'ionicons/icons'
 import { TEMPERAMENTS_NAME } from '../model/Temperament';
 import './Tuner.css';
 
@@ -13,20 +16,23 @@ const Tuner: React.FC = () => {
 
   const [temperament, setTemperament] = useState<number>(440);
   const [freqA4, setFreqA4] = useState<number>(440);
+  const [isMuted, setIsMuted] = useState<boolean>(true);
+  const [isHzMode, setIsHzMode] = useState<boolean>(true);
 
   return (
     <>
-      <div className="ion-padding-horizontal">
-        <IonButton>
-          <IonIcon icon={play} />
+      { /* TODO remove */}
+      <IonRow className="ion-padding-horizontal ion-justify-content-center">
+        <IonButton color="dark" fill="clear">
+          <IonIcon slot="icon-only" icon={play} />
         </IonButton>
-        <IonButton>
-          <IonIcon icon={pause} />
+        <IonButton color="dark" fill="clear">
+          <IonIcon slot="icon-only" icon={pause} />
         </IonButton>
-        <IonButton>
-          <IonIcon icon={swapHorizontal} />
+        <IonButton color="dark" fill="clear">
+          <IonIcon slot="icon-only" icon={swapHorizontal} />
         </IonButton>
-      </div>
+      </IonRow>
 
       <IonGrid className="ion-padding-horizontal">
         <IonRow className="ion-justify-content-between ion-align-items-end">
@@ -52,32 +58,36 @@ const Tuner: React.FC = () => {
       </IonGrid>
 
       {/* PitchCircle */}
-
-      <IonGrid className="ion-padding-horizontal">
-        <IonRow className="ion-justify-content-between ion-align-items-center">
-          <IonCol size="3">
-            <IonButton>
-              <IonIcon icon={playCircle} />
-            </IonButton>
-          </IonCol>
-          <IonCol size="3">
-            <IonButton>
-              <IonIcon icon={volumeOff} />
-            </IonButton>
-          </IonCol>
-          <IonCol size="6" className="tuner-mode-toggle-btn">
-            <IonItem>
-              <IonLabel>bpm</IonLabel>
-              <IonToggle color="primary" />
-              <IonLabel>Hz</IonLabel>
-            </IonItem>
-            {/*
-            <IonButton className="btn-option-bpm">bpm</IonButton>
-            <IonButton className="btn-option-tuningfork">Hz</IonButton>
-            */}
-          </IonCol>
-        </IonRow>
-      </IonGrid>
+      <IonFooter>
+        <IonGrid className="ion-padding-horizontal">
+          <IonRow className="ion-justify-content-between ion-align-items-center">
+            <IonCol>
+              <IonButton className="btn-start-procedure" size="large">
+                <IonIcon slot="icon-only" icon={playCircle} />
+              </IonButton>
+            </IonCol>
+            <IonCol>
+              <IonButton
+                color="dark" fill="clear" size="large"
+                onClick={() => setIsMuted(!isMuted)}>
+                <IonIcon slot="icon-only" icon={(isMuted) ? volumeOff : volumeHigh} />
+              </IonButton>
+            </IonCol>
+            <IonCol className="btn-mode">
+              <IonButton
+                onClick={() => setIsHzMode(false)}
+                className={`btn-mode-bpm ion-no-margin ion-text-lowercase
+                    ${(!isHzMode) ? "btn-mode-activated" : ""}`}>bpm
+              </IonButton>
+              <IonButton
+                onClick={() => setIsHzMode(true)}
+                className={`btn-mode-tuningfork ion-no-margin ion-text-capitalize
+                    ${(isHzMode) ? "btn-mode-activated" : ""}`}>Hz
+              </IonButton>
+            </IonCol>
+          </IonRow>
+        </IonGrid>
+      </IonFooter>
     </>
   );
 };
