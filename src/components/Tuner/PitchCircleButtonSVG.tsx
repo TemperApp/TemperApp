@@ -1,6 +1,7 @@
 import { createGesture } from '@ionic/react';
 import React, { useEffect, useRef } from 'react';
 import { ActiveNote, ActiveNotes, StateList } from './TunerTypes';
+import useLongPress from "./functions/useLongPress";
 
 type DivOrNullType = SVGPathElement | null;
 
@@ -38,7 +39,30 @@ const PitchCircleButtonSVG: React.FC<PitchCircleButtonSVGProps> = ({noteName, po
   const handleClick = () => {
     console.log(tunerMode);
   }
+
+  const onLongPress = () =>{
+    if(tunerMode === "TuningFork"){
+      (active === StateList.default) ? activeNoteOctave() : ((active === StateList.selected) ? activeNoteOctave() : ((active === StateList.octave)? activeNote() :disableNote()) );
+    }
+    else{
+
+    }  
+  } 
   
+  const onClick = () => {
+    if(tunerMode === "TuningFork"){
+      (active === StateList.default) ? activeNote() :  disableNote() ;
+    }
+    else{
+
+    }  
+  }
+
+  const defaultOptions = {
+    shouldPreventDefault: true,
+    delay: 500,
+  };
+  const longPressEvent = useLongPress(onLongPress, onClick, defaultOptions);  
 
   const colorButton = () => {
     switch (active) {
@@ -57,7 +81,7 @@ const PitchCircleButtonSVG: React.FC<PitchCircleButtonSVGProps> = ({noteName, po
     const c = note.current!;
     let beginPress: number;
 
-
+/*
     console.log("-----------------------------------------");
     console.log(tunerMode);
     
@@ -75,18 +99,25 @@ const PitchCircleButtonSVG: React.FC<PitchCircleButtonSVGProps> = ({noteName, po
         };
       }
     });
+
+    if(tunerMode === "Bpm"){
+      console.log("destrunction gesture");
+      console.log(gesture);
+      gesture.destroy();
+
+    }
     
 
     console.log("-----------------------------------------");
 
     gesture.enable(true);
-    
+*/    
   }, [tunerMode]);
 
 
   
   return (
-    <path fill={colorButton()} stroke="#A7C5C3" strokeOpacity=".5" strokeWidth="2" d={position} ref={note} onClick={handleClick}/>
+    <path fill={colorButton()} stroke="#A7C5C3" strokeOpacity=".5" strokeWidth="2" d={position} ref={note} {...longPressEvent} />
   );
 };
 

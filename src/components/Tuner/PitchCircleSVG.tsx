@@ -78,8 +78,7 @@ const PitchCircleSVG: React.FC<PitchCircleSVGProps> = ({tunerMode}) => {
 
       }
     }
-
-    console.log("USE EFFECT");
+    
     if(tunerMode === "TuningFork"){
       console.log(currentNote);
       cleanState();
