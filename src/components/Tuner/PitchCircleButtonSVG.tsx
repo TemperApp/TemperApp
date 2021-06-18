@@ -1,36 +1,92 @@
-import React, { useRef } from 'react';
+import { createGesture } from '@ionic/react';
+import React, { useEffect, useRef } from 'react';
+import { ActiveNote, ActiveNotes, StateList } from './TunerTypes';
 
 type DivOrNullType = SVGPathElement | null;
 
 type PitchCircleButtonSVGProps = {
   noteName: string,
   position: string,
-  active: boolean,
-  onChange : (state: boolean) => void,
-  currentNote : (noteName : string) => void,
+  active: StateList,
+  tunerMode: string,
+  onChange : (state: StateList) => void,
+  currentNote : (noteName : ActiveNotes) => void,
 }
 
-const PitchCircleButtonSVG: React.FC<PitchCircleButtonSVGProps> = ({noteName, position, active, onChange, currentNote}) => {
+const PitchCircleButtonSVG: React.FC<PitchCircleButtonSVGProps> = ({noteName, position, active, tunerMode, onChange, currentNote}) => {
 
   const note = useRef<DivOrNullType>(null);
 
-  const activeNote = () => { 
-    onChange(true);
-    currentNote(noteName);
+  function activeNote(){ 
+    console.log("clic court sans octave en mode : ");
+    console.log(tunerMode);
+    currentNote( { note1 : {name : noteName, state: StateList.selected}, note2 : {name : "", state: StateList.default} });
+    onChange(StateList.selected);
+  }
+
+  const activeNoteOctave = () => { 
+    currentNote( { note1 : {name : noteName, state: StateList.octave}, note2 : {name : "", state: StateList.default} });
+    onChange(StateList.octave);
   }
 
   const disableNote = () => { 
-    onChange(false);
-    currentNote('');
-  }
-
-  const handleClick = () => {
-    (active === false) ? activeNote() : disableNote();
+    currentNote( { note1 : {name : "", state: StateList.default}, note2 : {name : "", state: StateList.default} });
+    onChange(StateList.default);
   }
 
   
+  const handleClick = () => {
+    console.log(tunerMode);
+  }
+  
+
+  const colorButton = () => {
+    switch (active) {
+      case StateList.default: //bouton déactivé
+        return "#F5FBFB";
+      case StateList.selected: // bouton activé 
+        return "#A7C5C3";
+      case StateList.octave: // bouton activé à l'octave supérieur
+        return "#F75D4E";
+      default:
+        return "#F5FBFB";
+    }
+  }
+  
+  useEffect(() => {
+    const c = note.current!;
+    let beginPress: number;
+
+
+    console.log("-----------------------------------------");
+    console.log(tunerMode);
+    
+    const gesture = createGesture({
+      el: c,
+      gestureName: "longpress",
+      threshold: 0,
+      onStart: () => {beginPress = Date.now(); },
+      onEnd: () => {
+        if(Date.now() - beginPress < 300){
+          (active === StateList.default) ? activeNote() : disableNote();
+        }
+        else{
+          (active === StateList.default) ? activeNoteOctave() : disableNote();
+        };
+      }
+    });
+    
+
+    console.log("-----------------------------------------");
+
+    gesture.enable(true);
+    
+  }, [tunerMode]);
+
+
+  
   return (
-    <path fill={(active)?"#A7C5C3":"#F5FBFB"} stroke="#A7C5C3" strokeOpacity=".5" strokeWidth="2" d={position} ref={note} onClick={handleClick}/>
+    <path fill={colorButton()} stroke="#A7C5C3" strokeOpacity=".5" strokeWidth="2" d={position} ref={note} onClick={handleClick}/>
   );
 };
 

@@ -6,7 +6,7 @@ import ThirdCircleSVG from './ThirdCircleSVG';
 import PitchCircleButtonSVG from './PitchCircleButtonSVG';
 
 //Types 
-import { ButtonPosition } from "./TunerTypes"
+import { ActiveNote, ActiveNotes, ButtonPosition, StateList } from "./TunerTypes"
 import { cpuUsage } from 'process';
 
 type PitchCircleSVGProps = {
@@ -15,22 +15,22 @@ type PitchCircleSVGProps = {
 
 const PitchCircleSVG: React.FC<PitchCircleSVGProps> = ({tunerMode}) => {
 
-  const [stateA, setStateA] = useState(false);
-  const [stateB, setStateB] = useState(false);
-  const [stateC, setStateC] = useState(false);
-  const [stateD, setStateD] = useState(false);
-  const [stateE, setStateE] = useState(false);
-  const [stateF, setStateF] = useState(false);
-  const [stateG, setStateG] = useState(false);
-  const [stateB_flat, setStateB_flat] = useState(false);
-  const [stateE_flat, setStateE_flat] = useState(false);
-  const [stateG_sharp, setStateG_sharp] = useState(false);
-  const [stateC_sharp, setStateC_sharp] = useState(false);
-  const [stateF_sharp, setStateF_sharp] = useState(false);
+  const [stateA, setStateA] = useState(StateList.default);
+  const [stateB, setStateB] = useState(StateList.default);
+  const [stateC, setStateC] = useState(StateList.default);
+  const [stateD, setStateD] = useState(StateList.default);
+  const [stateE, setStateE] = useState(StateList.default);
+  const [stateF, setStateF] = useState(StateList.default);
+  const [stateG, setStateG] = useState(StateList.default);
+  const [stateB_flat, setStateB_flat] = useState(StateList.default);
+  const [stateE_flat, setStateE_flat] = useState(StateList.default);
+  const [stateG_sharp, setStateG_sharp] = useState(StateList.default);
+  const [stateC_sharp, setStateC_sharp] = useState(StateList.default);
+  const [stateF_sharp, setStateF_sharp] = useState(StateList.default);
 
-  const [currentNote, setCurrentNote] = useState("");
+  const [currentNote, setCurrentNote] = useState<ActiveNotes>({note1 : {name: "", state: StateList.default}, note2 : {name: "", state: StateList.default}});
 
-  let StateArray: {[key: string]: boolean} = {
+  let StateArray: {[key: string]: StateList} = {
     A: stateA,
     B: stateB,
     C: stateC,
@@ -47,22 +47,54 @@ const PitchCircleSVG: React.FC<PitchCircleSVGProps> = ({tunerMode}) => {
 
   useEffect(() => {
 
+    const cleanState = () =>{
+      if(tunerMode === "TuningFork"){
+        if(currentNote.note1.name !== "A" && stateA !== StateList.default)
+          setStateA(StateList.default)
+        if(currentNote.note1.name !== "B" && stateB !== StateList.default)
+          setStateB(StateList.default)
+        if(currentNote.note1.name !== "C" && stateC !== StateList.default)
+          setStateC(StateList.default)
+        if(currentNote.note1.name !== "D" && stateD !== StateList.default)
+          setStateD(StateList.default)
+        if(currentNote.note1.name !== "E" && stateE !== StateList.default)
+          setStateE(StateList.default)
+        if(currentNote.note1.name !== "F" && stateF !== StateList.default)
+          setStateF(StateList.default)
+        if(currentNote.note1.name !== "G" && stateG !== StateList.default)
+          setStateG(StateList.default)
+        if(currentNote.note1.name !== "B_flat" && stateB_flat !== StateList.default)
+          setStateB_flat(StateList.default)
+        if(currentNote.note1.name !== "E_flat" && stateE_flat !== StateList.default)
+          setStateE_flat(StateList.default)
+        if(currentNote.note1.name !== "G_sharp" && stateG_sharp !== StateList.default)
+          setStateG_sharp(StateList.default)
+        if(currentNote.note1.name !== "C_sharp" && stateC_sharp !== StateList.default)
+          setStateC_sharp(StateList.default)
+        if(currentNote.note1.name !== "F_sharp" && stateF_sharp !== StateList.default)
+          setStateF_sharp(StateList.default)
+      }
+      else{
+
+      }
+    }
+
     console.log("USE EFFECT");
     if(tunerMode === "TuningFork"){
       console.log(currentNote);
-      /*
-      console.log(StateArray);
-      let temp = "StateArray"+"."+"A";
-      console.log(eval(temp));
-      */
+      cleanState();
+    }
+    if(tunerMode === "Bpm"){
+      console.log(currentNote);
+      //cleanState();
     }
   
-  }, [StateArray]);
+  }, [StateArray,currentNote]);
 
 
   return (
     
-    <div id="Container_PïtchCircleSVG">
+    <div id="Container_PitchCircleSVG">
       <svg xmlns="http://www.w3.org/2000/svg" width="361" height="360" fill="none" viewBox="0 0 361 360">
         
         {/* Les différents boutons de notes */}
@@ -71,96 +103,108 @@ const PitchCircleSVG: React.FC<PitchCircleSVGProps> = ({tunerMode}) => {
           noteName = "A"
           position = {ButtonPosition.A}
           active = {StateArray.A}
-          onChange = { (state : boolean) => { setStateA(state)} }
-          currentNote = { (noteName : string) => { setCurrentNote(noteName)} }
+          tunerMode = {tunerMode} 
+          onChange = { (state : StateList) => { setStateA(state)} } 
+          currentNote = {({note1,note2}:ActiveNotes) => {setCurrentNote({note1,note2})}}
         />
 
         <PitchCircleButtonSVG 
           noteName = "D"
           position = {ButtonPosition.D}
           active = {StateArray.D}
-          onChange = { (state : boolean) => { setStateD(state)} }
-          currentNote = { (noteName : string) => { setCurrentNote(noteName)} }
+          tunerMode = {tunerMode} 
+          onChange = { (state : StateList) => { setStateD(state)} } 
+          currentNote = {({note1,note2}:ActiveNotes) => {setCurrentNote({note1,note2})}}
         />
 
         <PitchCircleButtonSVG 
           noteName = "G"
           position = {ButtonPosition.G}
           active = {StateArray.G}
-          onChange = { (state : boolean) => { setStateG(state)} }
-          currentNote = { (noteName : string) => { setCurrentNote(noteName)} }
+          tunerMode = {tunerMode} 
+          onChange = { (state : StateList) => { setStateG(state)} } 
+          currentNote = {({note1,note2}:ActiveNotes) => {setCurrentNote({note1,note2})}}
         />
 
         <PitchCircleButtonSVG 
           noteName = "C"
           position = {ButtonPosition.C}
           active = {StateArray.C}
-          onChange = { (state : boolean) => { setStateC(state)} }
-          currentNote = { (noteName : string) => { setCurrentNote(noteName)} }
+          tunerMode = {tunerMode} 
+          onChange = { (state : StateList) => { setStateC(state)} } 
+          currentNote = {({note1,note2}:ActiveNotes) => {setCurrentNote({note1,note2})}}
         />
 
         <PitchCircleButtonSVG 
           noteName = "F"
           position = {ButtonPosition.F}
           active = {StateArray.F}
-          onChange = { (state : boolean) => { setStateF(state)} }
-          currentNote = { (noteName : string) => { setCurrentNote(noteName)} }
+          tunerMode = {tunerMode} 
+          onChange = { (state : StateList) => { setStateF(state)} } 
+          currentNote = {({note1,note2}:ActiveNotes) => {setCurrentNote({note1,note2})}}
         />
 
         <PitchCircleButtonSVG 
           noteName = "B_flat"
           position = {ButtonPosition.B_flat}
           active = {StateArray.B_flat}
-          onChange = { (state : boolean) => { setStateB_flat(state)} }
-          currentNote = { (noteName : string) => { setCurrentNote(noteName)} }
+          tunerMode = {tunerMode} 
+          onChange = { (state : StateList) => { setStateB_flat(state)} } 
+          currentNote = {({note1,note2}:ActiveNotes) => {setCurrentNote({note1,note2})}}
         />
 
         <PitchCircleButtonSVG 
           noteName = "E_flat"
           position = {ButtonPosition.E_flat}
           active = {StateArray.E_flat}
-          onChange = { (state : boolean) => { setStateE_flat(state)} }
-          currentNote = { (noteName : string) => { setCurrentNote(noteName)} }
+          tunerMode = {tunerMode} 
+          onChange = { (state : StateList) => { setStateE_flat(state)} } 
+          currentNote = {({note1,note2}:ActiveNotes) => {setCurrentNote({note1,note2})}}
         />
 
         <PitchCircleButtonSVG
           noteName = "G_sharp" 
           position = {ButtonPosition.G_sharp}
           active = {StateArray.G_sharp}
-          onChange = { (state : boolean) => { setStateG_sharp(state)} }
-          currentNote = { (noteName : string) => { setCurrentNote(noteName)} }
+          tunerMode = {tunerMode} 
+          onChange = { (state : StateList) => { setStateG_sharp(state)} } 
+          currentNote = {({note1,note2}:ActiveNotes) => {setCurrentNote({note1,note2})}}
         />
 
         <PitchCircleButtonSVG 
           noteName = "C_sharp"
           position = {ButtonPosition.C_sharp}
           active = {StateArray.C_sharp}
-          onChange = { (state : boolean) => { setStateC_sharp(state)} }
-          currentNote = { (noteName : string) => { setCurrentNote(noteName)} }
+          tunerMode = {tunerMode} 
+          onChange = { (state : StateList) => { setStateC_sharp(state)} } 
+          currentNote = {({note1,note2}:ActiveNotes) => {setCurrentNote({note1,note2})}}
         />
 
         <PitchCircleButtonSVG
           noteName = "F_sharp" 
           position = {ButtonPosition.F_sharp}
           active = {StateArray.F_sharp}
-          onChange = { (state : boolean) => { setStateF_sharp(state)} }
-          currentNote = { (noteName : string) => { setCurrentNote(noteName)} }
+          tunerMode = {tunerMode} 
+          onChange = { (state : StateList) => { setStateF_sharp(state)} } 
+          currentNote = {({note1,note2}:ActiveNotes) => {setCurrentNote({note1,note2})}}
         />
 
         <PitchCircleButtonSVG
           noteName = "B" 
           position = {ButtonPosition.B}
           active = {StateArray.B}
-          onChange = { (state : boolean) => { setStateB(state)} }
-          currentNote = { (noteName : string) => { setCurrentNote(noteName)} }
+          tunerMode = {tunerMode} 
+          onChange = { (state : StateList) => { setStateB(state)} } 
+          currentNote = {({note1,note2}:ActiveNotes) => {setCurrentNote({note1,note2})}}
         />
         
         <PitchCircleButtonSVG 
           noteName = "E"
           position = {ButtonPosition.E}
           active = {StateArray.E}
-          onChange = { (state : boolean) => { setStateE(state)} }
-          currentNote = { (noteName : string) => { setCurrentNote(noteName)} }
+          tunerMode = {tunerMode} 
+          onChange = { (state : StateList) => { setStateE(state)} } 
+          currentNote = {({note1,note2}:ActiveNotes) => {setCurrentNote({note1,note2})}}
         />
 
         {/* Fin des notes  */}

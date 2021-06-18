@@ -16,3 +16,23 @@ export enum ButtonPosition {
     F_sharp = Diese
     */
 }
+
+export enum StateList {
+    default = "default",
+    selected = "selected",
+    octave = "octave"
+    /*
+    B_flat = Bemol
+    F_sharp = Diese
+    */
+}
+
+export type ActiveNote = {
+    name : string,
+    state : StateList
+}
+
+export type ActiveNotes = {
+    note1 : ActiveNote,
+    note2 : ActiveNote,
+}
