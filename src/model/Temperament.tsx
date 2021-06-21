@@ -13,7 +13,7 @@ export enum NoteAsString {
   B = "B",
 };
 
-export type TemperamentType = {
+export type Temperament = {
   idTemperament: number,
   name: string,
   nameFR: string,
@@ -29,7 +29,7 @@ export type TemperamentType = {
   }
 };
 
-export const temperaments: Array<TemperamentType> = [
+export const temperaments: Array<Temperament> = [
   {
     idTemperament: 1,
     name: "Equal",
