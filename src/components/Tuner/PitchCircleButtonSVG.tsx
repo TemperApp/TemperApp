@@ -10,23 +10,52 @@ type PitchCircleButtonSVGProps = {
   position: string,
   active: StateList,
   tunerMode: string,
+  listNotes : ActiveNotes
   onChange : (state: StateList) => void,
   currentNote : (noteName : ActiveNotes) => void,
 }
 
-const PitchCircleButtonSVG: React.FC<PitchCircleButtonSVGProps> = ({noteName, position, active, tunerMode, onChange, currentNote}) => {
+const PitchCircleButtonSVG: React.FC<PitchCircleButtonSVGProps> = ({noteName, position, active, tunerMode, listNotes, onChange, currentNote}) => {
 
   const note = useRef<DivOrNullType>(null);
 
   function activeNote(){ 
-    console.log("clic court sans octave en mode : ");
-    console.log(tunerMode);
     currentNote( { note1 : {name : noteName, state: StateList.selected}, note2 : {name : "", state: StateList.default} });
+    onChange(StateList.selected);
+  }
+
+  function activeNoteBpm(){ 
+    if(listNotes.note1.state === StateList.default && listNotes.note2.state === StateList.default){
+      currentNote( { note1 : {name : noteName, state: StateList.selected}, note2 : {name : "", state: StateList.default} });
+    }
+    else{
+      if(listNotes.note1.state !== StateList.default && listNotes.note2.state === StateList.default){
+        currentNote( { note1 : {name : listNotes.note1.name, state: listNotes.note1.state}, note2 : {name : noteName, state: StateList.selected} });
+      }
+      else{
+        currentNote( { note1 : {name : noteName, state: StateList.selected}, note2 : {name : "", state: StateList.default} });
+      }
+    }
     onChange(StateList.selected);
   }
 
   const activeNoteOctave = () => { 
     currentNote( { note1 : {name : noteName, state: StateList.octave}, note2 : {name : "", state: StateList.default} });
+    onChange(StateList.octave);
+  }
+
+  function activeNoteOctaveBpm(){ 
+    if(listNotes.note1.state === StateList.default && listNotes.note2.state === StateList.default){
+      currentNote( { note1 : {name : noteName, state: StateList.octave}, note2 : {name : "", state: StateList.default} });
+    }
+    else{
+      if(listNotes.note1.state !== StateList.default && listNotes.note2.state === StateList.default){
+        currentNote( { note1 : {name : listNotes.note1.name, state: listNotes.note1.state}, note2 : {name : noteName, state: StateList.octave} });
+      }
+      else{
+        currentNote( { note1 : {name : noteName, state: StateList.octave}, note2 : {name : "", state: StateList.default} });
+      }
+    }
     onChange(StateList.octave);
   }
 
@@ -45,7 +74,7 @@ const PitchCircleButtonSVG: React.FC<PitchCircleButtonSVGProps> = ({noteName, po
       (active === StateList.default) ? activeNoteOctave() : ((active === StateList.selected) ? activeNoteOctave() : ((active === StateList.octave)? activeNote() :disableNote()) );
     }
     else{
-
+      (active === StateList.default) ? activeNoteOctaveBpm() : ((active === StateList.selected) ? activeNoteOctaveBpm() : ((active === StateList.octave)? activeNoteBpm() :disableNote()) );
     }  
   } 
   
@@ -54,7 +83,7 @@ const PitchCircleButtonSVG: React.FC<PitchCircleButtonSVGProps> = ({noteName, po
       (active === StateList.default) ? activeNote() :  disableNote() ;
     }
     else{
-
+      (active === StateList.default) ? activeNoteBpm() :  disableNote() ;
     }  
   }
 

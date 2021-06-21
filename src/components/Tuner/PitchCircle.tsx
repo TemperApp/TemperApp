@@ -7,7 +7,7 @@ const PitchCircle: React.FC = () => {
   const [tunerMode, setTunerMode] = useState("TuningFork");
 
   useEffect(() => {
-    //setTunerMode("Bpm");  
+    setTunerMode("Bpm");  
   }, []);
 
   console.log("pitch circle render");

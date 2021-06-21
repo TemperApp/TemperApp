@@ -32,6 +32,7 @@ const PitchCircleSVG: React.FC<PitchCircleSVGProps> = ({tunerMode}) => {
   const [stateF_sharp, setStateF_sharp] = useState(StateList.default);
 
   const [currentNote, setCurrentNote] = useState<ActiveNotes>({note1 : {name: "", state: StateList.default}, note2 : {name: "", state: StateList.default}});
+  const [currentTunerMode, setCurrentTunerMode] = useState("");
 
   let StateArray: {[key: string]: StateList} = {
     A: stateA,
@@ -51,6 +52,11 @@ const PitchCircleSVG: React.FC<PitchCircleSVGProps> = ({tunerMode}) => {
   useEffect(() => {
 
     const cleanState = () =>{
+      if(currentTunerMode !== tunerMode){
+        setCurrentTunerMode(tunerMode);
+        setCurrentNote({note1 : {name: "", state: StateList.default}, note2 : {name: "", state: StateList.default}});
+      }
+
       if(tunerMode === "TuningFork"){
         if(currentNote.note1.name !== "A" && stateA !== StateList.default)
           setStateA(StateList.default)
@@ -78,7 +84,30 @@ const PitchCircleSVG: React.FC<PitchCircleSVGProps> = ({tunerMode}) => {
           setStateF_sharp(StateList.default)
       }
       else{
-
+        if( (currentNote.note1.name !== "A" && currentNote.note2.name !== "A" ) && stateA !== StateList.default)
+          setStateA(StateList.default)
+        if( (currentNote.note1.name !== "B" && currentNote.note2.name !== "B" ) && stateB !== StateList.default)
+          setStateB(StateList.default)
+        if( (currentNote.note1.name !== "C" && currentNote.note2.name !== "C" ) && stateC !== StateList.default)
+          setStateC(StateList.default)
+        if( (currentNote.note1.name !== "D" && currentNote.note2.name !== "D" ) && stateD !== StateList.default)
+          setStateD(StateList.default)
+        if( (currentNote.note1.name !== "E" && currentNote.note2.name !== "E" ) && stateE !== StateList.default)
+          setStateE(StateList.default)
+        if( (currentNote.note1.name !== "F" && currentNote.note2.name !== "F" ) && stateF !== StateList.default)
+          setStateF(StateList.default)
+        if( (currentNote.note1.name !== "G" && currentNote.note2.name !== "G" ) && stateG !== StateList.default)
+          setStateG(StateList.default)
+        if( (currentNote.note1.name !== "B_flat" && currentNote.note2.name !== "B_flat" ) && stateB_flat !== StateList.default)
+          setStateB_flat(StateList.default)
+        if( (currentNote.note1.name !== "E_flat" && currentNote.note2.name !== "E_flat" ) && stateE_flat !== StateList.default)
+          setStateE_flat(StateList.default)
+        if( (currentNote.note1.name !== "G_sharp" && currentNote.note2.name !== "G_shap" ) && stateG_sharp !== StateList.default)
+          setStateG_sharp(StateList.default)
+        if( (currentNote.note1.name !== "C_sharp" && currentNote.note2.name !== "C_sharp" ) && stateC_sharp !== StateList.default)
+          setStateC_sharp(StateList.default)
+        if( (currentNote.note1.name !== "F_sharp" && currentNote.note2.name !== "F_sharp" ) && stateF_sharp !== StateList.default)
+          setStateF_sharp(StateList.default)
       }
     }
 
@@ -88,7 +117,7 @@ const PitchCircleSVG: React.FC<PitchCircleSVGProps> = ({tunerMode}) => {
     }
     if(tunerMode === "Bpm"){
       console.log(currentNote);
-      //cleanState();
+      cleanState();
     }
   
   }, [StateArray,currentNote]);
@@ -108,6 +137,7 @@ const PitchCircleSVG: React.FC<PitchCircleSVGProps> = ({tunerMode}) => {
           position = {ButtonPosition.A}
           active = {StateArray.A}
           tunerMode = {tunerMode} 
+          listNotes = {currentNote}
           onChange = { (state : StateList) => { setStateA(state)} } 
           currentNote = {({note1,note2}:ActiveNotes) => {setCurrentNote({note1,note2})}}
         />
@@ -117,6 +147,7 @@ const PitchCircleSVG: React.FC<PitchCircleSVGProps> = ({tunerMode}) => {
           position = {ButtonPosition.D}
           active = {StateArray.D}
           tunerMode = {tunerMode} 
+          listNotes = {currentNote}
           onChange = { (state : StateList) => { setStateD(state)} } 
           currentNote = {({note1,note2}:ActiveNotes) => {setCurrentNote({note1,note2})}}
         />
@@ -126,6 +157,7 @@ const PitchCircleSVG: React.FC<PitchCircleSVGProps> = ({tunerMode}) => {
           position = {ButtonPosition.G}
           active = {StateArray.G}
           tunerMode = {tunerMode} 
+          listNotes = {currentNote}
           onChange = { (state : StateList) => { setStateG(state)} } 
           currentNote = {({note1,note2}:ActiveNotes) => {setCurrentNote({note1,note2})}}
         />
@@ -135,6 +167,7 @@ const PitchCircleSVG: React.FC<PitchCircleSVGProps> = ({tunerMode}) => {
           position = {ButtonPosition.C}
           active = {StateArray.C}
           tunerMode = {tunerMode} 
+          listNotes = {currentNote}
           onChange = { (state : StateList) => { setStateC(state)} } 
           currentNote = {({note1,note2}:ActiveNotes) => {setCurrentNote({note1,note2})}}
         />
@@ -144,6 +177,7 @@ const PitchCircleSVG: React.FC<PitchCircleSVGProps> = ({tunerMode}) => {
           position = {ButtonPosition.F}
           active = {StateArray.F}
           tunerMode = {tunerMode} 
+          listNotes = {currentNote}
           onChange = { (state : StateList) => { setStateF(state)} } 
           currentNote = {({note1,note2}:ActiveNotes) => {setCurrentNote({note1,note2})}}
         />
@@ -153,6 +187,7 @@ const PitchCircleSVG: React.FC<PitchCircleSVGProps> = ({tunerMode}) => {
           position = {ButtonPosition.B_flat}
           active = {StateArray.B_flat}
           tunerMode = {tunerMode} 
+          listNotes = {currentNote}
           onChange = { (state : StateList) => { setStateB_flat(state)} } 
           currentNote = {({note1,note2}:ActiveNotes) => {setCurrentNote({note1,note2})}}
         />
@@ -162,6 +197,7 @@ const PitchCircleSVG: React.FC<PitchCircleSVGProps> = ({tunerMode}) => {
           position = {ButtonPosition.E_flat}
           active = {StateArray.E_flat}
           tunerMode = {tunerMode} 
+          listNotes = {currentNote}
           onChange = { (state : StateList) => { setStateE_flat(state)} } 
           currentNote = {({note1,note2}:ActiveNotes) => {setCurrentNote({note1,note2})}}
         />
@@ -171,6 +207,7 @@ const PitchCircleSVG: React.FC<PitchCircleSVGProps> = ({tunerMode}) => {
           position = {ButtonPosition.G_sharp}
           active = {StateArray.G_sharp}
           tunerMode = {tunerMode} 
+          listNotes = {currentNote}
           onChange = { (state : StateList) => { setStateG_sharp(state)} } 
           currentNote = {({note1,note2}:ActiveNotes) => {setCurrentNote({note1,note2})}}
         />
@@ -180,6 +217,7 @@ const PitchCircleSVG: React.FC<PitchCircleSVGProps> = ({tunerMode}) => {
           position = {ButtonPosition.C_sharp}
           active = {StateArray.C_sharp}
           tunerMode = {tunerMode} 
+          listNotes = {currentNote}
           onChange = { (state : StateList) => { setStateC_sharp(state)} } 
           currentNote = {({note1,note2}:ActiveNotes) => {setCurrentNote({note1,note2})}}
         />
@@ -189,6 +227,7 @@ const PitchCircleSVG: React.FC<PitchCircleSVGProps> = ({tunerMode}) => {
           position = {ButtonPosition.F_sharp}
           active = {StateArray.F_sharp}
           tunerMode = {tunerMode} 
+          listNotes = {currentNote}
           onChange = { (state : StateList) => { setStateF_sharp(state)} } 
           currentNote = {({note1,note2}:ActiveNotes) => {setCurrentNote({note1,note2})}}
         />
@@ -198,6 +237,7 @@ const PitchCircleSVG: React.FC<PitchCircleSVGProps> = ({tunerMode}) => {
           position = {ButtonPosition.B}
           active = {StateArray.B}
           tunerMode = {tunerMode} 
+          listNotes = {currentNote}
           onChange = { (state : StateList) => { setStateB(state)} } 
           currentNote = {({note1,note2}:ActiveNotes) => {setCurrentNote({note1,note2})}}
         />
@@ -207,6 +247,7 @@ const PitchCircleSVG: React.FC<PitchCircleSVGProps> = ({tunerMode}) => {
           position = {ButtonPosition.E}
           active = {StateArray.E}
           tunerMode = {tunerMode} 
+          listNotes = {currentNote}
           onChange = { (state : StateList) => { setStateE(state)} } 
           currentNote = {({note1,note2}:ActiveNotes) => {setCurrentNote({note1,note2})}}
         />
