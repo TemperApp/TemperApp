@@ -5,7 +5,7 @@ import { capSQLiteChanges } from '@capacitor-community/sqlite';
 const sqlDropTables = [
   "DROP TABLE IF EXISTS temperament;",
   "DROP TABLE IF EXISTS note;",
-  "DROP TABLE IF EXISTS corresponds;",
+  "DROP TABLE IF EXISTS deviation;",
 ]
 
 const sqlCreateTables = [
@@ -21,7 +21,7 @@ const sqlCreateTables = [
     noteSymbol   VARCHAR(7) PRIMARY KEY NOT NULL
   );`,
   `
-  CREATE TABLE corresponds (
+  CREATE TABLE deviation (
     idTemperament   INTEGER NOT NULL,
     noteSymbol      VARCHAR(7) NOT NULL,
     deviation       REAL NOT NULL,
@@ -112,30 +112,33 @@ class DB {
   /**
    * Query the SQLite DB and close the connection
    * @param sql sql query
+   * @param values values to pass into the sql query
    * @returns the result of the sql query
    */
-  public static async query(sql: string): Promise<[]> {
-    return await this.get().query(sql, false);
+  public static async query(sql: string, values: Array<number|string> = []): Promise<any[]> {
+    return await this.get().query(sql, values, false);
   }
 
 
   /**
    * Query the SQLite DB and keep the connection active
    * @param sql sql query
+   * @param values values to pass into the sql query
    * @returns the result of the sql query
    */
-  public static async queryAndKeepAlive(sql: string): Promise<[]> {
-    return await this.get().query(sql, true);
+  public static async queryAndKeepAlive(sql: string, values: Array<number|string> = []): Promise<any[]> {
+    return await this.get().query(sql, values, true);
   }
 
 
-  private async query(sql: string, keepAlive = false): Promise<[]> {
+  private async query(sql: string, values: Array<number|string> = [], keepAlive = false): Promise<any[]> {
     if (!sqlite.hasConn)
       await this.connect();
     this.printer("Querying...");
 
     try {
-      const res = await this.dbconn.query(sql);
+      values = values.map((v) => String(v));
+      const res = await this.dbconn.query(sql, values);
       if (!keepAlive)
         await this.close();
       return res.values;
@@ -152,7 +155,7 @@ class DB {
    * @param values values to pass into the sql query
    * @returns the result of the sql query, null if there was error
    */
-  public static async run(sql: string, values: Array<any>): Promise<capSQLiteChanges | null> {
+  public static async run(sql: string, values: Array<number|string>): Promise<capSQLiteChanges | null> {
     return await this.get().run(sql, values, false);
   }
 
@@ -163,17 +166,18 @@ class DB {
    * @param values values to pass into the sql query
    * @returns the result of the sql query, null if there was error
    */
-  public static async runAndKeepAlive(sql: string, values: Array<any>): Promise<capSQLiteChanges | null> {
+  public static async runAndKeepAlive(sql: string, values: Array<number|string>): Promise<capSQLiteChanges | null> {
     return await this.get().run(sql, values, true);
   }
 
 
-  private async run(sql: string, values: Array<any>, keepAlive = false): Promise<capSQLiteChanges | null> {
+  private async run(sql: string, values: Array<number|string>, keepAlive = false): Promise<capSQLiteChanges | null> {
     if (!sqlite.hasConn)
       await this.connect();
     this.printer("Running query...");
 
     try {
+      values = values.map((v) => String(v));
       const changes = await this.dbconn.run(sql, values);
       if (!keepAlive)
         await this.close();
@@ -258,16 +262,17 @@ class DB {
         this.printer(`ERR: Execute changes: ${ret.changes.changes}: inserting: ${t.name}`);
 
       for (const note in NoteAsString) {
-        // Populate 'corresponds'
+        // Populate 'deviation'
         ret = await this.dbconn.run(
-          `INSERT INTO corresponds (idTemperament,
+          `INSERT INTO deviation (idTemperament,
            noteSymbol, deviation, cpExp5th, csExp3rd)
            VALUES (?,?,?,?,?);`,
           [t.idTemperament, note, t.deviation[note],
           t.cpExp5th[note], t.csExp3rd[note]]
         );
+        this.printer(JSON.stringify(ret));
         if (ret.changes.changes < 0)
-          this.printer(`ERR: Execute changes: ${ret.changes.changes} inserting into 'corresponds'`);
+          this.printer(`ERR: Execute changes: ${ret.changes.changes} inserting into 'deviation'`);
       }
     }
   }

@@ -55,7 +55,7 @@ const App: React.FC = () => {
       isAvailable, hasConn: existConn, setHasConn: setExistConn};
 
     if (DB.isAvailable())
-      DB.init();
+      DB.init(); // TODO Add loading state to prevent user actions app during initialization
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   

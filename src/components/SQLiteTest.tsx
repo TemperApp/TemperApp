@@ -14,6 +14,10 @@ const SQLiteTest: React.FC = () => {
         print("## START ##");
         DB.setPrinter(print); // To display error using 'print' when debugging
 
+        // Show 'temperament' where idTemperament = 2
+        const data0 = await DB.queryAndKeepAlive("SELECT * FROM temperament WHERE idTemperament = ?;", [2]);
+        print(JSON.stringify(data0));
+
         // Show 'note' table content
         const data1 = await DB.queryAndKeepAlive("SELECT * FROM note;");
         print(JSON.stringify(data1));
