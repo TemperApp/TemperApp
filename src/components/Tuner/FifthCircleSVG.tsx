@@ -1,8 +1,63 @@
 import React from 'react';
 const FifthCircleSVG: React.FC = () => {
   
+  const test = [-1.24, 2.52, 1.41, 18.95, 4.25, 28, 14.59, 8.75, 2.25, 45.26, 9, 7.99];
+  
+  const convertQualityToColor = ( quality : number) => {
+
+    switch (Math.max(Math.min(Math.floor(quality),20),-1)) {
+      case -1:
+        return "#B9B9B9";
+      case 0 :
+        return "#45CBC7";
+      case 1 :
+        return "#FFEDD0";
+      case 2 : 
+        return "#FFE9C6";
+      case 3 : 
+        return "#FFE5BC";
+      case 4 : 
+        return "#FFE1B1";
+      case 5 : 
+        return "#FFDDA7";
+      case 6 : 
+        return "#FFDA9E";
+      case 7 : 
+        return "#FFD694";
+      case 8 : 
+        return "#FFD289";
+      case 9 : 
+        return "#FFC77D";
+      case 10 : 
+        return "#FFA669";
+      case 11 : 
+        return "#FF8654";
+      case 12 : 
+        return "#FF6741";
+      case 13 : 
+        return "#FF472D";
+      case 14 : 
+        return "#FF2416";
+      case 15 : 
+        return "#FF0604";
+      case 16 : 
+        return "#EB0000";
+      case 17 : 
+        return "#D40000";
+      case 18 : 
+        return "#BC0000";
+      case 19 : 
+        return "#A60000";
+      case 20 : 
+        return "#8A0000";
+      default:
+        return "#B9B9B9";
+    }
+  }
+
   return (
     <>
+    
 
     <g id="Fifth">
         <path id="E-2" data-name="E" fill="#DBA7D8" d="M272.9,205.41A95.14,95.14,0,0,1,248.21,248l-.42.41-13.28-13.28.42-.41a76.63,76.63,0,0,0,19.84-34.17Z" transform="translate(-2.04 -1.82)"/>
