@@ -117,7 +117,7 @@ const PitchCircleButtonSVG: React.FC<PitchCircleButtonSVGProps> = ({noteName, po
 
   
   return (
-    <path fill={colorButton()} stroke="#A7C5C3" stroke-miterlimit="10" strokeOpacity="1" strokeWidth="0.5" transform="translate(-2.04 -1.82)" d={position} ref={note} {...longPressEvent} />
+    <path fill={colorButton()} stroke="#A7C5C3" strokeMiterlimit="10" strokeOpacity="1" strokeWidth="0.5" transform="translate(-2.04 -1.82)" d={position} ref={note} {...longPressEvent} />
   );
 };
 
