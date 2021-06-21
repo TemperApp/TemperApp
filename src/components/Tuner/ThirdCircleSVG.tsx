@@ -5,7 +5,6 @@ const ThirdCircleSVG: React.FC = () => {
 
   const test = [-1.24, 2.52, 1.41, 18.95, 4.25, 28, 14.59, 8.75, 2.25, 45.26, 9, 7.99];
   
-
   const convertQualityToColor = ( quality : number) => {
 
     switch (Math.max(Math.min(Math.floor(quality),20),-1)) {
