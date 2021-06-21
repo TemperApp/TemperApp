@@ -1,11 +1,71 @@
+import { relative } from 'path';
 import React from 'react';
 
 const ThirdCircleSVG: React.FC = () => {
 
+  const test = [-1.24, 2.52, 1.41, 18.95, 4.25, 28, 14.59, 8.75, 2.25, 45.26, 9, 7.99];
+  console.log(test[3]);
+  
+
+  const convertQualityToColor = ( quality : number) => {
+
+    console.log(test);
+    console.log(quality)
+    switch (Math.max(Math.min((Math.floor(quality),20),-1))) {
+      case -1:
+        return "#B9B9B9";
+      case 0 :
+        return "#45CBC7";
+      case 1 :
+        return "#FFEDD0";
+      case 2 : 
+        return "#FFE9C6";
+      case 3 : 
+        return "#FFE5BC";
+      case 4 : 
+        return "#FFE1B1";
+      case 5 : 
+        return "#FFDDA7";
+      case 6 : 
+        return "#FFDA9E";
+      case 7 : 
+        return "#FFD694";
+      case 8 : 
+        return "#FFD289";
+      case 9 : 
+        return "#FFC77D";
+      case 10 : 
+        return "#FFA669";
+      case 11 : 
+        return "#FF8654";
+      case 12 : 
+        return "#FF6741";
+      case 13 : 
+        return "#FF472D";
+      case 14 : 
+        return "#FF2416";
+      case 15 : 
+        return "#FF0604";
+      case 16 : 
+        return "#EB0000";
+      case 17 : 
+        return "#D40000";
+      case 18 : 
+        return "#BC0000";
+      case 19 : 
+        return "#A60000";
+      case 20 : 
+        return "#8A0000";
+      default:
+        return "#B9B9B9";
+    }
+  }
+
+
   return (
     <>
       <g id="Third">
-        <path id="G_sharp" fill="#A6C4C3" d="M34,219.56a151,151,0,0,0,39,67.76l-19,19a177.77,177.77,0,0,1-46-79.79Z" transform="translate(-2.04 -1.82)"/>
+        <path id="G_sharp" fill={convertQualityToColor(test[3])} d="M34,219.56a151,151,0,0,0,39,67.76l-19,19a177.77,177.77,0,0,1-46-79.79Z" transform="translate(-2.04 -1.82)"/>
         <path id="C_sharp" fill="#A6C4C3" d="M140.67,326.72l-6.95,25.93a177.67,177.67,0,0,1-79.4-46.06L54,306.3l19-19,.29.29A151.1,151.1,0,0,0,140.67,326.72Z" transform="translate(-2.04 -1.82)"/>
         <path id="F_sharp" fill="#A6C4C3" d="M219.14,327.07l7,25.94a179.24,179.24,0,0,1-92.37-.36l6.95-25.93A152.39,152.39,0,0,0,219.14,327.07Z" transform="translate(-2.04 -1.82)"/>
         <path id="B" fill="#A6C4C3" d="M287.41,288l19,19c-.43.43-.86.84-1.28,1.27l-.35.35a1.9,1.9,0,0,1-.21.19A177.57,177.57,0,0,1,226.09,353l-7-25.94A151,151,0,0,0,287.41,288Z" transform="translate(-2.04 -1.82)"/>
