@@ -7,7 +7,7 @@ import {
 } from '@ionic/react';
 import {
   play, pause, swapHorizontal, playCircle,
-  volumeOff, volumeHigh
+  volumeMute, volumeHigh
 } from 'ionicons/icons'
 import { temperaments, TemperamentType } from '../model/Temperament';
 import './Tuner.css';
@@ -70,7 +70,7 @@ const Tuner: React.FC = () => {
               <IonButton
                 color="dark" fill="clear" size="large"
                 onClick={() => setIsMuted(!isMuted)}>
-                <IonIcon slot="icon-only" icon={(isMuted) ? volumeOff : volumeHigh} />
+                <IonIcon slot="icon-only" icon={(isMuted) ? volumeMute : volumeHigh} />
               </IonButton>
             </IonCol>
             <IonCol className="btn-mode">

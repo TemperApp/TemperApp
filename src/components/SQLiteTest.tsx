@@ -1,8 +1,7 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
-import { sqlite, existingConn } from '../App';
-import { temperaments } from '../model/Temperament'
-import { NoteAsString } from '../model/Note'
+import { sqlite } from '../App';
+import DB from '../engine/DB';
 
 const SQLiteTest: React.FC = () => {
 
@@ -10,94 +9,40 @@ const SQLiteTest: React.FC = () => {
   const print = (msg: string) => setLogs((logs) => logs.concat(msg));
 
   useEffect(() => {
-    if (sqlite.isAvailable) {
-      const testSQLite = async (): Promise<Boolean> => {
+    if (DB.isAvailable()) {
+      (async () => {
         print("## START ##");
-        try {
-          const db = await sqlite.createConnection("db", false, "no-encryption", 1);
-          await db.open();
+        DB.setPrinter(print); // To display error using 'print' when debugging
 
-          let ret: any;
+        // Show 'note' table content
+        const data1 = await DB.queryAndKeepAlive("SELECT * FROM note;");
+        print(JSON.stringify(data1));
+        
+        // Insert a new note
+        const ret1 = await DB.runAndKeepAlive("INSERT INTO note (noteSymbol) VALUES (?);", ['K_stonk']);
+        print(JSON.stringify(ret1));
+        if (!ret1)
+          return false; // Error occured
+        if (-1 === ret1.changes?.changes)
+          return false; // Query did not modify database → considering it as a unexpected behaviour
+        
+        // Show 'note' table content to see changes
+        const data2 = await DB.queryAndKeepAlive("SELECT * FROM note;");
+        print(JSON.stringify(data2));
+        
+        // Delete the previously inserted note
+        const ret2 = await DB.runAndKeepAlive("DELETE FROM note WHERE noteSymbol = ?;", ['K_stonk']);
+        print(JSON.stringify(ret2));
+        if (!ret2)
+          return false; // Error occured
+        
+        // Show 'note' table content
+        const data3 = await DB.query("SELECT * FROM note;");
+        print(JSON.stringify(data3));
 
-          await db.execute(`DROP TABLE temperament`);
-          await db.execute(`DROP TABLE note`);
-          await db.execute(`DROP TABLE corresponds`);
-
-          ret = await db.execute(`
-          CREATE TABLE temperament (
-            idTemperament   INTEGER PRIMARY KEY AUTOINCREMENT,
-            name            VARCHAR(70),
-            slugName        VARCHAR(70)
-          )`);
-          if (ret.changes.changes < 0) {
-            print(`ERR: Execute changes: ${ret.changes.changes}`);
-            return false;
-          }
-
-          ret = await db.execute(`
-          CREATE TABLE note (
-            noteSymbol   VARCHAR(7) PRIMARY KEY NOT NULL
-          )`);
-          if (ret.changes.changes < 0) {
-            print(`ERR: Execute changes: ${ret.changes.changes}`);
-            return false;
-          }
-
-          ret = await db.execute(`
-          CREATE TABLE corresponds (
-            idTemperament   INTEGER NOT NULL,
-            noteSymbol      VARCHAR(7) NOT NULL,
-            deviation       REAL NOT NULL,
-            cpExp5th        VARCHAR(10) NOT NULL,
-            csExp3rd        VARCHAR(10) NOT NULL,
-            PRIMARY KEY (idTemperament, noteSymbol)
-          )`);
-          if (ret.changes.changes < 0) {
-            print(`ERR: Execute changes: ${ret.changes.changes}`);
-            return false;
-          }
-
-          await db.createSyncTable();
-          await db.setSyncDate((new Date(Date.now())).toISOString());
-          
-          // Populate 'note'
-          for (let note in NoteAsString) {
-            ret = await db.run(
-              "INSERT INTO note (noteSymbol) VALUES (?)",
-              [note]);
-          }
-
-          // Populate 'temperament'
-          for (let t of temperaments) {
-            ret = await db.run(
-              "INSERT INTO temperament (idTemperament,name,slugName) VALUES (?,?,?)",
-              [t.idTemperament, t.name, t.slugName]);
-
-            for (let note in NoteAsString) {
-              // Populate 'corresponds'
-              ret = await db.run(
-                `INSERT INTO corresponds (idTemperament,
-                  noteSymbol, deviation, cpExp5th, csExp3rd)
-                  VALUES (?,?,?,?,?)`,
-                [t.idTemperament, note, t.deviation[note],
-                t.cpExp5th[note], t.csExp3rd[note] ]
-              );
-            }
-          }
-
-          ret = await db.query("SELECT * FROM corresponds;");
-
-          setLogs((logs) => logs.concat(JSON.stringify(ret)));
-          existingConn.setExistConn(true);
-          return true;
-        } catch (err) {
-          print(`ERR: ${err.message}`);
-          return false;
-        }
-      }
-
-      testSQLite().then(async success => {
-        print((success) ? "The set of tests was successful" : "Tests failed");
+        return true;
+      })().then(async success => {
+        print((success) ? "The set of tests ended" : "Tests stopped");
       });
     }
   }, []);

@@ -1,19 +1,3 @@
-export enum NoteAsString {
-  C = "C",
-  C_sharp = "C_sharp",
-  D = "D",
-  E_flat = "E_flat",
-  E = "E",
-  F = "F",
-  F_sharp = "F_sharp",
-  G = "G",
-  G_sharp = "G_sharp",
-  A = "A",
-  B_flat = "B_flat",
-  B = "B",
-};
-
-
 export enum NoteAlter {
   NONE,
   FLAT = "b",  // ♭
@@ -48,9 +32,9 @@ export class Note implements INote {
 
   private constructor(char: string, alter: NoteAlter, octave: number) {
     if (-1 === char.search(/A|B|C|D|E|F|G/))
-      throw `Error: Invalid note character: ${char}`;
+      throw new Error(`Error: Invalid note character: ${char}`);
     if (octave < 0 || octave > 10)
-      throw `Error: Octave must be between 0 and 10: found ${octave}`;
+      throw new Error(`Error: Octave must be between 0 and 10: found ${octave}`);
 
     this.char = char;
     this.alter = alter;

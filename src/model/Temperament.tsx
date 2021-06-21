@@ -1,8 +1,22 @@
-import { NoteAsString } from './Note'
+export enum NoteAsString {
+  C = "C",
+  C_sharp = "C_sharp",
+  D = "D",
+  E_flat = "E_flat",
+  E = "E",
+  F = "F",
+  F_sharp = "F_sharp",
+  G = "G",
+  G_sharp = "G_sharp",
+  A = "A",
+  B_flat = "B_flat",
+  B = "B",
+};
 
 export type TemperamentType = {
   idTemperament: number,
   name: string,
+  nameFR: string,
   slugName: string,
   deviation:  {
     [key: string]: number
@@ -17,8 +31,9 @@ export type TemperamentType = {
 
 export const temperaments: Array<TemperamentType> = [
   {
-    idTemperament: 2,
+    idTemperament: 1,
     name: "Equal",
+    nameFR: "Égal",
     slugName: "equal",
     deviation: {
       C:       0,
@@ -65,6 +80,7 @@ export const temperaments: Array<TemperamentType> = [
   },{
     idTemperament: 2,
     name: "Vallotti",
+    nameFR: "Vallotti",
     slugName: "vallotti",
     deviation: {
       C:        5.865,
@@ -110,8 +126,9 @@ export const temperaments: Array<TemperamentType> = [
     }
   },{
     idTemperament: 3,
-    name: "Mesotonique 1/4 G#Eb",
-    slugName: "meantone-1-4-gseb",
+    name: "Meantone 1/4 G#Eb",
+    nameFR: "Mesotonique 1/4 G#Eb",
+    slugName: "meantone-1-4-gsef",
     deviation: {
       C:        10.263,
       C_sharp: -13.686,
@@ -158,7 +175,8 @@ export const temperaments: Array<TemperamentType> = [
   {
     idTemperament: 4,
     name: "Rameau 1726 (b)",
-    slugName: "rameau-1726-b",
+    nameFR: "Rameau 1726 (b)",
+    slugName: "rameau-1726-f",
     deviation: {
       C:       10.265,
       C_sharp:  0.578,
@@ -205,6 +223,7 @@ export const temperaments: Array<TemperamentType> = [
   {
     idTemperament: 5,
     name: "Rameau 1726 (#)",
+    nameFR: "Rameau 1726 (#)",
     slugName: "rameau-1726-s",
     deviation: {
       C:        10.265,
@@ -252,6 +271,7 @@ export const temperaments: Array<TemperamentType> = [
   {
     idTemperament: 6,
     name: "Bach/Kellner",
+    nameFR: "Bach/Kellner",
     slugName: "bach-kellner",
     deviation: {
       C:        8.211,
@@ -299,6 +319,7 @@ export const temperaments: Array<TemperamentType> = [
   {
     idTemperament: 7,
     name: "Werckmeister I(III)",
+    nameFR: "Werckmeister I(III)",
     slugName: "werckmeister-i-iii",
     deviation: {
       C:       11.730,
@@ -346,6 +367,7 @@ export const temperaments: Array<TemperamentType> = [
   {
     idTemperament: 8,
     name: "Werckmeister III(V)",
+    nameFR: "Werckmeister III(V)",
     slugName: "werckmeister-iii-v",
     deviation: {
       C:        0.000,
@@ -392,8 +414,9 @@ export const temperaments: Array<TemperamentType> = [
   },
   {
     idTemperament: 9,
-    name: "Pythagoricien G#Eb",
-    slugName: "pythagorean-gseb",
+    name: "Pythagorean G#Eb",
+    nameFR: "Pythagoricien G#Eb",
+    slugName: "pythagorean-gsef",
     deviation: {
       C:        -5.865,
       C_sharp:   7.820,
@@ -440,6 +463,7 @@ export const temperaments: Array<TemperamentType> = [
   {
     idTemperament: 10,
     name: "Kirnberger III (1779)",
+    nameFR: "Kirnberger III (1779)",
     slugName: "kirnberger-iii",
     deviation: {
       C:       10.264,
@@ -486,8 +510,9 @@ export const temperaments: Array<TemperamentType> = [
   },
   {
     idTemperament: 11,
-    name: "Bertier 'elliptique'",
-    slugName: "bertier-elliptique",
+    name: "Bertier 'elliptical'",
+    nameFR: "Bertier 'elliptique'",
+    slugName: "bertier-elliptical",
     deviation: {
       C:        5.341,
       C_sharp:  0.000,

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useState } from 'react';
 import { Redirect, Route } from 'react-router-dom';
 import { IonApp, IonRouterOutlet } from '@ionic/react';
@@ -34,27 +34,31 @@ import '@ionic/react/css/display.css';
 import './theme/variables.css';
 
 /* Fonction Engine */
+import DB from './engine/DB';
 import SoundEngine from './engine/SoundEngine';
-
 
 /* SQLite */
 export let sqlite: any; // singleton
-export let existingConn: any; // store
 
 const App: React.FC = () => {
   const [existConn, setExistConn] = useState(false);
-  existingConn = {existConn: existConn, setExistConn: setExistConn};
-
+  
   const {echo, getPlatform, createConnection, closeConnection,
     retrieveConnection, retrieveAllConnections, closeAllConnections,
-    addUpgradeStatement, importFromJson, isJsonValid, copyFromAssets,
+    addUpgradeStatement, importFromJson, getDatabaseList, isDatabase, isJsonValid, copyFromAssets,
     isAvailable} = useSQLite();
 
-  sqlite = {echo, getPlatform, createConnection, closeConnection,
-    retrieveConnection, retrieveAllConnections, closeAllConnections,
-    addUpgradeStatement, importFromJson, isJsonValid, copyFromAssets,
-    isAvailable};
-    
+  useEffect(() => {
+    sqlite = {echo, getPlatform, createConnection, closeConnection,
+      retrieveConnection, retrieveAllConnections, closeAllConnections,
+      addUpgradeStatement, importFromJson, getDatabaseList, isDatabase, isJsonValid, copyFromAssets,
+      isAvailable, hasConn: existConn, setHasConn: setExistConn};
+
+    if (DB.isAvailable())
+      DB.init();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+  
   return (
     <IonApp>
       <IonReactRouter>
