@@ -31,7 +31,7 @@ export class Note implements INote {
   octave: number;
 
   private constructor(char: string, alter: NoteAlter, octave: number) {
-    if (-1 === char.search(/A|B|C|D|E|F|G/))
+    if (-1 === char.search(/[A-G]/i))
       throw new Error(`Error: Invalid note character: ${char}`);
     if (octave < 0 || octave > 10)
       throw new Error(`Error: Octave must be between 0 and 10: found ${octave}`);
@@ -40,6 +40,7 @@ export class Note implements INote {
     this.alter = alter;
     this.octave = octave;
   }
+
 
   /**
    * Creates a note
@@ -57,33 +58,43 @@ export class Note implements INote {
     }
   }
 
-  static parse(str: string): Note | null {
-    const octave: number = 
-      (!isNaN(Number(str.slice(-1))))
-      ? Number(str.slice(-1))
-      : 4;
 
-    let char: string;
-    let alter: NoteAlter;
-
+  /**
+   * @param note the note to parse as string with a common
+   *             format of use (ASPN or syllables).
+   *             (e.g.: a#6, Gb4, bb10, La3, réb6).
+   *             Octaves range goes from 0 to 10 (ASPN) included.
+   *             'Syllables' octaves are shifted by one unit lower
+   *             than 'ASPN' octaves (e.g.: La3 = A4).
+   * @returns a Note object corresponding to the given string
+   * @returns null, if parsing fails
+   */
+  static parse(note: string): Note | null {
+    const str = note.trim();
     if (Note.isSyllablesNotation(str)) {
-      if (str.trim().search(/sol/i) === 0) {
-        char = SYLLABLES_TO_ASPN[str.slice(0, 3)];
-        alter = Note.parseAlter(str.slice(3, 4));
-      } else {
-        char = SYLLABLES_TO_ASPN[str.slice(0, 2)];
-        alter = Note.parseAlter(str.slice(2, 3));
-      }
+      const [, syllable, alter, octave] =
+          str.match(/^(do|re|ré|mi|fa|sol|la|si)(#|♯|b|♭)?(-1|[0-9])?$/i) as any[];
+      
+      return Note.create(
+        SYLLABLES_TO_ASPN[syllable.toLowerCase()],
+        (!alter) ? NoteAlter.NONE : Note.parseAlter(alter),
+        (!octave) ? 4 : Number(octave)+1);
+    
     } else if (Note.isASPNotation(str)) {
-      char = str.slice(0, 1).toUpperCase();
-      alter = Note.parseAlter(str.slice(1, 2));
+      const [, char, alter, octave] =
+          str.match(/^([A-G])(#|♯|b|♭)?([0-9]|10)?$/i) as any[];
+      
+      return Note.create(
+        char,
+        (!alter) ? NoteAlter.NONE : Note.parseAlter(alter),
+        (!octave) ? 4 : Number(octave));
+    
     } else {
-      console.warn(`Failed to parse "${str}"`)
+      console.warn(`[model]: Cannot parse as note: '${str}'`);
       return null;
     }
-
-    return new Note(char, alter, octave);
   }
+
 
   private static parseAlter(str: string): NoteAlter {
     return -1 !== str.search("b") || -1 !== str.search("♭")
@@ -102,18 +113,15 @@ export class Note implements INote {
   }
 
   private static isSyllablesNotation(str: string): boolean {
-    return 0 === str
-      .trim()
-      .normalize("NFD") //Remove accent for "Ré"
-      .search(/do|re|mi|fa|sol|la|si/i)
+    return 0 === str.trim()
+      .search(/^(do|re|ré|mi|fa|sol|la|si)(#|♯|b|♭)?(-1|[0-9])?$/i);
   }
 
   private static isASPNotation(str: string): boolean {
-    return !this.isSyllablesNotation(str) &&
-      0 === str
-      .trim()
-      .search(/A|B|C|D|E|F|G/i)
+    return 0 === str.trim()
+      .search(/^([A-G])(#|♯|b|♭)?([0-9]|10)?$/i);
   }
+
 
   /**
    * @param alterExactSymbol gives the exact character for
@@ -130,6 +138,7 @@ export class Note implements INote {
           : Note.getAlterExactSymbol(this.alter))
       + this.octave.toFixed(0);
   }
+
 
   /**
    * @param alterExactSymbol gives the exact character for
