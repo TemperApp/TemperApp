@@ -135,7 +135,7 @@ class DB {
       values = values.map((v) => String(v));
       return (await this.dbconn.query(sql, values)).values;
     } catch (err) {
-      console.error(`[SQLite]: ${err.message}, querying: ${sql}`);
+      console.warn(`[SQLite]: ${err.message}, querying: ${sql}`);
       return [];
     }
   }
@@ -146,7 +146,7 @@ class DB {
    * @param sql sql query
    * @param values values to pass into the sql query
    * @returns the result of the sql query,
-   * null if there was error
+   * @returns null, if parsing fails
    */
   public static async run(
     sql: string, values: Array<number | string>
@@ -165,7 +165,7 @@ class DB {
       values = values.map((v) => String(v));
       return await this.dbconn.run(sql, values);
     } catch (err) {
-      console.error(`[SQLite]: ${err.message}, running query: ${sql}`);
+      console.warn(`[SQLite]: ${err.message}, running query: ${sql}`);
       return null;
     }
   }
@@ -205,7 +205,7 @@ class DB {
     for (const sql of sqlDropTables) {
       const ret = await this.dbconn.execute(sql);
       if (ret.changes.changes < 0)
-        console.error(`[SQLite]: Changes: ${ret.changes.changes}
+        console.warn(`[SQLite]: Changes: ${ret.changes.changes}
                        : executing: ${sql}`);
     }
   }
@@ -215,7 +215,7 @@ class DB {
     for (const sql of sqlCreateTables) {
       const ret = await this.dbconn.execute(sql);
       if (ret.changes.changes < 0)
-        console.error(`[SQLite]: Changes: ${ret.changes.changes}
+        console.warn(`[SQLite]: Changes: ${ret.changes.changes}
                        : executing: ${sql}`);
     }
   }
@@ -229,7 +229,7 @@ class DB {
         "INSERT INTO note (noteSymbol) VALUES (?);",
         [note]);
       if (ret.changes.changes < 0)
-        console.error(`[SQLite]: Changes: ${ret.changes.changes}
+        console.warn(`[SQLite]: Changes: ${ret.changes.changes}
                        : inserting: ${note}`);
     }
 
@@ -241,7 +241,7 @@ class DB {
          VALUES (?,?,?);`,
         [t.idTemperament, t.name, t.nameFR]);
       if (ret.changes.changes < 0)
-        console.error(`[SQLite]: Changes: ${ret.changes.changes}
+        console.warn(`[SQLite]: Changes: ${ret.changes.changes}
                        : inserting: ${t.name}`);
 
       for (const note in NoteSymbols) {
@@ -255,7 +255,7 @@ class DB {
           t.cpExp5th[noteTyped], t.csExp3rd[noteTyped]]
         );
         if (ret.changes.changes < 0)
-          console.error(`[SQLite]: Changes: ${ret.changes.changes}
+          console.warn(`[SQLite]: Changes: ${ret.changes.changes}
                          : inserting into 'divergence'`);
       }
     }
