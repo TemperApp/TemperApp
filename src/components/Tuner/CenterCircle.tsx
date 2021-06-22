@@ -3,10 +3,12 @@ import React, { useEffect, useRef } from 'react';
 
 //Styles 
 import "./CenterCircle.css";
+import { selectedNoteFrequency } from './functions/frequencies';
 import { ActiveNotes, StateList } from './TunerTypes';
 
 type PitchCircleSVGProps = {
   notes: ActiveNotes,
+  frequencies : {[key: string] : number},
 }
 
 type DivOrNullType = SVGPathElement | null;
@@ -14,7 +16,7 @@ type DivOrNullType = SVGPathElement | null;
 const noteUS = 4;
 const noteUSOctave = 5
 
-const CenterCircle: React.FC<PitchCircleSVGProps> = ({notes}) => {
+const CenterCircle: React.FC<PitchCircleSVGProps> = ({notes, frequencies}) => {
 
   const centerCircleNote = useRef<DivOrNullType>(null);
   const centerCircleFrequency = useRef<DivOrNullType>(null);
@@ -31,6 +33,8 @@ const CenterCircle: React.FC<PitchCircleSVGProps> = ({notes}) => {
         else{
           cNote.innerHTML = notes.note1.name+noteUSOctave;
         }
+        if(cFreq !== null)
+            cFreq.innerHTML = selectedNoteFrequency(frequencies, notes.note1)+" Hz";
       }
       else{
         if(notes.note1.state !== StateList.default && notes.note2.state !== StateList.default){
@@ -50,15 +54,19 @@ const CenterCircle: React.FC<PitchCircleSVGProps> = ({notes}) => {
               cNote.innerHTML = notes.note1.name+noteUSOctave+" - "+notes.note2.name+noteUSOctave;
             }
           }
+          if(cFreq !== null)
+            cFreq.innerHTML = selectedNoteFrequency(frequencies, notes.note1)+" Hz";
         }
         else{
           cNote.innerHTML = "---";
         }
       }
     }
+    /*
     if(cFreq !== null){
       cFreq.innerHTML = "2018 Hz";
     }
+    */
 
   }, [notes]);
 

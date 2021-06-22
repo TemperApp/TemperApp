@@ -11,11 +11,10 @@ import { ActiveNote, ActiveNotes, ButtonPosition, StateList } from "./TunerTypes
 import { cpuUsage } from 'process';
 import { TemperamentDBType } from '../../engine/DB';
 import { fetchTemperamentById, fetchTemperamentPropsById } from '../../engine/DataAccessor';
+import { frequencies4, frequenciesEqual4 } from './functions/frequencies';
 
 //Styles 
 import "./Tuner.css";
-
-
 
 type PitchCircleSVGProps = {
   tunerMode: string,
@@ -40,6 +39,10 @@ const PitchCircleSVG: React.FC<PitchCircleSVGProps> = ({tunerMode, freqA4, tempe
 
   const [currentNote, setCurrentNote] = useState<ActiveNotes>({note1 : {name: "", state: StateList.default}, note2 : {name: "", state: StateList.default}});
   const [currentTunerMode, setCurrentTunerMode] = useState("");
+  const [currentTemp, setCurrentTemp] = useState("");
+  const [currentFreq, setCurrentFreq] = useState(0);
+
+  const [frequencies, setFrequencies] = useState<{[key: string] : number}>(frequenciesEqual4(440))
 
   let StateArray: {[key: string]: StateList} = {
     A: stateA,
@@ -56,10 +59,17 @@ const PitchCircleSVG: React.FC<PitchCircleSVGProps> = ({tunerMode, freqA4, tempe
     F_sharp : stateF_sharp
   }
 
+  
+
   const temperamentProps = async () =>{
+
     console.log("temperament props");
-    console.log(temperament);
-    console.log(await fetchTemperamentPropsById(temperament.idTemperament))
+    //console.log(temperament);
+    const temp = await fetchTemperamentPropsById(temperament.idTemperament);
+    if(frequencies !== frequencies4(freqA4,temp.deviation)){
+      console.log("il change");
+      setFrequencies(frequencies4(freqA4,temp.deviation));
+    }
     console.log("fin temperament props");
   }
 
@@ -131,8 +141,15 @@ const PitchCircleSVG: React.FC<PitchCircleSVGProps> = ({tunerMode, freqA4, tempe
     if(tunerMode === "Bpm"){
       cleanState();
     }
-
-    console.log(temperamentProps());
+    if(currentTemp !== temperament.name){
+      temperamentProps();
+      setCurrentTemp(temperament.name);
+    }
+    if(currentFreq !== freqA4){
+      temperamentProps();
+      setCurrentFreq(freqA4);
+    }
+    
 
   
   }, [StateArray,currentNote,freqA4, tunerMode]);
@@ -291,6 +308,7 @@ const PitchCircleSVG: React.FC<PitchCircleSVGProps> = ({tunerMode, freqA4, tempe
         <FifthCircleSVG />
         <CenterCircle 
           notes = {currentNote}
+          frequencies = {frequencies}
         />
       </svg>
       
