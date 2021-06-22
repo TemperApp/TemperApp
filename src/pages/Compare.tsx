@@ -1,11 +1,7 @@
 import React from 'react';
 import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/react';
-<<<<<<< HEAD:src/pages/Compare.tsx
 import './Compare.css';
-=======
-import './Comparator.css';
 import PitchCircle from "../components/Tuner/PitchCircle"
->>>>>>> benjamin:src/pages/Comparator.tsx
 
 const Compare: React.FC = () => {
   return (
