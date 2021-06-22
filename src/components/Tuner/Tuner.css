@@ -1,3 +1,22 @@
 .cls-3 {
   pointer-events: none;
 }
+
+#PitchCircleSVG {
+  margin: 0px;
+}
+
+#testText {
+  width: 400px;
+  height: 400px;
+  position: relative;
+  bottom: 420px;
+
+  background-color: #ffc0cb5f;
+}
+
+#testText2 {
+  width: 400px;
+  height: 400px;
+  background-color: #61e7be;
+}

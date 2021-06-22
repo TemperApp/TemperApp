@@ -1,0 +1,12 @@
+#CenterCercleInformation {
+  display: flex;
+  flex-direction: column;
+}
+
+.st30 {
+  font-size: 32px;
+}
+.st31 {
+  margin-top: 20px;
+  font-size: 18px;
+}

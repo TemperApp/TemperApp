@@ -64,11 +64,6 @@ const PitchCircleButtonSVG: React.FC<PitchCircleButtonSVGProps> = ({noteName, po
     onChange(StateList.default);
   }
 
-  
-  const handleClick = () => {
-    console.log(tunerMode);
-  }
-
   const onLongPress = () =>{
     if(tunerMode === "TuningFork"){
       (active === StateList.default) ? activeNoteOctave() : ((active === StateList.selected) ? activeNoteOctave() : ((active === StateList.octave)? activeNote() :disableNote()) );
@@ -110,37 +105,6 @@ const PitchCircleButtonSVG: React.FC<PitchCircleButtonSVGProps> = ({noteName, po
     const c = note.current!;
     let beginPress: number;
 
-/*
-    console.log("-----------------------------------------");
-    console.log(tunerMode);
-    
-    const gesture = createGesture({
-      el: c,
-      gestureName: "longpress",
-      threshold: 0,
-      onStart: () => {beginPress = Date.now(); },
-      onEnd: () => {
-        if(Date.now() - beginPress < 300){
-          (active === StateList.default) ? activeNote() : disableNote();
-        }
-        else{
-          (active === StateList.default) ? activeNoteOctave() : disableNote();
-        };
-      }
-    });
-
-    if(tunerMode === "Bpm"){
-      console.log("destrunction gesture");
-      console.log(gesture);
-      gesture.destroy();
-
-    }
-    
-
-    console.log("-----------------------------------------");
-
-    gesture.enable(true);
-*/    
   }, [tunerMode]);
 
 

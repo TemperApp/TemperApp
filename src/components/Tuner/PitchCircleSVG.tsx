@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react';
 import FifthCircleSVG from './FifthCircleSVG';
 import ThirdCircleSVG from './ThirdCircleSVG';
 import PitchCircleButtonSVG from './PitchCircleButtonSVG';
+import CenterCircle from './CenterCircle';
 
 //Types 
 import { ActiveNote, ActiveNotes, ButtonPosition, StateList } from "./TunerTypes"
@@ -102,7 +103,7 @@ const PitchCircleSVG: React.FC<PitchCircleSVGProps> = ({tunerMode}) => {
           setStateB_flat(StateList.default)
         if( (currentNote.note1.name !== "E_flat" && currentNote.note2.name !== "E_flat" ) && stateE_flat !== StateList.default)
           setStateE_flat(StateList.default)
-        if( (currentNote.note1.name !== "G_sharp" && currentNote.note2.name !== "G_shap" ) && stateG_sharp !== StateList.default)
+        if( (currentNote.note1.name !== "G_sharp" && currentNote.note2.name !== "G_sharp" ) && stateG_sharp !== StateList.default)
           setStateG_sharp(StateList.default)
         if( (currentNote.note1.name !== "C_sharp" && currentNote.note2.name !== "C_sharp" ) && stateC_sharp !== StateList.default)
           setStateC_sharp(StateList.default)
@@ -126,7 +127,7 @@ const PitchCircleSVG: React.FC<PitchCircleSVGProps> = ({tunerMode}) => {
   return (
     
     <div id="Container_PitchCircleSVG">
-      <svg xmlns="http://www.w3.org/2000/svg" width="400" height="400" viewBox="0 0 357.06 357.06">
+      <svg id="PitchCircleSVG" xmlns="http://www.w3.org/2000/svg" width="400" height="400" viewBox="0 0 357.06 357.06">
       {/* 
       <svg xmlns="http://www.w3.org/2000/svg" width="361" height="360" fill="none" viewBox="0 0 361 360">
       */}  
@@ -274,7 +275,11 @@ const PitchCircleSVG: React.FC<PitchCircleSVGProps> = ({tunerMode}) => {
 
         <ThirdCircleSVG />
         <FifthCircleSVG />
+        <CenterCircle 
+          notes = {currentNote}
+        />
       </svg>
+      
     </div>
   );
 };
