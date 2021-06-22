@@ -1,20 +1,36 @@
 import React, { useEffect, useState } from 'react';
+import { TemperamentDBType } from '../../engine/DB';
 
 import PitchCircleSVG from './PitchCircleSVG';
 
-const PitchCircle: React.FC = () => {
+type PitchCircle = {
+  isHzMode: boolean,
+  freqA4: number,
+  temperament : TemperamentDBType
+}
+
+
+
+const PitchCircle: React.FC<PitchCircle> = ({isHzMode, freqA4, temperament}) => {
 
   const [tunerMode, setTunerMode] = useState("TuningFork");
 
   useEffect(() => {
-    setTunerMode("Bpm");  
-  }, []);
-
-  console.log("pitch circle render");
+    console.log(temperament);
+    if(isHzMode){
+      setTunerMode("TuningFork");  
+    }
+    else{
+      setTunerMode("Bpm");  
+    }
+    
+  }, [isHzMode, temperament]);
 
   return (
     <PitchCircleSVG 
       tunerMode = {tunerMode}
+      freqA4 = {freqA4}
+      temperament = {temperament}
     />
   );
 };

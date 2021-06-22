@@ -17,7 +17,12 @@ const Compare: React.FC = () => {
             <IonTitle size="large">Comparateur</IonTitle>
           </IonToolbar>
         </IonHeader>
-        < PitchCircle/>
+        {/*}
+        < PitchCircle
+          isHzMode = {true}
+          freqA4 = {440}
+        />
+        */}
       </IonContent>
     </IonPage>
   );

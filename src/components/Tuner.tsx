@@ -12,20 +12,24 @@ import {
 } from 'ionicons/icons'
 
 import './Tuner.css';
-import { fetchTemperaments } from '../engine/DataAccessor';
+import { fetchTemperamentById, fetchTemperaments } from '../engine/DataAccessor';
 import { TemperamentDBType } from '../engine/DB';
+import PitchCircle from './Tuner/PitchCircle';
 
 const Tuner: React.FC = () => {
 
-  const [temperament, setTemperament] = useState<TemperamentDBType>();
+  const [temperament, setTemperament] = useState<TemperamentDBType>({idTemperament: 1, name: "Equal", nameFR: "Égal"});
   const [temperamentsList, setTemperamentsList] = useState<Array<TemperamentDBType>>([]);
   const [freqA4, setFreqA4] = useState<number>(440);
   const [isMuted, setIsMuted] = useState<boolean>(true);
   const [isHzMode, setIsHzMode] = useState<boolean>(true);
 
   const fetchTemperamentsList = async () => {
-    setTemperamentsList(await fetchTemperaments());
-  }
+    const temperaments = await fetchTemperaments()
+    setTemperamentsList(temperaments);
+    console.log(temperamentsList);
+    //setTemperament(await fetchTemperamentById(temperaments[0].idTemperament));
+  } 
 
   useEffect(() => {
     fetchTemperamentsList();
@@ -72,6 +76,14 @@ const Tuner: React.FC = () => {
       </IonGrid>
 
       {/* PitchCircle */}
+      <IonRow className="ion-padding-horizontal ion-justify-content-center">
+        <PitchCircle
+          isHzMode = {isHzMode}
+          freqA4 = {freqA4}
+          temperament = {temperament}
+        />   
+      </IonRow>
+             
       <IonFooter>
         <IonGrid className="ion-padding-horizontal">
           <IonRow className="ion-justify-content-between ion-align-items-center">

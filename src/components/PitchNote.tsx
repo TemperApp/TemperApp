@@ -126,13 +126,12 @@ const PitchNote: React.FC<PitchNoteProps> = ({ active, name, state, frequency, m
       onStart: () => {beginPress = Date.now(); },
       onEnd: () => {
         if(Date.now() - beginPress < 500){
-          console.log("clic court");
+
           onChange({note: name, state: NoteState.Normal});
         }
         else{
           //  onChange({note : name, state : NoteState.Octave, noteBpm1 : {name: name.name, octave: 4}, noteBpm2 : {name: "", octave: 0} });
           onChange({note: name, state: NoteState.Octave});
-          console.log("clic long");
         };
       }
     });

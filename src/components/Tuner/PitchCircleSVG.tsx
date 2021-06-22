@@ -9,15 +9,21 @@ import CenterCircle from './CenterCircle';
 //Types 
 import { ActiveNote, ActiveNotes, ButtonPosition, StateList } from "./TunerTypes"
 import { cpuUsage } from 'process';
+import { TemperamentDBType } from '../../engine/DB';
+import { fetchTemperamentById, fetchTemperamentPropsById } from '../../engine/DataAccessor';
 
 //Styles 
 import "./Tuner.css";
 
+
+
 type PitchCircleSVGProps = {
   tunerMode: string,
+  freqA4 : number,
+  temperament : TemperamentDBType
 }
 
-const PitchCircleSVG: React.FC<PitchCircleSVGProps> = ({tunerMode}) => {
+const PitchCircleSVG: React.FC<PitchCircleSVGProps> = ({tunerMode, freqA4, temperament}) => {
 
   const [stateA, setStateA] = useState(StateList.default);
   const [stateB, setStateB] = useState(StateList.default);
@@ -48,6 +54,13 @@ const PitchCircleSVG: React.FC<PitchCircleSVGProps> = ({tunerMode}) => {
     G_sharp : stateG_sharp,
     C_sharp : stateC_sharp,
     F_sharp : stateF_sharp
+  }
+
+  const temperamentProps = async () =>{
+    console.log("temperament props");
+    console.log(temperament);
+    console.log(await fetchTemperamentPropsById(temperament.idTemperament))
+    console.log("fin temperament props");
   }
 
   useEffect(() => {
@@ -113,21 +126,22 @@ const PitchCircleSVG: React.FC<PitchCircleSVGProps> = ({tunerMode}) => {
     }
 
     if(tunerMode === "TuningFork"){
-      console.log(currentNote);
       cleanState();
     }
     if(tunerMode === "Bpm"){
-      console.log(currentNote);
       cleanState();
     }
+
+    console.log(temperamentProps());
+
   
-  }, [StateArray,currentNote]);
+  }, [StateArray,currentNote,freqA4, tunerMode]);
 
 
   return (
     
     <div id="Container_PitchCircleSVG">
-      <svg id="PitchCircleSVG" xmlns="http://www.w3.org/2000/svg" width="400" height="400" viewBox="0 0 357.06 357.06">
+      <svg id="PitchCircleSVG" xmlns="http://www.w3.org/2000/svg" width="370" height="370" viewBox="0 0 357.06 357.06">
       {/* 
       <svg xmlns="http://www.w3.org/2000/svg" width="361" height="360" fill="none" viewBox="0 0 361 360">
       */}  

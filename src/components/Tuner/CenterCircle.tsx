@@ -11,6 +11,8 @@ type PitchCircleSVGProps = {
 
 type DivOrNullType = SVGPathElement | null;
 
+const noteUS = 4;
+const noteUSOctave = 5
 
 const CenterCircle: React.FC<PitchCircleSVGProps> = ({notes}) => {
 
@@ -21,32 +23,31 @@ const CenterCircle: React.FC<PitchCircleSVGProps> = ({notes}) => {
     const cNote = document.getElementById("centerCircleNote");
     const cFreq = document.getElementById("centerCircleFrequency");
     
-    console.log("------------ partie centrale");
     if(cNote !== null){
       if(notes.note1.state !== StateList.default && notes.note2.state === StateList.default){
         if(notes.note1.state === StateList.selected){
-          cNote.innerHTML = notes.note1.name+"3";
+          cNote.innerHTML = notes.note1.name+noteUS;
         }
         else{
-          cNote.innerHTML = notes.note1.name+"4";
+          cNote.innerHTML = notes.note1.name+noteUSOctave;
         }
       }
       else{
         if(notes.note1.state !== StateList.default && notes.note2.state !== StateList.default){
           if(notes.note1.state === StateList.selected){
             if(notes.note2.state === StateList.selected){
-              cNote.innerHTML = notes.note1.name+"3 - "+notes.note2.name+"3";
+              cNote.innerHTML = notes.note1.name+noteUS+" - "+notes.note2.name+noteUS;
             }
             else{
-              cNote.innerHTML = notes.note1.name+"3 - "+notes.note2.name+"4";
+              cNote.innerHTML = notes.note1.name+noteUS+" - "+notes.note2.name+noteUSOctave;
             }
           }
           else{
             if(notes.note2.state === StateList.selected){
-              cNote.innerHTML = notes.note1.name+"4 - "+notes.note2.name+"3";
+              cNote.innerHTML = notes.note1.name+noteUSOctave+" - "+notes.note2.name+noteUS;
             }
             else{
-              cNote.innerHTML = notes.note1.name+"4 - "+notes.note2.name+"4";
+              cNote.innerHTML = notes.note1.name+noteUSOctave+" - "+notes.note2.name+noteUSOctave;
             }
           }
         }
@@ -58,7 +59,6 @@ const CenterCircle: React.FC<PitchCircleSVGProps> = ({notes}) => {
     if(cFreq !== null){
       cFreq.innerHTML = "2018 Hz";
     }
-    console.log("------------");
 
   }, [notes]);
 
@@ -66,8 +66,8 @@ const CenterCircle: React.FC<PitchCircleSVGProps> = ({notes}) => {
     <g id="CenterCercleInformation">
       <circle className="st29" fill="#F7FBFC" cx="178.5" cy="178.5" r="77.13"/>
       <text transform="matrix(1 0 0 1 178.5 178.5)" className="st25 st30">
-        <tspan x="0" className="st30" text-anchor="middle" id="centerCircleNote"></tspan>
-        <tspan x="0" className="st31" text-anchor="middle" id="centerCircleFrequency" dy="30"></tspan>
+        <tspan x="0" className="st30" textAnchor="middle" id="centerCircleNote"></tspan>
+        <tspan x="0" className="st31" textAnchor="middle" id="centerCircleFrequency" dy="30"></tspan>
       </text>
       {/* 
       <text transform="matrix(1 0 0 1 151.1624 205.4129)" className="st25 st31">420 Hz</text>
