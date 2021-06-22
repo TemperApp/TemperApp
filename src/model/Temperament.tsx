@@ -127,7 +127,7 @@ export const temperaments: Array<Temperament> = [
   },{
     idTemperament: 3,
     name: "Meantone 1/4 G#Eb",
-    nameFR: "Mesotonique 1/4 G#Eb",
+    nameFR: "Mésotonique 1/4 G#Eb",
     slugName: "meantone-1-4-gsef",
     deviation: {
       C:        10.263,

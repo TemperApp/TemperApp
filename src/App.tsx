@@ -41,7 +41,6 @@ import SoundEngine from './engine/SoundEngine';
 export let sqlite: any; // singleton
 
 const App: React.FC = () => {
-  const [existConn, setExistConn] = useState(false);
   
   const {echo, getPlatform, createConnection, closeConnection,
     retrieveConnection, retrieveAllConnections, closeAllConnections,
@@ -52,9 +51,9 @@ const App: React.FC = () => {
     sqlite = {echo, getPlatform, createConnection, closeConnection,
       retrieveConnection, retrieveAllConnections, closeAllConnections,
       addUpgradeStatement, importFromJson, getDatabaseList, isDatabase, isJsonValid, copyFromAssets,
-      isAvailable, hasConn: existConn, setHasConn: setExistConn};
+      isAvailable};
 
-    if (DB.isAvailable())
+    if (DB.isAvailable()) // TODO Remove on production
       DB.init(); // TODO Add loading state to prevent user actions app during initialization
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);

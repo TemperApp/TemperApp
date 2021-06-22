@@ -5,7 +5,7 @@ import { capSQLiteChanges } from '@capacitor-community/sqlite';
 const sqlDropTables = [
   "DROP TABLE IF EXISTS temperament;",
   "DROP TABLE IF EXISTS note;",
-  "DROP TABLE IF EXISTS deviation;",
+  "DROP TABLE IF EXISTS divergence;",
 ]
 
 const sqlCreateTables = [
@@ -21,7 +21,7 @@ const sqlCreateTables = [
     noteSymbol   VARCHAR(7) PRIMARY KEY NOT NULL
   );`,
   `
-  CREATE TABLE deviation (
+  CREATE TABLE divergence (
     idTemperament   INTEGER NOT NULL,
     noteSymbol      VARCHAR(7) NOT NULL,
     deviation       REAL NOT NULL,
@@ -31,8 +31,23 @@ const sqlCreateTables = [
   );`,
 ];
 
-interface Printer {
-  (message: string): void;
+export type TemperamentDBType = {
+  idTemperament: number,
+  name: string,
+  nameFR: string,
+  slugName: string,
+}
+
+export type NoteDBType = {
+  noteSymbol: string,
+}
+
+export type DivergenceDBType = {
+  idTemperament: number,
+  noteSymbol: string,
+  deviation: string,
+  cpExp5th: string,
+  csExp3rd: string,
 }
 
 /**
@@ -42,13 +57,12 @@ class DB {
 
   private static instance: DB;
   private dbconn: any;
-  private printer: Printer;
+  private hasConn = false;
 
   private constructor() {
-    this.printer = console.log;
   }
 
-  
+
   /**
    * @returns the DB singleton instance
    */
@@ -56,16 +70,6 @@ class DB {
     if (!DB.instance)
       DB.instance = new DB();
     return DB.instance;
-  }
-
-
-  /**
-   * @param printer function of type (string): void
-   *                to output errors.
-   *                Default is console.log
-   */
-  public static setPrinter(printer: Printer): void {
-    DB.get().printer = printer;
   }
 
 
@@ -86,12 +90,13 @@ class DB {
   }
 
   private async connect(): Promise<void> {
-    this.printer("Connecting...");
-    this.dbconn = await sqlite.createConnection("temperapp", false, "no-encryption", 1);
+    this.dbconn = await sqlite.createConnection(
+      "temperapp", false, "no-encryption", 1);
     await this.dbconn.open();
     await this.dbconn.createSyncTable();
-    await this.dbconn.setSyncDate((new Date(Date.now())).toISOString());
-    sqlite.setHasConn(true);
+    await this.dbconn.setSyncDate(
+      (new Date(Date.now())).toISOString());
+    this.hasConn = true;
   }
 
 
@@ -105,85 +110,64 @@ class DB {
 
   private async close(): Promise<void> {
     await sqlite.closeConnection("temperapp");
-    sqlite.setHasConn(false);
+    this.hasConn = false;
   }
 
 
   /**
-   * Query the SQLite DB and close the connection
+   * Query the SQLite DB
    * @param sql sql query
    * @param values values to pass into the sql query
    * @returns the result of the sql query
    */
-  public static async query(sql: string, values: Array<number|string> = []): Promise<any[]> {
-    return await this.get().query(sql, values, false);
+  public static async query(
+    sql: string, values: Array<number | string> = []
+  ): Promise<any[]> {
+    return await this.get().query(sql, values);
   }
 
 
-  /**
-   * Query the SQLite DB and keep the connection active
-   * @param sql sql query
-   * @param values values to pass into the sql query
-   * @returns the result of the sql query
-   */
-  public static async queryAndKeepAlive(sql: string, values: Array<number|string> = []): Promise<any[]> {
-    return await this.get().query(sql, values, true);
-  }
-
-
-  private async query(sql: string, values: Array<number|string> = [], keepAlive = false): Promise<any[]> {
-    if (!sqlite.hasConn)
+  private async query(
+    sql: string, values: Array<number | string> = []
+  ): Promise<any[]> {
+    if (!this.hasConn)
       await this.connect();
-    this.printer("Querying...");
 
     try {
       values = values.map((v) => String(v));
-      const res = await this.dbconn.query(sql, values);
-      if (!keepAlive)
-        await this.close();
-      return res.values;
+      return (await this.dbconn.query(sql, values)).values;
     } catch (err) {
-      this.printer(`ERR: ${err.message}, querying: ${sql}`);
+      console.error(`ERR: ${err.message}, querying: ${sql}`);
       return [];
     }
   }
 
 
   /**
-   * Execute SQLite DB Connection Raw Statement and close
+   * Execute SQLite DB Connection Raw Statement
    * @param sql sql query
    * @param values values to pass into the sql query
-   * @returns the result of the sql query, null if there was error
+   * @returns the result of the sql query,
+   * null if there was error
    */
-  public static async run(sql: string, values: Array<number|string>): Promise<capSQLiteChanges | null> {
-    return await this.get().run(sql, values, false);
+  public static async run(
+    sql: string, values: Array<number | string>
+  ): Promise<capSQLiteChanges | null> {
+    return await this.get().run(sql, values);
   }
 
 
-  /**
-   * Execute SQLite DB Connection Raw Statement and keep the connection active
-   * @param sql sql query
-   * @param values values to pass into the sql query
-   * @returns the result of the sql query, null if there was error
-   */
-  public static async runAndKeepAlive(sql: string, values: Array<number|string>): Promise<capSQLiteChanges | null> {
-    return await this.get().run(sql, values, true);
-  }
-
-
-  private async run(sql: string, values: Array<number|string>, keepAlive = false): Promise<capSQLiteChanges | null> {
-    if (!sqlite.hasConn)
+  private async run(
+    sql: string, values: Array<number | string>
+  ): Promise<capSQLiteChanges | null> {
+    if (!this.hasConn)
       await this.connect();
-    this.printer("Running query...");
 
     try {
       values = values.map((v) => String(v));
-      const changes = await this.dbconn.run(sql, values);
-      if (!keepAlive)
-        await this.close();
-      return changes;
+      return await this.dbconn.run(sql, values);
     } catch (err) {
-      this.printer(`ERR: ${err.message}, running query: ${sql}`);
+      console.error(`ERR: ${err.message}, running query: ${sql}`);
       return null;
     }
   }
@@ -194,8 +178,10 @@ class DB {
    */
   public static async init(): Promise<void> {
     if (!(await sqlite.isDatabase("temperapp")).result) {
-      DB.get().printer("Initializing...");
+      await DB.connect();
       await DB.resetData();
+    } else {
+      await DB.connect();
     }
   }
 
@@ -209,39 +195,33 @@ class DB {
   }
 
   private async resetData(): Promise<void> {
-    this.printer("Resetting...");
-    await this.close();
-    await this.connect();
     await this.dropTables();
     await this.createTables();
     await this.populateTables();
-    await this.close();
-    this.printer("Reset ended");
   }
 
 
   public async dropTables(): Promise<void> {
-    this.printer("Dropping tables...");
     for (const sql of sqlDropTables) {
-      const ret =  await this.dbconn.execute(sql);
+      const ret = await this.dbconn.execute(sql);
       if (ret.changes.changes < 0)
-        this.printer(`ERR: Execute changes: ${ret.changes.changes}: executing: ${sql}`);
+        console.error(`ERR: Changes: ${ret.changes.changes}
+                       : executing: ${sql}`);
     }
   }
 
 
   private async createTables(): Promise<void> {
-    this.printer("Creating tables...");
     for (const sql of sqlCreateTables) {
       const ret = await this.dbconn.execute(sql);
       if (ret.changes.changes < 0)
-        this.printer(`ERR: Execute changes: ${ret.changes.changes}: executing: ${sql}`);
+        console.error(`ERR: Changes: ${ret.changes.changes}
+                       : executing: ${sql}`);
     }
   }
 
-  
+
   private async populateTables(): Promise<void> {
-    this.printer("Populating tables...");
     let ret;
     // Populate 'note'
     for (const note in NoteAsString) {
@@ -249,30 +229,33 @@ class DB {
         "INSERT INTO note (noteSymbol) VALUES (?);",
         [note]);
       if (ret.changes.changes < 0)
-        this.printer(`ERR: Execute changes: ${ret.changes.changes}: inserting: ${note}`);
+        console.error(`ERR: Changes: ${ret.changes.changes}
+                       : inserting: ${note}`);
     }
 
     // Populate 'temperament'
     for (const t of temperaments) {
       ret = await this.dbconn.run(
-        `INSERT INTO temperament (idTemperament,name,nameFR,slugName)
+        `INSERT INTO temperament (idTemperament,
+          name,nameFR,slugName)
          VALUES (?,?,?,?);`,
         [t.idTemperament, t.name, t.nameFR, t.slugName]);
       if (ret.changes.changes < 0)
-        this.printer(`ERR: Execute changes: ${ret.changes.changes}: inserting: ${t.name}`);
+        console.error(`ERR: Changes: ${ret.changes.changes}
+                       : inserting: ${t.name}`);
 
       for (const note in NoteAsString) {
-        // Populate 'deviation'
+        // Populate 'divergence'
         ret = await this.dbconn.run(
-          `INSERT INTO deviation (idTemperament,
-           noteSymbol, deviation, cpExp5th, csExp3rd)
+          `INSERT INTO divergence (idTemperament,
+            noteSymbol, deviation, cpExp5th, csExp3rd)
            VALUES (?,?,?,?,?);`,
           [t.idTemperament, note, t.deviation[note],
           t.cpExp5th[note], t.csExp3rd[note]]
         );
-        this.printer(JSON.stringify(ret));
         if (ret.changes.changes < 0)
-          this.printer(`ERR: Execute changes: ${ret.changes.changes} inserting into 'deviation'`);
+          console.error(`ERR: Changes: ${ret.changes.changes}
+                         : inserting into 'divergence'`);
       }
     }
   }

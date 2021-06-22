@@ -1,5 +1,6 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
+
 import {
   IonFooter, IonGrid, IonCol, IonRow,
   IonButton, IonIcon, IonSelect, IonSelectOption,
@@ -9,16 +10,16 @@ import {
   play, pause, swapHorizontal, playCircle,
   volumeMute, volumeHigh
 } from 'ionicons/icons'
-import { temperaments as temperamentsList, Temperament } from '../model/Temperament';
+
 import './Tuner.css';
-import DB from '../engine/DB';
-import { fetchTemperaments } from '../engine/DataAccessor';
-//import deviation from '../model/Deviation';
+import { fetchAllTemperamentsProps, fetchTemperamentPropsById, fetchTemperaments } from '../engine/DataAccessor';
+import { Temperament } from '../model/Temperament';
+import { TemperamentDBType } from '../engine/DB';
 
 const Tuner: React.FC = () => {
 
-  const [temperament, setTemperament] = useState<Array<any>>([]);
-  const [temperamentsList, setTemperamentsList] = useState<Array<any>>([]);
+  const [temperament, setTemperament] = useState<Temperament>();
+  const [temperamentsList, setTemperamentsList] = useState<Array<TemperamentDBType>>([]);
   const [freqA4, setFreqA4] = useState<number>(440);
   const [isMuted, setIsMuted] = useState<boolean>(true);
   const [isHzMode, setIsHzMode] = useState<boolean>(true);
@@ -52,8 +53,10 @@ const Tuner: React.FC = () => {
             <IonSelect
               value={temperament} placeholder="Tempérament"
               onIonChange={e => setTemperament(e.detail.value)}>
-              {temperamentsList.map((t: Temperament) =>
-                <IonSelectOption key={t.slugName} value={t.slugName}>{t.name}</IonSelectOption>
+              {temperamentsList.map((t: TemperamentDBType) =>
+                <IonSelectOption key={t.idTemperament} value={t}>
+                  {t.nameFR}
+                </IonSelectOption>
               )}
             </IonSelect>
           </IonCol>
