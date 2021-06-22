@@ -12,13 +12,12 @@ import {
 } from 'ionicons/icons'
 
 import './Tuner.css';
-import { fetchAllTemperamentsProps, fetchTemperamentPropsById, fetchTemperaments } from '../engine/DataAccessor';
-import { Temperament } from '../model/Temperament';
+import { fetchTemperaments } from '../engine/DataAccessor';
 import { TemperamentDBType } from '../engine/DB';
 
 const Tuner: React.FC = () => {
 
-  const [temperament, setTemperament] = useState<Temperament>();
+  const [temperament, setTemperament] = useState<TemperamentDBType>();
   const [temperamentsList, setTemperamentsList] = useState<Array<TemperamentDBType>>([]);
   const [freqA4, setFreqA4] = useState<number>(440);
   const [isMuted, setIsMuted] = useState<boolean>(true);

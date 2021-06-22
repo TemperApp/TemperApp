@@ -1,3 +1,4 @@
+/* eslint-disable no-sequences */
 import { Temperament } from '../model/Temperament';
 import DB, { DivergenceDBType, TemperamentDBType } from '../engine/DB';
 

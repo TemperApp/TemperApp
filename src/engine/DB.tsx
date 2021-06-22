@@ -1,20 +1,19 @@
 import { sqlite } from '../App';
-import { NoteAsString, temperaments } from '../model/Temperament';
+import { NoteSymbols, defaultTemperaments } from '../model/Temperament';
 import { capSQLiteChanges } from '@capacitor-community/sqlite';
 
 const sqlDropTables = [
   "DROP TABLE IF EXISTS temperament;",
   "DROP TABLE IF EXISTS note;",
   "DROP TABLE IF EXISTS divergence;",
-]
+];
 
 const sqlCreateTables = [
   `
   CREATE TABLE temperament (
     idTemperament   INTEGER PRIMARY KEY AUTOINCREMENT,
     name            VARCHAR(70),
-    nameFR          VARCHAR(70),
-    slugName        VARCHAR(70)
+    nameFR          VARCHAR(70)
   );`,
   `
   CREATE TABLE note (
@@ -35,12 +34,11 @@ export type TemperamentDBType = {
   idTemperament: number,
   name: string,
   nameFR: string,
-  slugName: string,
-}
+};
 
 export type NoteDBType = {
   noteSymbol: string,
-}
+};
 
 export type DivergenceDBType = {
   idTemperament: number,
@@ -48,7 +46,7 @@ export type DivergenceDBType = {
   deviation: string,
   cpExp5th: string,
   csExp3rd: string,
-}
+};
 
 /**
  * Singleton class to manage database access
@@ -137,7 +135,7 @@ class DB {
       values = values.map((v) => String(v));
       return (await this.dbconn.query(sql, values)).values;
     } catch (err) {
-      console.error(`ERR: ${err.message}, querying: ${sql}`);
+      console.error(`[SQLite]: ${err.message}, querying: ${sql}`);
       return [];
     }
   }
@@ -167,14 +165,16 @@ class DB {
       values = values.map((v) => String(v));
       return await this.dbconn.run(sql, values);
     } catch (err) {
-      console.error(`ERR: ${err.message}, running query: ${sql}`);
+      console.error(`[SQLite]: ${err.message}, running query: ${sql}`);
       return null;
     }
   }
 
 
   /**
-   * Initialize the database accessor
+   * Initialize the database accessor and opens
+   * a connection to the sqlite database. Creates
+   * one if there is none.
    */
   public static async init(): Promise<void> {
     if (!(await sqlite.isDatabase("temperapp")).result) {
@@ -205,7 +205,7 @@ class DB {
     for (const sql of sqlDropTables) {
       const ret = await this.dbconn.execute(sql);
       if (ret.changes.changes < 0)
-        console.error(`ERR: Changes: ${ret.changes.changes}
+        console.error(`[SQLite]: Changes: ${ret.changes.changes}
                        : executing: ${sql}`);
     }
   }
@@ -215,7 +215,7 @@ class DB {
     for (const sql of sqlCreateTables) {
       const ret = await this.dbconn.execute(sql);
       if (ret.changes.changes < 0)
-        console.error(`ERR: Changes: ${ret.changes.changes}
+        console.error(`[SQLite]: Changes: ${ret.changes.changes}
                        : executing: ${sql}`);
     }
   }
@@ -224,37 +224,38 @@ class DB {
   private async populateTables(): Promise<void> {
     let ret;
     // Populate 'note'
-    for (const note in NoteAsString) {
+    for (const note in NoteSymbols) {
       ret = await this.dbconn.run(
         "INSERT INTO note (noteSymbol) VALUES (?);",
         [note]);
       if (ret.changes.changes < 0)
-        console.error(`ERR: Changes: ${ret.changes.changes}
+        console.error(`[SQLite]: Changes: ${ret.changes.changes}
                        : inserting: ${note}`);
     }
 
     // Populate 'temperament'
-    for (const t of temperaments) {
+    for (const t of defaultTemperaments) {
       ret = await this.dbconn.run(
         `INSERT INTO temperament (idTemperament,
-          name,nameFR,slugName)
-         VALUES (?,?,?,?);`,
-        [t.idTemperament, t.name, t.nameFR, t.slugName]);
+          name,nameFR)
+         VALUES (?,?,?);`,
+        [t.idTemperament, t.name, t.nameFR]);
       if (ret.changes.changes < 0)
-        console.error(`ERR: Changes: ${ret.changes.changes}
+        console.error(`[SQLite]: Changes: ${ret.changes.changes}
                        : inserting: ${t.name}`);
 
-      for (const note in NoteAsString) {
+      for (const note in NoteSymbols) {
+        const noteTyped: NoteSymbols = NoteSymbols[note as keyof typeof NoteSymbols]; // TS cast hack
         // Populate 'divergence'
         ret = await this.dbconn.run(
           `INSERT INTO divergence (idTemperament,
             noteSymbol, deviation, cpExp5th, csExp3rd)
            VALUES (?,?,?,?,?);`,
-          [t.idTemperament, note, t.deviation[note],
-          t.cpExp5th[note], t.csExp3rd[note]]
+          [t.idTemperament, note, t.deviation[noteTyped],
+          t.cpExp5th[noteTyped], t.csExp3rd[noteTyped]]
         );
         if (ret.changes.changes < 0)
-          console.error(`ERR: Changes: ${ret.changes.changes}
+          console.error(`[SQLite]: Changes: ${ret.changes.changes}
                          : inserting into 'divergence'`);
       }
     }
