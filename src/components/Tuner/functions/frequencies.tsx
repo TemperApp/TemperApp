@@ -187,3 +187,27 @@ export const convertNoteToString = (note : string) => {
             break;
     }
 }
+
+export const BpsCalc = (note1: number, note2: number) => {
+    if(note1>note2){
+        let temp = note2;
+        note2 =  note1;
+        note1 = temp;
+    }
+    return Math.floor(note2-note1)
+}
+
+export const BpmCalc = (note1: number, note2: number) => {
+    let bps = BpsCalc(note1,note2)
+    if(bps*60>=200){
+      if(bps*60>=600){
+        return "//"
+      }
+      else{
+        return ("4 x "+15*bps);
+      }
+    }
+    else{
+      return Math.floor(60*bps) + " Bpm"
+    }
+}

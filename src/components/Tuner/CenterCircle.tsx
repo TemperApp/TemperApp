@@ -3,7 +3,7 @@ import React, { useEffect, useRef } from 'react';
 
 //Styles 
 import "./CenterCircle.css";
-import { selectedNoteFrequency, convertNoteToString } from './functions/frequencies';
+import { selectedNoteFrequency, convertNoteToString, BpsCalc, BpmCalc } from './functions/frequencies';
 import { ActiveNotes, StateList } from './TunerTypes';
 
 type PitchCircleSVGProps = {
@@ -11,8 +11,7 @@ type PitchCircleSVGProps = {
   frequencies : {[key: string] : number},
 }
 
-type DivOrNullType = SVGPathElement | null;
-
+const isBps = true;
 const noteUS = 4;
 const noteUSOctave = 5
 
@@ -52,10 +51,18 @@ const CenterCircle: React.FC<PitchCircleSVGProps> = ({notes, frequencies}) => {
             }
           }
           if(cFreq !== null)
-            cFreq.innerHTML = selectedNoteFrequency(frequencies, notes.note1)+" Hz";
+            if(isBps){
+              cFreq.innerHTML = BpsCalc(selectedNoteFrequency(frequencies, notes.note1),selectedNoteFrequency(frequencies, notes.note2))+" Bps";
+            }
+            else{
+              cFreq.innerHTML = BpmCalc(selectedNoteFrequency(frequencies, notes.note1),selectedNoteFrequency(frequencies, notes.note2));
+            }
+            
         }
         else{
           cNote.innerHTML = "---";
+          if(cFreq !== null)
+          cFreq.innerHTML = "--- Hz"
         }
       }
     }
