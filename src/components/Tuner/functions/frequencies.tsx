@@ -141,19 +141,19 @@ export const selectedNoteFrequency = (freqs: {[key: string]: number}, note: Acti
             freq = freqs.G;
             break;
         case "B_flat":
-            freq = freqs.A;
+            freq = freqs.B_flat;
             break;
         case "E_flat":
-            freq = freqs.A;
+            freq = freqs.E_flat;
             break;
         case "G_sharp":
-            freq = freqs.A;
+            freq = freqs.G_sharp;
             break;
         case "C_sharp":
-            freq = freqs.A;
+            freq = freqs.C_sharp;
             break;
         case "F_sharp":
-            freq = freqs.A;
+            freq = freqs.F_sharp;
             break;   
         default:
             freq = 440;
