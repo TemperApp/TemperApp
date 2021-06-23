@@ -1,0 +1,34 @@
+ion-title {
+  font-family: "Nunito Sans" !important;
+  font-style: normal;
+  font-weight: bold;
+  line-height: 30px;
+  text-transform: uppercase;
+}
+
+ion-label {
+  font-family: "Nunito Sans" !important;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 30px;
+  text-transform: uppercase;
+}
+
+ion-label:hover {
+  color: #738b8a;
+}
+
+ion-icon.icon-light {
+  fill: #a7c5c3;
+  stroke: #a7c5c3;
+}
+
+ion-icon:hover {
+  fill: #738b8a;
+  stroke: #738b8a;
+}
+
+ion-icon:active {
+  fill: #233c3a;
+  stroke: #233c3a;
+}

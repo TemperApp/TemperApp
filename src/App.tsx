@@ -31,6 +31,7 @@ import '@ionic/react/css/display.css';
 
 /* Theme variables */
 import './theme/variables.css';
+import './pages/Global.css';
 
 /* Fonction Engine */
 import DB from './engine/DB';
@@ -83,24 +84,24 @@ const App: React.FC = () => {
           </IonRouterOutlet>
           <IonTabBar slot="bottom">
             <IonTabButton tab="tune" href="/tune">
-              <IonIcon icon={triangle} />
-              <IonLabel>Tab 1</IonLabel>
+              <IonIcon src="/assets/logotypes/icon-diapason-grey.svg" size="24px" class="icon-light" />
+              <IonLabel>Accorder</IonLabel>
             </IonTabButton>
             <IonTabButton tab="compare" href="/compare">
-              <IonIcon icon={ellipse} />
-              <IonLabel>Tab 2</IonLabel>
+              <IonIcon src="/assets/logotypes/icon-compare-grey.svg" size="24px" class="icon-light" />
+              <IonLabel>Comparer</IonLabel>
             </IonTabButton>
             <IonTabButton tab="home" href="/home">
-              <IonIcon icon={home} />
-              <IonLabel>Tab 3</IonLabel>
+              <IonIcon src="/assets/logotypes/icon-home-grey.svg" size="24px" class="icon-light" />
+              <IonLabel>Accueil</IonLabel>
             </IonTabButton>
             <IonTabButton tab="sheets" href="/sheets">
-              <IonIcon icon={square} />
-              <IonLabel>Tab 4</IonLabel>
+              <IonIcon src="/assets/logotypes/icon-fiches-grey.svg" size="24px" class="icon-light" />
+              <IonLabel>Fiches</IonLabel>
             </IonTabButton>
             <IonTabButton tab="learn" href="/learn">
-              <IonIcon icon={bookmarks} />
-              <IonLabel>Tab 5</IonLabel>
+              <IonIcon src="/assets/logotypes/icon-apprendre-grey.svg" size="24px" class="icon-light" />
+              <IonLabel>Apprendre</IonLabel>
             </IonTabButton>
           </IonTabBar>
         </IonTabs>
