@@ -3,7 +3,7 @@ import React, { useEffect, useRef } from 'react';
 
 //Styles 
 import "./CenterCircle.css";
-import { selectedNoteFrequency } from './functions/frequencies';
+import { selectedNoteFrequency, convertNoteToString } from './functions/frequencies';
 import { ActiveNotes, StateList } from './TunerTypes';
 
 type PitchCircleSVGProps = {
@@ -18,9 +18,6 @@ const noteUSOctave = 5
 
 const CenterCircle: React.FC<PitchCircleSVGProps> = ({notes, frequencies}) => {
 
-  const centerCircleNote = useRef<DivOrNullType>(null);
-  const centerCircleFrequency = useRef<DivOrNullType>(null);
-
   useEffect(() => {
     const cNote = document.getElementById("centerCircleNote");
     const cFreq = document.getElementById("centerCircleFrequency");
@@ -28,10 +25,10 @@ const CenterCircle: React.FC<PitchCircleSVGProps> = ({notes, frequencies}) => {
     if(cNote !== null){
       if(notes.note1.state !== StateList.default && notes.note2.state === StateList.default){
         if(notes.note1.state === StateList.selected){
-          cNote.innerHTML = notes.note1.name+noteUS;
+          cNote.innerHTML = convertNoteToString(notes.note1.name)+noteUS;
         }
         else{
-          cNote.innerHTML = notes.note1.name+noteUSOctave;
+          cNote.innerHTML = convertNoteToString(notes.note1.name)+noteUSOctave;
         }
         if(cFreq !== null)
             cFreq.innerHTML = selectedNoteFrequency(frequencies, notes.note1)+" Hz";
@@ -40,18 +37,18 @@ const CenterCircle: React.FC<PitchCircleSVGProps> = ({notes, frequencies}) => {
         if(notes.note1.state !== StateList.default && notes.note2.state !== StateList.default){
           if(notes.note1.state === StateList.selected){
             if(notes.note2.state === StateList.selected){
-              cNote.innerHTML = notes.note1.name+noteUS+" - "+notes.note2.name+noteUS;
+              cNote.innerHTML = convertNoteToString(notes.note1.name)+noteUS+" - "+convertNoteToString(notes.note2.name)+noteUS;
             }
             else{
-              cNote.innerHTML = notes.note1.name+noteUS+" - "+notes.note2.name+noteUSOctave;
+              cNote.innerHTML = convertNoteToString(notes.note1.name)+noteUS+" - "+convertNoteToString(notes.note2.name)+noteUSOctave;
             }
           }
           else{
             if(notes.note2.state === StateList.selected){
-              cNote.innerHTML = notes.note1.name+noteUSOctave+" - "+notes.note2.name+noteUS;
+              cNote.innerHTML = convertNoteToString(notes.note1.name)+noteUSOctave+" - "+convertNoteToString(notes.note2.name)+noteUS;
             }
             else{
-              cNote.innerHTML = notes.note1.name+noteUSOctave+" - "+notes.note2.name+noteUSOctave;
+              cNote.innerHTML = convertNoteToString(notes.note1.name)+noteUSOctave+" - "+convertNoteToString(notes.note2.name)+noteUSOctave;
             }
           }
           if(cFreq !== null)
