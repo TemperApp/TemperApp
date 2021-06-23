@@ -14,11 +14,11 @@ export const cpExp5thStrToNumber = (cpExp5th: string): number | null => {
     console.warn(`[Model]: Cannot parse cpExp5th string: ${cpExp5th}`);
     return null;
   }
-  if (match[0] == 0)
+  if (String(Number(match[0])) === '0')
     return 0;
   const [, sign, numerator, denominator] = match;
   return (
-    (!sign ? -1 : (sign == '+' ? 1 : -1 ))
+    (!sign ? -1 : (sign === '+' ? 1 : -1 ))
     * numerator/denominator * 12);
 };
 
@@ -40,10 +40,10 @@ export const csExp3rdStrToNumber = (csExp3rd: string): number | null => {
     console.warn(`[Model]: Cannot parse csExp3rd string: ${csExp3rd}`);
     return null;
   }
-  if (match[0] == 0)
+  if (String(Number(match[0])) === '0')
     return 0;
   const [, sign, numerator] = match;
   return (
-    (!sign ? 1 : (sign == '+' ? 1 : -1 ))
+    (!sign ? 1 : (sign === '+' ? 1 : -1 ))
     * numerator);
 };

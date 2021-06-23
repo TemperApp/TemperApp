@@ -167,24 +167,12 @@ export const selectedNoteFrequency = (freqs: {[key: string]: number}, note: Acti
 
 export const convertNoteToString = (note : string) => {
     switch (note) {
-        case "B_flat":
-            return "B♭"
-            break;
-        case "E_flat":
-            return "E♭"
-            break;
-        case "G_sharp":
-            return "G♯"
-            break;
-        case "C_sharp":
-            return "C♯"
-            break;
-        case "F_sharp":
-            return "F♯"
-            break;   
-        default:
-            return note
-            break;
+        case "B_flat": return "B♭";
+        case "E_flat": return "E♭";
+        case "G_sharp": return "G♯";
+        case "C_sharp": return "C♯";
+        case "F_sharp": return "F♯" ;  
+        default: return note;
     }
 }
 

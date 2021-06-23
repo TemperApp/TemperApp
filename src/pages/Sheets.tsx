@@ -5,17 +5,12 @@ import './Sheets.css';
 const Sheets: React.FC = () => {
   return (
     <IonPage>
-      <IonHeader>
+      <IonHeader className="ion-no-border">
         <IonToolbar>
           <IonTitle>Sheets</IonTitle>
         </IonToolbar>
       </IonHeader>
-      <IonContent fullscreen>
-        <IonHeader collapse="condense">
-          <IonToolbar>
-            <IonTitle size="large">Fiches</IonTitle>
-          </IonToolbar>
-        </IonHeader>
+      <IonContent fullscreen scrollY={false}>
       </IonContent>
     </IonPage>
   );

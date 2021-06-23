@@ -6,18 +6,13 @@ import './Tune.css';
 const Tune: React.FC = () => {
   return (
     <IonPage>
-      <IonHeader>
+      <IonHeader className="ion-no-border">
         <IonToolbar>
           <IonTitle>Tune</IonTitle>
         </IonToolbar>
       </IonHeader>
-      <IonContent fullscreen>
-        <IonHeader collapse="condense">
-          <IonToolbar>
-            <IonTitle size="large">Accordeur</IonTitle>
-          </IonToolbar>
-        </IonHeader>
-        <Tuner></Tuner>
+      <IonContent fullscreen scrollY={false}>
+        <Tuner />
       </IonContent>
     </IonPage>
   );

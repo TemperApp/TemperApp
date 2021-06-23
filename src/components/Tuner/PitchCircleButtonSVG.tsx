@@ -1,116 +1,147 @@
-import { createGesture } from '@ionic/react';
-import React, { useEffect, useRef } from 'react';
-import { ActiveNote, ActiveNotes, StateList } from './TunerTypes';
+import React, { useRef } from 'react';
+import { ActiveNotes, StateList } from './TunerTypes';
 import useLongPress from "./functions/useLongPress";
 
 type DivOrNullType = SVGPathElement | null;
 
+const colorButton = (state: StateList) => {
+  switch (state) {
+    case StateList.default: //bouton déactivé
+      return "#F5FBFB";
+    case StateList.selected: // bouton activé 
+      return "#A7C5C3";
+    case StateList.octave: // bouton activé à l'octave supérieur
+      return "#F75D4E";
+    default:
+      return "#F5FBFB";
+  }
+}
+
 type PitchCircleButtonSVGProps = {
-  noteName: string,
+  notesSymbol: string,
   position: string,
   active: StateList,
   tunerMode: string,
-  listNotes : ActiveNotes
-  onChange : (state: StateList) => void,
-  currentNote : (noteName : ActiveNotes) => void,
+  listNotes: ActiveNotes
+  onChange: (state: StateList) => void,
+  setCurrentNotes: (notesSymbol: ActiveNotes) => void,
 }
 
-const PitchCircleButtonSVG: React.FC<PitchCircleButtonSVGProps> = ({noteName, position, active, tunerMode, listNotes, onChange, currentNote}) => {
+const PitchCircleButtonSVG: React.FC<PitchCircleButtonSVGProps> = ({
+  notesSymbol, position, active, tunerMode,
+  listNotes, onChange, setCurrentNotes
+}) => {
 
   const note = useRef<DivOrNullType>(null);
 
-  function activeNote(){ 
-    currentNote( { note1 : {name : noteName, state: StateList.selected}, note2 : {name : "", state: StateList.default} });
+  function activateNote(){ 
+    console.log("pip pap poup")
+    setCurrentNotes(
+      {note1: {name: notesSymbol, state: StateList.selected},
+       note2: {name: "", state: StateList.default}});
+
     onChange(StateList.selected);
   }
 
-  function activeNoteBpm(){ 
-    if(listNotes.note1.state === StateList.default && listNotes.note2.state === StateList.default){
-      currentNote( { note1 : {name : noteName, state: StateList.selected}, note2 : {name : "", state: StateList.default} });
+  function activateNoteBpm(){ 
+    if (listNotes.note1.state === StateList.default && listNotes.note2.state === StateList.default){
+      setCurrentNotes(
+        {note1: {name: notesSymbol, state: StateList.selected},
+         note2: {name: "", state: StateList.default}});
     }
-    else{
-      if(listNotes.note1.state !== StateList.default && listNotes.note2.state === StateList.default){
-        currentNote( { note1 : {name : listNotes.note1.name, state: listNotes.note1.state}, note2 : {name : noteName, state: StateList.selected} });
+    else {
+      if (listNotes.note1.state !== StateList.default && listNotes.note2.state === StateList.default){
+        setCurrentNotes(
+          {note1: {name: listNotes.note1.name, state: listNotes.note1.state},
+           note2: {name: notesSymbol, state: StateList.selected}});
       }
-      else{
-        currentNote( { note1 : {name : noteName, state: StateList.selected}, note2 : {name : "", state: StateList.default} });
+      else {
+        setCurrentNotes(
+          {note1: {name: notesSymbol, state: StateList.selected},
+           note2: {name: "", state: StateList.default}});
       }
     }
     onChange(StateList.selected);
   }
 
-  const activeNoteOctave = () => { 
-    currentNote( { note1 : {name : noteName, state: StateList.octave}, note2 : {name : "", state: StateList.default} });
+  const activateNoteOctave = () => { 
+    setCurrentNotes(
+      {note1: {name: notesSymbol, state: StateList.octave},
+       note2: {name: "", state: StateList.default} });
     onChange(StateList.octave);
   }
 
-  function activeNoteOctaveBpm(){ 
-    if(listNotes.note1.state === StateList.default && listNotes.note2.state === StateList.default){
-      currentNote( { note1 : {name : noteName, state: StateList.octave}, note2 : {name : "", state: StateList.default} });
+  function activateNoteOctaveBpm(){ 
+    if (listNotes.note1.state === StateList.default && listNotes.note2.state === StateList.default){
+      setCurrentNotes(
+        {note1: {name: notesSymbol, state: StateList.octave},
+         note2: {name: "", state: StateList.default}});
     }
-    else{
-      if(listNotes.note1.state !== StateList.default && listNotes.note2.state === StateList.default){
-        currentNote( { note1 : {name : listNotes.note1.name, state: listNotes.note1.state}, note2 : {name : noteName, state: StateList.octave} });
+    else {
+      if (listNotes.note1.state !== StateList.default && listNotes.note2.state === StateList.default){
+        setCurrentNotes(
+          {note1: {name: listNotes.note1.name, state: listNotes.note1.state},
+           note2: {name: notesSymbol, state: StateList.octave}});
       }
-      else{
-        currentNote( { note1 : {name : noteName, state: StateList.octave}, note2 : {name : "", state: StateList.default} });
+      else {
+        setCurrentNotes(
+          {note1: {name: notesSymbol, state: StateList.octave},
+           note2: {name: "", state: StateList.default}});
       }
     }
     onChange(StateList.octave);
   }
 
-  const disableNote = () => { 
-    currentNote( { note1 : {name : "", state: StateList.default}, note2 : {name : "", state: StateList.default} });
+  const disableNote = () => {
+    setCurrentNotes(
+      {note1: {name: "", state: StateList.default},
+       note2: {name: "", state: StateList.default}});
     onChange(StateList.default);
   }
 
   const onLongPress = () =>{
-    if(tunerMode === "TuningFork"){
-      (active === StateList.default) ? activeNoteOctave() : ((active === StateList.selected) ? activeNoteOctave() : ((active === StateList.octave)? activeNote() :disableNote()) );
+    if (tunerMode === "TuningFork"){
+      (active === StateList.default)
+      ? activateNoteOctave()
+      : ((active === StateList.selected)
+        ? activateNoteOctave()
+        : ((active === StateList.octave)
+          ? activateNote()
+          : disableNote()));
     }
-    else{
-      (active === StateList.default) ? activeNoteOctaveBpm() : ((active === StateList.selected) ? activeNoteOctaveBpm() : ((active === StateList.octave)? activeNoteBpm() :disableNote()) );
-    }  
+    else {
+      (active === StateList.default)
+      ? activateNoteOctaveBpm()
+      : ((active === StateList.selected)
+        ? activateNoteOctaveBpm()
+        : ((active === StateList.octave)
+          ? activateNoteBpm()
+          : disableNote()));
+    }
   } 
   
   const onClick = () => {
-    if(tunerMode === "TuningFork"){
-      (active === StateList.default) ? activeNote() :  disableNote() ;
-    }
-    else{
-      (active === StateList.default) ? activeNoteBpm() :  disableNote() ;
-    }  
+    if (tunerMode === "TuningFork")
+      (active === StateList.default) ? activateNote() : disableNote();
+    else
+      (active === StateList.default) ? activateNoteBpm() : disableNote();
   }
 
-  const defaultOptions = {
+  const defaultLongPressOptions = {
     shouldPreventDefault: true,
     delay: 500,
   };
-  const longPressEvent = useLongPress(onLongPress, onClick, defaultOptions);  
 
-  const colorButton = () => {
-    switch (active) {
-      case StateList.default: //bouton déactivé
-        return "#F5FBFB";
-      case StateList.selected: // bouton activé 
-        return "#A7C5C3";
-      case StateList.octave: // bouton activé à l'octave supérieur
-        return "#F75D4E";
-      default:
-        return "#F5FBFB";
-    }
-  }
-  
-  useEffect(() => {
-    const c = note.current!;
-    let beginPress: number;
+  const longPressEvent = useLongPress(onLongPress, onClick, defaultLongPressOptions);
 
-  }, [tunerMode]);
-
-
-  
   return (
-    <path fill={colorButton()} stroke="#A7C5C3" strokeMiterlimit="10" strokeOpacity="1" strokeWidth="0.5" transform="translate(-2.04 -1.82)" d={position} ref={note} {...longPressEvent} />
+    <path 
+      fill={colorButton(active)} stroke="#A7C5C3"
+      strokeMiterlimit="10" strokeOpacity="1" strokeWidth="0.5"
+      transform="translate(-2.04 -1.82)" d={position}
+      ref={note}
+      {...longPressEvent}
+    />
   );
 };
 

@@ -1,7 +1,6 @@
-import { relative } from 'path';
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect } from 'react';
 
-//Styles 
+//Styles
 import "./CenterCircle.css";
 import { selectedNoteFrequency, convertNoteToString, BpsCalc, BpmCalc } from './functions/frequencies';
 import { ActiveNotes, StateList } from './TunerTypes';
@@ -12,67 +11,57 @@ type PitchCircleSVGProps = {
 }
 
 const isBps = true;
-const noteUS = 4;
-const noteUSOctave = 5
+const refOctave = 4;
 
 const CenterCircle: React.FC<PitchCircleSVGProps> = ({notes, frequencies}) => {
 
   useEffect(() => {
-    const cNote = document.getElementById("centerCircleNote");
-    const cFreq = document.getElementById("centerCircleFrequency");
-    
-    if(cNote !== null){
-      if(notes.note1.state !== StateList.default && notes.note2.state === StateList.default){
-        if(notes.note1.state === StateList.selected){
-          cNote.innerHTML = convertNoteToString(notes.note1.name)+noteUS;
-        }
-        else{
-          cNote.innerHTML = convertNoteToString(notes.note1.name)+noteUSOctave;
-        }
-        if(cFreq !== null)
-            cFreq.innerHTML = selectedNoteFrequency(frequencies, notes.note1)+" Hz";
+    const cNote = document.getElementById("centerCircleNote")!;
+    const cFreq = document.getElementById("centerCircleFrequency")!;
+
+    if(notes.note1.state !== StateList.default && notes.note2.state === StateList.default){
+      if(notes.note1.state === StateList.selected) {
+        cNote.innerHTML = (notes.note1.state === StateList.selected)
+        ? convertNoteToString(notes.note1.name)+refOctave
+        : convertNoteToString(notes.note1.name)+refOctave+1;
       }
-      else{
-        if(notes.note1.state !== StateList.default && notes.note2.state !== StateList.default){
-          if(notes.note1.state === StateList.selected){
-            if(notes.note2.state === StateList.selected){
-              cNote.innerHTML = convertNoteToString(notes.note1.name)+noteUS+" - "+convertNoteToString(notes.note2.name)+noteUS;
-            }
-            else{
-              cNote.innerHTML = convertNoteToString(notes.note1.name)+noteUS+" - "+convertNoteToString(notes.note2.name)+noteUSOctave;
-            }
+        
+      cFreq.innerHTML = selectedNoteFrequency(frequencies, notes.note1)+" Hz";
+    }
+    else{
+      if(notes.note1.state !== StateList.default && notes.note2.state !== StateList.default){
+        if(notes.note1.state === StateList.selected){
+          if(notes.note2.state === StateList.selected){
+            cNote.innerHTML = convertNoteToString(notes.note1.name)+refOctave+" - "+convertNoteToString(notes.note2.name)+refOctave;
           }
           else{
-            if(notes.note2.state === StateList.selected){
-              cNote.innerHTML = convertNoteToString(notes.note1.name)+noteUSOctave+" - "+convertNoteToString(notes.note2.name)+noteUS;
-            }
-            else{
-              cNote.innerHTML = convertNoteToString(notes.note1.name)+noteUSOctave+" - "+convertNoteToString(notes.note2.name)+noteUSOctave;
-            }
+            cNote.innerHTML = convertNoteToString(notes.note1.name)+refOctave+" - "+convertNoteToString(notes.note2.name)+refOctave+1;
           }
-          if(cFreq !== null)
-            if(isBps){
-              cFreq.innerHTML = BpsCalc(selectedNoteFrequency(frequencies, notes.note1),selectedNoteFrequency(frequencies, notes.note2))+" Bps";
-            }
-            else{
-              cFreq.innerHTML = BpmCalc(selectedNoteFrequency(frequencies, notes.note1),selectedNoteFrequency(frequencies, notes.note2));
-            }
-            
         }
         else{
-          cNote.innerHTML = "---";
-          if(cFreq !== null)
-          cFreq.innerHTML = "--- Hz"
+          if(notes.note2.state === StateList.selected){
+            cNote.innerHTML = convertNoteToString(notes.note1.name)+refOctave+1+" - "+convertNoteToString(notes.note2.name)+refOctave;
+          }
+          else{
+            cNote.innerHTML = convertNoteToString(notes.note1.name)+refOctave+1+" - "+convertNoteToString(notes.note2.name)+refOctave+1;
+          }
         }
+        if(cFreq !== null)
+          if(isBps){
+            cFreq.innerHTML = BpsCalc(selectedNoteFrequency(frequencies, notes.note1),selectedNoteFrequency(frequencies, notes.note2))+" Bps";
+          }
+          else{
+            cFreq.innerHTML = BpmCalc(selectedNoteFrequency(frequencies, notes.note1),selectedNoteFrequency(frequencies, notes.note2));
+          }
+          
+      }
+      else{
+        cNote.innerHTML = "---";
+        if(cFreq !== null)
+        cFreq.innerHTML = "--- Hz"
       }
     }
-    /*
-    if(cFreq !== null){
-      cFreq.innerHTML = "2018 Hz";
-    }
-    */
-
-  }, [notes]);
+  }, [notes, frequencies]);
 
   return (
     <g id="CenterCercleInformation">
@@ -81,11 +70,8 @@ const CenterCircle: React.FC<PitchCircleSVGProps> = ({notes, frequencies}) => {
         <tspan x="0" className="st30" textAnchor="middle" id="centerCircleNote"></tspan>
         <tspan x="0" className="st31" textAnchor="middle" id="centerCircleFrequency" dy="30"></tspan>
       </text>
-      {/* 
-      <text transform="matrix(1 0 0 1 151.1624 205.4129)" className="st25 st31">420 Hz</text>
-      */}
-      
     </g>
   );
 };
+
 export default CenterCircle;

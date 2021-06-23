@@ -3,7 +3,6 @@ import { Redirect, Route } from 'react-router-dom';
 import { IonApp, IonRouterOutlet } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
 import { IonTabs, IonTabBar, IonTabButton, IonIcon, IonLabel } from '@ionic/react';
-import { home, triangle, ellipse, square, bookmarks } from 'ionicons/icons';
 
 import { useSQLite } from 'react-sqlite-hook/dist';
 
