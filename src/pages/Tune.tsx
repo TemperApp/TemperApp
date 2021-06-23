@@ -1,6 +1,6 @@
 import React from 'react';
 import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/react';
-import Tuner from '../components/Tuner';
+import Tuner from '../components/Tuner/Tuner';
 import './Tune.css';
 
 const Tune: React.FC = () => {

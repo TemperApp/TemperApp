@@ -12,9 +12,9 @@ import {
 } from 'ionicons/icons'
 
 import './Tuner.css';
-import { fetchTemperamentById, fetchTemperaments } from '../engine/DataAccessor';
-import { TemperamentDBType } from '../engine/DB';
-import PitchCircle from './Tuner/PitchCircle';
+import { fetchTemperamentById, fetchTemperaments } from '../../engine/DataAccessor';
+import { TemperamentDBType } from '../../engine/DB';
+import PitchCircle from './PitchCircle';
 
 const Tuner: React.FC = () => {
 
@@ -75,7 +75,6 @@ const Tuner: React.FC = () => {
         </IonRow>
       </IonGrid>
 
-      {/* PitchCircle */}
       <IonRow className="ion-padding-horizontal ion-justify-content-center">
         <PitchCircle
           isHzMode = {isHzMode}

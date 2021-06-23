@@ -14,8 +14,13 @@ ion-label {
   text-transform: uppercase;
 }
 
-ion-label:hover {
+ion-tab-button:hover ion-label {
   color: #738b8a;
+}
+
+ion-tab-button:hover ion-icon {
+  fill: #738b8a;
+  stroke: #738b8a;
 }
 
 ion-icon.icon-light {
@@ -23,12 +28,7 @@ ion-icon.icon-light {
   stroke: #a7c5c3;
 }
 
-ion-icon:hover {
-  fill: #738b8a;
-  stroke: #738b8a;
-}
-
-ion-icon:active {
+.tab-selected ion-icon {
   fill: #233c3a;
   stroke: #233c3a;
 }

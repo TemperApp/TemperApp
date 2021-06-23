@@ -15,7 +15,7 @@ import { frequencies4, frequenciesEqual4, thirdQ, fifthQ, thirdEqualQ, fifthEqua
 import { ActiveNote, ActiveNotes, ButtonPosition, StateList } from "./TunerTypes"
 
 //Styles 
-import "./Tuner.css";
+import "./PitchCircleSVG.css";
 
 type PitchCircleSVGProps = {
   tunerMode: string,

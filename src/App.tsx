@@ -31,7 +31,7 @@ import '@ionic/react/css/display.css';
 
 /* Theme variables */
 import './theme/variables.css';
-import './pages/Global.css';
+import './App.css';
 
 /* Fonction Engine */
 import DB from './engine/DB';
