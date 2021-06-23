@@ -1,4 +1,5 @@
 import { ActiveNote, StateList } from "../TunerTypes";
+import { cpExp5thStrToNumber, csExp3rdStrToNumber} from '../../../model/Divergence';
 
 export const frequenciesEqual4 = (A4:number) => {
     let frequenciesEqual4 : {[key: string]: number} = {
@@ -37,6 +38,82 @@ export const frequencies4 = (A4:number, deviation: {[key: string]: number} ) => 
     }
 
     return frequencies4;
+}
+
+export const thirdQ = (third: {[key: string]: string } ) => {
+
+    let thirdQ : {[key: string]: number | null} = {
+        A: csExp3rdStrToNumber(third.A),
+        B: csExp3rdStrToNumber(third.B),
+        C: csExp3rdStrToNumber(third.C),
+        D: csExp3rdStrToNumber(third.D),
+        E: csExp3rdStrToNumber(third.E),
+        F: csExp3rdStrToNumber(third.F),
+        G: csExp3rdStrToNumber(third.G),
+        B_flat : csExp3rdStrToNumber(third.B_flat),
+        E_flat : csExp3rdStrToNumber(third.E_flat),
+        G_sharp : csExp3rdStrToNumber(third.G_sharp),
+        C_sharp : csExp3rdStrToNumber(third.C_sharp),
+        F_sharp : csExp3rdStrToNumber(third.F_sharp)
+    }
+    return thirdQ;
+}
+
+export const fifthQ = (fifth: {[key: string]: string} ) => {
+
+    let fifthQ : {[key: string]: number | null} = {
+        A: cpExp5thStrToNumber(fifth.A),
+        B: cpExp5thStrToNumber(fifth.B),
+        C: cpExp5thStrToNumber(fifth.C),
+        D: cpExp5thStrToNumber(fifth.D),
+        E: cpExp5thStrToNumber(fifth.E),
+        F: cpExp5thStrToNumber(fifth.F),
+        G: cpExp5thStrToNumber(fifth.G),
+        B_flat : cpExp5thStrToNumber(fifth.B_flat),
+        E_flat : cpExp5thStrToNumber(fifth.E_flat),
+        G_sharp : cpExp5thStrToNumber(fifth.G_sharp),
+        C_sharp : cpExp5thStrToNumber(fifth.C_sharp),
+        F_sharp : cpExp5thStrToNumber(fifth.F_sharp)
+    }
+    return fifthQ;
+}
+
+export const fifthEqualQ = () => {
+
+    let fifthQ : {[key: string]: number | null} = {
+        A: -1,
+        B: -1,
+        C: -1,
+        D: -1,
+        E: -1,
+        F: -1,
+        G: -1,
+        B_flat : -1,
+        E_flat : -1,
+        G_sharp : -1,
+        C_sharp : -1,
+        F_sharp : -1,
+    }
+    return fifthQ;
+}
+
+export const thirdEqualQ = () => {
+
+    let thirdQ : {[key: string]: number | null} = {
+        A: 7,
+        B: 7,
+        C: 7,
+        D: 7,
+        E: 7,
+        F: 7,
+        G: 7,
+        B_flat : 7,
+        E_flat : 7,
+        G_sharp : 7,
+        C_sharp : 7,
+        F_sharp : 7,
+    }
+    return thirdQ;
 }
 
 export const selectedNoteFrequency = (freqs: {[key: string]: number}, note: ActiveNote ) => {

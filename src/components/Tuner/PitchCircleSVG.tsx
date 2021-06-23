@@ -5,13 +5,14 @@ import FifthCircleSVG from './FifthCircleSVG';
 import ThirdCircleSVG from './ThirdCircleSVG';
 import PitchCircleButtonSVG from './PitchCircleButtonSVG';
 import CenterCircle from './CenterCircle';
-
-//Types 
-import { ActiveNote, ActiveNotes, ButtonPosition, StateList } from "./TunerTypes"
 import { cpuUsage } from 'process';
 import { TemperamentDBType } from '../../engine/DB';
 import { fetchTemperamentById, fetchTemperamentPropsById } from '../../engine/DataAccessor';
-import { frequencies4, frequenciesEqual4 } from './functions/frequencies';
+import { frequencies4, frequenciesEqual4, thirdQ, fifthQ, thirdEqualQ, fifthEqualQ } from './functions/frequencies';
+
+
+//Types 
+import { ActiveNote, ActiveNotes, ButtonPosition, StateList } from "./TunerTypes"
 
 //Styles 
 import "./Tuner.css";
@@ -41,6 +42,8 @@ const PitchCircleSVG: React.FC<PitchCircleSVGProps> = ({tunerMode, freqA4, tempe
   const [currentTunerMode, setCurrentTunerMode] = useState("");
   const [currentTemp, setCurrentTemp] = useState("");
   const [currentFreq, setCurrentFreq] = useState(0);
+  const [thirdQuality, setThirdQuality] = useState<{[key: string]: number | null}>(thirdEqualQ());
+  const [fifthQuality, setFifthQuality] = useState<{[key: string]: number | null}>(fifthEqualQ());
 
   const [frequencies, setFrequencies] = useState<{[key: string] : number}>(frequenciesEqual4(440))
 
@@ -69,6 +72,8 @@ const PitchCircleSVG: React.FC<PitchCircleSVGProps> = ({tunerMode, freqA4, tempe
     if(frequencies !== frequencies4(freqA4,temp.deviation)){
       console.log("il change");
       setFrequencies(frequencies4(freqA4,temp.deviation));
+      setFifthQuality(fifthQ(temp.cpExp5th));
+      setThirdQuality(thirdQ(temp.csExp3rd));
     }
     console.log("fin temperament props");
   }
@@ -304,8 +309,12 @@ const PitchCircleSVG: React.FC<PitchCircleSVGProps> = ({tunerMode, freqA4, tempe
         <text className="cls-3" transform="translate(278.22 124.58)">D</text>
         <text className="cls-3" transform="translate(294.3 185.52)">A</text>
 
-        <ThirdCircleSVG />
-        <FifthCircleSVG />
+        <ThirdCircleSVG 
+          quality = {thirdQuality}
+        />
+        <FifthCircleSVG 
+          quality = {fifthQuality}
+        />
         <CenterCircle 
           notes = {currentNote}
           frequencies = {frequencies}
