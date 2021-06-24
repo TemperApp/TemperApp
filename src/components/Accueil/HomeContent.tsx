@@ -1,15 +1,23 @@
 import "rc-collapse/assets/index.css";
 import Collapse, { Panel } from "rc-collapse";
 import motion from './_util/motionUtil';
-import { IonButton, IonGrid, IonRow, IonCol } from '@ionic/react';
+import { IonButton, IonGrid, IonRow, IonCol, IonIcon } from '@ionic/react';
 import './Collapse.css'; 
+import { chevronDownOutline, chevronForwardSharp } from "ionicons/icons";
 
 
 const HomeContent : React.FC = () => {
     const temperList = ["Rameau", "Vallotti", "Weimeister", "Back", "Egal"];
 
+    const renderExpandIcon = () => {
+        return (
+          <IonIcon slot="icon-only" icon={chevronForwardSharp} />
+        );
+      }
+
+
     return (
-    <Collapse accordion={true} openMotion={motion} >
+    <Collapse accordion={false} openMotion={motion} expandIcon={renderExpandIcon} >
         <Panel header="Mes tempéraments" headerClass="my-header-class">
             <IonGrid>
                 <IonRow >
