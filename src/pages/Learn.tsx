@@ -12,11 +12,6 @@ const Learn: React.FC = () => {
         </IonToolbar>
       </IonHeader>
       <IonContent fullscreen>
-        <IonHeader collapse="condense">
-          <IonToolbar>
-            <IonTitle size="large">Apprendre</IonTitle>
-          </IonToolbar>
-        </IonHeader>
         <LearnMenu />
       </IonContent>
     </IonPage>

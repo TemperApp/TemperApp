@@ -21,6 +21,9 @@ ion-header::after {
 
 ion-tab-bar {
   min-width: 90vw;
+  min-height: 9vh;
+  display: flex;
+  align-self: center;
 }
 
 ion-label {

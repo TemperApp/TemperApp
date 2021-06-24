@@ -9,7 +9,8 @@
 
 .learn-button-text {
   --color: var(--color-dark);
-  margin-left: 32vw;
   border: none;
   --background: transparent;
+  margin-top: 6vh;
+  margin-left: 4vh;
 }
