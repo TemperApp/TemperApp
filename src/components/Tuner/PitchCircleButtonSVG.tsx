@@ -144,4 +144,12 @@ const PitchCircleButtonSVG: React.FC<PitchCircleButtonSVGProps> = ({
   );
 };
 
-export default PitchCircleButtonSVG;
+export default React.memo(PitchCircleButtonSVG, 
+  (prevProps, nextProps) => {
+    if(prevProps.active === nextProps.active && prevProps.tunerMode === nextProps.tunerMode && prevProps.tunerMode === "TuningFork")
+    {
+      return true;
+    }
+    return false
+  }
+);

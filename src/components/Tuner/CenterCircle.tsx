@@ -17,7 +17,6 @@ const CenterCircle: React.FC<PitchCircleSVGProps> = ({notes, frequencies}) => {
 
   useEffect(() => {
 
-    console.log(notes);
     const cNote = document.getElementById("centerCircleNote")!;
     const cFreq = document.getElementById("centerCircleFrequency")!;
 
