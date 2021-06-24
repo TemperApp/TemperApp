@@ -1,6 +1,7 @@
-import { sqlite } from '../App';
-import { NoteSymbols, defaultTemperaments } from '../model/Temperament';
 import { capSQLiteChanges } from '@capacitor-community/sqlite';
+import { sqlite } from '../App';
+import { defaultTemperaments } from '../model/Temperament';
+import { Notes } from "../model/Note";
 
 const sqlDropTables = [
   "DROP TABLE IF EXISTS temperament;",
@@ -224,7 +225,7 @@ class DB {
   private async populateTables(): Promise<void> {
     let ret;
     // Populate 'note'
-    for (const note in NoteSymbols) {
+    for (const note in Notes) {
       ret = await this.dbconn.run(
         "INSERT INTO note (noteSymbol) VALUES (?);",
         [note]);
@@ -244,8 +245,8 @@ class DB {
         console.warn(`[SQLite]: Changes: ${ret.changes.changes}
                        : inserting: ${t.name}`);
 
-      for (const note in NoteSymbols) {
-        const noteTyped: NoteSymbols = NoteSymbols[note as keyof typeof NoteSymbols]; // TS cast hack
+      for (const note in Notes) {
+        const noteTyped: Notes = Notes[note as keyof typeof Notes]; // TS cast hack
         // Populate 'divergence'
         ret = await this.dbconn.run(
           `INSERT INTO divergence (idTemperament,

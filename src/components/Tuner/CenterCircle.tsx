@@ -3,7 +3,7 @@ import React, { useEffect } from 'react';
 //Styles
 import "./CenterCircle.css";
 import { selectedNoteFrequency, convertNoteToString, BpsCalc, BpmCalc } from './functions/frequencies';
-import { ActiveNotes, StateList } from './TunerTypes';
+import { ActiveNotes, NoteStates } from './PitchCircleSVG';
 
 type PitchCircleSVGProps = {
   notes: ActiveNotes,
@@ -19,31 +19,31 @@ const CenterCircle: React.FC<PitchCircleSVGProps> = ({notes, frequencies}) => {
     const cNote = document.getElementById("centerCircleNote")!;
     const cFreq = document.getElementById("centerCircleFrequency")!;
 
-    if(notes.note1.state !== StateList.default && notes.note2.state === StateList.default){
-      if(notes.note1.state === StateList.selected) {
-        cNote.innerHTML = (notes.note1.state === StateList.selected)
-        ? convertNoteToString(notes.note1.name)+refOctave
-        : convertNoteToString(notes.note1.name)+refOctave+1;
+    if(notes.note1.state !== NoteStates.IDLE && notes.note2.state === NoteStates.IDLE){
+      if(notes.note1.state === NoteStates.SELECTED) {
+        cNote.innerHTML = (notes.note1.state === NoteStates.SELECTED)
+        ? convertNoteToString(notes.note1.note)+refOctave
+        : convertNoteToString(notes.note1.note)+(refOctave+1);
       }
         
       cFreq.innerHTML = selectedNoteFrequency(frequencies, notes.note1)+" Hz";
     }
     else{
-      if(notes.note1.state !== StateList.default && notes.note2.state !== StateList.default){
-        if(notes.note1.state === StateList.selected){
-          if(notes.note2.state === StateList.selected){
-            cNote.innerHTML = convertNoteToString(notes.note1.name)+refOctave+" - "+convertNoteToString(notes.note2.name)+refOctave;
+      if(notes.note1.state !== NoteStates.IDLE && notes.note2.state !== NoteStates.IDLE){
+        if(notes.note1.state === NoteStates.SELECTED){
+          if(notes.note2.state === NoteStates.SELECTED){
+            cNote.innerHTML = convertNoteToString(notes.note1.note)+refOctave+" - "+convertNoteToString(notes.note2.note)+refOctave;
           }
           else{
-            cNote.innerHTML = convertNoteToString(notes.note1.name)+refOctave+" - "+convertNoteToString(notes.note2.name)+refOctave+1;
+            cNote.innerHTML = convertNoteToString(notes.note1.note)+refOctave+" - "+convertNoteToString(notes.note2.note)+(refOctave+1);
           }
         }
         else{
-          if(notes.note2.state === StateList.selected){
-            cNote.innerHTML = convertNoteToString(notes.note1.name)+refOctave+1+" - "+convertNoteToString(notes.note2.name)+refOctave;
+          if(notes.note2.state === NoteStates.SELECTED){
+            cNote.innerHTML = convertNoteToString(notes.note1.note)+(refOctave+1)+" - "+convertNoteToString(notes.note2.note)+refOctave;
           }
           else{
-            cNote.innerHTML = convertNoteToString(notes.note1.name)+refOctave+1+" - "+convertNoteToString(notes.note2.name)+refOctave+1;
+            cNote.innerHTML = convertNoteToString(notes.note1.note)+(refOctave+1)+" - "+convertNoteToString(notes.note2.note)+(refOctave+1);
           }
         }
         if(cFreq !== null)

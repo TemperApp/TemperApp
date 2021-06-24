@@ -1,4 +1,4 @@
-import { ActiveNote, StateList } from "../TunerTypes";
+import { ActiveNote, NoteStates } from "../PitchCircleSVG";
 import { cpExp5thStrToNumber, csExp3rdStrToNumber} from '../../../model/Divergence';
 
 export const frequenciesEqual4 = (A4:number) => {
@@ -116,9 +116,9 @@ export const thirdEqualQ = () => {
     return thirdQ;
 }
 
-export const selectedNoteFrequency = (freqs: {[key: string]: number}, note: ActiveNote ) => {
+export const selectedNoteFrequency = (freqs: {[key: string]: number}, active: ActiveNote ) => {
     let freq;
-    switch (note.name) {
+    switch (active.note) {
         case "A":
             freq = freqs.A;
             break;
@@ -159,7 +159,7 @@ export const selectedNoteFrequency = (freqs: {[key: string]: number}, note: Acti
             freq = 440;
             break;
     }
-    if(note.state === StateList.octave){
+    if(active.state === NoteStates.OCTAVE){
         freq = 2*freq;
     }
     return freq;

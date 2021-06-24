@@ -76,4 +76,5 @@ const ThirdCircleSVG: React.FC<{quality: {[key: string]: number|null}}> = ({qual
     </>
   );
 };
+
 export default ThirdCircleSVG;

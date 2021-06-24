@@ -6,11 +6,11 @@ import PitchCircleSVG from './PitchCircleSVG';
 type PitchCircleProps = {
   isHzMode: boolean,
   freqA4: number,
-  temperament : TemperamentDBType
+  idTemperament : number
 };
 
 const PitchCircle: React.FC<PitchCircleProps> = ({
-  isHzMode, freqA4, temperament
+  isHzMode, freqA4, idTemperament
 }) => {
 
   const [tunerMode, setTunerMode] = useState("TuningFork");
@@ -23,7 +23,7 @@ const PitchCircle: React.FC<PitchCircleProps> = ({
     <PitchCircleSVG
       tunerMode = {tunerMode}
       freqA4 = {freqA4}
-      temperament = {temperament}
+      idTemperament = {idTemperament}
     />
   );
 };

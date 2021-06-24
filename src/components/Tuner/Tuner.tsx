@@ -63,7 +63,7 @@ const Tuner: React.FC = () => {
         <PitchCircle
           isHzMode = {isHzMode}
           freqA4 = {freqA4}
-          temperament = {temperament}
+          idTemperament = {temperament.idTemperament}
         />   
       </IonRow>
              

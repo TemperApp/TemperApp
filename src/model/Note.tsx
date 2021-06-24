@@ -1,3 +1,18 @@
+export enum Notes {
+  C = "C",
+  C_sharp = "C_sharp",
+  D = "D",
+  E_flat = "E_flat",
+  E = "E",
+  F = "F",
+  F_sharp = "F_sharp",
+  G = "G",
+  G_sharp = "G_sharp",
+  A = "A",
+  B_flat = "B_flat",
+  B = "B",
+};
+
 export enum NoteAlter {
   NONE,
   FLAT = "b",  // ♭
@@ -44,12 +59,42 @@ export class Note implements INote {
 
   /**
    * Creates a note
+   * @param note 'Notes' enum element
+   * @param octave octave number according to
+   * the American Std. Pitch Notation
+   */
+  static create(note: Notes, octave = 4): Note | null {
+    try {
+      switch (note) {
+        case "C":       return new Note('C', NoteAlter.NONE, octave);
+        case "C_sharp": return new Note('C', NoteAlter.SHARP, octave);
+        case "D":       return new Note('D', NoteAlter.NONE, octave);
+        case "E_flat":  return new Note('E', NoteAlter.FLAT, octave);
+        case "E":       return new Note('E', NoteAlter.NONE, octave);
+        case "F":       return new Note('F', NoteAlter.NONE, octave);
+        case "F_sharp": return new Note('F', NoteAlter.SHARP, octave);
+        case "G":       return new Note('G', NoteAlter.NONE, octave);
+        case "G_sharp": return new Note('G', NoteAlter.SHARP, octave);
+        case "A":       return new Note('A', NoteAlter.NONE, octave);
+        case "B_flat":  return new Note('B', NoteAlter.FLAT, octave);
+        case "B":       return new Note('B', NoteAlter.NONE, octave);
+        default:        return null;
+      }
+    } catch (error) {
+      console.warn(error);
+      return null;
+    }
+  }
+
+
+  /**
+   * Creates a note
    * @param char letter representing the note
    * @param alter note alteration
    * @param octave octave number according to
    * the American Std. Pitch Notation
    */
-  static create(char: string, alter: NoteAlter, octave = 4): Note | null {
+  static create2(char: string, alter: NoteAlter, octave = 4): Note | null {
     try {
       return new Note(char, alter, octave);
     } catch (error) {
@@ -75,7 +120,7 @@ export class Note implements INote {
       const [, syllable, alter, octave] =
           str.match(/^(do|re|ré|mi|fa|sol|la|si)(#|♯|b|♭)?(-1|[0-9])?$/i) as any[];
       
-      return Note.create(
+      return Note.create2(
         SYLLABLES_TO_ASPN[syllable.toLowerCase()],
         (!alter) ? NoteAlter.NONE : Note.parseAlter(alter),
         (!octave) ? 4 : Number(octave)+1);
@@ -84,7 +129,7 @@ export class Note implements INote {
       const [, char, alter, octave] =
           str.match(/^([A-G])(#|♯|b|♭)?([0-9]|10)?$/i) as any[];
       
-      return Note.create(
+      return Note.create2(
         char,
         (!alter) ? NoteAlter.NONE : Note.parseAlter(alter),
         (!octave) ? 4 : Number(octave));
@@ -159,18 +204,18 @@ export class Note implements INote {
 
 
 export const FIFTHS: Array<Note> = [
-  Note.create("C", NoteAlter.NONE , 4)!,
-  Note.create("G", NoteAlter.NONE , 4)!,
-  Note.create("D", NoteAlter.NONE , 4)!,
-  Note.create("A", NoteAlter.NONE , 4)!,
-  Note.create("E", NoteAlter.NONE , 4)!,
-  Note.create("B", NoteAlter.NONE , 4)!,
-  Note.create("F", NoteAlter.SHARP, 4)!,
-  Note.create("C", NoteAlter.SHARP, 4)!,
-  Note.create("G", NoteAlter.SHARP, 4)!,
-  Note.create("E", NoteAlter.FLAT , 4)!,
-  Note.create("B", NoteAlter.FLAT , 4)!,
-  Note.create("F", NoteAlter.NONE , 4)!,
+  Note.create(Notes.C, 4)!,
+  Note.create(Notes.G, 4)!,
+  Note.create(Notes.D, 4)!,
+  Note.create(Notes.A, 4)!,
+  Note.create(Notes.E, 4)!,
+  Note.create(Notes.B, 4)!,
+  Note.create(Notes.F_sharp, 4)!,
+  Note.create(Notes.C_sharp, 4)!,
+  Note.create(Notes.G_sharp, 4)!,
+  Note.create(Notes.E_flat, 4)!,
+  Note.create(Notes.B_flat, 4)!,
+  Note.create(Notes.F_sharp, 4)!,
 ];
 
 export default Note;

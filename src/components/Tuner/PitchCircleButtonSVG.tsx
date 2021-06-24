@@ -1,16 +1,16 @@
 import React, { useRef } from 'react';
-import { ActiveNotes, StateList } from './TunerTypes';
+import { ActiveNotes, NotesOrEmptyStr, NoteStates } from './PitchCircleSVG';
 import useLongPress from "./functions/useLongPress";
 
 type DivOrNullType = SVGPathElement | null;
 
-const colorButton = (state: StateList) => {
+const colorButton = (state: NoteStates) => {
   switch (state) {
-    case StateList.default: //bouton déactivé
+    case NoteStates.IDLE: //bouton déactivé
       return "#F5FBFB";
-    case StateList.selected: // bouton activé 
+    case NoteStates.SELECTED: // bouton activé 
       return "#A7C5C3";
-    case StateList.octave: // bouton activé à l'octave supérieur
+    case NoteStates.OCTAVE: // bouton activé à l'octave supérieur
       return "#F75D4E";
     default:
       return "#F5FBFB";
@@ -18,12 +18,12 @@ const colorButton = (state: StateList) => {
 }
 
 type PitchCircleButtonSVGProps = {
-  notesSymbol: string,
+  notesSymbol: NotesOrEmptyStr,
   position: string,
-  active: StateList,
+  active: NoteStates,
   tunerMode: string,
   listNotes: ActiveNotes
-  onChange: (state: StateList) => void,
+  onChange: (state: NoteStates) => void,
   setCurrentNotes: (notesSymbol: ActiveNotes) => void,
 }
 
@@ -35,86 +35,85 @@ const PitchCircleButtonSVG: React.FC<PitchCircleButtonSVGProps> = ({
   const note = useRef<DivOrNullType>(null);
 
   function activateNote(){ 
-    console.log("pip pap poup")
     setCurrentNotes(
-      {note1: {name: notesSymbol, state: StateList.selected},
-       note2: {name: "", state: StateList.default}});
+      {note1: {note: notesSymbol, state: NoteStates.SELECTED},
+       note2: {note: "", state: NoteStates.IDLE}});
 
-    onChange(StateList.selected);
+    onChange(NoteStates.SELECTED);
   }
 
   function activateNoteBpm(){ 
-    if (listNotes.note1.state === StateList.default && listNotes.note2.state === StateList.default){
+    if (listNotes.note1.state === NoteStates.IDLE && listNotes.note2.state === NoteStates.IDLE){
       setCurrentNotes(
-        {note1: {name: notesSymbol, state: StateList.selected},
-         note2: {name: "", state: StateList.default}});
+        {note1: {note: notesSymbol, state: NoteStates.SELECTED},
+         note2: {note: "", state: NoteStates.IDLE}});
     }
     else {
-      if (listNotes.note1.state !== StateList.default && listNotes.note2.state === StateList.default){
+      if (listNotes.note1.state !== NoteStates.IDLE && listNotes.note2.state === NoteStates.IDLE){
         setCurrentNotes(
-          {note1: {name: listNotes.note1.name, state: listNotes.note1.state},
-           note2: {name: notesSymbol, state: StateList.selected}});
+          {note1: {note: listNotes.note1.note, state: listNotes.note1.state},
+           note2: {note: notesSymbol, state: NoteStates.SELECTED}});
       }
       else {
         setCurrentNotes(
-          {note1: {name: notesSymbol, state: StateList.selected},
-           note2: {name: "", state: StateList.default}});
+          {note1: {note: notesSymbol, state: NoteStates.SELECTED},
+           note2: {note: "", state: NoteStates.IDLE}});
       }
     }
-    onChange(StateList.selected);
+    onChange(NoteStates.SELECTED);
   }
 
   const activateNoteOctave = () => { 
     setCurrentNotes(
-      {note1: {name: notesSymbol, state: StateList.octave},
-       note2: {name: "", state: StateList.default} });
-    onChange(StateList.octave);
+      {note1: {note: notesSymbol, state: NoteStates.OCTAVE},
+       note2: {note: "", state: NoteStates.IDLE} });
+    onChange(NoteStates.OCTAVE);
   }
 
   function activateNoteOctaveBpm(){ 
-    if (listNotes.note1.state === StateList.default && listNotes.note2.state === StateList.default){
+    if (listNotes.note1.state === NoteStates.IDLE && listNotes.note2.state === NoteStates.IDLE){
       setCurrentNotes(
-        {note1: {name: notesSymbol, state: StateList.octave},
-         note2: {name: "", state: StateList.default}});
+        {note1: {note: notesSymbol, state: NoteStates.OCTAVE},
+         note2: {note: "", state: NoteStates.IDLE}});
     }
     else {
-      if (listNotes.note1.state !== StateList.default && listNotes.note2.state === StateList.default){
+      if (listNotes.note1.state !== NoteStates.IDLE && listNotes.note2.state === NoteStates.IDLE){
         setCurrentNotes(
-          {note1: {name: listNotes.note1.name, state: listNotes.note1.state},
-           note2: {name: notesSymbol, state: StateList.octave}});
+          {note1: {note: listNotes.note1.note, state: listNotes.note1.state},
+           note2: {note: notesSymbol, state: NoteStates.OCTAVE}});
       }
       else {
         setCurrentNotes(
-          {note1: {name: notesSymbol, state: StateList.octave},
-           note2: {name: "", state: StateList.default}});
+          {note1: {note: notesSymbol, state: NoteStates.OCTAVE},
+           note2: {note: "", state: NoteStates.IDLE}});
       }
     }
-    onChange(StateList.octave);
+    onChange(NoteStates.OCTAVE);
   }
 
   const disableNote = () => {
     setCurrentNotes(
-      {note1: {name: "", state: StateList.default},
-       note2: {name: "", state: StateList.default}});
-    onChange(StateList.default);
+      {note1: {note: "", state: NoteStates.IDLE},
+       note2: {note: "", state: NoteStates.IDLE}});
+    onChange(NoteStates.IDLE);
   }
 
   const onLongPress = () =>{
     if (tunerMode === "TuningFork"){
-      (active === StateList.default)
+      (active === NoteStates.IDLE)
       ? activateNoteOctave()
-      : ((active === StateList.selected)
+      : ((active === NoteStates.SELECTED)
         ? activateNoteOctave()
-        : ((active === StateList.octave)
+        : ((active === NoteStates.OCTAVE)
           ? activateNote()
           : disableNote()));
     }
     else {
-      (active === StateList.default)
+      (active === NoteStates.IDLE)
       ? activateNoteOctaveBpm()
-      : ((active === StateList.selected)
+      : ((active === NoteStates.SELECTED)
         ? activateNoteOctaveBpm()
-        : ((active === StateList.octave)
+        : ((active === NoteStates.OCTAVE)
           ? activateNoteBpm()
           : disableNote()));
     }
@@ -122,9 +121,9 @@ const PitchCircleButtonSVG: React.FC<PitchCircleButtonSVGProps> = ({
   
   const onClick = () => {
     if (tunerMode === "TuningFork")
-      (active === StateList.default) ? activateNote() : disableNote();
+      (active === NoteStates.IDLE) ? activateNote() : disableNote();
     else
-      (active === StateList.default) ? activateNoteBpm() : disableNote();
+      (active === NoteStates.IDLE) ? activateNoteBpm() : disableNote();
   }
 
   const defaultLongPressOptions = {

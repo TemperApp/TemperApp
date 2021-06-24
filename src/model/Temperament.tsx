@@ -1,30 +1,17 @@
-export enum NoteSymbols {
-  C = "C",
-  C_sharp = "C_sharp",
-  D = "D",
-  E_flat = "E_flat",
-  E = "E",
-  F = "F",
-  F_sharp = "F_sharp",
-  G = "G",
-  G_sharp = "G_sharp",
-  A = "A",
-  B_flat = "B_flat",
-  B = "B",
-};
+import { Notes } from "./Note";
 
 export type Temperament = {
   idTemperament: number,
   name: string,
   nameFR: string,
   deviation:  {
-    [key in keyof typeof NoteSymbols]: number
+    [key in keyof typeof Notes]: number
   },
   cpExp5th: {
-    [key in keyof typeof NoteSymbols]: string
+    [key in keyof typeof Notes]: string
   },
   csExp3rd: {
-    [key in keyof typeof NoteSymbols]: string
+    [key in keyof typeof Notes]: string
   }
 };
 

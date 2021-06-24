@@ -5,269 +5,147 @@ import FifthCircleSVG from './FifthCircleSVG';
 import ThirdCircleSVG from './ThirdCircleSVG';
 import PitchCircleButtonSVG from './PitchCircleButtonSVG';
 import CenterCircle from './CenterCircle';
-import { TemperamentDBType } from '../../engine/DB';
+import { Temperament } from '../../model/Temperament';
 import { fetchTemperamentPropsById } from '../../engine/DataAccessor';
 import { frequencies4, frequenciesEqual4, thirdQ, fifthQ, thirdEqualQ, fifthEqualQ } from './functions/frequencies';
 
 //Types 
-import { ActiveNotes, ButtonPosition, StateList } from "./TunerTypes"
+import { PitchCircleButtonSVGPos as btnPosition } from "./PitchCircleButtonSVGPos"
 
 //Styles 
 import "./PitchCircleSVG.css";
+import { Notes } from '../../model/Note';
+
+export enum NoteStates {
+  IDLE, SELECTED, OCTAVE,
+};
+
+export type NotesOrEmptyStr = Notes | "";
+
+export type ActiveNote = {
+    note : NotesOrEmptyStr,
+    state : NoteStates,
+};
+
+export type ActiveNotes = {
+    note1 : ActiveNote,
+    note2 : ActiveNote,
+};
 
 type PitchCircleSVGProps = {
   tunerMode: string,
   freqA4: number,
-  temperament: TemperamentDBType
+  idTemperament: number
 }
 
 const PitchCircleSVG: React.FC<PitchCircleSVGProps> = ({
-  tunerMode, freqA4, temperament
+  tunerMode, freqA4, idTemperament
 }) => {
 
-  const [stateA, setStateA] = useState(StateList.default);
-  const [stateB, setStateB] = useState(StateList.default);
-  const [stateC, setStateC] = useState(StateList.default);
-  const [stateD, setStateD] = useState(StateList.default);
-  const [stateE, setStateE] = useState(StateList.default);
-  const [stateF, setStateF] = useState(StateList.default);
-  const [stateG, setStateG] = useState(StateList.default);
-  const [stateB_flat, setStateB_flat] = useState(StateList.default);
-  const [stateE_flat, setStateE_flat] = useState(StateList.default);
-  const [stateG_sharp, setStateG_sharp] = useState(StateList.default);
-  const [stateC_sharp, setStateC_sharp] = useState(StateList.default);
-  const [stateF_sharp, setStateF_sharp] = useState(StateList.default);
-
-  const states: {[key: string]: StateList} = {
-    A: stateA, B: stateB, C: stateC, D: stateD,
-    E: stateE, F: stateF, G: stateG, B_flat : stateB_flat,
-    E_flat : stateE_flat, G_sharp : stateG_sharp, C_sharp : stateC_sharp, F_sharp : stateF_sharp,
-  };
-
   const [currentNotes, setCurrentNotes] = useState<ActiveNotes>(
-    {note1 : {name: "", state: StateList.default},
-     note2 : {name: "", state: StateList.default}});
-  const [currentTunerMode, setCurrentTunerMode] = useState("");
-  const [currentTemp, setCurrentTemp] = useState("");
-  const [currentFreq, setCurrentFreq] = useState(0);
+    {note1 : {note: "", state: NoteStates.IDLE},
+     note2 : {note: "", state: NoteStates.IDLE}});
+
+  const [temperament, setTemperament] = useState<Temperament>();
   const [thirdQuality, setThirdQuality] = useState<{[key: string]: number | null}>(thirdEqualQ());
   const [fifthQuality, setFifthQuality] = useState<{[key: string]: number | null}>(fifthEqualQ());
 
   const [frequencies, setFrequencies] = useState<{[key: string] : number}>(frequenciesEqual4(440));
 
+  const [C       , setC      ] = useState<any>(NoteStates.IDLE);
+  const [C_sharp , setC_sharp] = useState<any>(NoteStates.IDLE);
+  const [D       , setD      ] = useState<any>(NoteStates.IDLE);
+  const [E_flat  , setE_flat ] = useState<any>(NoteStates.IDLE);
+  const [E       , setE      ] = useState<any>(NoteStates.IDLE);
+  const [F       , setF      ] = useState<any>(NoteStates.IDLE);
+  const [F_sharp , setF_sharp] = useState<any>(NoteStates.IDLE);
+  const [G       , setG      ] = useState<any>(NoteStates.IDLE);
+  const [G_sharp , setG_sharp] = useState<any>(NoteStates.IDLE);
+  const [A       , setA      ] = useState<any>(NoteStates.IDLE);
+  const [B_flat  , setB_flat ] = useState<any>(NoteStates.IDLE);
+  const [B       , setB      ] = useState<any>(NoteStates.IDLE);
+
+  const states = {C, C_sharp, D, E_flat, E, F, F_sharp, G, G_sharp, A, B_flat, B};
+  
+  const setStates = (note: Notes, state: NoteStates) => {
+    switch (note) {
+      case Notes.C:       return setC(state);
+      case Notes.C_sharp: return setC_sharp(state);
+      case Notes.D:       return setD(state);
+      case Notes.E_flat:  return setE_flat(state);
+      case Notes.E:       return setE(state);
+      case Notes.F:       return setF(state);
+      case Notes.F_sharp: return setF_sharp(state);
+      case Notes.G:       return setG(state);
+      case Notes.G_sharp: return setG_sharp(state);
+      case Notes.A:       return setA(state);
+      case Notes.B_flat:  return setB_flat(state);
+      case Notes.B:       return setB(state);
+    }
+  };
+
+
   useEffect(() => {
+    setCurrentNotes(
+      {note1: {note: "", state: NoteStates.IDLE},
+       note2: {note: "", state: NoteStates.IDLE}}
+    );
+  }, [tunerMode]);
 
-    const temperamentProps = async () =>{
-      const temp = await fetchTemperamentPropsById(temperament.idTemperament);
-      if (frequencies !== frequencies4(freqA4, temp.deviation)){
-        setFrequencies(frequencies4(freqA4, temp.deviation));
-        setFifthQuality(fifthQ(temp.cpExp5th));
-        setThirdQuality(thirdQ(temp.csExp3rd));
+
+  useEffect(() => {
+    (async () => {
+      const temp = await fetchTemperamentPropsById(idTemperament);
+      setTemperament(temp);
+      setFifthQuality(fifthQ(temp.cpExp5th));
+      setThirdQuality(thirdQ(temp.csExp3rd));
+      setFrequencies(frequencies4(freqA4, temp.deviation));
+    })();
+  }, [idTemperament]);
+
+
+  useEffect(() => {
+    (async () => {
+      if (!temperament)
+        return;
+      setFrequencies(frequencies4(freqA4, temperament.deviation));
+    })();
+  }, [freqA4]);
+  
+
+  useEffect(() => {
+    // Clean states
+    for (const note in states) {
+      const n = note as Notes;
+      if (currentNotes.note1.note !== note
+          && currentNotes.note2.note !== note
+          && states[n] !== NoteStates.IDLE
+      ) {
+        setStates(n, NoteStates.IDLE);
       }
-    }
-
-    const cleanState = () =>{
-      if (currentTunerMode !== tunerMode){
-        setCurrentTunerMode(tunerMode);
-        setCurrentNotes(
-          {note1: {name: "", state: StateList.default},
-           note2: {name: "", state: StateList.default}});
-      }
-
-      if (tunerMode === "TuningFork"){
-        if (currentNotes.note1.name !== "A" && stateA !== StateList.default)
-          setStateA(StateList.default)
-        if (currentNotes.note1.name !== "B" && stateB !== StateList.default)
-          setStateB(StateList.default)
-        if (currentNotes.note1.name !== "C" && stateC !== StateList.default)
-          setStateC(StateList.default)
-        if (currentNotes.note1.name !== "D" && stateD !== StateList.default)
-          setStateD(StateList.default)
-        if (currentNotes.note1.name !== "E" && stateE !== StateList.default)
-          setStateE(StateList.default)
-        if (currentNotes.note1.name !== "F" && stateF !== StateList.default)
-          setStateF(StateList.default)
-        if (currentNotes.note1.name !== "G" && stateG !== StateList.default)
-          setStateG(StateList.default)
-        if (currentNotes.note1.name !== "B_flat" && stateB_flat !== StateList.default)
-          setStateB_flat(StateList.default)
-        if (currentNotes.note1.name !== "E_flat" && stateE_flat !== StateList.default)
-          setStateE_flat(StateList.default)
-        if (currentNotes.note1.name !== "G_sharp" && stateG_sharp !== StateList.default)
-          setStateG_sharp(StateList.default)
-        if (currentNotes.note1.name !== "C_sharp" && stateC_sharp !== StateList.default)
-          setStateC_sharp(StateList.default)
-        if (currentNotes.note1.name !== "F_sharp" && stateF_sharp !== StateList.default)
-          setStateF_sharp(StateList.default)
-      }
-      else{
-        if ( (currentNotes.note1.name !== "A" && currentNotes.note2.name !== "A" ) && stateA !== StateList.default)
-          setStateA(StateList.default)
-        if ( (currentNotes.note1.name !== "B" && currentNotes.note2.name !== "B" ) && stateB !== StateList.default)
-          setStateB(StateList.default)
-        if ( (currentNotes.note1.name !== "C" && currentNotes.note2.name !== "C" ) && stateC !== StateList.default)
-          setStateC(StateList.default)
-        if ( (currentNotes.note1.name !== "D" && currentNotes.note2.name !== "D" ) && stateD !== StateList.default)
-          setStateD(StateList.default)
-        if ( (currentNotes.note1.name !== "E" && currentNotes.note2.name !== "E" ) && stateE !== StateList.default)
-          setStateE(StateList.default)
-        if ( (currentNotes.note1.name !== "F" && currentNotes.note2.name !== "F" ) && stateF !== StateList.default)
-          setStateF(StateList.default)
-        if ( (currentNotes.note1.name !== "G" && currentNotes.note2.name !== "G" ) && stateG !== StateList.default)
-          setStateG(StateList.default)
-        if ( (currentNotes.note1.name !== "B_flat" && currentNotes.note2.name !== "B_flat" ) && stateB_flat !== StateList.default)
-          setStateB_flat(StateList.default)
-        if ( (currentNotes.note1.name !== "E_flat" && currentNotes.note2.name !== "E_flat" ) && stateE_flat !== StateList.default)
-          setStateE_flat(StateList.default)
-        if ( (currentNotes.note1.name !== "G_sharp" && currentNotes.note2.name !== "G_sharp" ) && stateG_sharp !== StateList.default)
-          setStateG_sharp(StateList.default)
-        if ( (currentNotes.note1.name !== "C_sharp" && currentNotes.note2.name !== "C_sharp" ) && stateC_sharp !== StateList.default)
-          setStateC_sharp(StateList.default)
-        if ( (currentNotes.note1.name !== "F_sharp" && currentNotes.note2.name !== "F_sharp" ) && stateF_sharp !== StateList.default)
-          setStateF_sharp(StateList.default)
-      }
-    }
-
-    cleanState();
-
-    // Prevent refresh /20
-    if (currentTemp !== temperament.name){
-      temperamentProps();
-      setCurrentTemp(temperament.name);
-    }
-    if (currentFreq !== freqA4){
-      temperamentProps();
-      setCurrentFreq(freqA4);
     }
     
-  }, [currentNotes, currentTemp, currentFreq, currentTunerMode,
-    temperament, freqA4, frequencies, tunerMode, stateA, stateB, stateC,
-    stateD, stateE, stateF, stateG, stateB_flat, stateE_flat, stateG_sharp,
-    stateC_sharp, stateF_sharp,]);
+  }, [currentNotes, states]);
 
 
   return (
     <div id="Container_PitchCircleSVG">
       <svg id="PitchCircleSVG" xmlns="http://www.w3.org/2000/svg" width="370" height="370" viewBox="0 0 357.06 357.06">
-        <PitchCircleButtonSVG 
-          notesSymbol = "A"
-          position = {ButtonPosition.A}
-          active = {states.A}
-          tunerMode = {tunerMode} 
-          listNotes = {currentNotes}
-          onChange = {setStateA} 
-          setCurrentNotes = {setCurrentNotes}
-        />
-
-        <PitchCircleButtonSVG 
-          notesSymbol = "D"
-          position = {ButtonPosition.D}
-          active = {states.D}
-          tunerMode = {tunerMode} 
-          listNotes = {currentNotes}
-          onChange = {setStateD} 
-          setCurrentNotes = {setCurrentNotes}
-        />
-
-        <PitchCircleButtonSVG 
-          notesSymbol = "G"
-          position = {ButtonPosition.G}
-          active = {states.G}
-          tunerMode = {tunerMode} 
-          listNotes = {currentNotes}
-          onChange = {setStateG} 
-          setCurrentNotes = {setCurrentNotes}
-        />
-
-        <PitchCircleButtonSVG 
-          notesSymbol = "C"
-          position = {ButtonPosition.C}
-          active = {states.C}
-          tunerMode = {tunerMode} 
-          listNotes = {currentNotes}
-          onChange = {setStateC} 
-          setCurrentNotes = {setCurrentNotes}
-        />
-
-        <PitchCircleButtonSVG 
-          notesSymbol = "F"
-          position = {ButtonPosition.F}
-          active = {states.F}
-          tunerMode = {tunerMode} 
-          listNotes = {currentNotes}
-          onChange = {setStateF} 
-          setCurrentNotes = {setCurrentNotes}
-        />
-
-        <PitchCircleButtonSVG 
-          notesSymbol = "B_flat"
-          position = {ButtonPosition.B_flat}
-          active = {states.B_flat}
-          tunerMode = {tunerMode} 
-          listNotes = {currentNotes}
-          onChange = {setStateB_flat} 
-          setCurrentNotes = {setCurrentNotes}
-        />
-
-        <PitchCircleButtonSVG 
-          notesSymbol = "E_flat"
-          position = {ButtonPosition.E_flat}
-          active = {states.E_flat}
-          tunerMode = {tunerMode} 
-          listNotes = {currentNotes}
-          onChange = {setStateE_flat} 
-          setCurrentNotes = {setCurrentNotes}
-        />
-
-        <PitchCircleButtonSVG
-          notesSymbol = "G_sharp" 
-          position = {ButtonPosition.G_sharp}
-          active = {states.G_sharp}
-          tunerMode = {tunerMode} 
-          listNotes = {currentNotes}
-          onChange = {setStateG_sharp} 
-          setCurrentNotes = {setCurrentNotes}
-        />
-
-        <PitchCircleButtonSVG 
-          notesSymbol = "C_sharp"
-          position = {ButtonPosition.C_sharp}
-          active = {states.C_sharp}
-          tunerMode = {tunerMode} 
-          listNotes = {currentNotes}
-          onChange = {setStateC_sharp} 
-          setCurrentNotes = {setCurrentNotes}
-        />
-
-        <PitchCircleButtonSVG
-          notesSymbol = "F_sharp" 
-          position = {ButtonPosition.F_sharp}
-          active = {states.F_sharp}
-          tunerMode = {tunerMode} 
-          listNotes = {currentNotes}
-          onChange = {setStateF_sharp} 
-          setCurrentNotes = {setCurrentNotes}
-        />
-
-        <PitchCircleButtonSVG
-          notesSymbol = "B" 
-          position = {ButtonPosition.B}
-          active = {states.B}
-          tunerMode = {tunerMode} 
-          listNotes = {currentNotes}
-          onChange = {setStateB} 
-          setCurrentNotes = {setCurrentNotes}
-        />
         
-        <PitchCircleButtonSVG 
-          notesSymbol = "E"
-          position = {ButtonPosition.E}
-          active = {states.E}
-          tunerMode = {tunerMode} 
-          listNotes = {currentNotes}
-          onChange = {setStateE} 
-          setCurrentNotes = {setCurrentNotes}
-        />
+      { Object.keys(states).map((note) => {
+          const n = note as Notes;
+          return (
+            <PitchCircleButtonSVG
+              key = {n}
+              notesSymbol = {n}
+              position = {btnPosition[n]}
+              active = {states[n]}
+              tunerMode = {tunerMode} 
+              listNotes = {currentNotes}
+              onChange = {(state: NoteStates) => setStates(n, state)} 
+              setCurrentNotes = {setCurrentNotes}
+            />);
+        })}
 
         <text className="cls-3" transform="translate(278.22 247.59)">E</text>
         <text className="cls-3" transform="translate(231.53 293.77)">B</text>
