@@ -16,16 +16,15 @@ const refOctave = 4;
 const CenterCircle: React.FC<PitchCircleSVGProps> = ({notes, frequencies}) => {
 
   useEffect(() => {
+
+    console.log(notes);
     const cNote = document.getElementById("centerCircleNote")!;
     const cFreq = document.getElementById("centerCircleFrequency")!;
 
     if(notes.note1.state !== NoteStates.IDLE && notes.note2.state === NoteStates.IDLE){
-      if(notes.note1.state === NoteStates.SELECTED) {
-        cNote.innerHTML = (notes.note1.state === NoteStates.SELECTED)
-        ? convertNoteToString(notes.note1.note)+refOctave
-        : convertNoteToString(notes.note1.note)+(refOctave+1);
-      }
-        
+      cNote.innerHTML = (notes.note1.state === NoteStates.SELECTED)
+      ? convertNoteToString(notes.note1.note)+refOctave
+      : convertNoteToString(notes.note1.note)+(refOctave+1);
       cFreq.innerHTML = selectedNoteFrequency(frequencies, notes.note1)+" Hz";
     }
     else{
