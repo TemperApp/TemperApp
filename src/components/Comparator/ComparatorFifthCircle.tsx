@@ -33,14 +33,13 @@ const ComparatorFifthCircle: React.FC<ComparatorFifthCircleProps> = ({qualityNot
         <path data-name="F_sharp" fill={convertFifthQualityToColor(qualityNote2.F_sharp)} d="M224.21,290.34c-8.34,2.36-17.15,3.63-26.25,3.63c-7.72,0-15.24-0.91-22.43-2.64l5.38-20.07c5.48,1.28,11.18,1.95,17.05,1.95c7.24,0,14.24-1.02,20.87-2.93L224.21,290.34z"/>
         <path data-name="B"       fill={convertFifthQualityToColor(qualityNote2.B)} d="M265.85,265.85c-11.41,11.41-25.68,19.96-41.64,24.49l-5.38-20.06c12.39-3.57,23.47-10.24,32.34-19.11L265.85,265.85z"/>
         <path data-name="E"       fill={convertFifthQualityToColor(qualityNote2.E)} d="M290.34,224.21c-4.53,15.96-13.08,30.23-24.49,41.64l-14.68-14.68c8.87-8.87,15.54-19.95,19.11-32.34L290.34,224.21z"/>
-        <path data-name="A"       fill={convertFifthQualityToColor(qualityNote2.A)} d="M293.97,197.96c0,9.1-1.27,17.91-3.63,26.25l-20.06-5.38c1.91-6.63,2.93-13.63,2.93-20.87
-          c0-5.87-0.67-11.57-1.95-17.05l20.07-5.38C293.06,182.72,293.97,190.24,293.97,197.96z"/>
+        <path data-name="A"       fill={convertFifthQualityToColor(qualityNote2.A)} d="M293.97,197.96c0,9.1-1.27,17.91-3.63,26.25l-20.06-5.38c1.91-6.63,2.93-13.63,2.93-20.87c0-5.87-0.67-11.57-1.95-17.05l20.07-5.38C293.06,182.72,293.97,190.24,293.97,197.96z"/>
         <path data-name="D"       fill={convertFifthQualityToColor(qualityNote2.D)} d="M291.33,175.53l-20.07,5.38c-2.99-12.96-9.35-24.64-18.1-34.07l14.69-14.69C279.13,144.12,287.37,158.99,291.33,175.53z"/>
         <path data-name="G"       fill={convertFifthQualityToColor(qualityNote2.G)} d="M267.85,132.15l-14.69,14.69c-8.94-9.66-20.39-16.97-33.32-20.89l5.38-20.06C241.72,110.76,256.36,119.95,267.85,132.15z"/>
         <path data-name="C"       fill={convertFifthQualityToColor(qualityNote2.C)} d="M225.22,105.89l-5.38,20.06c-6.92-2.1-14.27-3.23-21.88-3.23c-6.24,0-12.29,0.76-18.08,2.19l-5.37-20.06c7.5-1.89,15.36-2.89,23.45-2.89C207.43,101.96,216.58,103.33,225.22,105.89z"/>
         <path data-name="F"       fill={convertFifthQualityToColor(qualityNote2.F)} d="M179.88,124.91c-13.52,3.33-25.59,10.32-35.12,19.85l-14.68-14.68c12.07-12.08,27.34-20.95,44.43-25.23L179.88,124.91z"/>
-        <path data-name="B_flat"  fill={convertFifthQualityToColor(qualityNote2.F)} d="M144.76,144.76c-9.53,9.53-16.52,21.6-19.85,35.12l-20.06-5.37c4.28-17.09,13.15-32.36,25.23-44.43L144.76,144.76z"/>
-        <path data-name="E_flat"  fill={convertFifthQualityToColor(qualityNote2.F)} d="M125.95,219.84l-20.06,5.38c-2.56-8.64-3.93-17.79-3.93-27.26c0-8.09,1-15.95,2.89-23.45l20.06,5.37c-1.43,5.79-2.19,11.84-2.19,18.08C122.72,205.57,123.85,212.92,125.95,219.84z"/>
+        <path data-name="B_flat"  fill={convertFifthQualityToColor(qualityNote2.B_flat)} d="M144.76,144.76c-9.53,9.53-16.52,21.6-19.85,35.12l-20.06-5.37c4.28-17.09,13.15-32.36,25.23-44.43L144.76,144.76z"/>
+        <path data-name="E_flat"  fill={convertFifthQualityToColor(qualityNote2.E_flat)} d="M125.95,219.84l-20.06,5.38c-2.56-8.64-3.93-17.79-3.93-27.26c0-8.09,1-15.95,2.89-23.45l20.06,5.37c-1.43,5.79-2.19,11.84-2.19,18.08C122.72,205.57,123.85,212.92,125.95,219.84z"/>
       </g>
     </>
   );
