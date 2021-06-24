@@ -6,29 +6,54 @@ ion-title {
   text-transform: uppercase;
 }
 
+ion-header::after {
+  position: absosulte;
+  border-radius: 8px;
+  background-color: var(--color-strong);
+  max-width: 85%;
+  height: 8px;
+  right: 0px;
+}
+
+.header::after {
+  right: 0px;
+}
+
+ion-tab-bar {
+  min-width: 90vw;
+}
+
 ion-label {
   font-family: "Nunito Sans" !important;
   font-style: normal;
   font-weight: 600;
   line-height: 30px;
   text-transform: uppercase;
+  font-size: 10px;
 }
 
 ion-tab-button:hover ion-label {
-  color: #738b8a;
+  color: var(--color-hover);
 }
 
 ion-tab-button:hover ion-icon {
-  fill: #738b8a;
-  stroke: #738b8a;
+  fill: var(--color-hover);
+  stroke: var(--color-hover);
 }
 
 ion-icon.icon-light {
-  fill: #a7c5c3;
-  stroke: #a7c5c3;
+  fill: var(--color);
+  stroke: var(--color);
 }
 
 .tab-selected ion-icon {
-  fill: #233c3a;
-  stroke: #233c3a;
+  fill: var(--color-selected);
+  stroke: var(--color-selected);
+}
+
+.separateur {
+  border-radius: 8px;
+  background: var(--degrade);
+  width: 300px;
+  height: 8px;
 }

@@ -5,7 +5,7 @@ import './Compare.css';
 const Compare: React.FC = () => {
   return (
     <IonPage>
-      <IonHeader className="ion-no-border">
+      <IonHeader>
         <IonToolbar>
           <IonTitle>Compare</IonTitle>
         </IonToolbar>

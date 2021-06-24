@@ -5,7 +5,7 @@ import './Home.css';
 const Home: React.FC = () => {
   return (
     <IonPage>
-      <IonHeader className="ion-no-border">
+      <IonHeader>
         <IonToolbar>
           <IonTitle>TemperApp</IonTitle>
         </IonToolbar>

@@ -6,6 +6,15 @@ http://ionicframework.com/docs/theming/ */
   --color-selected: #233c3a;
   --color: #a7c5c3;
   --ion-tab-bar-color: #a7c5c3;
+  --color-hover: #738b8a;
+  --color-strong: #ffae7a;
+  --degrade: linear-gradient(
+    272.37deg,
+    #ffe0b1 17.29%,
+    #ffc09f 72.76%,
+    #f88f8f 132.71%
+  );
+  --color-dark: #233c3a;
 
   /** primary **/
   --ion-color-primary: #233c3a;
@@ -78,6 +87,8 @@ http://ionicframework.com/docs/theming/ */
   --ion-color-light-contrast-rgb: 0, 0, 0;
   --ion-color-light-shade: #d7d8da;
   --ion-color-light-tint: #f5f6f9;
+
+  --font: "Nunito Sans";
 }
 
 @media (prefers-color-scheme: light) {
