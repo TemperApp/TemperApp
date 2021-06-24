@@ -14,6 +14,7 @@ import './Tuner.css';
 import { fetchTemperaments } from '../../engine/DataAccessor';
 import { TemperamentDBType } from '../../engine/DB';
 import PitchCircle from './PitchCircle';
+import SoundEngine from '../../engine/SoundEngine';
 
 const Tuner: React.FC = () => {
 
@@ -26,7 +27,11 @@ const Tuner: React.FC = () => {
   const fetchTemperamentsList = async () => {
     const temperaments = await fetchTemperaments();
     setTemperamentsList(temperaments);
-  } 
+  };
+
+  useEffect(() => {
+    SoundEngine.volume(isMuted ? -128 : -24);
+  }, [isMuted]);
 
   useEffect(() => {
     fetchTemperamentsList();

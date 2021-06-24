@@ -38,8 +38,12 @@ class SoundEngine {
   
   public static play(freq: number): void {
     this.get().freq = freq;
-    this.get().synth.triggerAttack(this.get().freq);
-    Tone.Transport.start();
+    try {
+      this.get().synth.triggerAttack(this.get().freq);
+      Tone.Transport.start();
+    } catch (e) {
+      console.warn(e);
+    }
   }
 
 

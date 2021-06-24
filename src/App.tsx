@@ -60,7 +60,7 @@ const App: React.FC = () => {
   return (
     <IonApp>
       <IonReactRouter>
-        <IonTabs onIonTabsWillChange={(e) => SoundEngine.stop()} >
+        <IonTabs>
           <IonRouterOutlet>
             <Route exact path="/Tune">
               <Tune />
