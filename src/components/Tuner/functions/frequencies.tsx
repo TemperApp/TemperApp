@@ -116,6 +116,25 @@ export const thirdEqualQ = () => {
     return thirdQ;
 }
 
+export const DivergenceEqual = () => {
+
+    let thirdQ : {[key: string]: number | null} = {
+        A: 0,
+        B: 0,
+        C: 0,
+        D: 0,
+        E: 0,
+        F: 0,
+        G: 0,
+        B_flat : 0,
+        E_flat : 0,
+        G_sharp : 0,
+        C_sharp : 0,
+        F_sharp : 0,
+    }
+    return thirdQ;
+}
+
 export const selectedNoteFrequency = (freqs: {[key: string]: number}, active: ActiveNote ) => {
     let freq;
     switch (active.note) {
@@ -160,7 +179,7 @@ export const selectedNoteFrequency = (freqs: {[key: string]: number}, active: Ac
             break;
     }
     if(active.state === NoteStates.OCTAVE){
-        freq = 2*freq;
+        freq = freq/2;
     }
     return freq;
 }
@@ -182,11 +201,28 @@ export const BpsCalc = (note1: number, note2: number) => {
         note2 =  note1;
         note1 = temp;
     }
-    return Math.floor(note2-note1)
+    let bps = Math.floor(note2-note1);
+    if(bps*60>=200){
+        if(bps*60>=600){
+          return "//"
+        }
+        else{
+            return Math.floor(bps)
+        }
+    }
+    else{
+        return Math.floor(bps)
+    }
+    
 }
 
 export const BpmCalc = (note1: number, note2: number) => {
-    let bps = BpsCalc(note1,note2)
+    if(note1>note2){
+        let temp = note2;
+        note2 =  note1;
+        note1 = temp;
+    }
+    let bps = Math.floor(note2-note1);
     if(bps*60>=200){
       if(bps*60>=600){
         return "//"

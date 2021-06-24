@@ -23,7 +23,7 @@ const CenterCircle: React.FC<PitchCircleSVGProps> = ({notes, frequencies}) => {
     if(notes.note1.state !== NoteStates.IDLE && notes.note2.state === NoteStates.IDLE){
       cNote.innerHTML = (notes.note1.state === NoteStates.SELECTED)
       ? convertNoteToString(notes.note1.note)+refOctave
-      : convertNoteToString(notes.note1.note)+(refOctave+1);
+      : convertNoteToString(notes.note1.note)+(refOctave-1);
       cFreq.innerHTML = selectedNoteFrequency(frequencies, notes.note1)+" Hz";
     }
     else{
@@ -33,15 +33,15 @@ const CenterCircle: React.FC<PitchCircleSVGProps> = ({notes, frequencies}) => {
             cNote.innerHTML = convertNoteToString(notes.note1.note)+refOctave+" - "+convertNoteToString(notes.note2.note)+refOctave;
           }
           else{
-            cNote.innerHTML = convertNoteToString(notes.note1.note)+refOctave+" - "+convertNoteToString(notes.note2.note)+(refOctave+1);
+            cNote.innerHTML = convertNoteToString(notes.note1.note)+refOctave+" - "+convertNoteToString(notes.note2.note)+(refOctave-1);
           }
         }
         else{
           if(notes.note2.state === NoteStates.SELECTED){
-            cNote.innerHTML = convertNoteToString(notes.note1.note)+(refOctave+1)+" - "+convertNoteToString(notes.note2.note)+refOctave;
+            cNote.innerHTML = convertNoteToString(notes.note1.note)+(refOctave-1)+" - "+convertNoteToString(notes.note2.note)+refOctave;
           }
           else{
-            cNote.innerHTML = convertNoteToString(notes.note1.note)+(refOctave+1)+" - "+convertNoteToString(notes.note2.note)+(refOctave+1);
+            cNote.innerHTML = convertNoteToString(notes.note1.note)+(refOctave-1)+" - "+convertNoteToString(notes.note2.note)+(refOctave-1);
           }
         }
         if(cFreq !== null)

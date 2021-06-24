@@ -11,7 +11,7 @@ const Compare: React.FC = () => {
           <IonTitle>Compare</IonTitle>
         </IonToolbar>
       </IonHeader>
-      <IonContent fullscreen scrollY={false}>
+      <IonContent fullscreen scrollY={true}>
         <Comparator /> 
       </IonContent>
     </IonPage>

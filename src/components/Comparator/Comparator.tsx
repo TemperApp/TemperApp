@@ -1,4 +1,4 @@
-import { IonCol, IonGrid, IonRow, IonSelect, IonSelectOption } from '@ionic/react';
+import { IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle, IonCol, IonGrid, IonRow, IonSelect, IonSelectOption } from '@ionic/react';
 import React, { useEffect, useState } from 'react';
 import { fetchTemperaments } from '../../engine/DataAccessor';
 import { TemperamentDBType } from '../../engine/DB';
@@ -6,6 +6,7 @@ import { TemperamentDBType } from '../../engine/DB';
 //Style
 
 import './Comparator.css'
+import ComparatorDivergence from './ComparatorDivergence';
 import ComparatorFifthCircle from './ComparatorFifthCircle';
 import ComparatorNotesCircle from './ComparatorNotesCircle';
 import ComparatorSVG from './ComparatorSVG';
@@ -55,12 +56,15 @@ const Comparator: React.FC = () => {
         </IonRow>
       </IonGrid>
 
-      <IonRow className="ion-padding-horizontal ion-justify-content-center">
-        <ComparatorSVG 
-          idTemperament1 = {temperament.idTemperament}
-          idTemperament2 = {temperament2.idTemperament}
-        />
-      </IonRow>
+      
+      <ComparatorSVG 
+        nameTemperament1 = {temperament.nameFR}
+        nameTemperament2 = {temperament2.nameFR}
+        idTemperament1 = {temperament.idTemperament}
+        idTemperament2 = {temperament2.idTemperament}
+      />
+      
+
     </>
     
   );
