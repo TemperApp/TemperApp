@@ -1,13 +1,14 @@
 import React from 'react';
 import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/react';
 import './Tuner.css';
+import TempButton from '../components/Accueil/TempButton';
 
 const Tuner: React.FC = () => {
   return (
     <IonPage>
       <IonHeader>
         <IonToolbar>
-          <IonTitle>Tuner</IonTitle>
+          <IonTitle>Hello</IonTitle>
         </IonToolbar>
       </IonHeader>
       <IonContent fullscreen>
@@ -16,6 +17,7 @@ const Tuner: React.FC = () => {
             <IonTitle size="large">Accordeur</IonTitle>
           </IonToolbar>
         </IonHeader>
+        <TempButton />
       </IonContent>
     </IonPage>
   );
