@@ -15,6 +15,7 @@ import { PitchCircleButtonSVGPos as btnPosition } from "./PitchCircleButtonSVGPo
 //Styles 
 import "./PitchCircleSVG.css";
 import { Notes } from '../../model/Note';
+import SoundEngine from '../../engine/SoundEngine';
 
 export enum NoteStates {
   IDLE, SELECTED, OCTAVE,
@@ -52,18 +53,18 @@ const PitchCircleSVG: React.FC<PitchCircleSVGProps> = ({
 
   const [frequencies, setFrequencies] = useState<{[key: string] : number}>(frequenciesEqual4(440));
 
-  const [C       , setC      ] = useState<any>(NoteStates.IDLE);
-  const [C_sharp , setC_sharp] = useState<any>(NoteStates.IDLE);
-  const [D       , setD      ] = useState<any>(NoteStates.IDLE);
-  const [E_flat  , setE_flat ] = useState<any>(NoteStates.IDLE);
-  const [E       , setE      ] = useState<any>(NoteStates.IDLE);
-  const [F       , setF      ] = useState<any>(NoteStates.IDLE);
-  const [F_sharp , setF_sharp] = useState<any>(NoteStates.IDLE);
-  const [G       , setG      ] = useState<any>(NoteStates.IDLE);
-  const [G_sharp , setG_sharp] = useState<any>(NoteStates.IDLE);
-  const [A       , setA      ] = useState<any>(NoteStates.IDLE);
-  const [B_flat  , setB_flat ] = useState<any>(NoteStates.IDLE);
-  const [B       , setB      ] = useState<any>(NoteStates.IDLE);
+  const [C       , setC      ] = useState<NoteStates>(NoteStates.IDLE);
+  const [C_sharp , setC_sharp] = useState<NoteStates>(NoteStates.IDLE);
+  const [D       , setD      ] = useState<NoteStates>(NoteStates.IDLE);
+  const [E_flat  , setE_flat ] = useState<NoteStates>(NoteStates.IDLE);
+  const [E       , setE      ] = useState<NoteStates>(NoteStates.IDLE);
+  const [F       , setF      ] = useState<NoteStates>(NoteStates.IDLE);
+  const [F_sharp , setF_sharp] = useState<NoteStates>(NoteStates.IDLE);
+  const [G       , setG      ] = useState<NoteStates>(NoteStates.IDLE);
+  const [G_sharp , setG_sharp] = useState<NoteStates>(NoteStates.IDLE);
+  const [A       , setA      ] = useState<NoteStates>(NoteStates.IDLE);
+  const [B_flat  , setB_flat ] = useState<NoteStates>(NoteStates.IDLE);
+  const [B       , setB      ] = useState<NoteStates>(NoteStates.IDLE);
 
   const states = {C, C_sharp, D, E_flat, E, F, F_sharp, G, G_sharp, A, B_flat, B};
   
@@ -126,6 +127,29 @@ const PitchCircleSVG: React.FC<PitchCircleSVGProps> = ({
     }
     
   }, [currentNotes, states]);
+
+  useEffect(() => {
+    const freq1 = (currentNotes.note1.note === "")
+    ? 0
+    : frequencies[currentNotes.note1.note]
+      * (currentNotes.note1.state === NoteStates.OCTAVE ? 2 : 1);
+
+    const freq2 = (currentNotes.note2.note === "")
+    ? 0
+    : frequencies[currentNotes.note2.note]
+      * (currentNotes.note2.state === NoteStates.OCTAVE ? 2 : 1);
+
+    if (currentNotes.note1.note !== "")
+      SoundEngine.stopAndPlay(freq1);
+    else
+      SoundEngine.stop();
+
+    if (currentNotes.note2.note !== "")
+      SoundEngine.setPulseBPS(Math.abs(freq1 - freq2));
+    else
+      SoundEngine.setPulseBPS(0);
+    
+  }, [currentNotes, frequencies]);
 
 
   return (
