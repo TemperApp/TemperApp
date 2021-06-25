@@ -34,7 +34,6 @@ import './App.css';
 
 /* Fonction Engine */
 import DB from './engine/DB';
-import SoundEngine from './engine/SoundEngine';
 
 /* SQLite */
 export let sqlite: any; // singleton

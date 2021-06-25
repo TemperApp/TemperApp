@@ -1,18 +1,12 @@
-import { Notes } from "./Note";
+import { NotesMap } from "./Note";
 
 export type Temperament = {
   idTemperament: number,
   name: string,
   nameFR: string,
-  deviation:  {
-    [key in keyof typeof Notes]: number
-  },
-  cpExp5th: {
-    [key in keyof typeof Notes]: string
-  },
-  csExp3rd: {
-    [key in keyof typeof Notes]: string
-  }
+  deviation: NotesMap<number>,
+  cpExp5th: NotesMap<string>,
+  csExp3rd: NotesMap<string>
 };
 
 export const defaultTemperaments: Array<Temperament> = [

@@ -1,237 +1,110 @@
-import { ActiveNote, NoteStates } from "../PitchCircleSVG";
 import { cpExp5thStrToNumber, csExp3rdStrToNumber} from '../../../model/Divergence';
+import { NotesMap, mapNotesMap } from "../../../model/Note";
 
-export const frequenciesEqual4 = (A4:number) => {
-    let frequenciesEqual4 : {[key: string]: number} = {
-        A: A4,
-        B: Math.floor(A4*(Math.pow(2,((1/12)*2))) * 10)/10,
-        C: Math.floor(A4*(Math.pow(2,((-1/12)*9))) * 10)/10,
-        D: Math.floor(A4*(Math.pow(2,((-1/12)*7))) * 10)/10,
-        E: Math.floor(A4*(Math.pow(2,((-1/12)*5))) * 10)/10,
-        F: Math.floor(A4*(Math.pow(2,((-1/12)*4))) * 10)/10,
-        G: Math.floor(A4*(Math.pow(2,((-1/12)*2))) * 10)/10,
-        B_flat : Math.floor(A4*(Math.pow(2,((1/12)*1))) * 10)/10,
-        E_flat : Math.floor(A4*(Math.pow(2,((-1/12)*6))) * 10)/10,
-        G_sharp : Math.floor(A4*(Math.pow(2,((-1/12)*1))) * 10)/10,
-        C_sharp : Math.floor(A4*(Math.pow(2,((-1/12)*8))) * 10)/10,
-        F_sharp : Math.floor(A4*(Math.pow(2,((-1/12)*3))) * 10)/10,
-    }
-    return frequenciesEqual4
-}
 
-export const frequencies4 = (A4:number, deviation: {[key: string]: number} ) => {
-    let freqEqual4 = frequenciesEqual4(A4);
+/**
+ * Computes the frequencies of the 12 notes of the 4th
+ * octave relative to the given A4 reference frequency
+ * and deviation values
+ * @param A4 Reference frequency of A4 note
+ * @param deviation Deviation tables for each note
+ *                  relative to the equal temperament
+ * @returns a NotesMap of frequencies for the 4th octave
+ */
+export const frequencies4 = (A4 = 440, deviation = DivergenceEqual()): NotesMap<number> => 
+({
+    C       : A4 * Math.pow(2, -9/12) * Math.pow(2, (deviation.C       / 1200)),
+    C_sharp : A4 * Math.pow(2, -8/12) * Math.pow(2, (deviation.C_sharp / 1200)),
+    D       : A4 * Math.pow(2, -7/12) * Math.pow(2, (deviation.D       / 1200)),
+    E_flat  : A4 * Math.pow(2, -6/12) * Math.pow(2, (deviation.E_flat  / 1200)),
+    E       : A4 * Math.pow(2, -5/12) * Math.pow(2, (deviation.E       / 1200)),
+    F       : A4 * Math.pow(2, -4/12) * Math.pow(2, (deviation.F       / 1200)),
+    F_sharp : A4 * Math.pow(2, -3/12) * Math.pow(2, (deviation.F_sharp / 1200)),
+    G       : A4 * Math.pow(2, -2/12) * Math.pow(2, (deviation.G       / 1200)),
+    G_sharp : A4 * Math.pow(2, -1/12) * Math.pow(2, (deviation.G_sharp / 1200)),
+    A       : A4                      * Math.pow(2, (deviation.A       / 1200)),
+    B_flat  : A4 * Math.pow(2,  1/12) * Math.pow(2, (deviation.B_flat  / 1200)),
+    B       : A4 * Math.pow(2,  2/12) * Math.pow(2, (deviation.B       / 1200)),
+});
 
-    let frequencies4 : {[key: string]: number} = {
-        A: Math.floor(freqEqual4.A * Math.pow(2, (deviation.A / 1200) )*10)/10,
-        B: Math.floor(freqEqual4.B * Math.pow(2, (deviation.B / 1200) )*10)/10,
-        C: Math.floor(freqEqual4.C * Math.pow(2, (deviation.C / 1200) )*10)/10,
-        D: Math.floor(freqEqual4.D * Math.pow(2, (deviation.D / 1200) )*10)/10,
-        E: Math.floor(freqEqual4.E * Math.pow(2, (deviation.E / 1200) )*10)/10,
-        F: Math.floor(freqEqual4.F * Math.pow(2, (deviation.F / 1200) )*10)/10,
-        G: Math.floor(freqEqual4.G * Math.pow(2, (deviation.G / 1200) )*10)/10,
-        B_flat : Math.floor(freqEqual4.B_flat * Math.pow(2, (deviation.B_flat / 1200) )*10)/10,
-        E_flat : Math.floor(freqEqual4.E_flat * Math.pow(2, (deviation.E_flat / 1200) )*10)/10,
-        G_sharp : Math.floor(freqEqual4.G_sharp * Math.pow(2, (deviation.G_sharp / 1200) )*10)/10,
-        C_sharp : Math.floor(freqEqual4.C_sharp * Math.pow(2, (deviation.C_sharp / 1200) )*10)/10,
-        F_sharp : Math.floor(freqEqual4.F_sharp * Math.pow(2, (deviation.F_sharp / 1200) )*10)/10
-    }
 
-    return frequencies4;
-}
+/**
+ * @param csExp3rdMap a NotesMap of the syntonic comma exponent
+ *                    with a common format of use.
+ *                    (e.g.: +7/11, 0, -1/11, , 20/11).
+ *                    No sign provided means 'plus' (+) by default
+ * @returns thirds quality number value
+ */
+export const thirdQ = (csExp3rdMap: NotesMap<string>): NotesMap<number|null> => (
+  mapNotesMap(csExp3rdMap, csExp3rdStrToNumber)
+);
 
-export const thirdQ = (third: {[key: string]: string } ) => {
 
-    let thirdQ : {[key: string]: number | null} = {
-        A: csExp3rdStrToNumber(third.A),
-        B: csExp3rdStrToNumber(third.B),
-        C: csExp3rdStrToNumber(third.C),
-        D: csExp3rdStrToNumber(third.D),
-        E: csExp3rdStrToNumber(third.E),
-        F: csExp3rdStrToNumber(third.F),
-        G: csExp3rdStrToNumber(third.G),
-        B_flat : csExp3rdStrToNumber(third.B_flat),
-        E_flat : csExp3rdStrToNumber(third.E_flat),
-        G_sharp : csExp3rdStrToNumber(third.G_sharp),
-        C_sharp : csExp3rdStrToNumber(third.C_sharp),
-        F_sharp : csExp3rdStrToNumber(third.F_sharp)
-    }
-    return thirdQ;
-}
+/**
+ * @param cpExp5thMap a NotesMap of the pythagorean comma exponent
+ *                    with a common format of use.
+ *                    (e.g.: -1/12, 0, +1/4.36, 2/0.66).
+ *                    No sign provided means 'minus' (-) by default
+ * @returns fitfhs quality number value
+ */
+export const fifthQ = (cpExp5thMap: NotesMap<string>): NotesMap<number|null> => (
+  mapNotesMap(cpExp5thMap, cpExp5thStrToNumber)
+);
 
-export const fifthQ = (fifth: {[key: string]: string} ) => {
 
-    let fifthQ : {[key: string]: number | null} = {
-        A: cpExp5thStrToNumber(fifth.A),
-        B: cpExp5thStrToNumber(fifth.B),
-        C: cpExp5thStrToNumber(fifth.C),
-        D: cpExp5thStrToNumber(fifth.D),
-        E: cpExp5thStrToNumber(fifth.E),
-        F: cpExp5thStrToNumber(fifth.F),
-        G: cpExp5thStrToNumber(fifth.G),
-        B_flat : cpExp5thStrToNumber(fifth.B_flat),
-        E_flat : cpExp5thStrToNumber(fifth.E_flat),
-        G_sharp : cpExp5thStrToNumber(fifth.G_sharp),
-        C_sharp : cpExp5thStrToNumber(fifth.C_sharp),
-        F_sharp : cpExp5thStrToNumber(fifth.F_sharp)
-    }
-    return fifthQ;
-}
+export const fifthEqualQ = (): NotesMap<number|null> => (mapNotesMap(-1));
+export const thirdEqualQ = (): NotesMap<number|null> => (mapNotesMap(7));
+export const DivergenceEqual = (): NotesMap<number> => (mapNotesMap(0));
 
-export const fifthEqualQ = () => {
-
-    let fifthQ : {[key: string]: number | null} = {
-        A: -1,
-        B: -1,
-        C: -1,
-        D: -1,
-        E: -1,
-        F: -1,
-        G: -1,
-        B_flat : -1,
-        E_flat : -1,
-        G_sharp : -1,
-        C_sharp : -1,
-        F_sharp : -1,
-    }
-    return fifthQ;
-}
-
-export const thirdEqualQ = () => {
-
-    let thirdQ : {[key: string]: number | null} = {
-        A: 7,
-        B: 7,
-        C: 7,
-        D: 7,
-        E: 7,
-        F: 7,
-        G: 7,
-        B_flat : 7,
-        E_flat : 7,
-        G_sharp : 7,
-        C_sharp : 7,
-        F_sharp : 7,
-    }
-    return thirdQ;
-}
-
-export const DivergenceEqual = () => {
-
-    let thirdQ : {[key: string]: number | null} = {
-        A: 0,
-        B: 0,
-        C: 0,
-        D: 0,
-        E: 0,
-        F: 0,
-        G: 0,
-        B_flat : 0,
-        E_flat : 0,
-        G_sharp : 0,
-        C_sharp : 0,
-        F_sharp : 0,
-    }
-    return thirdQ;
-}
-
-export const selectedNoteFrequency = (freqs: {[key: string]: number}, active: ActiveNote ) => {
-    let freq;
-    switch (active.note) {
-        case "A":
-            freq = freqs.A;
-            break;
-        case "B":
-            freq = freqs.B;
-            break;
-        case "C":
-            freq = freqs.C;
-            break;
-        case "D":
-            freq = freqs.D;
-            break;
-        case "E":
-            freq = freqs.E;
-            break;
-        case "F":
-            freq = freqs.F;
-            break;
-        case "G":
-            freq = freqs.G;
-            break;
-        case "B_flat":
-            freq = freqs.B_flat;
-            break;
-        case "E_flat":
-            freq = freqs.E_flat;
-            break;
-        case "G_sharp":
-            freq = freqs.G_sharp;
-            break;
-        case "C_sharp":
-            freq = freqs.C_sharp;
-            break;
-        case "F_sharp":
-            freq = freqs.F_sharp;
-            break;   
-        default:
-            freq = 440;
-            break;
-    }
-    if(active.state === NoteStates.OCTAVE){
-        freq = freq/2;
-    }
-    return freq;
-}
 
 export const noteToStr = (note : string) => {
-    switch (note) {
-        case "B_flat": return "B♭";
-        case "E_flat": return "E♭";
-        case "G_sharp": return "G♯";
-        case "C_sharp": return "C♯";
-        case "F_sharp": return "F♯" ;  
-        default: return note;
-    }
-}
+  switch (note) {
+    case "B_flat": return "B♭";
+    case "E_flat": return "E♭";
+    case "G_sharp": return "G♯";
+    case "C_sharp": return "C♯";
+    case "F_sharp": return "F♯" ;  
+    default: return note;
+  }
+};
 
 export const BpsCalc = (note1: number, note2: number) => {
-    if(note1>note2){
-        let temp = note2;
-        note2 =  note1;
-        note1 = temp;
-    }
-    let bps = Math.floor(note2-note1);
-    if(bps*60>=200){
-        if(bps*60>=600){
-          return "//"
-        }
-        else{
-            return Math.floor(bps)
-        }
+  if(note1>note2){
+    let temp = note2;
+    note2 =  note1;
+    note1 = temp;
+  }
+  let bps = Math.floor(note2-note1);
+  if(bps*60>=200){
+    if(bps*60>=600){
+      return "//"
     }
     else{
-        return Math.floor(bps)
+      return Math.floor(bps)
     }
+  }
+  else{
+    return Math.floor(bps)
+  }
     
-}
+};
 
 export const BpmCalc = (note1: number, note2: number) => {
-    if(note1>note2){
-        let temp = note2;
-        note2 =  note1;
-        note1 = temp;
-    }
-    let bps = Math.floor(note2-note1);
-    if(bps*60>=200){
-      if(bps*60>=600){
-        return "//"
-      }
-      else{
-        return ("4 x "+15*bps);
-      }
+  if(note1>note2){
+    let temp = note2;
+    note2 =  note1;
+    note1 = temp;
+  }
+  let bps = Math.floor(note2-note1);
+  if(bps*60>=200){
+    if(bps*60>=600){
+      return "//"
     }
     else{
-      return Math.floor(60*bps) + " Bpm"
+      return ("4 x "+15*bps);
     }
-}
+  }
+  else{
+    return Math.floor(60*bps) + " Bpm"
+  }
+};

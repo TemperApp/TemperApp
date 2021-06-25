@@ -1,13 +1,14 @@
 import React, { useEffect } from 'react';
-import { selectedNoteFrequency, noteToStr, BpsCalc } from './functions/frequencies';
+import { noteToStr, BpsCalc } from './functions/frequencies';
 import { ActiveNotes, NoteStates } from './PitchCircleSVG';
+import { NotesMap } from '../../model/Note';
 
 //Styles
 import "./CenterCircle.css";
 
 type PitchCircleSVGProps = {
   actives: ActiveNotes,
-  frequencies: { [key: string]: number },
+  frequencies: NotesMap<number>,
 }
 
 const isBps = true;
@@ -31,7 +32,7 @@ const CenterCircle: React.FC<PitchCircleSVGProps> = ({ actives, frequencies }) =
 
     if (!isIdle0 && isIdle1) {
       cNote.innerHTML = noteToStr(actives[0].note!) + (refOctave + (isOctave0 ? -1 : 0));
-      cFreq.innerHTML = selectedNoteFrequency(frequencies, actives[0]) + " Hz";
+      cFreq.innerHTML = (frequencies[actives[0].note!] * (isOctave0 ? 0.5 : 1)).toFixed(1) + " Hz";
     }
 
     if (!isIdle0 && !isIdle1) {
@@ -43,8 +44,8 @@ const CenterCircle: React.FC<PitchCircleSVGProps> = ({ actives, frequencies }) =
         + (refOctave + (isOctave1 ? -1 : 0));
 
       cFreq.innerHTML = BpsCalc(
-          selectedNoteFrequency(frequencies, actives[0]),
-          selectedNoteFrequency(frequencies, actives[1])
+          frequencies[actives[0].note!] * (isOctave0 ? 0.5 : 1),
+          frequencies[actives[1].note!] * (isOctave1 ? 0.5 : 1)
         )
         + (isBps ? " bps" : "");
     }
