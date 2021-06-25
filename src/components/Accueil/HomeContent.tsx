@@ -2,9 +2,11 @@ import "rc-collapse/assets/index.css";
 import Collapse, { Panel } from "rc-collapse";
 import motion from './_util/motionUtil';
 import { IonButton, IonGrid, IonRow, IonCol, IonIcon } from '@ionic/react';
-import './Collapse.css'; 
 import { chevronDownOutline, chevronForwardSharp } from "ionicons/icons";
 import { useState } from "react";
+
+import './Collapse.css'; 
+import "./ButtonTemper.css"
 
 const arrowPath =
 'M869 487.8L491.2 159.9c-2.9-2.5-6.6-3.9-10.5-3.9h-88' +
@@ -81,13 +83,15 @@ const HomeContent : React.FC = () => {
 
 
     return (
+    <div>
+   
     <Collapse accordion={true} openMotion={motion} expandIcon={(e) => expandIcon(e)} onChange={(e) => (isActive(e))} >
         <Panel header="Mes tempéraments" headerClass="my-header-class" >
             <IonGrid>
                 <IonRow >
                     {temperList.map((t) => 
                     <IonCol size='6'>
-                        <IonButton expand="block" color="primary">{t}</IonButton>
+                        <IonButton expand="block" color="temperapp">{t}</IonButton>
                     </IonCol>
                      )}
                 </IonRow>
@@ -97,13 +101,15 @@ const HomeContent : React.FC = () => {
                 <IonRow >
                     {temperList.map((t) => 
                     <IonCol size='6'>
-                        <IonButton expand="block" color="primary">{t}</IonButton>
+                        <IonButton expand="block" color="temperapp">{t}</IonButton>
                     </IonCol>
                      )}
                 </IonRow>
             </IonGrid>
         </Panel>
     </Collapse>
+
+    </div>
     )
 }; 
 
