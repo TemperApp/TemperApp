@@ -1,7 +1,7 @@
 import React from 'react';
 import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/react';
 import './Tuner.css';
-import TempButton from '../components/Accueil/TempButton';
+import HomeContent from '../components/Accueil/HomeContent';
 
 const Tuner: React.FC = () => {
   return (
@@ -17,7 +17,7 @@ const Tuner: React.FC = () => {
             <IonTitle size="large">Accordeur</IonTitle>
           </IonToolbar>
         </IonHeader>
-        <TempButton />
+        <HomeContent />
       </IonContent>
     </IonPage>
   );
