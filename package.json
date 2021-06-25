@@ -2,6 +2,7 @@
   "name": "dev",
   "version": "0.0.1",
   "private": true,
+  "homepage": "https://benjaminbriere.github.io/temperapp/",
   "dependencies": {
     "@capacitor-community/sqlite": "^2.9.16",
     "@capacitor/android": "3.0.0",
@@ -22,6 +23,7 @@
     "@types/react-router": "^5.1.11",
     "@types/react-router-dom": "^5.1.7",
     "ionicons": "^5.4.0",
+    "rc-collapse": "^3.1.1",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-router": "^5.2.0",
@@ -47,7 +49,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [
