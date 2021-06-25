@@ -13,7 +13,7 @@ export enum Notes {
   B = "B",
 };
 
-export type NotesMap<T> = {[key in keyof typeof Notes]: T}
+export type NotesMap<T> = { [key in keyof typeof Notes]: T }
 
 /**
  * @param values values to assign to the notes. If it is
@@ -33,7 +33,7 @@ export function mapNotesMap<T>(
   f = (value: any): T => value
 ): NotesMap<T> {
   const isNotesMap = typeof values !== "number" && typeof values !== "string";
-    return ({
+  return ({
       C       : f(isNotesMap ? (values as NotesMap<any>).C       : values),
       C_sharp : f(isNotesMap ? (values as NotesMap<any>).C_sharp : values),
       D       : f(isNotesMap ? (values as NotesMap<any>).D       : values),
@@ -57,12 +57,12 @@ export enum NoteAlter {
 }
 
 
-const ASPN_TO_SYLLABLES: {[idx:string]: string } = {
-  A:"La", B:"Si", C:"Do", D:"Ré", E:"Mi", F:"Fa", G:"Sol",
-  a:"La", b:"Si", c:"Do", d:"Ré", e:"Mi", f:"Fa", g:"Sol",
+const ASPN_TO_SYLLABLES: { [idx: string]: string } = {
+  A: "La", B: "Si", C: "Do", D: "Ré", E: "Mi", F: "Fa", G: "Sol",
+  a: "La", b: "Si", c: "Do", d: "Ré", e: "Mi", f: "Fa", g: "Sol",
 }
 
-const SYLLABLES_TO_ASPN: {[idx:string]: string } = {
+const SYLLABLES_TO_ASPN: { [idx: string]: string } = {
   La: "A", Si: "B", Do: "C", Ré: "D", Re: "D", Mi: "E", Fa: "F", Sol: "G",
   la: "A", si: "B", do: "C", ré: "D", re: "D", mi: "E", fa: "F", sol: "G",
 }
@@ -155,22 +155,22 @@ export class Note implements INote {
     const str = note.trim();
     if (Note.isSyllablesNotation(str)) {
       const [, syllable, alter, octave] =
-          str.match(/^(do|re|ré|mi|fa|sol|la|si)(#|♯|b|♭)?(-1|[0-9])?$/i) as any[];
-      
+        str.match(/^(do|re|ré|mi|fa|sol|la|si)(#|♯|b|♭)?(-1|[0-9])?$/i) as any[];
+
       return Note.create2(
         SYLLABLES_TO_ASPN[syllable.toLowerCase()],
         (!alter) ? NoteAlter.NONE : Note.parseAlter(alter),
-        (!octave) ? 4 : Number(octave)+1);
-    
+        (!octave) ? 4 : Number(octave) + 1);
+
     } else if (Note.isASPNotation(str)) {
       const [, char, alter, octave] =
-          str.match(/^([A-G])(#|♯|b|♭)?([0-9]|10)?$/i) as any[];
-      
+        str.match(/^([A-G])(#|♯|b|♭)?([0-9]|10)?$/i) as any[];
+
       return Note.create2(
         char,
         (!alter) ? NoteAlter.NONE : Note.parseAlter(alter),
         (!octave) ? 4 : Number(octave));
-    
+
     } else {
       console.warn(`[model]: Cannot parse as note: '${str}'`);
       return null;
@@ -230,7 +230,7 @@ export class Note implements INote {
    */
   string2(alterExactSymbol = false): string {
     return ASPN_TO_SYLLABLES[this.char]
-      + (this.alter === NoteAlter.NONE 
+      + (this.alter === NoteAlter.NONE
         ? ""
         : (!alterExactSymbol)
           ? this.alter

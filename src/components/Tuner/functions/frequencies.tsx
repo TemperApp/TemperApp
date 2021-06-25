@@ -1,4 +1,4 @@
-import { cpExp5thStrToNumber, csExp3rdStrToNumber} from '../../../model/Divergence';
+import { cpExp5thStrToNumber, csExp3rdStrToNumber } from '../../../model/Divergence';
 import { NotesMap, mapNotesMap } from "../../../model/Note";
 
 

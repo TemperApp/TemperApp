@@ -33,7 +33,7 @@ const PitchCircleButtonSVG: React.FC<PitchCircleButtonSVGProps> = ({
 }) => {
 
   const note = useRef<SVGPathElementOrNull>(null);
-  
+
   const onLongPress = useLongPress(() => {
     // onLongPress
     switch (state) {
@@ -92,7 +92,7 @@ const PitchCircleButtonSVG: React.FC<PitchCircleButtonSVGProps> = ({
   };
 
   return (
-    <path 
+    <path
       fill={colorButton(state)} stroke="#A7C5C3"
       strokeMiterlimit="10" strokeOpacity="1" strokeWidth="0.5"
       transform="translate(-2.04 -1.82)" d={position}
@@ -103,7 +103,7 @@ const PitchCircleButtonSVG: React.FC<PitchCircleButtonSVGProps> = ({
 };
 
 export default React.memo(
-  PitchCircleButtonSVG, 
+  PitchCircleButtonSVG,
   (prevProps, nextProps) => (
     prevProps.state === nextProps.state
     && prevProps.tunerMode === nextProps.tunerMode

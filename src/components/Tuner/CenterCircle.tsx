@@ -19,7 +19,7 @@ const CenterCircle: React.FC<PitchCircleSVGProps> = ({ actives, frequencies }) =
   useEffect(() => {
     const cNote = document.getElementById("centerCircleNote")!;
     const cFreq = document.getElementById("centerCircleFrequency")!;
-    
+
     const isIdle0 = actives[0].state === NoteStates.IDLE;
     const isIdle1 = actives[1].state === NoteStates.IDLE;
     const isOctave0 = actives[0].state === NoteStates.OCTAVE;
@@ -44,9 +44,9 @@ const CenterCircle: React.FC<PitchCircleSVGProps> = ({ actives, frequencies }) =
         + (refOctave + (isOctave1 ? -1 : 0));
 
       cFreq.innerHTML = BpsCalc(
-          frequencies[actives[0].note!] * (isOctave0 ? 0.5 : 1),
-          frequencies[actives[1].note!] * (isOctave1 ? 0.5 : 1)
-        )
+        frequencies[actives[0].note!] * (isOctave0 ? 0.5 : 1),
+        frequencies[actives[1].note!] * (isOctave1 ? 0.5 : 1)
+      )
         + (isBps ? " bps" : "");
     }
   }, [actives, frequencies]);

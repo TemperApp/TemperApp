@@ -23,8 +23,8 @@ export enum NoteStates {
 };
 
 export type ActiveNote = {
-    note : Notes | null,
-    state : NoteStates,
+  note: Notes | null,
+  state: NoteStates,
 };
 
 export type ActiveNotes = [ActiveNote, ActiveNote];
@@ -44,8 +44,8 @@ const PitchCircleSVG: React.FC<PitchCircleSVGProps> = ({
      {note: null, state: NoteStates.IDLE}]);
 
   const [temperament, setTemperament] = useState<Temperament>();
-  const [thirdQualities, setThirdQualities] = useState<NotesMap<number|null>>(thirdEqualQ());
-  const [fifthQualities, setFifthQualities] = useState<NotesMap<number|null>>(fifthEqualQ());
+  const [thirdQualities, setThirdQualities] = useState<NotesMap<number | null>>(thirdEqualQ());
+  const [fifthQualities, setFifthQualities] = useState<NotesMap<number | null>>(fifthEqualQ());
 
   const [frequencies, setFrequencies] = useState<NotesMap<number>>(frequencies4(440));
 
@@ -62,8 +62,8 @@ const PitchCircleSVG: React.FC<PitchCircleSVGProps> = ({
   const [B_flat  , setB_flat ] = useState<NoteStates>(NoteStates.IDLE);
   const [B       , setB      ] = useState<NoteStates>(NoteStates.IDLE);
 
-  const states = {C, C_sharp, D, E_flat, E, F, F_sharp, G, G_sharp, A, B_flat, B};
-  
+  const states = { C, C_sharp, D, E_flat, E, F, F_sharp, G, G_sharp, A, B_flat, B };
+
   const setStates = (note: Notes, state: NoteStates) => {
     switch (note) {
       case Notes.C:       return setC(state);
@@ -100,7 +100,7 @@ const PitchCircleSVG: React.FC<PitchCircleSVGProps> = ({
       setThirdQualities(thirdQ(temp.csExp3rd));
       setFrequencies(frequencies4(freqA4, temp.deviation));
     })();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [idTemperament]);
 
 
@@ -118,32 +118,32 @@ const PitchCircleSVG: React.FC<PitchCircleSVGProps> = ({
   useEffect(() => {
     // Play sound
     const freq1 = (actives[0].note === null)
-    ? 0
-    : frequencies[actives[0].note]
-      * (actives[0].state === NoteStates.OCTAVE ? 2 : 1);
+      ? 0
+      : frequencies[actives[0].note]
+        * (actives[0].state === NoteStates.OCTAVE ? 0.5 : 1);
 
     const freq2 = (actives[1].note === null)
-    ? 0
-    : frequencies[actives[1].note]
-      * (actives[1].state === NoteStates.OCTAVE ? 2 : 1);
+      ? 0
+      : frequencies[actives[1].note]
+        * (actives[1].state === NoteStates.OCTAVE ? 0.5 : 1);
 
     (actives[0].note !== null)
-    ? SoundEngine.stopAndPlay(freq1)
-    : SoundEngine.stop();
+      ? SoundEngine.stopAndPlay(freq1)
+      : SoundEngine.stop();
 
     (actives[1].note !== null)
-    ? SoundEngine.setPulseBPS(Math.abs(freq1 - freq2))
-    : SoundEngine.setPulseBPS(0);
-    
+      ? SoundEngine.setPulseBPS(Math.abs(freq1 - freq2))
+      : SoundEngine.setPulseBPS(0);
+
   }, [actives, frequencies]);
-  
+
 
   // Clean states
   for (const note in states) {
     const n = note as Notes;
     if (actives[0].note !== note
-        && actives[1].note !== note
-        && states[n] !== NoteStates.IDLE
+      && actives[1].note !== note
+      && states[n] !== NoteStates.IDLE
     ) {
       setStates(n, NoteStates.IDLE);
     }
@@ -157,33 +157,33 @@ const PitchCircleSVG: React.FC<PitchCircleSVGProps> = ({
         width="370" height="370"
         viewBox="0 0 357.06 357.06"
       >
-        
-      { Object.keys(states).map((note) => {
+
+        {Object.keys(states).map((note) => {
           const n = note as Notes;
           return (
             <PitchCircleButtonSVG
-              key = {n}
-              notesSymbol = {n}
-              position = {btnPosition[n]}
-              state = {states[n]}
-              tunerMode = {tunerMode} 
-              actives = {actives}
-              onChange = {(state: NoteStates) => setStates(n, state)} 
-              setActives = {setActives}
+              key={n}
+              notesSymbol={n}
+              position={btnPosition[n]}
+              state={states[n]}
+              tunerMode={tunerMode}
+              actives={actives}
+              onChange={(state: NoteStates) => setStates(n, state)}
+              setActives={setActives}
             />);
         })}
 
         <PitchCircleSVGLabels />
 
-        <ThirdCircleSVG 
-          qualities = {thirdQualities}
+        <ThirdCircleSVG
+          qualities={thirdQualities}
         />
-        <FifthCircleSVG 
-          qualities = {fifthQualities}
+        <FifthCircleSVG
+          qualities={fifthQualities}
         />
-        <CenterCircle 
-          actives = {actives}
-          frequencies = {frequencies}
+        <CenterCircle
+          actives={actives}
+          frequencies={frequencies}
         />
 
       </svg>
