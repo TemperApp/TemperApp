@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { TemperamentDBType } from '../../engine/DB';
 
 import PitchCircleSVG from './PitchCircleSVG';
 

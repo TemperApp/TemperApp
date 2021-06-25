@@ -8,31 +8,26 @@ import CenterCircle from './CenterCircle';
 import { Temperament } from '../../model/Temperament';
 import { fetchTemperamentPropsById } from '../../engine/DataAccessor';
 import { frequencies4, frequenciesEqual4, thirdQ, fifthQ, thirdEqualQ, fifthEqualQ } from './functions/frequencies';
+import SoundEngine from '../../engine/SoundEngine';
 
 //Types 
-import { PitchCircleButtonSVGPos as btnPosition } from "./PitchCircleButtonSVGPos"
+import { PitchCircleButtonSVGPos as btnPosition, PitchCircleSVGLabels } from "./PitchCircleButtonSVGPos"
+import { Notes } from '../../model/Note';
+import { TunerMode } from './PitchCircle';
 
 //Styles 
 import "./PitchCircleSVG.css";
-import { Notes } from '../../model/Note';
-import SoundEngine from '../../engine/SoundEngine';
-import { TunerMode } from './PitchCircle';
 
 export enum NoteStates {
   IDLE, SELECTED, OCTAVE,
 };
 
-export type NotesOrEmptyStr = Notes | "";
-
 export type ActiveNote = {
-    note : NotesOrEmptyStr,
+    note : Notes | null,
     state : NoteStates,
 };
 
-export type ActiveNotes = {
-    note1 : ActiveNote,
-    note2 : ActiveNote,
-};
+export type ActiveNotes = [ActiveNote, ActiveNote];
 
 type PitchCircleSVGProps = {
   tunerMode: TunerMode,
@@ -44,9 +39,9 @@ const PitchCircleSVG: React.FC<PitchCircleSVGProps> = ({
   tunerMode, freqA4, idTemperament
 }) => {
 
-  const [currentNotes, setCurrentNotes] = useState<ActiveNotes>(
-    {note1 : {note: "", state: NoteStates.IDLE},
-     note2 : {note: "", state: NoteStates.IDLE}});
+  const [actives, setActives] = useState<ActiveNotes>(
+    [{note: null, state: NoteStates.IDLE},
+     {note: null, state: NoteStates.IDLE}]);
 
   const [temperament, setTemperament] = useState<Temperament>();
   const [thirdQuality, setThirdQuality] = useState<{[key: string]: number | null}>(thirdEqualQ());
@@ -88,9 +83,9 @@ const PitchCircleSVG: React.FC<PitchCircleSVGProps> = ({
 
 
   useEffect(() => {
-    setCurrentNotes(
-      {note1: {note: "", state: NoteStates.IDLE},
-       note2: {note: "", state: NoteStates.IDLE}}
+    setActives(
+      [{note: null, state: NoteStates.IDLE},
+       {note: null, state: NoteStates.IDLE}]
     );
   }, [tunerMode]);
 
@@ -103,6 +98,7 @@ const PitchCircleSVG: React.FC<PitchCircleSVGProps> = ({
       setThirdQuality(thirdQ(temp.csExp3rd));
       setFrequencies(frequencies4(freqA4, temp.deviation));
     })();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [idTemperament]);
 
 
@@ -112,50 +108,51 @@ const PitchCircleSVG: React.FC<PitchCircleSVGProps> = ({
         return;
       setFrequencies(frequencies4(freqA4, temperament.deviation));
     })();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [freqA4]);
+
+
+  useEffect(() => {
+    const freq1 = (actives[0].note === null)
+    ? 0
+    : frequencies[actives[0].note]
+      * (actives[0].state === NoteStates.OCTAVE ? 2 : 1);
+
+    const freq2 = (actives[1].note === null)
+    ? 0
+    : frequencies[actives[1].note]
+      * (actives[1].state === NoteStates.OCTAVE ? 2 : 1);
+
+    (actives[0].note !== null)
+    ? SoundEngine.stopAndPlay(freq1)
+    : SoundEngine.stop();
+
+    (actives[1].note !== null)
+    ? SoundEngine.setPulseBPS(Math.abs(freq1 - freq2))
+    : SoundEngine.setPulseBPS(0);
+    
+  }, [actives, frequencies]);
   
 
-  useEffect(() => {
-    // Clean states
-    for (const note in states) {
-      const n = note as Notes;
-      if (currentNotes.note1.note !== note
-          && currentNotes.note2.note !== note
-          && states[n] !== NoteStates.IDLE
-      ) {
-        setStates(n, NoteStates.IDLE);
-      }
+  // Clean states
+  for (const note in states) {
+    const n = note as Notes;
+    if (actives[0].note !== note
+        && actives[1].note !== note
+        && states[n] !== NoteStates.IDLE
+    ) {
+      setStates(n, NoteStates.IDLE);
     }
-    
-  }, [currentNotes, states]);
-
-  useEffect(() => {
-    const freq1 = (currentNotes.note1.note === "")
-    ? 0
-    : frequencies[currentNotes.note1.note]
-      * (currentNotes.note1.state === NoteStates.OCTAVE ? 2 : 1);
-
-    const freq2 = (currentNotes.note2.note === "")
-    ? 0
-    : frequencies[currentNotes.note2.note]
-      * (currentNotes.note2.state === NoteStates.OCTAVE ? 2 : 1);
-
-    if (currentNotes.note1.note !== "")
-      SoundEngine.stopAndPlay(freq1);
-    else
-      SoundEngine.stop();
-
-    if (currentNotes.note2.note !== "")
-      SoundEngine.setPulseBPS(Math.abs(freq1 - freq2));
-    else
-      SoundEngine.setPulseBPS(0);
-    
-  }, [currentNotes, frequencies]);
-
+  }
 
   return (
     <div id="Container_PitchCircleSVG">
-      <svg id="PitchCircleSVG" xmlns="http://www.w3.org/2000/svg" width="370" height="370" viewBox="0 0 357.06 357.06">
+      <svg
+        id="PitchCircleSVG"
+        xmlns="http://www.w3.org/2000/svg"
+        width="370" height="370"
+        viewBox="0 0 357.06 357.06"
+      >
         
       { Object.keys(states).map((note) => {
           const n = note as Notes;
@@ -164,26 +161,15 @@ const PitchCircleSVG: React.FC<PitchCircleSVGProps> = ({
               key = {n}
               notesSymbol = {n}
               position = {btnPosition[n]}
-              active = {states[n]}
+              state = {states[n]}
               tunerMode = {tunerMode} 
-              listNotes = {currentNotes}
+              actives = {actives}
               onChange = {(state: NoteStates) => setStates(n, state)} 
-              setCurrentNotes = {setCurrentNotes}
+              setActives = {setActives}
             />);
         })}
 
-        <text className="cls-3" transform="translate(278.22 247.59)">E</text>
-        <text className="cls-3" transform="translate(231.53 293.77)">B</text>
-        <text className="cls-3" transform="translate(166.28 310.6)">F<tspan className="cls-4" x="13.12" y="0">♯</tspan></text>
-        <text className="cls-3" transform="translate(104.23 293.77)">C<tspan className="cls-4" x="15.2" y="0">♯</tspan></text>
-        <text className="cls-3" transform="translate(56.47 247.59)">G<tspan className="cls-4" x="16.25" y="0">♯</tspan></text>
-        <text className="cls-3" transform="translate(48.05 185.52)"><tspan className="cls-6">E</tspan><tspan className="cls-7" x="14.08" y="0">♭</tspan></text>
-        <text className="cls-3" transform="translate(60.97 124.58)"><tspan className="cls-6">B</tspan><tspan className="cls-7" x="15.55" y="0">♭</tspan></text>
-        <text className="cls-3" transform="translate(106.28 80.52)">F</text>
-        <text className="cls-3" transform="translate(170.28 62.27)">C</text>
-        <text className="cls-3" transform="translate(231.53 80.52)">G</text>
-        <text className="cls-3" transform="translate(278.22 124.58)">D</text>
-        <text className="cls-3" transform="translate(294.3 185.52)">A</text>
+        <PitchCircleSVGLabels />
 
         <ThirdCircleSVG 
           quality = {thirdQuality}
@@ -192,9 +178,10 @@ const PitchCircleSVG: React.FC<PitchCircleSVGProps> = ({
           quality = {fifthQuality}
         />
         <CenterCircle 
-          notes = {currentNotes}
+          notes = {actives}
           frequencies = {frequencies}
         />
+
       </svg>
     </div>
   );
