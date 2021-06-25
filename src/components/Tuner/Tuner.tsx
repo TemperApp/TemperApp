@@ -70,8 +70,8 @@ const Tuner: React.FC = () => {
       <IonGrid className="ion-padding-horizontal">
         <IonRow className="ion-justify-content-between ion-align-items-center">
           <IonCol>
-            <IonButton className="btn-start-procedure" size="large">
-              <IonIcon slot="icon-only" icon={playCircle} />
+            <IonButton className="btn-start-procedure" size="large" shape="round">
+              <IonIcon className="btn-header-icon" slot="icon-only" icon={playCircle} />
             </IonButton>
           </IonCol>
           <IonCol>

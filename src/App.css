@@ -47,7 +47,17 @@ ion-icon.icon-light {
 }
 
 .btn-header-modal {
-  border-radius: 500px;
+  background-color: var(--ion-color-primary);
+  border-radius: 50%;
+  width: 37px;
+  height: 37px;
+  display: flex;
+}
+
+.btn-header-modal span {
+  margin: auto;
+  color: white;
+  font-size: 20px;
 }
 
 .headerPages {
