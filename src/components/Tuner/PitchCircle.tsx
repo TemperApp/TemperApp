@@ -3,6 +3,10 @@ import { TemperamentDBType } from '../../engine/DB';
 
 import PitchCircleSVG from './PitchCircleSVG';
 
+export enum TunerMode{
+  HZ, BPM
+}
+
 type PitchCircleProps = {
   isHzMode: boolean,
   freqA4: number,
@@ -13,10 +17,10 @@ const PitchCircle: React.FC<PitchCircleProps> = ({
   isHzMode, freqA4, idTemperament
 }) => {
 
-  const [tunerMode, setTunerMode] = useState("TuningFork");
+  const [tunerMode, setTunerMode] = useState(TunerMode.HZ);
 
   useEffect(() => {
-    setTunerMode(isHzMode ? "TuningFork" : "Bpm");
+    setTunerMode(isHzMode ? TunerMode.HZ : TunerMode.BPM);
   }, [isHzMode]);
 
   return (

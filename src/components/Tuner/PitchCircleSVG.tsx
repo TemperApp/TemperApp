@@ -16,6 +16,7 @@ import { PitchCircleButtonSVGPos as btnPosition } from "./PitchCircleButtonSVGPo
 import "./PitchCircleSVG.css";
 import { Notes } from '../../model/Note';
 import SoundEngine from '../../engine/SoundEngine';
+import { TunerMode } from './PitchCircle';
 
 export enum NoteStates {
   IDLE, SELECTED, OCTAVE,
@@ -34,7 +35,7 @@ export type ActiveNotes = {
 };
 
 type PitchCircleSVGProps = {
-  tunerMode: string,
+  tunerMode: TunerMode,
   freqA4: number,
   idTemperament: number
 }

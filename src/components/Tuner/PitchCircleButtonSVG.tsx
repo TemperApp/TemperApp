@@ -1,6 +1,7 @@
 import React, { useRef } from 'react';
 import { ActiveNotes, NotesOrEmptyStr, NoteStates } from './PitchCircleSVG';
 import useLongPress from "./functions/useLongPress";
+import { TunerMode } from './PitchCircle';
 
 type DivOrNullType = SVGPathElement | null;
 
@@ -21,7 +22,7 @@ type PitchCircleButtonSVGProps = {
   notesSymbol: NotesOrEmptyStr,
   position: string,
   active: NoteStates,
-  tunerMode: string,
+  tunerMode: TunerMode,
   listNotes: ActiveNotes
   onChange: (state: NoteStates) => void,
   setCurrentNotes: (notesSymbol: ActiveNotes) => void,
@@ -99,7 +100,7 @@ const PitchCircleButtonSVG: React.FC<PitchCircleButtonSVGProps> = ({
   }
 
   const onLongPress = () =>{
-    if (tunerMode === "TuningFork"){
+    if (tunerMode === TunerMode.HZ){
       (active === NoteStates.IDLE)
       ? activateNoteOctave()
       : ((active === NoteStates.SELECTED)
@@ -120,7 +121,7 @@ const PitchCircleButtonSVG: React.FC<PitchCircleButtonSVGProps> = ({
   } 
   
   const onClick = () => {
-    if (tunerMode === "TuningFork")
+    if (tunerMode === TunerMode.HZ)
       (active === NoteStates.IDLE) ? activateNote() : disableNote();
     else
       (active === NoteStates.IDLE) ? activateNoteBpm() : disableNote();
@@ -146,7 +147,7 @@ const PitchCircleButtonSVG: React.FC<PitchCircleButtonSVGProps> = ({
 
 export default React.memo(PitchCircleButtonSVG, 
   (prevProps, nextProps) => {
-    if(prevProps.active === nextProps.active && prevProps.tunerMode === nextProps.tunerMode && prevProps.tunerMode === "TuningFork")
+    if(prevProps.active === nextProps.active && prevProps.tunerMode === nextProps.tunerMode && prevProps.tunerMode === TunerMode.HZ)
     {
       return true;
     }
