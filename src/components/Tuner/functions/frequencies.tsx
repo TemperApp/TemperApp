@@ -184,7 +184,7 @@ export const selectedNoteFrequency = (freqs: {[key: string]: number}, active: Ac
     return freq;
 }
 
-export const convertNoteToString = (note : string) => {
+export const noteToStr = (note : string) => {
     switch (note) {
         case "B_flat": return "B♭";
         case "E_flat": return "E♭";

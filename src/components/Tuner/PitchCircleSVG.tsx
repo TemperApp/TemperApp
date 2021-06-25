@@ -44,8 +44,8 @@ const PitchCircleSVG: React.FC<PitchCircleSVGProps> = ({
      {note: null, state: NoteStates.IDLE}]);
 
   const [temperament, setTemperament] = useState<Temperament>();
-  const [thirdQuality, setThirdQuality] = useState<{[key: string]: number | null}>(thirdEqualQ());
-  const [fifthQuality, setFifthQuality] = useState<{[key: string]: number | null}>(fifthEqualQ());
+  const [thirdQualities, setThirdQualities] = useState<{[key: string]: number | null}>(thirdEqualQ());
+  const [fifthQualities, setFifthQualities] = useState<{[key: string]: number | null}>(fifthEqualQ());
 
   const [frequencies, setFrequencies] = useState<{[key: string] : number}>(frequenciesEqual4(440));
 
@@ -83,6 +83,7 @@ const PitchCircleSVG: React.FC<PitchCircleSVGProps> = ({
 
 
   useEffect(() => {
+    // Deactivate notes
     setActives(
       [{note: null, state: NoteStates.IDLE},
        {note: null, state: NoteStates.IDLE}]
@@ -91,11 +92,12 @@ const PitchCircleSVG: React.FC<PitchCircleSVGProps> = ({
 
 
   useEffect(() => {
+    // Update fitfhs and thirds circles and frequencies
     (async () => {
       const temp = await fetchTemperamentPropsById(idTemperament);
       setTemperament(temp);
-      setFifthQuality(fifthQ(temp.cpExp5th));
-      setThirdQuality(thirdQ(temp.csExp3rd));
+      setFifthQualities(fifthQ(temp.cpExp5th));
+      setThirdQualities(thirdQ(temp.csExp3rd));
       setFrequencies(frequencies4(freqA4, temp.deviation));
     })();
   // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -103,6 +105,7 @@ const PitchCircleSVG: React.FC<PitchCircleSVGProps> = ({
 
 
   useEffect(() => {
+    // Update frequencies
     (async () => {
       if (!temperament)
         return;
@@ -113,6 +116,7 @@ const PitchCircleSVG: React.FC<PitchCircleSVGProps> = ({
 
 
   useEffect(() => {
+    // Play sound
     const freq1 = (actives[0].note === null)
     ? 0
     : frequencies[actives[0].note]
@@ -172,13 +176,13 @@ const PitchCircleSVG: React.FC<PitchCircleSVGProps> = ({
         <PitchCircleSVGLabels />
 
         <ThirdCircleSVG 
-          quality = {thirdQuality}
+          qualities = {thirdQualities}
         />
         <FifthCircleSVG 
-          quality = {fifthQuality}
+          qualities = {fifthQualities}
         />
         <CenterCircle 
-          notes = {actives}
+          actives = {actives}
           frequencies = {frequencies}
         />
 

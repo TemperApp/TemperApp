@@ -4,7 +4,7 @@ import { ActiveNotes, NoteStates } from './PitchCircleSVG';
 import { TunerMode } from './PitchCircle';
 import { Notes } from '../../model/Note';
 
-type DivOrNullType = SVGPathElement | null;
+type SVGPathElementOrNull = SVGPathElement | null;
 
 const colorButton = (state: NoteStates) => {
   switch (state) {
@@ -32,7 +32,7 @@ const PitchCircleButtonSVG: React.FC<PitchCircleButtonSVGProps> = ({
   actives, onChange, setActives
 }) => {
 
-  const note = useRef<DivOrNullType>(null);
+  const note = useRef<SVGPathElementOrNull>(null);
   
   const onLongPress = useLongPress(() => {
     // onLongPress
@@ -45,11 +45,11 @@ const PitchCircleButtonSVG: React.FC<PitchCircleButtonSVGProps> = ({
         setNoteState(NoteStates.SELECTED);
         break;
       default:
-        disableNotes();
+        deactivateNotes();
     }
   }, () => {
     // onClick
-    (state === NoteStates.IDLE) ? setNoteState(NoteStates.SELECTED) : disableNotes();
+    (state === NoteStates.IDLE) ? setNoteState(NoteStates.SELECTED) : deactivateNotes();
   }, {
     // options
     shouldPreventDefault: true,
@@ -84,7 +84,7 @@ const PitchCircleButtonSVG: React.FC<PitchCircleButtonSVGProps> = ({
     onChange(nState);
   }
 
-  const disableNotes = () => {
+  const deactivateNotes = () => {
     setActives(
       [{note: null, state: NoteStates.IDLE},
        {note: null, state: NoteStates.IDLE}]);
