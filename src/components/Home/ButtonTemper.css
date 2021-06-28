@@ -1,9 +1,9 @@
 :root {
   --ion-color-temperapp: linear-gradient(
     90deg,
-    rgba(255, 224, 177, 1) 0%,
+    rgba(248, 143, 143, 0.9) 0%,
     rgba(255, 192, 159, 1) 47%,
-    rgba(248, 143, 143, 1) 100%
+    rgba(255, 224, 177, 1) 100%
   );
   --ion-color-temperapp-rgb: 255, 192, 159;
   --ion-color-temperapp-contrast: #233c3a;
@@ -19,4 +19,11 @@
   --ion-color-contrast-rgb: var(--ion-color-temperapp-contrast-rgb);
   --ion-color-shade: var(--ion-color-temperapp-shade);
   --ion-color-tint: var(--ion-color-temperapp-tint);
+}
+
+.buttonType {
+  text-transform: capitalize;
+  --padding-top: 1.5em;
+  --padding-bottom: 1.5em;
+  --border-radius: 8px;
 }
