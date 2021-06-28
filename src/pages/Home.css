@@ -1,3 +1,7 @@
 .Col3 {
   text-align: center;
 }
+
+.wave {
+  z-index: 0;
+}

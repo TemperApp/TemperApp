@@ -78,7 +78,7 @@ ion-header::after {
 }
 
 ion-tab-bar {
-  min-width: 90vw;
+  width: 100%;
   min-height: 9vh;
   display: flex;
   align-self: center;
@@ -110,14 +110,6 @@ ion-icon.icon-light {
 .tab-selected ion-icon {
   fill: var(--color-selected);
   stroke: var(--color-selected);
-}
-
-.btn-header-modal {
-  background-color: var(--color-strong);
-  border-radius: 50%;
-  width: 37px;
-  height: 37px;
-  display: flex;
 }
 
 .btn-header-modal span {

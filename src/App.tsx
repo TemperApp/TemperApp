@@ -18,6 +18,14 @@ import Home from "./pages/Home";
 import Sheets from "./pages/Sheets";
 import Learn from "./pages/Learn";
 
+import {
+  HomeSVG,
+  TuneSVG,
+  CompareSVG,
+  SheetsSVG,
+  LearnSVG,
+} from "./components/App/Icons";
+
 /* Core CSS required for Ionic components to work properly */
 import "@ionic/react/css/core.css";
 
@@ -39,7 +47,7 @@ import "./theme/variables.css";
 import "./App.css";
 
 /* Fonction Engine */
-import DB from './engine/DB';
+import DB from "./engine/DB";
 
 /* SQLite */
 export let sqlite: any; // singleton
@@ -122,7 +130,7 @@ const App: React.FC = () => {
                 src="/assets/logotypes/icon-home-grey.svg"
                 size="24px"
                 class="icon-light"
-              />
+              ></IonIcon>
               <IonLabel>Accueil</IonLabel>
             </IonTabButton>
             <IonTabButton tab="sheets" href="/sheets">
