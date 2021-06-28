@@ -1,8 +1,9 @@
 import React from 'react';
-import { IonCol, IonContent, IonGrid, IonHeader, IonImg, IonPage, IonRow, IonToolbar, IonIcon } from '@ionic/react';
+import { IonCol, IonContent, IonGrid, IonHeader, IonImg, IonPage, IonRow, IonToolbar, IonIcon, useIonModal } from '@ionic/react';
 import './Home.css';
 import HomeContent from '../components/Home/HomeContent';
-import {ellipsisVertical} from "ionicons/icons";
+
+import ParameterModal from '../components/Home/ParameterModal'; 
 
 const Home: React.FC = () => {
   return (
@@ -11,13 +12,13 @@ const Home: React.FC = () => {
         <IonToolbar>
           <IonGrid>
                 <IonRow>
-                    <IonCol size='2' className="Col1">
+                    <IonCol size='2' className="ColTemperApp">
                     </IonCol>
-                    <IonCol className ="Col2" size='8'>
+                    <IonCol className ="ColTemperApp " size='8'>
                        <IonImg src={"../../assets/icon/Logo_TemperApp.png"} />
                     </IonCol>
-                    <IonCol size='2' className="Col3">
-                      <IonIcon icon={ellipsisVertical} size="large"></IonIcon>
+                    <IonCol size='2' className="ColTemperApp">
+                      <ParameterModal />
                     </IonCol>
                 </IonRow>
             </IonGrid>

@@ -1,4 +1,4 @@
-
+import React from 'react';
 import "./Waves.css"
 
 const Waves : React.FC = () => {
