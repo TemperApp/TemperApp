@@ -20,9 +20,9 @@ export const ParameterModal: React.FC<ParameterModalProps> = ({darkTheme,setDark
   }
 
   return (
-    <IonContent >
+    <IonContent scrollY={false}>
         <IonModal isOpen={showModal} cssClass='ParameterModal' swipeToClose={true}
-        onDidDismiss={() => setShowModal(false)} backdrop-dismiss={true}>
+        onDidDismiss={() => setShowModal(false)} backdrop-dismiss={true} >
             <div>
                 <IonContent  fullscreen scrollY={true}>
                     <IonGrid className="parameterContent">
@@ -80,7 +80,6 @@ export const ParameterModal: React.FC<ParameterModalProps> = ({darkTheme,setDark
                                 </p>
                         </IonCol>
                         </IonRow>
-                        
                     </IonGrid>
                 </IonContent>
             </div>
