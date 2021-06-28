@@ -1,8 +1,8 @@
 import React from 'react';
-<<<<<<< HEAD
-import { IonContent, IonHeader, IonIcon, IonItem, IonLabel, IonList, IonPage, IonTitle, IonToggle, IonToolbar } from '@ionic/react';
+import { IonCol, IonContent, IonGrid, IonHeader, IonIcon, IonImg, IonItem, IonLabel, IonList, IonPage, IonRow, IonTitle, IonToggle, IonToolbar } from '@ionic/react';
 import './Home.css';
 import HomeContent from '../components/Home/HomeContent';
+import ParameterModal from '../components/Home/ParameterModal'; 
 
 type HomeProps = {
   darkTheme : boolean,
@@ -17,15 +17,6 @@ const Home: React.FC<HomeProps> = ({darkTheme,setDarkTheme}) => {
     (e.target.checked === true)?setDarkTheme(true):setDarkTheme(false);
   }
 
-=======
-import { IonCol, IonContent, IonGrid, IonHeader, IonImg, IonPage, IonRow, IonToolbar, IonIcon, useIonModal } from '@ionic/react';
-import './Home.css';
-import HomeContent from '../components/Home/HomeContent';
-
-import ParameterModal from '../components/Home/ParameterModal'; 
-
-const Home: React.FC = () => {
->>>>>>> sterenn
   return (
     <IonPage>
       <IonHeader className="ion-no-border">
