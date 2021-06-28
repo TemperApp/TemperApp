@@ -1,22 +1,80 @@
-ion-title {
+ion-title,
+h1 {
   font-family: "Nunito Sans" !important;
   font-style: normal;
   font-weight: bold;
-  line-height: 30px;
+  font-size: 24px;
+  line-height: 2vh;
+  display: flex;
+  align-items: center;
   text-transform: uppercase;
+  color: var(--color-dark);
+}
+
+h2 {
+  font-family: "Nunito Sans" !important;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 22px;
+  display: flex;
+  align-items: center;
+  text-transform: uppercase;
+  color: var(--color-dark);
+}
+
+h3 {
+  font-family: "Nunito Sans" !important;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  text-transform: uppercase;
+  color: var(--color-dark);
+}
+
+h4 {
+  font-family: "Nunito Sans" !important;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  text-transform: uppercase;
+  color: var(--color-dark);
+}
+
+h5 {
+  font-family: Karla;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 16px;
+  display: flex;
+  align-items: center;
+  letter-spacing: -0.02em;
+  color: var(--color-dark);
+}
+
+p {
+  font-family: Karla;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  color: var(--color-dark);
 }
 
 ion-header::after {
-  position: absosulte;
-  border-radius: 8px;
-  background-color: var(--color-strong);
-  max-width: 85%;
-  height: 8px;
-  right: 0px;
-}
-
-.header::after {
-  right: 0px;
+  position: relative;
+  bottom: 5px;
+  height: 5px;
+  width: 100vw;
+  margin-left: 15vw;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  background-image: var(--degrade) !important;
+  background-position: left 0px top 0px !important;
+  z-index: 100;
 }
 
 ion-tab-bar {
@@ -54,21 +112,8 @@ ion-icon.icon-light {
   stroke: var(--color-selected);
 }
 
-.gradientBar {
-  position: relative;
-  bottom: 5px;
-  height: 10px;
-  width: 100vw;
-  margin-left: 15vw;
-  border-top-left-radius: 10px;
-  border-bottom-left-radius: 10px;
-  background-color: #fbab7e;
-  background-image: linear-gradient(62deg, #fbab7e 0%, #f7ce68 100%);
-  z-index: 100;
-}
-
 .btn-header-modal {
-  background-color: var(--ion-color-primary);
+  background-color: var(--color-strong);
   border-radius: 50%;
   width: 37px;
   height: 37px;
@@ -79,8 +124,4 @@ ion-icon.icon-light {
   margin: auto;
   color: white;
   font-size: 20px;
-}
-
-.headerPages {
-  /*padding-bottom: 0px !important;*/
 }
