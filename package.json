@@ -2,7 +2,7 @@
   "name": "dev",
   "version": "0.0.1",
   "private": true,
-  "homepage": "https://benjaminbriere.github.io/temperapp/",
+  "homepage": "https://benjaminbriere.github.io/",
   "dependencies": {
     "@capacitor-community/sqlite": "^2.9.16",
     "@capacitor/android": "3.0.0",

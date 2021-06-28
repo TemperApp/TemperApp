@@ -4,9 +4,20 @@ import {ellipsisVertical, arrowBackOutline} from "ionicons/icons";
 
 import './ParameterModal.css';
 
-export const ParameterModal: React.FC = () => {
+type ParameterModalProps = {
+    darkTheme : boolean,
+    setDarkTheme: (color: boolean) => void,
+}
+
+export const ParameterModal: React.FC<ParameterModalProps> = ({darkTheme,setDarkTheme}) => {
   const [showModal, setShowModal] = useState(false);
   const [number, setNumber] = useState<number>(440);
+
+  const change = (e : any) => {
+    console.log(e.target.checked);
+    document.body.classList.toggle('dark', e.target.checked);
+    (e.target.checked === true)?setDarkTheme(true):setDarkTheme(false);
+  }
 
   return (
     <IonContent >
@@ -29,7 +40,7 @@ export const ParameterModal: React.FC = () => {
                                 <p>Thème sombre</p>
                             </IonCol>
                             <IonCol size='4' className="ColTemperApp">
-                                <IonToggle value="dark" />
+                                <IonToggle checked={darkTheme} value="dark" id="themeToggle" onClick={e => change(e)}></IonToggle>
                             </IonCol>
                         </IonRow>
                         <IonRow>

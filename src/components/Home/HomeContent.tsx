@@ -89,7 +89,7 @@ const HomeContent : React.FC = () => {
                     viewBox="0 0 1024 1024"
                     width="1em"
                     height="1em"
-                    fill="currentColor"
+                    fill={"currentColor"}
                     style={{
                     verticalAlign: '-.125em',
                     transition: 'transform 0.2s',

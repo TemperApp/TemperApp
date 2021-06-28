@@ -23,27 +23,21 @@ const Home: React.FC<HomeProps> = ({darkTheme,setDarkTheme}) => {
       <IonHeader className="ion-no-border">
         <IonToolbar>
           <IonGrid>
-                <IonRow>
-                    <IonCol size='2' className="ColTemperApp">
-                    </IonCol>
-                    <IonCol className ="ColTemperApp " size='8'>
-                       <IonImg src={logoTemperApp} />
-                    </IonCol>
-                    <IonCol size='2' className="ColTemperApp">
-                      <ParameterModal />
-                    </IonCol>
-                </IonRow>
-            </IonGrid>
+            <IonRow>
+              <IonCol size='2' className="ColTemperApp">
+              </IonCol>
+              <IonCol className ="ColTemperApp " size='8'>
+                  <IonImg src={logoTemperApp} />
+              </IonCol>
+              <IonCol size='2' className="ColTemperApp">
+                <ParameterModal 
+                  darkTheme = {darkTheme}
+                  setDarkTheme = {setDarkTheme}
+                />
+              </IonCol>
+            </IonRow>
+          </IonGrid>
         </IonToolbar>
-        <IonList>
-        <IonItem lines="full">
-          <IonIcon slot="start" name="moon"></IonIcon>
-          <IonLabel>
-            Je suis les ombres
-          </IonLabel>
-          <IonToggle  id="themeToggle" slot="end" onClick={e => change(e)}></IonToggle>
-        </IonItem>
-      </IonList>
       </IonHeader>
       <IonContent fullscreen scrollY={false}>
         <HomeContent />
