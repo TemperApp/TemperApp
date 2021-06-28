@@ -3,5 +3,5 @@
   border-radius: 50%;
   width: 37px;
   height: 37px;
-  display: flex;
+  display: flex !important;
 }
