@@ -27,7 +27,7 @@ const Learn: React.FC = () => {
     <IonPage>
       <HeaderPage
         buttonModal={true}
-        buttonModalText="Sheets"
+        buttonModalText="Apprendre"
         setShowModal={setShowModal}
       />
       <IonList>

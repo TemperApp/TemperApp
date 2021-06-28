@@ -112,7 +112,6 @@ const App: React.FC = () => {
             <IonTabButton tab="tune" href="/tune">
               <IonIcon
                 src="/assets/logotypes/icon-diapason-grey.svg"
-                size="24px"
                 class="icon-light"
               />
               <IonLabel>Accorder</IonLabel>
@@ -120,7 +119,6 @@ const App: React.FC = () => {
             <IonTabButton tab="compare" href="/compare">
               <IonIcon
                 src="/assets/logotypes/icon-compare-grey.svg"
-                size="24px"
                 class="icon-light"
               />
               <IonLabel>Comparer</IonLabel>
@@ -128,7 +126,6 @@ const App: React.FC = () => {
             <IonTabButton tab="home" href="/home">
               <IonIcon
                 src="/assets/logotypes/icon-home-grey.svg"
-                size="24px"
                 class="icon-light"
               ></IonIcon>
               <IonLabel>Accueil</IonLabel>
@@ -136,7 +133,6 @@ const App: React.FC = () => {
             <IonTabButton tab="sheets" href="/sheets">
               <IonIcon
                 src="/assets/logotypes/icon-fiches-grey.svg"
-                size="24px"
                 class="icon-light"
               />
               <IonLabel>Fiches</IonLabel>
@@ -144,7 +140,6 @@ const App: React.FC = () => {
             <IonTabButton tab="learn" href="/learn">
               <IonIcon
                 src="/assets/logotypes/icon-apprendre-grey.svg"
-                size="24px"
                 class="icon-light"
               />
               <IonLabel>Apprendre</IonLabel>

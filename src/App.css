@@ -82,15 +82,31 @@ ion-tab-bar {
   min-height: 9vh;
   display: flex;
   align-self: center;
+  box-shadow: inset 0px 1px 4px rgba(0, 0, 0, 0.16);
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
 }
 
 ion-label {
   font-family: "Nunito Sans" !important;
   font-style: normal;
-  font-weight: 600;
-  line-height: 30px;
+  font-weight: normal;
+  font-size: 7px;
+  display: flex;
+  align-items: center;
+  text-align: center;
   text-transform: uppercase;
-  font-size: 10px;
+  color: var(--color-dark);
+  margin-top: 7px;
+}
+
+ion-tab-button {
+  width: 48px;
+  padding: none;
+}
+
+ion-icon {
+  width: 24px;
 }
 
 ion-tab-button:hover ion-label {
