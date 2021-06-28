@@ -3,6 +3,7 @@ import { IonCol, IonContent, IonGrid, IonHeader, IonIcon, IonImg, IonItem, IonLa
 import './Home.css';
 import HomeContent from '../components/Home/HomeContent';
 import ParameterModal from '../components/Home/ParameterModal'; 
+import logoTemperApp from '../assets/Logo_TemperApp.png'
 
 type HomeProps = {
   darkTheme : boolean,
@@ -26,7 +27,7 @@ const Home: React.FC<HomeProps> = ({darkTheme,setDarkTheme}) => {
                     <IonCol size='2' className="ColTemperApp">
                     </IonCol>
                     <IonCol className ="ColTemperApp " size='8'>
-                       <IonImg src={"../../assets/icon/Logo_TemperApp.png"} />
+                       <IonImg src={logoTemperApp} />
                     </IonCol>
                     <IonCol size='2' className="ColTemperApp">
                       <ParameterModal />
