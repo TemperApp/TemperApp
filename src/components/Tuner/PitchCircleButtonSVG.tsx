@@ -2,7 +2,7 @@ import React, { useRef } from 'react';
 import useLongPress from "./functions/useLongPress";
 import { ActiveNotes, NoteStates } from './PitchCircleSVG';
 import { TunerMode } from './PitchCircle';
-import { Notes } from '../../model/Note';
+import { Notes } from '../../model/Note/enums';
 
 type SVGPathElementOrNull = SVGPathElement | null;
 
@@ -71,14 +71,19 @@ const PitchCircleButtonSVG: React.FC<PitchCircleButtonSVGProps> = ({
            {note: null, state: NoteStates.IDLE}]);
       }
       else {
-        if (actives[0].state !== NoteStates.IDLE && actives[1].state === NoteStates.IDLE)
+        if (actives[0].state !== NoteStates.IDLE && actives[1].state === NoteStates.IDLE) {
+
+          if (nState === NoteStates.OCTAVE && notesSymbol === actives[0].note)
+            return; // Prevent selecting two octave notes
+            
           setActives(
             [{note: actives[0].note, state: actives[0].state},
              {note: notesSymbol, state: nState}]);
-        else
+        } else {
           setActives(
             [{note: notesSymbol, state: nState},
              {note: null, state: NoteStates.IDLE}]);
+        }
       }
     }
     onChange(nState);

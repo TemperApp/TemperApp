@@ -1,4 +1,4 @@
-import { mapNotesMap } from '../../../model/Note';
+import { mapNotesMap } from '../../../model/Note/NotesMap';
 import { frequencies4 } from './frequencies';
 
 test('mapToMap_with_string', () => {

@@ -5,14 +5,15 @@ import FifthCircleSVG from './FifthCircleSVG';
 import ThirdCircleSVG from './ThirdCircleSVG';
 import PitchCircleButtonSVG from './PitchCircleButtonSVG';
 import CenterCircle from './CenterCircle';
-import { Temperament } from '../../model/Temperament';
+import { EqualTemperament, Temperament } from '../../model/Temperament';
 import { fetchTemperamentPropsById } from '../../engine/DataAccessor';
 import { frequencies4, thirdQ, fifthQ, thirdEqualQ, fifthEqualQ } from './functions/frequencies';
 import SoundEngine from '../../engine/SoundEngine';
 
 //Types 
 import { PitchCircleButtonSVGPos as btnPosition, PitchCircleSVGLabels } from "./PitchCircleButtonSVGPos"
-import { Notes, NotesMap } from '../../model/Note';
+import NotesMap from '../../model/Note/NotesMap';
+import { Notes } from '../../model/Note/enums';
 import { TunerMode } from './PitchCircle';
 
 //Styles 
@@ -43,7 +44,7 @@ const PitchCircleSVG: React.FC<PitchCircleSVGProps> = ({
     [{note: null, state: NoteStates.IDLE},
      {note: null, state: NoteStates.IDLE}]);
 
-  const [temperament, setTemperament] = useState<Temperament>();
+  const [temperament, setTemperament] = useState<Temperament>(EqualTemperament);
   const [thirdQualities, setThirdQualities] = useState<NotesMap<number | null>>(thirdEqualQ());
   const [fifthQualities, setFifthQualities] = useState<NotesMap<number | null>>(fifthEqualQ());
 
@@ -184,6 +185,8 @@ const PitchCircleSVG: React.FC<PitchCircleSVGProps> = ({
         <CenterCircle
           actives={actives}
           frequencies={frequencies}
+          freqA4={freqA4}
+          deviations={temperament.deviation}
         />
 
       </svg>

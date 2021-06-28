@@ -1,30 +1,34 @@
 import { cpExp5thStrToNumber, csExp3rdStrToNumber } from '../../../model/Divergence';
-import { NotesMap, mapNotesMap } from "../../../model/Note";
+import NotesMap, { mapNotesMap } from "../../../model/Note/NotesMap";
+import Note from "../../../model/Note/Note";
+import { PitchInterval } from '../../../model/Note/enums';
 
 
 /**
  * Computes the frequencies of the 12 notes of the 4th
  * octave relative to the given A4 reference frequency
  * and deviation values
- * @param A4 Reference frequency of A4 note
- * @param deviation Deviation tables for each note
+ * @param A4 Reference pitch frequency of A4 note
+ * @param deviations Deviation tables for each note
  *                  relative to the equal temperament
  * @returns a NotesMap of frequencies for the 4th octave
  */
-export const frequencies4 = (A4 = 440, deviation = DivergenceEqual()): NotesMap<number> => 
-({
-    C       : A4 * Math.pow(2, -9/12) * Math.pow(2, (deviation.C       / 1200)),
-    C_sharp : A4 * Math.pow(2, -8/12) * Math.pow(2, (deviation.C_sharp / 1200)),
-    D       : A4 * Math.pow(2, -7/12) * Math.pow(2, (deviation.D       / 1200)),
-    E_flat  : A4 * Math.pow(2, -6/12) * Math.pow(2, (deviation.E_flat  / 1200)),
-    E       : A4 * Math.pow(2, -5/12) * Math.pow(2, (deviation.E       / 1200)),
-    F       : A4 * Math.pow(2, -4/12) * Math.pow(2, (deviation.F       / 1200)),
-    F_sharp : A4 * Math.pow(2, -3/12) * Math.pow(2, (deviation.F_sharp / 1200)),
-    G       : A4 * Math.pow(2, -2/12) * Math.pow(2, (deviation.G       / 1200)),
-    G_sharp : A4 * Math.pow(2, -1/12) * Math.pow(2, (deviation.G_sharp / 1200)),
-    A       : A4                      * Math.pow(2, (deviation.A       / 1200)),
-    B_flat  : A4 * Math.pow(2,  1/12) * Math.pow(2, (deviation.B_flat  / 1200)),
-    B       : A4 * Math.pow(2,  2/12) * Math.pow(2, (deviation.B       / 1200)),
+export const frequencies4 = (
+  A4 = 440,
+  deviations = DivergenceEqual()
+): NotesMap<number> => ({
+  C       : A4 * Math.pow(2, -9/12) * Math.pow(2, (deviations.C       / 1200)),
+  C_sharp : A4 * Math.pow(2, -8/12) * Math.pow(2, (deviations.C_sharp / 1200)),
+  D       : A4 * Math.pow(2, -7/12) * Math.pow(2, (deviations.D       / 1200)),
+  E_flat  : A4 * Math.pow(2, -6/12) * Math.pow(2, (deviations.E_flat  / 1200)),
+  E       : A4 * Math.pow(2, -5/12) * Math.pow(2, (deviations.E       / 1200)),
+  F       : A4 * Math.pow(2, -4/12) * Math.pow(2, (deviations.F       / 1200)),
+  F_sharp : A4 * Math.pow(2, -3/12) * Math.pow(2, (deviations.F_sharp / 1200)),
+  G       : A4 * Math.pow(2, -2/12) * Math.pow(2, (deviations.G       / 1200)),
+  G_sharp : A4 * Math.pow(2, -1/12) * Math.pow(2, (deviations.G_sharp / 1200)),
+  A       : A4                      * Math.pow(2, (deviations.A       / 1200)),
+  B_flat  : A4 * Math.pow(2,  1/12) * Math.pow(2, (deviations.B_flat  / 1200)),
+  B       : A4 * Math.pow(2,  2/12) * Math.pow(2, (deviations.B       / 1200)),
 });
 
 
@@ -56,17 +60,41 @@ export const fifthEqualQ = (): NotesMap<number|null> => (mapNotesMap(-1));
 export const thirdEqualQ = (): NotesMap<number|null> => (mapNotesMap(7));
 export const DivergenceEqual = (): NotesMap<number> => (mapNotesMap(0));
 
+export type AcousticBeat = {
+  carrierFreq: number | null,
+  modulationFreq: number | null,
+}
 
-export const noteToStr = (note : string) => {
-  switch (note) {
-    case "B_flat": return "B♭";
-    case "E_flat": return "E♭";
-    case "G_sharp": return "G♯";
-    case "C_sharp": return "C♯";
-    case "F_sharp": return "F♯" ;  
-    default: return note;
+
+export const processAcousticBeat = (
+  noteX: Note, noteY: Note, freqA4: number,
+  deviations = mapNotesMap(0)
+): AcousticBeat => {
+
+  const lowest = (noteX.isHigherThan(noteY)) ? noteY : noteX;
+  const highest = (noteX.isHigherThan(noteY)) ? noteX : noteY;
+
+  let beatFreqX, beatFreqY;
+  if (Note.isInterval(lowest, highest, PitchInterval.MAJ3)) {
+    // Ratio between two notes is 5/4 for a major 3rd
+    beatFreqX = 5*lowest.freq(freqA4, deviations);
+    beatFreqY = 4*highest.freq(freqA4, deviations);
+  } else if (Note.isInterval(lowest, highest, PitchInterval.FIFTH)) {
+    // Ratio between two notes is 3/2 for a 5th
+    beatFreqX = 3*lowest.freq(freqA4, deviations);
+    beatFreqY = 2*highest.freq(freqA4, deviations);
+  } else {
+    return {
+      carrierFreq: null,
+      modulationFreq: null,
+    };
   }
-};
+
+  return {
+    carrierFreq: (beatFreqX + beatFreqY) / 2,
+    modulationFreq: Math.abs(beatFreqX - beatFreqY),
+  };
+}
 
 export const BpsCalc = (note1: number, note2: number) => {
   if(note1>note2){
