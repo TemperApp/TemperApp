@@ -31,9 +31,21 @@ const TunerModal: React.FC<tunerModalProps> = ({showModal, setShowModal}) => {
         </IonHeader>
         <IonContent>
           <IonGrid className="ion-padding-horizontal headerPages">
-            <h2>COMMENT COMPARER ?</h2>
-            <p>Il est possible de comparer deux tempéraments pour visualiser rapidement la différence de pureté des tierces et des quintes. Les quintes sont représentées à l'intérieur et les tierces à l'extérieur.</p>
-            <p>Le 1er tempérament entoure la roue des notes : </p>
+            <h2>Qualité des quintes et des tierces</h2>
+            <p>Le visuel TemperApp vous permet de prévoir en un coup d’oeil la sonorité de tous les accords majeurs 
+              dans le tempérament sélectionné. Chaque note du cycle des quintes représente la tonalité majeur correspondantes.</p> 
+            <p>Pour chaque accord majeur, les qualités des quintes et des tierces sont représentées par une couleur. 
+              Les tierces sont représentées à l’extérieur du cycle, les quintes à l’intérieur.</p>
+            <IonRow className="ion-align-items-center ion-justify-content-evenly">
+              <IonCol size="5" className="tunerModalCircleContainer">
+                <div id="tunerModalThirdCircle"></div>
+                <p>TIERCE</p>
+              </IonCol>
+              <IonCol size="5" className="tunerModalCircleContainer">
+                <div id="tunerModalFifthCircle"></div>
+                <p>QUINTE</p>
+              </IonCol>
+            </IonRow>
           </IonGrid>
         </IonContent>
       </IonModal>
