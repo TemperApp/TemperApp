@@ -6,6 +6,7 @@ import './ParameterModal.css';
 
 export const ParameterModal: React.FC = () => {
   const [showModal, setShowModal] = useState(false);
+  const [number, setNumber] = useState<number>(440);
 
   return (
     <IonContent >
@@ -49,10 +50,11 @@ export const ParameterModal: React.FC = () => {
                                 <p>LA défault</p>
                             </IonCol>
                             <IonCol size='8' className="ColTemperApp">
-                                <IonInput placeholder="440"></IonInput>
+                                <IonInput type="number" value={number} placeholder="Enter Number" onIonChange={e => setNumber(parseInt(e.detail.value!, 10))}></IonInput>
                             </IonCol>
                         </IonRow>
-                        
+                        </IonGrid>
+                        <IonGrid className="parameterContent">
                         <IonRow>
                             <IonCol size='6' className="ColTemperApp">
                                 <h3>Présentation</h3>
