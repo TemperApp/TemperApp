@@ -41,13 +41,12 @@ ion-icon.icon-light {
   margin-left: 15vw;
   border-top-left-radius: 10px;
   border-bottom-left-radius: 10px;
-  background-color: #fbab7e;
-  background-image: linear-gradient(62deg, #fbab7e 0%, #f7ce68 100%);
+  background: var(--ion-color-temperapp);
   z-index: 100;
 }
 
 .btn-header-modal {
-  background-color: var(--ion-color-primary);
+  background: var(--ion-color-temperapp-shade);
   border-radius: 50%;
   width: 37px;
   height: 37px;
@@ -61,5 +60,5 @@ ion-icon.icon-light {
 }
 
 .headerPages {
-  /*padding-bottom: 0px !important;*/
+  /*background-color: red !important;*/
 }

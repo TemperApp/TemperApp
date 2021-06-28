@@ -12,6 +12,20 @@
   --ion-color-temperapp-tint: #ffc09f;
 }
 
+body.dark {
+  --ion-color-temperapp: linear-gradient(
+    284.08deg,
+    #45cbc7 -17.13%,
+    #2ea39b 15.16%,
+    #a3719d 92.68%
+  );
+  --ion-color-temperapp-rgb: 56, 163, 155;
+  --ion-color-temperapp-contrast: #233c3a;
+  --ion-color-temperapp-contrast-rgb: 0, 0, 0;
+  --ion-color-temperapp-shade: #2ea39b;
+  --ion-color-temperapp-tint: #2ea39b;
+}
+
 .ion-color-temperapp {
   --ion-color-base: var(--ion-color-temperapp);
   --ion-color-base-rgb: var(--ion-color-temperapp-rgb);

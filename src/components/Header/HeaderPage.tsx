@@ -10,13 +10,11 @@ type headerProps = {
 
 const HeaderPage: React.FC<headerProps> = ({buttonModal,buttonModalText, setShowModal, darkTheme}) => {
 
-  let title = "COMPARATOR";
-
   if(buttonModal){
     return(
       <IonHeader className="ion-no-border">
-        <IonToolbar>
-          <IonGrid className="ion-padding-horizontal headerPages">
+        <IonToolbar className="headerPages">
+          <IonGrid className="ion-padding-horizontal">
             <IonRow className="ion-align-items-center">
               <IonCol size="8" >
                 <h1>{buttonModalText}</h1>
@@ -41,7 +39,7 @@ const HeaderPage: React.FC<headerProps> = ({buttonModal,buttonModalText, setShow
           <IonGrid className="ion-padding-horizontal headerPages">
             <IonRow className="ion-align-items-center">
               <IonCol size="8" >
-                <h1>{title}</h1>
+                <h1>{buttonModalText}</h1>
               </IonCol>
             </IonRow>
           </IonGrid>
