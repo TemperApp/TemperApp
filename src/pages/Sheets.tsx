@@ -5,7 +5,7 @@ import './Sheets.css';
 const Sheets: React.FC = () => {
   return (
     <IonPage>
-      <IonHeader className="ion-no-border">
+      <IonHeader>
         <IonToolbar>
           <IonTitle>Sheets</IonTitle>
         </IonToolbar>

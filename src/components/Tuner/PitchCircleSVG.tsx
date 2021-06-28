@@ -17,6 +17,8 @@ import { TunerMode } from './PitchCircle';
 
 //Styles 
 import "./PitchCircleSVG.css";
+import { Notes } from '../../model/Note';
+import SoundEngine from '../../engine/SoundEngine';
 
 export enum NoteStates {
   IDLE, SELECTED, OCTAVE,
@@ -148,6 +150,30 @@ const PitchCircleSVG: React.FC<PitchCircleSVGProps> = ({
       setStates(n, NoteStates.IDLE);
     }
   }
+
+  useEffect(() => {
+    const freq1 = (currentNotes.note1.note === "")
+    ? 0
+    : frequencies[currentNotes.note1.note]
+      * (currentNotes.note1.state === NoteStates.OCTAVE ? 2 : 1);
+
+    const freq2 = (currentNotes.note2.note === "")
+    ? 0
+    : frequencies[currentNotes.note2.note]
+      * (currentNotes.note2.state === NoteStates.OCTAVE ? 2 : 1);
+
+    if (currentNotes.note1.note !== "")
+      SoundEngine.stopAndPlay(freq1);
+    else
+      SoundEngine.stop();
+
+    if (currentNotes.note2.note !== "")
+      SoundEngine.setPulseBPS(Math.abs(freq1 - freq2));
+    else
+      SoundEngine.setPulseBPS(0);
+    
+  }, [currentNotes, frequencies]);
+
 
   return (
     <div id="Container_PitchCircleSVG">
