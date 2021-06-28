@@ -3,6 +3,7 @@ import {
   IonContent,
   IonHeader,
   IonPage,
+  IonSearchbar,
   IonTitle,
   IonToolbar,
 } from "@ionic/react";
@@ -13,6 +14,7 @@ import { SheetsSVG } from "../components/App/Icons";
 
 const Sheets: React.FC = () => {
   const [showModal, setShowModal] = useState(false);
+  const [searchText, setSearchText] = useState("");
 
   return (
     <IonPage>
@@ -22,6 +24,11 @@ const Sheets: React.FC = () => {
         setShowModal={setShowModal}
       />
       <IonContent fullscreen scrollY={false}>
+        <IonSearchbar
+          value={searchText}
+          onIonChange={(e) => setSearchText(e.detail.value!)}
+        ></IonSearchbar>
+
         <SheetsMenu />
       </IonContent>
     </IonPage>
