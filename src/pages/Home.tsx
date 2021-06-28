@@ -13,7 +13,7 @@ const Home: React.FC = () => {
 
   return (
     <IonPage>
-      <IonHeader className="ion-no-border">
+      <IonHeader>
         <IonToolbar>
           <IonGrid>
                 <IonRow>

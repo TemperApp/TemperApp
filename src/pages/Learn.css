@@ -1,0 +1,16 @@
+.learn-button {
+  width: 80px;
+  height: 80px;
+  margin-left: 8vw;
+  margin-top: 3vh;
+  --background: var(--color-strong);
+  --border-radius: 100px;
+}
+
+.learn-button-text {
+  --color: var(--color-dark);
+  border: none;
+  --background: transparent;
+  margin-top: 6vh;
+  margin-left: 4vh;
+}
