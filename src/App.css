@@ -36,7 +36,7 @@ ion-icon.icon-light {
 .gradientBar {
   position: relative;
   bottom: 5px;
-  height: 10px;
+  height: 8px;
   width: 100vw;
   margin-left: 15vw;
   border-top-left-radius: 10px;
