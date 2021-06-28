@@ -1,0 +1,60 @@
+.btn-start-procedure {
+  --border-radius: 500px;
+  --padding-end: 10px;
+  --padding-start: 10px;
+}
+
+.btn-mode {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+.btn-mode .btn-mode-bpm,
+.btn-mode .btn-mode-tuningfork {
+  --background: var(--ion-background-color);
+  --color: var(--ion-color-medium);
+}
+
+.btn-mode .btn-mode-bpm {
+  --border-radius: 500px 0 0 500px;
+}
+
+.btn-mode .btn-mode-tuningfork {
+  --border-radius: 0 500px 500px 0;
+}
+
+.btn-mode-bpm.btn-mode-activated,
+.btn-mode-tuningfork.btn-mode-activated {
+  --background: var(--ion-color-light);
+  --box-shadow: inset 0.5px 0.5px 2px #0003;
+  --color: var(--ion-color-primary);
+}
+
+#tunerModalFifthCircle {
+  margin-top: auto;
+  margin-bottom: auto;
+  width: 25px;
+  height: 25px;
+  border: 2px solid var(--ion-color-primary);
+  border-radius: 50px;
+}
+
+#tunerModalThirdCircle {
+  margin-top: auto;
+  margin-bottom: auto;
+  width: 50px;
+  height: 50px;
+  border: 2px solid var(--ion-color-primary);
+  border-radius: 50px;
+}
+
+.tunerModalCircleContainer p {
+  padding-left: 10px;
+}
+
+.tunerModalCircleContainer {
+  display: flex;
+  flex-direction: row;
+}

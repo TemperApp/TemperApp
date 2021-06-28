@@ -2,7 +2,9 @@
   "name": "dev",
   "version": "0.0.1",
   "private": true,
+  "homepage": "https://benjaminbriere.github.io/temperapp/",
   "dependencies": {
+    "@capacitor-community/sqlite": "^2.9.16",
     "@capacitor/android": "3.0.0",
     "@capacitor/app": "1.0.0",
     "@capacitor/core": "3.0.0",
@@ -21,11 +23,13 @@
     "@types/react-router": "^5.1.11",
     "@types/react-router-dom": "^5.1.7",
     "ionicons": "^5.4.0",
+    "rc-collapse": "^3.1.1",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-router": "^5.2.0",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "4.0.2",
+    "react-sqlite-hook": "^1.0.1",
+    "tone": "^14.7.77",
     "typescript": "^4.1.3",
     "web-vitals": "^0.2.4",
     "workbox-background-sync": "^5.1.4",
@@ -45,7 +49,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [
@@ -66,7 +72,8 @@
     ]
   },
   "devDependencies": {
-    "@capacitor/cli": "3.0.0"
+    "@capacitor/cli": "3.0.0",
+    "react-scripts": "4.0.3"
   },
   "description": "An Ionic project"
 }

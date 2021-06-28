@@ -1,0 +1,24 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito+Sans&display=swap");
+
+.rc-collapse {
+  border: 0px !important;
+}
+.rc-collapse-item {
+  border-top: 0px !important;
+}
+.rc-collapse-item-active {
+  border: 0px !important;
+}
+
+.rc-collapse-content {
+  padding: 0px !important;
+}
+
+.my-header-class {
+  font-family: "Nunito Sans", sans-serif;
+  color: #233c3a !important;
+  text-transform: uppercase;
+  font-size: 16px;
+  background: white;
+  border-top: 0px !important;
+}

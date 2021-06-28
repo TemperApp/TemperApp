@@ -1,0 +1,9 @@
+.cls-3 {
+  pointer-events: none;
+}
+
+#PitchCircleSVG {
+  margin: 0px;
+  width: 90vw;
+  height: 90vw;
+}

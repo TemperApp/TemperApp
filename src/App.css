@@ -1,0 +1,65 @@
+ion-title {
+  font-family: "Nunito Sans" !important;
+  font-style: normal;
+  font-weight: bold;
+  line-height: 30px;
+  text-transform: uppercase;
+}
+
+ion-label {
+  font-family: "Nunito Sans" !important;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 30px;
+  text-transform: uppercase;
+}
+
+ion-tab-button:hover ion-label {
+  color: #738b8a;
+}
+
+ion-tab-button:hover ion-icon {
+  fill: #738b8a;
+  stroke: #738b8a;
+}
+
+ion-icon.icon-light {
+  fill: #a7c5c3;
+  stroke: #a7c5c3;
+}
+
+.tab-selected ion-icon {
+  fill: #233c3a;
+  stroke: #233c3a;
+}
+
+.gradientBar {
+  position: relative;
+  bottom: 5px;
+  height: 10px;
+  width: 100vw;
+  margin-left: 15vw;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  background-color: #fbab7e;
+  background-image: linear-gradient(62deg, #fbab7e 0%, #f7ce68 100%);
+  z-index: 100;
+}
+
+.btn-header-modal {
+  background-color: var(--ion-color-primary);
+  border-radius: 50%;
+  width: 37px;
+  height: 37px;
+  display: flex;
+}
+
+.btn-header-modal span {
+  margin: auto;
+  color: white;
+  font-size: 20px;
+}
+
+.headerPages {
+  /*padding-bottom: 0px !important;*/
+}
