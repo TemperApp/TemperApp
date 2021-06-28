@@ -17,7 +17,7 @@ const arrowPath =
 
 
 
-const HomeContent : React.FC = () => {
+const HomeContent : React.FC<{darkTheme: boolean}> = ({darkTheme}) => {
     const temperList = ["Rameau", "Vallotti", "Weimeister", "Back", "Egal"];
 
     const [firstUse, setFirstUse] = useState<boolean>(true); 
@@ -150,7 +150,9 @@ const HomeContent : React.FC = () => {
         </Panel>
     </Collapse>
 
-    <Waves />
+    <Waves 
+        darkTheme = {darkTheme}
+    />
     
 
     </div>

@@ -40,7 +40,9 @@ const Home: React.FC<HomeProps> = ({darkTheme,setDarkTheme}) => {
         </IonToolbar>
       </IonHeader>
       <IonContent fullscreen scrollY={false}>
-        <HomeContent />
+        <HomeContent
+          darkTheme = {darkTheme}
+        />
       </IonContent>
     </IonPage>
   );
