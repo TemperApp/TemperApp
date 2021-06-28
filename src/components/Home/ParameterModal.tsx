@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { IonModal, IonContent, IonIcon, IonGrid, IonRow, IonCol, IonToggle } from '@ionic/react';
+import { IonModal, IonContent, IonIcon, IonGrid, IonRow, IonCol, IonToggle, IonSelect, IonSelectOption, IonInput } from '@ionic/react';
 import {ellipsisVertical, arrowBackOutline} from "ionicons/icons";
 
 import './ParameterModal.css';
@@ -18,7 +18,7 @@ export const ParameterModal: React.FC = () => {
                             <IonCol size='6' className="ColTemperApp">
                                 <h3>Paramètres</h3>
                             </IonCol>
-                            <IonCol size='6' className="ColTemperApp">
+                            <IonCol size='6' className="ColTemperApp-right">
                                 <IonIcon onClick={() => setShowModal(false)} icon={arrowBackOutline} size="large"></IonIcon>
                             </IonCol>
                         </IonRow>
@@ -31,6 +31,28 @@ export const ParameterModal: React.FC = () => {
                                 <IonToggle value="dark" />
                             </IonCol>
                         </IonRow>
+                        <IonRow>
+                            <IonCol size='4'>
+                                <p>Langue</p>
+                            </IonCol>
+                            <IonCol size='8' className="ColTemperApp">
+                                <IonSelect okText="Valider" cancelText="Annuler">
+                                    <IonSelectOption value="french">Français</IonSelectOption>
+                                    <IonSelectOption value="english">English</IonSelectOption>
+                                    <IonSelectOption value="german">Allemand</IonSelectOption>
+                                    <IonSelectOption value="spanish">Espagnol</IonSelectOption>
+                                </IonSelect>
+                            </IonCol>
+                        </IonRow>
+                        <IonRow>
+                            <IonCol size='4'>
+                                <p>LA défault</p>
+                            </IonCol>
+                            <IonCol size='8' className="ColTemperApp">
+                                <IonInput placeholder="440"></IonInput>
+                            </IonCol>
+                        </IonRow>
+                        
                         <IonRow>
                             <IonCol size='6' className="ColTemperApp">
                                 <h3>Présentation</h3>
