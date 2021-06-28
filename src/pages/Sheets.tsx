@@ -1,17 +1,25 @@
-import React from 'react';
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/react';
-import './Sheets.css';
+import React, { useState } from "react";
+import {
+  IonContent,
+  IonHeader,
+  IonPage,
+  IonTitle,
+  IonToolbar,
+} from "@ionic/react";
+import "./Sheets.css";
+import HeaderPage from "../components/Header/HeaderPage";
 
 const Sheets: React.FC = () => {
+  const [showModal, setShowModal] = useState(false);
+
   return (
     <IonPage>
-      <IonHeader>
-        <IonToolbar>
-          <IonTitle>Sheets</IonTitle>
-        </IonToolbar>
-      </IonHeader>
-      <IonContent fullscreen scrollY={false}>
-      </IonContent>
+      <HeaderPage
+        buttonModal={true}
+        buttonModalText="Sheets"
+        setShowModal={setShowModal}
+      />
+      <IonContent fullscreen scrollY={false}></IonContent>
     </IonPage>
   );
 };

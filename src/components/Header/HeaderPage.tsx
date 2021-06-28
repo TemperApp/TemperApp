@@ -30,7 +30,7 @@ const HeaderPage: React.FC<headerProps> = ({
           <IonGrid className="ion-padding-horizontal headerPages">
             <IonRow className="ion-align-items-center">
               <IonCol size="8">
-                <h1>{buttonModalText}</h1>
+                <h2>{buttonModalText}</h2>
               </IonCol>
               <IonCol size="1" offset="2">
                 <div
