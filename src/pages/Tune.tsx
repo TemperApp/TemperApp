@@ -6,7 +6,11 @@ import { TemperamentDBType } from '../engine/DB';
 import HeaderPage from '../components/Header/HeaderPage';
 import TunerModal from '../components/Tuner/TunerModal';
 
-const Tune: React.FC = () => {
+type TuneProps = {
+  darkTheme : boolean,
+}
+
+const Tune: React.FC<TuneProps> = ({darkTheme}) => {
   
   const [showModal, setShowModal] = useState(false);
 
@@ -16,15 +20,19 @@ const Tune: React.FC = () => {
         buttonModal = {true}
         buttonModalText = "TUNER"
         setShowModal = {setShowModal}
+        darkTheme = {darkTheme}
       />
       <IonContent fullscreen scrollY={false}>
 
         <TunerModal
           showModal = {showModal}
           setShowModal = {setShowModal}
+          darkTheme = {darkTheme}
         />
 
-        <Tuner />
+        <Tuner 
+          darkTheme = {darkTheme}
+        />
 
       </IonContent>
     </IonPage>

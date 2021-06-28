@@ -10,10 +10,11 @@ type PitchCircleProps = {
   isHzMode: boolean,
   freqA4: number,
   idTemperament : number
+  darkTheme : boolean
 };
 
 const PitchCircle: React.FC<PitchCircleProps> = ({
-  isHzMode, freqA4, idTemperament
+  isHzMode, freqA4, idTemperament, darkTheme
 }) => {
 
   const [tunerMode, setTunerMode] = useState(TunerMode.HZ);
@@ -27,6 +28,7 @@ const PitchCircle: React.FC<PitchCircleProps> = ({
       tunerMode = {tunerMode}
       freqA4 = {freqA4}
       idTemperament = {idTemperament}
+      darkTheme = {darkTheme}
     />
   );
 };

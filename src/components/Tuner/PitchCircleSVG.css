@@ -1,5 +1,6 @@
 .cls-3 {
   pointer-events: none;
+  fill: var(--ion-text-color);
 }
 
 #PitchCircleSVG {

@@ -1,22 +1,25 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { noteToStr, BpsCalc } from './functions/frequencies';
 import { ActiveNotes, NoteStates } from './PitchCircleSVG';
 import { NotesMap } from '../../model/Note';
 
 //Styles
 import "./CenterCircle.css";
+import { isDarkTheme } from '../../model/Utils';
 
 type PitchCircleSVGProps = {
   actives: ActiveNotes,
   frequencies: NotesMap<number>,
+  darkTheme : boolean
 }
 
 const isBps = true;
 const refOctave = 4;
 
-const CenterCircle: React.FC<PitchCircleSVGProps> = ({ actives, frequencies }) => {
+const CenterCircle: React.FC<PitchCircleSVGProps> = ({ actives, frequencies, darkTheme }) => {
 
   useEffect(() => {
+    console.log("raffraichissement");
     const cNote = document.getElementById("centerCircleNote")!;
     const cFreq = document.getElementById("centerCircleFrequency")!;
 
@@ -53,7 +56,7 @@ const CenterCircle: React.FC<PitchCircleSVGProps> = ({ actives, frequencies }) =
 
   return (
     <g id="CenterCercleInformation">
-      <circle className="st29" fill="#F7FBFC" cx="178.5" cy="178.5" r="77.13" />
+      <circle className="st29" fill={(darkTheme)?("#233C3A"):"#F7FBFC"} cx="178.5" cy="178.5" r="77.13" />
       <text transform="matrix(1 0 0 1 178.5 178.5)" className="st25 st30">
         <tspan x="0" className="st30" textAnchor="middle" id="centerCircleNote"></tspan>
         <tspan x="0" className="st31" textAnchor="middle" id="centerCircleFrequency" dy="30"></tspan>

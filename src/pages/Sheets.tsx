@@ -2,7 +2,11 @@ import React from 'react';
 import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/react';
 import './Sheets.css';
 
-const Sheets: React.FC = () => {
+type SheetsProps = {
+  darkTheme : boolean,
+}
+
+const Sheets: React.FC<SheetsProps> = ({darkTheme}) => {
   return (
     <IonPage>
       <IonHeader className="ion-no-border">

@@ -3,11 +3,17 @@ import { IonContent, IonHeader, IonIcon, IonItem, IonLabel, IonList, IonPage, Io
 import './Home.css';
 import HomeContent from '../components/Home/HomeContent';
 
-const Home: React.FC = () => {
+type HomeProps = {
+  darkTheme : boolean,
+  setDarkTheme: (color: boolean) => void,
+}
+
+const Home: React.FC<HomeProps> = ({darkTheme,setDarkTheme}) => {
 
   const change = (e : any) => {
     console.log(e.target.checked);
     document.body.classList.toggle('dark', e.target.checked);
+    (e.target.checked === true)?setDarkTheme(true):setDarkTheme(false);
   }
 
   return (

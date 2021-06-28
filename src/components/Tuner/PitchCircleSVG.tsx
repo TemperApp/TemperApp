@@ -32,11 +32,12 @@ export type ActiveNotes = [ActiveNote, ActiveNote];
 type PitchCircleSVGProps = {
   tunerMode: TunerMode,
   freqA4: number,
-  idTemperament: number
+  idTemperament: number,
+  darkTheme: boolean
 }
 
 const PitchCircleSVG: React.FC<PitchCircleSVGProps> = ({
-  tunerMode, freqA4, idTemperament
+  tunerMode, freqA4, idTemperament, darkTheme
 }) => {
 
   const [actives, setActives] = useState<ActiveNotes>(
@@ -170,6 +171,7 @@ const PitchCircleSVG: React.FC<PitchCircleSVGProps> = ({
               actives={actives}
               onChange={(state: NoteStates) => setStates(n, state)}
               setActives={setActives}
+              darkTheme = {darkTheme}
             />);
         })}
 
@@ -184,6 +186,7 @@ const PitchCircleSVG: React.FC<PitchCircleSVGProps> = ({
         <CenterCircle
           actives={actives}
           frequencies={frequencies}
+          darkTheme = {darkTheme}
         />
 
       </svg>

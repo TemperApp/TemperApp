@@ -5,8 +5,10 @@
 
 .st30 {
   font-size: 32px;
+  fill: var(--ion-text-color);
 }
 .st31 {
   margin-top: 20px;
   font-size: 18px;
+  fill: var(--ion-text-color);
 }

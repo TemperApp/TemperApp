@@ -2,7 +2,11 @@ import React from 'react';
 import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/react';
 import './Learn.css';
 
-const Learn: React.FC = () => {
+type LearnProps = {
+  darkTheme : boolean,
+}
+
+const Learn: React.FC<LearnProps> = ({darkTheme}) => {
   return (
     <IonPage>
       <IonHeader className="ion-no-border">

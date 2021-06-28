@@ -5,9 +5,10 @@ type headerProps = {
   buttonModal: boolean,
   buttonModalText: string,
   setShowModal: (state: boolean) => void, 
+  darkTheme: boolean,
 }
 
-const HeaderPage: React.FC<headerProps> = ({buttonModal,buttonModalText, setShowModal}) => {
+const HeaderPage: React.FC<headerProps> = ({buttonModal,buttonModalText, setShowModal, darkTheme}) => {
 
   let title = "COMPARATOR";
 

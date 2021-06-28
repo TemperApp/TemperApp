@@ -16,7 +16,11 @@ import { TemperamentDBType } from '../../engine/DB';
 import PitchCircle from './PitchCircle';
 import SoundEngine from '../../engine/SoundEngine';
 
-const Tuner: React.FC = () => {
+type TunerProps = {
+  darkTheme : boolean,
+}
+
+const Tuner: React.FC<TunerProps> = ({darkTheme}) => {
 
   const [temperament, setTemperament] = useState<TemperamentDBType>({idTemperament: 1, name: "Equal", nameFR: "Égal"});
   const [temperamentsList, setTemperamentsList] = useState<Array<TemperamentDBType>>([]);
@@ -69,6 +73,7 @@ const Tuner: React.FC = () => {
           isHzMode = {isHzMode}
           freqA4 = {freqA4}
           idTemperament = {temperament.idTemperament}
+          darkTheme = {darkTheme}
         />   
       </IonRow>
              

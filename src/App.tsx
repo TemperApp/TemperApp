@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Redirect, Route } from 'react-router-dom';
 import { IonApp, IonRouterOutlet } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
@@ -39,6 +39,8 @@ import DB from './engine/DB';
 export let sqlite: any; // singleton
 
 const App: React.FC = () => {
+
+  const [darkTheme, setDarkTheme] = useState(false);
   
   const {echo, getPlatform, createConnection, closeConnection,
     retrieveConnection, retrieveAllConnections, closeAllConnections,
@@ -62,19 +64,30 @@ const App: React.FC = () => {
         <IonTabs>
           <IonRouterOutlet>
             <Route exact path="/Tune">
-              <Tune />
+              <Tune 
+                darkTheme = {darkTheme}
+              />
             </Route>
             <Route exact path="/compare">
-              <Compare />
+              <Compare 
+                darkTheme = {darkTheme}
+              />
             </Route>
             <Route exact path="/home">
-              <Home />
+              <Home 
+                darkTheme = {darkTheme}
+                setDarkTheme = {setDarkTheme}
+              />
             </Route>
             <Route exact path="/sheets">
-              <Sheets />
+              <Sheets 
+                darkTheme = {darkTheme}
+              />
             </Route>
             <Route exact path="/learn">
-              <Learn />
+              <Learn 
+                darkTheme = {darkTheme}
+              />
             </Route>
             <Route exact path="/">
               <Redirect to="/home" />

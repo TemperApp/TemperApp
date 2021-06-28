@@ -6,7 +6,11 @@ import { playCircle } from 'ionicons/icons';
 import ComparatorModal from '../components/Comparator/ComparatorModal';
 import HeaderPage from '../components/Header/HeaderPage';
 
-const Compare: React.FC = () => {
+type CompareProps = {
+  darkTheme : boolean,
+}
+
+const Compare: React.FC<CompareProps> = ({darkTheme}) => {
 
   const [showModal, setShowModal] = useState(false);
 
@@ -16,6 +20,7 @@ const Compare: React.FC = () => {
         buttonModal = {true}
         buttonModalText = "COMPARATOR"
         setShowModal = {setShowModal}
+        darkTheme = {darkTheme}
       />
 
       <IonContent fullscreen scrollY={true}>
