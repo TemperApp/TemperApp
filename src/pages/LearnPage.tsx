@@ -8,7 +8,7 @@ import {
   IonToolbar,
 } from "@ionic/react";
 
-import "./LearnPage.css";
+import "./Learn.css";
 
 const LearnPage: React.FC = () => {
   return (

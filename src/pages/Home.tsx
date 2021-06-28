@@ -1,5 +1,9 @@
 import React from 'react';
-import { IonCol, IonContent, IonGrid, IonHeader, IonImg, IonPage, IonRow, IonToolbar, IonIcon } from '@ionic/react';
+import { IonCol, IonContent, IonGrid,
+  IonHeader, IonImg, IonPage, IonRow,
+  IonToolbar, IonIcon, IonList, IonItem,
+  IonLabel, IonToggle,
+ } from '@ionic/react';
 import './Home.css';
 import HomeContent from '../components/Home/HomeContent';
 import {ellipsisVertical} from "ionicons/icons";
