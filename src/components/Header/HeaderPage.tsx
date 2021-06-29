@@ -21,7 +21,7 @@ const HeaderPage: React.FC<headerProps> = ({buttonModal,buttonModalText, setShow
 
   if(buttonModal){
     return(
-      <IonHeader className="ion-no-border">
+      <IonHeader>
         <IonToolbar className="headerPages">
           <IonGrid className="ion-padding-horizontal">
             <IonRow className="ion-align-items-center">
@@ -50,7 +50,7 @@ const HeaderPage: React.FC<headerProps> = ({buttonModal,buttonModalText, setShow
           <IonGrid className="ion-padding-horizontal headerPages">
             <IonRow className="ion-align-items-center">
               <IonCol size="8" >
-                <h1>{buttonModalText}</h1>
+                <h2>{buttonModalText}</h2>
               </IonCol>
             </IonRow>
           </IonGrid>

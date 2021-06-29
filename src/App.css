@@ -105,15 +105,6 @@ ion-tab-button {
   padding: none;
 }
 
-ion-tab-button:hover ion-label {
-  color: var(--color-hover);
-}
-
-ion-tab-button:hover ion-icon {
-  fill: var(--color-hover);
-  stroke: var(--color-hover);
-}
-
 ion-icon.icon-light {
   fill: var(--color);
   stroke: var(--color);

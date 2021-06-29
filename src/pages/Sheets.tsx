@@ -25,6 +25,7 @@ const Sheets: React.FC<SheetsProps> = ({darkTheme}) => {
         buttonModal={false}
         buttonModalText="Fiches"
         setShowModal={setShowModal}
+        darkTheme={darkTheme}
       />
       <IonContent fullscreen scrollY={false}>
         <IonSearchbar

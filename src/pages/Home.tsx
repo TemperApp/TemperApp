@@ -19,7 +19,7 @@ const Home: React.FC<HomeProps> = ({darkTheme,setDarkTheme}) => {
 
   return (
     <IonPage>
-      <IonHeader>
+      <IonHeader className="ion-no-border">
         <IonToolbar>
           <IonGrid>
             <IonRow>
@@ -29,7 +29,6 @@ const Home: React.FC<HomeProps> = ({darkTheme,setDarkTheme}) => {
                 <IonImg src={"../../assets/logotypes/temperapp_logo.svg"} />
               </IonCol>
               <IonCol size='2' className="ColTemperApp">
-                <IonIcon icon={ellipsisVertical} size="large"></IonIcon>
                 <ParameterModal 
                   darkTheme = {darkTheme}
                   setDarkTheme = {setDarkTheme}
@@ -38,17 +37,6 @@ const Home: React.FC<HomeProps> = ({darkTheme,setDarkTheme}) => {
             </IonRow>
           </IonGrid>
         </IonToolbar>
-        <IonList>
-          <IonItem lines="full">
-            <IonIcon slot="start" name="moon"></IonIcon>
-            <IonLabel>Je suis les ombres</IonLabel>
-            <IonToggle
-              id="themeToggle"
-              slot="end"
-              onClick={(e) => change(e)}
-            ></IonToggle>
-          </IonItem>
-        </IonList>
       </IonHeader>
       <IonContent fullscreen scrollY={false}>
         <HomeContent
