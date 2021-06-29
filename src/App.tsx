@@ -90,7 +90,7 @@ const App: React.FC = () => {
     <IonApp>
       <IonReactRouter>
         <IonTabs>
-          <IonRouterOutlet>
+          <IonRouterOutlet animated={false}>
             <Route exact path="/Tune">
               <Tune 
                 darkTheme = {darkTheme}
@@ -120,7 +120,7 @@ const App: React.FC = () => {
             </Route>
           </IonRouterOutlet>
           <IonTabBar slot="bottom">
-            <IonTabButton tab="tune" href="/tune">
+            <IonTabButton tab="tune" href="/tune" >
               <IonIcon
                 src="/assets/logotypes/icon-diapason-grey.svg"
                 class="icon-light"

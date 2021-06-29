@@ -23,10 +23,7 @@ const Learn_sheet: React.FC<RouteComponentProps> = ({match, history}) => {
         darkTheme = {false}
       />
       <IonContent>
-      <IonButton color="primary" onClick={e => {
-        console.log("action")
-        e.preventDefault();
-        history.replace('/learn')}}>Back</IonButton>
+        <IonButton color="primary" routerDirection="root" routerLink="/learn" >Back</IonButton>
       </IonContent>
     </>
   );
