@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { IonBackButton, IonButtons, IonContent, IonHeader, IonItem, IonLabel, IonList, IonPage, IonRouterOutlet, IonTitle, IonToolbar } from '@ionic/react';
+import { IonBackButton, IonButton, IonButtons, IonContent, IonHeader, IonItem, IonLabel, IonList, IonPage, IonRouterOutlet, IonTitle, IonToolbar } from '@ionic/react';
 import './Learn.css';
 import { Route, RouteComponentProps } from 'react-router-dom';
 import HeaderPage from '../components/Header/HeaderPage';
@@ -22,8 +22,19 @@ const Learn_sheet: React.FC<RouteComponentProps> = ({match, history}) => {
         setShowModal = {() => {}}
         darkTheme = {false}
       />
+      <IonContent>
+      <IonButton color="primary" onClick={e => {
+        console.log("action")
+        e.preventDefault();
+        history.replace('/learn')}}>Back</IonButton>
+      </IonContent>
     </>
   );
 };
 
-export default Learn_sheet;
+export default React.memo(
+  Learn_sheet,
+  (prevProps, nextProps) => (
+    prevProps.history.location.key === nextProps.history.location.key
+    && prevProps.match.path === nextProps.match.path)
+);

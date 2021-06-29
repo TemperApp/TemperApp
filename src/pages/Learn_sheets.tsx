@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { IonContent, IonHeader, IonItem, IonLabel, IonList, IonPage, IonRouterOutlet, IonTitle, IonToolbar } from '@ionic/react';
+import { IonButton, IonContent, IonHeader, IonItem, IonLabel, IonList, IonPage, IonRouterOutlet, IonTitle, IonToolbar } from '@ionic/react';
 import './Learn.css';
 import { Route, RouteComponentProps } from 'react-router-dom';
 import HeaderPage from '../components/Header/HeaderPage';
@@ -25,7 +25,7 @@ const Learn: React.FC<LearnProps> = ({darkTheme}) => {
 };
 */
 
-const Learn_sheets: React.FC<RouteComponentProps> = ({match}) => {
+const Learn_sheets: React.FC<RouteComponentProps> = ({match, history}) => {
   
   const [showModal, setShowModal] = useState(false);
 
@@ -49,9 +49,11 @@ const Learn_sheets: React.FC<RouteComponentProps> = ({match}) => {
           <IonItem routerLink="/learn/sheet/3">
             <IonLabel>Page 3</IonLabel>
           </IonItem>
-          <IonItem routerLink="/learn/sheet/4">
-            <IonLabel>Page 4</IonLabel>
-          </IonItem>
+          <IonButton onClick={e => {
+            console.log("action on")
+            e.preventDefault();
+            history.push('/learn/sheet/4')}}>Page 4
+          </IonButton>
         </IonList>  
       </IonContent>
 
