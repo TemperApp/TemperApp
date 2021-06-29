@@ -1,6 +1,14 @@
 /* Ionic Variables and Theming. For more info, please see:
 http://ionicframework.com/docs/theming/ */
 
+/* Fonts */
+@import './fonts/Karla.css';
+@import './fonts/Nunito.css';
+
+:root {
+  --ion-font-family: 'Karla', 'Tahoma', sans-serif;
+}
+
 /** Ionic CSS Variables **/
 :root {
   --color-selected: #233c3a;
@@ -89,8 +97,6 @@ http://ionicframework.com/docs/theming/ */
   --ion-color-light-contrast-rgb: 0, 0, 0;
   --ion-color-light-shade: #f5fbfb;
   --ion-color-light-tint: #f5f6f9;
-
-  --font: "Nunito Sans";
 }
 
 /*
@@ -254,15 +260,3 @@ body.dark {
 
   --ion-card-background: var(--ion-background-color);
 }
-
-/* FONTS */
-
-@font-face {
-  font-family: "Nunito Sans";
-  font-style: bold, uppercase;
-  font-weight: 300;
-  src: "./assets/fonts/NunitoSans-SemiBold.ttf";
-}
-
-/* TODO local download */
-@import url('https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap');
