@@ -10,7 +10,6 @@ import {
 import "./Sheets.css";
 import HeaderPage from "../components/Header/HeaderPage";
 import SheetsMenu from "../components/Sheets/SheetsMenu";
-import { SheetsSVG } from "../components/App/Icons";
 
 const Sheets: React.FC = () => {
   const [showModal, setShowModal] = useState(false);
@@ -19,8 +18,8 @@ const Sheets: React.FC = () => {
   return (
     <IonPage>
       <HeaderPage
-        buttonModal={true}
-        buttonModalText="Sheets"
+        buttonModal={false}
+        buttonModalText="Fiches"
         setShowModal={setShowModal}
       />
       <IonContent fullscreen scrollY={false}>
@@ -28,7 +27,6 @@ const Sheets: React.FC = () => {
           value={searchText}
           onIonChange={(e) => setSearchText(e.detail.value!)}
         ></IonSearchbar>
-
         <SheetsMenu />
       </IonContent>
     </IonPage>

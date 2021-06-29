@@ -45,7 +45,7 @@ h4 {
 }
 
 h5 {
-  font-family: Karla;
+  font-family: "Karla";
   font-style: normal;
   font-weight: bold;
   font-size: 14px;
@@ -57,7 +57,7 @@ h5 {
 }
 
 p {
-  font-family: Karla;
+  font-family: "Karla";
   font-style: normal;
   font-weight: normal;
   font-size: 16px;
@@ -82,7 +82,7 @@ ion-tab-bar {
   min-height: 9vh;
   display: flex;
   align-self: center;
-  box-shadow: inset 0px 1px 4px rgba(0, 0, 0, 0.16);
+  box-shadow: inset 0px 1px 4px rgba(21, 37, 37, 0.16);
   border-top-left-radius: 6px;
   border-top-right-radius: 6px;
 }
@@ -105,10 +105,6 @@ ion-tab-button {
   padding: none;
 }
 
-ion-icon {
-  width: 24px;
-}
-
 ion-tab-button:hover ion-label {
   color: var(--color-hover);
 }
@@ -121,6 +117,7 @@ ion-tab-button:hover ion-icon {
 ion-icon.icon-light {
   fill: var(--color);
   stroke: var(--color);
+  height: 24px;
 }
 
 .tab-selected ion-icon {
@@ -128,8 +125,33 @@ ion-icon.icon-light {
   stroke: var(--color-selected);
 }
 
+.tab-selected ion-label {
+  font-weight: 600;
+}
+
+.btn-header-modal {
+  background-color: var(--color-strong);
+  border-radius: 50%;
+  width: 37px;
+  height: 37px;
+  display: flex;
+}
+
 .btn-header-modal span {
   margin: auto;
-  color: white;
+  color: var(--background-color);
   font-size: 20px;
+}
+
+.select-text {
+  background: var(--background-color);
+  border-radius: 8px;
+}
+
+.label {
+  filter: drop-shadow(0px 0px 3px rgba(0, 0, 0, 0.25));
+}
+
+#ion-sel-0-lbl {
+  --box-shadow: drop-shadow(0px 0px 3px rgba(0, 0, 0, 0.25));
 }

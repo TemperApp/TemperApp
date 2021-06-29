@@ -49,17 +49,16 @@ const HeaderPage: React.FC<headerProps> = ({
 
   return (
     <>
-      <IonHeader className="ion-no-border">
+      <IonHeader>
         <IonToolbar>
           <IonGrid className="ion-padding-horizontal headerPages">
             <IonRow className="ion-align-items-center">
               <IonCol size="8">
-                <h1>{title}</h1>
+                <h2>{buttonModalText}</h2>
               </IonCol>
             </IonRow>
           </IonGrid>
         </IonToolbar>
-        <div className="gradientBar"></div>
       </IonHeader>
     </>
   );

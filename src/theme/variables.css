@@ -15,11 +15,13 @@ http://ionicframework.com/docs/theming/ */
     #f88f8f 132.71%
   );
   --color-dark: #233c3a;
+  --ion-background-color: #f5fbfb;
+  --ion-toolbar-background: #f5fbfb;
 
   /** primary **/
   --ion-color-primary: #233c3a;
   --ion-color-primary-rgb: 56, 128, 255;
-  --ion-color-primary-contrast: #ffffff;
+  --ion-color-primary-contrast: #f5fbfb;
   --ion-color-primary-contrast-rgb: 255, 255, 255;
   --ion-color-primary-shade: #3171e0;
   --ion-color-primary-tint: #4c8dff;
@@ -27,7 +29,7 @@ http://ionicframework.com/docs/theming/ */
   /** secondary **/
   --ion-color-secondary: #3dc2ff;
   --ion-color-secondary-rgb: 61, 194, 255;
-  --ion-color-secondary-contrast: #ffffff;
+  --ion-color-secondary-contrast: #f5fbfb;
   --ion-color-secondary-contrast-rgb: 255, 255, 255;
   --ion-color-secondary-shade: #36abe0;
   --ion-color-secondary-tint: #50c8ff;
@@ -35,7 +37,7 @@ http://ionicframework.com/docs/theming/ */
   /** tertiary **/
   --ion-color-tertiary: #5260ff;
   --ion-color-tertiary-rgb: 82, 96, 255;
-  --ion-color-tertiary-contrast: #ffffff;
+  --ion-color-tertiary-contrast: #f5fbfb;
   --ion-color-tertiary-contrast-rgb: 255, 255, 255;
   --ion-color-tertiary-shade: #4854e0;
   --ion-color-tertiary-tint: #6370ff;
@@ -43,7 +45,7 @@ http://ionicframework.com/docs/theming/ */
   /** success **/
   --ion-color-success: #2dd36f;
   --ion-color-success-rgb: 45, 211, 111;
-  --ion-color-success-contrast: #ffffff;
+  --ion-color-success-contrast: #f5fbfb;
   --ion-color-success-contrast-rgb: 255, 255, 255;
   --ion-color-success-shade: #28ba62;
   --ion-color-success-tint: #42d77d;
@@ -59,7 +61,7 @@ http://ionicframework.com/docs/theming/ */
   /** danger **/
   --ion-color-danger: #eb445a;
   --ion-color-danger-rgb: 235, 68, 90;
-  --ion-color-danger-contrast: #ffffff;
+  --ion-color-danger-contrast: #f5fbfb;
   --ion-color-danger-contrast-rgb: 255, 255, 255;
   --ion-color-danger-shade: #cf3c4f;
   --ion-color-danger-tint: #ed576b;
@@ -67,7 +69,7 @@ http://ionicframework.com/docs/theming/ */
   /** dark **/
   --ion-color-dark: #233c3a;
   --ion-color-dark-rgb: 34, 36, 40;
-  --ion-color-dark-contrast: #ffffff;
+  --ion-color-dark-contrast: #f5fbfb;
   --ion-color-dark-contrast-rgb: 255, 255, 255;
   --ion-color-dark-shade: #1e2023;
   --ion-color-dark-tint: #383a3e;
@@ -75,17 +77,17 @@ http://ionicframework.com/docs/theming/ */
   /** medium **/
   --ion-color-medium: #a7c5c3;
   --ion-color-medium-rgb: 146, 148, 156;
-  --ion-color-medium-contrast: #ffffff;
+  --ion-color-medium-contrast: #f5fbfb;
   --ion-color-medium-contrast-rgb: 255, 255, 255;
   --ion-color-medium-shade: #808289;
   --ion-color-medium-tint: #9d9fa6;
 
   /** light **/
-  --ion-color-light: #f5fbfbff;
+  --ion-color-light: #f5fbfb;
   --ion-color-light-rgb: 244, 245, 248;
   --ion-color-light-contrast: #233c3aff;
   --ion-color-light-contrast-rgb: 0, 0, 0;
-  --ion-color-light-shade: #d7d8da;
+  --ion-color-light-shade: #f5fbfb;
   --ion-color-light-tint: #f5f6f9;
 
   --font: "Nunito Sans";
