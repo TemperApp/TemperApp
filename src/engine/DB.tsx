@@ -1,6 +1,6 @@
 import { capSQLiteChanges } from '@capacitor-community/sqlite';
 import { sqlite } from '../App';
-import { defaultTemperaments } from '../model/Temperament';
+import { defaultTemperaments } from '../model/Temperament/Temperament';
 import { Notes } from "../model/Note/enums";
 
 const sqlDropTables = [

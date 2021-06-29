@@ -1,9 +1,9 @@
 /* eslint-disable no-sequences */
-import { Temperament } from '../model/Temperament';
+import { Temperament } from '../model/Temperament/Temperament';
 import DB, { DivergenceDBType, TemperamentDBType } from '../engine/DB';
 
 // TODO Remove on production
-import { defaultTemperaments } from '../model/Temperament';
+import { defaultTemperaments } from '../model/Temperament/Temperament';
 
 
 /**

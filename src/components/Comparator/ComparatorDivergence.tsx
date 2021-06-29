@@ -2,7 +2,7 @@ import React from 'react';
 
 //Style
 import './Comparator.css'
-import { convertFifthQualityToColor } from '../Tuner/functions/colorCircle';
+import { convertFifthQualityToColor } from '../Tuner/utils/colorCircle';
 import { IonCard, IonCardContent, IonCardHeader, IonCardTitle, IonCol, IonGrid, IonRow } from '@ionic/react';
 
 type ComparatorDivergenceProps = {

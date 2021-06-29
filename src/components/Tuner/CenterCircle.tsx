@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { AcousticBeat, processAcousticBeat } from './functions/frequencies';
+import AcousticBeat, { processAcousticBeat } from '../../model/AcousticBeat';
 import { ActiveNotes, NoteStates } from './PitchCircleSVG';
 import Note from '../../model/Note/Note';
 import { Notes } from '../../model/Note/enums';
@@ -55,34 +55,20 @@ const CenterCircle: React.FC<PitchCircleSVGProps> = ({
   });
 
   useEffect(() => {
-    if (beat.modulationFreq) {
+    if (beat.modulationFreq && beat.carrierFreq) {
       SoundEngine.setPulseBPS(beat.modulationFreq);
-    }
-    if (beat.carrierFreq) {
-      const heardFreq = (beat.carrierFreq > 1000)
-        ? beat.carrierFreq / 2
-        : beat.carrierFreq
+      let heardFreq = beat.carrierFreq;
+      while (heardFreq > 1000)
+        heardFreq /= 2;
       SoundEngine.stopAndPlay(heardFreq);
     }
       
     const cFreq = document.getElementById("centerCircleFrequency")!;
-    const isIdle0 = actives[0].state === NoteStates.IDLE;
-    const isIdle1 = actives[1].state === NoteStates.IDLE;
-    const isOctave0 = actives[0].state === NoteStates.OCTAVE;
-    const isOctave1 = actives[1].state === NoteStates.OCTAVE;
-
-    if (!isIdle0 && !isIdle1) {
-      console.log(
-        Note.create(actives[0].note!, (isOctave0 ? 3 : 4)),
-        Note.create(actives[1].note!, (isOctave1 ? 3 : 4)),
-        beat
-      );
-    }
 
     cFreq.innerHTML = (beat.modulationFreq)
       ? beatToStr(beat.modulationFreq, isBpm)
       : "—";
-  }, [beat])
+  }, [beat]);
 
   useEffect(() => {
     const cNote = document.getElementById("centerCircleNote")!;
@@ -100,23 +86,23 @@ const CenterCircle: React.FC<PitchCircleSVGProps> = ({
 
     if (!isIdle0 && isIdle1) {
       cNote.innerHTML = notesToStr(actives[0].note!) 
-        + (refOctave + (isOctave0 ? -1 : 0));
+        + (refOctave + (isOctave0 ? 1 : 0));
 
       cFreq.innerHTML = (frequencies[actives[0].note!] 
-        * (isOctave0 ? 0.5 : 1)).toFixed(1) + " Hz";
+        * (isOctave0 ? 2 : 1)).toFixed(1) + " Hz";
     }
 
     if (!isIdle0 && !isIdle1) {
       cNote.innerHTML =
         notesToStr(actives[0].note!)
-        + (refOctave + (isOctave0 ? -1 : 0))
+        + (refOctave + (isOctave0 ? 1 : 0))
         + " · "
         + notesToStr(actives[1].note!)
-        + (refOctave + (isOctave1 ? -1 : 0));
+        + (refOctave + (isOctave1 ? 1 : 0));
 
       setBeat(processAcousticBeat(
-        Note.create(actives[0].note!, (isOctave0 ? 3 : 4)),
-        Note.create(actives[1].note!, (isOctave1 ? 3 : 4)),
+        Note.create(actives[0].note!, (isOctave0 ? 5 : 4)),
+        Note.create(actives[1].note!, (isOctave1 ? 5 : 4)),
         freqA4,
         deviations
       ));

@@ -1,8 +1,8 @@
-
 import { IonRow } from '@ionic/react';
 import React, { useEffect, useState } from 'react';
 import { fetchTemperamentPropsById } from '../../engine/DataAccessor';
-import { DivergenceEqual, fifthEqualQ, fifthQ, thirdEqualQ, thirdQ } from '../Tuner/functions/frequencies';
+import { thirdEqualQ, fifthEqualQ, DivergenceEqual } from '../../model/Temperament/Equal';
+import { fifthQ, thirdQ } from '../../model/Divergence';
 
 //Style
 

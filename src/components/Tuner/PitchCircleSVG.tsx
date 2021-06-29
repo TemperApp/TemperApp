@@ -5,10 +5,12 @@ import FifthCircleSVG from './FifthCircleSVG';
 import ThirdCircleSVG from './ThirdCircleSVG';
 import PitchCircleButtonSVG from './PitchCircleButtonSVG';
 import CenterCircle from './CenterCircle';
-import { EqualTemperament, Temperament } from '../../model/Temperament';
-import { fetchTemperamentPropsById } from '../../engine/DataAccessor';
-import { frequencies4, thirdQ, fifthQ, thirdEqualQ, fifthEqualQ } from './functions/frequencies';
+
+import { Temperament } from '../../model/Temperament/Temperament';
+import EqualTemperament, { thirdEqualQ, fifthEqualQ } from '../../model/Temperament/Equal';
+import { freqs4, thirdQ, fifthQ } from '../../model/Divergence';
 import SoundEngine from '../../engine/SoundEngine';
+import { fetchTemperamentPropsById } from '../../engine/DataAccessor';
 
 //Types 
 import { PitchCircleButtonSVGPos as btnPosition, PitchCircleSVGLabels } from "./PitchCircleButtonSVGPos"
@@ -48,7 +50,7 @@ const PitchCircleSVG: React.FC<PitchCircleSVGProps> = ({
   const [thirdQualities, setThirdQualities] = useState<NotesMap<number | null>>(thirdEqualQ());
   const [fifthQualities, setFifthQualities] = useState<NotesMap<number | null>>(fifthEqualQ());
 
-  const [frequencies, setFrequencies] = useState<NotesMap<number>>(frequencies4(440));
+  const [frequencies, setFrequencies] = useState<NotesMap<number>>(freqs4(440));
 
   const [C       , setC      ] = useState<NoteStates>(NoteStates.IDLE);
   const [C_sharp , setC_sharp] = useState<NoteStates>(NoteStates.IDLE);
@@ -99,7 +101,7 @@ const PitchCircleSVG: React.FC<PitchCircleSVGProps> = ({
       setTemperament(temp);
       setFifthQualities(fifthQ(temp.cpExp5th));
       setThirdQualities(thirdQ(temp.csExp3rd));
-      setFrequencies(frequencies4(freqA4, temp.deviation));
+      setFrequencies(freqs4(freqA4, temp.deviation));
     })();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [idTemperament]);
@@ -110,7 +112,7 @@ const PitchCircleSVG: React.FC<PitchCircleSVGProps> = ({
     (async () => {
       if (!temperament)
         return;
-      setFrequencies(frequencies4(freqA4, temperament.deviation));
+      setFrequencies(freqs4(freqA4, temperament.deviation));
     })();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [freqA4]);
@@ -121,12 +123,12 @@ const PitchCircleSVG: React.FC<PitchCircleSVGProps> = ({
     const freq1 = (actives[0].note === null)
       ? 0
       : frequencies[actives[0].note]
-        * (actives[0].state === NoteStates.OCTAVE ? 0.5 : 1);
+        * (actives[0].state === NoteStates.OCTAVE ? 2 : 1);
 
     const freq2 = (actives[1].note === null)
       ? 0
       : frequencies[actives[1].note]
-        * (actives[1].state === NoteStates.OCTAVE ? 0.5 : 1);
+        * (actives[1].state === NoteStates.OCTAVE ? 2 : 1);
 
     (actives[0].note !== null)
       ? SoundEngine.stopAndPlay(freq1)
