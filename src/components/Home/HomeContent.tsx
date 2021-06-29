@@ -44,10 +44,7 @@ const HomeContent : React.FC<{darkTheme: boolean}> = ({darkTheme}) => {
     }
 
     const expandIcon = (e : any) => {
-        console.log(e.panelKey);
-        console.log(firstUse);
 
-        
         if(firstUse){
             if(activePanel==0){
                 setStatePanel1(true); 

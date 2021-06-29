@@ -14,7 +14,6 @@ export const ParameterModal: React.FC<ParameterModalProps> = ({darkTheme,setDark
   const [number, setNumber] = useState<number>(440);
 
   const change = (e : any) => {
-    console.log(e.target.checked);
     document.body.classList.toggle('dark', e.target.checked);
     (e.target.checked === true)?setDarkTheme(true):setDarkTheme(false);
   }
