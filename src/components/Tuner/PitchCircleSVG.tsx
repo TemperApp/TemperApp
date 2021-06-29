@@ -5,26 +5,19 @@ import FifthCircleSVG from "./FifthCircleSVG";
 import ThirdCircleSVG from "./ThirdCircleSVG";
 import PitchCircleButtonSVG from "./PitchCircleButtonSVG";
 import CenterCircle from "./CenterCircle";
-import { Temperament } from "../../model/Temperament";
-import { fetchTemperamentPropsById } from "../../engine/DataAccessor";
-import {
-  frequencies4,
-  thirdQ,
-  fifthQ,
-  thirdEqualQ,
-  fifthEqualQ,
-} from "./functions/frequencies";
-import SoundEngine from "../../engine/SoundEngine";
+import { Temperament } from '../../model/Temperament/Temperament';
+import EqualTemperament, { thirdEqualQ, fifthEqualQ } from '../../model/Temperament/Equal';
+import { freqs4, thirdQ, fifthQ } from '../../model/Divergence';
+import SoundEngine from '../../engine/SoundEngine';
+import { fetchTemperamentPropsById } from '../../engine/DataAccessor';
 
-//Types
-import {
-  PitchCircleButtonSVGPos as btnPosition,
-  PitchCircleSVGLabels,
-} from "./PitchCircleButtonSVGPos";
-import { Notes, NotesMap } from "../../model/Note";
-import { TunerMode } from "./PitchCircle";
+//Types 
+import { PitchCircleButtonSVGPos as btnPosition, PitchCircleSVGLabels } from "./PitchCircleButtonSVGPos"
+import NotesMap from '../../model/Note/NotesMap';
+import { Notes } from '../../model/Note/enums';
+import { TunerMode } from './PitchCircle';
 
-//Styles
+//Styles 
 import "./PitchCircleSVG.css";
 
 export enum NoteStates {
@@ -55,45 +48,26 @@ const PitchCircleSVG: React.FC<PitchCircleSVGProps> = ({
     { note: null, state: NoteStates.IDLE },
   ]);
 
-  const [temperament, setTemperament] = useState<Temperament>();
-  const [thirdQualities, setThirdQualities] = useState<NotesMap<number | null>>(
-    thirdEqualQ()
-  );
-  const [fifthQualities, setFifthQualities] = useState<NotesMap<number | null>>(
-    fifthEqualQ()
-  );
+  const [temperament, setTemperament] = useState<Temperament>(EqualTemperament);
+  const [thirdQualities, setThirdQualities] = useState<NotesMap<number | null>>(thirdEqualQ());
+  const [fifthQualities, setFifthQualities] = useState<NotesMap<number | null>>(fifthEqualQ());
 
-  const [frequencies, setFrequencies] = useState<NotesMap<number>>(
-    frequencies4(440)
-  );
+  const [frequencies, setFrequencies] = useState<NotesMap<number>>(freqs4(440));
 
-  const [C, setC] = useState<NoteStates>(NoteStates.IDLE);
-  const [C_sharp, setC_sharp] = useState<NoteStates>(NoteStates.IDLE);
-  const [D, setD] = useState<NoteStates>(NoteStates.IDLE);
-  const [E_flat, setE_flat] = useState<NoteStates>(NoteStates.IDLE);
-  const [E, setE] = useState<NoteStates>(NoteStates.IDLE);
-  const [F, setF] = useState<NoteStates>(NoteStates.IDLE);
-  const [F_sharp, setF_sharp] = useState<NoteStates>(NoteStates.IDLE);
-  const [G, setG] = useState<NoteStates>(NoteStates.IDLE);
-  const [G_sharp, setG_sharp] = useState<NoteStates>(NoteStates.IDLE);
-  const [A, setA] = useState<NoteStates>(NoteStates.IDLE);
-  const [B_flat, setB_flat] = useState<NoteStates>(NoteStates.IDLE);
-  const [B, setB] = useState<NoteStates>(NoteStates.IDLE);
+  const [C       , setC      ] = useState<NoteStates>(NoteStates.IDLE);
+  const [C_sharp , setC_sharp] = useState<NoteStates>(NoteStates.IDLE);
+  const [D       , setD      ] = useState<NoteStates>(NoteStates.IDLE);
+  const [E_flat  , setE_flat ] = useState<NoteStates>(NoteStates.IDLE);
+  const [E       , setE      ] = useState<NoteStates>(NoteStates.IDLE);
+  const [F       , setF      ] = useState<NoteStates>(NoteStates.IDLE);
+  const [F_sharp , setF_sharp] = useState<NoteStates>(NoteStates.IDLE);
+  const [G       , setG      ] = useState<NoteStates>(NoteStates.IDLE);
+  const [G_sharp , setG_sharp] = useState<NoteStates>(NoteStates.IDLE);
+  const [A       , setA      ] = useState<NoteStates>(NoteStates.IDLE);
+  const [B_flat  , setB_flat ] = useState<NoteStates>(NoteStates.IDLE);
+  const [B       , setB      ] = useState<NoteStates>(NoteStates.IDLE);
 
-  const states = {
-    C,
-    C_sharp,
-    D,
-    E_flat,
-    E,
-    F,
-    F_sharp,
-    G,
-    G_sharp,
-    A,
-    B_flat,
-    B,
-  };
+  const states = { C, C_sharp, D, E_flat, E, F, F_sharp, G, G_sharp, A, B_flat, B };
 
   const setStates = (note: Notes, state: NoteStates) => {
     switch (note) {
@@ -139,7 +113,7 @@ const PitchCircleSVG: React.FC<PitchCircleSVGProps> = ({
       setTemperament(temp);
       setFifthQualities(fifthQ(temp.cpExp5th));
       setThirdQualities(thirdQ(temp.csExp3rd));
-      setFrequencies(frequencies4(freqA4, temp.deviation));
+      setFrequencies(freqs4(freqA4, temp.deviation));
     })();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [idTemperament]);
@@ -147,27 +121,26 @@ const PitchCircleSVG: React.FC<PitchCircleSVGProps> = ({
   useEffect(() => {
     // Update frequencies
     (async () => {
-      if (!temperament) return;
-      setFrequencies(frequencies4(freqA4, temperament.deviation));
+      if (!temperament)
+        return;
+      setFrequencies(freqs4(freqA4, temperament.deviation));
     })();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [freqA4]);
 
   useEffect(() => {
     // Play sound
-    const freq1 =
-      actives[0].note === null
-        ? 0
-        : frequencies[actives[0].note] *
-          (actives[0].state === NoteStates.OCTAVE ? 0.5 : 1);
+    const freq1 = (actives[0].note === null)
+      ? 0
+      : frequencies[actives[0].note]
+        * (actives[0].state === NoteStates.OCTAVE ? 2 : 1);
 
-    const freq2 =
-      actives[1].note === null
-        ? 0
-        : frequencies[actives[1].note] *
-          (actives[1].state === NoteStates.OCTAVE ? 0.5 : 1);
+    const freq2 = (actives[1].note === null)
+      ? 0
+      : frequencies[actives[1].note]
+        * (actives[1].state === NoteStates.OCTAVE ? 2 : 1);
 
-    actives[0].note !== null
+    (actives[0].note !== null)
       ? SoundEngine.stopAndPlay(freq1)
       : SoundEngine.stop();
 
@@ -224,6 +197,8 @@ const PitchCircleSVG: React.FC<PitchCircleSVGProps> = ({
         <CenterCircle
           actives={actives}
           frequencies={frequencies}
+          freqA4={freqA4}
+          deviations={temperament.deviation}
           darkTheme = {darkTheme}
         />
 

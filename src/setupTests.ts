@@ -3,7 +3,6 @@
 // expect(element).toHaveTextContent(/react/i)
 // learn more: https://github.com/testing-library/jest-dom
 import '@testing-library/jest-dom/extend-expect';
-import { Notes, NotesMap } from './model/Note';
 
 // Mock matchmedia
 window.matchMedia = window.matchMedia || function() {
@@ -21,7 +20,7 @@ declare global {
   namespace jest {
     interface Matchers<R> {
       toEqualCloseTo: (
-        expected: NotesMap<number>,
+        expected: { [key: string]: any },
         numDigits: number
       ) => CustomMatcherResult;
     }
@@ -30,14 +29,17 @@ declare global {
 
 expect.extend({
   toEqualCloseTo(
-    received: NotesMap<number>,
-    expected: NotesMap<number>,
+    received: { [key: string]: any },
+    expected: { [key: string]: any },
     numDigits: number
   ): jest.CustomMatcherResult {
     
-    for (const [key, value] of Object.entries(received))
-      expect(value).toBeCloseTo(expected[key as Notes], numDigits);
-      
+    for (const [key, value] of Object.entries(received)) {
+      if (typeof value === 'number')
+        expect(value).toBeCloseTo(expected[key], numDigits);
+      else
+        expect(value).toEqual(expected[key]);
+    }
     return { pass: true, message: () => "" };
   },
 });
