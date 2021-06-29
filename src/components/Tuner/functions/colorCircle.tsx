@@ -2,6 +2,9 @@ export const convertFifthQualityToColor = (quality: number|null) => {
   if (quality === null)
     return "#161616";
 
+  if (quality < 0.005 && quality > -0.005)
+    return "#45CBC7";
+
   switch (Math.max(Math.min(Math.floor(quality),7),-12)) {
     case -12:  return "#4F0000";
     case -11 : return "#7B0000";
@@ -14,8 +17,8 @@ export const convertFifthQualityToColor = (quality: number|null) => {
     case -4 :  return "#FF9960";
     case -3 :  return "#FFBB75";
     case -2 :  return "#FFD592";
-    case -1 :  return "#FFE5BB";
-    case 0 :   return "#45CBC7";
+    case -1 :  return "#FFE5BB"; // handle value between -1 and -0.005
+    case 0 :   return "#B9B9B9"; // handle value between 0.005 and 1
     case 1 :   return "#B9B9B9";
     case 2 :   return "#9F9F9F";
     case 3 :   return "#7E7E7E";
@@ -25,15 +28,18 @@ export const convertFifthQualityToColor = (quality: number|null) => {
     case 7 :   return "#161616";
     default:   return "#161616";
   }
-}
+};
 
 export const convertThirdQualityToColor = (quality: number|null) => {
   if (quality === null)
     return "#B9B9B9";
 
+  if (quality < 0.005 && quality > -0.005)
+    return "#45CBC7";
+
   switch (Math.max(Math.min(Math.floor(quality),20),-1)) {
-    case -1:  return "#B9B9B9";
-    case 0 :  return "#45CBC7";
+    case -1:  return "#B9B9B9"; // handle value between -1 and -0.005
+    case 0 :  return "#FFEDD0"; // handle value between 0.005 and 1
     case 1 :  return "#FFEDD0";
     case 2 :  return "#FFE9C6";
     case 3 :  return "#FFE5BC";
@@ -56,4 +62,4 @@ export const convertThirdQualityToColor = (quality: number|null) => {
     case 20 : return "#8A0000";
     default:  return "#B9B9B9"
   }
-}
+};
