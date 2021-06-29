@@ -34,6 +34,7 @@ import './App.css';
 
 /* Fonction Engine */
 import DB from './engine/DB';
+import LearnBis from './pages/LearnBis';
 
 /* SQLite */
 export let sqlite: any; // singleton
@@ -84,10 +85,8 @@ const App: React.FC = () => {
                 darkTheme = {darkTheme}
               />
             </Route>
-            <Route exact path="/learn">
-              <Learn 
-                darkTheme = {darkTheme}
-              />
+            <Route exact path="/learn" /*render={props => <Learn {...props}/>}*/>
+              <LearnBis />
             </Route>
             <Route exact path="/">
               <Redirect to="/home" />
