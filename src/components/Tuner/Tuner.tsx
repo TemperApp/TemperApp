@@ -21,15 +21,14 @@ import { TemperamentDBType } from "../../engine/DB";
 import PitchCircle from "./PitchCircle";
 import SoundEngine from "../../engine/SoundEngine";
 
-const Tuner: React.FC = () => {
-  const [temperament, setTemperament] = useState<TemperamentDBType>({
-    idTemperament: 1,
-    name: "Equal",
-    nameFR: "Égal",
-  });
-  const [temperamentsList, setTemperamentsList] = useState<
-    Array<TemperamentDBType>
-  >([]);
+type TunerProps = {
+  darkTheme : boolean,
+}
+
+const Tuner: React.FC<TunerProps> = ({darkTheme}) => {
+
+  const [temperament, setTemperament] = useState<TemperamentDBType>({idTemperament: 1, name: "Equal", nameFR: "Égal"});
+  const [temperamentsList, setTemperamentsList] = useState<Array<TemperamentDBType>>([]);
   const [freqA4, setFreqA4] = useState<number>(440);
   const [isMuted, setIsMuted] = useState<boolean>(true);
   const [isHzMode, setIsHzMode] = useState<boolean>(true);
@@ -81,10 +80,11 @@ const Tuner: React.FC = () => {
 
       <IonRow className="ion-padding-horizontal ion-justify-content-center">
         <PitchCircle
-          isHzMode={isHzMode}
-          freqA4={freqA4}
-          idTemperament={temperament.idTemperament}
-        />
+          isHzMode = {isHzMode}
+          freqA4 = {freqA4}
+          idTemperament = {temperament.idTemperament}
+          darkTheme = {darkTheme}
+        />   
       </IonRow>
 
       <IonGrid className="ion-padding-horizontal">

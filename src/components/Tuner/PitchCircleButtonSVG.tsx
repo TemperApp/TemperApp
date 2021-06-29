@@ -3,17 +3,23 @@ import useLongPress from "./functions/useLongPress";
 import { ActiveNotes, NoteStates } from './PitchCircleSVG';
 import { TunerMode } from './PitchCircle';
 import { Notes } from '../../model/Note';
+import { isDarkTheme } from '../../model/Utils';
 
 type SVGPathElementOrNull = SVGPathElement | null;
 
-const colorButton = (state: NoteStates) => {
+const colorButton = (state: NoteStates, darkTheme: boolean) => {
+  let temp: string;
+  console.log(darkTheme);
+  (darkTheme)?
+    temp = "#233C3A"
+    : temp = "#F7FBFC"
   switch (state) {
     case NoteStates.SELECTED: // bouton activé 
       return "#A7C5C3";
     case NoteStates.OCTAVE: // bouton activé à l'octave supérieur
       return "#F75D4E";
     default: //bouton déactivé
-      return "#F5FBFB";
+      return temp;
   }
 }
 
@@ -25,11 +31,12 @@ type PitchCircleButtonSVGProps = {
   actives: ActiveNotes
   onChange: (state: NoteStates) => void,
   setActives: (notesSymbol: ActiveNotes) => void,
+  darkTheme: boolean
 }
 
 const PitchCircleButtonSVG: React.FC<PitchCircleButtonSVGProps> = ({
   notesSymbol, position, state, tunerMode,
-  actives, onChange, setActives
+  actives, onChange, setActives, darkTheme
 }) => {
 
   const note = useRef<SVGPathElementOrNull>(null);
@@ -93,7 +100,7 @@ const PitchCircleButtonSVG: React.FC<PitchCircleButtonSVGProps> = ({
 
   return (
     <path
-      fill={colorButton(state)} stroke="#A7C5C3"
+      fill={colorButton(state, darkTheme)} stroke="#A7C5C3"
       strokeMiterlimit="10" strokeOpacity="1" strokeWidth="0.5"
       transform="translate(-2.04 -1.82)" d={position}
       ref={note}
@@ -107,6 +114,7 @@ export default React.memo(
   (prevProps, nextProps) => (
     prevProps.state === nextProps.state
     && prevProps.tunerMode === nextProps.tunerMode
-    && prevProps.tunerMode === TunerMode.HZ)
+    && prevProps.tunerMode === TunerMode.HZ
+    && prevProps.darkTheme === nextProps.darkTheme)
     // TODO TunerMode.BPM
 );

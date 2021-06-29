@@ -11,23 +11,19 @@ import {
 import React, { useState } from "react";
 
 type headerProps = {
-  buttonModal: boolean;
-  buttonModalText: string;
-  setShowModal: (state: boolean) => void;
-};
+  buttonModal: boolean,
+  buttonModalText: string,
+  setShowModal: (state: boolean) => void, 
+  darkTheme: boolean,
+}
 
-const HeaderPage: React.FC<headerProps> = ({
-  buttonModal,
-  buttonModalText,
-  setShowModal,
-}) => {
-  let title = "COMPARATOR";
+const HeaderPage: React.FC<headerProps> = ({buttonModal,buttonModalText, setShowModal, darkTheme}) => {
 
-  if (buttonModal) {
-    return (
-      <IonHeader>
-        <IonToolbar>
-          <IonGrid className="ion-padding-horizontal headerPages">
+  if(buttonModal){
+    return(
+      <IonHeader className="ion-no-border">
+        <IonToolbar className="headerPages">
+          <IonGrid className="ion-padding-horizontal">
             <IonRow className="ion-align-items-center">
               <IonCol size="8">
                 <h2>{buttonModalText}</h2>
@@ -53,8 +49,8 @@ const HeaderPage: React.FC<headerProps> = ({
         <IonToolbar>
           <IonGrid className="ion-padding-horizontal headerPages">
             <IonRow className="ion-align-items-center">
-              <IonCol size="8">
-                <h2>{buttonModalText}</h2>
+              <IonCol size="8" >
+                <h1>{buttonModalText}</h1>
               </IonCol>
             </IonRow>
           </IonGrid>

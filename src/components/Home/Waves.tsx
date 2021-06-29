@@ -1,7 +1,45 @@
-
+import React from 'react';
 import "./Waves.css"
 
-const Waves : React.FC = () => {
+type WavesProps = {
+    darkTheme : boolean,
+}
+
+const Waves : React.FC<WavesProps> = ({darkTheme}) => {
+
+  let colorWave1_1;
+  let colorWave1_2;
+  let colorWave1_3;
+  let colorWave2_1;
+  let colorWave2_2;
+  let colorWave2_3;
+  let colorWave3_1;
+  let colorWave3_2;
+  let colorWave3_3;
+
+  if(darkTheme){
+    colorWave1_1 = "#45CBC7"
+    colorWave1_2 = "#2EA39B"
+    colorWave1_3 = "#A3719D"
+    colorWave2_1 = "#45CBC7"
+    colorWave2_2 = "#2EA39B"
+    colorWave2_3 = "#A3719D"
+    colorWave3_1 = "#45CBC7"
+    colorWave3_2 = "#2EA39B"
+    colorWave3_3 = "#A3719D"
+  }
+  else{
+    colorWave1_1 = "#FFE0B1"
+    colorWave1_2 = "#FFC09F"
+    colorWave1_3 = "#F88F8F"
+    colorWave2_1 = "#FFE0B1"
+    colorWave2_2 = "#FFC09F"
+    colorWave2_3 = "#F88F8F"
+    colorWave3_1 = "#FFE0B1"
+    colorWave3_2 = "#FFC09F"
+    colorWave3_3 = "#F88F8F"
+  }
+
 
 return (
     <div>
@@ -43,20 +81,20 @@ return (
                     <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow"/>
                     <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow" result="shape"/>
                 </filter>
-                <linearGradient id="paint0_linear" x1="303.205" y1="166" x2="-127.262" y2="139.567" gradientUnits="userSpaceOnUse">
-                    <stop stop-color="#FFE0B1"/>
-                    <stop offset="0.480556" stop-color="#FFC09F"/>
-                    <stop offset="1" stop-color="#F88F8F"/>
+                <linearGradient id="paint0_linear" x1="345.234" y1="84.9279" x2="83.7084" y2="-67.1134" gradientUnits="userSpaceOnUse">
+                    <stop stop-color={colorWave1_1}/>
+                    <stop offset="0.294083" stop-color={colorWave1_2}/>
+                    <stop offset="1" stop-color={colorWave1_3}/>
                 </linearGradient>
-                <linearGradient id="paint1_linear" x1="303.806" y1="148.468" x2="-129.984" y2="124.686" gradientUnits="userSpaceOnUse">
-                    <stop stop-color="#FFE0B1"/>
-                    <stop offset="0.480556" stop-color="#FFC09F"/>
-                    <stop offset="1" stop-color="#F88F8F"/>
+                <linearGradient id="paint1_linear" x1="517.95" y1="248.239" x2="-25.3662" y2="84.5014" gradientUnits="userSpaceOnUse">
+                    <stop stop-color={colorWave2_1}/>
+                    <stop offset="0.294083" stop-color={colorWave2_2}/>
+                    <stop offset="1" stop-color={colorWave2_3}/>
                 </linearGradient>
-                <linearGradient id="paint2_linear" x1="313.918" y1="231.283" x2="-22.553" y2="196.903" gradientUnits="userSpaceOnUse">
-                    <stop stop-color="#FFE0B1"/>
-                    <stop offset="0.480556" stop-color="#FFC09F"/>
-                    <stop offset="1" stop-color="#F88F8F"/>
+                <linearGradient id="paint2_linear" x1="497.75" y1="208.927" x2="1.62861" y2="41.194" gradientUnits="userSpaceOnUse">
+                    <stop stop-color={colorWave3_1}/>
+                    <stop offset="0.294083" stop-color={colorWave3_2}/>
+                    <stop offset="1" stop-color={colorWave3_3}/>
                 </linearGradient>
             </defs>
         </svg>

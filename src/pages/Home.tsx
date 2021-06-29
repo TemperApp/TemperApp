@@ -1,28 +1,21 @@
-import React from "react";
-import {
-  IonCol,
-  IonContent,
-  IonGrid,
-  IonHeader,
-  IonImg,
-  IonPage,
-  IonRow,
-  IonToolbar,
-  IonIcon,
-  IonList,
-  IonItem,
-  IonLabel,
-  IonToggle,
-} from "@ionic/react";
-import "./Home.css";
-import HomeContent from "../components/Home/HomeContent";
+import React from 'react';
+import { IonCol, IonContent, IonGrid, IonHeader, IonIcon, IonImg, IonItem, IonLabel, IonList, IonPage, IonRow, IonTitle, IonToggle, IonToolbar } from '@ionic/react';
+import './Home.css';
+import HomeContent from '../components/Home/HomeContent';
+import ParameterModal from '../components/Home/ParameterModal'; 
 import { ellipsisVertical } from "ionicons/icons";
 
-const Home: React.FC = () => {
-  const change = (e: any) => {
+type HomeProps = {
+  darkTheme : boolean,
+  setDarkTheme: (color: boolean) => void,
+}
+
+const Home: React.FC<HomeProps> = ({darkTheme,setDarkTheme}) => {
+  const change = (e : any) => {
     console.log(e.target.checked);
-    document.body.classList.toggle("dark", e.target.checked);
-  };
+    document.body.classList.toggle('dark', e.target.checked);
+    (e.target.checked === true)?setDarkTheme(true):setDarkTheme(false);
+  }
 
   return (
     <IonPage>
@@ -30,12 +23,17 @@ const Home: React.FC = () => {
         <IonToolbar>
           <IonGrid>
             <IonRow>
-              <IonCol size="2" className="Col1"></IonCol>
-              <IonCol className="Col2" size="8">
+              <IonCol size='2' className="ColTemperApp">
+              </IonCol>
+              <IonCol className ="ColTemperApp " size='8'>
                 <IonImg src={"../../assets/logotypes/temperapp_logo.svg"} />
               </IonCol>
-              <IonCol size="2" className="Col3">
+              <IonCol size='2' className="ColTemperApp">
                 <IonIcon icon={ellipsisVertical} size="large"></IonIcon>
+                <ParameterModal 
+                  darkTheme = {darkTheme}
+                  setDarkTheme = {setDarkTheme}
+                />
               </IonCol>
             </IonRow>
           </IonGrid>
@@ -53,7 +51,9 @@ const Home: React.FC = () => {
         </IonList>
       </IonHeader>
       <IonContent fullscreen scrollY={false}>
-        <HomeContent />
+        <HomeContent
+          darkTheme = {darkTheme}
+        />
       </IonContent>
     </IonPage>
   );

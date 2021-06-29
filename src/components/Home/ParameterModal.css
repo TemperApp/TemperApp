@@ -1,0 +1,41 @@
+.ParameterModal {
+  --width: 90%;
+  --height: 95%;
+  --border-radius: 8px;
+  --backdrop-opacity: var(--ion-backdrop-opacity, 0) !important;
+  background: var(--ion-color-temperapp) !important;
+  --box-shadow: 1px 3px 15px rgba(0, 0, 0, 0.5);
+}
+.parameterContent {
+  padding: 10px 30px 10px 30px;
+}
+
+.ColTemperApp {
+  text-align: center;
+}
+
+.ColTemperApp-right {
+  text-align: right;
+}
+
+h3 {
+  font-family: Nunito Sans;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 15px;
+  line-height: 19px;
+  display: flex;
+  align-items: center;
+  text-transform: uppercase;
+  color: var(--ion-text-color);
+}
+
+p {
+  font-family: Karla;
+  font-style: normal;
+  font-weight: 1;
+  font-size: 13px;
+  line-height: 20px;
+  text-align: justify;
+  letter-spacing: -0.02em;
+}

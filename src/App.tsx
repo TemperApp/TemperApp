@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from 'react';
 import { Redirect, Route } from "react-router-dom";
 import { IonApp, IonRouterOutlet } from "@ionic/react";
 import { IonReactRouter } from "@ionic/react-router";
@@ -47,28 +47,20 @@ import "./theme/variables.css";
 import "./App.css";
 
 /* Fonction Engine */
-import DB from "./engine/DB";
+import DB from './engine/DB';
+import LearnBis from './pages/LearnBis';
 
 /* SQLite */
 export let sqlite: any; // singleton
 
 const App: React.FC = () => {
-  const {
-    echo,
-    getPlatform,
-    createConnection,
-    closeConnection,
-    retrieveConnection,
-    retrieveAllConnections,
-    closeAllConnections,
-    addUpgradeStatement,
-    importFromJson,
-    getDatabaseList,
-    isDatabase,
-    isJsonValid,
-    copyFromAssets,
-    isAvailable,
-  } = useSQLite();
+
+  const [darkTheme, setDarkTheme] = useState(false);
+  
+  const {echo, getPlatform, createConnection, closeConnection,
+    retrieveConnection, retrieveAllConnections, closeAllConnections,
+    addUpgradeStatement, importFromJson, getDatabaseList, isDatabase, isJsonValid, copyFromAssets,
+    isAvailable} = useSQLite();
 
   useEffect(() => {
     sqlite = {
@@ -99,11 +91,30 @@ const App: React.FC = () => {
       <IonReactRouter>
         <IonTabs>
           <IonRouterOutlet>
-            <Route exact path="/Tune" component={Tune} />
-            <Route exact path="/compare" component={Compare} />
-            <Route exact path="/home" component={Home} />
-            <Route exact path="/sheets" component={Sheets} />
-            <Route exact path="/learn" component={Learn} />
+            <Route exact path="/Tune">
+              <Tune 
+                darkTheme = {darkTheme}
+              />
+            </Route>
+            <Route exact path="/compare">
+              <Compare 
+                darkTheme = {darkTheme}
+              />
+            </Route>
+            <Route exact path="/home">
+              <Home 
+                darkTheme = {darkTheme}
+                setDarkTheme = {setDarkTheme}
+              />
+            </Route>
+            <Route exact path="/sheets">
+              <Sheets 
+                darkTheme = {darkTheme}
+              />
+            </Route>
+            <Route exact path="/learn" /*render={props => <Learn {...props}/>}*/>
+              <LearnBis />
+            </Route>
             <Route exact path="/">
               <Redirect to="/home" />
             </Route>

@@ -11,5 +11,5 @@
 }
 
 .divergenceColorOdd {
-  background-color: #ffd586bb;
+  background: var(--ion-color-temperapp);
 }

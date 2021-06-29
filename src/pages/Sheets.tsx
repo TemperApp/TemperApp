@@ -11,7 +11,11 @@ import "./Sheets.css";
 import HeaderPage from "../components/Header/HeaderPage";
 import SheetsMenu from "../components/Sheets/SheetsMenu";
 
-const Sheets: React.FC = () => {
+type SheetsProps = {
+  darkTheme : boolean,
+}
+
+const Sheets: React.FC<SheetsProps> = ({darkTheme}) => {
   const [showModal, setShowModal] = useState(false);
   const [searchText, setSearchText] = useState("");
 

@@ -14,15 +14,18 @@ import {
 import "./Learn.css";
 import LearnPage from "./LearnPage";
 import ButtonLearnSVG from "../components/Learn/ButtonLearnSVG";
+import { Route, RouteComponentProps } from 'react-router-dom';
+import Learn_sheets from './Learn_sheets';
+import Learn_sheet from './Learn_sheet';
 
 import { IonReactRouter } from "@ionic/react-router";
 import { Redirect, Route, Router, Switch } from "react-router";
 import { Link } from "react-router-dom";
 import HeaderPage from "../components/Header/HeaderPage";
-
-const Learn: React.FC = () => {
-  const [showModal, setShowModal] = useState(false);
-
+type LearnProps = {
+  match: RouteComponentProps,
+  darkTheme : boolean,
+}
   return (
     <IonPage>
       <HeaderPage
@@ -54,6 +57,16 @@ const Learn: React.FC = () => {
         </Switch>
       </IonContent>
     </IonPage>
+  );
+};
+*/
+
+const Learn: React.FC<RouteComponentProps> = ({match}) => {
+  return (
+    <IonRouterOutlet>
+      <Route exact path={match.url} component={Learn_sheets} />
+      <Route path={`${match.url}/file/:id`} component={Learn_sheet} />
+    </IonRouterOutlet>
   );
 };
 
