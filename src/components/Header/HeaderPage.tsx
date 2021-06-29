@@ -1,23 +1,22 @@
 import {
+  IonButton,
   IonCol,
-  IonContent,
   IonGrid,
   IonHeader,
-  IonModal,
-  IonPage,
   IonRow,
   IonToolbar,
 } from "@ionic/react";
-import React, { useState } from "react";
+import React from "react";
 
 type headerProps = {
   buttonModal: boolean,
+  buttonReturn: boolean, 
   buttonModalText: string,
   setShowModal: (state: boolean) => void, 
   darkTheme: boolean,
 }
 
-const HeaderPage: React.FC<headerProps> = ({buttonModal,buttonModalText, setShowModal, darkTheme}) => {
+const HeaderPage: React.FC<headerProps> = ({buttonModal, buttonReturn, buttonModalText, setShowModal, darkTheme}) => {
 
   if(buttonModal){
     return(
@@ -35,6 +34,25 @@ const HeaderPage: React.FC<headerProps> = ({buttonModal,buttonModalText, setShow
                 >
                   <span>?</span>
                 </div>
+              </IonCol>
+            </IonRow>
+          </IonGrid>
+        </IonToolbar>
+      </IonHeader>
+    );
+  }
+
+  if(buttonReturn){
+    return(
+      <IonHeader>
+        <IonToolbar className="headerPages">
+          <IonGrid className="ion-padding-horizontal">
+            <IonRow className="ion-align-items-center">
+              <IonCol size="8">
+                <h2>{buttonModalText}</h2>
+              </IonCol>
+              <IonCol size="1" offset="2">
+                <IonButton color="primary" routerDirection="root" routerLink="/learn" >Back</IonButton>
               </IonCol>
             </IonRow>
           </IonGrid>

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { IonButton, IonCol, IonContent, IonGrid, IonHeader, IonModal, IonPage, IonRow, IonSelect, IonSelectOption, IonTitle, IonToolbar } from '@ionic/react';
+import {IonContent, IonPage} from '@ionic/react';
 import Tuner from '../components/Tuner/Tuner';
 import './Tune.css';
 import { TemperamentDBType } from '../engine/DB';
@@ -18,6 +18,7 @@ const Tune: React.FC<TuneProps> = ({darkTheme}) => {
     <IonPage>
       <HeaderPage 
         buttonModal = {true}
+        buttonReturn={false}
         buttonModalText = "TUNER"
         setShowModal = {setShowModal}
         darkTheme = {darkTheme}

@@ -1,9 +1,8 @@
 import React from 'react';
-import { IonCol, IonContent, IonGrid, IonHeader, IonIcon, IonImg, IonItem, IonLabel, IonList, IonPage, IonRow, IonTitle, IonToggle, IonToolbar } from '@ionic/react';
+import { IonCol, IonContent, IonGrid, IonHeader, IonImg, IonPage, IonRow, IonToolbar } from '@ionic/react';
 import './Home.css';
 import HomeContent from '../components/Home/HomeContent';
 import ParameterModal from '../components/Home/ParameterModal'; 
-import { ellipsisVertical } from "ionicons/icons";
 
 type HomeProps = {
   darkTheme : boolean,
@@ -16,7 +15,6 @@ const Home: React.FC<HomeProps> = ({darkTheme,setDarkTheme}) => {
     document.body.classList.toggle('dark', e.target.checked);
     (e.target.checked === true)?setDarkTheme(true):setDarkTheme(false);
   }
-
   return (
     <IonPage>
       <IonHeader className="ion-no-border">

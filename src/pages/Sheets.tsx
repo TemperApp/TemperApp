@@ -23,6 +23,7 @@ const Sheets: React.FC<SheetsProps> = ({darkTheme}) => {
     <IonPage>
       <HeaderPage
         buttonModal={false}
+        buttonReturn={false}
         buttonModalText="Fiches"
         setShowModal={setShowModal}
         darkTheme={darkTheme}
