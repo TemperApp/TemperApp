@@ -14,7 +14,7 @@ const ResourcesLearn : React.FC<resourcesProps> = ({resourcesList, darkTheme}) =
 
 return (
     <div className ="LearnResources">
-      <h3>Ressources</h3>
+      <h3 className="TitleParagraphLearn">Ressources</h3>
       {resourcesList.map((r) => (
         <div className ="LearnResourcesBox">
           <p>{r}</p>
