@@ -8,6 +8,7 @@ import { useEffect, useRef, useState } from "react";
 import "../Home/Collapse.css";
 import "../Home/ButtonTemper.css";
 import { TemperamentDBType } from "../../engine/DB";
+import { text } from "ionicons/icons";
 
 const arrowPath =
   "M869 487.8L491.2 159.9c-2.9-2.5-6.6-3.9-10.5-3.9h-88" +
@@ -138,8 +139,15 @@ const SheetsMenu: React.FC<SheetsMenuProps> = ({text, temperamentsList}) => {
     console.log(text);
     let find = "Valotti";
     if(text !== ""){
-      let regex = new RegExp(text.normalize("NFD")+'\\w+','i');
+      /* 
+        Prévoir traitement si le text tappé contient des caractères interdits comme '(' ou '/'
+      */
+
+
+      //let regex = new RegExp(text.normalize("NFD")+'\\w+','i');
+      let regex = new RegExp('\\b(\\w*'+text.normalize("NFD")+'\\w*)\\b','i');
       console.log(regex);
+      //console.log(find.search(regex));
       setRequest(regex);
     }
     else{
