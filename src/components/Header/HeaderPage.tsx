@@ -11,16 +11,20 @@ import {
 import React, { useState } from "react";
 
 type headerProps = {
-  buttonModal: boolean,
-  buttonModalText: string,
-  setShowModal: (state: boolean) => void, 
-  darkTheme: boolean,
-}
+  buttonModal: boolean;
+  buttonModalText: string;
+  setShowModal: (state: boolean) => void;
+  darkTheme: boolean;
+};
 
-const HeaderPage: React.FC<headerProps> = ({buttonModal,buttonModalText, setShowModal, darkTheme}) => {
-
-  if(buttonModal){
-    return(
+const HeaderPage: React.FC<headerProps> = ({
+  buttonModal,
+  buttonModalText,
+  setShowModal,
+  darkTheme,
+}) => {
+  if (buttonModal) {
+    return (
       <IonHeader>
         <IonToolbar className="headerPages">
           <IonGrid className="ion-padding-horizontal">
@@ -49,7 +53,7 @@ const HeaderPage: React.FC<headerProps> = ({buttonModal,buttonModalText, setShow
         <IonToolbar>
           <IonGrid className="ion-padding-horizontal headerPages">
             <IonRow className="ion-align-items-center">
-              <IonCol size="8" >
+              <IonCol size="8">
                 <h2>{buttonModalText}</h2>
               </IonCol>
             </IonRow>
