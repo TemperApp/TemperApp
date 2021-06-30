@@ -4,19 +4,24 @@ http://ionicframework.com/docs/theming/ */
 /** Ionic CSS Variables **/
 :root {
   --color-selected: #233c3a;
-  --color: #a7c5c3;
-  --ion-tab-bar-color: #a7c5c3;
+  --color-grey: #a7c5c3;
   --color-hover: #738b8a;
   --color-strong: #ffae7a;
-  --degrade: linear-gradient(
+  --color-sec: #ffc09f;
+  --color-gradient: linear-gradient(
     272.37deg,
     #ffe0b1 17.29%,
     #ffc09f 72.76%,
     #f88f8f 132.71%
   );
-  --color-dark: #233c3a;
+  --color-button: #2ea39b;
+  --color-theme: #f5fbfb;
+  --color-contrast: #233c3a;
+  --color-light-grey: rgba(115, 139, 138, 0.4);
+
   --ion-background-color: #f5fbfb;
   --ion-toolbar-background: #f5fbfb;
+  --ion-tab-bar-color: #a7c5c3;
 
   /** primary **/
   --ion-color-primary: #233c3a;
@@ -25,70 +30,6 @@ http://ionicframework.com/docs/theming/ */
   --ion-color-primary-contrast-rgb: 255, 255, 255;
   --ion-color-primary-shade: #3171e0;
   --ion-color-primary-tint: #4c8dff;
-
-  /** secondary **/
-  --ion-color-secondary: #3dc2ff;
-  --ion-color-secondary-rgb: 61, 194, 255;
-  --ion-color-secondary-contrast: #f5fbfb;
-  --ion-color-secondary-contrast-rgb: 255, 255, 255;
-  --ion-color-secondary-shade: #36abe0;
-  --ion-color-secondary-tint: #50c8ff;
-
-  /** tertiary **/
-  --ion-color-tertiary: #5260ff;
-  --ion-color-tertiary-rgb: 82, 96, 255;
-  --ion-color-tertiary-contrast: #f5fbfb;
-  --ion-color-tertiary-contrast-rgb: 255, 255, 255;
-  --ion-color-tertiary-shade: #4854e0;
-  --ion-color-tertiary-tint: #6370ff;
-
-  /** success **/
-  --ion-color-success: #2dd36f;
-  --ion-color-success-rgb: 45, 211, 111;
-  --ion-color-success-contrast: #f5fbfb;
-  --ion-color-success-contrast-rgb: 255, 255, 255;
-  --ion-color-success-shade: #28ba62;
-  --ion-color-success-tint: #42d77d;
-
-  /** warning **/
-  --ion-color-warning: #ffc409;
-  --ion-color-warning-rgb: 255, 196, 9;
-  --ion-color-warning-contrast: #000000;
-  --ion-color-warning-contrast-rgb: 0, 0, 0;
-  --ion-color-warning-shade: #e0ac08;
-  --ion-color-warning-tint: #ffca22;
-
-  /** danger **/
-  --ion-color-danger: #eb445a;
-  --ion-color-danger-rgb: 235, 68, 90;
-  --ion-color-danger-contrast: #f5fbfb;
-  --ion-color-danger-contrast-rgb: 255, 255, 255;
-  --ion-color-danger-shade: #cf3c4f;
-  --ion-color-danger-tint: #ed576b;
-
-  /** dark **/
-  --ion-color-dark: #233c3a;
-  --ion-color-dark-rgb: 34, 36, 40;
-  --ion-color-dark-contrast: #f5fbfb;
-  --ion-color-dark-contrast-rgb: 255, 255, 255;
-  --ion-color-dark-shade: #1e2023;
-  --ion-color-dark-tint: #383a3e;
-
-  /** medium **/
-  --ion-color-medium: #a7c5c3;
-  --ion-color-medium-rgb: 146, 148, 156;
-  --ion-color-medium-contrast: #f5fbfb;
-  --ion-color-medium-contrast-rgb: 255, 255, 255;
-  --ion-color-medium-shade: #808289;
-  --ion-color-medium-tint: #9d9fa6;
-
-  /** light **/
-  --ion-color-light: #f5fbfb;
-  --ion-color-light-rgb: 244, 245, 248;
-  --ion-color-light-contrast: #233c3aff;
-  --ion-color-light-contrast-rgb: 0, 0, 0;
-  --ion-color-light-shade: #f5fbfb;
-  --ion-color-light-tint: #f5f6f9;
 
   --font: "Nunito Sans";
 }
@@ -99,68 +40,32 @@ http://ionicframework.com/docs/theming/ */
 */
 
 body.dark {
+  --color-selected: #f5fbfb;
+  --color-grey: #738b8a;
+  --color-hover: #a7c5c3;
+  --color-strong: #2ea39b;
+  --color-sec: #a3719d;
+  --color-gradient: linear-gradient(
+    284.08deg,
+    #45cbc7 -17.13%,
+    #2ea39b 15.16%,
+    #a3719d 92.68%
+  );
+  --color-button: #45cbc7;
+
+  --color-theme: #233c3a;
+  --color-contrast: #f5fbfb;
+
+  --ion-background-color: #233c3a;
+  --ion-toolbar-background: #233c3a;
+  --ion-tab-bar-color: #a7c5c3;
+
   --ion-color-primary: #428cff;
   --ion-color-primary-rgb: 66, 140, 255;
   --ion-color-primary-contrast: #ffffff;
   --ion-color-primary-contrast-rgb: 255, 255, 255;
   --ion-color-primary-shade: #3a7be0;
   --ion-color-primary-tint: #5598ff;
-
-  --ion-color-secondary: #50c8ff;
-  --ion-color-secondary-rgb: 80, 200, 255;
-  --ion-color-secondary-contrast: #ffffff;
-  --ion-color-secondary-contrast-rgb: 255, 255, 255;
-  --ion-color-secondary-shade: #46b0e0;
-  --ion-color-secondary-tint: #62ceff;
-
-  --ion-color-tertiary: #6a64ff;
-  --ion-color-tertiary-rgb: 106, 100, 255;
-  --ion-color-tertiary-contrast: #ffffff;
-  --ion-color-tertiary-contrast-rgb: 255, 255, 255;
-  --ion-color-tertiary-shade: #5d58e0;
-  --ion-color-tertiary-tint: #7974ff;
-
-  --ion-color-success: #2fdf75;
-  --ion-color-success-rgb: 47, 223, 117;
-  --ion-color-success-contrast: #000000;
-  --ion-color-success-contrast-rgb: 0, 0, 0;
-  --ion-color-success-shade: #29c467;
-  --ion-color-success-tint: #44e283;
-
-  --ion-color-warning: #ffd534;
-  --ion-color-warning-rgb: 255, 213, 52;
-  --ion-color-warning-contrast: #000000;
-  --ion-color-warning-contrast-rgb: 0, 0, 0;
-  --ion-color-warning-shade: #e0bb2e;
-  --ion-color-warning-tint: #ffd948;
-
-  --ion-color-danger: #ff4961;
-  --ion-color-danger-rgb: 255, 73, 97;
-  --ion-color-danger-contrast: #ffffff;
-  --ion-color-danger-contrast-rgb: 255, 255, 255;
-  --ion-color-danger-shade: #e04055;
-  --ion-color-danger-tint: #ff5b71;
-
-  --ion-color-dark: #f4f5f8;
-  --ion-color-dark-rgb: 244, 245, 248;
-  --ion-color-dark-contrast: #233c3aff;
-  --ion-color-dark-contrast-rgb: 0, 0, 0;
-  --ion-color-dark-shade: #d7d8da;
-  --ion-color-dark-tint: #f5f6f9;
-
-  --ion-color-medium: #a7c5c3;
-  --ion-color-medium-rgb: 152, 154, 162;
-  --ion-color-medium-contrast: #233c3aff;
-  --ion-color-medium-contrast-rgb: 0, 0, 0;
-  --ion-color-medium-shade: #86888f;
-  --ion-color-medium-tint: #a2a4ab;
-
-  --ion-color-light: #233c3aff;
-  --ion-color-light-rgb: 34, 36, 40;
-  --ion-color-light-contrast: #ffffff;
-  --ion-color-light-contrast-rgb: 255, 255, 255;
-  --ion-color-light-shade: #1e2023;
-  --ion-color-light-tint: #383a3e;
 }
 
 /*
@@ -265,4 +170,4 @@ body.dark {
 }
 
 /* TODO local download */
-@import url('https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap");

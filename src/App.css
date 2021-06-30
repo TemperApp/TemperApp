@@ -8,7 +8,7 @@ h1 {
   display: flex;
   align-items: center;
   text-transform: uppercase;
-  color: var(--color-dark);
+  color: var(--color-contrast);
 }
 
 h2 {
@@ -19,7 +19,7 @@ h2 {
   display: flex;
   align-items: center;
   text-transform: uppercase;
-  color: var(--color-dark);
+  color: var(--color-contrast);
 }
 
 h3 {
@@ -30,7 +30,7 @@ h3 {
   display: flex;
   align-items: center;
   text-transform: uppercase;
-  color: var(--color-dark);
+  color: var(--color-contrast);
 }
 
 h4 {
@@ -41,7 +41,7 @@ h4 {
   display: flex;
   align-items: center;
   text-transform: uppercase;
-  color: var(--color-dark);
+  color: var(--color-contrast);
 }
 
 h5 {
@@ -53,7 +53,7 @@ h5 {
   display: flex;
   align-items: center;
   letter-spacing: -0.02em;
-  color: var(--color-dark);
+  color: var(--color-contrast);
 }
 
 p {
@@ -61,7 +61,7 @@ p {
   font-style: normal;
   font-weight: normal;
   font-size: 16px;
-  color: var(--color-dark);
+  color: var(--color-contrast);
 }
 
 ion-header::after {
@@ -72,7 +72,7 @@ ion-header::after {
   margin-left: 15vw;
   border-top-left-radius: 10px;
   border-bottom-left-radius: 10px;
-  background-image: var(--degrade) !important;
+  background-image: var(--color-gradient) !important;
   background-position: left 0px top 0px !important;
   z-index: 100;
 }
@@ -96,7 +96,7 @@ ion-label {
   align-items: center;
   text-align: center;
   text-transform: uppercase;
-  color: var(--color-dark);
+  color: var(--color-contrast);
   margin-top: 7px;
 }
 
@@ -109,20 +109,15 @@ ion-tab-button:hover ion-label {
   color: var(--color-hover);
 }
 
-ion-tab-button:hover ion-icon {
-  fill: var(--color-hover);
-  stroke: var(--color-hover);
-}
-
 ion-icon.icon-light {
-  fill: var(--color);
-  stroke: var(--color);
+  fill: var(--color-grey);
+  stroke: var(--color-grey);
   height: 24px;
 }
 
 .tab-selected ion-icon {
-  fill: var(--color-selected);
-  stroke: var(--color-selected);
+  fill: var(--color-contrast);
+  stroke: var(--color-contrast);
 }
 
 .tab-selected ion-label {
@@ -130,7 +125,7 @@ ion-icon.icon-light {
 }
 
 .btn-header-modal {
-  background-color: var(--color-strong);
+  background-color: var(--color-sec);
   border-radius: 50%;
   width: 37px;
   height: 37px;
@@ -139,12 +134,12 @@ ion-icon.icon-light {
 
 .btn-header-modal span {
   margin: auto;
-  color: var(--background-color);
+  color: var(--color-theme);
   font-size: 20px;
 }
 
 .select-text {
-  background: var(--background-color);
+  background: var(--color-theme);
   border-radius: 8px;
 }
 
@@ -155,7 +150,7 @@ ion-icon.icon-light {
 ion-select {
   box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.25);
   border-radius: 8px;
-  width: 150px;
+  width: 40vw;
   height: 30px;
 }
 
@@ -163,8 +158,32 @@ ion-select::part(text) {
   font-family: "Nunito Sans";
   font-style: normal;
   font-weight: normal;
-  font-size: 14px;
+  font-size: 13px;
   line-height: 19px;
   text-transform: uppercase;
-  color: var(--color-dark);
+  color: var(--color-contrast);
+}
+
+ion-select::part(placeholder) {
+  --font-family: "Nunito Sans";
+  --placeholder-font-style: normal;
+  --placeholder-font-weight: normal;
+  font-size: 13px;
+  line-height: 19px;
+  text-transform: uppercase;
+  --placeholder-color: var(--color-hover);
+}
+
+ion-input {
+  --font-family: "Nunito Sans" !important;
+  --placeholder-font-style: normal !important;
+  --placeholder-font-weight: normal !important;
+  font-size: 13px !important;
+  line-height: 19px;
+  text-transform: uppercase;
+  color: var(--color-contrast) !important;
+}
+
+text-input {
+  color: red;
 }

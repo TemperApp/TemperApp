@@ -15,7 +15,7 @@
 .btn-mode .btn-mode-bpm,
 .btn-mode .btn-mode-tuningfork {
   --background: var(--ion-background-color);
-  --color: var(--ion-color-medium);
+  --color: var(--color-button);
 }
 
 .btn-mode .btn-mode-bpm {
@@ -28,9 +28,9 @@
 
 .btn-mode-bpm.btn-mode-activated,
 .btn-mode-tuningfork.btn-mode-activated {
-  --background: var(--ion-color-light);
+  --background: var(--color-light-grey);
   --box-shadow: inset 0.5px 0.5px 2px #0003;
-  --color: var(--ion-color-primary);
+  --color: var(--color-contrast) !important;
 }
 
 #tunerModalFifthCircle {
@@ -38,7 +38,7 @@
   margin-bottom: auto;
   width: 25px;
   height: 25px;
-  border: 2px solid var(--ion-color-primary);
+  border: 2px solid var(--color-contrast);
   border-radius: 50px;
 }
 
@@ -47,7 +47,7 @@
   margin-bottom: auto;
   width: 50px;
   height: 50px;
-  border: 2px solid var(--ion-color-primary);
+  border: 2px solid var(--color-contrast);
   border-radius: 50px;
 }
 
@@ -56,6 +56,17 @@
 }
 
 .tunerModalCircleContainer {
+  display: flex;
+  flex-direction: row;
+}
+
+.frequency-selector {
+  width: 25vw;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+input-wrapper {
   display: flex;
   flex-direction: row;
 }

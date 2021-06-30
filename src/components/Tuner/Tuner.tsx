@@ -20,6 +20,7 @@ import { fetchTemperaments } from "../../engine/DataAccessor";
 import { TemperamentDBType } from "../../engine/DB";
 import PitchCircle from "./PitchCircle";
 import SoundEngine from "../../engine/SoundEngine";
+import HeaderPage from "../Header/HeaderPage";
 
 type TunerProps = {
   darkTheme: boolean;
@@ -51,6 +52,8 @@ const Tuner: React.FC<TunerProps> = ({ darkTheme }) => {
     fetchTemperamentsList();
   }, []);
 
+  useEffect(() => {}, []);
+
   return (
     <>
       <IonGrid className="ion-padding-horizontal">
@@ -69,7 +72,7 @@ const Tuner: React.FC<TunerProps> = ({ darkTheme }) => {
             </IonSelect>
           </IonCol>
           <IonCol size="4">
-            <IonItem>
+            <IonItem className="frequency-selector">
               <IonLabel position="stacked">A4 (Hz)</IonLabel>
               <IonInput
                 type="number"

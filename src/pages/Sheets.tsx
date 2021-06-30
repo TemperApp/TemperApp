@@ -12,17 +12,19 @@ import HeaderPage from "../components/Header/HeaderPage";
 import SheetsMenu from "../components/Sheets/SheetsMenu";
 
 type SheetsProps = {
-  darkTheme : boolean,
-}
+  darkTheme: boolean;
+};
 
-const Sheets: React.FC<SheetsProps> = ({darkTheme}) => {
+const Sheets: React.FC<SheetsProps> = ({ darkTheme }) => {
   const [showModal, setShowModal] = useState(false);
   const [searchText, setSearchText] = useState("");
 
   return (
     <IonPage>
       <HeaderPage
+        doubleTitle={false}
         buttonModal={false}
+        buttonModalsubText=""
         buttonModalText="Fiches"
         setShowModal={setShowModal}
         darkTheme={darkTheme}
