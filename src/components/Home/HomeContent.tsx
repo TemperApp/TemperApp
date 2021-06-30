@@ -15,7 +15,7 @@ const arrowPath =
   "6 8 8 8h585.1L386.9 854c-5.6 4.9-2.2 14 5.2 14h91.5c1.9 0 3.8-0.7 5." +
   "2-2L869 536.2c14.7-12.8 14.7-35.6 0-48.4z";
 
-const HomeContent : React.FC<{darkTheme: boolean}> = ({darkTheme}) => {
+const HomeContent: React.FC = () => {
   const temperList = ["Rameau", "Vallotti", "Weimeister", "Back", "Egal"];
 
   const [firstUse, setFirstUse] = useState<boolean>(true);
@@ -41,6 +41,7 @@ const HomeContent : React.FC<{darkTheme: boolean}> = ({darkTheme}) => {
     }
   };
 
+<<<<<<< HEAD
     const expandIcon = (e : any) => {
 
         if(firstUse){
@@ -54,6 +55,23 @@ const HomeContent : React.FC<{darkTheme: boolean}> = ({darkTheme}) => {
             }
         }
             /*
+=======
+  const expandIcon = (e: any) => {
+    console.log(e.panelKey);
+    console.log(firstUse);
+
+    if (firstUse) {
+      if (activePanel == 0) {
+        setStatePanel1(true);
+        setFirstUse(false);
+      }
+      if (activePanel == 1) {
+        setStatePanel2(true);
+        setFirstUse(false);
+      }
+    }
+    /*
+>>>>>>> dedc27c ([all] rebase on dev)
             if(e.panelKey == activePanel){
                 return (
                     <i style={{ marginRight: '.5rem' }}>
@@ -76,6 +94,7 @@ const HomeContent : React.FC<{darkTheme: boolean}> = ({darkTheme}) => {
         }
             */
 
+<<<<<<< HEAD
 
         if(e.panelKey == 0){
             return (
@@ -116,6 +135,47 @@ const HomeContent : React.FC<{darkTheme: boolean}> = ({darkTheme}) => {
             );
         }
     }
+=======
+    if (e.panelKey == 0) {
+      return (
+        <i style={{ marginRight: ".5rem" }}>
+          <svg
+            viewBox="0 0 1024 1024"
+            width="1em"
+            height="1em"
+            fill="currentColor"
+            style={{
+              verticalAlign: "-.125em",
+              transition: "transform 0.2s",
+              transform: `rotate(${statePanel1 ? 90 : 0}deg)`,
+            }}
+          >
+            <path d={arrowPath} p-id="5827" />
+          </svg>
+        </i>
+      );
+    }
+    if (e.panelKey == 1) {
+      return (
+        <i style={{ marginRight: ".5rem" }}>
+          <svg
+            viewBox="0 0 1024 1024"
+            width="1em"
+            height="1em"
+            fill="currentColor"
+            style={{
+              verticalAlign: "-.125em",
+              transition: "transform 0.2s",
+              transform: `rotate(${statePanel2 ? 90 : 0}deg)`,
+            }}
+          >
+            <path d={arrowPath} p-id="5827" />
+          </svg>
+        </i>
+      );
+    }
+  };
+>>>>>>> dedc27c ([all] rebase on dev)
 
   return (
     <div>
@@ -161,11 +221,17 @@ const HomeContent : React.FC<{darkTheme: boolean}> = ({darkTheme}) => {
             </IonRow>
           </IonGrid>
         </Panel>
+<<<<<<< HEAD
     </Collapse>
 
     <Waves
         darkTheme = {darkTheme}
     />
+=======
+      </Collapse>
+
+      <Waves />
+>>>>>>> dedc27c ([all] rebase on dev)
     </div>
   );
 };
