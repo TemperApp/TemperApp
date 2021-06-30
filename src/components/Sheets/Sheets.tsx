@@ -7,26 +7,26 @@ import {
   IonTitle,
   IonToolbar,
 } from "@ionic/react";
-import "./Sheets.css";
-import HeaderPage from "../components/Header/HeaderPage";
-import SheetsMenu from "../components/Sheets/SheetsMenu";
-import { fetchTemperaments } from "../engine/DataAccessor";
-import { TemperamentDBType } from "../engine/DB";
+
+import HeaderPage from "../Header/HeaderPage";
+import SheetsMenu from "./SheetsMenu";
+import { fetchTemperaments } from "../../engine/DataAccessor";
+import { TemperamentDBType } from "../../engine/DB";
 
 type SheetsProps = {
-  darkTheme: boolean;
-};
+  darkTheme : boolean,
+  setIdTemperament : (id: number) => void,
+}
 
-const Sheets: React.FC<SheetsProps> = ({ darkTheme }) => {
+const Sheets: React.FC<SheetsProps> = ({darkTheme, setIdTemperament}) => {
   const [searchText, setSearchText] = useState("");
-  const [temperamentsList, setTemperamentsList] = useState<
-    Array<TemperamentDBType>
-  >([]);
+
+  const [temperamentsList, setTemperamentsList] = useState<Array<TemperamentDBType>>([]);
 
   const fetchTemperamentsList = async () => {
     const temperaments = await fetchTemperaments();
     setTemperamentsList(temperaments);
-  };
+  } 
 
   useEffect(() => {
     fetchTemperamentsList();
@@ -48,7 +48,11 @@ const Sheets: React.FC<SheetsProps> = ({ darkTheme }) => {
           value={searchText}
           onIonChange={(e) => setSearchText(e.detail.value!)}
         ></IonSearchbar>
-        <SheetsMenu text={searchText} temperamentsList={temperamentsList} />
+        <SheetsMenu 
+          text = {searchText}
+          temperamentsList = {temperamentsList}
+          setIdTemperament = {setIdTemperament}
+        />
       </IonContent>
     </IonPage>
   );

@@ -19,9 +19,10 @@ const arrowPath =
 type SheetsMenuProps = {
   text: string,
   temperamentsList: Array<TemperamentDBType>
+  setIdTemperament: (id: number) => void,
 }
 
-const SheetsMenu: React.FC<SheetsMenuProps> = ({text, temperamentsList}) => {
+const SheetsMenu: React.FC<SheetsMenuProps> = ({text, temperamentsList, setIdTemperament}) => {
   const temperList = ["Rameau", "Vallotti", "Weimeister", "Back", "Egal"];
 
   const [firstUse, setFirstUse] = useState<boolean>(true);
@@ -136,23 +137,21 @@ const SheetsMenu: React.FC<SheetsMenuProps> = ({text, temperamentsList}) => {
   };
 
   useEffect(() => {
-    console.log(text);
+    
     let find = "Valotti";
     if(text !== ""){
       /* 
         Prévoir traitement si le text tappé contient des caractères interdits comme '(' ou '/'
       */
+      text = text.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
       text = text.replace(/[^a-z0-9\s-]/g, "");
-
-      //let regex = new RegExp(text.normalize("NFD")+'\\w+','i');
-      let regex = new RegExp('\\b(\\w*'+text.normalize("NFD")+'\\w*)\\b','i');
-      console.log(regex);
-      //console.log(find.search(regex));
+      let regex = new RegExp('\\b(\\w*'+text+'\\w*)\\b','i');
       setRequest(regex);
+
     }
     else{
       let regex = new RegExp('([A-z])\\w+','i')
-      console.log(find.search(regex));
+      //console.log(find.search(regex));
       setRequest(regex);
     }
     
@@ -177,7 +176,7 @@ const SheetsMenu: React.FC<SheetsMenuProps> = ({text, temperamentsList}) => {
                     expand="block"
                     color="temperapp"
                   >
-                    {t}
+                  {t}
                   </IonButton>
                 </IonCol>
               ))}
@@ -204,28 +203,19 @@ const SheetsMenu: React.FC<SheetsMenuProps> = ({text, temperamentsList}) => {
         <Panel key="2" header="Tous les tempéraments" headerClass="my-header-class">
           <IonGrid>
             <IonRow>
-              {temperamentsList.filter((t: TemperamentDBType) => (t.nameFR.normalize("NFD").search(request) !== -1)).map((t: TemperamentDBType) =>
+              {temperamentsList.filter((t: TemperamentDBType) => (t.nameFR.normalize("NFD").replace(/[\u0300-\u036f]/g, "").search(request) !== -1)).map((t: TemperamentDBType) =>
                 <IonCol size="6">
                   <IonButton
                     key={t.idTemperament}
                     className="buttonType"
                     expand="block"
                     color="temperapp"
+                    routerLink="/sheets/temperament"
+                    onClick={() => setIdTemperament(t.idTemperament)}
                   >
                   {t.nameFR}
                   </IonButton>
               </IonCol>)}
-              {/*temperamentsList.map((t: TemperamentDBType) =>
-                <IonCol size="6">
-                  <IonButton
-                    key={t.idTemperament}
-                    className="buttonType"
-                    expand="block"
-                    color="temperapp"
-                  >
-                  {t.nameFR}
-                  </IonButton>
-              </IonCol>)*/}
             </IonRow>
           </IonGrid>
         </Panel>

@@ -15,8 +15,6 @@ import { useSQLite } from "react-sqlite-hook/dist";
 import Tune from "./pages/Tune";
 import Compare from "./pages/Compare";
 import Home from "./pages/Home";
-import Sheets from "./pages/Sheets";
-import Learn from "./pages/Learn";
 
 import {
   HomeSVG,
@@ -49,6 +47,7 @@ import "./App.css";
 /* Fonction Engine */
 import DB from './engine/DB';
 import LearnBis from './pages/LearnBis';
+import SheetsRoute from './pages/SheetsRoute';
 
 /* SQLite */
 export let sqlite: any; // singleton
@@ -108,9 +107,7 @@ const App: React.FC = () => {
               />
             </Route>
             <Route exact path="/sheets">
-              <Sheets 
-                darkTheme = {darkTheme}
-              />
+              <SheetsRoute />
             </Route>
             <Route exact path="/learn" /*render={props => <Learn {...props}/>}*/>
               <LearnBis />
