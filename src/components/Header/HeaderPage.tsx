@@ -3,9 +3,14 @@ import {
   IonCol,
   IonGrid,
   IonHeader,
+  IonIcon,
+  IonItem,
+  IonLabel,
+  IonRouterLink,
   IonRow,
   IonToolbar,
 } from "@ionic/react";
+import { arrowBackOutline } from "ionicons/icons";
 import React, { useState } from "react";
 import isHzMode from "../Tuner/Tuner";
 
@@ -85,14 +90,13 @@ const HeaderPage: React.FC<headerProps> = ({
               <IonCol size="8">
                 <h2>{buttonModalText}</h2>
               </IonCol>
-              <IonCol size="1" offset="2">
-                <IonButton
-                  color="primary"
+              <IonCol className="ColTemperApp-right" size="4">
+                <IonRouterLink              
                   routerDirection="root"
                   routerLink="/learn"
                 >
-                  Back
-                </IonButton>
+                  <IonIcon icon={arrowBackOutline} size="large"></IonIcon>
+                </IonRouterLink>
               </IonCol>
             </IonRow>
           </IonGrid>
