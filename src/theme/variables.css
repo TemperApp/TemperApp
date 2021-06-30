@@ -74,6 +74,50 @@ body.dark {
   --ion-color-primary-contrast-rgb: 255, 255, 255;
   --ion-color-primary-shade: #3a7be0;
   --ion-color-primary-tint: #5598ff;
+
+  --quinte-color-12: #4f0000;
+  --quinte-color-11: #7b0000;
+  --quinte-color-10: #ae0000;
+  --quinte-color-9: #e00000;
+  --quinte-color-8: #ff0d08;
+  --quinte-color-7: #ff321f;
+  --quinte-color-6: #ff5435;
+  --quinte-color-5: #ff764a;
+  --quinte-color-4: #ff9960;
+  --quinte-color-3: #ffbb75;
+  --quinte-color-2: #ffd592;
+  --quinte-color-1: #ffe5bb;
+  --quinte-color0: #b9b9b9;
+  --quinte-color1: #b9b9b9;
+  --quinte-color2: #9f9f9f;
+  --quinte-color3: #7e7e7e;
+  --quinte-color4: #666666;
+  --quinte-color5: #4d4d4d;
+  --quinte-color6: #333333;
+  --quinte-color7: #161616;
+  --quinte-default: #161616;
+
+  --tierce-color-12: #4f0000;
+  --tierce-color-11: #7b0000;
+  --tierce-color-10: #ae0000;
+  --tierce-color-9: #e00000;
+  --tierce-color-8: #ff0d08;
+  --tierce-color-7: #ff321f;
+  --tierce-color-6: #ff5435;
+  --tierce-color-5: #ff764a;
+  --tierce-color-4: #ff9960;
+  --tierce-color-3: #ffbb75;
+  --tierce-color-2: #ffd592;
+  --tierce-color-1: #ffe5bb;
+  --tierce-color0: #b9b9b9;
+  --tierce-color1: #b9b9b9;
+  --tierce-color2: #9f9f9f;
+  --tierce-color3: #7e7e7e;
+  --tierce-color4: #666666;
+  --tierce-color5: #4d4d4d;
+  --tierce-color6: #333333;
+  --tierce-color7: #161616;
+  --tierce-default: #161616;
 }
 
 /*
