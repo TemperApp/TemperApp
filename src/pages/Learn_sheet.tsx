@@ -32,12 +32,14 @@ const Learn_sheet: React.FC<RouteComponentProps> = ({ match, history }) => {
         darkTheme={false}
       />
 
-      <IonContent>
-        <div className="LearnContent">
-          <ParagraphLearn
-            titreText="Titre de paragraphe"
-            contentText="Cette phrase est généréré ici."
-            darkTheme={false}
+      <IonContent >
+        <div className="LearnContent" >
+        
+          <ParagraphLearn 
+            titreExist = {true}
+            titreText = "Titre de paragraphe"
+            contentText = "Cette phrase est généréré ici."
+            darkTheme = {false}
           />
 
           <DiagramLearn
@@ -67,6 +69,13 @@ const Learn_sheet: React.FC<RouteComponentProps> = ({ match, history }) => {
             darkTheme={false}
           />
         </div>
+
+
+
+
+
+
+
       </IonContent>
     </>
   );
