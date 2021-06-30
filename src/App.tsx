@@ -49,6 +49,7 @@ import "./App.css";
 /* Fonction Engine */
 import DB from './engine/DB';
 import LearnBis from './pages/LearnBis';
+import SheetsRoute from './pages/SheetsRoute';
 
 /* SQLite */
 export let sqlite: any; // singleton
@@ -108,8 +109,7 @@ const App: React.FC = () => {
               />
             </Route>
             <Route exact path="/sheets">
-              <Sheets 
-                darkTheme = {darkTheme}
+              <SheetsRoute 
               />
             </Route>
             <Route exact path="/learn" /*render={props => <Learn {...props}/>}*/>

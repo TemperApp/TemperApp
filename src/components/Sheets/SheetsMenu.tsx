@@ -137,27 +137,20 @@ const SheetsMenu: React.FC<SheetsMenuProps> = ({text, temperamentsList}) => {
 
   useEffect(() => {
     
-    temperamentsList.map( (e) => console.log(e.nameFR.normalize("NFD").replace(/[\u0300-\u036f]/g, "")));
-
     let find = "Valotti";
     if(text !== ""){
       /* 
         Prévoir traitement si le text tappé contient des caractères interdits comme '(' ou '/'
       */
-      console.log(text);
       text = text.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
       text = text.replace(/[^a-z0-9\s-]/g, "");
-      console.log(text)
-
-      //let regex = new RegExp(text.normalize("NFD")+'\\w+','i');
       let regex = new RegExp('\\b(\\w*'+text+'\\w*)\\b','i');
-      //console.log(regex);
-      //console.log(find.search(regex));
       setRequest(regex);
+
     }
     else{
       let regex = new RegExp('([A-z])\\w+','i')
-      console.log(find.search(regex));
+      //console.log(find.search(regex));
       setRequest(regex);
     }
     
@@ -182,7 +175,7 @@ const SheetsMenu: React.FC<SheetsMenuProps> = ({text, temperamentsList}) => {
                     expand="block"
                     color="temperapp"
                   >
-                    {t}
+                  {t}
                   </IonButton>
                 </IonCol>
               ))}
@@ -216,21 +209,11 @@ const SheetsMenu: React.FC<SheetsMenuProps> = ({text, temperamentsList}) => {
                     className="buttonType"
                     expand="block"
                     color="temperapp"
+                    routerLink="/sheets/temperament"
                   >
                   {t.nameFR}
                   </IonButton>
               </IonCol>)}
-              {/*temperamentsList.map((t: TemperamentDBType) =>
-                <IonCol size="6">
-                  <IonButton
-                    key={t.idTemperament}
-                    className="buttonType"
-                    expand="block"
-                    color="temperapp"
-                  >
-                  {t.nameFR}
-                  </IonButton>
-              </IonCol>)*/}
             </IonRow>
           </IonGrid>
         </Panel>
