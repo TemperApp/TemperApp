@@ -4,12 +4,17 @@
 }
 
 .st21 {
-  fill: #f7fbfc;
+  fill: var(--color-theme);
 }
+
 .st23 {
   font-size: 20px;
 }
 
 .divergenceColorOdd {
-  background: var(--ion-color-temperapp);
+  background: var(--color-gradient);
+}
+
+#Texte {
+  color: var(--color-contrast);
 }
