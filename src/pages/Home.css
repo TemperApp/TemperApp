@@ -5,3 +5,8 @@
 .wave {
   z-index: 0;
 }
+
+.logo-home {
+  fill: var(--color-contrast) !important;
+  stroke: var(--color-contrast) !important;
+}
