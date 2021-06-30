@@ -133,12 +133,12 @@ const PitchCircleSVG: React.FC<PitchCircleSVGProps> = ({
     const freq1 = (actives[0].note === null)
       ? 0
       : frequencies[actives[0].note]
-        * (actives[0].state === NoteStates.OCTAVE ? 2 : 1);
+        * (actives[0].state === NoteStates.OCTAVE ? 0.5 : 1);
 
     const freq2 = (actives[1].note === null)
       ? 0
       : frequencies[actives[1].note]
-        * (actives[1].state === NoteStates.OCTAVE ? 2 : 1);
+        * (actives[1].state === NoteStates.OCTAVE ? 0.5 : 1);
 
     (actives[0].note !== null)
       ? SoundEngine.stopAndPlay(freq1)

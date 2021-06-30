@@ -73,7 +73,6 @@ const CenterCircle: React.FC<PitchCircleSVGProps> = ({
   }, [beat]);
 
   useEffect(() => {
-    console.log("raffraichissement");
     const cNote = document.getElementById("centerCircleNote")!;
     const cFreq = document.getElementById("centerCircleFrequency")!;
 
@@ -89,23 +88,23 @@ const CenterCircle: React.FC<PitchCircleSVGProps> = ({
 
     if (!isIdle0 && isIdle1) {
       cNote.innerHTML = notesToStr(actives[0].note!) 
-        + (refOctave + (isOctave0 ? 1 : 0));
+        + (refOctave + (isOctave0 ? -1 : 0));
 
       cFreq.innerHTML = (frequencies[actives[0].note!] 
-        * (isOctave0 ? 2 : 1)).toFixed(1) + " Hz";
+        * (isOctave0 ? 0.5 : 1)).toFixed(1) + " Hz";
     }
 
     if (!isIdle0 && !isIdle1) {
       cNote.innerHTML =
         notesToStr(actives[0].note!)
-        + (refOctave + (isOctave0 ? 1 : 0))
+        + (refOctave + (isOctave0 ? -1 : 0))
         + " · "
         + notesToStr(actives[1].note!)
-        + (refOctave + (isOctave1 ? 1 : 0));
+        + (refOctave + (isOctave1 ? -1 : 0));
 
       setBeat(processAcousticBeat(
-        Note.create(actives[0].note!, (isOctave0 ? 5 : 4)),
-        Note.create(actives[1].note!, (isOctave1 ? 5 : 4)),
+        Note.create(actives[0].note!, (isOctave0 ? 3 : 4)),
+        Note.create(actives[1].note!, (isOctave1 ? 3 : 4)),
         freqA4,
         deviations
       ));

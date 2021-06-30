@@ -9,7 +9,6 @@ type SVGPathElementOrNull = SVGPathElement | null;
 
 const colorButton = (state: NoteStates, darkTheme: boolean) => {
   let temp: string;
-  console.log(darkTheme);
   (darkTheme)?
     temp = "#233C3A"
     : temp = "#F7FBFC"
@@ -80,7 +79,7 @@ const PitchCircleButtonSVG: React.FC<PitchCircleButtonSVGProps> = ({
       else {
         if (actives[0].state !== NoteStates.IDLE && actives[1].state === NoteStates.IDLE) {
 
-          if (nState === NoteStates.OCTAVE && notesSymbol === actives[0].note)
+          if (nState !== NoteStates.IDLE && notesSymbol === actives[0].note)
             return; // Prevent selecting two octave notes
             
           setActives(
