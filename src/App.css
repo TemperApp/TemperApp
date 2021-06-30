@@ -190,4 +190,5 @@ text-input {
 
 .katex-display {
   overflow: scroll hidden;
+  padding: 15px 0 15px 0;
 }

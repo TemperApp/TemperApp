@@ -14,7 +14,7 @@ import {
 import "./Learn.css";
 import { Route, RouteComponentProps } from "react-router-dom";
 import HeaderPage from "../components/Header/HeaderPage";
-import LatexTest from "../components/LatexTest";
+
 
 type LearnProps = {
   match: RouteComponentProps;
@@ -67,7 +67,6 @@ const Learn_sheets: React.FC<RouteComponentProps> = ({ match, history }) => {
             <IonLabel>Histoire</IonLabel>
           </IonItem>
         </IonList>
-        <LatexTest />
       </IonContent>
     </IonPage>
   );

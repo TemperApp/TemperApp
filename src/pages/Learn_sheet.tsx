@@ -9,6 +9,7 @@ import DiagramLearn from "../components/Learn/DiagramLearn";
 import CommaLearn from "../components/Learn/CommaLearn";
 import VideoLearn from "../components/Learn/VideoLearn";
 import ResourcesLearn from "../components/Learn/ResourcesLearn";
+import FormulaLearn from "../components/Learn/FormulaLearn";
 
 interface UserDetailPageProps
   extends RouteComponentProps<{
@@ -48,6 +49,10 @@ const Learn_sheet: React.FC<RouteComponentProps> = ({ match, history }) => {
             darkTheme={false}
           />
 
+          <FormulaLearn 
+            mathsFormula = "f_{i+1} = \frac{3}{2} f_{i}"
+          />
+
           <CommaLearn
             titreText="Titre de diagramme"
             contentSVG="../assets/icon/commaType.png"
@@ -68,6 +73,7 @@ const Learn_sheet: React.FC<RouteComponentProps> = ({ match, history }) => {
             ]}
             darkTheme={false}
           />
+
         </div>
 
 
