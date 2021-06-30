@@ -1,4 +1,4 @@
-import { IonImg } from '@ionic/react';
+import { IonButton, IonImg } from '@ionic/react';
 import React from 'react';
 
 import "../../pages/Learn.css"
@@ -16,9 +16,9 @@ return (
     <div className ="LearnResources">
       <h3 className="TitleParagraphLearn">Ressources</h3>
       {resourcesList.map((r) => (
-        <div className ="LearnResourcesBox">
-          <p>{r}</p>
-        </div>
+        <IonButton className="LearnResourcesBox" expand="block" color="light">
+        {r}
+        </IonButton>
       ))}
     </div>
 )

@@ -39,11 +39,13 @@
 }
 
 .LearnResourcesBox {
-  background: var(--background);
-  box-shadow: 1px 3px 15px rgba(0, 0, 0, 0.5);
-  border-radius: 8px;
-  padding: 10px 10px 10px 10px;
-  margin: 1px 0 15px 0;
+  text-transform: capitalize;
+  --padding-top: 1.5em;
+  --padding-bottom: 1.5em;
+  --border-radius: 8px;
+  margin-bottom: 10px;
+  text-align: left;
+  font-size: 14px;
 }
 
 .LearnElement {
