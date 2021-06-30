@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   IonCol,
   IonContent,
@@ -13,6 +13,8 @@ import "./Home.css";
 import HomeContent from "../components/Home/HomeContent";
 import ParameterModal from "../components/Home/ParameterModal";
 import { isDarkTheme } from "../model/Utils";
+import { TemperamentDBType } from "../engine/DB";
+import { fetchTemperaments } from "../engine/DataAccessor";
 
 type HomeProps = {
   darkTheme: boolean;
@@ -20,6 +22,18 @@ type HomeProps = {
 };
 
 const Home: React.FC<HomeProps> = ({ darkTheme, setDarkTheme }) => {
+  const [temperamentsList, setTemperamentsList] = useState<
+    Array<TemperamentDBType>
+  >([]);
+
+  const fetchTemperamentsList = async () => {
+    const temperaments = await fetchTemperaments();
+    setTemperamentsList(temperaments);
+  };
+
+  useEffect(() => {
+    fetchTemperamentsList();
+  }, []);
   const change = (e: any) => {
     console.log(e.target.checked);
     document.body.classList.toggle("dark", e.target.checked);
@@ -53,7 +67,11 @@ const Home: React.FC<HomeProps> = ({ darkTheme, setDarkTheme }) => {
         </IonToolbar>
       </IonHeader>
       <IonContent fullscreen scrollY={false}>
-        <HomeContent darkTheme={darkTheme} />
+        <HomeContent
+          temperamentsList={temperamentsList}
+          darkTheme={darkTheme}
+          setDarkTheme={setDarkTheme}
+        />
       </IonContent>
     </IonPage>
   );
