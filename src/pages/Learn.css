@@ -15,6 +15,19 @@
   margin-left: 4vh;
 }
 
+.ion-padding-top {
+  padding-top: var(--ion-padding, 25px);
+}
+
+.ColPictoLearn {
+  text-align: right;
+}
+
+.ColChapiterLearn {
+  text-align: left;
+  padding: 15px;
+}
+
 /*Contenu des cours */
 .LearnContent {
   margin: 30px 20px 100px 20px;
