@@ -12,7 +12,6 @@ import {
   IonLabel,
 } from "@ionic/react";
 import "./Learn.css";
-import LearnPage from "./LearnPage";
 import ButtonLearnSVG from "../components/Learn/ButtonLearnSVG";
 import { Route, RouteComponentProps } from "react-router-dom";
 import Learn_sheets from "./Learn_sheets";

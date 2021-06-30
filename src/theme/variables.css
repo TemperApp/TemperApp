@@ -1,6 +1,14 @@
 /* Ionic Variables and Theming. For more info, please see:
 http://ionicframework.com/docs/theming/ */
 
+/* Fonts */
+@import "./fonts/Karla.css";
+@import "./fonts/Nunito.css";
+
+:root {
+  --ion-font-family: "Karla", "Tahoma", sans-serif;
+}
+
 /** Ionic CSS Variables **/
 :root {
   --color-selected: #233c3a;

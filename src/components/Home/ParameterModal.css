@@ -19,7 +19,7 @@
 }
 
 h3 {
-  font-family: Nunito Sans;
+  font-family: "Nunito";
   font-style: normal;
   font-weight: normal;
   font-size: 15px;
@@ -31,10 +31,7 @@ h3 {
 }
 
 p {
-  font-family: Karla;
-  font-style: normal;
-  font-weight: 1;
-  font-size: 13px;
+  font-size: 13px; /* TODO Check: Overidden in App.css 'p {...}' */
   line-height: 20px;
   text-align: justify;
   letter-spacing: -0.02em;

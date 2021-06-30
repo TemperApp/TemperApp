@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   IonContent,
   IonHeader,
@@ -10,14 +10,27 @@ import {
 import "./Sheets.css";
 import HeaderPage from "../components/Header/HeaderPage";
 import SheetsMenu from "../components/Sheets/SheetsMenu";
+import { fetchTemperaments } from "../engine/DataAccessor";
+import { TemperamentDBType } from "../engine/DB";
 
 type SheetsProps = {
   darkTheme: boolean;
 };
 
 const Sheets: React.FC<SheetsProps> = ({ darkTheme }) => {
-  const [showModal, setShowModal] = useState(false);
   const [searchText, setSearchText] = useState("");
+  const [temperamentsList, setTemperamentsList] = useState<
+    Array<TemperamentDBType>
+  >([]);
+
+  const fetchTemperamentsList = async () => {
+    const temperaments = await fetchTemperaments();
+    setTemperamentsList(temperaments);
+  };
+
+  useEffect(() => {
+    fetchTemperamentsList();
+  }, []);
 
   return (
     <IonPage>
@@ -25,16 +38,17 @@ const Sheets: React.FC<SheetsProps> = ({ darkTheme }) => {
         doubleTitle={false}
         buttonModal={false}
         buttonModalsubText=""
+        buttonReturn={false}
         buttonModalText="Fiches"
-        setShowModal={setShowModal}
+        setShowModal={() => {}}
         darkTheme={darkTheme}
       />
-      <IonContent fullscreen scrollY={false}>
+      <IonContent fullscreen scrollY={true}>
         <IonSearchbar
           value={searchText}
           onIonChange={(e) => setSearchText(e.detail.value!)}
         ></IonSearchbar>
-        <SheetsMenu />
+        <SheetsMenu text={searchText} temperamentsList={temperamentsList} />
       </IonContent>
     </IonPage>
   );

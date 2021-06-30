@@ -45,7 +45,8 @@ const Learn_sheets: React.FC<RouteComponentProps> = ({ match, history }) => {
         doubleTitle={false}
         buttonModal={false}
         buttonModalsubText=""
-        buttonModalText="LEARN"
+        buttonReturn={false}
+        buttonModalText="Apprendre"
         setShowModal={setShowModal}
         darkTheme={false}
       />
@@ -53,23 +54,17 @@ const Learn_sheets: React.FC<RouteComponentProps> = ({ match, history }) => {
       <IonContent fullscreen scrollY={true}>
         <IonList>
           <IonItem routerLink="/learn/sheet/1">
-            <IonLabel>Page 1</IonLabel>
+            <IonLabel>Definition</IonLabel>
           </IonItem>
           <IonItem routerLink="/learn/sheet/2">
-            <IonLabel>Page 2</IonLabel>
+            <IonLabel>Physique</IonLabel>
           </IonItem>
           <IonItem routerLink="/learn/sheet/3">
-            <IonLabel>Page 3</IonLabel>
+            <IonLabel>Caractéristiques</IonLabel>
           </IonItem>
-          <IonButton
-            onClick={(e) => {
-              console.log("action on");
-              e.preventDefault();
-              history.push("/learn/sheet/4");
-            }}
-          >
-            Page 4
-          </IonButton>
+          <IonItem routerLink="/learn/sheet/4">
+            <IonLabel>Histoire</IonLabel>
+          </IonItem>
         </IonList>
       </IonContent>
     </IonPage>

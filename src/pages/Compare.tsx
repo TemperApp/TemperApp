@@ -1,17 +1,5 @@
 import React, { useState } from "react";
-import {
-  IonButton,
-  IonCol,
-  IonContent,
-  IonGrid,
-  IonHeader,
-  IonIcon,
-  IonModal,
-  IonPage,
-  IonRow,
-  IonTitle,
-  IonToolbar,
-} from "@ionic/react";
+import { IonContent, IonPage } from "@ionic/react";
 import "./Compare.css";
 import Comparator from "../components/Comparator/Comparator";
 import { playCircle } from "ionicons/icons";
@@ -30,6 +18,7 @@ const Compare: React.FC<CompareProps> = ({ darkTheme }) => {
       <HeaderPage
         doubleTitle={false}
         buttonModal={true}
+        buttonReturn={false}
         buttonModalsubText=""
         buttonModalText="COMPARATOR"
         setShowModal={setShowModal}
