@@ -142,7 +142,7 @@ const SheetsMenu: React.FC<SheetsMenuProps> = ({text, temperamentsList}) => {
       /* 
         Prévoir traitement si le text tappé contient des caractères interdits comme '(' ou '/'
       */
-
+      text = text.replace(/[^a-z0-9\s-]/g, "");
 
       //let regex = new RegExp(text.normalize("NFD")+'\\w+','i');
       let regex = new RegExp('\\b(\\w*'+text.normalize("NFD")+'\\w*)\\b','i');
