@@ -1,0 +1,27 @@
+.subTitle {
+  margin-top: -5px;
+}
+
+.buttonFixed {
+  position: fixed;
+  right: 10px;
+  bottom: 70px;
+}
+
+/*equivalent LearnParagraph */
+.SheetParagraph {
+  margin: -20px 0 30px 0;
+}
+
+/*equivalent LearnParagraph */
+.SheetContent {
+  margin: 5px 20px 100px 20px;
+}
+
+.circleSheet {
+  padding: 0 15px 0 15px;
+}
+
+.SheetMarquePage {
+  text-align: right;
+}
