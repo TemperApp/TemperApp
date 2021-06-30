@@ -136,17 +136,22 @@ const SheetsMenu: React.FC<SheetsMenuProps> = ({text, temperamentsList}) => {
   };
 
   useEffect(() => {
-    console.log(text);
+    
+    temperamentsList.map( (e) => console.log(e.nameFR.normalize("NFD").replace(/[\u0300-\u036f]/g, "")));
+
     let find = "Valotti";
     if(text !== ""){
       /* 
         Prévoir traitement si le text tappé contient des caractères interdits comme '(' ou '/'
       */
+      console.log(text);
+      text = text.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
       text = text.replace(/[^a-z0-9\s-]/g, "");
+      console.log(text)
 
       //let regex = new RegExp(text.normalize("NFD")+'\\w+','i');
-      let regex = new RegExp('\\b(\\w*'+text.normalize("NFD")+'\\w*)\\b','i');
-      console.log(regex);
+      let regex = new RegExp('\\b(\\w*'+text+'\\w*)\\b','i');
+      //console.log(regex);
       //console.log(find.search(regex));
       setRequest(regex);
     }
@@ -204,7 +209,7 @@ const SheetsMenu: React.FC<SheetsMenuProps> = ({text, temperamentsList}) => {
         <Panel key="2" header="Tous les tempéraments" headerClass="my-header-class">
           <IonGrid>
             <IonRow>
-              {temperamentsList.filter((t: TemperamentDBType) => (t.nameFR.normalize("NFD").search(request) !== -1)).map((t: TemperamentDBType) =>
+              {temperamentsList.filter((t: TemperamentDBType) => (t.nameFR.normalize("NFD").replace(/[\u0300-\u036f]/g, "").search(request) !== -1)).map((t: TemperamentDBType) =>
                 <IonCol size="6">
                   <IonButton
                     key={t.idTemperament}
