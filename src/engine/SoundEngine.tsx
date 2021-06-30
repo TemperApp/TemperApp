@@ -8,6 +8,7 @@ class SoundEngine {
   private static instance: SoundEngine;
   private synth: Tone.AMSynth;
   private freq: number = 440; // default temp value
+  private modFreq: number = 0; 
 
   private constructor() {
     SoundEngine.volume(-24);
@@ -40,6 +41,7 @@ class SoundEngine {
     this.get().freq = freq;
     try {
       this.get().synth.triggerAttack(this.get().freq);
+      this.get().updateHarmonicity();
       Tone.Transport.start();
     } catch (e) {
       console.warn(e);
@@ -70,9 +72,14 @@ class SoundEngine {
 
 
   public static setPulseBPS(pulseBPS: number): void {
-    const carrierFreq = this.get().freq;
-    const harmonicity = (carrierFreq + pulseBPS) / carrierFreq - 1 ;
-    this.get().synth.harmonicity.value = harmonicity;
+    this.get().modFreq = (pulseBPS < 0) ? 0 : pulseBPS;
+    this.get().updateHarmonicity();
+  }
+
+  private updateHarmonicity(): void {
+    const carrierFreq = this.freq;
+    const harmonicity = (carrierFreq + this.modFreq) / carrierFreq - 1 ; // minus 1 because: 0 is unison, 1 is upper octave
+    this.synth.harmonicity.value = harmonicity;
   }
 }
 
