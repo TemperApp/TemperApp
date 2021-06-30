@@ -8,7 +8,7 @@
 }
 
 .learn-button-text {
-  --color: var(--color-dark);
+  --color: var(--color-constrast);
   border: none;
   --background: transparent;
   margin-top: 6vh;
