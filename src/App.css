@@ -187,3 +187,7 @@ ion-input {
 text-input {
   color: red;
 }
+
+.katex-display {
+  overflow: scroll hidden;
+}
