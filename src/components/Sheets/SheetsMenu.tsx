@@ -19,9 +19,10 @@ const arrowPath =
 type SheetsMenuProps = {
   text: string,
   temperamentsList: Array<TemperamentDBType>
+  setIdTemperament: (id: number) => void,
 }
 
-const SheetsMenu: React.FC<SheetsMenuProps> = ({text, temperamentsList}) => {
+const SheetsMenu: React.FC<SheetsMenuProps> = ({text, temperamentsList, setIdTemperament}) => {
   const temperList = ["Rameau", "Vallotti", "Weimeister", "Back", "Egal"];
 
   const [firstUse, setFirstUse] = useState<boolean>(true);
@@ -210,6 +211,7 @@ const SheetsMenu: React.FC<SheetsMenuProps> = ({text, temperamentsList}) => {
                     expand="block"
                     color="temperapp"
                     routerLink="/sheets/temperament"
+                    onClick={() => setIdTemperament(t.idTemperament)}
                   >
                   {t.nameFR}
                   </IonButton>

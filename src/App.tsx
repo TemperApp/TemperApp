@@ -15,8 +15,6 @@ import { useSQLite } from "react-sqlite-hook/dist";
 import Tune from "./pages/Tune";
 import Compare from "./pages/Compare";
 import Home from "./pages/Home";
-import Sheets from "./pages/Sheets";
-import Learn from "./pages/Learn";
 
 import {
   HomeSVG,
@@ -109,8 +107,7 @@ const App: React.FC = () => {
               />
             </Route>
             <Route exact path="/sheets">
-              <SheetsRoute 
-              />
+              <SheetsRoute />
             </Route>
             <Route exact path="/learn" /*render={props => <Learn {...props}/>}*/>
               <LearnBis />
