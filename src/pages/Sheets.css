@@ -2,12 +2,6 @@
   margin-top: -5px;
 }
 
-.buttonFixed {
-  position: fixed;
-  right: 10px;
-  bottom: 70px;
-}
-
 /*equivalent LearnParagraph */
 .SheetParagraph {
   margin: -20px 0 30px 0;

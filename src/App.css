@@ -206,3 +206,19 @@ ion-select::part(placeholder) {
   overflow: scroll hidden;
   padding: 15px 0 15px 0;
 }
+
+.grid-button-bottom {
+  position: fixed;
+  bottom: 80px;
+  width: 90%;
+  margin: auto;
+  height: 50px;
+  align-items: center;
+}
+
+.buttonFixed {
+  --border-radius: 100px;
+  width: 48px;
+  height: 48px;
+  --background: var(--color-button);
+}

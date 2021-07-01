@@ -1,10 +1,10 @@
-.btn-start-procedure {
+/*.btn-start-procedure {
   --border-radius: 500px;
   --padding-end: 10px;
   --padding-start: 10px;
   --background: none;
   font-size: 40px;
-}
+}*/
 
 .btn-mode {
   margin: 0;
@@ -21,10 +21,12 @@
 
 .btn-mode .btn-mode-bpm {
   --border-radius: 500px 0 0 500px;
+  width: 40px;
 }
 
 .btn-mode .btn-mode-tuningfork {
   --border-radius: 0 500px 500px 0;
+  width: 40px;
 }
 
 .btn-mode-bpm.btn-mode-activated,

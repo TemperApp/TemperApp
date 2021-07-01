@@ -97,26 +97,17 @@ const Tuner: React.FC<TunerProps> = ({ darkTheme }) => {
       </IonRow>
 
       <IonGrid className="ion-padding-horizontal">
-        <IonRow className="ion-justify-content-between ion-align-items-center">
-          <IonCol>
-            <IonButton
-              className="btn-start-procedure"
-              fill="clear"
-              size="large"
-            >
+        <IonRow className="grid-button-bottom">
+          <IonCol size="2" offset="1">
+            <IonButton className="buttonFixed">
               <IonIcon
                 slot="icon-only"
                 src="/assets/logotypes/button-procedure.svg"
               />
             </IonButton>
           </IonCol>
-          <IonCol>
-            <IonButton
-              color="dark"
-              fill="clear"
-              size="large"
-              onClick={() => setIsMuted(!isMuted)}
-            >
+          <IonCol size="2" offset="1.5">
+            <IonButton size="large" onClick={() => setIsMuted(!isMuted)}>
               <IonIcon
                 src={` ${
                   isMuted
@@ -127,7 +118,7 @@ const Tuner: React.FC<TunerProps> = ({ darkTheme }) => {
               />
             </IonButton>
           </IonCol>
-          <IonCol className="btn-mode">
+          <IonCol className="btn-mode" offset="2">
             <IonButton
               onClick={() => setIsHzMode(false)}
               className={`btn-mode-bpm ion-no-margin ion-text-lowercase
