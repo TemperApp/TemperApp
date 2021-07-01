@@ -14,17 +14,14 @@ const ArrowCollapseSVG: React.FC<ArrowCollapseProps> = ({ statePanel }) => {
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
         xmlnsXlink="http://www.w3.org/1999/xlink"
+        style={{
+          verticalAlign: "-.125em",
+          marginBottom: "25%",
+          transition: "transform 0.2s",
+          transform: `rotate(${statePanel ? 0 : -90}deg)`,
+        }}
       >
-        <rect
-          width="15"
-          height="7"
-          fill="url(#pattern0)"
-          style={{
-            verticalAlign: "-.125em",
-            transition: "transform 0.2s",
-            transform: `rotate(${statePanel ? 90 : 0}deg)`,
-          }}
-        />
+        <rect width="15" height="7" fill="url(#pattern0)" />
         <defs>
           <pattern
             id="pattern0"
