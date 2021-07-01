@@ -54,8 +54,8 @@ return (
                 <path d="M172.5 179.5C93.5 150 69.8262 248.36 77.5 288.5H359V196.5C359 196.5 245.369 206.711 172.5 179.5Z" fill="url(#paint2_linear)"/>
             </g>
             <defs>
-                <filter id="filter0_d" x="-13" y="33" width="389.5" height="272" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-                    <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+                <filter id="filter0_d" x="-13" y="33" width="389.5" height="272" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
+                    <feFlood floodOpacity="0" result="BackgroundImageFix"/>
                     <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"/>
                     <feOffset dx="1" dy="3"/>
                     <feGaussianBlur stdDeviation="7.5"/>
@@ -63,8 +63,8 @@ return (
                     <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow"/>
                     <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow" result="shape"/>
                 </filter>
-                <filter id="filter1_d" x="-14.5001" y="0" width="392" height="302.936" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-                    <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+                <filter id="filter1_d" x="-14.5001" y="0" width="392" height="302.936" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
+                    <feFlood floodOpacity="0" result="BackgroundImageFix"/>
                     <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"/>
                     <feOffset dx="1" dy="3"/>
                     <feGaussianBlur stdDeviation="7.5"/>
@@ -72,8 +72,8 @@ return (
                     <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow"/>
                     <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow" result="shape"/>
                 </filter>
-                <filter id="filter2_d" x="62.1323" y="162.066" width="312.868" height="144.434" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-                    <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+                <filter id="filter2_d" x="62.1323" y="162.066" width="312.868" height="144.434" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
+                    <feFlood floodOpacity="0" result="BackgroundImageFix"/>
                     <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"/>
                     <feOffset dx="1" dy="3"/>
                     <feGaussianBlur stdDeviation="7.5"/>
@@ -82,19 +82,19 @@ return (
                     <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow" result="shape"/>
                 </filter>
                 <linearGradient id="paint0_linear" x1="345.234" y1="84.9279" x2="83.7084" y2="-67.1134" gradientUnits="userSpaceOnUse">
-                    <stop stop-color={colorWave1_1}/>
-                    <stop offset="0.294083" stop-color={colorWave1_2}/>
-                    <stop offset="1" stop-color={colorWave1_3}/>
+                    <stop stopColor={colorWave1_1}/>
+                    <stop offset="0.294083" stopColor={colorWave1_2}/>
+                    <stop offset="1" stopColor={colorWave1_3}/>
                 </linearGradient>
                 <linearGradient id="paint1_linear" x1="517.95" y1="248.239" x2="-25.3662" y2="84.5014" gradientUnits="userSpaceOnUse">
-                    <stop stop-color={colorWave2_1}/>
-                    <stop offset="0.294083" stop-color={colorWave2_2}/>
-                    <stop offset="1" stop-color={colorWave2_3}/>
+                    <stop stopColor={colorWave2_1}/>
+                    <stop offset="0.294083" stopColor={colorWave2_2}/>
+                    <stop offset="1" stopColor={colorWave2_3}/>
                 </linearGradient>
                 <linearGradient id="paint2_linear" x1="497.75" y1="208.927" x2="1.62861" y2="41.194" gradientUnits="userSpaceOnUse">
-                    <stop stop-color={colorWave3_1}/>
-                    <stop offset="0.294083" stop-color={colorWave3_2}/>
-                    <stop offset="1" stop-color={colorWave3_3}/>
+                    <stop stopColor={colorWave3_1}/>
+                    <stop offset="0.294083" stopColor={colorWave3_2}/>
+                    <stop offset="1" stopColor={colorWave3_3}/>
                 </linearGradient>
             </defs>
         </svg>

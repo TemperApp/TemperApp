@@ -33,9 +33,9 @@ const Learn: React.FC<RouteComponentProps> = ({ match, history }) => {
                   <circle cx="35.5" cy="35.5" r="35.5" fill="url(#paint0_linear)"/>
                   <defs>
                   <linearGradient id="paint0_linear" x1="59.6844" y1="35.5" x2="-25.5062" y2="31.9786" gradientUnits="userSpaceOnUse">
-                  <stop stop-color="#FFE0B1"/>
-                  <stop offset="0.480556" stop-color="#FFC09F"/>
-                  <stop offset="1" stop-color="#F88F8F"/>
+                  <stop stopColor="#FFE0B1"/>
+                  <stop offset="0.480556" stopColor="#FFC09F"/>
+                  <stop offset="1" stopColor="#F88F8F"/>
                   </linearGradient>
                   </defs>
                 </svg>
@@ -54,9 +54,9 @@ const Learn: React.FC<RouteComponentProps> = ({ match, history }) => {
                   <circle cx="35.5" cy="35.5" r="35.5" fill="url(#paint0_linear)"/>
                   <defs>
                   <linearGradient id="paint0_linear" x1="59.6844" y1="35.5" x2="-25.5062" y2="31.9786" gradientUnits="userSpaceOnUse">
-                  <stop stop-color="#FFE0B1"/>
-                  <stop offset="0.480556" stop-color="#FFC09F"/>
-                  <stop offset="1" stop-color="#F88F8F"/>
+                  <stop stopColor="#FFE0B1"/>
+                  <stop offset="0.480556" stopColor="#FFC09F"/>
+                  <stop offset="1" stopColor="#F88F8F"/>
                   </linearGradient>
                   </defs>
                 </svg>
@@ -74,9 +74,9 @@ const Learn: React.FC<RouteComponentProps> = ({ match, history }) => {
                   <circle cx="35.5" cy="35.5" r="35.5" fill="url(#paint0_linear)"/>
                   <defs>
                   <linearGradient id="paint0_linear" x1="59.6844" y1="35.5" x2="-25.5062" y2="31.9786" gradientUnits="userSpaceOnUse">
-                  <stop stop-color="#FFE0B1"/>
-                  <stop offset="0.480556" stop-color="#FFC09F"/>
-                  <stop offset="1" stop-color="#F88F8F"/>
+                  <stop stopColor="#FFE0B1"/>
+                  <stop offset="0.480556" stopColor="#FFC09F"/>
+                  <stop offset="1" stopColor="#F88F8F"/>
                   </linearGradient>
                   </defs>
                 </svg>
@@ -94,9 +94,9 @@ const Learn: React.FC<RouteComponentProps> = ({ match, history }) => {
                   <circle cx="35.5" cy="35.5" r="35.5" fill="url(#paint0_linear)"/>
                   <defs>
                   <linearGradient id="paint0_linear" x1="59.6844" y1="35.5" x2="-25.5062" y2="31.9786" gradientUnits="userSpaceOnUse">
-                  <stop stop-color="#FFE0B1"/>
-                  <stop offset="0.480556" stop-color="#FFC09F"/>
-                  <stop offset="1" stop-color="#F88F8F"/>
+                  <stop stopColor="#FFE0B1"/>
+                  <stop offset="0.480556" stopColor="#FFC09F"/>
+                  <stop offset="1" stopColor="#F88F8F"/>
                   </linearGradient>
                   </defs>
                 </svg>

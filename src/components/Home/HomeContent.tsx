@@ -80,9 +80,9 @@ const HomeContent: React.FC<HomeMenuProps> = ({
           <IonGrid>
             <IonRow>
               {temperamentsList.map((t: TemperamentDBType) => (
-                <IonCol size="6">
+                <IonCol size="6" key={"col_my_temperament_home_"+t.idTemperament}>
                   <IonButton
-                    key={t.idTemperament}
+                    key={"my_temperament_home_"+t.idTemperament}
                     className="buttonType"
                     expand="block"
                     color="temperapp"
@@ -98,8 +98,9 @@ const HomeContent: React.FC<HomeMenuProps> = ({
           <IonGrid>
             <IonRow>
               {temperList.map((t) => (
-                <IonCol size="6">
+                <IonCol size="6" key={"col_top_home_"+t}>
                   <IonButton
+                    key={'top_home_'+t}
                     className="buttonType"
                     expand="block"
                     color="temperapp"

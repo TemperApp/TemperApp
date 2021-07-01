@@ -108,11 +108,12 @@ const SheetsMenu: React.FC<SheetsMenuProps> = ({text, temperamentsList, setIdTem
           <IonGrid>
             <IonRow>
               {temperList.map((t) => (
-                <IonCol size="6">
+                <IonCol size="6" key={"col_sheet_my_temperament_"+t}>
                   <IonButton
                     className="buttonType"
                     expand="block"
                     color="temperapp"
+                    key={"sheet_my_temperament_"+t}
                   >
                   {t}
                   </IonButton>
@@ -125,11 +126,12 @@ const SheetsMenu: React.FC<SheetsMenuProps> = ({text, temperamentsList, setIdTem
           <IonGrid>
             <IonRow>
               {temperList.map((t) => (
-                <IonCol size="6">
+                <IonCol size="6" key={"col_sheet_top_"+t}>
                   <IonButton
                     className="buttonType"
                     expand="block"
                     color="temperapp"
+                    key={"sheet_top_"+t}
                   >
                     {t}
                   </IonButton>
@@ -146,9 +148,9 @@ const SheetsMenu: React.FC<SheetsMenuProps> = ({text, temperamentsList, setIdTem
           <IonGrid>
             <IonRow>
               {temperamentsList.filter((t: TemperamentDBType) => (t.nameFR.normalize("NFD").replace(/[\u0300-\u036f]/g, "").search(request) !== -1)).map((t: TemperamentDBType) =>
-                <IonCol size="6">
+                <IonCol size="6" key={"col_sheet_all_"+t.idTemperament}>
                   <IonButton
-                    key={t.idTemperament}
+                    key={"sheet_all_"+t.idTemperament}
                     className="buttonType"
                     expand="block"
                     color="temperapp"
