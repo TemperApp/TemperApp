@@ -4,7 +4,7 @@ h1 {
   font-style: normal;
   font-weight: bold;
   font-size: 24px;
-  line-height: 2vh;
+  line-height: 33px;
   display: flex;
   align-items: center;
   text-transform: uppercase;
@@ -16,6 +16,7 @@ h2 {
   font-style: normal;
   font-weight: bold;
   font-size: 22px;
+  line-height: 30px;
   display: flex;
   align-items: center;
   text-transform: uppercase;
@@ -27,6 +28,7 @@ h3 {
   font-style: normal;
   font-weight: normal;
   font-size: 16px;
+  line-height: 22px;
   display: flex;
   align-items: center;
   text-transform: uppercase;
@@ -38,6 +40,7 @@ h4 {
   font-style: normal;
   font-weight: bold;
   font-size: 14px;
+  line-height: 19px;
   display: flex;
   align-items: center;
   text-transform: uppercase;
@@ -45,14 +48,14 @@ h4 {
 }
 
 h5 {
-  font-family: var(--ion-family-font);
+  font-family: "Nunito" !important;
   font-style: normal;
-  font-weight: bold;
-  font-size: 14px;
-  line-height: 16px;
+  font-weight: normal;
+  font-size: 13px;
+  line-height: 18px;
   display: flex;
   align-items: center;
-  letter-spacing: -0.02em;
+  text-transform: uppercase;
   color: var(--color-contrast);
 }
 
@@ -61,6 +64,25 @@ p {
   font-style: normal;
   font-weight: normal;
   font-size: 16px;
+  line-height: 19px;
+  color: var(--color-contrast);
+}
+.p-long {
+  font-family: var(--ion-family-font);
+  font-style: normal;
+  font-weight: 1;
+  font-size: 13px;
+  line-height: 20px;
+  padding-bottom: 7px;
+  color: var(--color-contrast);
+}
+
+strong {
+  font-family: var(--ion-family-font);
+  font-style: normal;
+  font-weight: bold;
+  font-size: 13px;
+  line-height: 16px;
   color: var(--color-contrast);
 }
 

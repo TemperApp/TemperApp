@@ -25,10 +25,10 @@ return (
             </IonRow>
             <IonRow>
                 <IonCol size="6">
-                    <h5>ici des cercles</h5>
+                    <p>ici des cercles</p>
                 </IonCol>
                 <IonCol size="6">
-                    <h5>ici une modal</h5>
+                    <p>ici une modal</p>
                 </IonCol>
             </IonRow>
         </IonGrid>
