@@ -58,7 +58,7 @@ const Tuner: React.FC<TunerProps> = ({ darkTheme }) => {
     <>
       <IonGrid className="ion-padding-horizontal">
         <IonRow className="ion-justify-content-between ion-align-items-end">
-          <IonCol size="8">
+          <IonCol size="6">
             <IonSelect
               value={temperament}
               placeholder="Tempérament"
@@ -71,9 +71,11 @@ const Tuner: React.FC<TunerProps> = ({ darkTheme }) => {
               ))}
             </IonSelect>
           </IonCol>
-          <IonCol size="4">
-            <IonItem className="frequency-selector">
-              <IonLabel position="stacked">A4 (Hz)</IonLabel>
+          <IonCol size="6" className="frequency-selector">
+            <IonItem>
+              <IonLabel className="input-label">
+                <h5>A4 (Hz)</h5>
+              </IonLabel>
               <IonInput
                 type="number"
                 min="300"

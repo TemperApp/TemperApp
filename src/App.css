@@ -21,6 +21,7 @@ h2 {
   align-items: center;
   text-transform: uppercase;
   color: var(--color-contrast);
+  margin-top: 0;
 }
 
 h3 {
@@ -33,6 +34,7 @@ h3 {
   align-items: center;
   text-transform: uppercase;
   color: var(--color-contrast);
+  margin-bottom: 0;
 }
 
 h4 {
@@ -173,7 +175,7 @@ ion-select {
   box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.25);
   border-radius: 8px;
   width: 40vw;
-  height: 30px;
+  height: 2rem;
 }
 
 ion-select::part(text) {
@@ -196,18 +198,8 @@ ion-select::part(placeholder) {
   --placeholder-color: var(--color-hover);
 }
 
-ion-input {
-  --font-family: "Nunito Sans" !important;
-  --placeholder-font-style: normal !important;
-  --placeholder-font-weight: normal !important;
-  font-size: 13px !important;
-  line-height: 19px;
-  text-transform: uppercase;
-  color: var(--color-contrast) !important;
-}
-
-text-input {
-  color: red;
+.header-title {
+  margin-top: 2rem;
 }
 
 .katex-display {

@@ -63,7 +63,7 @@ const HeaderPage: React.FC<headerProps> = ({
         <IonToolbar className="headerPages">
           <IonGrid className="ion-padding-horizontal">
             <IonRow className="ion-align-items-center">
-              <IonCol size="8">
+              <IonCol className="header-title" size="8">
                 <h2>{buttonModalText}</h2>
               </IonCol>
               <IonCol size="1" offset="2">
@@ -87,7 +87,7 @@ const HeaderPage: React.FC<headerProps> = ({
         <IonToolbar className="headerPages">
           <IonGrid className="ion-padding-horizontal">
             <IonRow className="ion-align-items-center">
-              <IonCol size="8">
+              <IonCol className="header-title" size="8">
                 <h2>{buttonModalText}</h2>
               </IonCol>
               <IonCol className="ColTemperApp-right" size="4">
@@ -111,7 +111,7 @@ const HeaderPage: React.FC<headerProps> = ({
         <IonToolbar>
           <IonGrid className="ion-padding-horizontal headerPages">
             <IonRow className="ion-align-items-center">
-              <IonCol size="8">
+              <IonCol className="header-title" size="8">
                 <h2>{buttonModalText}</h2>
               </IonCol>
             </IonRow>
