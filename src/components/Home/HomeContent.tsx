@@ -9,6 +9,7 @@ import "./Collapse.css";
 import "./ButtonTemper.css";
 import Waves from "./Waves";
 import { TemperamentDBType } from "../../engine/DB";
+import ArrowCollapseSVG from "../Sheets/ArrowCollapseSVG";
 
 const arrowPath =
   "M869 487.8L491.2 159.9c-2.9-2.5-6.6-3.9-10.5-3.9h-88" +
@@ -65,42 +66,10 @@ const HomeContent: React.FC<HomeMenuProps> = ({
     }
 
     if (e.panelKey == 0) {
-      return (
-        <i style={{ marginRight: ".5rem" }}>
-          <svg
-            viewBox="0 0 1024 1024"
-            width="1em"
-            height="1em"
-            fill={"currentColor"}
-            style={{
-              verticalAlign: "-.125em",
-              transition: "transform 0.2s",
-              transform: `rotate(${statePanel1 ? 90 : 0}deg)`,
-            }}
-          >
-            <path d={arrowPath} p-id="5827" />
-          </svg>
-        </i>
-      );
+      return <ArrowCollapseSVG statePanel={statePanel1} />;
     }
     if (e.panelKey == 1) {
-      return (
-        <i style={{ marginRight: ".5rem" }}>
-          <svg
-            viewBox="0 0 1024 1024"
-            width="1em"
-            height="1em"
-            fill="currentColor"
-            style={{
-              verticalAlign: "-.125em",
-              transition: "transform 0.2s",
-              transform: `rotate(${statePanel2 ? 90 : 0}deg)`,
-            }}
-          >
-            <path d={arrowPath} p-id="5827" />
-          </svg>
-        </i>
-      );
+      return <ArrowCollapseSVG statePanel={statePanel2} />;
     }
   };
 
