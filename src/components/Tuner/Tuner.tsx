@@ -1,6 +1,6 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import "../Home/ParameterModal.css";
+import "../App/Modal.css";
 
 import {
   IonGrid,
