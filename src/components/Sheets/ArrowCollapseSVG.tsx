@@ -24,7 +24,7 @@ const ArrowCollapseSVG: React.FC<ArrowCollapseProps> = ({ statePanel }) => {
           stroke-linecap="round"
           stroke-linejoin="round"
           fill="none"
-          stroke="#233c3a"
+          stroke="var(--color-contrast)"
           stroke-width="3.773"
         >
           <path
