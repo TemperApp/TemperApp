@@ -25,14 +25,14 @@ const PitchCircle: React.FC<PitchCircleProps> = ({
   }, [isHzMode]);
 
   return (
-    /*
+    
     <PitchCircleSVG
       tunerMode = {tunerMode}
       freqA4 = {freqA4}
       idTemperament = {idTemperament}
       darkTheme = {darkTheme}
     />
-    */
+    /*
     <NonClickablePitchCircleSVG 
       tunerMode = {tunerMode}
       freqA4 = {freqA4}
@@ -40,6 +40,7 @@ const PitchCircle: React.FC<PitchCircleProps> = ({
       darkTheme = {darkTheme}
       centerCircle = {false}
     />
+    */
   );
 };
 
