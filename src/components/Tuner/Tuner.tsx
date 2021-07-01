@@ -14,14 +14,12 @@ import {
   IonItem,
   IonLabel,
 } from "@ionic/react";
-import { playCircle, volumeMute, volumeHigh } from "ionicons/icons";
 
 import "./Tuner.css";
 import { fetchTemperaments } from "../../engine/DataAccessor";
 import { TemperamentDBType } from "../../engine/DB";
 import PitchCircle from "./PitchCircle";
 import SoundEngine from "../../engine/SoundEngine";
-import HeaderPage from "../Header/HeaderPage";
 
 type TunerProps = {
   darkTheme: boolean;

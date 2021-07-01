@@ -1,22 +1,15 @@
 import React from "react";
-import { IonContent, IonImg } from "@ionic/react";
-import "./Learn.css";
+import { IonContent } from "@ionic/react";
 import { RouteComponentProps } from "react-router-dom";
-import HeaderPage from "../components/Header/HeaderPage";
-import { isDarkTheme } from "../model/Utils";
-import ParagraphLearn from "../components/Learn/ParagraphLearn";
-import DiagramLearn from "../components/Learn/DiagramLearn";
-import CommaLearn from "../components/Learn/CommaLearn";
-import VideoLearn from "../components/Learn/VideoLearn";
-import ResourcesLearn from "../components/Learn/ResourcesLearn";
-import FormulaLearn from "../components/Learn/FormulaLearn";
+import HeaderPage from "../Header/HeaderPage";
+import ParagraphLearn from "./ParagraphLearn";
+import DiagramLearn from "./DiagramLearn";
+import CommaLearn from "./CommaLearn";
+import VideoLearn from "./VideoLearn";
+import ResourcesLearn from "./ResourcesLearn";
+import FormulaLearn from "./FormulaLearn";
 
-interface UserDetailPageProps
-  extends RouteComponentProps<{
-    id: string;
-  }> {}
-
-const Learn_sheet: React.FC<RouteComponentProps> = ({ match, history }) => {
+const LearnSheet: React.FC<RouteComponentProps> = ({ match, history }) => {
   console.log("il y a quelqu'un ? ");
   console.log(match);
   console.log(history);
@@ -76,19 +69,13 @@ const Learn_sheet: React.FC<RouteComponentProps> = ({ match, history }) => {
 
         </div>
 
-
-
-
-
-
-
       </IonContent>
     </>
   );
 };
 
 export default React.memo(
-  Learn_sheet,
+  LearnSheet,
   (prevProps, nextProps) =>
     prevProps.history.location.key === nextProps.history.location.key &&
     prevProps.match.path === nextProps.match.path

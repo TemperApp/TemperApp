@@ -1,7 +1,7 @@
 import React from 'react';
 import 'katex/dist/katex.min.css';
 // @ts-ignore
-import { InlineMath, BlockMath } from 'react-katex';
+import { BlockMath } from 'react-katex';
 import "../../pages/Learn.css"
 
 type mathsProps = {

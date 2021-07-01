@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { IonContent, IonPage } from "@ionic/react";
 import "./Compare.css";
 import Comparator from "../components/Comparator/Comparator";
-import { playCircle } from "ionicons/icons";
 import ComparatorModal from "../components/Comparator/ComparatorModal";
 import HeaderPage from "../components/Header/HeaderPage";
 

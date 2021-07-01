@@ -1,5 +1,5 @@
 import React from "react";
-import { convertThirdQualityToColor } from "./utils/colorCircle";
+import { convertThirdQualityToColor } from "../utils/colorCircle";
 
 const ThirdCircleSVG: React.FC<{
   qualities: { [key: string]: number | null };

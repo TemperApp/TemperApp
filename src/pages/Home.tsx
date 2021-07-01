@@ -34,11 +34,7 @@ const Home: React.FC<HomeProps> = ({ darkTheme, setDarkTheme }) => {
   useEffect(() => {
     fetchTemperamentsList();
   }, []);
-  const change = (e: any) => {
-    console.log(e.target.checked);
-    document.body.classList.toggle("dark", e.target.checked);
-    e.target.checked === true ? setDarkTheme(true) : setDarkTheme(false);
-  };
+
   return (
     <IonPage>
       <IonHeader className="ion-no-border">

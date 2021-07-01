@@ -1,23 +1,18 @@
 import React, { useEffect, useState } from 'react';
-import {IonCol, IonContent, IonGrid, IonHeader, IonIcon, IonImg, IonPage, IonRouterLink, IonRow, IonToolbar} from '@ionic/react';
+import {IonCol, IonContent, IonGrid, IonHeader, IonIcon, IonRouterLink, IonRow, IonToolbar} from '@ionic/react';
 
-import {RouteComponentProps} from 'react-router-dom';
 import { fetchTemperamentPropsById } from '../../engine/DataAccessor';
 import { Temperament } from '../../model/Temperament/Temperament';
 import EqualTemperament from '../../model/Temperament/Equal';
-import HeaderPage from '../Header/HeaderPage';
 import "../../pages/Sheets.css"
 import { arrowBackOutline } from 'ionicons/icons';
 import DescriptionSheet from './DescriptionSheet';
-import CircleSheet from './CircleSheet';
 
 
 
 const SheetsTemperament: React.FC<{id : number}> = ({id}) => {
 
   console.log("il y a quelqu'un ? ");
-  //console.log(match);
-  //console.log(history);
   console.log(id);
 
   const [temperament, setTemperament] = useState<Temperament>(EqualTemperament);

@@ -1,14 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import AcousticBeat, { processAcousticBeat } from '../../model/AcousticBeat';
-import { ActiveNotes, NoteStates } from './PitchCircleSVG';
-import Note from '../../model/Note/Note';
-import { Notes } from '../../model/Note/enums';
-import NotesMap from '../../model/Note/NotesMap';
-import SoundEngine from '../../engine/SoundEngine';
+import AcousticBeat, { processAcousticBeat } from '../../../model/AcousticBeat';
+import { ActiveNotes, NoteStates } from '../clickable/PitchCircleSVG';
+import Note from '../../../model/Note/Note';
+import { Notes } from '../../../model/Note/enums';
+import NotesMap from '../../../model/Note/NotesMap';
+import SoundEngine from '../../../engine/SoundEngine';
 
 //Styles
 import "./CenterCircle.css";
-import { isDarkTheme } from '../../model/Utils';
 
 const isBpm = true;
 const refOctave = 4;

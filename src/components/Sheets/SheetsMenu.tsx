@@ -3,19 +3,12 @@ import "rc-collapse/assets/index.css";
 import Collapse, { Panel } from "rc-collapse";
 import motion from "../Home/_util/motionUtil";
 import { IonButton, IonGrid, IonRow, IonCol } from "@ionic/react";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 
 import "../Home/Collapse.css";
 import "../Home/ButtonTemper.css";
 import { TemperamentDBType } from "../../engine/DB";
-import { text } from "ionicons/icons";
 import ArrowCollapseSVG from "./ArrowCollapseSVG";
-
-const arrowPath =
-  "M869 487.8L491.2 159.9c-2.9-2.5-6.6-3.9-10.5-3.9h-88" +
-  ".5c-7.4 0-10.8 9.2-5.2 14l350.2 304H152c-4.4 0-8 3.6-8 8v60c0 4.4 3." +
-  "6 8 8 8h585.1L386.9 854c-5.6 4.9-2.2 14 5.2 14h91.5c1.9 0 3.8-0.7 5." +
-  "2-2L869 536.2c14.7-12.8 14.7-35.6 0-48.4z";
 
 type SheetsMenuProps = {
   text: string,
@@ -28,7 +21,6 @@ const SheetsMenu: React.FC<SheetsMenuProps> = ({text, temperamentsList, setIdTem
 
   const [firstUse, setFirstUse] = useState<boolean>(true);
   let activePanel = 2;
-  let expression = "/(?i)varw+/s)";
 
   const [statePanel1, setStatePanel1] = useState<boolean>(false);
   const [statePanel2, setStatePanel2] = useState<boolean>(false);
@@ -91,20 +83,14 @@ const SheetsMenu: React.FC<SheetsMenuProps> = ({text, temperamentsList, setIdTem
 
   useEffect(() => {
     
-    let find = "Valotti";
     if (text !== "") {
-      /* 
-        Prévoir traitement si le text tappé contient des caractères interdits comme '(' ou '/'
-      */
-      text = text.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
-      text = text.replace(/[^a-z0-9\s-]/g, "");
-      let regex = new RegExp('\\b(\\w*'+text+'\\w*)\\b','i');
+
+      let regex = new RegExp('\\b(\\w*'+text.normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9\s-]/g, "")+'\\w*)\\b','i');
       setRequest(regex);
 
     }
     else{
       let regex = new RegExp('([A-z])\\w+','i')
-      //console.log(find.search(regex));
       setRequest(regex);
     }
   }, [text]);

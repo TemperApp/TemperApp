@@ -1,4 +1,4 @@
-import { IonButton, IonImg } from '@ionic/react';
+import { IonButton } from '@ionic/react';
 import React from 'react';
 
 import "../../pages/Learn.css"

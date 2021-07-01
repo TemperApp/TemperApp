@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import NonClickablePitchCircleSVG from './nonClickable/NonClickablePitchCircleSVG';
 
-import PitchCircleSVG from './PitchCircleSVG';
+import NonClickablePitchCircleSVG from './nonClickable/NonClickablePitchCircleSVG';
+import PitchCircleSVG from './clickable/PitchCircleSVG';
 
 export enum TunerMode{
   HZ, BPM

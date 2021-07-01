@@ -1,10 +1,7 @@
-import React, { useRef } from 'react';
-import { ActiveNotes, NoteStates } from '../PitchCircleSVG';
+import React from 'react';
+import { ActiveNotes, NoteStates } from './NonClickablePitchCircleSVG';
 import { TunerMode } from '../PitchCircle';
 import { Notes } from '../../../model/Note/enums';
-
-
-type SVGPathElementOrNull = SVGPathElement | null;
 
 const colorButton = (state: NoteStates, darkTheme: boolean) => {
   let temp: string;

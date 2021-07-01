@@ -1,18 +1,15 @@
 import {
-  IonButton,
   IonCol,
   IonGrid,
   IonHeader,
   IonIcon,
-  IonItem,
-  IonLabel,
   IonRouterLink,
   IonRow,
   IonToolbar,
 } from "@ionic/react";
 import { arrowBackOutline } from "ionicons/icons";
-import React, { useState } from "react";
-import isHzMode from "../Tuner/Tuner";
+import React from "react";
+
 
 type headerProps = {
   doubleTitle: boolean;

@@ -16,14 +16,6 @@ import Tune from "./pages/Tune";
 import Compare from "./pages/Compare";
 import Home from "./pages/Home";
 
-import {
-  HomeSVG,
-  TuneSVG,
-  CompareSVG,
-  SheetsSVG,
-  LearnSVG,
-} from "./components/App/Icons";
-
 /* Core CSS required for Ionic components to work properly */
 import "@ionic/react/css/core.css";
 
@@ -46,7 +38,7 @@ import "./App.css";
 
 /* Fonction Engine */
 import DB from './engine/DB';
-import LearnBis from './pages/LearnBis';
+import LearnRoute from './pages/LearnRoute';
 import SheetsRoute from './pages/SheetsRoute';
 
 /* SQLite */
@@ -110,7 +102,7 @@ const App: React.FC = () => {
               <SheetsRoute />
             </Route>
             <Route exact path="/learn" /*render={props => <Learn {...props}/>}*/>
-              <LearnBis />
+              <LearnRoute />
             </Route>
             <Route exact path="/">
               <Redirect to="/home" />

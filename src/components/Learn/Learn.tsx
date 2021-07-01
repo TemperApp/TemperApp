@@ -1,50 +1,16 @@
-import React, { useState } from "react";
+import React from "react";
 import {
-  IonButton,
   IonCol,
   IonContent,
   IonGrid,
-  IonHeader,
-  IonItem,
-  IonLabel,
-  IonList,
   IonPage,
   IonRouterLink,
-  IonRouterOutlet,
   IonRow,
-  IonTitle,
-  IonToolbar,
 } from "@ionic/react";
-import "./Learn.css";
-import { Route, RouteComponentProps } from "react-router-dom";
-import HeaderPage from "../components/Header/HeaderPage";
+import { RouteComponentProps } from "react-router-dom";
+import HeaderPage from "../../components/Header/HeaderPage";
 
-
-type LearnProps = {
-  match: RouteComponentProps;
-  darkTheme: boolean;
-};
-
-/*
-const Learn: React.FC<LearnProps> = ({darkTheme}) => {
-  return (
-    <IonPage>
-      <IonHeader className="ion-no-border">
-        <IonToolbar>
-          <IonTitle>Learn</IonTitle>
-        </IonToolbar>
-      </IonHeader>
-      <IonContent fullscreen scrollY={false}>
-      </IonContent>
-    </IonPage>
-  );
-};
-*/
-
-
-
-const Learn_sheets: React.FC<RouteComponentProps> = ({ match, history }) => {
-  const [showModal, setShowModal] = useState(false);
+const Learn: React.FC<RouteComponentProps> = ({ match, history }) => {
 
   return (
     <IonPage>
@@ -54,7 +20,7 @@ const Learn_sheets: React.FC<RouteComponentProps> = ({ match, history }) => {
         buttonModalsubText=""
         buttonReturn={false}
         buttonModalText="Apprendre"
-        setShowModal={setShowModal}
+        setShowModal={() => {}}
         darkTheme={false}
       />
 
@@ -146,4 +112,4 @@ const Learn_sheets: React.FC<RouteComponentProps> = ({ match, history }) => {
   );
 };
 
-export default Learn_sheets;
+export default Learn;

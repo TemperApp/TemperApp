@@ -1,11 +1,8 @@
 import React, { useEffect, useState } from "react";
 import {
   IonContent,
-  IonHeader,
   IonPage,
   IonSearchbar,
-  IonTitle,
-  IonToolbar,
 } from "@ionic/react";
 
 import HeaderPage from "../Header/HeaderPage";
