@@ -17,22 +17,3 @@
 .ColTemperApp-right {
   text-align: right;
 }
-
-h3 {
-  font-family: "Nunito";
-  font-style: normal;
-  font-weight: normal;
-  font-size: 15px;
-  line-height: 19px;
-  display: flex;
-  align-items: center;
-  text-transform: uppercase;
-  color: var(--ion-text-color);
-}
-
-p {
-  font-size: 13px; /* TODO Check: Overidden in App.css 'p {...}' */
-  line-height: 20px;
-  text-align: justify;
-  letter-spacing: -0.02em;
-}

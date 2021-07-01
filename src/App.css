@@ -40,7 +40,7 @@ h3 {
 h4 {
   font-family: "Nunito" !important;
   font-style: normal;
-  font-weight: bold;
+  font-weight: normal;
   font-size: 14px;
   line-height: 19px;
   display: flex;
@@ -185,7 +185,6 @@ ion-select::part(text) {
   font-size: 13px;
   line-height: 19px;
   text-transform: uppercase;
-  color: var(--color-contrast);
 }
 
 ion-select::part(placeholder) {
@@ -196,6 +195,7 @@ ion-select::part(placeholder) {
   line-height: 19px;
   text-transform: uppercase;
   --placeholder-color: var(--color-hover);
+  color: var(--color-contrast);
 }
 
 .header-title {

@@ -25,7 +25,7 @@ http://ionicframework.com/docs/theming/ */
   --color-button: #2ea39b;
   --color-theme: #f5fbfb;
   --color-contrast: #233c3a;
-  --color-light-grey: rgba(115, 139, 138, 0.4);
+  --color-light-grey: rgba(115, 139, 138, 0.25);
 
   --ion-background-color: #f5fbfb;
   --ion-toolbar-background: #f5fbfb;
@@ -50,7 +50,7 @@ http://ionicframework.com/docs/theming/ */
 body.dark {
   --color-selected: #f5fbfb;
   --color-grey: #738b8a;
-  --color-hover: #a7c5c3;
+  --color-hover: #384444;
   --color-strong: #2ea39b;
   --color-sec: #a3719d;
   --color-gradient: linear-gradient(
