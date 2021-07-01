@@ -3,7 +3,7 @@ import "rc-collapse/assets/index.css";
 import Collapse, { Panel } from "rc-collapse";
 import motion from "./_util/motionUtil";
 import { IonButton, IonGrid, IonRow, IonCol } from "@ionic/react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import "./Collapse.css";
 import "./ButtonTemper.css";
@@ -17,6 +17,10 @@ type HomeMenuProps = {
   setDarkTheme: (color: boolean) => void;
 };
 
+let statePanel1: boolean = false;
+let statePanel2: boolean = false;
+let firstUse: boolean = true;
+
 const HomeContent: React.FC<HomeMenuProps> = ({
   temperamentsList,
   darkTheme,
@@ -24,38 +28,50 @@ const HomeContent: React.FC<HomeMenuProps> = ({
 }) => {
   const temperList = ["Rameau", "Vallotti", "Weimeister", "Back", "Egal"];
 
-  const [firstUse, setFirstUse] = useState<boolean>(true);
+  //const [firstUse, setFirstUse] = useState<boolean>(true);
   let activePanel = 1;
 
-  const [statePanel1, setStatePanel1] = useState<boolean>(false);
-  const [statePanel2, setStatePanel2] = useState<boolean>(false);
+  //const [statePanel1, setStatePanel1] = useState<boolean>(false);
+  //const [statePanel2, setStatePanel2] = useState<boolean>(false);
+
+  
 
   const isActive = (e: any) => {
     if (e == 0) {
-      setStatePanel1(true);
-      setStatePanel2(false);
+      //setStatePanel1(true);
+      //setStatePanel2(false);
+      statePanel1 = true;
+      statePanel2 = false;
     }
     if (e == 1) {
-      setStatePanel1(false);
-      setStatePanel2(true);
+      //setStatePanel1(false);
+      //setStatePanel2(true);
+      statePanel1 = false;
+      statePanel2 = true;
     }
     if (e === undefined && statePanel1) {
-      setStatePanel1(false);
+      //setStatePanel1(false);
+      statePanel1 = false;
     }
     if (e === undefined && statePanel2) {
-      setStatePanel2(false);
+      //setStatePanel2(false);
+      statePanel2 = false;
     }
   };
 
   const expandIcon = (e: any) => {
     if (firstUse) {
       if (activePanel == 0) {
-        setStatePanel1(true);
-        setFirstUse(false);
+        //setStatePanel1(true);
+        statePanel1 = true;
+        //setFirstUse(false);
+        firstUse = false
       }
       if (activePanel == 1) {
-        setStatePanel2(true);
-        setFirstUse(false);
+        //setStatePanel2(true);
+        statePanel2 = true;
+        //setFirstUse(false);
+        firstUse = false;
       }
     }
 
@@ -66,6 +82,7 @@ const HomeContent: React.FC<HomeMenuProps> = ({
       return <ArrowCollapseSVG statePanel={statePanel2} />;
     }
   };
+
 
   return (
     <div>

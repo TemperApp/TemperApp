@@ -16,58 +16,80 @@ type SheetsMenuProps = {
   setIdTemperament: (id: number) => void,
 }
 
+let statePanel1: boolean = false;
+let statePanel2: boolean = false;
+let statePanel3: boolean = false;
+let firstUse: boolean = false;
+
 const SheetsMenu: React.FC<SheetsMenuProps> = ({text, temperamentsList, setIdTemperament}) => {
   const temperList = ["Rameau", "Vallotti", "Weimeister", "Back", "Egal"];
 
-  const [firstUse, setFirstUse] = useState<boolean>(true);
+  //const [firstUse, setFirstUse] = useState<boolean>(true);
   let activePanel = 2;
 
-  const [statePanel1, setStatePanel1] = useState<boolean>(false);
-  const [statePanel2, setStatePanel2] = useState<boolean>(false);
-  const [statePanel3, setStatePanel3] = useState<boolean>(false);
+  //const [statePanel1, setStatePanel1] = useState<boolean>(false);
+  //const [statePanel2, setStatePanel2] = useState<boolean>(false);
+  //const [statePanel3, setStatePanel3] = useState<boolean>(false);
   const [request, setRequest] = useState<RegExp>(RegExp("([A-z])\\w+", "i"));
 
   const isActive = (e: any) => {
     if (e == 0) {
-      setStatePanel1(true);
-      setStatePanel2(false);
-      setStatePanel3(false);
+      //setStatePanel1(true);
+      //setStatePanel2(false);
+      //setStatePanel3(false);
+      statePanel1 = true;
+      statePanel2 = false;
+      statePanel3 = false;
     }
     if (e == 1) {
-      setStatePanel1(false);
-      setStatePanel2(true);
-      setStatePanel3(false);
+      //setStatePanel1(false);
+      //setStatePanel2(true);
+      //setStatePanel3(false);
+      statePanel1 = false;
+      statePanel2 = true;
+      statePanel3 = false;
     }
     if (e == 2) {
-      setStatePanel1(false);
-      setStatePanel2(false);
-      setStatePanel3(true);
+      //setStatePanel1(false);
+      //setStatePanel2(false);
+      //setStatePanel3(true);
+      statePanel1 = false;
+      statePanel2 = false;
+      statePanel3 = true;
     }
     if (e === undefined && statePanel1) {
-      setStatePanel1(false);
+      //setStatePanel1(false);
+      statePanel1 = false;
     }
     if (e === undefined && statePanel2) {
-      setStatePanel2(false);
+      //setStatePanel2(false);
+      statePanel2 = false;
+
     }
     if (e === undefined && statePanel3) {
-      setStatePanel3(false);
+      //setStatePanel3(false);
+      statePanel3 = false;
     }
   };
 
   const expandIcon = (e: any) => {
     if (firstUse) {
       if (activePanel == 0) {
-        setStatePanel1(true);
-        setFirstUse(false);
+        //setStatePanel1(true);
+        //setFirstUse(false);
+        statePanel1 = true;
       }
       if (activePanel == 1) {
-        setStatePanel2(true);
-        setFirstUse(false);
+        //setStatePanel2(true);
+        //setFirstUse(false);
+        statePanel2 = true;
       }
       if (activePanel == 2) {
-        setStatePanel3(true);
-        setFirstUse(false);
+        //setStatePanel3(true);
+        //setFirstUse(false);
+        statePanel3 = true;
       }
+      firstUse = false;
     }
 
     if (e.panelKey == 0) {
