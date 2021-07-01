@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import NonClickablePitchCircleSVG from './nonClickable/NonClickablePitchCircleSVG';
 
 import PitchCircleSVG from './PitchCircleSVG';
 
@@ -24,11 +25,20 @@ const PitchCircle: React.FC<PitchCircleProps> = ({
   }, [isHzMode]);
 
   return (
+    /*
     <PitchCircleSVG
       tunerMode = {tunerMode}
       freqA4 = {freqA4}
       idTemperament = {idTemperament}
       darkTheme = {darkTheme}
+    />
+    */
+    <NonClickablePitchCircleSVG 
+      tunerMode = {tunerMode}
+      freqA4 = {freqA4}
+      idTemperament = {idTemperament}
+      darkTheme = {darkTheme}
+      centerCircle = {false}
     />
   );
 };
