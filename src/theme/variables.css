@@ -22,6 +22,12 @@ http://ionicframework.com/docs/theming/ */
     #ffc09f 72.76%,
     #f88f8f 132.71%
   );
+  --color-gradient-background: linear-gradient(
+    272.37deg,
+    rgba(255, 224, 117, 0.5) 17.29%,
+    rgba(255, 192, 159, 0.5) 72.76%,
+    rgba(248, 143, 143, 0.5) 132.71%
+  );
   --color-button: #2ea39b;
   --color-inner-button: #f5fbfb;
   --color-theme: #f5fbfb;
@@ -59,6 +65,12 @@ body.dark {
     #45cbc7 -17.13%,
     #2ea39b 15.16%,
     #a3719d 92.68%
+  );
+  --color-gradient-background: linear-gradient(
+    272.37deg,
+    rgba(69, 203, 199, 0.5)-17.13%,
+    rgba(46, 163, 155, 0.5) 15.16%,
+    rgba(163, 113, 157, 0.5) 92.68%
   );
   --color-button: #45cbc7;
 

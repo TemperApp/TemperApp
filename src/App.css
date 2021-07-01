@@ -222,3 +222,8 @@ ion-select::part(placeholder) {
   height: 48px;
   --background: var(--color-button);
 }
+
+.ion-justify-content-between {
+  margin-top: 5%;
+  margin-bottom: 6px;
+}

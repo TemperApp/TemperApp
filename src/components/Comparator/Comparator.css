@@ -12,7 +12,7 @@
 }
 
 .divergenceColorOdd {
-  background: var(--color-gradient);
+  background: var(--color-gradient-background);
 }
 
 #Texte {

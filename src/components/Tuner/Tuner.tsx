@@ -107,7 +107,11 @@ const Tuner: React.FC<TunerProps> = ({ darkTheme }) => {
             </IonButton>
           </IonCol>
           <IonCol size="2" offset="1.5">
-            <IonButton size="large" onClick={() => setIsMuted(!isMuted)}>
+            <IonButton
+              size="large"
+              fill="clear"
+              onClick={() => setIsMuted(!isMuted)}
+            >
               <IonIcon
                 src={` ${
                   isMuted
