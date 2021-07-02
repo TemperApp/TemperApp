@@ -10,3 +10,9 @@
   fill: var(--color-contrast) !important;
   stroke: var(--color-contrast) !important;
 }
+
+.home-content {
+  position: absolute;
+  z-index: 2;
+  background-color: transparent !important;
+}

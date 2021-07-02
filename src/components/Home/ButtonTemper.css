@@ -40,4 +40,5 @@ body.dark {
   --padding-top: 1.5em;
   --padding-bottom: 1.5em;
   --border-radius: 8px;
+  letter-spacing: -0.02em;
 }

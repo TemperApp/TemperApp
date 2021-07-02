@@ -11,10 +11,10 @@ import { TemperamentDBType } from "../../engine/DB";
 import ArrowCollapseSVG from "./ArrowCollapseSVG";
 
 type SheetsMenuProps = {
-  text: string,
-  temperamentsList: Array<TemperamentDBType>
-  setIdTemperament: (id: number) => void,
-}
+  text: string;
+  temperamentsList: Array<TemperamentDBType>;
+  setIdTemperament: (id: number) => void;
+};
 
 let statePanel1: boolean = false;
 let statePanel2: boolean = false;
@@ -104,15 +104,19 @@ const SheetsMenu: React.FC<SheetsMenuProps> = ({text, temperamentsList, setIdTem
   };
 
   useEffect(() => {
-    
     if (text !== "") {
-
-      let regex = new RegExp('\\b(\\w*'+text.normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9\s-]/g, "")+'\\w*)\\b','i');
+      let regex = new RegExp(
+        "\\b(\\w*" +
+          text
+            .normalize("NFD")
+            .replace(/[\u0300-\u036f]/g, "")
+            .replace(/[^a-z0-9\s-]/g, "") +
+          "\\w*)\\b",
+        "i"
+      );
       setRequest(regex);
-
-    }
-    else{
-      let regex = new RegExp('([A-z])\\w+','i')
+    } else {
+      let regex = new RegExp("([A-z])\\w+", "i");
       setRequest(regex);
     }
   }, [text]);
@@ -137,7 +141,7 @@ const SheetsMenu: React.FC<SheetsMenuProps> = ({text, temperamentsList, setIdTem
                     color="temperapp"
                     key={"sheet_my_temperament_"+t}
                   >
-                  {t}
+                    {t}
                   </IonButton>
                 </IonCol>
               ))}

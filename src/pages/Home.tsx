@@ -35,6 +35,12 @@ const Home: React.FC<HomeProps> = ({ darkTheme, setDarkTheme }) => {
     fetchTemperamentsList();
   }, []);
 
+  const change = (e: any) => {
+    console.log(e.target.checked);
+    document.body.classList.toggle("dark", e.target.checked);
+    e.target.checked === true ? setDarkTheme(true) : setDarkTheme(false);
+  };
+
   return (
     <IonPage>
       <IonHeader className="ion-no-border">
@@ -62,7 +68,7 @@ const Home: React.FC<HomeProps> = ({ darkTheme, setDarkTheme }) => {
           </IonGrid>
         </IonToolbar>
       </IonHeader>
-      <IonContent fullscreen scrollY={false}>
+      <IonContent fullscreen scrollY={true}>
         <HomeContent
           temperamentsList={temperamentsList}
           darkTheme={darkTheme}

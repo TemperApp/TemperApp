@@ -26,7 +26,7 @@ const HomeContent: React.FC<HomeMenuProps> = ({
   darkTheme,
   setDarkTheme,
 }) => {
-  const temperList = ["Rameau", "Vallotti", "Weimeister", "Back", "Egal"];
+  const temperList = ["Rameau", "Vallotti", "Werckmeister", "Bach", "Egal"];
 
   //const [firstUse, setFirstUse] = useState<boolean>(true);
   let activePanel = 1;
@@ -85,7 +85,8 @@ const HomeContent: React.FC<HomeMenuProps> = ({
 
 
   return (
-    <div>
+    <div className="home-content">
+      <Waves darkTheme={darkTheme} />
       <Collapse
         accordion={true}
         defaultActiveKey={activePanel}
@@ -130,8 +131,6 @@ const HomeContent: React.FC<HomeMenuProps> = ({
           </IonGrid>
         </Panel>
       </Collapse>
-
-      <Waves darkTheme={darkTheme} />
     </div>
   );
 };
