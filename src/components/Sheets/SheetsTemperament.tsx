@@ -15,10 +15,8 @@ import { fetchTemperamentPropsById } from "../../engine/DataAccessor";
 import { Temperament } from "../../model/Temperament/Temperament";
 import EqualTemperament from "../../model/Temperament/Equal";
 import "../../pages/Sheets.css";
-import { arrowBackOutline } from "ionicons/icons";
 import DescriptionSheet from "./DescriptionSheet";
 import HeaderPage from "../Header/HeaderPage";
-import Tune from "../../pages/Tune";
 
 const SheetsTemperament: React.FC<{ id: number }> = ({ id }) => {
   console.log("il y a quelqu'un ? ");
@@ -49,7 +47,6 @@ const SheetsTemperament: React.FC<{ id: number }> = ({ id }) => {
             buttonReturn={true}
             buttonModalText="Tempérament"
             setShowModal={setShowModal}
-            darkTheme={darkTheme}
           />
           <IonRouterLink routerDirection="root" routerLink="/sheets">
             <IonIcon

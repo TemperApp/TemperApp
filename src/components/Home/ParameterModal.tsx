@@ -54,7 +54,7 @@ export const ParameterModal: React.FC = () => {
             <div className="parameter-options">
               <IonRow>
                 <IonCol size="8">
-                  <p>{darkTheme ? "Thème sombre" : "Thème clair"}</p>
+                  <p>{Settings.darkTheme() ? "Thème sombre" : "Thème clair"}</p>
                 </IonCol>
                 <IonCol size="2" className="ColTemperApp" offset="1">
                   <IonToggle
