@@ -45,12 +45,13 @@ http://ionicframework.com/docs/theming/ */
   --ion-tab-bar-color: #a7c5c3;
 
   /** primary **/
-  --ion-color-primary: #233c3a;
-  --ion-color-primary-rgb: 56, 128, 255;
-  --ion-color-primary-contrast: #f5fbfb;
+
+  --ion-color-primary: #2ea39b;
+  --ion-color-primary-rgb: 66, 140, 255;
+  --ion-color-primary-contrast: #233c3a;
   --ion-color-primary-contrast-rgb: 255, 255, 255;
-  --ion-color-primary-shade: #3171e0;
-  --ion-color-primary-tint: #4c8dff;
+  --ion-color-primary-shade: #45cbc7;
+  --ion-color-primary-tint: #45cbc7;
 
   --font: "Nunito Sans";
 }
@@ -93,12 +94,12 @@ body.dark {
   --ion-toolbar-background: #233c3a;
   --ion-tab-bar-color: #a7c5c3;
 
-  --ion-color-primary: #428cff;
+  --ion-color-primary: #45cbc7;
   --ion-color-primary-rgb: 66, 140, 255;
-  --ion-color-primary-contrast: #ffffff;
+  --ion-color-primary-contrast: #f5fbfb;
   --ion-color-primary-contrast-rgb: 255, 255, 255;
-  --ion-color-primary-shade: #3a7be0;
-  --ion-color-primary-tint: #5598ff;
+  --ion-color-primary-shade: #2ea39b;
+  --ion-color-primary-tint: #2ea39b;
 
   --quinte-color-12: #4f0000;
   --quinte-color-11: #7b0000;
