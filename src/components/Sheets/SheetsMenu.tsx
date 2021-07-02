@@ -1,7 +1,7 @@
 /* eslint-disable eqeqeq */
 import "rc-collapse/assets/index.css";
 import Collapse, { Panel } from "rc-collapse";
-import motion from "../Home/_util/motionUtil";
+import collapseMotion from "../../utils/collapseMotion";
 import { IonButton, IonGrid, IonRow, IonCol } from "@ionic/react";
 import { useEffect, useState } from "react";
 
@@ -126,7 +126,7 @@ const SheetsMenu: React.FC<SheetsMenuProps> = ({text, temperamentsList, setIdTem
       <Collapse
         accordion={true}
         defaultActiveKey={activePanel}
-        openMotion={motion}
+        openMotion={collapseMotion}
         expandIcon={(e) => expandIcon(e)}
         onChange={(e) => isActive(e)}
       >
