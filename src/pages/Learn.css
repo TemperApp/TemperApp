@@ -15,6 +15,14 @@
   margin-left: 4vh;
 }
 
+.button-learn {
+  width: 80px;
+  height: 80px;
+  margin-left: 8vw;
+  background-image: var(--color-gradient-circle);
+  border-radius: 100px;
+}
+
 .ion-padding-top {
   padding-top: var(--ion-padding, 25px);
 }

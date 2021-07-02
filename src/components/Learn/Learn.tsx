@@ -9,7 +9,6 @@ import {
 } from "@ionic/react";
 import { RouteComponentProps } from "react-router-dom";
 import HeaderPage from "../../components/Header/HeaderPage";
-import ButtonLearnSVG from "./ButtonLearnSVG";
 
 const Learn: React.FC<RouteComponentProps> = ({ match, history }) => {
   return (
@@ -29,7 +28,7 @@ const Learn: React.FC<RouteComponentProps> = ({ match, history }) => {
           <IonRouterLink routerLink="/learn/sheet/1">
             <IonRow className="ion-padding-top">
               <IonCol size="4" className="ColPictoLearn">
-                <ButtonLearnSVG />
+                <div className="button-learn" />
               </IonCol>
               <IonCol size="8" className="ColChapiterLearn">
                 <h3>Definition</h3>
@@ -40,7 +39,7 @@ const Learn: React.FC<RouteComponentProps> = ({ match, history }) => {
           <IonRouterLink routerLink="/learn/sheet/2">
             <IonRow className="ion-padding-top">
               <IonCol size="4" className="ColPictoLearn">
-                <ButtonLearnSVG />
+                <div className="button-learn" />
               </IonCol>
               <IonCol size="8" className="ColChapiterLearn">
                 <h3>Caractéristiques</h3>
@@ -51,7 +50,7 @@ const Learn: React.FC<RouteComponentProps> = ({ match, history }) => {
           <IonRouterLink routerLink="/learn/sheet/3">
             <IonRow className="ion-padding-top">
               <IonCol size="4" className="ColPictoLearn">
-                <ButtonLearnSVG />
+                <div className="button-learn" />
               </IonCol>
               <IonCol size="8" className="ColChapiterLearn">
                 <h3>Physique</h3>
@@ -62,7 +61,7 @@ const Learn: React.FC<RouteComponentProps> = ({ match, history }) => {
           <IonRouterLink routerLink="/learn/sheet/4">
             <IonRow className="ion-padding-top">
               <IonCol size="4" className="ColPictoLearn">
-                <ButtonLearnSVG />
+                <div className="button-learn" />
               </IonCol>
               <IonCol size="8" className="ColChapiterLearn">
                 <h3>Histoire</h3>
