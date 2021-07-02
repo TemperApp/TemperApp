@@ -6,13 +6,14 @@
   z-index: 0;
 }
 
-.logo-home {
-  fill: var(--color-contrast) !important;
-  stroke: var(--color-contrast) !important;
+.parameter-button {
+  margin: 5%;
+  height: 24px;
+  width: 20px;
+  margin-top: 50%;
+  color: var(--color-constrast);
 }
 
-.home-content {
-  position: absolute;
-  z-index: 2;
-  background-color: transparent !important;
+.parameter-options {
+  margin-top: 5%;
 }

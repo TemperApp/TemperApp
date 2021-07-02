@@ -10,6 +10,8 @@ import {
   IonSelect,
   IonSelectOption,
   IonInput,
+  IonHeader,
+  IonToolbar,
 } from "@ionic/react";
 import { ellipsisVertical, arrowBackOutline } from "ionicons/icons";
 import Settings from "../../engine/Settings";
@@ -21,7 +23,7 @@ export const ParameterModal: React.FC = () => {
   const [number, setNumber] = useState<number>(440);
 
   return (
-    <IonContent scrollY={false}>
+    <>
       <IonModal
         isOpen={showModal}
         cssClass="ParameterModal"
@@ -29,8 +31,8 @@ export const ParameterModal: React.FC = () => {
         onDidDismiss={() => setShowModal(false)}
         backdrop-dismiss={true}
       >
-        <div>
-          <IonContent fullscreen scrollY={true}>
+        <IonHeader>
+          <IonToolbar>
             <IonGrid className="parameterContent">
               <IonRow>
                 <IonCol size="6" className="ColTemperApp">
@@ -39,17 +41,22 @@ export const ParameterModal: React.FC = () => {
                 <IonCol size="6" className="ColTemperApp-right">
                   <IonIcon
                     onClick={() => setShowModal(false)}
-                    icon={arrowBackOutline}
+                    src="../../assets/logotypes/icon-back.svg"
                     size="large"
                   ></IonIcon>
                 </IonCol>
               </IonRow>
-              <div className="gradientBar"></div>
+            </IonGrid>
+          </IonToolbar>
+        </IonHeader>
+        <IonContent fullscreen scrollY={true}>
+          <IonGrid className="parameterContent">
+            <div className="parameter-options">
               <IonRow>
                 <IonCol size="8">
-                  <p>Thème sombre</p>
+                  <p>{darkTheme ? "Thème sombre" : "Thème clair"}</p>
                 </IonCol>
-                <IonCol size="4" className="ColTemperApp">
+                <IonCol size="2" className="ColTemperApp" offset="1">
                   <IonToggle
                     checked={Settings.darkTheme()}
                     value="dark"
@@ -62,12 +69,16 @@ export const ParameterModal: React.FC = () => {
                 <IonCol size="4">
                   <p>Langue</p>
                 </IonCol>
-                <IonCol size="8" className="ColTemperApp">
-                  <IonSelect okText="Valider" cancelText="Annuler">
+                <IonCol size="6" className="ColTemperApp" offset="1">
+                  <IonSelect
+                    placeholder="language"
+                    okText="Valider"
+                    cancelText="Annuler"
+                  >
                     <IonSelectOption value="french">Français</IonSelectOption>
                     <IonSelectOption value="english">English</IonSelectOption>
-                    <IonSelectOption value="german">Allemand</IonSelectOption>
-                    <IonSelectOption value="spanish">Espagnol</IonSelectOption>
+                    <IonSelectOption value="german">Deutsch</IonSelectOption>
+                    <IonSelectOption value="spanish">Español</IonSelectOption>
                   </IonSelect>
                 </IonCol>
               </IonRow>
@@ -75,7 +86,7 @@ export const ParameterModal: React.FC = () => {
                 <IonCol size="4">
                   <p>LA défault</p>
                 </IonCol>
-                <IonCol size="8" className="ColTemperApp">
+                <IonCol size="3.5" className="ColTemperApp" offset="4">
                   <IonInput
                     type="number"
                     value={number}
@@ -86,37 +97,37 @@ export const ParameterModal: React.FC = () => {
                   ></IonInput>
                 </IonCol>
               </IonRow>
-            </IonGrid>
-            <IonGrid className="parameterContent">
-              <IonRow>
-                <IonCol size="6" className="ColTemperApp">
+            </div>
+          </IonGrid>
+          <IonGrid className="parameterContent">
+            <IonRow>
+              <IonCol size="12" className="ColTemperApp">
+                <IonHeader>
                   <h3>Présentation</h3>
-                </IonCol>
-                <IonCol size="6" className="ColTemperApp"></IonCol>
-              </IonRow>
-              <div className="gradientBar"></div>
-              <IonRow>
-                <IonCol size="12">
-                  <p>
-                    TemperApp est une application à destination des
-                    musicien·ne·s, qui a pour vocation la réactualisation de la
-                    pratique de l’accord et des tempéraments anciens. Elle
-                    constitue un outil scientifique et pédagogique favorisant
-                    l’apprentissage de l’accord à l’oreille, dont le principe se
-                    base sur la notion de rapport intervallaire.
-                  </p>
-                </IonCol>
-              </IonRow>
-            </IonGrid>
-          </IonContent>
-        </div>
+                </IonHeader>
+              </IonCol>
+            </IonRow>
+            <IonRow>
+              <IonCol size="12">
+                <p className="p-long">
+                  TemperApp est une application à destination des musicien·ne·s,
+                  qui a pour vocation la réactualisation de la pratique de
+                  l’accord et des tempéraments anciens. Elle constitue un outil
+                  scientifique et pédagogique favorisant l’apprentissage de
+                  l’accord à l’oreille, dont le principe se base sur la notion
+                  de rapport intervallaire.
+                </p>
+              </IonCol>
+            </IonRow>
+          </IonGrid>
+        </IonContent>
       </IonModal>
       <IonIcon
+        className="parameter-button"
         onClick={() => setShowModal(true)}
         icon={ellipsisVertical}
-        size="large"
       ></IonIcon>
-    </IonContent>
+    </>
   );
 };
 

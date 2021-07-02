@@ -255,3 +255,10 @@ ion-card {
   margin: 0 auto;
   margin-top: 10%;
 }
+
+ion-toggle {
+  --background-checked: var(--color-button);
+  --handle-background-checked: var(--color-grey);
+  --background: var(--color-grey);
+  --handle-background: var(--color-inner-button);
+}
