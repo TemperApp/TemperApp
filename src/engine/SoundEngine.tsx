@@ -15,7 +15,7 @@ class SoundEngine {
     this.synth = new Tone.AMSynth({
       harmonicity: 0, // 0 is unison, 1 is upper octave
       oscillator: {
-        type: 'sine'
+        type: 'triangle'
       },
       modulation : {
         type : 'sine'
@@ -27,6 +27,7 @@ class SoundEngine {
         release: 0.2
       }
     }).toDestination();
+    this.synth.modulation.volume.value = 8;
   }
 
 
