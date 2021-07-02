@@ -57,7 +57,7 @@ const Tuner: React.FC = () => {
       <HeaderPage
         doubleTitle={true}
         buttonModal={true}
-        buttonModalsubText={`${isHzMode ? "Battements" : "Pitch pipe"}`}
+        buttonModalsubText={`${isHzMode ? "Pitch pipe" : "Battements"}`}
         buttonReturn={false}
         buttonModalText="Accordeur"
         setShowModal={setShowModal}
