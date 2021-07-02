@@ -3,7 +3,7 @@ import React from 'react';
 //Style
 import './Comparator.css'
 
-import { convertThirdQualityToColor } from '../Tuner/utils/colorCircle';
+import { convertThirdQualityToColor } from '../../utils/colorCircle';
 
 type ComparatorThirdCircleProps = {
   qualityNote1: {[key: string]: number|null}

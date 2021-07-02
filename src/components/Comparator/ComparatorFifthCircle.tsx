@@ -2,7 +2,7 @@ import React from 'react';
 
 //Style
 import './Comparator.css'
-import { convertFifthQualityToColor } from '../Tuner/utils/colorCircle';
+import { convertFifthQualityToColor } from '../../utils/colorCircle';
 
 type ComparatorFifthCircleProps = {
   qualityNote1: {[key: string]: number|null}

@@ -1,4 +1,4 @@
-import { isDarkTheme } from "../../../model/Utils";
+import { isDarkTheme } from "../model/Utils";
 
 export const convertFifthQualityToColor = (quality: number | null) => {
   if (isDarkTheme()) {
