@@ -10,7 +10,6 @@ import {
 import { arrowBackOutline } from "ionicons/icons";
 import React from "react";
 
-
 type headerProps = {
   doubleTitle: boolean;
   buttonModal: boolean;
@@ -28,7 +27,7 @@ const HeaderPage: React.FC<headerProps> = ({
   buttonModalText,
   setShowModal,
 }) => {
-  if (doubleTitle) {
+  if (doubleTitle && buttonModal) {
     return (
       <IonHeader>
         <IonToolbar className="headerPages">
@@ -52,6 +51,32 @@ const HeaderPage: React.FC<headerProps> = ({
       </IonHeader>
     );
   }
+
+  if (doubleTitle && buttonReturn) {
+    return (
+      <IonHeader>
+        <IonToolbar className="headerPages">
+          <IonGrid className="ion-padding-horizontal">
+            <IonRow className="ion-align-items-center">
+              <IonCol size="8">
+                <h3>{buttonModalText}</h3>
+                <h2>{buttonModalsubText}</h2>
+              </IonCol>
+              <IonCol size="1" offset="2">
+                <IonRouterLink routerDirection="root" routerLink="/sheets">
+                  <IonIcon
+                    src="../../assets/logotypes/icon-back.svg"
+                    size="large"
+                  ></IonIcon>
+                </IonRouterLink>
+              </IonCol>
+            </IonRow>
+          </IonGrid>
+        </IonToolbar>
+      </IonHeader>
+    );
+  }
+
   if (buttonModal) {
     return (
       <IonHeader>
@@ -86,11 +111,11 @@ const HeaderPage: React.FC<headerProps> = ({
                 <h2>{buttonModalText}</h2>
               </IonCol>
               <IonCol className="ColTemperApp-right" size="4">
-                <IonRouterLink              
-                  routerDirection="root"
-                  routerLink="/learn"
-                >
-                  <IonIcon icon={arrowBackOutline} size="large"></IonIcon>
+                <IonRouterLink routerDirection="root" routerLink="/learn">
+                  <IonIcon
+                    src="../../assets/logotypes/icon-back.svg"
+                    size="large"
+                  ></IonIcon>
                 </IonRouterLink>
               </IonCol>
             </IonRow>

@@ -95,4 +95,5 @@ ion-input {
   --border-width: 0 0 0px 0;
   --inner-border-width: 0;
   --show-inset-highlight: 0;
+  --highlight-background: transparent !important;
 }

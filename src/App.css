@@ -176,7 +176,6 @@ ion-select {
   border-radius: 8px;
   width: 40vw;
   height: 2rem;
-  box-shadow: var(--color-shadow);
 }
 
 ion-select::part(text) {
@@ -264,4 +263,9 @@ ion-toggle {
   --handle-background-checked: var(--color-grey);
   --background: var(--color-grey);
   --handle-background: var(--color-inner-button);
+}
+
+.headerPages {
+  height: 5rem;
+  top: -5%;
 }

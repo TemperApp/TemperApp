@@ -17,12 +17,15 @@ import EqualTemperament from "../../model/Temperament/Equal";
 import "../../pages/Sheets.css";
 import { arrowBackOutline } from "ionicons/icons";
 import DescriptionSheet from "./DescriptionSheet";
+import HeaderPage from "../Header/HeaderPage";
 
 const SheetsTemperament: React.FC<{ id: number }> = ({ id }) => {
   console.log("il y a quelqu'un ? ");
   console.log(id);
 
   const [temperament, setTemperament] = useState<Temperament>(EqualTemperament);
+  const [showModal, setShowModal] = useState(false);
+  const [darkTheme] = useState<boolean>(false);
 
   useEffect(() => {
     // Update fitfhs and thirds circles and frequencies
@@ -38,19 +41,21 @@ const SheetsTemperament: React.FC<{ id: number }> = ({ id }) => {
     <>
       <IonHeader>
         <IonToolbar className="headerPages">
-          <IonGrid className="ion-padding-horizontal">
-            <IonRow className="ion-align-items-center">
-              <IonCol size="8">
-                <h4>Tempérament</h4>
-                <h2 className="subTitle">{temperament.nameFR}</h2>
-              </IonCol>
-              <IonCol size="1" offset="2">
-                <IonRouterLink routerDirection="root" routerLink="/sheets">
-                  <IonIcon icon={arrowBackOutline} size="large"></IonIcon>
-                </IonRouterLink>
-              </IonCol>
-            </IonRow>
-          </IonGrid>
+          <HeaderPage
+            doubleTitle={true}
+            buttonModal={false}
+            buttonModalsubText={temperament.nameFR}
+            buttonReturn={true}
+            buttonModalText="Tempérament"
+            setShowModal={setShowModal}
+            darkTheme={darkTheme}
+          />
+          <IonRouterLink routerDirection="root" routerLink="/sheets">
+            <IonIcon
+              src="../../assets/logotypes/icon-back.svg"
+              size="large"
+            ></IonIcon>
+          </IonRouterLink>
         </IonToolbar>
       </IonHeader>
 
