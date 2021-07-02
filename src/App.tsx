@@ -45,8 +45,6 @@ import SheetsRoute from './pages/SheetsRoute';
 export let sqlite: any; // singleton
 
 const App: React.FC = () => {
-
-  const [darkTheme, setDarkTheme] = useState(false);
   
   const {echo, getPlatform, createConnection, closeConnection,
     retrieveConnection, retrieveAllConnections, closeAllConnections,
@@ -83,20 +81,13 @@ const App: React.FC = () => {
         <IonTabs>
           <IonRouterOutlet animated={false}>
             <Route exact path="/Tune">
-              <Tune 
-                darkTheme = {darkTheme}
-              />
+              <Tune />
             </Route>
             <Route exact path="/compare">
-              <Compare 
-                darkTheme = {darkTheme}
-              />
+              <Compare />
             </Route>
             <Route exact path="/home">
-              <Home 
-                darkTheme = {darkTheme}
-                setDarkTheme = {setDarkTheme}
-              />
+              <Home />
             </Route>
             <Route exact path="/sheets">
               <SheetsRoute />

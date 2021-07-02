@@ -21,11 +21,7 @@ import { TemperamentDBType } from "../../engine/DB";
 import PitchCircle from "./PitchCircle";
 import SoundEngine from "../../engine/SoundEngine";
 
-type TunerProps = {
-  darkTheme: boolean;
-};
-
-const Tuner: React.FC<TunerProps> = ({ darkTheme }) => {
+const Tuner: React.FC = () => {
   const [temperament, setTemperament] = useState<TemperamentDBType>({
     idTemperament: 1,
     name: "Equal",
@@ -50,8 +46,6 @@ const Tuner: React.FC<TunerProps> = ({ darkTheme }) => {
   useEffect(() => {
     fetchTemperamentsList();
   }, []);
-
-  useEffect(() => {}, []);
 
   return (
     <>
@@ -92,7 +86,6 @@ const Tuner: React.FC<TunerProps> = ({ darkTheme }) => {
           isHzMode={isHzMode}
           freqA4={freqA4}
           idTemperament={temperament.idTemperament}
-          darkTheme={darkTheme}
         />
       </IonRow>
 

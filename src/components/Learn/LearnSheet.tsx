@@ -23,7 +23,6 @@ const LearnSheet: React.FC<RouteComponentProps> = ({ match, history }) => {
         buttonReturn={true}
         buttonModalText={match.path}
         setShowModal={() => {}}
-        darkTheme={false}
       />
 
       <IonContent >
@@ -33,13 +32,11 @@ const LearnSheet: React.FC<RouteComponentProps> = ({ match, history }) => {
             titreExist = {true}
             titreText = "Titre de paragraphe"
             contentText = "Cette phrase est généréré ici."
-            darkTheme = {false}
           />
 
           <DiagramLearn
             titreText="Titre du diagramme"
             contentImg="../assets/icon/imageType.png"
-            darkTheme={false}
           />
 
           <FormulaLearn 
@@ -49,13 +46,11 @@ const LearnSheet: React.FC<RouteComponentProps> = ({ match, history }) => {
           <CommaLearn
             titreText="Titre de diagramme"
             contentSVG="../assets/icon/commaType.png"
-            darkTheme={false}
           />
 
           <VideoLearn
             titreText="Titre de la vidéo"
             videoLink="../assets/icon/videoType.png"
-            darkTheme={false}
           />
 
           <ResourcesLearn
@@ -64,7 +59,6 @@ const LearnSheet: React.FC<RouteComponentProps> = ({ match, history }) => {
               "TemperamentWiki",
               "Rapport de fréquence",
             ]}
-            darkTheme={false}
           />
 
         </div>

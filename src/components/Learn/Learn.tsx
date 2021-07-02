@@ -20,7 +20,6 @@ const Learn: React.FC<RouteComponentProps> = ({ match, history }) => {
         buttonReturn={false}
         buttonModalText="Apprendre"
         setShowModal={() => {}}
-        darkTheme={false}
       />
 
       <IonContent fullscreen scrollY={true}>

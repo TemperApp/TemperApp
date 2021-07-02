@@ -7,11 +7,10 @@ import "../../pages/Learn.css"
 type commaProps = {
     titreText:string,
     contentSVG: string
-    darkTheme: boolean,
   }
 
 
-const CommaLearn : React.FC<commaProps> = ({titreText, contentSVG, darkTheme}) => {
+const CommaLearn : React.FC<commaProps> = ({titreText, contentSVG}) => {
 
 return (
     <div className ="LearnBox">

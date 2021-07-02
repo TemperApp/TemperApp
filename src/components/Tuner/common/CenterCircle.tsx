@@ -5,6 +5,7 @@ import Note from '../../../model/Note/Note';
 import { Notes } from '../../../model/Note/enums';
 import NotesMap from '../../../model/Note/NotesMap';
 import SoundEngine from '../../../engine/SoundEngine';
+import Settings from '../../../engine/Settings';
 
 //Styles
 import "./CenterCircle.css";
@@ -43,11 +44,10 @@ type PitchCircleSVGProps = {
   frequencies: NotesMap<number>,
   freqA4: number,
   deviations: NotesMap<number>,
-  darkTheme : boolean,
 }
 
 const CenterCircle: React.FC<PitchCircleSVGProps> = ({
-  actives, frequencies, freqA4, deviations, darkTheme
+  actives, frequencies, freqA4, deviations
 }) => {
 
   const [beat, setBeat] = useState<AcousticBeat>({
@@ -112,7 +112,7 @@ const CenterCircle: React.FC<PitchCircleSVGProps> = ({
 
   return (
     <g id="CenterCercleInformation">
-      <circle className="st29" fill={(darkTheme)?("#233C3A"):"#F7FBFC"} cx="178.5" cy="178.5" r="77.13" />
+      <circle className="st29" fill={(Settings.darkTheme())?("#233C3A"):"#F7FBFC"} cx="178.5" cy="178.5" r="77.13" />
       <text transform="matrix(1 0 0 1 178.5 178.5)" className="st25 st30">
         <tspan 
           x="0" className="st30"

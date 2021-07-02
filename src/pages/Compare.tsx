@@ -5,11 +5,7 @@ import Comparator from "../components/Comparator/Comparator";
 import ComparatorModal from "../components/Comparator/ComparatorModal";
 import HeaderPage from "../components/Header/HeaderPage";
 
-type CompareProps = {
-  darkTheme: boolean;
-};
-
-const Compare: React.FC<CompareProps> = ({ darkTheme }) => {
+const Compare: React.FC = () => {
   const [showModal, setShowModal] = useState(false);
 
   return (
@@ -21,7 +17,6 @@ const Compare: React.FC<CompareProps> = ({ darkTheme }) => {
         buttonModalsubText=""
         buttonModalText="COMPARATOR"
         setShowModal={setShowModal}
-        darkTheme={darkTheme}
       />
 
       <IonContent fullscreen scrollY={true}>

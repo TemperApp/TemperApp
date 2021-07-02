@@ -37,12 +37,11 @@ type NonClickablePitchCircleSVGProps = {
   tunerMode: TunerMode,
   freqA4: number,
   idTemperament: number,
-  darkTheme: boolean,
   centerCircle : boolean,
 }
 
 const NonClickablePitchCircleSVG: React.FC<NonClickablePitchCircleSVGProps> = ({
-  tunerMode, freqA4, idTemperament, darkTheme, centerCircle
+  tunerMode, freqA4, idTemperament, centerCircle
 }) => {
   const [actives, setActives] = useState<ActiveNotes>([
     { note: null, state: NoteStates.IDLE },
@@ -172,7 +171,6 @@ const NonClickablePitchCircleSVG: React.FC<NonClickablePitchCircleSVGProps> = ({
             frequencies={frequencies}
             freqA4={freqA4}
             deviations={temperament.deviation}
-            darkTheme = {darkTheme}
           />
       );
     }
@@ -199,7 +197,6 @@ const NonClickablePitchCircleSVG: React.FC<NonClickablePitchCircleSVGProps> = ({
               actives={actives}
               onChange={(state: NoteStates) => setStates(n, state)}
               setActives={setActives}
-              darkTheme = {darkTheme}
             />);
         })}
 

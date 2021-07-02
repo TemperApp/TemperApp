@@ -12,7 +12,7 @@ const SheetsRoute: React.FC = () => {
 
   return (
     <>
-      <Route exact path="/sheets" render={(props) => <Sheets {...props} darkTheme={false} setIdTemperament={setIdTemperament} />}/*component={Sheets}*/ />
+      <Route exact path="/sheets" render={(props) => <Sheets {...props} setIdTemperament={setIdTemperament} />}/*component={Sheets}*/ />
       <Route exact path="/sheets/temperament" render={(props) => <SheetsTemperament {...props} id={idTemperament} />}/*component={SheetsTemperament}*/  />
     </>
 

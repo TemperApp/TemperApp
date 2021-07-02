@@ -20,7 +20,6 @@ return (
                     isHzMode={true}
                     freqA4={440}
                     idTemperament={idTemp}
-                    darkTheme={false}
                     />
             </IonRow>
             <IonRow>

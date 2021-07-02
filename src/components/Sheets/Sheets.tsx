@@ -11,11 +11,10 @@ import { fetchTemperaments } from "../../engine/DataAccessor";
 import { TemperamentDBType } from "../../engine/DB";
 
 type SheetsProps = {
-  darkTheme : boolean,
   setIdTemperament : (id: number) => void,
 }
 
-const Sheets: React.FC<SheetsProps> = ({darkTheme, setIdTemperament}) => {
+const Sheets: React.FC<SheetsProps> = ({setIdTemperament}) => {
   const [searchText, setSearchText] = useState("");
 
   const [temperamentsList, setTemperamentsList] = useState<Array<TemperamentDBType>>([]);
@@ -38,7 +37,6 @@ const Sheets: React.FC<SheetsProps> = ({darkTheme, setIdTemperament}) => {
         buttonReturn={false}
         buttonModalText="Fiches"
         setShowModal={() => {}}
-        darkTheme={darkTheme}
       />
       <IonContent fullscreen scrollY={true}>
         <IonSearchbar

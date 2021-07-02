@@ -5,11 +5,7 @@ import "./Tune.css";
 import HeaderPage from "../components/Header/HeaderPage";
 import TunerModal from "../components/Tuner/TunerModal";
 
-type TuneProps = {
-  darkTheme: boolean;
-};
-
-const Tune: React.FC<TuneProps> = ({ darkTheme }) => {
+const Tune: React.FC = () => {
   const [showModal, setShowModal] = useState(false);
   const [isHzMode, setIsHzMode] = useState<boolean>(false);
 
@@ -22,16 +18,14 @@ const Tune: React.FC<TuneProps> = ({ darkTheme }) => {
         buttonReturn={false}
         buttonModalText="Accordeur"
         setShowModal={setShowModal}
-        darkTheme={darkTheme}
       />
       <IonContent fullscreen scrollY={false}>
         <TunerModal
           showModal={showModal}
           setShowModal={setShowModal}
-          darkTheme={darkTheme}
         />
 
-        <Tuner darkTheme={darkTheme} />
+        <Tuner />
       </IonContent>
     </IonPage>
   );

@@ -5,12 +5,11 @@ import "../../pages/Learn.css"
 
 
 type resourcesProps = {
-    resourcesList : Array<string>, 
-    darkTheme: boolean,
+    resourcesList : Array<string>,
   }
 
 
-const ResourcesLearn : React.FC<resourcesProps> = ({resourcesList, darkTheme}) => {
+const ResourcesLearn : React.FC<resourcesProps> = ({resourcesList}) => {
 
 return (
     <div className ="LearnResources">

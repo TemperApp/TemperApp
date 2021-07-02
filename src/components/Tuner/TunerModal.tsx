@@ -12,13 +12,11 @@ import React from "react";
 type tunerModalProps = {
   showModal: boolean;
   setShowModal: (state: boolean) => void;
-  darkTheme: boolean;
 };
 
 const TunerModal: React.FC<tunerModalProps> = ({
   showModal,
   setShowModal,
-  darkTheme,
 }) => {
   return (
     <>

@@ -1,11 +1,8 @@
 import React from 'react';
+import Settings from '../../engine/Settings';
 import "./Waves.css"
 
-type WavesProps = {
-    darkTheme : boolean,
-}
-
-const Waves : React.FC<WavesProps> = ({darkTheme}) => {
+const Waves : React.FC = () => {
 
   let colorWave1_1;
   let colorWave1_2;
@@ -16,8 +13,8 @@ const Waves : React.FC<WavesProps> = ({darkTheme}) => {
   let colorWave3_1;
   let colorWave3_2;
   let colorWave3_3;
-
-  if(darkTheme){
+console.log(Settings.darkTheme())
+  if(Settings.darkTheme()){
     colorWave1_1 = "#45CBC7"
     colorWave1_2 = "#2EA39B"
     colorWave1_3 = "#A3719D"

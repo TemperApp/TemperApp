@@ -7,11 +7,10 @@ type paragraphProps = {
     titreExist: boolean, 
     titreText:string,
     contentText: string
-    darkTheme: boolean,
   }
 
 
-const ParagraphLearn : React.FC<paragraphProps> = ({titreExist, titreText, contentText, darkTheme}) => {
+const ParagraphLearn : React.FC<paragraphProps> = ({titreExist, titreText, contentText}) => {
 
   if(titreExist){
     return(

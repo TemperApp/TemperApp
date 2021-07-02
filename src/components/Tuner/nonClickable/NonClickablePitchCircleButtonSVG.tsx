@@ -2,11 +2,11 @@ import React from 'react';
 import { ActiveNotes, NoteStates } from './NonClickablePitchCircleSVG';
 import { TunerMode } from '../PitchCircle';
 import { Notes } from '../../../model/Note/enums';
+import Settings from '../../../engine/Settings';
 
-const colorButton = (state: NoteStates, darkTheme: boolean) => {
+const colorButton = (state: NoteStates) => {
   let temp: string;
-  console.log(darkTheme);
-  (darkTheme)?
+  (Settings.darkTheme())?
     temp = "#233C3A"
     : temp = "#F7FBFC"
   switch (state) {
@@ -27,17 +27,16 @@ type NonClickablePitchCircleButtonSVGProps = {
   actives: ActiveNotes
   onChange: (state: NoteStates) => void,
   setActives: (notesSymbol: ActiveNotes) => void,
-  darkTheme: boolean
 }
 
 const NonClickablePitchCircleButtonSVG: React.FC<NonClickablePitchCircleButtonSVGProps> = ({
   notesSymbol, position, state, tunerMode,
-  actives, onChange, setActives, darkTheme
+  actives, onChange, setActives
 }) => {
 
   return (
     <path
-      fill={colorButton(state, darkTheme)} stroke="#A7C5C3"
+      fill={colorButton(state)} stroke="#A7C5C3"
       strokeMiterlimit="10" strokeOpacity="1" strokeWidth="0.5"
       transform="translate(-2.04 -1.82)" d={position}
     />
@@ -49,7 +48,6 @@ export default React.memo(
   (prevProps, nextProps) => (
     prevProps.state === nextProps.state
     && prevProps.tunerMode === nextProps.tunerMode
-    && prevProps.tunerMode === TunerMode.HZ
-    && prevProps.darkTheme === nextProps.darkTheme)
+    && prevProps.tunerMode === TunerMode.HZ)
     // TODO TunerMode.BPM
 );

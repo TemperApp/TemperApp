@@ -12,9 +12,7 @@ import { TemperamentDBType } from "../../engine/DB";
 import ArrowCollapseSVG from "../Sheets/ArrowCollapseSVG";
 
 type HomeMenuProps = {
-  temperamentsList: Array<TemperamentDBType>;
-  darkTheme: boolean;
-  setDarkTheme: (color: boolean) => void;
+  temperamentsList: Array<TemperamentDBType>
 };
 
 let statePanel1: boolean = false;
@@ -22,9 +20,7 @@ let statePanel2: boolean = false;
 let firstUse: boolean = true;
 
 const HomeContent: React.FC<HomeMenuProps> = ({
-  temperamentsList,
-  darkTheme,
-  setDarkTheme,
+  temperamentsList
 }) => {
   const temperList = ["Rameau", "Vallotti", "Werckmeister", "Bach", "Egal"];
 
@@ -86,7 +82,7 @@ const HomeContent: React.FC<HomeMenuProps> = ({
 
   return (
     <div className="home-content">
-      <Waves darkTheme={darkTheme} />
+      <Waves />
       <Collapse
         accordion={true}
         defaultActiveKey={activePanel}

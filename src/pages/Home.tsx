@@ -12,16 +12,11 @@ import {
 import "./Home.css";
 import HomeContent from "../components/Home/HomeContent";
 import ParameterModal from "../components/Home/ParameterModal";
-import { isDarkTheme } from "../model/Utils";
 import { TemperamentDBType } from "../engine/DB";
 import { fetchTemperaments } from "../engine/DataAccessor";
+import Settings from "../engine/Settings";
 
-type HomeProps = {
-  darkTheme: boolean;
-  setDarkTheme: (color: boolean) => void;
-};
-
-const Home: React.FC<HomeProps> = ({ darkTheme, setDarkTheme }) => {
+const Home: React.FC = () => {
   const [temperamentsList, setTemperamentsList] = useState<
     Array<TemperamentDBType>
   >([]);
@@ -35,12 +30,6 @@ const Home: React.FC<HomeProps> = ({ darkTheme, setDarkTheme }) => {
     fetchTemperamentsList();
   }, []);
 
-  const change = (e: any) => {
-    console.log(e.target.checked);
-    document.body.classList.toggle("dark", e.target.checked);
-    e.target.checked === true ? setDarkTheme(true) : setDarkTheme(false);
-  };
-
   return (
     <IonPage>
       <IonHeader className="ion-no-border">
@@ -51,7 +40,7 @@ const Home: React.FC<HomeProps> = ({ darkTheme, setDarkTheme }) => {
               <IonCol className="ColTemperApp " size="8">
                 <IonImg
                   src={
-                    isDarkTheme()
+                    (Settings.darkTheme())
                       ? "../../assets/logotypes/temperapp_logo-dark.svg"
                       : "../../assets/logotypes/temperapp_logo.svg"
                   }
@@ -59,10 +48,7 @@ const Home: React.FC<HomeProps> = ({ darkTheme, setDarkTheme }) => {
                 />
               </IonCol>
               <IonCol size="2" className="ColTemperApp">
-                <ParameterModal
-                  darkTheme={darkTheme}
-                  setDarkTheme={setDarkTheme}
-                />
+                <ParameterModal />
               </IonCol>
             </IonRow>
           </IonGrid>
@@ -71,8 +57,6 @@ const Home: React.FC<HomeProps> = ({ darkTheme, setDarkTheme }) => {
       <IonContent fullscreen scrollY={true}>
         <HomeContent
           temperamentsList={temperamentsList}
-          darkTheme={darkTheme}
-          setDarkTheme={setDarkTheme}
         />
       </IonContent>
     </IonPage>

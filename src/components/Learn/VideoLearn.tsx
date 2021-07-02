@@ -7,11 +7,10 @@ import "../../pages/Learn.css"
 type videoProps = {
     titreText:string,
     videoLink: string
-    darkTheme: boolean,
   }
 
 
-const VideoLearn : React.FC<videoProps> = ({titreText, videoLink, darkTheme}) => {
+const VideoLearn : React.FC<videoProps> = ({titreText, videoLink}) => {
 
 return (
     <div className ="LearnBox">

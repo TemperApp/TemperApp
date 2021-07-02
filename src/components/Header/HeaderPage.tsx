@@ -18,7 +18,6 @@ type headerProps = {
   buttonReturn: boolean;
   buttonModalText: string;
   setShowModal: (state: boolean) => void;
-  darkTheme: boolean;
 };
 
 const HeaderPage: React.FC<headerProps> = ({
@@ -28,7 +27,6 @@ const HeaderPage: React.FC<headerProps> = ({
   buttonReturn,
   buttonModalText,
   setShowModal,
-  darkTheme,
 }) => {
   if (doubleTitle) {
     return (

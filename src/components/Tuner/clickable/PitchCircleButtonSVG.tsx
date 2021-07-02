@@ -6,7 +6,7 @@ import { Notes } from "../../../model/Note/enums";
 
 type SVGPathElementOrNull = SVGPathElement | null;
 
-const colorButton = (state: NoteStates, darkTheme: boolean) => {
+const colorButton = (state: NoteStates) => {
   let temp: string;
   temp = "var(--color-theme)";
   switch (state) {
@@ -28,7 +28,6 @@ type PitchCircleButtonSVGProps = {
   actives: ActiveNotes;
   onChange: (state: NoteStates) => void;
   setActives: (notesSymbol: ActiveNotes) => void;
-  darkTheme: boolean;
 };
 
 const PitchCircleButtonSVG: React.FC<PitchCircleButtonSVGProps> = ({
@@ -39,7 +38,6 @@ const PitchCircleButtonSVG: React.FC<PitchCircleButtonSVGProps> = ({
   actives,
   onChange,
   setActives,
-  darkTheme,
 }) => {
   const note = useRef<SVGPathElementOrNull>(null);
 
@@ -120,7 +118,7 @@ const PitchCircleButtonSVG: React.FC<PitchCircleButtonSVGProps> = ({
 
   return (
     <path
-      fill={colorButton(state, darkTheme)}
+      fill={colorButton(state)}
       stroke="var(--color-theme)"
       strokeMiterlimit="10"
       strokeOpacity="1"
@@ -138,7 +136,6 @@ export default React.memo(
   (prevProps, nextProps) =>
     prevProps.state === nextProps.state &&
     prevProps.tunerMode === nextProps.tunerMode &&
-    prevProps.tunerMode === TunerMode.HZ &&
-    prevProps.darkTheme === nextProps.darkTheme
+    prevProps.tunerMode === TunerMode.HZ
   // TODO TunerMode.BPM
 );

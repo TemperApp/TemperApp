@@ -7,11 +7,10 @@ import "../../pages/Learn.css"
 type diagramProps = {
     titreText:string,
     contentImg: string
-    darkTheme: boolean,
   }
 
 
-const DiagramLearn : React.FC<diagramProps> = ({titreText, contentImg, darkTheme}) => {
+const DiagramLearn : React.FC<diagramProps> = ({titreText, contentImg}) => {
 
 return (
     <div className ="LearnBox">
