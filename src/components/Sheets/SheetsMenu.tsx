@@ -21,8 +21,12 @@ let statePanel2: boolean = false;
 let statePanel3: boolean = false;
 let firstUse: boolean = false;
 
-const SheetsMenu: React.FC<SheetsMenuProps> = ({text, temperamentsList, setIdTemperament}) => {
-  const temperList = ["Rameau", "Vallotti", "Weimeister", "Back", "Egal"];
+const SheetsMenu: React.FC<SheetsMenuProps> = ({
+  text,
+  temperamentsList,
+  setIdTemperament,
+}) => {
+  const temperList = ["Rameau", "Vallotti", "Werckmeister", "Bach", "Egal"];
 
   //const [firstUse, setFirstUse] = useState<boolean>(true);
   let activePanel = 2;
@@ -64,7 +68,6 @@ const SheetsMenu: React.FC<SheetsMenuProps> = ({text, temperamentsList, setIdTem
     if (e === undefined && statePanel2) {
       //setStatePanel2(false);
       statePanel2 = false;
-
     }
     if (e === undefined && statePanel3) {
       //setStatePanel3(false);
@@ -134,12 +137,12 @@ const SheetsMenu: React.FC<SheetsMenuProps> = ({text, temperamentsList, setIdTem
           <IonGrid>
             <IonRow>
               {temperList.map((t) => (
-                <IonCol size="6" key={"col_sheet_my_temperament_"+t}>
+                <IonCol size="6" key={"col_sheet_my_temperament_" + t}>
                   <IonButton
                     className="buttonType"
                     expand="block"
                     color="temperapp"
-                    key={"sheet_my_temperament_"+t}
+                    key={"sheet_my_temperament_" + t}
                   >
                     {t}
                   </IonButton>
@@ -152,12 +155,12 @@ const SheetsMenu: React.FC<SheetsMenuProps> = ({text, temperamentsList, setIdTem
           <IonGrid>
             <IonRow>
               {temperList.map((t) => (
-                <IonCol size="6" key={"col_sheet_top_"+t}>
+                <IonCol size="6" key={"col_sheet_top_" + t}>
                   <IonButton
                     className="buttonType"
                     expand="block"
                     color="temperapp"
-                    key={"sheet_top_"+t}
+                    key={"sheet_top_" + t}
                   >
                     {t}
                   </IonButton>
@@ -173,19 +176,28 @@ const SheetsMenu: React.FC<SheetsMenuProps> = ({text, temperamentsList, setIdTem
         >
           <IonGrid>
             <IonRow>
-              {temperamentsList.filter((t: TemperamentDBType) => (t.nameFR.normalize("NFD").replace(/[\u0300-\u036f]/g, "").search(request) !== -1)).map((t: TemperamentDBType) =>
-                <IonCol size="6" key={"col_sheet_all_"+t.idTemperament}>
-                  <IonButton
-                    key={"sheet_all_"+t.idTemperament}
-                    className="buttonType"
-                    expand="block"
-                    color="temperapp"
-                    routerLink="/sheets/temperament"
-                    onClick={() => setIdTemperament(t.idTemperament)}
-                  >
-                  {t.nameFR}
-                  </IonButton>
-              </IonCol>)}
+              {temperamentsList
+                .filter(
+                  (t: TemperamentDBType) =>
+                    t.nameFR
+                      .normalize("NFD")
+                      .replace(/[\u0300-\u036f]/g, "")
+                      .search(request) !== -1
+                )
+                .map((t: TemperamentDBType) => (
+                  <IonCol size="6" key={"col_sheet_all_" + t.idTemperament}>
+                    <IonButton
+                      key={"sheet_all_" + t.idTemperament}
+                      className="buttonType"
+                      expand="block"
+                      color="temperapp"
+                      routerLink="/sheets/temperament"
+                      onClick={() => setIdTemperament(t.idTemperament)}
+                    >
+                      {t.nameFR}
+                    </IonButton>
+                  </IonCol>
+                ))}
             </IonRow>
           </IonGrid>
         </Panel>

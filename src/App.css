@@ -221,6 +221,8 @@ ion-select::part(placeholder) {
   width: 48px;
   height: 48px;
   --background: var(--color-button);
+  --padding-start: 0;
+  --padding-end: 0;
 }
 
 .ion-justify-content-between {
@@ -234,5 +236,22 @@ ion-searchbar .searchbar-input-container .searchbar-input {
   width: 80vw;
   height: 2rem;
   display: flex;
-  align-items: center;
+  margin: 0 auto;
+  margin-top: 5%;
+}
+
+ion-searchbar .searchbar-search-icon {
+  left: 80% !important;
+  margin-top: 3.5%;
+}
+
+ion-button .button-native {
+  --padding-end: 0 !important;
+}
+
+ion-card {
+  width: 90vw;
+  display: block;
+  margin: 0 auto;
+  margin-top: 10%;
 }
