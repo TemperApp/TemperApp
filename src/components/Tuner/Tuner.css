@@ -88,6 +88,7 @@ ion-input {
   text-transform: uppercase;
   color: var(--color-contrast) !important;
   height: 2rem;
+  box-shadow: var(--color-shadow);
 }
 
 .item-interactive {

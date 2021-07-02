@@ -106,7 +106,7 @@ ion-tab-bar {
   min-height: 9vh;
   display: flex;
   align-self: center;
-  box-shadow: inset 0px 1px 4px rgba(21, 37, 37, 0.16);
+  box-shadow: var(--color-shadow);
   border-top-left-radius: 6px;
   border-top-right-radius: 6px;
 }
@@ -172,10 +172,11 @@ ion-icon.icon-light {
 }
 
 ion-select {
-  box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.25);
+  box-shadow: var(--color-shadow);
   border-radius: 8px;
   width: 40vw;
   height: 2rem;
+  box-shadow: var(--color-shadow);
 }
 
 ion-select::part(text) {
@@ -231,7 +232,7 @@ ion-select::part(placeholder) {
 }
 
 ion-searchbar .searchbar-input-container .searchbar-input {
-  box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.25);
+  box-shadow: var(--color-shadow);
   border-radius: 8px;
   width: 80vw;
   height: 2rem;
@@ -254,6 +255,8 @@ ion-card {
   display: block;
   margin: 0 auto;
   margin-top: 10%;
+  margin-bottom: 5%;
+  box-shadow: var(--color-shadow);
 }
 
 ion-toggle {

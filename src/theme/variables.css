@@ -40,6 +40,8 @@ http://ionicframework.com/docs/theming/ */
   --color-contrast: #233c3a;
   --color-light-grey: rgba(115, 139, 138, 0.25);
 
+  --color-shadow: 1px 1px 6px rgba(0, 0, 0, 0.3);
+
   --ion-background-color: #f5fbfb;
   --ion-toolbar-background: #f5fbfb;
   --ion-tab-bar-color: #a7c5c3;
@@ -89,6 +91,8 @@ body.dark {
 
   --color-theme: #233c3a;
   --color-contrast: #f5fbfb;
+
+  --color-shadow: 1px 1px 8px rgba(0, 0, 0, 0.5);
 
   --ion-background-color: #233c3a;
   --ion-toolbar-background: #233c3a;
