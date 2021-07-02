@@ -1,5 +1,5 @@
 import React, { useRef } from "react";
-import useLongPress from "../utils/useLongPress";
+import useLongPress from "../../../hooks/useLongPress";
 import { ActiveNotes, NoteStates } from "./PitchCircleSVG";
 import { TunerMode } from "../PitchCircle";
 import { Notes } from "../../../model/Note/enums";
