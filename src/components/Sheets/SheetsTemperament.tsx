@@ -18,6 +18,7 @@ import "../../pages/Sheets.css";
 import { arrowBackOutline } from "ionicons/icons";
 import DescriptionSheet from "./DescriptionSheet";
 import HeaderPage from "../Header/HeaderPage";
+import Tune from "../../pages/Tune";
 
 const SheetsTemperament: React.FC<{ id: number }> = ({ id }) => {
   console.log("il y a quelqu'un ? ");
@@ -102,38 +103,40 @@ const SheetsTemperament: React.FC<{ id: number }> = ({ id }) => {
           <IonGrid>
             <IonRow className="grid-button-bottom">
               <IonCol size="2" offset="10">
-                <IonButton className="buttonFixed">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="100mm"
-                    height="100mm"
-                    viewBox="0 0 100 100"
-                  >
-                    <g transform="translate(395.22 -364.78) scale(1.17688)">
-                      <circle
-                        r="41.996"
-                        cy="352.631"
-                        cx="-293.073"
-                        fill="var(--color-button)"
-                      />
-                      <g
-                        stroke="var(--color-inner-button)"
-                        fill="none"
-                        stroke-linecap="round"
-                      >
-                        <path
-                          d="M-264.473 342.941s-2.485 6.64-6.662 6.546c-5.084-.114-3.92-13.16-10.712-13.346-4.205-.114-7.761 9.446-7.761 9.446"
-                          stroke-width="4"
-                          stroke-linejoin="round"
+                <IonRouterLink routerDirection="root" routerLink="/tune">
+                  <IonButton className="buttonFixed">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="100mm"
+                      height="100mm"
+                      viewBox="0 0 100 100"
+                    >
+                      <g transform="translate(395.22 -364.78) scale(1.17688)">
+                        <circle
+                          r="41.996"
+                          cy="352.631"
+                          cx="-293.073"
+                          fill="var(--color-button)"
                         />
-                        <path
-                          d="M-298.391 358.049c-5.382 2.621-6.943-.13-8.878-2.355m-.146-.22l4.103-24.562m5.141 26.99l4.568-24.653m-11.71 41.1l2.518-14.322"
-                          stroke-width="5"
-                        />
+                        <g
+                          stroke="var(--color-inner-button)"
+                          fill="none"
+                          stroke-linecap="round"
+                        >
+                          <path
+                            d="M-264.473 342.941s-2.485 6.64-6.662 6.546c-5.084-.114-3.92-13.16-10.712-13.346-4.205-.114-7.761 9.446-7.761 9.446"
+                            stroke-width="4"
+                            stroke-linejoin="round"
+                          />
+                          <path
+                            d="M-298.391 358.049c-5.382 2.621-6.943-.13-8.878-2.355m-.146-.22l4.103-24.562m5.141 26.99l4.568-24.653m-11.71 41.1l2.518-14.322"
+                            stroke-width="5"
+                          />
+                        </g>
                       </g>
-                    </g>
-                  </svg>
-                </IonButton>
+                    </svg>
+                  </IonButton>
+                </IonRouterLink>
               </IonCol>
             </IonRow>
           </IonGrid>
