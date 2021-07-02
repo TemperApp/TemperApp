@@ -6,6 +6,7 @@ import {
   IonGrid,
   IonHeader,
   IonIcon,
+  IonPage,
   IonRouterLink,
   IonRow,
   IonToolbar,
@@ -17,27 +18,25 @@ import EqualTemperament from "../../model/Temperament/Equal";
 import "../../pages/Sheets.css";
 import DescriptionSheet from "./DescriptionSheet";
 import HeaderPage from "../Header/HeaderPage";
+import { useParams } from "react-router";
 
-const SheetsTemperament: React.FC<{ id: number }> = ({ id }) => {
-  console.log("il y a quelqu'un ? ");
-  console.log(id);
-
+const SheetsTemperament: React.FC = () => {
+  
+  const { id } = useParams<any>();
   const [temperament, setTemperament] = useState<Temperament>(EqualTemperament);
   const [showModal, setShowModal] = useState(false);
-  const [darkTheme] = useState<boolean>(false);
 
   useEffect(() => {
     // Update fitfhs and thirds circles and frequencies
     (async () => {
       const temp = await fetchTemperamentPropsById(id);
       setTemperament(temp);
-      console.log(temperament);
     })();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id]);
 
   return (
-    <>
+    <IonPage>
       <IonHeader>
         <IonToolbar className="headerPages">
           <HeaderPage
@@ -139,7 +138,7 @@ const SheetsTemperament: React.FC<{ id: number }> = ({ id }) => {
           </IonGrid>
         </div>
       </IonContent>
-    </>
+    </IonPage>
   );
 };
 

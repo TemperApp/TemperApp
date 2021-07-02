@@ -10,13 +10,9 @@ import SheetsMenu from "./SheetsMenu";
 import { fetchTemperaments } from "../../engine/DataAccessor";
 import { TemperamentDBType } from "../../engine/DB";
 
-type SheetsProps = {
-  setIdTemperament : (id: number) => void,
-}
 
-const Sheets: React.FC<SheetsProps> = ({setIdTemperament}) => {
+const Sheets: React.FC = () => {
   const [searchText, setSearchText] = useState("");
-
   const [temperamentsList, setTemperamentsList] = useState<Array<TemperamentDBType>>([]);
 
   const fetchTemperamentsList = async () => {
@@ -46,7 +42,6 @@ const Sheets: React.FC<SheetsProps> = ({setIdTemperament}) => {
         <SheetsMenu 
           text = {searchText}
           temperamentsList = {temperamentsList}
-          setIdTemperament = {setIdTemperament}
         />
       </IonContent>
     </IonPage>

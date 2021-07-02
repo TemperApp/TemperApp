@@ -27,11 +27,11 @@ export const fetchTemperaments = async (): Promise<Array<TemperamentDBType>> => 
  * the given 'idTemperament'
  */
 export const fetchTemperamentById = async (
-  id: number
+  id: number | string
 ): Promise<TemperamentDBType> => {
   // TODO Remove on production
   return defaultTemperaments
-    .filter((t) => t.idTemperament === id)
+    .filter((t) => t.idTemperament == id)
     .map((t) => ({
       idTemperament: t.idTemperament,
       name: t.name,
@@ -50,11 +50,11 @@ export const fetchTemperamentById = async (
  * properties
  */
 export const fetchTemperamentPropsById = async (
-  id: number
+  id: number | string
 ): Promise<Temperament> => {
   // TODO Remove on production
   return defaultTemperaments
-    .filter((t) => t.idTemperament === id)[0];
+    .filter((t) => t.idTemperament == id)[0];
   // TODO Handle id not found
   /*
   const tmpmt = await fetchTemperamentById(id) as TemperamentDBType;

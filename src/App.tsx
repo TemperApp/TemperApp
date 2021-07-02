@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { Redirect, Route } from "react-router-dom";
 import { IonApp, IonRouterOutlet } from "@ionic/react";
 import { IonReactRouter } from "@ionic/react-router";
@@ -38,8 +38,10 @@ import "./App.css";
 
 /* Fonction Engine */
 import DB from './engine/DB';
-import LearnRoute from './pages/LearnRoute';
-import SheetsRoute from './pages/SheetsRoute';
+import Sheets from './components/Sheets/Sheets';
+import SheetsTemperament from './components/Sheets/SheetsTemperament';
+import LearnSheet from './components/Learn/LearnSheet';
+import Learn from './components/Learn/Learn';
 
 /* SQLite */
 export let sqlite: any; // singleton
@@ -79,8 +81,8 @@ const App: React.FC = () => {
     <IonApp>
       <IonReactRouter>
         <IonTabs>
-          <IonRouterOutlet animated={false}>
-            <Route exact path="/Tune">
+          <IonRouterOutlet>
+            <Route exact path="/tune">
               <Tune />
             </Route>
             <Route exact path="/compare">
@@ -89,13 +91,11 @@ const App: React.FC = () => {
             <Route exact path="/home">
               <Home />
             </Route>
-            <Route exact path="/sheets">
-              <SheetsRoute />
-            </Route>
-            <Route exact path="/learn" /*render={props => <Learn {...props}/>}*/>
-              <LearnRoute />
-            </Route>
-            <Route exact path="/">
+            <Route exact path="/sheets" children={<Sheets />} />
+            <Route path="/sheets/temperament/:id" children={<SheetsTemperament />} />
+            <Route exact path="/learn" children={<Learn />} />
+            <Route path="/learn/:id" children={<LearnSheet />}/>
+            <Route>
               <Redirect to="/home" />
             </Route>
           </IonRouterOutlet>

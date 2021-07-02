@@ -1,6 +1,6 @@
 import React from "react";
-import { IonContent } from "@ionic/react";
-import { RouteComponentProps } from "react-router-dom";
+import { IonContent, IonPage } from "@ionic/react";
+import { useParams } from "react-router-dom";
 import HeaderPage from "../Header/HeaderPage";
 import ParagraphLearn from "./ParagraphLearn";
 import DiagramLearn from "./DiagramLearn";
@@ -9,19 +9,16 @@ import VideoLearn from "./VideoLearn";
 import ResourcesLearn from "./ResourcesLearn";
 import FormulaLearn from "./FormulaLearn";
 
-const LearnSheet: React.FC<RouteComponentProps> = ({ match, history }) => {
-  console.log("il y a quelqu'un ? ");
-  console.log(match);
-  console.log(history);
-
+const LearnSheet: React.FC = () => {
+  let { id } = useParams<any>();
   return (
-    <>
+    <IonPage>
       <HeaderPage
         doubleTitle={false}
         buttonModal={false}
         buttonModalsubText=""
         buttonReturn={true}
-        buttonModalText={match.path}
+        buttonModalText={id}
         setShowModal={() => {}}
       />
 
@@ -64,13 +61,15 @@ const LearnSheet: React.FC<RouteComponentProps> = ({ match, history }) => {
         </div>
 
       </IonContent>
-    </>
+    </IonPage>
   );
 };
-
+/*
 export default React.memo(
   LearnSheet,
   (prevProps, nextProps) =>
     prevProps.history.location.key === nextProps.history.location.key &&
     prevProps.match.path === nextProps.match.path
 );
+*/
+export default LearnSheet;

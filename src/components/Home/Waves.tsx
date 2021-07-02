@@ -13,7 +13,7 @@ const Waves : React.FC = () => {
   let colorWave3_1;
   let colorWave3_2;
   let colorWave3_3;
-console.log(Settings.darkTheme())
+  
   if(Settings.darkTheme()){
     colorWave1_1 = "#45CBC7"
     colorWave1_2 = "#2EA39B"

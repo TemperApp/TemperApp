@@ -13,7 +13,6 @@ import ArrowCollapseSVG from "./ArrowCollapseSVG";
 type SheetsMenuProps = {
   text: string;
   temperamentsList: Array<TemperamentDBType>;
-  setIdTemperament: (id: number) => void;
 };
 
 let statePanel1: boolean = false;
@@ -24,7 +23,6 @@ let firstUse: boolean = false;
 const SheetsMenu: React.FC<SheetsMenuProps> = ({
   text,
   temperamentsList,
-  setIdTemperament,
 }) => {
   const temperList = ["Rameau", "Vallotti", "Werckmeister", "Bach", "Egal"];
 
@@ -125,7 +123,7 @@ const SheetsMenu: React.FC<SheetsMenuProps> = ({
   }, [text]);
 
   return (
-    <div>
+    <>
       <Collapse
         accordion={true}
         defaultActiveKey={activePanel}
@@ -186,23 +184,22 @@ const SheetsMenu: React.FC<SheetsMenuProps> = ({
                 )
                 .map((t: TemperamentDBType) => (
                   <IonCol size="6" key={"col_sheet_all_" + t.idTemperament}>
-                    <IonButton
-                      key={"sheet_all_" + t.idTemperament}
-                      className="buttonType"
-                      expand="block"
-                      color="temperapp"
-                      routerLink="/sheets/temperament"
-                      onClick={() => setIdTemperament(t.idTemperament)}
-                    >
-                      {t.nameFR}
-                    </IonButton>
+                      <IonButton
+                        key={"sheet_all_" + t.idTemperament}
+                        className="buttonType"
+                        expand="block"
+                        color="temperapp"
+                        routerLink={`/sheets/temperament/${t.idTemperament}`}
+                      >
+                        {t.nameFR}
+                      </IonButton>
                   </IonCol>
                 ))}
             </IonRow>
           </IonGrid>
         </Panel>
       </Collapse>
-    </div>
+    </>
   );
 };
 

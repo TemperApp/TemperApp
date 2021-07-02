@@ -7,10 +7,9 @@ import {
   IonRouterLink,
   IonRow,
 } from "@ionic/react";
-import { RouteComponentProps } from "react-router-dom";
 import HeaderPage from "../../components/Header/HeaderPage";
 
-const Learn: React.FC<RouteComponentProps> = ({ match, history }) => {
+const Learn: React.FC = () => {
   return (
     <IonPage>
       <HeaderPage
@@ -22,10 +21,10 @@ const Learn: React.FC<RouteComponentProps> = ({ match, history }) => {
         setShowModal={() => {}}
       />
 
-      <IonContent fullscreen scrollY={true}>
-        <IonGrid>
-          <IonRouterLink routerLink="/learn/sheet/1">
-            <IonRow className="ion-padding-top">
+      <IonContent fullscreen scrollY={true} className="ion-padding-top">
+        <IonRouterLink routerLink="/learn/definition">
+          <IonGrid>
+            <IonRow>
               <IonCol size="4" className="ColPictoLearn">
                 <div className="button-learn" />
               </IonCol>
@@ -33,10 +32,12 @@ const Learn: React.FC<RouteComponentProps> = ({ match, history }) => {
                 <h3>Definition</h3>
               </IonCol>
             </IonRow>
-          </IonRouterLink>
+          </IonGrid>
+        </IonRouterLink>
 
-          <IonRouterLink routerLink="/learn/sheet/2">
-            <IonRow className="ion-padding-top">
+        <IonRouterLink routerLink="/learn/characteristics">
+          <IonGrid>
+            <IonRow>
               <IonCol size="4" className="ColPictoLearn">
                 <div className="button-learn" />
               </IonCol>
@@ -44,10 +45,12 @@ const Learn: React.FC<RouteComponentProps> = ({ match, history }) => {
                 <h3>Caractéristiques</h3>
               </IonCol>
             </IonRow>
-          </IonRouterLink>
+          </IonGrid>
+        </IonRouterLink>
 
-          <IonRouterLink routerLink="/learn/sheet/3">
-            <IonRow className="ion-padding-top">
+        <IonRouterLink routerLink="/learn/physics">
+          <IonGrid>
+            <IonRow>
               <IonCol size="4" className="ColPictoLearn">
                 <div className="button-learn" />
               </IonCol>
@@ -55,10 +58,12 @@ const Learn: React.FC<RouteComponentProps> = ({ match, history }) => {
                 <h3>Physique</h3>
               </IonCol>
             </IonRow>
-          </IonRouterLink>
+          </IonGrid>
+        </IonRouterLink>
 
-          <IonRouterLink routerLink="/learn/sheet/4">
-            <IonRow className="ion-padding-top">
+        <IonRouterLink routerLink="/learn/history">
+          <IonGrid>
+            <IonRow>
               <IonCol size="4" className="ColPictoLearn">
                 <div className="button-learn" />
               </IonCol>
@@ -66,8 +71,8 @@ const Learn: React.FC<RouteComponentProps> = ({ match, history }) => {
                 <h3>Histoire</h3>
               </IonCol>
             </IonRow>
-          </IonRouterLink>
-        </IonGrid>
+          </IonGrid>
+        </IonRouterLink>
       </IonContent>
     </IonPage>
   );
