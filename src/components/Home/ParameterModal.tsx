@@ -13,7 +13,7 @@ import {
   IonHeader,
   IonToolbar,
 } from "@ionic/react";
-import { ellipsisVertical, arrowBackOutline } from "ionicons/icons";
+import { ellipsisVertical } from "ionicons/icons";
 import Settings from "../../engine/Settings";
 
 import "../App/Modal.css";
@@ -24,16 +24,22 @@ export const ParameterModal: React.FC = () => {
 
   return (
     <>
+      <IonIcon
+        className="parameter-button"
+        onClick={() => setShowModal(true)}
+        icon={ellipsisVertical}
+      />
+      
       <IonModal
         isOpen={showModal}
-        cssClass="ParameterModal"
+        cssClass="modal-fullscreen"
         swipeToClose={true}
         onDidDismiss={() => setShowModal(false)}
         backdrop-dismiss={true}
       >
         <IonHeader>
           <IonToolbar>
-            <IonGrid className="parameterContent">
+            <IonGrid className="px-6 py-2">
               <IonRow>
                 <IonCol size="6" className="ColTemperApp">
                   <h3>Paramètres</h3>
@@ -49,8 +55,9 @@ export const ParameterModal: React.FC = () => {
             </IonGrid>
           </IonToolbar>
         </IonHeader>
+        
         <IonContent fullscreen scrollY={true}>
-          <IonGrid className="parameterContent">
+          <IonGrid className="px-6 py-2">
             <div className="parameter-options">
               <IonRow>
                 <IonCol size="8">
@@ -65,6 +72,7 @@ export const ParameterModal: React.FC = () => {
                   ></IonToggle>
                 </IonCol>
               </IonRow>
+
               <IonRow>
                 <IonCol size="4">
                   <p>Langue</p>
@@ -82,6 +90,7 @@ export const ParameterModal: React.FC = () => {
                   </IonSelect>
                 </IonCol>
               </IonRow>
+              
               <IonRow>
                 <IonCol size="4">
                   <p>LA défault</p>
@@ -99,7 +108,8 @@ export const ParameterModal: React.FC = () => {
               </IonRow>
             </div>
           </IonGrid>
-          <IonGrid className="parameterContent">
+
+          <IonGrid className="px-6 py-2">
             <IonRow>
               <IonCol size="12" className="ColTemperApp">
                 <IonHeader>
@@ -122,11 +132,6 @@ export const ParameterModal: React.FC = () => {
           </IonGrid>
         </IonContent>
       </IonModal>
-      <IonIcon
-        className="parameter-button"
-        onClick={() => setShowModal(true)}
-        icon={ellipsisVertical}
-      ></IonIcon>
     </>
   );
 };

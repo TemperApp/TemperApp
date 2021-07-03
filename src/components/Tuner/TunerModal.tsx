@@ -24,7 +24,7 @@ const TunerModal: React.FC<tunerModalProps> = ({
       <IonModal isOpen={showModal} cssClass="ParameterModal">
         <IonHeader>
           <IonToolbar>
-            <IonGrid className="parameterContent">
+            <IonGrid className="px-6 py-2">
               <IonRow className="ion-align-items-center">
                 <IonCol size="8">
                   <h3>EXPLICATIONS</h3>
@@ -42,7 +42,7 @@ const TunerModal: React.FC<tunerModalProps> = ({
           </IonToolbar>
         </IonHeader>
         <IonContent>
-          <IonGrid className="parameterContent">
+          <IonGrid className="px-6 py-2">
             <h4>Qualité des quintes et des tierces</h4>
             <p className="p-long">
               Le visuel TemperApp vous permet de prévoir en un coup d’oeil la

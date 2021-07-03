@@ -10,63 +10,53 @@ import "./ButtonTemper.css";
 import Waves from "./Waves";
 import { TemperamentDBType } from "../../engine/DB";
 import ArrowCollapseSVG from "../Sheets/ArrowCollapseSVG";
-
-type HomeMenuProps = {
-  temperamentsList: Array<TemperamentDBType>
-};
+import { fetchTemperaments } from "../../engine/DataAccessor";
 
 let statePanel1: boolean = false;
 let statePanel2: boolean = false;
 let firstUse: boolean = true;
 
-const HomeContent: React.FC<HomeMenuProps> = ({
-  temperamentsList
-}) => {
-  const temperList = ["Rameau", "Vallotti", "Werckmeister", "Bach", "Egal"];
+const HomeContent: React.FC = () => {
 
-  //const [firstUse, setFirstUse] = useState<boolean>(true);
-  let activePanel = 1;
+  const [favoriteTemperaments, setMyTemperaments] = useState<TemperamentDBType[]>([]);
+  const [famousTemperaments, setFamousTemperaments] = useState<TemperamentDBType[]>([]);
 
-  //const [statePanel1, setStatePanel1] = useState<boolean>(false);
-  //const [statePanel2, setStatePanel2] = useState<boolean>(false);
+  useEffect(() => {
+    (async () => {
+      setMyTemperaments(await fetchTemperaments());
+    })();
+    (async () => {
+      setFamousTemperaments(await fetchTemperaments());
+    })();
+  }, []);
 
-  
+  let activePanelKey = 1;
 
   const isActive = (e: any) => {
     if (e == 0) {
-      //setStatePanel1(true);
-      //setStatePanel2(false);
       statePanel1 = true;
       statePanel2 = false;
     }
     if (e == 1) {
-      //setStatePanel1(false);
-      //setStatePanel2(true);
       statePanel1 = false;
       statePanel2 = true;
     }
     if (e === undefined && statePanel1) {
-      //setStatePanel1(false);
       statePanel1 = false;
     }
     if (e === undefined && statePanel2) {
-      //setStatePanel2(false);
       statePanel2 = false;
     }
   };
 
   const expandIcon = (e: any) => {
     if (firstUse) {
-      if (activePanel == 0) {
-        //setStatePanel1(true);
+      if (activePanelKey == 0) {
         statePanel1 = true;
-        //setFirstUse(false);
         firstUse = false
       }
-      if (activePanel == 1) {
-        //setStatePanel2(true);
+      if (activePanelKey == 1) {
         statePanel2 = true;
-        //setFirstUse(false);
         firstUse = false;
       }
     }
@@ -85,18 +75,21 @@ const HomeContent: React.FC<HomeMenuProps> = ({
       <Waves />
       <Collapse
         accordion={true}
-        defaultActiveKey={activePanel}
+        defaultActiveKey={1}
         openMotion={collapseMotion}
         expandIcon={(e) => expandIcon(e)}
         onChange={(e) => isActive(e)}
       >
-        <Panel key="0" header="Mes tempéraments" headerClass="my-header-class">
+        <Panel
+          key="0"
+          header="Mes tempéraments"
+          headerClass="my-header-class"
+        >
           <IonGrid>
             <IonRow>
-              {temperamentsList.map((t: TemperamentDBType) => (
-                <IonCol size="6" key={"col_my_temperament_home_"+t.idTemperament}>
+              {favoriteTemperaments.map((t: TemperamentDBType) => (
+                <IonCol size="6" key={`favorite-tmpmts-${t.idTemperament}`}>
                   <IonButton
-                    key={"my_temperament_home_"+t.idTemperament}
                     className="buttonType"
                     expand="block"
                     color="temperapp"
@@ -108,18 +101,21 @@ const HomeContent: React.FC<HomeMenuProps> = ({
             </IonRow>
           </IonGrid>
         </Panel>
-        <Panel key="1" header="Les plus courants" headerClass="my-header-class">
+        <Panel
+          key="1"
+          header="Les plus courants"
+          headerClass="my-header-class"
+        >
           <IonGrid>
             <IonRow>
-              {temperList.map((t) => (
-                <IonCol size="6" key={"col_top_home_"+t}>
+              {famousTemperaments.map((t: TemperamentDBType) => (
+                <IonCol size="6" key={`famous-tmpmts-${t.idTemperament}`}>
                   <IonButton
-                    key={'top_home_'+t}
                     className="buttonType"
                     expand="block"
                     color="temperapp"
                   >
-                    {t}
+                    {t.nameFR}
                   </IonButton>
                 </IonCol>
               ))}

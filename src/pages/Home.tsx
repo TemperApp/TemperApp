@@ -12,23 +12,9 @@ import {
 import "./Home.css";
 import HomeContent from "../components/Home/HomeContent";
 import ParameterModal from "../components/Home/ParameterModal";
-import { TemperamentDBType } from "../engine/DB";
-import { fetchTemperaments } from "../engine/DataAccessor";
 import Settings from "../engine/Settings";
 
 const Home: React.FC = () => {
-  const [temperamentsList, setTemperamentsList] = useState<
-    Array<TemperamentDBType>
-  >([]);
-
-  const fetchTemperamentsList = async () => {
-    const temperaments = await fetchTemperaments();
-    setTemperamentsList(temperaments);
-  };
-
-  useEffect(() => {
-    fetchTemperamentsList();
-  }, []);
 
   return (
     <IonPage>
@@ -55,9 +41,7 @@ const Home: React.FC = () => {
         </IonToolbar>
       </IonHeader>
       <IonContent fullscreen scrollY={true}>
-        <HomeContent
-          temperamentsList={temperamentsList}
-        />
+        <HomeContent />
       </IonContent>
     </IonPage>
   );

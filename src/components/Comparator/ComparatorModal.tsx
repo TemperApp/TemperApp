@@ -22,10 +22,10 @@ const ComparatorModal: React.FC<comparatorModalProps> = ({
   return (
     <>
       {/* MODAL EXPLICATION*/}
-      <IonModal isOpen={showModal} cssClass="ParameterModal">
+      <IonModal isOpen={showModal} cssClass="modal-fullscreen">
         <IonHeader>
           <IonToolbar>
-            <IonGrid className="parameterContent">
+            <IonGrid className="px-6 py-2">
               <IonRow className="ion-align-items-center">
                 <IonCol size="8">
                   <h3>Explications</h3>
@@ -43,7 +43,7 @@ const ComparatorModal: React.FC<comparatorModalProps> = ({
           </IonToolbar>
         </IonHeader>
         <IonContent>
-          <IonGrid className="parameterContent">
+          <IonGrid className="px-6 py-2">
             <h4>COMMENT COMPARER ?</h4>
             <p className="p-long">
               Il est possible de comparer deux tempéraments pour visualiser
