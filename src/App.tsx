@@ -82,22 +82,16 @@ const App: React.FC = () => {
       <IonReactRouter>
         <IonTabs>
           <IonRouterOutlet>
-            <Route exact path="/tune">
-              <Tune />
-            </Route>
-            <Route exact path="/compare">
-              <Compare />
-            </Route>
-            <Route exact path="/home">
-              <Home />
-            </Route>
+            <Route exact path="/tune" children={<Tune />} />
+            <Route exact path="/compare" children={<Compare />} />
+            <Route exact path="/home" children={<Home />} />
             <Route exact path="/sheets" children={<Sheets />} />
-            <Route path="/sheets/temperament/:id" children={<SheetsTemperament />} />
             <Route exact path="/learn" children={<Learn />} />
+
+            <Route path="/sheets/temperament/:id" children={<SheetsTemperament/>} />
             <Route path="/learn/:id" children={<LearnSheet />}/>
-            <Route>
-              <Redirect to="/home" />
-            </Route>
+            
+            <Route exact path="/" children={<Redirect to="/home" />} />
           </IonRouterOutlet>
           <IonTabBar slot="bottom">
             <IonTabButton tab="tune" href="/tune" >

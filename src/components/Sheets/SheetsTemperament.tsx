@@ -22,7 +22,7 @@ import { useParams } from "react-router";
 
 const SheetsTemperament: React.FC = () => {
   
-  const { id } = useParams<any>();
+  const {id} = useParams<{id: string}>();
   const [temperament, setTemperament] = useState<Temperament>(EqualTemperament);
   const [showModal, setShowModal] = useState(false);
 
