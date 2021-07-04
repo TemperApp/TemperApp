@@ -59,7 +59,7 @@ const HomeContent: React.FC = () => {
                 {elements.map((t: TemperamentDBType) => (
                   <IonCol size="6" key={t.idTemperament}>
                     <IonButton
-                      className="buttonType"
+                      className="btn-primary"
                       expand="block"
                       color="temperapp"
                       routerLink={`/sheets/temperament/${t.idTemperament}`}

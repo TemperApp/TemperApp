@@ -1,41 +1,41 @@
 :root {
-  --ion-color-temperapp: linear-gradient(
+  --tempapp-color: linear-gradient(
     90deg,
     rgba(248, 143, 143, 0.9) 0%,
     rgba(255, 192, 159, 1) 47%,
     rgba(255, 224, 177, 1) 100%
   );
-  --ion-color-temperapp-rgb: 255, 192, 159;
-  --ion-color-temperapp-contrast: #233c3a;
-  --ion-color-temperapp-contrast-rgb: 0, 0, 0;
-  --ion-color-temperapp-shade: #ffc09f;
-  --ion-color-temperapp-tint: #ffc09f;
+  --tempapp-color-rgb: 255, 192, 159;
+  --tempapp-color-contrast: #233c3a;
+  --tempapp-color-contrast-rgb: 0, 0, 0;
+  --tempapp-color-shade: #ffc09f;
+  --tempapp-color-tint: #ffc09f;
 }
 
 body.dark {
-  --ion-color-temperapp: linear-gradient(
+  --tempapp-color: linear-gradient(
     284.08deg,
     #45cbc7 -17.13%,
     #2ea39b 15.16%,
     #a3719d 92.68%
   );
-  --ion-color-temperapp-rgb: 56, 163, 155;
-  --ion-color-temperapp-contrast: #f5fbfb;
-  --ion-color-temperapp-contrast-rgb: 0, 0, 0;
-  --ion-color-temperapp-shade: #2ea39b;
-  --ion-color-temperapp-tint: #2ea39b;
+  --tempapp-color-rgb: 56, 163, 155;
+  --tempapp-color-contrast: #f5fbfb;
+  --tempapp-color-contrast-rgb: 0, 0, 0;
+  --tempapp-color-shade: #2ea39b;
+  --tempapp-color-tint: #2ea39b;
 }
 
 .ion-color-temperapp {
-  --ion-color-base: var(--ion-color-temperapp);
-  --ion-color-base-rgb: var(--ion-color-temperapp-rgb);
-  --ion-color-contrast: var(--ion-color-temperapp-contrast);
-  --ion-color-contrast-rgb: var(--ion-color-temperapp-contrast-rgb);
-  --ion-color-shade: var(--ion-color-temperapp-shade);
-  --ion-color-tint: var(--ion-color-temperapp-tint);
+  --ion-color-base: var(--tempapp-color);
+  --ion-color-base-rgb: var(--tempapp-color-rgb);
+  --ion-color-contrast: var(--tempapp-color-contrast);
+  --ion-color-contrast-rgb: var(--tempapp-color-contrast-rgb);
+  --ion-color-shade: var(--tempapp-color-shade);
+  --ion-color-tint: var(--tempapp-color-tint);
 }
 
-.buttonType {
+.btn-primary {
   text-transform: capitalize;
   --padding-top: 1.5em;
   --padding-bottom: 1.5em;
