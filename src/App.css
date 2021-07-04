@@ -216,19 +216,10 @@ ion-select::part(placeholder) {
   margin-bottom: 6px;
 }
 
-ion-searchbar .searchbar-input-container .searchbar-input {
+ion-searchbar .searchbar-input-container .searchbar-input { /* TODO Find a better way */
+  background-color: var(--ion-background-color);
   box-shadow: var(--color-shadow);
   border-radius: 8px;
-  width: 80vw;
-  height: 2rem;
-  display: flex;
-  margin: 0 auto;
-  margin-top: 5%;
-}
-
-ion-searchbar .searchbar-search-icon {
-  left: 80% !important;
-  margin-top: 3.5%;
 }
 
 ion-button .button-native {

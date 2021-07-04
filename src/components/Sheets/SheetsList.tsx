@@ -78,6 +78,7 @@ const SheetsMenu: React.FC = () => {
   return (
     <>
       <IonSearchbar
+        className="px-8 pb-2 pt-4"
         value={searchText}
         onIonChange={(e) => setSearchText(e.detail.value!)}
       />

@@ -1,6 +1,5 @@
 .rc-collapse {
   border: 0px !important;
-  margin-top: 10px;
   background: var(--ion-background-color);
 }
 .rc-collapse-item {
@@ -15,6 +14,10 @@
 .rc-collapse-content {
   padding: 0 0.5em 0 0.5em !important;
   background: var(--ion-background-color);
+}
+
+.rc-collapse-content-box {
+  margin-top: 0 !important;
 }
 
 .rc-collapse-header {
