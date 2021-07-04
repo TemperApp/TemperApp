@@ -40,9 +40,9 @@ import "./App.css";
 /* Fonction Engine */
 import DB from './engine/DB';
 import Sheets from './pages/Sheets';
-import SheetTemperament from './components/Sheets/SheetTemperament';
 import LearnSheet from './components/Learn/LearnSheet';
 import Learn from './components/Learn/Learn';
+import SheetTemperament from './components/Sheets/SheetTemperament';
 
 /* SQLite */
 export let sqlite: any; // singleton

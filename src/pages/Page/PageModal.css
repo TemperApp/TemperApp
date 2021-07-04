@@ -78,7 +78,7 @@
 .pm-content p {
   margin: 0 0 0.5rem 0;
   font-weight: normal;
-  font-size: 1rem;
+  font-size: 0.95rem;
   line-height: 1.3rem;
   color: var(--color-contrast);
   opacity: 0.8;

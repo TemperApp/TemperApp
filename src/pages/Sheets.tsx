@@ -5,7 +5,7 @@ import {
   IonHeader,
 } from "@ionic/react";
 import PageHeader from "./Page/PageHeader";
-import SheetsContent from "../components/Sheets/SheetsContent";
+import SheetsList from "../components/Sheets/SheetsList";
 
 const Sheets: React.FC = () => {
   return (
@@ -17,7 +17,7 @@ const Sheets: React.FC = () => {
       </IonHeader>
 
       <IonContent fullscreen scrollY={true}>
-        <SheetsContent />
+        <SheetsList />
       </IonContent>
     </IonPage>
   );

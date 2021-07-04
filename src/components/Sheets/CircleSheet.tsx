@@ -1,7 +1,6 @@
 import { IonCol, IonGrid, IonRow } from '@ionic/react';
 import React from 'react';
 
-import "../../pages/Sheets.css"
 import PitchCircle from '../Tuner/PitchCircle';
 
 type circleProps = {

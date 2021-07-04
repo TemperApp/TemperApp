@@ -1,0 +1,47 @@
+/* TODO Refactor with PageModal */
+.sheet {
+  overflow-y: scroll;
+}
+
+.sheet > *:first-child {
+  margin-top: 0;
+}
+
+.sheet h2,
+.sheet h3,
+.sheet h4,
+.sheet h5 {
+  line-height: normal;
+  font-size: 1rem;
+  font-weight: 700;
+}
+.sheet h2 {
+  font-size: 1.1rem;
+  margin: 1rem 0 0.2rem 0;
+}
+
+.sheet h3 {
+  font-size: 1.02rem;
+  margin: 0.8rem 0 0.2rem 0;
+}
+
+.sheet h4 {
+  font-size: 0.9rem;
+  margin: 0.8rem 0 0.2rem 0;
+  font-weight: 800;
+}
+
+.sheet h5 {
+  font-size: 0.82rem;
+  margin: 0.8rem 0 0.2rem 0;
+  font-weight: 800;
+  font-style: italic;
+}
+
+.sheet p {
+  margin: 0 0 0.5rem 0;
+  font-weight: normal;
+  font-size: 0.95rem;
+  line-height: 1.3rem;
+  color: var(--color-contrast);
+}
