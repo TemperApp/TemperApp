@@ -1,42 +1,31 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import {
-  IonButton,
   IonContent,
   IonHeader,
   IonIcon,
   IonPage,
 } from "@ionic/react";
-
-import { fetchTemperamentPropsById } from "../../engine/DataAccessor";
-import { Temperament } from "../../model/Temperament/Temperament";
-import EqualTemperament from "../../model/Temperament/Equal";
 import './Sheet.css'
-import { useParams } from "react-router";
 import PageHeader from "../../pages/Page/PageHeader";
 
 type SheetProps = {
+  mainTitle?: string,
+  subTitle?: string,
   children: React.ReactNode,
 }
 
 const Sheet: React.FC<SheetProps> = ({
+  mainTitle = '',
+  subTitle = '',
   children,
 }) => {
-  
-  const {id} = useParams<{id: string}>();
-  const [temperament, setTemperament] = useState<Temperament>(EqualTemperament);
-
-  useEffect(() => {
-    (async () => {
-      setTemperament(await fetchTemperamentPropsById(id));
-    })();
-  }, [id]);
 
   return (
     <IonPage>
       <IonHeader className="ion-no-border">
         <PageHeader
-          mainTitle={temperament.nameFR}
-          subTitle="Tempérament"
+          mainTitle={mainTitle}
+          subTitle={subTitle}
           canGoBack={true}
         />
       </IonHeader>
@@ -54,16 +43,6 @@ const Sheet: React.FC<SheetProps> = ({
           <div className="pt-3">
             {children}
           </div>
-
-          <IonButton
-            className="btn-round absolute right-4 bottom-4"
-            routerLink={`/tune/`}
-          >
-            <IonIcon
-              style={{ fontSize: "3rem" } /* TODO Find a better way */}
-              src="/assets/logotypes/button-tune.svg"
-            />
-          </IonButton>
         </section>
       </IonContent>
     </IonPage>
