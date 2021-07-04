@@ -6,14 +6,3 @@
   background: var(--color-gradient-background) !important;
   --box-shadow: 1px 3px 15px rgba(0, 0, 0, 0.5);
 }
-.parameterContent {
-  padding: 10px 30px 10px 30px;
-}
-
-.ColTemperApp {
-  text-align: center;
-}
-
-.ColTemperApp-right {
-  text-align: right;
-}

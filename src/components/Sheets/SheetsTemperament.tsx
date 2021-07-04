@@ -37,7 +37,7 @@ const SheetsTemperament: React.FC = () => {
 
   return (
     <IonPage>
-      <IonHeader>
+      <IonHeader className="ion-no-border">
         <IonToolbar className="headerPages">
           <HeaderPage
             doubleTitle={true}
@@ -55,6 +55,7 @@ const SheetsTemperament: React.FC = () => {
           </IonRouterLink>
         </IonToolbar>
       </IonHeader>
+      <hr />
 
       <IonContent>
         <div className="SheetContent">

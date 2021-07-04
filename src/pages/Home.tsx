@@ -22,8 +22,8 @@ const Home: React.FC = () => {
         <IonToolbar>
           <IonGrid>
             <IonRow>
-              <IonCol size="2" className="ColTemperApp"></IonCol>
-              <IonCol className="ColTemperApp " size="8">
+              <IonCol size="2" className="text-center"></IonCol>
+              <IonCol className="text-center " size="8">
                 <IonImg
                   src={
                     (Settings.darkTheme())
@@ -33,7 +33,7 @@ const Home: React.FC = () => {
                   className="logo-home"
                 />
               </IonCol>
-              <IonCol size="2" className="ColTemperApp">
+              <IonCol size="2" className="text-center">
                 <ParameterModal />
               </IonCol>
             </IonRow>

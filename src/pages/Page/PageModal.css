@@ -1,0 +1,85 @@
+.pm-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.pm-header h1 {
+  font-size: 1rem;
+  font-weight: bold;
+  color: var(--color-contrast);
+  text-transform: uppercase;
+}
+
+.pm-titles {
+  min-width: 0;
+  white-space: nowrap;
+}
+
+.pm-titles > * {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.btn-quit {
+  display: inline;
+  flex-shrink: 0;
+  background-color: var(--color-sec);
+  border-radius: 50%;
+}
+
+.btn-quit::after {
+  content: "\00D7";
+  vertical-align: 20%;
+  margin: auto;
+  color: var(--color-theme);
+  font-size: 28px;
+}
+
+.pm-content {
+  overflow-y: scroll;
+}
+
+.pm-content > *:first-child {
+  margin-top: 0;
+}
+
+.pm-content h2,
+.pm-content h3,
+.pm-content h4,
+.pm-content h5 {
+  line-height: normal;
+  font-size: 1rem;
+  font-weight: 700;
+}
+.pm-content h2 {
+  font-size: 1.1rem;
+  margin: 1rem 0 0.2rem 0;
+}
+
+.pm-content h3 {
+  font-size: 1.02rem;
+  margin: 0.8rem 0 0.2rem 0;
+}
+
+.pm-content h4 {
+  font-size: 0.9rem;
+  margin: 0.8rem 0 0.2rem 0;
+  font-weight: 800;
+}
+
+.pm-content h5 {
+  font-size: 0.82rem;
+  margin: 0.8rem 0 0.2rem 0;
+  font-weight: 800;
+  font-style: italic;
+}
+
+.pm-content p {
+  margin: 0 0 0.5rem 0;
+  font-weight: normal;
+  font-size: 1rem;
+  line-height: 1.3rem;
+  color: var(--color-contrast);
+  opacity: 0.8;
+}

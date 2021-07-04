@@ -17,7 +17,6 @@ h2 {
   font-weight: bold;
   font-size: 22px;
   line-height: 30px;
-  display: flex;
   align-items: center;
   text-transform: uppercase;
   color: var(--color-contrast);
@@ -30,8 +29,6 @@ h3 {
   font-weight: normal;
   font-size: 16px;
   line-height: 22px;
-  display: flex;
-  align-items: center;
   text-transform: uppercase;
   color: var(--color-contrast);
   margin-bottom: 0;
@@ -43,8 +40,6 @@ h4 {
   font-weight: normal;
   font-size: 14px;
   line-height: 19px;
-  display: flex;
-  align-items: center;
   text-transform: uppercase;
   color: var(--color-contrast);
 }
@@ -55,8 +50,6 @@ h5 {
   font-weight: normal;
   font-size: 13px;
   line-height: 18px;
-  display: flex;
-  align-items: center;
   text-transform: uppercase;
   color: var(--color-contrast);
 }
@@ -88,12 +81,10 @@ strong {
   color: var(--color-contrast);
 }
 
-ion-header::after {
-  position: relative;
-  bottom: 5px;
+hr {
   height: 5px;
-  width: 100vw;
-  margin-left: 15vw;
+  width: 100%;
+  margin: 0 0 0 3.5rem;
   border-top-left-radius: 10px;
   border-bottom-left-radius: 10px;
   background-image: var(--color-gradient) !important;
@@ -267,4 +258,9 @@ ion-toggle {
 
 .headerPages {
   height: 5rem;
+}
+
+.text-ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
 }

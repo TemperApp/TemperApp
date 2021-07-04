@@ -1,0 +1,29 @@
+.ph-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.ph-titles {
+  min-width: 0;
+  white-space: nowrap;
+}
+
+.ph-titles > * {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.btn-show-modal {
+  display: inline;
+  flex-shrink: 0;
+  background-color: var(--color-sec);
+  border-radius: 50%;
+}
+
+.btn-show-modal::after {
+  content: "?";
+  margin: auto;
+  color: var(--color-theme);
+  font-size: 20px;
+}

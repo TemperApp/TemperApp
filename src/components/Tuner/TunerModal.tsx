@@ -21,8 +21,8 @@ const TunerModal: React.FC<tunerModalProps> = ({
   return (
     <>
       {/* MODAL EXPLICATION*/}
-      <IonModal isOpen={showModal} cssClass="ParameterModal">
-        <IonHeader>
+      <IonModal isOpen={showModal} cssClass="modal-fullscreen">
+        <IonHeader className="ion-no-border">
           <IonToolbar>
             <IonGrid className="px-6 py-2">
               <IonRow className="ion-align-items-center">
@@ -41,6 +41,7 @@ const TunerModal: React.FC<tunerModalProps> = ({
             </IonGrid>
           </IonToolbar>
         </IonHeader>
+        <hr />
         <IonContent>
           <IonGrid className="px-6 py-2">
             <h4>Qualité des quintes et des tierces</h4>

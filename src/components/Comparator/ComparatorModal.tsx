@@ -23,7 +23,7 @@ const ComparatorModal: React.FC<comparatorModalProps> = ({
     <>
       {/* MODAL EXPLICATION*/}
       <IonModal isOpen={showModal} cssClass="modal-fullscreen">
-        <IonHeader>
+        <IonHeader className="ion-no-border">
           <IonToolbar>
             <IonGrid className="px-6 py-2">
               <IonRow className="ion-align-items-center">
@@ -41,6 +41,7 @@ const ComparatorModal: React.FC<comparatorModalProps> = ({
               </IonRow>
             </IonGrid>
           </IonToolbar>
+          <hr />
         </IonHeader>
         <IonContent>
           <IonGrid className="px-6 py-2">

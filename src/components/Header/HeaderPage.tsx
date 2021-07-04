@@ -29,7 +29,8 @@ const HeaderPage: React.FC<headerProps> = ({
 }) => {
   if (doubleTitle && buttonModal) {
     return (
-      <IonHeader>
+      <>
+      <IonHeader className="ion-no-border">
         <IonToolbar className="headerPages">
           <IonGrid className="ion-padding-horizontal">
             <IonRow className="ion-align-items-center">
@@ -49,12 +50,15 @@ const HeaderPage: React.FC<headerProps> = ({
           </IonGrid>
         </IonToolbar>
       </IonHeader>
+      <hr />
+      </>
     );
   }
 
   if (doubleTitle && buttonReturn) {
     return (
-      <IonHeader>
+      <>
+      <IonHeader className="ion-no-border">
         <IonToolbar className="headerPages">
           <IonGrid className="ion-padding-horizontal">
             <IonRow className="ion-align-items-center">
@@ -74,12 +78,15 @@ const HeaderPage: React.FC<headerProps> = ({
           </IonGrid>
         </IonToolbar>
       </IonHeader>
+      <hr />
+      </>
     );
   }
 
   if (buttonModal) {
     return (
-      <IonHeader>
+      <>
+      <IonHeader className="ion-no-border">
         <IonToolbar className="headerPages">
           <IonGrid className="ion-padding-horizontal">
             <IonRow className="ion-align-items-center">
@@ -98,19 +105,22 @@ const HeaderPage: React.FC<headerProps> = ({
           </IonGrid>
         </IonToolbar>
       </IonHeader>
+      <hr />
+      </>
     );
   }
 
   if (buttonReturn) {
     return (
-      <IonHeader>
+      <>
+      <IonHeader className="ion-no-border">
         <IonToolbar className="headerPages">
           <IonGrid className="ion-padding-horizontal">
             <IonRow className="ion-align-items-center">
               <IonCol className="header-title" size="8">
                 <h2>{buttonModalText}</h2>
               </IonCol>
-              <IonCol className="ColTemperApp-right" size="4">
+              <IonCol className="text-right" size="4">
                 <IonRouterLink routerDirection="root" routerLink="/learn">
                   <IonIcon
                     src="../../assets/logotypes/icon-back.svg"
@@ -122,12 +132,14 @@ const HeaderPage: React.FC<headerProps> = ({
           </IonGrid>
         </IonToolbar>
       </IonHeader>
+      <hr />
+      </>
     );
   }
 
   return (
     <>
-      <IonHeader>
+      <IonHeader className="ion-no-border">
         <IonToolbar>
           <IonGrid className="ion-padding-horizontal headerPages">
             <IonRow className="ion-align-items-center">
@@ -138,6 +150,7 @@ const HeaderPage: React.FC<headerProps> = ({
           </IonGrid>
         </IonToolbar>
       </IonHeader>
+      <hr />
     </>
   );
 };
