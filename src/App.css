@@ -102,11 +102,11 @@ ion-tab-bar {
   border-top-right-radius: 6px;
 }
 
-ion-label {
+ion-tab-bar ion-label {
   font-family: "Nunito" !important;
   font-style: normal;
   font-weight: normal;
-  font-size: 7px; /* TODO Check: c'est vraiment petit */
+  font-size: 0.6rem; /* TODO Check: c'est vraiment petit */
   display: flex;
   align-items: center;
   text-align: center;
@@ -124,10 +124,9 @@ ion-tab-button:hover ion-label {
   color: var(--color-hover);
 }
 
-ion-icon.icon-light {
+ion-icon.icon-grey {
   fill: var(--color-grey);
   stroke: var(--color-grey);
-  height: 24px;
 }
 
 .tab-selected ion-icon {
@@ -203,7 +202,7 @@ ion-select::part(placeholder) {
   align-items: center;
 }
 
-.buttonFixed {
+.btn-round {
   --border-radius: 100px;
   width: 48px;
   height: 48px;

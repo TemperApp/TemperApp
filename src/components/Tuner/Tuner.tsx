@@ -83,7 +83,7 @@ const Tuner: React.FC<TunerProps> = ({
       {/* Buttons at the bottom */}
       <section className="w-full px-5 flex justify-between items-center">
         <div className="w-20">
-          <IonButton className="buttonFixed">
+          <IonButton className="btn-round">
             <IonIcon
               style={{ fontSize: "3rem" } /* TODO Find a better way */}
               src="/assets/logotypes/icon-tuning-procedure.svg"

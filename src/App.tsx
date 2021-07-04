@@ -95,38 +95,38 @@ const App: React.FC = () => {
             <Route exact path="/" children={<Redirect to="/home" />} />
           </IonRouterOutlet>
           <IonTabBar slot="bottom">
-            <IonTabButton tab="tune" href="/tune">
+            <IonTabButton className="ion-no-padding" tab="tune" href="/tune">
               <IonIcon
                 src="/assets/logotypes/icon-diapason-grey.svg"
-                class="icon-light"
+                className="icon-grey h-6 w-6"
               />
               <IonLabel>Accorder</IonLabel>
             </IonTabButton>
-            <IonTabButton tab="compare" href="/compare">
+            <IonTabButton className="ion-no-padding" tab="compare" href="/compare">
               <IonIcon
                 src="/assets/logotypes/icon-compare-grey.svg"
-                class="icon-light"
+                className="icon-grey h-6 w-6"
               />
               <IonLabel>Comparer</IonLabel>
             </IonTabButton>
-            <IonTabButton tab="home" href="/home">
+            <IonTabButton className="ion-no-padding" tab="home" href="/home">
               <IonIcon
                 src="/assets/logotypes/icon-home-grey.svg"
-                class="icon-light"
+                className="icon-grey h-6 w-6"
               ></IonIcon>
               <IonLabel>Accueil</IonLabel>
             </IonTabButton>
-            <IonTabButton tab="sheets" href="/sheets">
+            <IonTabButton className="ion-no-padding" tab="sheets" href="/sheets">
               <IonIcon
                 src="/assets/logotypes/icon-fiches-grey.svg"
-                class="icon-light"
+                className="icon-grey h-6 w-6"
               />
               <IonLabel>Fiches</IonLabel>
             </IonTabButton>
-            <IonTabButton tab="learn" href="/learn">
+            <IonTabButton className="ion-no-padding" tab="learn" href="/learn">
               <IonIcon
                 src="/assets/logotypes/icon-apprendre-grey.svg"
-                class="icon-light"
+                className="icon-grey h-6 w-6"
               />
               <IonLabel>Apprendre</IonLabel>
             </IonTabButton>

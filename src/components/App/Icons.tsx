@@ -1,11 +1,10 @@
-import { IonIcon } from "@ionic/react";
 import React from "react";
 
 export const HomeSVG: React.FC = () => {
   return (
     <>
       <svg
-        id="icon-light"
+        id="tab-home"
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 10.583 10.583"
         height="40"
@@ -30,7 +29,7 @@ export const TuneSVG: React.FC = () => {
   return (
     <>
       <svg
-        id="icon-light"
+        id="tab-tune"
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 100 100"
         height="100mm"
@@ -56,7 +55,7 @@ export const CompareSVG: React.FC = () => {
   return (
     <>
       <svg
-        id="icon-light"
+        id="tab-compare"
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 100 100"
         height="100mm"
@@ -105,7 +104,7 @@ export const SheetsSVG: React.FC = () => {
   return (
     <>
       <svg
-        id="icon-light"
+        id="tab-sheets"
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 100 100"
         height="100mm"
@@ -148,7 +147,7 @@ export const LearnSVG: React.FC = () => {
   return (
     <>
       <svg
-        id="icon-light"
+        id="tab-learn"
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 100 100"
         height="100mm"
