@@ -111,14 +111,14 @@ const Tuner: React.FC<TunerProps> = ({
           <IonButton
             onClick={() => setIsHzMode(false)}
             className={`btn-mode-bpm m-0
-                  ${!isHzMode ? " btn-mode-activated" : ""}`}
+              ${!isHzMode ? " btn-mode-activated" : ""}`}
           >
             bpm
           </IonButton>
           <IonButton
             onClick={() => setIsHzMode(true)}
             className={`btn-mode-hz m-0
-                  ${isHzMode ? " btn-mode-activated" : ""}`}
+              ${isHzMode ? " btn-mode-activated" : ""}`}
           >
             Hz
           </IonButton>

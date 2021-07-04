@@ -39,20 +39,8 @@ const TuneModalContent: React.FC = () => (
   </>
 );
 
-type TuneProps = {
-  mainTitle?: string,
-  subTitle?: string,
-  modalTitle?: string,
-}
-
-const Tune: React.FC<TuneProps> = ({
-  mainTitle = '',
-  subTitle = 'Accordeur',
-  modalTitle = 'Aide · Accordeur',
-}) => {
-  const [_mainTitle, setMainTitle] = useState(mainTitle);
-  const [_subTitle,] = useState(subTitle);
-  const [_modalTitle,] = useState(modalTitle);
+const Tune: React.FC = () => {
+  const [_mainTitle, setMainTitle] = useState('');
   const [showModal, setShowModal] = useState(false);
 
   return (
@@ -60,14 +48,14 @@ const Tune: React.FC<TuneProps> = ({
       <IonHeader className="ion-no-border">
         <PageHeader
           mainTitle={_mainTitle}
-          subTitle={_subTitle}
+          subTitle="Accordeur"
           onShowModal={() => setShowModal(true)}
         />
       </IonHeader>
 
       <IonModal isOpen={showModal} cssClass="modal-fullscreen">
         <PageModal
-          title={_modalTitle}
+          title="Aide · Accordeur"
           onQuit={() => setShowModal(false)}
         >
           <TuneModalContent />

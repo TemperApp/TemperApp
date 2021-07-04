@@ -2,13 +2,15 @@ import React from "react";
 import './PageHeader.css'
 
 type PageHeaderProps = {
-  mainTitle: string,
-  subTitle: string,
+  mainTitle?: string,
+  subTitle?: string,
   onShowModal?: (event: any) => void,
 }
 
 const PageHeader: React.FC<PageHeaderProps> = ({
-  mainTitle, subTitle, onShowModal
+  mainTitle = '',
+  subTitle = '',
+  onShowModal
 }) => {
 
   const btnShowModal = (onShowModal !== undefined)
