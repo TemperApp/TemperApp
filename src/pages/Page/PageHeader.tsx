@@ -8,6 +8,7 @@ type PageHeaderProps = {
   subTitle?: string,
   onShowModal?: (event: any) => void,
   canGoBack?: boolean,
+  onGoBack?: (event: any) => void,
   children?: React.ReactNode,
 }
 
@@ -16,6 +17,7 @@ const PageHeader: React.FC<PageHeaderProps> = ({
   subTitle = '',
   onShowModal,
   canGoBack = false,
+  onGoBack = null,
   children = null,
 }) => {
   const history = useHistory();
@@ -30,7 +32,7 @@ const PageHeader: React.FC<PageHeaderProps> = ({
   const btnGoBack = (canGoBack)
       ? (<button
           className="btn-go-back h-10 w-10"
-          onClick={() => history.goBack()}
+          onClick={(onGoBack) ? onGoBack : () => history.goBack()}
         >
           <IonIcon
             src="../../assets/logotypes/icon-back.svg"
