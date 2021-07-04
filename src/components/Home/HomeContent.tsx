@@ -5,8 +5,8 @@ import collapseMotion from "../../utils/collapseMotion";
 import { IonButton, IonGrid, IonRow, IonCol } from "@ionic/react";
 import { useEffect, useState } from "react";
 
-import "./Collapse.css";
-import "./ButtonTemper.css";
+import "../App/Collapse.css";
+import "../App/ButtonTemper.css";
 import Waves from "./Waves";
 import { TemperamentDBType } from "../../engine/DB";
 import ArrowCollapseSVG from "../Sheets/ArrowCollapseSVG";
@@ -31,7 +31,7 @@ const HomeContent: React.FC = () => {
       key: "0",
       label: "Mes tempéraments",
       elements: favoriteTemperaments
-    },{
+    }, {
       key: "1",
       label: "Les plus courants",
       elements: famousTemperaments
@@ -48,7 +48,7 @@ const HomeContent: React.FC = () => {
         expandIcon={(e: any) => <ArrowCollapseSVG isActive={e.isActive} />}
       >
 
-        { items.map( ({key, label, elements}) =>
+        {items.map(({ key, label, elements }) =>
           <Panel
             key={key}
             header={label}

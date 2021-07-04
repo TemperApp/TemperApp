@@ -5,7 +5,7 @@ import {
   IonHeader,
 } from "@ionic/react";
 import PageHeader from "./Page/PageHeader";
-import SheetsContent from "../components/Sheets/Sheets";
+import SheetsContent from "../components/Sheets/SheetsContent";
 
 const Sheets: React.FC = () => {
   return (

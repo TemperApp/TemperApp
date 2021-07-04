@@ -2,11 +2,11 @@
 import "rc-collapse/assets/index.css";
 import Collapse, { Panel } from "rc-collapse";
 import collapseMotion from "../../utils/collapseMotion";
-import { IonButton, IonGrid, IonRow, IonCol } from "@ionic/react";
+import { IonButton, IonGrid, IonRow, IonCol, IonSearchbar } from "@ionic/react";
 import React, { useEffect, useState } from "react";
 
-import "../Home/Collapse.css";
-import "../Home/ButtonTemper.css";
+import "../App/Collapse.css";
+import "../App/ButtonTemper.css";
 import { TemperamentDBType } from "../../engine/DB";
 import ArrowCollapseSVG from "./ArrowCollapseSVG";
 import { fetchTemperaments } from "../../engine/DataAccessor";
@@ -16,23 +16,19 @@ const sort = (tmpmts: TemperamentDBType[]) => {
     const name1 = t1.nameFR.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
     const name2 = t2.nameFR.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
     return (name1 < name2)
-    ? -1
-    : (name1 > name2)
-      ? 1
-      : 0
+      ? -1
+      : (name1 > name2)
+        ? 1
+        : 0
   })
 }
 
-type SheetsMenuProps = {
-  text: string,
-};
-
-const SheetsMenu: React.FC<SheetsMenuProps> = ({
-  text,
-}) => {
+const SheetsMenu: React.FC = () => {
   const [favoriteTemperaments, setMyTemperaments] = useState<TemperamentDBType[]>([]);
   const [famousTemperaments, setFamousTemperaments] = useState<TemperamentDBType[]>([]);
   const [temperamentsList, setTemperamentsList] = useState<TemperamentDBType[]>([]);
+
+  const [searchText, setSearchText] = useState("");
   const [request, setRequest] = useState<RegExp>(RegExp("([A-z])\\w+", "i"));
 
   useEffect(() => {
@@ -46,33 +42,33 @@ const SheetsMenu: React.FC<SheetsMenuProps> = ({
       setTemperamentsList(sort(await fetchTemperaments()));
     })();
   }, []);
-  
+
   useEffect(() => {
-    if (text !== "") {
+    if (searchText !== "") {
       setRequest(new RegExp(
         "\\b(\\w*" +
-          text
-            .normalize("NFD")
-            .replace(/[\u0300-\u036f]/g, "")
-            .replace(/[^a-z0-9\s-]/g, "") +
-          "\\w*)\\b",
+        searchText
+          .normalize("NFD")
+          .replace(/[\u0300-\u036f]/g, "")
+          .replace(/[^a-z0-9\s-]/g, "") +
+        "\\w*)\\b",
         "i"
       ));
     } else {
       setRequest(new RegExp("([A-z])\\w+", "i"));
     }
-  }, [text]);
+  }, [searchText]);
 
   const items = [
     {
       key: "0",
       label: "Mes tempéraments",
       elements: favoriteTemperaments
-    },{
+    }, {
       key: "1",
       label: "Les plus courants",
       elements: famousTemperaments
-    },{
+    }, {
       key: "2",
       label: "Tous les tempéraments",
       elements: temperamentsList
@@ -81,6 +77,10 @@ const SheetsMenu: React.FC<SheetsMenuProps> = ({
 
   return (
     <>
+      <IonSearchbar
+        value={searchText}
+        onIonChange={(e) => setSearchText(e.detail.value!)}
+      />
       <Collapse
         accordion={true}
         defaultActiveKey={items[2].key}
@@ -88,7 +88,7 @@ const SheetsMenu: React.FC<SheetsMenuProps> = ({
         expandIcon={(e: any) => <ArrowCollapseSVG isActive={e.isActive} />}
       >
 
-        { items.map( ({key, label, elements}) =>
+        {items.map(({ key, label, elements }) =>
           <Panel
             key={key}
             header={label}
@@ -115,7 +115,7 @@ const SheetsMenu: React.FC<SheetsMenuProps> = ({
                         {t.nameFR}
                       </IonButton>
                     </IonCol>
-                ))}
+                  ))}
               </IonRow>
             </IonGrid>
           </Panel>

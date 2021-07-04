@@ -40,7 +40,7 @@ import "./App.css";
 /* Fonction Engine */
 import DB from './engine/DB';
 import Sheets from './pages/Sheets';
-import SheetsTemperament from './components/Sheets/SheetsTemperament';
+import SheetTemperament from './components/Sheets/SheetTemperament';
 import LearnSheet from './components/Learn/LearnSheet';
 import Learn from './components/Learn/Learn';
 
@@ -89,7 +89,7 @@ const App: React.FC = () => {
             <Route exact path="/sheets" children={<Sheets />} />
             <Route exact path="/learn" children={<Learn />} />
 
-            <Route path="/sheets/temperament/:id" children={<SheetsTemperament />} />
+            <Route path="/sheets/temperament/:id" children={<SheetTemperament />} />
             <Route path="/learn/:id" children={<LearnSheet />} />
 
             <Route exact path="/" children={<Redirect to="/home" />} />
