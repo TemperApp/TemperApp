@@ -259,3 +259,7 @@ ion-toggle {
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
+.color-gradient-bg {
+  background: var(--color-gradient-background);
+}

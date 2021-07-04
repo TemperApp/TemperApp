@@ -1,21 +1,18 @@
-#comparator {
-  width: 90vw;
-  height: 90vw;
-  margin-top: 5%;
-}
-
 .st21 {
   fill: var(--color-theme);
 }
 
 .st23 {
-  font-size: 20px;
-}
-
-.divergenceColorOdd {
-  background: var(--color-gradient-background);
+  font-size: 1.25em;
 }
 
 #Texte {
   color: var(--color-contrast);
+}
+
+.select-label {
+  display: block;
+  font-size: 0.9rem;
+  color: var(--color-contrast);
+  opacity: 0.8;
 }

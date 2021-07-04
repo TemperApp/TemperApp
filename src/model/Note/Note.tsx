@@ -175,34 +175,36 @@ export class Note implements INote {
   /**
    * @param alterExactSymbol gives the exact character for
    *                         a sharp or flat note
+   * @param withOctave gives the octave number
    * @returns A string representation of the note in
    * the American Std. Pitch Notation
    */
-  string(alterExactSymbol = false): string {
+  string(alterExactSymbol = false, withOctave = true): string {
     return this.char
       + (this.alter === NoteAlter.NONE
         ? ""
         : (!alterExactSymbol)
           ? this.alter
           : Note.getAlterExactSymbol(this.alter))
-      + this.octave.toFixed(0);
+      + (withOctave ? this.octave.toFixed(0) : "");
   }
 
 
   /**
    * @param alterExactSymbol gives the exact character for
    *                         a sharp or flat note
+   * @param withOctave gives the octave number
    * @returns A string representation of the note as
    * a solfege syllable (do, ré, mi...)
    */
-  string2(alterExactSymbol = false): string {
+  string2(alterExactSymbol = false, withOctave = true): string {
     return ASPN_TO_SYLLABLES[this.char]
       + (this.alter === NoteAlter.NONE
         ? ""
         : (!alterExactSymbol)
           ? this.alter
           : Note.getAlterExactSymbol(this.alter))
-      + (this.octave - 1).toFixed(0);
+      + (withOctave ? (this.octave - 1).toFixed(0) : "");
   }
 
   
