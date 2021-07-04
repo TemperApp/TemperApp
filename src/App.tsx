@@ -41,7 +41,7 @@ import "./App.css";
 import DB from './engine/DB';
 import Sheets from './pages/Sheets';
 import LearnSheet from './components/Learn/LearnSheet';
-import Learn from './components/Learn/Learn';
+import Learn from './pages/Learn';
 import SheetTemperament from './components/Sheets/SheetTemperament';
 
 /* SQLite */

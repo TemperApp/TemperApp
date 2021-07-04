@@ -1,32 +1,29 @@
 import React from "react";
-import { IonContent, IonPage } from "@ionic/react";
-import { useParams } from "react-router-dom";
-import HeaderPage from "../Header/HeaderPage";
+import { IonContent, IonHeader, IonPage } from "@ionic/react";
+import { useParams } from "react-router";
 import ParagraphLearn from "./ParagraphLearn";
 import DiagramLearn from "./DiagramLearn";
 import CommaLearn from "./CommaLearn";
 import VideoLearn from "./VideoLearn";
 import ResourcesLearn from "./ResourcesLearn";
 import FormulaLearn from "./FormulaLearn";
+import PageHeader from "../../pages/Page/PageHeader";
 
 const LearnSheet: React.FC = () => {
   let { id } = useParams<any>();
   return (
     <IonPage>
-      <HeaderPage
-        doubleTitle={false}
-        buttonModal={false}
-        buttonModalsubText=""
-        buttonReturn={true}
-        buttonModalText={id}
-        setShowModal={() => {}}
-      />
+      <IonHeader className="ion-no-border">
+        <PageHeader
+          mainTitle={id}
+          canGoBack={true}
+        />
+      </IonHeader>
 
-      <IonContent >
-        <div className="LearnContent" >
-        
-          <ParagraphLearn 
-            titreExist = {true}
+      <IonContent className="learn">
+        <div className="px-6">
+
+          <ParagraphLearn
             titreText = "Titre de paragraphe"
             contentText = "Cette phrase est généréré ici."
           />
@@ -59,7 +56,6 @@ const LearnSheet: React.FC = () => {
           />
 
         </div>
-
       </IonContent>
     </IonPage>
   );

@@ -11,7 +11,7 @@ type circleProps = {
 const CircleSheet : React.FC<circleProps> = ({idTemp}) => {
 
 return (
-    <div className ="LearnBox">
+    <div className ="learn-box">
         <h3>Qualité des quintes et des tierces</h3>
         <IonGrid>
             <IonRow className="ion-padding-horizontal ion-justify-content-center">        

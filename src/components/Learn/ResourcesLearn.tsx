@@ -15,7 +15,7 @@ return (
     <div className ="LearnResources">
       <h3 className="TitleParagraphLearn">Ressources</h3>
       {resourcesList.map((r) => (
-        <IonButton className="LearnResourcesBox" expand="block" color="light">
+        <IonButton className="learn-resources-btn" expand="block" color="light">
         {r}
         </IonButton>
       ))}

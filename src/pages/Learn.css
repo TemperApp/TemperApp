@@ -1,65 +1,27 @@
-/*.learn-button {
+.item-icon {
+  flex-shrink: 0;
   width: 80px;
   height: 80px;
-  margin-left: 8vw;
-  margin-top: 3vh;
-  --background: var(--color-strong);
-  --border-radius: 100px;
-}*/
-
-.learn-button-text {
-  --color: var(--color-constrast);
-  border: none;
-  --background: transparent;
-  margin-top: 6vh;
-  margin-left: 4vh;
-}
-
-.button-learn {
-  width: 80px;
-  height: 80px;
-  margin-left: 8vw;
   background-image: var(--color-gradient-circle);
   border-radius: 100px;
 }
 
-.ion-padding-top {
-  padding-top: var(--ion-padding, 25px);
-}
-
-.ColPictoLearn {
-  text-align: right;
-}
-
-.ColChapiterLearn {
-  text-align: left;
-  padding: 15px;
-}
-
-/*Contenu des cours */
-.LearnContent {
-  margin: 30px 20px 100px 20px;
-}
-
-/*Composant paragraphe */
-.LearnParagraph {
-  margin: 5px 0 30px 0;
-}
-
-.TitleParagraphLearn {
-  padding-left: 10px;
+.item-label {
+  font-size: 1.1rem;
+  text-transform: none;
+  color: var(--color-contrast);
 }
 
 /*Composants avec boites*/
-.LearnBox {
+.learn-box {
   background: var(--background);
-  box-shadow: 1px 3px 15px rgba(0, 0, 0, 0.5);
+  box-shadow: var(--color-shadow);
   border-radius: 8px;
   padding: 5px 10px 15px 10px;
-  margin: 5px 0 30px 0;
+  margin: 16px 0 28px 0;
 }
 
-.LearnResourcesBox {
+.learn-resources-btn {
   text-transform: capitalize;
   --padding-top: 1.5em;
   --padding-bottom: 1.5em;
@@ -67,9 +29,10 @@
   margin-bottom: 10px;
   text-align: left;
   font-size: 14px;
+  --box-shadow: var(--color-shadow);
 }
 
-.LearnElement {
+.learn-element {
   /*element : diagramme ou svg */
   display: block;
   margin-left: auto;
@@ -77,6 +40,50 @@
   width: 90%;
 }
 
-p {
-  margin: 0;
+/* TODO Refactor with PageModal */
+.learn {
+  overflow-y: scroll;
+}
+
+.learn > *:first-child {
+  margin-top: 0;
+}
+
+.learn h2,
+.learn h3,
+.learn h4,
+.learn h5 {
+  line-height: normal;
+  font-size: 1rem;
+  font-weight: 700;
+}
+.learn h2 {
+  font-size: 1.1rem;
+  margin: 1rem 0 0.2rem 0;
+}
+
+.learn h3 {
+  font-size: 1.02rem;
+  margin: 0.8rem 0 0.2rem 0;
+}
+
+.learn h4 {
+  font-size: 0.9rem;
+  margin: 0.8rem 0 0.2rem 0;
+  font-weight: 800;
+}
+
+.learn h5 {
+  font-size: 0.82rem;
+  margin: 0.8rem 0 0.2rem 0;
+  font-weight: 800;
+  font-style: italic;
+}
+
+.learn p {
+  margin: 0 0 0.5rem 0;
+  font-weight: normal;
+  font-size: 0.95rem;
+  line-height: 1.3rem;
+  color: var(--color-contrast);
 }

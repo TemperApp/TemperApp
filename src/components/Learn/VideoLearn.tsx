@@ -13,7 +13,7 @@ type videoProps = {
 const VideoLearn : React.FC<videoProps> = ({titreText, videoLink}) => {
 
 return (
-    <div className ="LearnBox">
+    <div className ="learn-box">
         <h3>{titreText}</h3>
         <IonImg src={videoLink} />
     </div>
