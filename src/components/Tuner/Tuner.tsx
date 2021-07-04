@@ -13,8 +13,6 @@ import {
   IonInput,
   IonItem,
   IonLabel,
-  IonImg,
-  IonContent,
 } from "@ionic/react";
 
 import "./Tuner.css";
@@ -22,53 +20,40 @@ import { fetchTemperaments } from "../../engine/DataAccessor";
 import { TemperamentDBType } from "../../engine/DB";
 import PitchCircle from "./PitchCircle";
 import SoundEngine from "../../engine/SoundEngine";
-import HeaderPage from "../Header/HeaderPage";
-import TunerModal from "./TunerModal";
+import EqualTemperament from "../../model/Temperament/Equal";
 
-const Tuner: React.FC = () => {
-  const [temperament, setTemperament] = useState<TemperamentDBType>({
-    idTemperament: 1,
-    name: "Equal",
-    nameFR: "Égal",
-  });
-  const [temperamentsList, setTemperamentsList] = useState<
-    Array<TemperamentDBType>
-  >([]);
+type TunerProps = {
+  setMainTitle: (t: string) => void,
+}
+
+const Tuner: React.FC<TunerProps> = ({
+  setMainTitle,
+}) => {
+
+  const [temperament, setTemperament] = useState<TemperamentDBType>(EqualTemperament);
+  const [temperamentsList, setTemperamentsList] = useState<TemperamentDBType[]>([]);
   const [freqA4, setFreqA4] = useState<number>(440);
   const [isMuted, setIsMuted] = useState<boolean>(true);
   const [isHzMode, setIsHzMode] = useState<boolean>(true);
-  const [showModal, setShowModal] = useState(false);
 
-  const fetchTemperamentsList = async () => {
-    const temperaments = await fetchTemperaments();
-    setTemperamentsList(temperaments);
-  };
+  useEffect(() => {
+    setMainTitle(isHzMode ? "Pitch pipe" : "Battements")
+  }, [isHzMode, setMainTitle]);
 
   useEffect(() => {
     SoundEngine.volume(isMuted ? -128 : -24);
   }, [isMuted]);
 
   useEffect(() => {
-    fetchTemperamentsList();
+    (async () => {
+      setTemperamentsList(await fetchTemperaments());
+    })();
   }, []);
 
   return (
-    <>
-      <HeaderPage
-        doubleTitle={true}
-        buttonModal={true}
-        buttonModalsubText={`${isHzMode ? "Pitch pipe" : "Battements"}`}
-        buttonReturn={false}
-        buttonModalText="Accordeur"
-        setShowModal={setShowModal}
-      />
-      <IonContent fullscreen scrollY={false}>
-        <TunerModal
-          showModal={showModal}
-          setShowModal={setShowModal}
-        />
-        <IonGrid className="ion-padding-horizontal">
-          <IonRow className="ion-justify-content-between ion-align-items-end">
+    <div className="h-full flex content-around flex-wrap">
+        <IonGrid className="px-5">
+          <IonRow className="pt-3">
             <IonCol size="6">
               <IonSelect
                 value={temperament}
@@ -99,84 +84,22 @@ const Tuner: React.FC = () => {
           </IonRow>
         </IonGrid>
 
-        <IonRow className="ion-padding-horizontal ion-justify-content-center">
+        <section className="w-full">
           <PitchCircle
             isHzMode={isHzMode}
             freqA4={freqA4}
             idTemperament={temperament.idTemperament}
           />
-        </IonRow>
+        </section>
 
-        <IonGrid className="ion-padding-horizontal">
-          <IonRow className="grid-button-bottom">
+        <IonGrid>
+          <IonRow className="items-center">
             <IonCol size="2" offset="1">
               <IonButton className="buttonFixed">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 100 100"
-                  height="100mm"
-                  width="100mm"
-                >
-                  <circle
-                    cx="50.271"
-                    cy="54.051"
-                    r="34.059"
-                    fill="var(--color-button)"
-                  />
-                  <g
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke="#f5fbfb"
-                    stroke-width="11.67"
-                  >
-                    <path
-                      d="M44.911 49.544l4.845.364M44.806 49.432l-.09-4.858"
-                      stroke-width="2.8386108"
-                    />
-                  </g>
-                  <g
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke="var(--color-inner-button)"
-                    stroke-width="11.67"
-                  >
-                    <path
-                      d="M45.467 67.584l.11-4.857M45.361 67.695l-4.846.346"
-                      stroke-width="2.8386108"
-                    />
-                  </g>
-                  <ellipse
-                    cy="39.433"
-                    cx="-57.186"
-                    rx="5.541"
-                    ry="5.542"
-                    transform="scale(-1 1)"
-                    fill="none"
-                    stroke="var(--color-inner-button)"
-                    stroke-width="3.715"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
-                  <path
-                    d="M53.642 69.085l3.475 5.11 7.113-9.322"
-                    fill="none"
-                    stroke="var(--color-inner-button)"
-                    stroke-width="3.649"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
-                  <circle
-                    cx="-34.924"
-                    cy="57.141"
-                    r="5.641"
-                    transform="scale(-1 1)"
-                    fill="none"
-                    stroke="var(--color-inner-button)"
-                    stroke-width="3.649"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
-                </svg>
+                <IonIcon
+                  style={{fontSize: "3rem"} /* TODO Find a better way */}
+                  src="/assets/logotypes/icon-tuning-procedure.svg"
+                />
               </IonButton>
             </IonCol>
             <IonCol size="2" offset="1.5">
@@ -186,11 +109,11 @@ const Tuner: React.FC = () => {
                 onClick={() => setIsMuted(!isMuted)}
               >
                 <IonIcon
-                  src={` ${
+                  src={
                     isMuted
                       ? "/assets/logotypes/icon-mute.svg"
                       : "/assets/logotypes/icon-sound.svg"
-                  }`}
+                  }
                   slot="icon-only"
                 />
               </IonButton>
@@ -213,8 +136,7 @@ const Tuner: React.FC = () => {
             </IonCol>
           </IonRow>
         </IonGrid>
-      </IonContent>
-    </>
+    </div>
   );
 };
 

@@ -43,7 +43,6 @@ import Sheets from './components/Sheets/Sheets';
 import SheetsTemperament from './components/Sheets/SheetsTemperament';
 import LearnSheet from './components/Learn/LearnSheet';
 import Learn from './components/Learn/Learn';
-import Page from './pages/Page/Page';
 
 /* SQLite */
 export let sqlite: any; // singleton
@@ -84,7 +83,6 @@ const App: React.FC = () => {
       <IonReactRouter>
         <IonTabs>
           <IonRouterOutlet>
-            <Route exact path="/page" children={<Page/>} />
             <Route exact path="/tune" children={<Tune />} />
             <Route exact path="/compare" children={<Compare />} />
             <Route exact path="/home" children={<Home />} />

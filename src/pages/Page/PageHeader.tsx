@@ -23,8 +23,8 @@ const PageHeader: React.FC<PageHeaderProps> = ({
     <>
       <div className="ph-content h-20 px-6 pb-0">
         <div className="ph-titles">
-          <h3>{mainTitle}</h3>
-          <h2>{subTitle}</h2>
+          <h3>{subTitle}</h3>
+          <h2>{mainTitle}</h2>
         </div>
         { btnShowModal }
       </div>
