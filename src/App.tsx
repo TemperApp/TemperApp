@@ -39,7 +39,7 @@ import "./App.css";
 
 /* Fonction Engine */
 import DB from './engine/DB';
-import Sheets from './components/Sheets/Sheets';
+import Sheets from './pages/Sheets';
 import SheetsTemperament from './components/Sheets/SheetsTemperament';
 import LearnSheet from './components/Learn/LearnSheet';
 import Learn from './components/Learn/Learn';
@@ -95,7 +95,7 @@ const App: React.FC = () => {
             <Route exact path="/" children={<Redirect to="/home" />} />
           </IonRouterOutlet>
           <IonTabBar slot="bottom">
-            <IonTabButton tab="tune" href="/tune" >
+            <IonTabButton tab="tune" href="/tune">
               <IonIcon
                 src="/assets/logotypes/icon-diapason-grey.svg"
                 class="icon-light"

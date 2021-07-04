@@ -17,7 +17,7 @@
   background: var(--ion-background-color);
 }
 
-.my-header-class {
+.rc-collapse-header {
   font-family: "Nunito", sans-serif;
   color: var(--ion-text-color) !important;
   text-transform: uppercase;
