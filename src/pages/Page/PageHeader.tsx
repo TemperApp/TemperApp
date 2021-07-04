@@ -1,17 +1,24 @@
+import { IonIcon } from "@ionic/react";
 import React from "react";
+import { useHistory } from "react-router";
 import './PageHeader.css'
 
 type PageHeaderProps = {
   mainTitle?: string,
   subTitle?: string,
   onShowModal?: (event: any) => void,
+  canGoBack?: boolean,
+  children?: React.ReactNode,
 }
 
 const PageHeader: React.FC<PageHeaderProps> = ({
   mainTitle = '',
   subTitle = '',
-  onShowModal
+  onShowModal,
+  canGoBack = false,
+  children = null,
 }) => {
+  const history = useHistory();
 
   const btnShowModal = (onShowModal !== undefined)
     ? (<button
@@ -19,6 +26,18 @@ const PageHeader: React.FC<PageHeaderProps> = ({
         onClick={onShowModal}
       />)
     : null;
+
+  const btnGoBack = (canGoBack)
+      ? (<button
+          className="btn-go-back h-10 w-10"
+          onClick={() => history.goBack()}
+        >
+          <IonIcon
+            src="../../assets/logotypes/icon-back.svg"
+            size="large"
+          ></IonIcon>
+        </button>)
+      : null;
 
   return (
     <>
@@ -28,6 +47,8 @@ const PageHeader: React.FC<PageHeaderProps> = ({
           <h2>{mainTitle}</h2>
         </div>
         {btnShowModal}
+        {btnGoBack}
+        {children}
       </div>
       <hr />
     </>
