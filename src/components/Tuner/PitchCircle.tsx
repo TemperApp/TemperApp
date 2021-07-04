@@ -1,6 +1,4 @@
 import React, { useEffect, useState } from 'react';
-
-import NonClickablePitchCircleSVG from './nonClickable/NonClickablePitchCircleSVG';
 import PitchCircleSVG from './clickable/PitchCircleSVG';
 
 export enum TunerMode{
@@ -31,14 +29,6 @@ const PitchCircle: React.FC<PitchCircleProps> = ({
         idTemperament = {idTemperament}
       />
     </div>
-    /*
-    <NonClickablePitchCircleSVG 
-      tunerMode = {tunerMode}
-      freqA4 = {freqA4}
-      idTemperament = {idTemperament}
-      centerCircle = {false}
-    />
-    */
   );
 };
 

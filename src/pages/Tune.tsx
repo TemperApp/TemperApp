@@ -6,7 +6,7 @@ import Tuner from "../components/Tuner/Tuner";
 
 const TuneModalContent: React.FC = () => (
   <>
-    <h4>Qualité des quintes et des tierces</h4>
+    <h2>Qualité des quintes et des tierces</h2>
     <p>
       Le visuel TemperApp vous permet de prévoir en un coup d’oeil la
       sonorité de tous les accords majeurs dans le tempérament
@@ -18,18 +18,18 @@ const TuneModalContent: React.FC = () => (
       sont représentées par une couleur. Les tierces sont représentées à
       l’extérieur du cycle, les quintes à l’intérieur.
     </p>
-    <IonGrid>
-      <IonRow className="ion-align-items-center ion-justify-content-evenly">
-        <IonCol size="5" className="tunerModalCircleContainer">
-          <div id="tunerModalThirdCircle"></div>
-          <p>TIERCE</p>
-        </IonCol>
-        <IonCol size="5" className="tunerModalCircleContainer">
-          <div id="tunerModalFifthCircle"></div>
-          <p>QUINTE</p>
-        </IonCol>
-      </IonRow>
-    </IonGrid>
+    <div className="flex justify-center items-center">
+      <div
+        className="h-12 w-12 mr-4 rounded-full"
+        style={{border: "2px solid var(--color-contrast)"}}/>
+      <div
+        className="mr-8">Tierce</div>
+      <div
+        className="h-6 w-6 mr-4 rounded-full"
+        style={{border: "2px solid var(--color-contrast)"}}/>
+      <div
+        className="">Quinte</div>
+    </div>
   </>
 );
 
@@ -40,7 +40,7 @@ type TuneProps = {
 }
 
 const Tune: React.FC<TuneProps> = ({
-  mainTitle = 'Pitch Pipe',
+  mainTitle = '',
   subTitle = 'Accordeur',
   modalTitle = 'Aide · Accordeur',
 }) => {

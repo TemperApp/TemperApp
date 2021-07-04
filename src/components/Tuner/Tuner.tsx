@@ -1,20 +1,11 @@
-import React from "react";
-import { useState, useEffect } from "react";
-import "../App/Modal.css";
-
+import React, { useState, useEffect } from "react";
 import {
-  IonGrid,
-  IonCol,
-  IonRow,
   IonButton,
   IonIcon,
   IonSelect,
   IonSelectOption,
   IonInput,
-  IonItem,
-  IonLabel,
 } from "@ionic/react";
-
 import "./Tuner.css";
 import { fetchTemperaments } from "../../engine/DataAccessor";
 import { TemperamentDBType } from "../../engine/DB";
@@ -52,38 +43,35 @@ const Tuner: React.FC<TunerProps> = ({
 
   return (
     <div className="h-full flex content-around flex-wrap">
-        <IonGrid className="px-5">
-          <IonRow className="pt-3">
-            <IonCol size="6">
-              <IonSelect
-                value={temperament}
-                placeholder="Tempérament"
-                onIonChange={(e) => setTemperament(e.detail.value)}
-              >
-                {temperamentsList.map((t: TemperamentDBType) => (
-                  <IonSelectOption key={t.idTemperament} value={t}>
-                    {t.nameFR}
-                  </IonSelectOption>
-                ))}
-              </IonSelect>
-            </IonCol>
-            <IonCol size="6" className="frequency-selector">
-              <IonItem>
-                <IonLabel className="input-label">
-                  <h5>A4 (Hz)</h5>
-                </IonLabel>
+      {/* Temperament and A4 freq inputs */}
+          <div className="pt-3 px-4 w-full flex items-center justify-between">
+            <IonSelect
+              className="flex-grow"
+              value={temperament}
+              placeholder="Tempérament"
+              onIonChange={(e) => setTemperament(e.detail.value)}
+            >
+              {temperamentsList.map((t: TemperamentDBType) => (
+                <IonSelectOption key={t.idTemperament} value={t}>
+                  {t.nameFR}
+                </IonSelectOption>
+              ))}
+            </IonSelect>
+            <div className="ml-4 flex items-center flex-shrink-0">
+                <span>A4 (Hz)</span>
                 <IonInput
+                  id="input-a4"
+                  className="w-16 ml-1"
                   type="number"
                   min="300"
                   max="500"
                   value={freqA4}
                   onIonChange={(e) => setFreqA4(Number(e.detail.value))}
                 ></IonInput>
-              </IonItem>
-            </IonCol>
-          </IonRow>
-        </IonGrid>
+            </div>
+          </div>
 
+      {/* Pitch circle buttons and wheels */}
         <section className="w-full">
           <PitchCircle
             isHzMode={isHzMode}
@@ -92,20 +80,21 @@ const Tuner: React.FC<TunerProps> = ({
           />
         </section>
 
-        <IonGrid>
-          <IonRow className="items-center">
-            <IonCol size="2" offset="1">
+      {/* Buttons at the bottom */}
+          <section className="w-full px-5 flex justify-between items-center">
+            <div className="w-20">
               <IonButton className="buttonFixed">
                 <IonIcon
                   style={{fontSize: "3rem"} /* TODO Find a better way */}
                   src="/assets/logotypes/icon-tuning-procedure.svg"
                 />
               </IonButton>
-            </IonCol>
-            <IonCol size="2" offset="1.5">
+            </div>
+            <div>
               <IonButton
                 size="large"
                 fill="clear"
+                style={{"--ripple-color": "transparent"}}
                 onClick={() => setIsMuted(!isMuted)}
               >
                 <IonIcon
@@ -117,25 +106,24 @@ const Tuner: React.FC<TunerProps> = ({
                   slot="icon-only"
                 />
               </IonButton>
-            </IonCol>
-            <IonCol className="btn-mode" offset="2">
+            </div>
+            <div className="w-20 btn-mode">
               <IonButton
                 onClick={() => setIsHzMode(false)}
-                className={`btn-mode-bpm ion-no-margin ion-text-lowercase
-                  ${!isHzMode ? "btn-mode-activated" : ""}`}
+                className={`btn-mode-bpm m-0
+                  ${!isHzMode ? " btn-mode-activated" : ""}`}
               >
                 bpm
               </IonButton>
               <IonButton
                 onClick={() => setIsHzMode(true)}
-                className={`btn-mode-tuningfork ion-no-margin ion-text-capitalize
-                  ${isHzMode ? "btn-mode-activated" : ""}`}
+                className={`btn-mode-hz m-0
+                  ${isHzMode ? " btn-mode-activated" : ""}`}
               >
                 Hz
               </IonButton>
-            </IonCol>
-          </IonRow>
-        </IonGrid>
+            </div>
+          </section>
     </div>
   );
 };

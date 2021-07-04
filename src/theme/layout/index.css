@@ -2,6 +2,7 @@
 @import 'height-width.css';
 @import 'position.css';
 @import 'flex.css';
+@import 'border.css';
 
 .text-left {
   text-align: left;

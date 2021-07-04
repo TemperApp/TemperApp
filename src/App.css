@@ -170,21 +170,17 @@ ion-select {
 }
 
 ion-select::part(text) {
-  font-family: "Nunito Sans";
   font-style: normal;
   font-weight: normal;
-  font-size: 13px;
+  font-size: 1rem;
   line-height: 19px;
-  text-transform: uppercase;
 }
 
 ion-select::part(placeholder) {
-  --font-family: "Nunito Sans";
   --placeholder-font-style: normal;
   --placeholder-font-weight: normal;
-  font-size: 13px;
+  font-size: 1rem;
   line-height: 19px;
-  text-transform: uppercase;
   --placeholder-color: var(--color-hover);
   color: var(--color-contrast);
 }

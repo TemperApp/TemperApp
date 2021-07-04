@@ -1,11 +1,3 @@
-/*.btn-start-procedure {
-  --border-radius: 500px;
-  --padding-end: 10px;
-  --padding-start: 10px;
-  --background: none;
-  font-size: 40px;
-}*/
-
 .btn-mode {
   margin: 0;
   padding: 0;
@@ -14,9 +6,10 @@
 }
 
 .btn-mode .btn-mode-bpm,
-.btn-mode .btn-mode-tuningfork {
+.btn-mode .btn-mode-hz {
   --background: var(--ion-background-color);
   --color: var(--color-button);
+  text-transform: none;
 }
 
 .btn-mode .btn-mode-bpm {
@@ -24,76 +17,28 @@
   width: 40px;
 }
 
-.btn-mode .btn-mode-tuningfork {
+.btn-mode .btn-mode-hz {
   --border-radius: 0 500px 500px 0;
   width: 40px;
 }
 
 .btn-mode-bpm.btn-mode-activated,
-.btn-mode-tuningfork.btn-mode-activated {
+.btn-mode-hz.btn-mode-activated {
   --background: var(--color-light-grey);
   --box-shadow: inset 0.5px 0.5px 2px #0003;
   --color: var(--color-contrast) !important;
 }
 
-#tunerModalFifthCircle {
-  margin-top: auto;
-  margin-bottom: auto;
-  width: 25px;
-  height: 25px;
-  border: 2px solid var(--color-contrast);
-  border-radius: 50px;
-}
-
-#tunerModalThirdCircle {
-  margin-top: auto;
-  margin-bottom: auto;
-  width: 50px;
-  height: 50px;
-  border: 2px solid var(--color-contrast);
-  border-radius: 50px;
-}
-
-.tunerModalCircleContainer p {
-  padding-left: 10px;
-}
-
-.tunerModalCircleContainer {
-  display: flex;
-  flex-direction: row;
-}
-
-.frequency-selector {
-  width: 40vw;
-  margin-left: 0;
-  margin-right: auto;
-  padding: 0;
-  display: flex;
-  flex-wrap: nowrap;
-}
-
-input-wrapper {
-  display: flex;
-  flex-direction: row;
-}
-
-ion-input {
+#input-a4 {
+  padding-left: 0.5rem !important;
+  height: 2rem;
   border-radius: 8px;
-  font-size: 1rem;
-  --padding: 0.5rem;
-  margin-left: 1rem;
-  box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.25);
-  font-size: 13px !important;
-  line-height: 19px;
+  font-size: 0.9rem !important;
   text-transform: uppercase;
   color: var(--color-contrast) !important;
-  height: 2rem;
   box-shadow: var(--color-shadow);
 }
 
-.item-interactive {
-  --border-width: 0 0 0px 0;
-  --inner-border-width: 0;
-  --show-inset-highlight: 0;
-  --highlight-background: transparent !important;
+#input-a4 input {
+  padding-left: 0;
 }
