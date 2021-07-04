@@ -48,11 +48,11 @@ import Learn from './components/Learn/Learn';
 export let sqlite: any; // singleton
 
 const App: React.FC = () => {
-  
-  const {echo, getPlatform, createConnection, closeConnection,
+
+  const { echo, getPlatform, createConnection, closeConnection,
     retrieveConnection, retrieveAllConnections, closeAllConnections,
     addUpgradeStatement, importFromJson, getDatabaseList, isDatabase, isJsonValid, copyFromAssets,
-    isAvailable} = useSQLite();
+    isAvailable } = useSQLite();
 
   useEffect(() => {
     sqlite = {
@@ -89,9 +89,9 @@ const App: React.FC = () => {
             <Route exact path="/sheets" children={<Sheets />} />
             <Route exact path="/learn" children={<Learn />} />
 
-            <Route path="/sheets/temperament/:id" children={<SheetsTemperament/>} />
-            <Route path="/learn/:id" children={<LearnSheet />}/>
-            
+            <Route path="/sheets/temperament/:id" children={<SheetsTemperament />} />
+            <Route path="/learn/:id" children={<LearnSheet />} />
+
             <Route exact path="/" children={<Redirect to="/home" />} />
           </IonRouterOutlet>
           <IonTabBar slot="bottom">

@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import PitchCircleSVG from './clickable/PitchCircleSVG';
 
-export enum TunerMode{
+export enum TunerMode {
   HZ, BPM
 }
 
 type PitchCircleProps = {
   isHzMode: boolean,
   freqA4: number,
-  idTemperament : number
+  idTemperament: number
 };
 
 const PitchCircle: React.FC<PitchCircleProps> = ({
@@ -24,9 +24,9 @@ const PitchCircle: React.FC<PitchCircleProps> = ({
   return (
     <div className="flex justify-center">
       <PitchCircleSVG
-        tunerMode = {tunerMode}
-        freqA4 = {freqA4}
-        idTemperament = {idTemperament}
+        tunerMode={tunerMode}
+        freqA4={freqA4}
+        idTemperament={idTemperament}
       />
     </div>
   );

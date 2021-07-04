@@ -18,11 +18,11 @@ const Page: React.FC<PageProps> = ({
   modalContent = null,
   children = null,
 }) => {
-  const [_mainTitle, setMainTitle] = useState(mainTitle);
-  const [_subTitle, setSubTitle] = useState(subTitle);
-  const [_modalTitle, setModalTitle] = useState(modalTitle);
+  const [_mainTitle,] = useState(mainTitle);
+  const [_subTitle,] = useState(subTitle);
+  const [_modalTitle,] = useState(modalTitle);
   const [showModal, setShowModal] = useState(false);
-  
+
   return (
     <IonPage>
       <IonHeader className="ion-no-border">

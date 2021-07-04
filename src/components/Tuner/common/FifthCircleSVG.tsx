@@ -1,9 +1,8 @@
 import React from 'react';
 import { convertFifthQualityToColor } from '../../../utils/colorCircle';
 
+const FifthCircleSVG: React.FC<{ qualities: { [key: string]: number | null } }> = ({ qualities }) => {
 
-const FifthCircleSVG: React.FC<{qualities: {[key: string]: number|null}}> = ({qualities}) => {
-  
   return (
     <>
       <g id="Fifth">

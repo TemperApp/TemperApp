@@ -1,5 +1,4 @@
 import React from "react";
-import { IonBackButton, IonHeader } from "@ionic/react";
 import './PageHeader.css'
 
 type PageHeaderProps = {
@@ -11,7 +10,7 @@ type PageHeaderProps = {
 const PageHeader: React.FC<PageHeaderProps> = ({
   mainTitle, subTitle, onShowModal
 }) => {
-  
+
   const btnShowModal = (onShowModal !== undefined)
     ? (<button
         className="btn-show-modal h-10 w-10"
@@ -26,10 +25,11 @@ const PageHeader: React.FC<PageHeaderProps> = ({
           <h3>{subTitle}</h3>
           <h2>{mainTitle}</h2>
         </div>
-        { btnShowModal }
+        {btnShowModal}
       </div>
       <hr />
     </>
-)};
+  )
+};
 
 export default PageHeader;

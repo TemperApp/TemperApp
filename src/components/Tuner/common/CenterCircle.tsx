@@ -13,20 +13,20 @@ import "./CenterCircle.css";
 const isBpm = true;
 const refOctave = 4;
 
-export const notesToStr = (note : Notes) => {
+export const notesToStr = (note: Notes) => {
   switch (note) {
-    case Notes.B_flat:  return "B♭";
-    case Notes.E_flat:  return "E♭";
+    case Notes.B_flat: return "B♭";
+    case Notes.E_flat: return "E♭";
     case Notes.G_sharp: return "G♯";
     case Notes.C_sharp: return "C♯";
-    case Notes.F_sharp: return "F♯" ;  
+    case Notes.F_sharp: return "F♯";
     default: return note;
   }
 };
 
 const beatToStr = (bps: number, isBpm = false) => {
   if (isBpm) {
-    const bpm = bps*60;
+    const bpm = bps * 60;
     return (bpm > 600)
       ? '> 600 bpm'
       : (bpm > 200)
@@ -63,7 +63,7 @@ const CenterCircle: React.FC<PitchCircleSVGProps> = ({
         heardFreq /= 2;
       SoundEngine.stopAndPlay(heardFreq);
     }
-      
+
     const cFreq = document.getElementById("centerCircleFrequency")!;
 
     cFreq.innerHTML = (beat.modulationFreq)
@@ -86,10 +86,10 @@ const CenterCircle: React.FC<PitchCircleSVGProps> = ({
     }
 
     if (!isIdle0 && isIdle1) {
-      cNote.innerHTML = notesToStr(actives[0].note!) 
+      cNote.innerHTML = notesToStr(actives[0].note!)
         + (refOctave + (isOctave0 ? -1 : 0));
 
-      cFreq.innerHTML = (frequencies[actives[0].note!] 
+      cFreq.innerHTML = (frequencies[actives[0].note!]
         * (isOctave0 ? 0.5 : 1)).toFixed(1) + " Hz";
     }
 
@@ -112,13 +112,13 @@ const CenterCircle: React.FC<PitchCircleSVGProps> = ({
 
   return (
     <g id="CenterCercleInformation">
-      <circle className="st29" fill={(Settings.darkTheme())?("#233C3A"):"#F7FBFC"} cx="178.5" cy="178.5" r="77.13" />
+      <circle className="st29" fill={(Settings.darkTheme()) ? ("#233C3A") : "#F7FBFC"} cx="178.5" cy="178.5" r="77.13" />
       <text transform="matrix(1 0 0 1 178.5 178.5)" className="st25 st30">
-        <tspan 
+        <tspan
           x="0" className="st30"
           textAnchor="middle" id="centerCircleNote">
         </tspan>
-        <tspan 
+        <tspan
           x="0" className="st31"
           textAnchor="middle" id="centerCircleFrequency"
           dy="30">
