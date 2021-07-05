@@ -20,6 +20,8 @@ import { TunerMode } from '../PitchCircle';
 
 //Styles 
 import "../common/PitchCircleSVG.css";
+import * as Tone from 'tone';
+
 
 export enum NoteStates {
   IDLE,
@@ -170,11 +172,26 @@ const NonClickablePitchCircleSVG: React.FC<NonClickablePitchCircleSVGProps> = ({
         )
         setStates(note1!, note1_octave);
         setStates(note2!, note2_octave);
+
       }
       console.log(actives);
     }
   },[stepProcedure])
 
+  useEffect(() => {
+    const freq1 = (actives[0].note === null)
+      ? 0
+      : frequencies[actives[0].note]
+        * (actives[0].state === NoteStates.OCTAVE ? 2 : 1);
+      (actives[0].note !== null)
+      ? SoundEngine.stopAndPlay(freq1)
+      : SoundEngine.stop();
+    const timer = setTimeout(() => {
+      SoundEngine.stop();
+      console.log('This will run after 1 second!')
+    }, 1000);
+    return () => clearTimeout(timer);
+  }, [stepProcedure]);
 
   // FIN TAMBOUILLE BENJAMIN
 
@@ -189,6 +206,7 @@ const NonClickablePitchCircleSVG: React.FC<NonClickablePitchCircleSVGProps> = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [freqA4]);
 
+  /* 
   useEffect(() => {
     // Play sound
     const freq1 = (actives[0].note === null)
@@ -209,7 +227,7 @@ const NonClickablePitchCircleSVG: React.FC<NonClickablePitchCircleSVGProps> = ({
       ? SoundEngine.setPulseBPS(Math.abs(freq1 - freq2))
       : SoundEngine.setPulseBPS(0);
   }, [actives, frequencies]);
-
+*/
   // Clean states
   for (const note in states) {
     const n = note as Notes;
