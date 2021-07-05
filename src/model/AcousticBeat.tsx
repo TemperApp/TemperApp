@@ -20,16 +20,16 @@ export const processAcousticBeat = (
   let beatFreqX, beatFreqY;
   if (Note.isInterval(lowest, highest, PitchInterval.MAJ3)) {
     // Ratio between two notes is 5/4 for a major 3rd
-    beatFreqX = 5*lowest.freq(freqA4, deviations);
-    beatFreqY = 4*highest.freq(freqA4, deviations);
+    beatFreqX = 5 * lowest.freq(freqA4, deviations);
+    beatFreqY = 4 * highest.freq(freqA4, deviations);
   } else if (Note.isInterval(lowest, highest, PitchInterval.FIFTH)) {
     // Ratio between two notes is 3/2 for a 5th
-    beatFreqX = 3*lowest.freq(freqA4, deviations);
-    beatFreqY = 2*highest.freq(freqA4, deviations);
+    beatFreqX = 3 * lowest.freq(freqA4, deviations);
+    beatFreqY = 2 * highest.freq(freqA4, deviations);
   } else if (Note.isInterval(lowest, highest, PitchInterval.FOURTH)) {
     // Ratio between two notes is 4/3 for a 4th
-    beatFreqX = 4*lowest.freq(freqA4, deviations);
-    beatFreqY = 3*highest.freq(freqA4, deviations);
+    beatFreqX = 4 * lowest.freq(freqA4, deviations);
+    beatFreqY = 3 * highest.freq(freqA4, deviations);
   } else {
     return {
       carrierFreq: null,

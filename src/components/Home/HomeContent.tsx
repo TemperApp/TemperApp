@@ -1,4 +1,4 @@
-/* eslint-disable eqeqeq */
+import React from "react";
 import "rc-collapse/assets/index.css";
 import Collapse, { Panel } from "rc-collapse";
 import collapseMotion from "../../utils/collapseMotion";

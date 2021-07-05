@@ -1,3 +1,4 @@
+import React from "react";
 import {
   IonCol,
   IonGrid,
@@ -7,8 +8,6 @@ import {
   IonRow,
   IonToolbar,
 } from "@ionic/react";
-import { arrowBackOutline } from "ionicons/icons";
-import React from "react";
 
 type headerProps = {
   doubleTitle: boolean;

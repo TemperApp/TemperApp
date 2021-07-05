@@ -1,5 +1,5 @@
-import { IonImg } from '@ionic/react';
 import React from 'react';
+import { IonImg } from '@ionic/react';
 import "../../pages/Learn.css"
 
 type diagramProps = {

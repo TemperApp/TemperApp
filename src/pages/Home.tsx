@@ -11,7 +11,7 @@ import {
 } from "@ionic/react";
 import "./Home.css";
 import HomeContent from "../components/Home/HomeContent";
-import ParameterModal from "../components/Home/ParameterModal";
+import SettingsModal from "../components/Home/SettingsModal";
 import Settings from "../engine/Settings";
 
 const Home: React.FC = () => {
@@ -34,7 +34,7 @@ const Home: React.FC = () => {
                 />
               </IonCol>
               <IonCol size="2" className="text-center">
-                <ParameterModal />
+                <SettingsModal />
               </IonCol>
             </IonRow>
           </IonGrid>

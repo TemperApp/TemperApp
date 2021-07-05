@@ -39,7 +39,7 @@ const Sheet: React.FC<SheetProps> = ({
               src="/assets/logotypes/bookmark.svg"
             />
           </div>
-          
+
           <div className="pt-3">
             {children}
           </div>

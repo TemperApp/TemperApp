@@ -1,5 +1,5 @@
-import { IonCol, IonGrid, IonRow, IonSelect, IonSelectOption } from '@ionic/react';
 import React, { useEffect, useState } from 'react';
+import { IonCol, IonGrid, IonRow, IonSelect, IonSelectOption } from '@ionic/react';
 import { fetchTemperaments } from '../../engine/DataAccessor';
 import { TemperamentDBType } from '../../engine/DB';
 
@@ -9,8 +9,8 @@ import ComparatorSVG from './ComparatorSVG';
 
 const Comparator: React.FC = () => {
 
-  const [temperament1, setTemperament1] = useState<TemperamentDBType>({idTemperament: 1, name: "Equal", nameFR: "Égal"});
-  const [temperament2, setTemperament2] = useState<TemperamentDBType>({idTemperament: 1, name: "Equal", nameFR: "Égal"});
+  const [temperament1, setTemperament1] = useState<TemperamentDBType>({ idTemperament: 1, name: "Equal", nameFR: "Égal" });
+  const [temperament2, setTemperament2] = useState<TemperamentDBType>({ idTemperament: 1, name: "Equal", nameFR: "Égal" });
   const [temperamentsList, setTemperamentsList] = useState<Array<TemperamentDBType>>([]);
 
   useEffect(() => {

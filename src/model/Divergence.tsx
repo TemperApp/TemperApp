@@ -11,7 +11,7 @@ import NotesMap, { mapNotesMap } from "./Note/NotesMap";
  */
 export const cpExp5thStrToNumber = (cpExp5th: string): number | null => {
   const match = cpExp5th.trim()
-      .match(/^[+-]?0+$|^([+-])?([0-9]+)\/(([0-9]*[.])?[0-9]+)$/) as any[];
+    .match(/^[+-]?0+$|^([+-])?([0-9]+)\/(([0-9]*[.])?[0-9]+)$/) as any[];
   if (!match) {
     console.warn(`[Model]: Cannot parse cpExp5th string: ${cpExp5th}`);
     return null;
@@ -20,8 +20,8 @@ export const cpExp5thStrToNumber = (cpExp5th: string): number | null => {
     return 0;
   const [, sign, numerator, denominator] = match;
   return (
-    (!sign ? -1 : (sign === '+' ? 1 : -1 ))
-    * numerator/denominator * 12);
+    (!sign ? -1 : (sign === '+' ? 1 : -1))
+    * numerator / denominator * 12);
 };
 
 
@@ -36,7 +36,7 @@ export const cpExp5thStrToNumber = (cpExp5th: string): number | null => {
  */
 export const csExp3rdStrToNumber = (csExp3rd: string): number | null => {
   const match = csExp3rd.trim()
-      .match(/^[+-]?0+$|^([+-])?([0-9]+)\/11$/) as any[];
+    .match(/^[+-]?0+$|^([+-])?([0-9]+)\/11$/) as any[];
 
   if (!match) {
     console.warn(`[Model]: Cannot parse csExp3rd string: ${csExp3rd}`);
@@ -46,7 +46,7 @@ export const csExp3rdStrToNumber = (csExp3rd: string): number | null => {
     return 0;
   const [, sign, numerator] = match;
   return (
-    (!sign ? 1 : (sign === '+' ? 1 : -1 ))
+    (!sign ? 1 : (sign === '+' ? 1 : -1))
     * numerator);
 };
 
@@ -60,22 +60,22 @@ export const csExp3rdStrToNumber = (csExp3rd: string): number | null => {
  *                  relative to the equal temperament
  * @returns a NotesMap of frequencies for the 4th octave
  */
- export const freqs4 = (
+export const freqs4 = (
   A4 = 440,
   deviations = mapNotesMap(0)
 ): NotesMap<number> => ({
-  C       : A4 * Math.pow(2, -9/12) * Math.pow(2, (deviations.C       / 1200)),
-  C_sharp : A4 * Math.pow(2, -8/12) * Math.pow(2, (deviations.C_sharp / 1200)),
-  D       : A4 * Math.pow(2, -7/12) * Math.pow(2, (deviations.D       / 1200)),
-  E_flat  : A4 * Math.pow(2, -6/12) * Math.pow(2, (deviations.E_flat  / 1200)),
-  E       : A4 * Math.pow(2, -5/12) * Math.pow(2, (deviations.E       / 1200)),
-  F       : A4 * Math.pow(2, -4/12) * Math.pow(2, (deviations.F       / 1200)),
-  F_sharp : A4 * Math.pow(2, -3/12) * Math.pow(2, (deviations.F_sharp / 1200)),
-  G       : A4 * Math.pow(2, -2/12) * Math.pow(2, (deviations.G       / 1200)),
-  G_sharp : A4 * Math.pow(2, -1/12) * Math.pow(2, (deviations.G_sharp / 1200)),
-  A       : A4                      * Math.pow(2, (deviations.A       / 1200)),
-  B_flat  : A4 * Math.pow(2,  1/12) * Math.pow(2, (deviations.B_flat  / 1200)),
-  B       : A4 * Math.pow(2,  2/12) * Math.pow(2, (deviations.B       / 1200)),
+  C: A4 * Math.pow(2, -9 / 12) * Math.pow(2, (deviations.C / 1200)),
+  C_sharp: A4 * Math.pow(2, -8 / 12) * Math.pow(2, (deviations.C_sharp / 1200)),
+  D: A4 * Math.pow(2, -7 / 12) * Math.pow(2, (deviations.D / 1200)),
+  E_flat: A4 * Math.pow(2, -6 / 12) * Math.pow(2, (deviations.E_flat / 1200)),
+  E: A4 * Math.pow(2, -5 / 12) * Math.pow(2, (deviations.E / 1200)),
+  F: A4 * Math.pow(2, -4 / 12) * Math.pow(2, (deviations.F / 1200)),
+  F_sharp: A4 * Math.pow(2, -3 / 12) * Math.pow(2, (deviations.F_sharp / 1200)),
+  G: A4 * Math.pow(2, -2 / 12) * Math.pow(2, (deviations.G / 1200)),
+  G_sharp: A4 * Math.pow(2, -1 / 12) * Math.pow(2, (deviations.G_sharp / 1200)),
+  A: A4 * Math.pow(2, (deviations.A / 1200)),
+  B_flat: A4 * Math.pow(2, 1 / 12) * Math.pow(2, (deviations.B_flat / 1200)),
+  B: A4 * Math.pow(2, 2 / 12) * Math.pow(2, (deviations.B / 1200)),
 });
 
 
@@ -86,7 +86,7 @@ export const csExp3rdStrToNumber = (csExp3rd: string): number | null => {
  *                    No sign provided means 'plus' (+) by default
  * @returns thirds quality number value
  */
-export const thirdQ = (csExp3rdMap: NotesMap<string>): NotesMap<number|null> => (
+export const thirdQ = (csExp3rdMap: NotesMap<string>): NotesMap<number | null> => (
   mapNotesMap(csExp3rdMap, csExp3rdStrToNumber)
 );
 
@@ -98,6 +98,6 @@ export const thirdQ = (csExp3rdMap: NotesMap<string>): NotesMap<number|null> => 
  *                    No sign provided means 'minus' (-) by default
  * @returns fitfhs quality number value
  */
-export const fifthQ = (cpExp5thMap: NotesMap<string>): NotesMap<number|null> => (
+export const fifthQ = (cpExp5thMap: NotesMap<string>): NotesMap<number | null> => (
   mapNotesMap(cpExp5thMap, cpExp5thStrToNumber)
 );

@@ -1,5 +1,5 @@
-import { IonRow } from '@ionic/react';
 import React, { useEffect, useState } from 'react';
+import { IonRow } from '@ionic/react';
 import { fetchTemperamentPropsById } from '../../engine/DataAccessor';
 import EqualTemperament from '../../model/Temperament/Equal';
 import { fifthQ, thirdQ } from '../../model/Divergence';
@@ -41,22 +41,22 @@ const ComparatorSVG: React.FC<ComparatorSVGProps> = ({
     <>
       <IonRow className="ion-padding-horizontal ion-justify-content-center">
         <svg id="comparator" version="1.1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 400 400">
-          <ComparatorThirdCircle 
-            qualityNote1 = {thirdQ(tmpmt1.csExp3rd)}
-            qualityNote2 = {thirdQ(tmpmt2.csExp3rd)}
+          <ComparatorThirdCircle
+            qualityNote1={thirdQ(tmpmt1.csExp3rd)}
+            qualityNote2={thirdQ(tmpmt2.csExp3rd)}
           />
           <ComparatorNotesCircle />
-          <ComparatorFifthCircle 
-            qualityNote1 = {fifthQ(tmpmt1.cpExp5th)}
-            qualityNote2 = {fifthQ(tmpmt2.cpExp5th)}
-          />    
+          <ComparatorFifthCircle
+            qualityNote1={fifthQ(tmpmt1.cpExp5th)}
+            qualityNote2={fifthQ(tmpmt2.cpExp5th)}
+          />
         </svg>
       </IonRow>
 
-      <ComparatorDivergence 
-        temperament1 = {tmpmt1}
-        temperament2 = {tmpmt2}
-      />    
+      <ComparatorDivergence
+        temperament1={tmpmt1}
+        temperament2={tmpmt2}
+      />
 
     </>
   );

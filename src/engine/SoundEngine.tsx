@@ -8,7 +8,7 @@ class SoundEngine {
   private static instance: SoundEngine;
   private synth: Tone.AMSynth;
   private freq: number = 440; // default temp value
-  private modFreq: number = 0; 
+  private modFreq: number = 0;
 
   private constructor() {
     SoundEngine.volume(-24);
@@ -17,8 +17,8 @@ class SoundEngine {
       oscillator: {
         type: 'triangle'
       },
-      modulation : {
-        type : 'sine'
+      modulation: {
+        type: 'sine'
       },
       envelope: {
         attack: 0.005,
@@ -37,7 +37,7 @@ class SoundEngine {
     return SoundEngine.instance;
   }
 
-  
+
   public static play(freq: number): void {
     this.get().freq = freq;
     try {
@@ -68,7 +68,7 @@ class SoundEngine {
 
 
   public static setPulseBPM(pulseBPM: number): void {
-    this.setPulseBPS(pulseBPM/60);
+    this.setPulseBPS(pulseBPM / 60);
   }
 
 
@@ -79,7 +79,7 @@ class SoundEngine {
 
   private updateHarmonicity(): void {
     const carrierFreq = this.freq;
-    const harmonicity = (carrierFreq + this.modFreq) / carrierFreq - 1 ; // minus 1 because: 0 is unison, 1 is upper octave
+    const harmonicity = (carrierFreq + this.modFreq) / carrierFreq - 1; // minus 1 because: 0 is unison, 1 is upper octave
     this.synth.harmonicity.value = harmonicity;
   }
 }

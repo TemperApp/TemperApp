@@ -32,7 +32,7 @@ const useLongPress = (
 
     if (shouldPreventDefault && target.current)
       target.current.removeEventListener("touchend", preventDefault);
-    
+
   }, [shouldPreventDefault, onClick, longPressTriggered]);
 
   return {

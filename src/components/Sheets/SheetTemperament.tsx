@@ -7,8 +7,8 @@ import { useParams } from "react-router";
 import { IonButton, IonIcon } from '@ionic/react';
 
 const SheetTemperament: React.FC = () => {
-  
-  const {id} = useParams<{id: string}>();
+
+  const { id } = useParams<{ id: string }>();
   const [temperament, setTemperament] = useState<Temperament>(EqualTemperament);
 
   useEffect(() => {
@@ -17,10 +17,10 @@ const SheetTemperament: React.FC = () => {
     })();
   }, [id]);
 
-  const period="XXXe siècle"
-  const geographicalArea="Inconnu"
-  const commaticNature="X/XX de comma pythagoricien"
-  const particularity="Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum, officia? Sequi, dicta vero numquam quo eum reiciendis aliquam alias accusantium placeat fugiat recusandae officiis doloremque error ab dolores earum. Modi!"
+  const period = "XXXe siècle"
+  const geographicalArea = "Inconnu"
+  const commaticNature = "X/XX de comma pythagoricien"
+  const particularity = "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum, officia? Sequi, dicta vero numquam quo eum reiciendis aliquam alias accusantium placeat fugiat recusandae officiis doloremque error ab dolores earum. Modi!"
 
   return (
     <Sheet

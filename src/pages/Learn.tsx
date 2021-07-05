@@ -27,7 +27,7 @@ const Learn: React.FC = () => {
       routerLink: "/learn/history",
     }
   ]
-  
+
   return (
     <IonPage>
       <IonHeader className="ion-no-border">
@@ -38,7 +38,7 @@ const Learn: React.FC = () => {
 
       <IonContent fullscreen scrollY={true}>
 
-        {items.map(({label, routerLink}, idx) => (
+        {items.map(({ label, routerLink }, idx) => (
           <IonButton
             key={idx}
             className="h-28 item-btn"

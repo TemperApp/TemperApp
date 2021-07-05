@@ -55,7 +55,7 @@ export const fetchTemperamentPropsById = async (
 ): Promise<Temperament> => {
   // TODO Remove on production
   return defaultTemperaments
-  // eslint-disable-next-line eqeqeq
+    // eslint-disable-next-line eqeqeq
     .filter((t) => t.idTemperament == id)[0];
   // TODO Handle id not found
   /*

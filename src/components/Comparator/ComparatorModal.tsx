@@ -1,14 +1,13 @@
+import React from "react";
 import {
   IonCol,
   IonContent,
   IonGrid,
   IonHeader,
   IonModal,
-  IonPage,
   IonRow,
   IonToolbar,
 } from "@ionic/react";
-import React, { useState } from "react";
 
 type comparatorModalProps = {
   showModal: boolean;

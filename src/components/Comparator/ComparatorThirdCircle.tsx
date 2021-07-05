@@ -6,11 +6,11 @@ import './Comparator.css'
 import { convertThirdQualityToColor } from '../../utils/colorCircle';
 
 type ComparatorThirdCircleProps = {
-  qualityNote1: {[key: string]: number|null}
-  qualityNote2: {[key: string]: number|null}
+  qualityNote1: { [key: string]: number | null }
+  qualityNote2: { [key: string]: number | null }
 }
 
-const ComparatorThirdCircle: React.FC<ComparatorThirdCircleProps> = ({qualityNote1, qualityNote2}) => {
+const ComparatorThirdCircle: React.FC<ComparatorThirdCircleProps> = ({ qualityNote1, qualityNote2 }) => {
 
   return (
     <>
