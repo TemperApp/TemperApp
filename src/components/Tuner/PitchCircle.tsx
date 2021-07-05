@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import PitchCircleSVG from './clickable/PitchCircleSVG';
+import NonClickablePitchCircleSVG from './nonClickable/NonClickablePitchCircleSVG';
 
 export enum TunerMode {
   HZ, BPM
@@ -7,15 +8,35 @@ export enum TunerMode {
 
 type PitchCircleProps = {
   isHzMode: boolean,
+  isClickable: boolean,
   freqA4: number,
   idTemperament: number
 };
 
 const PitchCircle: React.FC<PitchCircleProps> = ({
-  isHzMode, freqA4, idTemperament
+  isHzMode, isClickable, freqA4, idTemperament
 }) => {
 
   const [tunerMode, setTunerMode] = useState(TunerMode.HZ);
+
+  const renderClickablePitchCircle = () =>{
+    return(
+    <PitchCircleSVG
+      tunerMode={tunerMode}
+      freqA4={freqA4}
+      idTemperament={idTemperament}
+    />)
+  }
+
+  const renderNonClickablePitchCircle = () =>{
+    return(
+    <NonClickablePitchCircleSVG
+      tunerMode={tunerMode}
+      freqA4={freqA4}
+      idTemperament={idTemperament}
+      centerCircle={true}
+    />)
+  }
 
   useEffect(() => {
     setTunerMode(isHzMode ? TunerMode.HZ : TunerMode.BPM);
@@ -23,11 +44,10 @@ const PitchCircle: React.FC<PitchCircleProps> = ({
 
   return (
     <div className="flex justify-center">
-      <PitchCircleSVG
-        tunerMode={tunerMode}
-        freqA4={freqA4}
-        idTemperament={idTemperament}
-      />
+      {isClickable
+        ? renderClickablePitchCircle()
+        : renderNonClickablePitchCircle()
+      }
     </div>
   );
 };

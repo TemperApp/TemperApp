@@ -18,7 +18,7 @@ import { Notes } from '../../../model/Note/enums';
 import { TunerMode } from '../PitchCircle';
 
 //Styles 
-import "../PitchCircleSVG.css";
+import "../common/PitchCircleSVG.css";
 
 export enum NoteStates {
   IDLE,

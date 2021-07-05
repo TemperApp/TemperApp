@@ -14,6 +14,7 @@ const CircleSheet: React.FC<circleProps> = ({ idTemp }) => {
         <IonRow className="ion-padding-horizontal ion-justify-content-center">
           <PitchCircle
             isHzMode={true}
+            isClickable={false}
             freqA4={440}
             idTemperament={idTemp}
           />

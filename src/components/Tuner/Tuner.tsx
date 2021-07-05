@@ -26,6 +26,7 @@ const Tuner: React.FC<TunerProps> = ({
   const [freqA4, setFreqA4] = useState<number>(440);
   const [isMuted, setIsMuted] = useState<boolean>(true);
   const [isHzMode, setIsHzMode] = useState<boolean>(true);
+  const [isClickable, setIsClickable] = useState<boolean>(true);
 
   useEffect(() => {
     setMainTitle(isHzMode ? "Pitch pipe" : "Battements")
@@ -75,6 +76,7 @@ const Tuner: React.FC<TunerProps> = ({
       <section className="w-full">
         <PitchCircle
           isHzMode={isHzMode}
+          isClickable={isClickable}
           freqA4={freqA4}
           idTemperament={temperament.idTemperament}
         />
@@ -83,10 +85,21 @@ const Tuner: React.FC<TunerProps> = ({
       {/* Buttons at the bottom */}
       <section className="w-full px-5 flex justify-between items-center">
         <div className="w-20">
-          <IonButton className="btn-round">
+          <IonButton 
+            className="btn-round" 
+            onClick={() => {
+              isClickable
+                ? setIsClickable(false)
+                : setIsClickable(true)
+                }
+              }>
             <IonIcon
               style={{ fontSize: "3rem" } /* TODO Find a better way */}
-              src="/assets/logotypes/icon-tuning-procedure.svg"
+              src={
+                isClickable
+                  ? "/assets/logotypes/icon-tuning-procedure.svg"
+                  : "/assets/logotypes/icon-tuning-procedure-TEMP.svg"
+              }
             />
           </IonButton>
         </div>
