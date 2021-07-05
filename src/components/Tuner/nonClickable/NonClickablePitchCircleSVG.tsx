@@ -10,11 +10,12 @@ import EqualTemperament, { thirdEqualQ, fifthEqualQ } from '../../../model/Tempe
 import { freqs4, thirdQ, fifthQ } from '../../../model/Divergence';
 import SoundEngine from '../../../engine/SoundEngine';
 import { fetchTemperamentPropsById } from '../../../engine/DataAccessor';
+import Note from '../../../model/Note/Note';
 
 //Types 
 import { PitchCircleButtonSVGPos as btnPosition, PitchCircleSVGLabels } from "../common/PitchCircleButtonSVGPos"
 import NotesMap from '../../../model/Note/NotesMap';
-import { Notes } from '../../../model/Note/enums';
+import { NoteAlter, Notes } from '../../../model/Note/enums';
 import { TunerMode } from '../PitchCircle';
 
 //Styles 
@@ -68,7 +69,7 @@ const NonClickablePitchCircleSVG: React.FC<NonClickablePitchCircleSVGProps> = ({
   const [B_flat  , setB_flat ] = useState<NoteStates>(NoteStates.IDLE);
   const [B       , setB      ] = useState<NoteStates>(NoteStates.IDLE);
 
-  const[procedure, setProcedure] = useState<Array<Notes>>();
+  const[procedure, setProcedure] = useState<Array<string>>([]);
 
   const states = { C, C_sharp, D, E_flat, E, F, F_sharp, G, G_sharp, A, B_flat, B };
 
@@ -101,6 +102,22 @@ const NonClickablePitchCircleSVG: React.FC<NonClickablePitchCircleSVGProps> = ({
     }
   };
 
+  const cleanActive= () => {
+    if(actives[0] != null){
+      setStates(actives[0].note!, NoteStates.IDLE);
+    }
+    if(actives[1] != null){
+      setStates(actives[1].note!, NoteStates.IDLE);
+    }
+    if(!(actives[0] === null || actives[1] === null)){
+      setActives(
+      [
+        { note: null, state: NoteStates.IDLE },
+        { note: null, state: NoteStates.IDLE }
+      ])
+    }
+  }
+
   useEffect(() => {
     // Deactivate notes
     setActives([
@@ -120,41 +137,69 @@ const NonClickablePitchCircleSVG: React.FC<NonClickablePitchCircleSVGProps> = ({
     })();
     // eslint-disable-next-line react-hooks/exhaustive-deps
 
-    let chaine = "A4;A4-F3;F3-C4;C4-G3;G3-D4;D4:A3;A3-E4;E4:C4;E4-B3;B3:G3;B3-F#4;F#4:D3;F3-Bb3;Bb3:D4;Bb3-Eb4;Eb4-G#3;G#3-C#4;C#4:A3;C#4:F4;F4-F3;G3-G4;G#3-G#4"
-    let tabChaine = chaine.split(";");
-    let tempProcedure = new Array;
-    console.log(tabChaine);
-    tabChaine.forEach(element => {
-      if(element.includes(":")){
-        let temp = element.split(":")
-        tempProcedure.push([temp[0],temp[1],'control'])
-      }
-      else{
-        if(element.includes("-")){
-          let temp = element.split("-")
-          tempProcedure.push([temp[0],temp[1],'tune'])
-        }
-        else{
-          tempProcedure.push([element,"tune"]);
-        }
-      }
-    })
-    console.log(procedure);
-    setProcedure(tempProcedure);
+    cleanActive();
 
   }, [idTemperament]);
 
   useEffect(() => {
-    if(procedure != undefined){
+    console.log(stepProcedure);
+    if(stepProcedure === 0){
+      let chaine = "A4;A4-F3;F3-C4;C4-G3;G3-D4;D4:A3;A3-E4;E4:C4;E4-B3;B3:G3;B3-F#4;F#4:D3;F3-Bb3;Bb3:D4;Bb3-Eb4;Eb4-G#3;G#3-C#4;C#4:A3;C#4:F4;F4-F3;G3-G4;G#3-G#4"
+      console.log(chaine);
+      let tabChaine = chaine.split(";");
+      let tempProcedure = new Array;
+      console.log(tabChaine);
+      tabChaine.forEach(element => {
+        if(element.includes(":")){
+          let temp = element.split(":")
+          tempProcedure.push([temp[0],temp[1],'control'])
+        }
+        else{
+          if(element.includes("-")){
+            let temp = element.split("-")
+            tempProcedure.push([temp[0],temp[1],'tune'])
+          }
+          else{
+            tempProcedure.push([element,"tune"]);
+          }
+        }
+      })
+      console.log(tempProcedure);
+      setProcedure(tempProcedure);
+      console.log(procedure);
+    }
+  },[stepProcedure])
+
+  useEffect(() => {
+    if(procedure != undefined && stepProcedure! < (procedure?.length) && stepProcedure! > -1 ){
       console.log("procedure n* "+stepProcedure);
       console.log(procedure[stepProcedure!]);
       if(procedure[stepProcedure!].length==2){
-        console.log(procedure[stepProcedure!][0]);
+        let note1 = (Note.parse(procedure[stepProcedure!][0]))?.toNotes();
+        let note1_octave = ((Note.parse(procedure[stepProcedure!][0]))?.octave === 3)? NoteStates.SELECTED : NoteStates.OCTAVE;
+        setActives(
+          [
+            {note: note1!, state: note1_octave},
+            {note: null, state: NoteStates.IDLE}
+          ]
+        )
+        setStates(note1!, note1_octave);
       }
       else{
-        console.log(procedure[stepProcedure!][2]);
-        console.log(procedure[stepProcedure!][0]+" - "+ procedure[stepProcedure!][1]);
+        let note1 = (Note.parse(procedure[stepProcedure!][0]))?.toNotes();
+        let note2 = (Note.parse(procedure[stepProcedure!][1]))?.toNotes();
+        let note1_octave = ((Note.parse(procedure[stepProcedure!][0]))?.octave === 3)? NoteStates.SELECTED : NoteStates.OCTAVE;
+        let note2_octave = ((Note.parse(procedure[stepProcedure!][1]))?.octave === 3)? NoteStates.SELECTED : NoteStates.OCTAVE;
+        setActives(
+          [
+            {note: note1!, state: note1_octave},
+            {note: note2!, state: note2_octave}
+          ]
+        )
+        setStates(note1!, note1_octave);
+        setStates(note2!, note2_octave);
       }
+      console.log(actives);
     }
   },[stepProcedure])
 
