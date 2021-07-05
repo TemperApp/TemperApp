@@ -12,6 +12,7 @@ import ComparatorFifthCircle from './ComparatorFifthCircle';
 import ComparatorNotesCircle from './ComparatorNotesCircle';
 import ComparatorThirdCircle from './ComparatorThirdCircle';
 import { Temperament } from '../../model/Temperament/Temperament';
+import ComparatorComa from './ComparatorComa';
 
 type ComparatorSVGProps = {
   idTemperament1: number,
@@ -52,6 +53,11 @@ const ComparatorSVG: React.FC<ComparatorSVGProps> = ({
           />
         </svg>
       </div>
+
+      <ComparatorComa
+       temperament1={tmpmt1}
+       temperament2={tmpmt2}
+     />
 
       <ComparatorDivergence
         temperament1={tmpmt1}
