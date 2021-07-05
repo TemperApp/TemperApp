@@ -13,9 +13,9 @@ import {
   IonItemSliding,
 } from "@ionic/react";
 import { Temperament } from "../../model/Temperament/Temperament";
-import ComparatorFifthCircle from "./ComparatorFifthCircle";
 import { fifthQ, thirdQ } from "../../model/Divergence";
-import ComparatorThirdCircle from "./ComparatorThirdCircle";
+import ComparatorThirdComaCircle from "./ComparatorThirdComaCircle";
+import ComparatorFifthComaCircle from "./ComparatorFifthComaCircle";
 
 type ComparatorComaProps = {
   temperament1: Temperament,
@@ -40,7 +40,7 @@ const ComparatorComa: React.FC<ComparatorComaProps> = ({
             </IonCardHeader>
             <IonCardContent>
               <svg id="comparator" version="1.1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 400 400">
-                <ComparatorFifthCircle
+                <ComparatorFifthComaCircle
                   qualityNote1={fifthQ(temperament1.cpExp5th)}
                   qualityNote2={fifthQ(temperament2.cpExp5th)}
                 />
@@ -73,7 +73,7 @@ const ComparatorComa: React.FC<ComparatorComaProps> = ({
             </IonCardHeader>
             <IonCardContent>
               <svg id="comparator" version="1.1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 400 400">
-                <ComparatorThirdCircle
+                <ComparatorThirdComaCircle
                   qualityNote1={thirdQ(temperament1.csExp3rd)}
                   qualityNote2={thirdQ(temperament2.csExp3rd)}
                 />
