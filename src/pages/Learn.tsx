@@ -38,8 +38,9 @@ const Learn: React.FC = () => {
 
       <IonContent fullscreen scrollY={true}>
 
-        {items.map(({label, routerLink}) => (
+        {items.map(({label, routerLink}, idx) => (
           <IonButton
+            key={idx}
             className="h-28 item-btn"
             expand="full"
             fill="clear"

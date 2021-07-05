@@ -42,8 +42,11 @@ const ComparatorDivergence: React.FC<ComparatorDivergenceProps> = ({
               </IonCol>
             </IonRow>
 
-            {FIFTHS.map((note, index) => (
-              <IonRow className={`justify-end items-end ${index % 2 ? 'color-gradient-bg' : ''}`}>
+            {FIFTHS.map((note, idx) => (
+              <IonRow
+                key={idx}
+                className={`justify-end items-end ${idx % 2 ? 'color-gradient-bg' : ''}`}
+              >
                 <IonCol size="2">
                   <strong>{note.string(true, false)}</strong>
                 </IonCol>
