@@ -13,5 +13,5 @@ export const FIFTHS: Array<Note> = [
   Note.create(Notes.G_sharp),
   Note.create(Notes.E_flat),
   Note.create(Notes.B_flat),
-  Note.create(Notes.F_sharp),
+  Note.create(Notes.F),
 ];
