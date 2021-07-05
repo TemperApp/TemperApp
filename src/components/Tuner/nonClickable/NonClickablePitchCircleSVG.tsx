@@ -40,10 +40,11 @@ type NonClickablePitchCircleSVGProps = {
   idTemperament: number,
   centerCircle : boolean,
   stepProcedure?: number,
+  procedure?: Array<string>,
 }
 
 const NonClickablePitchCircleSVG: React.FC<NonClickablePitchCircleSVGProps> = ({
-  tunerMode, freqA4, idTemperament, centerCircle, stepProcedure
+  tunerMode, freqA4, idTemperament, centerCircle, stepProcedure, procedure
 }) => {
   const [actives, setActives] = useState<ActiveNotes>([
     { note: null, state: NoteStates.IDLE },
@@ -68,8 +69,6 @@ const NonClickablePitchCircleSVG: React.FC<NonClickablePitchCircleSVGProps> = ({
   const [A       , setA      ] = useState<NoteStates>(NoteStates.IDLE);
   const [B_flat  , setB_flat ] = useState<NoteStates>(NoteStates.IDLE);
   const [B       , setB      ] = useState<NoteStates>(NoteStates.IDLE);
-
-  const[procedure, setProcedure] = useState<Array<string>>([]);
 
   const states = { C, C_sharp, D, E_flat, E, F, F_sharp, G, G_sharp, A, B_flat, B };
 
@@ -136,39 +135,12 @@ const NonClickablePitchCircleSVG: React.FC<NonClickablePitchCircleSVGProps> = ({
       setFrequencies(freqs4(freqA4, temp.deviation));
     })();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-
     cleanActive();
 
   }, [idTemperament]);
 
-  useEffect(() => {
-    console.log(stepProcedure);
-    if(stepProcedure === 0){
-      let chaine = "A4;A4-F3;F3-C4;C4-G3;G3-D4;D4:A3;A3-E4;E4:C4;E4-B3;B3:G3;B3-F#4;F#4:D3;F3-Bb3;Bb3:D4;Bb3-Eb4;Eb4-G#3;G#3-C#4;C#4:A3;C#4:F4;F4-F3;G3-G4;G#3-G#4"
-      console.log(chaine);
-      let tabChaine = chaine.split(";");
-      let tempProcedure = new Array;
-      console.log(tabChaine);
-      tabChaine.forEach(element => {
-        if(element.includes(":")){
-          let temp = element.split(":")
-          tempProcedure.push([temp[0],temp[1],'control'])
-        }
-        else{
-          if(element.includes("-")){
-            let temp = element.split("-")
-            tempProcedure.push([temp[0],temp[1],'tune'])
-          }
-          else{
-            tempProcedure.push([element,"tune"]);
-          }
-        }
-      })
-      console.log(tempProcedure);
-      setProcedure(tempProcedure);
-      console.log(procedure);
-    }
-  },[stepProcedure])
+
+  // DEBUT TAMBOUILLE BENJAMIN
 
   useEffect(() => {
     if(procedure != undefined && stepProcedure! < (procedure?.length) && stepProcedure! > -1 ){
@@ -202,6 +174,10 @@ const NonClickablePitchCircleSVG: React.FC<NonClickablePitchCircleSVGProps> = ({
       console.log(actives);
     }
   },[stepProcedure])
+
+
+  // FIN TAMBOUILLE BENJAMIN
+
 
   useEffect(() => {
     // Update frequencies
