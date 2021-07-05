@@ -28,10 +28,10 @@ const SheetTemperament: React.FC = () => {
       subTitle="Tempérament"
     >
       <div>
-        <p><b>Époque</b> : {period} </p>
-        <p><b>Aire géographique</b> : {geographicalArea}</p>
-        <p><b>Nature</b> : {commaticNature} </p>
-        <p><b>Particularité scruturelle</b> : {particularity} </p>
+        <p className="p-long"><b>Époque</b> : {period} </p>
+        <p className="p-long"><b>Aire géographique</b> : {geographicalArea}</p>
+        <p className="p-long"><b>Nature</b> : {commaticNature} </p>
+        <p className="p-long"><b>Particularité scruturelle</b> : {particularity} </p>
       </div>
 
       <IonButton

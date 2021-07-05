@@ -25,7 +25,7 @@ ion-title,
   margin-top: 0;
 }
 
-.pm-titles h3, .ph-titles h3, h3 {
+.pm-titles h3, .ph-titles h3, h3, .item-label {
   font-family: "Nunito" !important;
   font-style: normal;
   font-weight: normal;
@@ -44,6 +44,7 @@ ion-title,
   line-height: 19px;
   text-transform: uppercase;
   color: var(--color-contrast);
+  margin-bottom: 3%;
 }
 
 .pm-content h5, h5 {
@@ -266,7 +267,6 @@ ion-input {
   height: 2rem;
   box-shadow: var(--color-shadow);
 }
-
 
 .katex-display {
   overflow: scroll hidden;
