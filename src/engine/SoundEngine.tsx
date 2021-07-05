@@ -27,7 +27,7 @@ class SoundEngine {
         release: 0.2
       }
     }).toDestination();
-    this.synth.modulation.volume.value = 8;
+    this.synth.modulation.volume.value = 4;
   }
 
 
