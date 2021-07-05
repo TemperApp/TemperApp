@@ -17,7 +17,7 @@ const PageModal: React.FC<PageModalProps> = ({
       <section>
         <div className="pm-header h-16 px-6">
           <div className="pm-titles pb-1">
-            <h1>{title}</h1>
+            <h3>{title}</h3>
           </div>
           <button
             className="btn-quit h-10 w-10"

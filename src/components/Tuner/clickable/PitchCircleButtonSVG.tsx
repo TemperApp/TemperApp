@@ -119,7 +119,7 @@ const PitchCircleButtonSVG: React.FC<PitchCircleButtonSVGProps> = ({
   return (
     <path
       fill={colorButton(state)}
-      stroke="var(--color-theme)"
+      stroke="var(--color-light-grey)"
       strokeMiterlimit="10"
       strokeOpacity="1"
       strokeWidth="0.5"

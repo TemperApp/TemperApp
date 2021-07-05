@@ -1,5 +1,7 @@
+/* TEXTS */
+
 ion-title,
-h1 {
+.pm-header h1, h1 {
   font-family: "Nunito" !important;
   font-style: normal;
   font-weight: bold;
@@ -11,7 +13,7 @@ h1 {
   color: var(--color-contrast);
 }
 
-h2 {
+.pm-content h2, .ph-titles h2, h2 {
   font-family: "Nunito" !important;
   font-style: normal;
   font-weight: bold;
@@ -23,7 +25,7 @@ h2 {
   margin-top: 0;
 }
 
-h3 {
+.pm-titles h3, .ph-titles h3, h3 {
   font-family: "Nunito" !important;
   font-style: normal;
   font-weight: normal;
@@ -34,7 +36,7 @@ h3 {
   margin-bottom: 0;
 }
 
-h4 {
+.pm-content h4, h4 {
   font-family: "Nunito" !important;
   font-style: normal;
   font-weight: normal;
@@ -44,7 +46,7 @@ h4 {
   color: var(--color-contrast);
 }
 
-h5 {
+.pm-content h5, h5 {
   font-family: "Nunito" !important;
   font-style: normal;
   font-weight: normal;
@@ -54,7 +56,7 @@ h5 {
   color: var(--color-contrast);
 }
 
-p {
+.pm-content p, p {
   font-family: var(--ion-family-font);
   font-style: normal;
   font-weight: normal;
@@ -62,14 +64,18 @@ p {
   line-height: 19px;
   color: var(--color-contrast);
 }
+
 .p-long {
   font-family: var(--ion-family-font);
-  font-style: normal;
-  font-weight: 1;
-  font-size: 13px;
+  font-style: normal !important;
+  font-weight: 1 !important;
+  font-size: 13px !important;
   line-height: 20px;
   padding-bottom: 7px;
-  color: var(--color-contrast);
+  color: var(--color-contrast) !important;
+  opacity: 1 !important;
+  text-align: justify;
+  text-justify: inter-word;
 }
 
 strong {
@@ -91,6 +97,8 @@ hr {
   background-position: left 0px top 0px !important;
   z-index: 100;
 }
+
+/* TAB-BAR */
 
 ion-tab-bar {
   width: 100%;
@@ -138,6 +146,8 @@ ion-icon.icon-grey {
   font-weight: 800;
 }
 
+/* HEADER */
+
 .btn-header-modal {
   background-color: var(--color-sec);
   border-radius: 50%;
@@ -151,6 +161,16 @@ ion-icon.icon-grey {
   color: var(--color-theme);
   font-size: 20px;
 }
+
+.header-title {
+  margin-top: 2rem;
+}
+
+.headerPages {
+  height: 5rem;
+}
+
+/* SELECT BOX */
 
 .select-text {
   background: var(--color-theme);
@@ -169,29 +189,29 @@ ion-select {
 }
 
 ion-select::part(text) {
+  font-family: "Nunito" !important;
   font-style: normal;
   font-weight: normal;
-  font-size: 1rem;
+  align-items: center;
+  text-transform: uppercase;
+  color: var(--color-contrast);
+  margin-top: 0;
+  font-size: 0.8rem;
   line-height: 19px;
 }
 
 ion-select::part(placeholder) {
+  --placeholder-font-family: "Nunito";
   --placeholder-font-style: normal;
   --placeholder-font-weight: normal;
-  font-size: 1rem;
+  text-transform: uppercase;
+  font-size: 0.8rem;
   line-height: 19px;
   --placeholder-color: var(--color-hover);
   color: var(--color-contrast);
 }
 
-.header-title {
-  margin-top: 2rem;
-}
-
-.katex-display {
-  overflow: scroll hidden;
-  padding: 15px 0 15px 0;
-}
+/* FIXED BUTTON */
 
 .grid-button-bottom {
   position: fixed;
@@ -211,19 +231,18 @@ ion-select::part(placeholder) {
   --padding-end: 0;
 }
 
-.ion-justify-content-between {
-  margin-top: 5%;
-  margin-bottom: 6px;
+ion-button .button-native {
+  --padding-end: 0 !important;
 }
 
-ion-searchbar .searchbar-input-container .searchbar-input { /* TODO Find a better way */
+/* ELEMENTS */
+
+ion-searchbar .searchbar-input-container .searchbar-input {
+  /* TODO Find a better way */
   background-color: var(--ion-background-color);
   box-shadow: var(--color-shadow);
   border-radius: 8px;
-}
-
-ion-button .button-native {
-  --padding-end: 0 !important;
+  text-transform: uppercase;
 }
 
 ion-card {
@@ -242,8 +261,16 @@ ion-toggle {
   --handle-background: var(--color-inner-button);
 }
 
-.headerPages {
-  height: 5rem;
+ion-input {
+  border-radius: 8px;
+  height: 2rem;
+  box-shadow: var(--color-shadow);
+}
+
+
+.katex-display {
+  overflow: scroll hidden;
+  padding: 15px 0 15px 0;
 }
 
 .text-ellipsis {
@@ -253,4 +280,9 @@ ion-toggle {
 
 .color-gradient-bg {
   background: var(--color-gradient-background);
+}
+
+.ion-justify-content-between {
+  margin-top: 5%;
+  margin-bottom: 6px;
 }
