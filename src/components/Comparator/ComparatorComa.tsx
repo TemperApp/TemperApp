@@ -39,8 +39,9 @@ const ComparatorComa: React.FC<ComparatorComaProps> = ({
               </IonCardTitle>
             </IonCardHeader>
             <IonCardContent>
-              <svg id="comparator" version="1.1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="50 50 300 300">
-                <ComparatorFifthComaCircle
+              <svg width="375" height="351" viewBox="50 0 375 351" fill="none" xmlns="http://www.w3.org/2000/svg">                <ComparatorFifthComaCircle
+                  temperament1={temperament1}
+                  temperament2={temperament2}
                   qualityNote1={fifthQ(temperament1.cpExp5th)}
                   qualityNote2={fifthQ(temperament2.cpExp5th)}
                 />

@@ -3,133 +3,206 @@ import React from 'react';
 //Style
 import './Comparator.css'
 import { convertFifthQualityToColor } from '../../utils/colorCircle';
+import { Temperament } from '../../model/Temperament/Temperament';
 
 type ComparatorFifthComaCircleProps = {
+  temperament1: Temperament,
+  temperament2: Temperament,
   qualityNote1: { [key: string]: number | null }
   qualityNote2: { [key: string]: number | null }
 }
 
-const ComparatorFifthComaCircle: React.FC<ComparatorFifthComaCircleProps> = ({ qualityNote1, qualityNote2 }) => {
+const ComparatorFifthComaCircle: React.FC<ComparatorFifthComaCircleProps> = ({ temperament1, temperament2, qualityNote1, qualityNote2 }) => {
 
   return (
     <>
       <g id="Note_1_Quinte">
-        <path data-name="F"       fill={convertFifthQualityToColor(qualityNote1.F)} d="M174.51,104.85c-17.09,4.28-32.36,13.15-44.43,25.23L115.4,115.4c14.61-14.61,33.07-25.37,53.73-30.61L174.51,104.85z"/>
-        <path data-name="B_flat"  fill={convertFifthQualityToColor(qualityNote1.B_flat)} d="M130.08,130.08c-12.08,12.07-20.95,27.34-25.23,44.43l-20.06-5.38c5.24-20.66,16-39.12,30.61-53.73L130.08,130.08z"/>
-        <path data-name="E_flat"  fill={convertFifthQualityToColor(qualityNote1.E_flat)} d="M105.89,225.22l-20.06,5.37c-3.02-10.36-4.63-21.31-4.63-32.63c0-9.95,1.24-19.61,3.59-28.83l20.06,5.38c-1.89,7.5-2.89,15.36-2.89,23.45C101.96,207.43,103.33,216.58,105.89,225.22z"/>
-        <path data-name="G_sharp" fill={convertFifthQualityToColor(qualityNote1.G_sharp)} d="M146.84,253.16l-29.38,29.38c-14.73-14.03-25.81-31.87-31.63-51.95l20.06-5.37l20.06-5.38C129.87,232.77,137.18,244.22,146.84,253.16z"/>
-        <path data-name="C_sharp" fill={convertFifthQualityToColor(qualityNote1.C_sharp)} d="M175.53,291.33l-5.37,20.06c-20.11-4.9-38.18-15.03-52.7-28.85l14.69-14.69C144.12,279.13,158.99,287.37,175.53,291.33z"/>
-        <path data-name="F_sharp" fill={convertFifthQualityToColor(qualityNote1.F_sharp)} d="M229.58,310.39c-10.06,2.83-20.66,4.34-31.62,4.34c-9.58,0-18.89-1.15-27.8-3.34l5.37-20.06c7.19,1.73,14.71,2.64,22.43,2.64c9.1,0,17.91-1.27,26.25-3.63L229.58,310.39z"/>
-        <path data-name="B"       fill={convertFifthQualityToColor(qualityNote1.B)} d="M280.53,280.53c-13.95,13.95-31.42,24.39-50.95,29.86l-5.37-20.05c15.96-4.53,30.23-13.08,41.64-24.49L280.53,280.53z"/>
-        <path data-name="E"       fill={convertFifthQualityToColor(qualityNote1.E)} d="M310.39,229.58c-5.47,19.53-15.91,37-29.86,50.95l-14.68-14.68c11.41-11.41,19.96-25.68,24.49-41.64L310.39,229.58z"/>
-        <path data-name="A"       fill={convertFifthQualityToColor(qualityNote1.A)} d="M314.73,197.96c0,10.96-1.51,21.56-4.34,31.62l-20.05-5.37c2.36-8.34,3.63-17.15,3.63-26.25c0-7.72-0.91-15.24-2.64-22.43l20.06-5.37C313.58,179.07,314.73,188.38,314.73,197.96z"/>
-        <path data-name="D"       fill={convertFifthQualityToColor(qualityNote1.D)} d="M311.39,170.16l-20.06,5.37c-3.96-16.54-12.2-31.41-23.48-43.38l14.69-14.69C296.36,131.98,306.49,150.05,311.39,170.16z"/>
-        <path data-name="G"       fill={convertFifthQualityToColor(qualityNote1.G)} d="M282.54,117.46l-14.69,14.69c-11.49-12.2-26.13-21.39-42.63-26.26l5.37-20.06C250.67,91.65,268.51,102.73,282.54,117.46z"/>
-        <path data-name="C"       fill={convertFifthQualityToColor(qualityNote1.C)} d="M230.59,85.83l-5.37,20.06c-8.64-2.56-17.79-3.93-27.26-3.93c-8.09,0-15.95,1-23.45,2.89l-5.38-20.06c9.22-2.35,18.88-3.59,28.83-3.59C209.28,81.2,220.23,82.81,230.59,85.83z"/>
-      </g>
+        <path data-name="A"       fill={convertFifthQualityToColor(qualityNote1.A)}        d="M310.683 135.505C316.543 155.893 316.933 177.463 311.815 198.049L280.804 190.354C284.572 175.2 284.284 159.323 279.971 144.316L310.683 135.505Z"/>
+        <path data-name="E"       fill={convertFifthQualityToColor(qualityNote1.E)}   d="M312.097 196.891C307.182 217.527 296.923 236.509 282.347 251.932L258.988 229.898C269.696 218.566 277.233 204.621 280.844 189.461L312.097 196.891Z"/>  
+        <path data-name="B"       fill={convertFifthQualityToColor(qualityNote1.B)}   d="M282.257 252.028C267.286 267.836 248.323 279.316 227.368 285.258L218.595 254.372C233.988 250.007 247.918 241.574 258.915 229.962L282.257 252.028Z"/>  
+        <path data-name="F_sharp" fill={convertFifthQualityToColor(qualityNote1.F_sharp)}  d="M227.382 285.254C206.825 291.085 185.09 291.377 164.384 286.099L172.378 254.792C187.554 258.66 203.483 258.446 218.549 254.172L227.382 285.254Z"/>
+        <path data-name="C_sharp" fill={convertFifthQualityToColor(qualityNote1.C_sharp)}  d="M164.462 286.119C143.586 280.813 124.504 270.038 109.186 254.905L131.79 232.065C143.041 243.179 157.055 251.093 172.388 254.991L164.462 286.119Z"/>
+        <path data-name="G_sharp" fill={convertFifthQualityToColor(qualityNote1.G_sharp)}  d="M109.291 255.008C94.1753 240.112 83.2463 221.507 77.6001 201.059L108.868 192.44C113.002 207.41 121.003 221.031 132.069 231.936L109.291 255.008Z"/>
+        <path data-name="E_flat"  fill={convertFifthQualityToColor(qualityNote1.E_flat)}        d="M77.8437 201.929C72.0448 181.523 71.7186 159.953 76.8978 139.381L108.68 147.369C104.902 162.372 105.14 178.103 109.369 192.986L77.8437 201.929Z"/>
+        <path data-name="F"       fill={convertFifthQualityToColor(qualityNote1.F)}        d="M107.318 84.7601C122.16 69.4407 140.79 58.3127 161.322 52.5032L170.224 83.9071C155.232 88.149 141.628 96.2745 130.792 107.46L107.318 84.7601Z"/>
+        <path data-name="B_flat"  fill={convertFifthQualityToColor(qualityNote1.B_flat)}        d="M76.9162 139.308C82.1083 118.74 92.6225 99.8979 107.404 84.6714L131.128 107.661C120.382 118.731 112.737 132.43 108.963 147.383L76.9162 139.308Z"/>
+        <path data-name="C"       fill={convertFifthQualityToColor(qualityNote1.C)}        d="M161.244 52.5254C181.972 46.6456 203.894 46.3988 224.749 51.8105L216.663 82.9158C201.349 78.9418 185.25 79.123 170.03 83.4407L161.244 52.5254Z"/>
+        <path data-name="G"       fill={convertFifthQualityToColor(qualityNote1.G)}        d="M224.575 51.7654C245.132 57.0673 263.932 67.677 279.09 82.5301L256.528 105.513C245.404 94.613 231.607 86.8269 216.521 82.936L224.575 51.7654Z"/>
+        <path data-name="D"       fill={convertFifthQualityToColor(qualityNote1.D)}        d="M278.515 81.9703C293.771 96.7226 304.876 115.224 310.715 135.618L279.874 144.433C275.581 129.443 267.419 115.844 256.205 105L278.515 81.9703Z"/>     
+        </g>
       <g id="Note_2_Quinte">
-        <path data-name="G_sharp" fill={convertFifthQualityToColor(qualityNote2.G_sharp)}  d="M125.95,219.84l-20.06,5.38c4.87,16.5,14.06,31.14,26.26,42.63l14.69-14.69C137.18,244.22,129.87,232.77,125.95,219.84z"/>
-        <path data-name="C_sharp" fill={convertFifthQualityToColor(qualityNote2.C_sharp)} d="M180.91,271.26l-5.38,20.07c-16.54-3.96-31.41-12.2-43.38-23.48l14.69-14.69C156.27,261.91,167.95,268.27,180.91,271.26z"/>
-        <path data-name="F_sharp" fill={convertFifthQualityToColor(qualityNote2.F_sharp)} d="M224.21,290.34c-8.34,2.36-17.15,3.63-26.25,3.63c-7.72,0-15.24-0.91-22.43-2.64l5.38-20.07c5.48,1.28,11.18,1.95,17.05,1.95c7.24,0,14.24-1.02,20.87-2.93L224.21,290.34z"/>
-        <path data-name="B"       fill={convertFifthQualityToColor(qualityNote2.B)} d="M265.85,265.85c-11.41,11.41-25.68,19.96-41.64,24.49l-5.38-20.06c12.39-3.57,23.47-10.24,32.34-19.11L265.85,265.85z"/>
-        <path data-name="E"       fill={convertFifthQualityToColor(qualityNote2.E)} d="M290.34,224.21c-4.53,15.96-13.08,30.23-24.49,41.64l-14.68-14.68c8.87-8.87,15.54-19.95,19.11-32.34L290.34,224.21z"/>
-        <path data-name="A"       fill={convertFifthQualityToColor(qualityNote2.A)} d="M293.97,197.96c0,9.1-1.27,17.91-3.63,26.25l-20.06-5.38c1.91-6.63,2.93-13.63,2.93-20.87c0-5.87-0.67-11.57-1.95-17.05l20.07-5.38C293.06,182.72,293.97,190.24,293.97,197.96z"/>
-        <path data-name="D"       fill={convertFifthQualityToColor(qualityNote2.D)} d="M291.33,175.53l-20.07,5.38c-2.99-12.96-9.35-24.64-18.1-34.07l14.69-14.69C279.13,144.12,287.37,158.99,291.33,175.53z"/>
-        <path data-name="G"       fill={convertFifthQualityToColor(qualityNote2.G)} d="M267.85,132.15l-14.69,14.69c-8.94-9.66-20.39-16.97-33.32-20.89l5.38-20.06C241.72,110.76,256.36,119.95,267.85,132.15z"/>
-        <path data-name="C"       fill={convertFifthQualityToColor(qualityNote2.C)} d="M225.22,105.89l-5.38,20.06c-6.92-2.1-14.27-3.23-21.88-3.23c-6.24,0-12.29,0.76-18.08,2.19l-5.37-20.06c7.5-1.89,15.36-2.89,23.45-2.89C207.43,101.96,216.58,103.33,225.22,105.89z"/>
-        <path data-name="F"       fill={convertFifthQualityToColor(qualityNote2.F)} d="M179.88,124.91c-13.52,3.33-25.59,10.32-35.12,19.85l-14.68-14.68c12.07-12.08,27.34-20.95,44.43-25.23L179.88,124.91z"/>
-        <path data-name="B_flat"  fill={convertFifthQualityToColor(qualityNote2.B_flat)} d="M144.76,144.76c-9.53,9.53-16.52,21.6-19.85,35.12l-20.06-5.37c4.28-17.09,13.15-32.36,25.23-44.43L144.76,144.76z"/>
-        <path data-name="E_flat"  fill={convertFifthQualityToColor(qualityNote2.E_flat)} d="M125.95,219.84l-20.06,5.38c-2.56-8.64-3.93-17.79-3.93-27.26c0-8.09,1-15.95,2.89-23.45l20.06,5.37c-1.43,5.79-2.19,11.84-2.19,18.08C122.72,205.57,123.85,212.92,125.95,219.84z"/>
-      </g>
-      <g id="ComparatorNotes">
-        <path
-          fill="none"
-          d="M200,43.76c-86.29,0-156.24,69.95-156.24,156.24S113.71,356.24,200,356.24S356.24,286.29,356.24,200
-          S286.29,43.76,200,43.76z M197.96,273.21c-41.55,0-75.24-33.69-75.24-75.25c0-41.55,33.69-75.24,75.24-75.24
-          c41.56,0,75.25,33.69,75.25,75.24C273.21,239.52,239.52,273.21,197.96,273.21z"
-        />
+        <path data-name="A"       fill={convertFifthQualityToColor(qualityNote2.A)}       d="M278.327 144.787C282.557 159.507 282.839 175.079 279.144 189.941L247.934 182.196C250.27 172.802 250.092 162.959 247.418 153.655L278.327 144.787Z"/>
+        <path data-name="E"       fill={convertFifthQualityToColor(qualityNote2.E)}       d="M279.348 189.105C275.8 204.003 268.393 217.707 257.87 228.843L234.431 206.733C241.073 199.704 245.748 191.054 247.988 181.65L279.348 189.105Z"/>
+        <path data-name="B"       fill={convertFifthQualityToColor(qualityNote2.B)}       d="M257.804 228.912C246.996 240.324 233.306 248.612 218.177 252.902L209.596 222.691C219.284 219.944 228.051 214.636 234.973 207.327L257.804 228.912Z"/>
+        <path data-name="F_sharp" fill={convertFifthQualityToColor(qualityNote2.F_sharp)} d="M218.187 252.899C203.346 257.109 187.655 257.32 172.706 253.51L180.559 222.753C190.075 225.178 200.063 225.044 209.509 222.364L218.187 252.899Z"/>
+        <path data-name="C_sharp" fill={convertFifthQualityToColor(qualityNote2.C_sharp)} d="M172.762 253.524C157.69 249.693 143.914 241.914 132.855 230.989L155.063 208.549C162.126 215.526 170.924 220.494 180.549 222.941L172.762 253.524Z"/>
+        <path data-name="G_sharp" fill={convertFifthQualityToColor(qualityNote2.G_sharp)} d="M132.931 231.063C122.018 220.309 114.128 206.877 110.051 192.114L140.221 183.799C142.838 193.276 147.903 201.898 154.908 208.802L132.931 231.063Z"/>
+        <path data-name="E_flat"  fill={convertFifthQualityToColor(qualityNote2.E_flat)}  d="M110.227 192.742C106.041 178.01 105.805 162.437 109.544 147.586L141.176 155.535C138.832 164.845 138.979 174.607 141.604 183.841L110.227 192.742Z"/>
+        <path data-name="F"       fill={convertFifthQualityToColor(qualityNote2.F)}       d="M131.507 108.152C142.222 97.0918 155.672 89.0578 170.495 84.8637L180.157 118.949C171.347 121.442 163.353 126.217 156.984 132.79L131.507 108.152Z"/>
+        <path data-name="B_flat"  fill={convertFifthQualityToColor(qualityNote2.B_flat)}  d="M109.558 147.533C113.306 132.684 120.897 119.081 131.569 108.088L156.039 131.8C149.529 138.506 144.899 146.804 142.612 155.862L109.558 147.533Z"/>
+        <path data-name="C"       fill={convertFifthQualityToColor(qualityNote2.C)}       d="M170.439 84.8797C185.403 80.6347 201.23 80.4566 216.286 84.3636L207.39 118.587C198.429 116.261 189.01 116.367 180.105 118.894L170.439 84.8797Z"/>
+        <path data-name="G"       fill={convertFifthQualityToColor(qualityNote2.G)}       d="M216.161 84.331C231.002 88.1588 244.575 95.8185 255.518 106.542L233.101 129.377C226.166 122.581 217.564 117.727 208.159 115.301L216.161 84.331Z"/>
+        <path data-name="D"       fill={convertFifthQualityToColor(qualityNote2.D)}       d="M255.103 106.138C266.117 116.788 274.134 130.145 278.35 144.869L246.352 154.015C243.742 144.897 238.777 136.626 231.957 130.031L255.103 106.138Z"/>
       </g>
       <g id="Texte" fill="var(--color-contrast)">
-          <text
-            transform="matrix(1 0 0 1 311.39 273.2095)"
-            className="st22 st23"
-          >
-            E
-          </text>
-          <text
-            transform="matrix(1 0 0 1 262.7041 325.1587)"
-            className="st22 st23"
-          >
-            B
-          </text>
-          <text transform="matrix(1 0 0 1 190.2009 341.2029)">
-            <tspan x="0" y="0" className="st22 st23">
-              F
-            </tspan>
-            <tspan x="10.93" y="0" className="st24 st23">
-              ♯
-            </tspan>
-          </text>
-          <text transform="matrix(1 0 0 1 122.5 325.1595)">
-            <tspan x="0" y="0" className="st22 st23">
-              C
-            </tspan>
-            <tspan x="12.67" y="0" className="st24 st23">
-              ♯
-            </tspan>
-          </text>
-          <text transform="matrix(1 0 0 1 68.3599 273.2103)">
-            <tspan x="0" y="0" className="st22 st23">
-              G
-            </tspan>
-            <tspan x="13.54" y="0" className="st24 st23">
-              ♯
-            </tspan>
-          </text>
-          <text transform="matrix(1 0 0 1 52.7483 204.4795)">
-            <tspan x="0" y="0" className="st22 st23">
-              E
-            </tspan>
-            <tspan x="11.73" y="0" className="st25 st23">
-              ♭
-            </tspan>
-          </text>
-          <text transform="matrix(1 0 0 1 71.6626 135.3268)">
-            <tspan x="0" y="0" className="st22 st23">
-              B
-            </tspan>
-            <tspan x="12.96" y="0" className="st25 st23">
-              ♭
-            </tspan>
-          </text>
-          <text
-            transform="matrix(1 0 0 1 126.365 88.354)"
-            className="st22 st23"
-          >
-            F
-          </text>
-          <text transform="matrix(1 0 0 1 193.9 69.1483)" className="st22 st23">
-            C
-          </text>
-          <text
-            transform="matrix(1 0 0 1 264.3253 88.5921)"
-            className="st22 st23"
-          >
-            G
-          </text>
-          <text
-            transform="matrix(1 0 0 1 311.3904 134.8376)"
-            className="st22 st23"
-          >
-            D
-          </text>
-          <text
-            transform="matrix(1 0 0 1 328.3633 206.1)"
-            className="st22 st23"
-          >
-            A
-          </text>
-        </g>
+        <text
+          transform="matrix(1 0 0 1 194.88 40)"
+          className="st22 st23"
+        >C</text>
+        <text
+          transform="matrix(1 0 0 1 257.29 57.8)"
+          className="st22 st23"
+        >G</text>
+        <text
+          transform="matrix(1 0 0 1 303.84 92.54)"
+          className="st22 st23"
+        >D</text>
+        <text
+          transform="matrix(1 0 0 1 325.586 169.836)"
+          className="st22 st23"
+        >A</text>
+        <text
+          transform="matrix(1 0 0 1 309.477 239.581)"
+          className="st22 st23"
+        >E</text>
+        <text
+          transform="matrix(1 0 0 1 263.764 290.8)"
+          className="st22 st23"
+        >B</text>
+        <text
+          transform="matrix(1 0 0 1 187.301 311.505)"
+          className="st22 st23"
+        >F#</text>
+        <text
+          transform="matrix(1 0 0 1 121.472 291.01)"
+          className="st22 st23"
+        >C#</text>
+        <text
+          transform="matrix(1 0 0 1 70.4448 239.791)"
+          className="st22 st23"
+        >G#</text>
+        <text
+          transform="matrix(1 0 0 1 50.5513 170.926)"
+          className="st22 st23"
+        >Eb</text>
+        <text
+          transform="matrix(1 0 0 1 68.1022 105.54)"
+          className="st22 st23"
+        >Bb</text>
+        <text
+          transform="matrix(1 0 0 1 122.729 57.5903)"
+          className="st22 st23"
+        >F</text>
+      </g>
+      <g>
+        <line y1="-0.5" x2="245.215" y2="-0.5" transform="matrix(0.267961 0.963234 -0.963722 0.267614 162.311 51.3848)" stroke="var(--color-light-grey)"/>
+        <line y1="-0.5" x2="244.441" y2="-0.5" transform="matrix(-0.237541 0.970976 -0.971832 -0.237322 223.322 50.1675)" stroke="var(--color-light-grey)"/>
+        <line y1="-0.5" x2="245.354" y2="-0.5" transform="matrix(-0.691565 0.722024 -0.72295 -0.691204 279.874 80.4639)" stroke="var(--color-light-grey)"/>
+        <line y1="-0.5" x2="244.554" y2="-0.5" transform="matrix(-0.962032 0.273613 -0.273969 -0.961547 312.995 135.601)" stroke="var(--color-light-grey)"/>
+        <line y1="-0.5" x2="244.104" y2="-0.5" transform="matrix(-0.725332 -0.688708 0.689068 -0.724404 284.834 252.513)" stroke="var(--color-light-grey)"/>
+        <line y1="-0.5" x2="245.176" y2="-0.5" transform="matrix(0.969311 0.24742 -0.247646 0.968448 76.6538 138.545)" stroke="var(--color-light-grey)"/>
+        <ellipse cx="194.698" cy="169.458" rx="56.1734" ry="56.1228" fill="var(--color-theme)"/>
+      </g>
+      <g id="Texte" fill="var(--color-contrast)">
+        <text
+          transform="matrix(1 0 0 1 184.981 62.501)"
+          className="st22 st23"
+        >{temperament1.cpExp5th.C}</text>
+        <text
+          transform="matrix(1 0 0 1 238.428 75.578)"
+          className="st22 st23"
+        >{temperament1.cpExp5th.G}</text>
+        <text
+          transform="matrix(1 0 0 1 277.149 112.63)"
+          className="st22 st23"
+        >{temperament1.cpExp5th.A}</text>
+        <text
+          transform="matrix(1 0 0 1 290.783 164.939)"
+          className="st22 st23"
+        >{temperament1.cpExp5th.A}</text>
+        <text
+          transform="matrix(1 0 0 1 276.604 215.068)"
+          className="st22 st23"
+        >{temperament1.cpExp5th.E}</text>
+        <text
+          transform="matrix(1 0 0 1 240.146 257.569)"
+          className="st22 st23"
+        >{temperament1.cpExp5th.B}</text>
+        <text
+          transform="matrix(1 0 0 1 188.126 270.645)"
+          className="st22 st23"
+        >{temperament1.cpExp5th.F_sharp}</text>
+        <text
+          transform="matrix(1 0 0 1 135.968 257.567)"
+          className="st22 st23"
+        >{temperament1.cpExp5th.C_sharp}</text>
+        <text
+          transform="matrix(1 0 0 1 97.7099 219.426)"
+          className="st22 st23"
+        >{temperament1.cpExp5th.G_sharp}</text>
+        <text
+          transform="matrix(1 0 0 1 79.9238 168.207)"
+          className="st22 st23"
+        >{temperament1.cpExp5th.E_flat}</text>
+        <text
+          transform="matrix(1 0 0 1 93.9039 112.63)"
+          className="st22 st23"
+        >{temperament1.cpExp5th.B_flat}</text>
+        <text
+          transform="matrix(1 0 0 1 131.535 75.5785)"
+          className="st22 st23"
+        >{temperament1.cpExp5th.F}</text>
+      </g>
+      <g id="Texte" fill="var(--color-contrast)">
+        <text
+          transform="matrix(1 0 0 1 225.368 102.823)"
+          className="st22 st23"
+        >{temperament2.cpExp5th.G}</text>
+        <text
+          transform="matrix(1 0 0 1 251.283 130.066)"
+          className="st22 st23"
+        >{temperament2.cpExp5th.D}</text>
+        <text
+          transform="matrix(1 0 0 1 261.513 164.939)"
+          className="st22 st23"
+        >{temperament2.cpExp5th.A}</text>
+        <text
+          transform="matrix(1 0 0 1 256.023 199.811)"
+          className="st22 st23"
+        >{temperament2.cpExp5th.E}</text>
+        <text
+          transform="matrix(1 0 0 1 230.558 227.056)"
+          className="st22 st23"
+        >{temperament2.cpExp5th.B}</text>
+        <text
+          transform="matrix(1 0 0 1 196.634 243.663)"
+          className="st22 st23"
+        >{temperament2.cpExp5th.F_sharp}</text>
+        <text
+          transform="matrix(1 0 0 1 160.526 234.945)"
+          className="st22 st23"
+        >{temperament2.cpExp5th.C_sharp}</text>
+        <text
+          transform="matrix(1 0 0 1 132.958 207.7)"
+          className="st22 st23"
+        >{temperament2.cpExp5th.G_sharp}</text>
+        <text
+          transform="matrix(1 0 0 1 122.35 171.739)"
+          className="st22 st23"
+        >{temperament2.cpExp5th.E_flat}</text>
+        <text
+          transform="matrix(1 0 0 1 133.635 135.776)"
+          className="st22 st23"
+        >{temperament2.cpExp5th.B_flat}</text>
+        <text
+          transform="matrix(1 0 0 1 158.458 109.622)"
+          className="st22 st23"
+        >{temperament2.cpExp5th.F}</text>
+        <text
+          transform="matrix(1 0 0 1 190.878 94.1044)"
+          className="st22 st23"
+        >{temperament2.cpExp5th.C}</text>
+      </g>
     </>
   );
 };
