@@ -12,6 +12,7 @@ import { TemperamentDBType } from "../../engine/DB";
 import PitchCircle from "./PitchCircle";
 import SoundEngine from "../../engine/SoundEngine";
 import EqualTemperament from "../../model/Temperament/Equal";
+import { arrowForward, arrowBack } from "ionicons/icons";
 
 type TunerProps = {
   setMainTitle: (t: string) => void,
@@ -27,6 +28,7 @@ const Tuner: React.FC<TunerProps> = ({
   const [isMuted, setIsMuted] = useState<boolean>(true);
   const [isHzMode, setIsHzMode] = useState<boolean>(true);
   const [isClickable, setIsClickable] = useState<boolean>(true);
+  const [stepProcedure, setStepProcedure] = useState<number>(0);
 
   useEffect(() => {
     setMainTitle(isHzMode ? "Pitch pipe" : "Battements")
@@ -50,7 +52,10 @@ const Tuner: React.FC<TunerProps> = ({
           className="flex-grow"
           value={temperament}
           placeholder="Tempérament"
-          onIonChange={(e) => setTemperament(e.detail.value)}
+          onIonChange={(e) => {
+            setStepProcedure(0);
+            setTemperament(e.detail.value)
+          }}
         >
           {temperamentsList.map((t: TemperamentDBType) => (
             <IonSelectOption key={t.idTemperament} value={t}>
@@ -67,7 +72,10 @@ const Tuner: React.FC<TunerProps> = ({
             min="300"
             max="500"
             value={freqA4}
-            onIonChange={(e) => setFreqA4(Number(e.detail.value))}
+            onIonChange={(e) => {
+              setStepProcedure(0);
+              setFreqA4(Number(e.detail.value));
+            }}
           ></IonInput>
         </div>
       </div>
@@ -79,6 +87,7 @@ const Tuner: React.FC<TunerProps> = ({
           isClickable={isClickable}
           freqA4={freqA4}
           idTemperament={temperament.idTemperament}
+          stepProcedure={stepProcedure}
         />
       </section>
 
@@ -91,8 +100,8 @@ const Tuner: React.FC<TunerProps> = ({
               isClickable
                 ? setIsClickable(false)
                 : setIsClickable(true)
-                }
-              }>
+              }
+            }>
             <IonIcon
               style={{ fontSize: "3rem" } /* TODO Find a better way */}
               src={
@@ -100,6 +109,18 @@ const Tuner: React.FC<TunerProps> = ({
                   ? "/assets/logotypes/icon-tuning-procedure.svg"
                   : "/assets/logotypes/icon-tuning-procedure-TEMP.svg"
               }
+            />
+          </IonButton>
+        </div>
+        <div>
+          <IonButton
+            fill="clear"
+            style={{ "--ripple-color": "transparent" }}
+            onClick={() => setStepProcedure(stepProcedure-1)}
+          >
+            <IonIcon
+              slot='icon-only'
+              icon={arrowBack}
             />
           </IonButton>
         </div>
@@ -117,6 +138,18 @@ const Tuner: React.FC<TunerProps> = ({
                   : "/assets/logotypes/icon-sound.svg"
               }
               slot="icon-only"
+            />
+          </IonButton>
+        </div>
+        <div>
+          <IonButton
+            fill="clear"
+            style={{ "--ripple-color": "transparent" }}
+            onClick={() => setStepProcedure(stepProcedure+1)}
+          >
+            <IonIcon
+              slot='icon-only'
+              icon={arrowForward}
             />
           </IonButton>
         </div>

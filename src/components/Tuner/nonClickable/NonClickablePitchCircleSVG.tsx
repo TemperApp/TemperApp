@@ -38,10 +38,11 @@ type NonClickablePitchCircleSVGProps = {
   freqA4: number,
   idTemperament: number,
   centerCircle : boolean,
+  stepProcedure?: number,
 }
 
 const NonClickablePitchCircleSVG: React.FC<NonClickablePitchCircleSVGProps> = ({
-  tunerMode, freqA4, idTemperament, centerCircle
+  tunerMode, freqA4, idTemperament, centerCircle, stepProcedure
 }) => {
   const [actives, setActives] = useState<ActiveNotes>([
     { note: null, state: NoteStates.IDLE },
@@ -66,6 +67,8 @@ const NonClickablePitchCircleSVG: React.FC<NonClickablePitchCircleSVGProps> = ({
   const [A       , setA      ] = useState<NoteStates>(NoteStates.IDLE);
   const [B_flat  , setB_flat ] = useState<NoteStates>(NoteStates.IDLE);
   const [B       , setB      ] = useState<NoteStates>(NoteStates.IDLE);
+
+  const[procedure, setProcedure] = useState<Array<Notes>>();
 
   const states = { C, C_sharp, D, E_flat, E, F, F_sharp, G, G_sharp, A, B_flat, B };
 
@@ -116,7 +119,44 @@ const NonClickablePitchCircleSVG: React.FC<NonClickablePitchCircleSVGProps> = ({
       setFrequencies(freqs4(freqA4, temp.deviation));
     })();
     // eslint-disable-next-line react-hooks/exhaustive-deps
+
+    let chaine = "A4;A4-F3;F3-C4;C4-G3;G3-D4;D4:A3;A3-E4;E4:C4;E4-B3;B3:G3;B3-F#4;F#4:D3;F3-Bb3;Bb3:D4;Bb3-Eb4;Eb4-G#3;G#3-C#4;C#4:A3;C#4:F4;F4-F3;G3-G4;G#3-G#4"
+    let tabChaine = chaine.split(";");
+    let tempProcedure = new Array;
+    console.log(tabChaine);
+    tabChaine.forEach(element => {
+      if(element.includes(":")){
+        let temp = element.split(":")
+        tempProcedure.push([temp[0],temp[1],'control'])
+      }
+      else{
+        if(element.includes("-")){
+          let temp = element.split("-")
+          tempProcedure.push([temp[0],temp[1],'tune'])
+        }
+        else{
+          tempProcedure.push([element,"tune"]);
+        }
+      }
+    })
+    console.log(procedure);
+    setProcedure(tempProcedure);
+
   }, [idTemperament]);
+
+  useEffect(() => {
+    if(procedure != undefined){
+      console.log("procedure n* "+stepProcedure);
+      console.log(procedure[stepProcedure!]);
+      if(procedure[stepProcedure!].length==2){
+        console.log(procedure[stepProcedure!][0]);
+      }
+      else{
+        console.log(procedure[stepProcedure!][2]);
+        console.log(procedure[stepProcedure!][0]+" - "+ procedure[stepProcedure!][1]);
+      }
+    }
+  },[stepProcedure])
 
   useEffect(() => {
     // Update frequencies
