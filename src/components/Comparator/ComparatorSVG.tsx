@@ -39,7 +39,7 @@ const ComparatorSVG: React.FC<ComparatorSVGProps> = ({
 
   return (
     <>
-      <IonRow className="ion-padding-horizontal ion-justify-content-center">
+      <div className="px-4 pt-2 justify-center">
         <svg id="comparator" version="1.1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 400 400">
           <ComparatorThirdCircle
             qualityNote1={thirdQ(tmpmt1.csExp3rd)}
@@ -51,7 +51,7 @@ const ComparatorSVG: React.FC<ComparatorSVGProps> = ({
             qualityNote2={fifthQ(tmpmt2.cpExp5th)}
           />
         </svg>
-      </IonRow>
+      </div>
 
       <ComparatorDivergence
         temperament1={tmpmt1}
