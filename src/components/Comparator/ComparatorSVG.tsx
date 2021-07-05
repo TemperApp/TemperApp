@@ -20,7 +20,7 @@ type ComparatorSVGProps = {
 }
 
 const ComparatorSVG: React.FC<ComparatorSVGProps> = ({
-  idTemperament1, idTemperament2
+  idTemperament1, idTemperament2,
 }) => {
 
   const [tmpmt1, setTmpmt1] = useState<Temperament>(EqualTemperament);
