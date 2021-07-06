@@ -100,7 +100,12 @@ const Tuner: React.FC<TunerProps> = ({
               isClickable
                 ? setIsClickable(false)
                 : setIsClickable(true)
-              }
+                setMainTitle(
+                  isClickable 
+                    ? "Procédure" 
+                    : "Pitch pipe"
+                )
+              } 
             }>
             <IonIcon
               style={{ fontSize: "3rem" } /* TODO Find a better way */}
