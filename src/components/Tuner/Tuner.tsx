@@ -120,7 +120,9 @@ const Tuner: React.FC<TunerProps> = ({
         <div>
           <IonButton
             fill="clear"
-            style={{ "--ripple-color": "transparent" }}
+            style={!isClickable ? { "--ripple-color": "transparent",
+            "display": "block"} 
+            : {"display": "none" }}
             onClick={() => setStepProcedure(stepProcedure-1)}
           >
             <IonIcon
@@ -149,7 +151,9 @@ const Tuner: React.FC<TunerProps> = ({
         <div>
           <IonButton
             fill="clear"
-            style={{ "--ripple-color": "transparent" }}
+            style={!isClickable ? { "--ripple-color": "transparent",
+            "display": "block"} 
+            : {"display": "none" }}
             onClick={() => setStepProcedure(stepProcedure+1)}
           >
             <IonIcon
