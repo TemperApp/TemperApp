@@ -32,7 +32,7 @@ export const convertFifthQualityToColor = (quality: number | null) => {
       case -1:
         return "#DCCBDD"; // handle value between -1 and -0.005
       case 0:
-        return "#FFFFFF"; // handle value between 0.005 and 1
+        return "#9CD4D9"; // handle value between 0.005 and 1
       case 1:
         return "#9CD4D9";
       case 2:
@@ -154,7 +154,7 @@ export const convertThirdQualityToColor = (quality: number | null) => {
       case 20:
         return "#632D8E";
       default:
-        return "grey";
+        return "B9B9B9";
     }
   }
   if (quality === null) return "#B9B9B9";
