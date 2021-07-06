@@ -20,18 +20,12 @@ const colorButton = (state: NoteStates) => {
 }
 
 type NonClickablePitchCircleButtonSVGProps = {
-  notesSymbol: Notes | null,
   position: string,
   state: NoteStates,
-  tunerMode: TunerMode,
-  actives: ActiveNotes
-  onChange: (state: NoteStates) => void,
-  setActives: (notesSymbol: ActiveNotes) => void,
 }
 
 const NonClickablePitchCircleButtonSVG: React.FC<NonClickablePitchCircleButtonSVGProps> = ({
-  notesSymbol, position, state, tunerMode,
-  actives, onChange, setActives
+  position, state
 }) => {
 
   return (
@@ -46,8 +40,6 @@ const NonClickablePitchCircleButtonSVG: React.FC<NonClickablePitchCircleButtonSV
 export default React.memo(
   NonClickablePitchCircleButtonSVG,
   (prevProps, nextProps) => (
-    prevProps.state === nextProps.state
-    && prevProps.tunerMode === nextProps.tunerMode
-    && prevProps.tunerMode === TunerMode.HZ)
+    prevProps.state === nextProps.state)
     // TODO TunerMode.BPM
 );

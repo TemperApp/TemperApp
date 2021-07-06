@@ -267,14 +267,8 @@ const NonClickablePitchCircleSVG: React.FC<NonClickablePitchCircleSVGProps> = ({
           const n = note as Notes;
           return (
             <NonClickablePitchCircleButtonSVG
-              key={n}
-              notesSymbol={n}
               position={btnPosition[n]}
               state={states[n]}
-              tunerMode={tunerMode}
-              actives={actives}
-              onChange={(state: NoteStates) => setStates(n, state)}
-              setActives={setActives}
             />);
         })}
 

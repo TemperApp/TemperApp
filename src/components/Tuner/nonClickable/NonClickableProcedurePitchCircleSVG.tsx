@@ -39,7 +39,7 @@ export type ActiveNotes = [ActiveNote, ActiveNote];
 type NonClickableProcedurePitchCircleSVGProps = {
   tunerMode: TunerMode,
   freqA4: number,
-  idTemperament: number,
+  idTemperament?: number,
   centerCircle : boolean,
   stepProcedure?: number,
   procedure?: Array<string>,
@@ -47,18 +47,14 @@ type NonClickableProcedurePitchCircleSVGProps = {
   fifthQualities: NotesMap<number | null>
   frequencies?: NotesMap<number>
   temperament?: Temperament
+  actives?: ActiveNotes
 }
 
 const NonClickableProcedurePitchCircleSVG: React.FC<NonClickableProcedurePitchCircleSVGProps> = ({
   tunerMode, freqA4, idTemperament, centerCircle, stepProcedure, 
   procedure, thirdQualities, fifthQualities,
-  frequencies, temperament
+  frequencies, temperament, actives
 }) => {
-
-  const [actives, setActives] = useState<ActiveNotes>([
-    { note: null, state: NoteStates.IDLE },
-    { note: null, state: NoteStates.IDLE },
-  ]);
 
   const [C       , setC      ] = useState<NoteStates>(NoteStates.IDLE);
   const [C_sharp , setC_sharp] = useState<NoteStates>(NoteStates.IDLE);
@@ -104,50 +100,42 @@ const NonClickableProcedurePitchCircleSVG: React.FC<NonClickableProcedurePitchCi
     }
   };
 
-  const cleanActive= () => {
-    if(actives[0] != null){
-      setStates(actives[0].note!, NoteStates.IDLE);
-    }
-    if(actives[1] != null){
-      setStates(actives[1].note!, NoteStates.IDLE);
-    }
-    if(!(actives[0] === null || actives[1] === null)){
-      setActives(
-      [
-        { note: null, state: NoteStates.IDLE },
-        { note: null, state: NoteStates.IDLE }
-      ])
-    }
-  }
-
-  useEffect(() => {
-    // Deactivate notes
-    setActives([
-      { note: null, state: NoteStates.IDLE },
-      { note: null, state: NoteStates.IDLE },
-    ]);
-  }, [tunerMode]);
-
- 
   // Clean states
-  for (const note in states) {
-    const n = note as Notes;
-    if (
-      actives[0].note !== note &&
-      actives[1].note !== note &&
-      states[n] !== NoteStates.IDLE
-    ) {
-      setStates(n, NoteStates.IDLE);
+  useEffect( () => {
+    if(actives !== undefined){
+      console.log("========= SVG");
+      console.log(actives);
+      console.log(actives[0].note)
+      for (const note in states) {
+        const n = note as Notes;
+        if (
+          actives[0].note !== note &&
+          actives[1].note !== note &&
+          states[n] !== NoteStates.IDLE
+        ) {
+          setStates(n, NoteStates.IDLE);
+        }
+        else{
+          if(actives[0].note === note){
+            setStates(n, actives[0].state);
+          }
+          if(actives[1].note === note){
+            setStates(n, actives[1].state);
+          }
+        }
+      }  
     }
-  }
-
+    console.log(states);
+  }, [actives]);
+  
+  
   const displayCenterCircle = () => {
     if(centerCircle){
       console.log("cercle central")
       console.log(centerCircle)
       return(
         <CenterCircle
-            actives={actives}
+            actives={actives!}
             frequencies={frequencies!}
             freqA4={freqA4}
             deviations={temperament!.deviation}
@@ -169,14 +157,8 @@ const NonClickableProcedurePitchCircleSVG: React.FC<NonClickableProcedurePitchCi
           const n = note as Notes;
           return (
             <NonClickablePitchCircleButtonSVG
-              key={n}
-              notesSymbol={n}
               position={btnPosition[n]}
               state={states[n]}
-              tunerMode={tunerMode}
-              actives={actives}
-              onChange={(state: NoteStates) => setStates(n, state)}
-              setActives={setActives}
             />);
         })}
 
@@ -188,7 +170,6 @@ const NonClickableProcedurePitchCircleSVG: React.FC<NonClickableProcedurePitchCi
         <FifthCircleSVG
           qualities={fifthQualities}
         />
-
 
         {
           displayCenterCircle()

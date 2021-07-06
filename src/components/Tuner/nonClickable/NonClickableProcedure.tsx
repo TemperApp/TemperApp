@@ -24,6 +24,7 @@ import * as Tone from 'tone';
 import { render } from "react-dom";
 import NonClickablePitchCircleSVG from "./NonClickablePitchCircleSVG";
 import Test from "./Test";
+import NonClickableProcedurePitchCircleSVG from "./NonClickableProcedurePitchCircleSVG";
 
 
 export enum NoteStates {
@@ -57,6 +58,11 @@ const NonClickableProcedure: React.FC<NonClickableProcedureProps> = ({
   const [thirdQualities, setThirdQualities] = useState<NotesMap<number | null>>(thirdEqualQ());
   const [fifthQualities, setFifthQualities] = useState<NotesMap<number | null>>(fifthEqualQ());
   const [frequencies, setFrequencies] = useState<NotesMap<number>>(freqs4(440));
+  const [noteDisplay, setNoteDisplay] = useState<ActiveNotes>([
+    { note: null, state: NoteStates.IDLE },
+    { note: null, state: NoteStates.IDLE },
+  ]);
+
 
   useEffect(() => {
     (async () => {
@@ -89,6 +95,10 @@ const NonClickableProcedure: React.FC<NonClickableProcedureProps> = ({
       let note1_octave = ((Note.parse(procedure![stepProcedure!][0]))?.octave === 3)? NoteStates.SELECTED : NoteStates.OCTAVE;
       console.log(note1);
       console.log(note1_octave);
+      setNoteDisplay([
+        { note: note1!, state: note1_octave },
+        { note: null, state: NoteStates.IDLE },
+      ])
       const freq1 = (note1 === null)
         ? 0
         : frequencies[note1!]
@@ -105,6 +115,10 @@ const NonClickableProcedure: React.FC<NonClickableProcedureProps> = ({
             //console.log("Note pure : "+stepTune);
             let note1 = (Note.parse(procedure![stepProcedure!][stepTune]))?.toNotes();
             let note1_octave = ((Note.parse(procedure![stepProcedure!][stepTune]))?.octave === 3)? NoteStates.SELECTED : NoteStates.OCTAVE;
+            setNoteDisplay([
+              { note: note1!, state: note1_octave },
+              { note: null, state: NoteStates.IDLE },
+            ])
             const freq1 = (note1 === null)
               ? 0
               : frequencies[note1!]
@@ -125,6 +139,10 @@ const NonClickableProcedure: React.FC<NonClickableProcedureProps> = ({
             let note1_octave = ((Note.parse(procedure![stepProcedure!][0]))?.octave === 3)? NoteStates.SELECTED : NoteStates.OCTAVE;
             let note2 = (Note.parse(procedure![stepProcedure!][1]))?.toNotes();
             let note2_octave = ((Note.parse(procedure![stepProcedure!][1]))?.octave === 3)? NoteStates.SELECTED : NoteStates.OCTAVE;
+            setNoteDisplay([
+              { note: note1!, state: note1_octave },
+              { note: note2!, state: note2_octave },
+            ])
             const freq1 = (note1 === null)
               ? 0
               : frequencies[note1!]
@@ -178,15 +196,23 @@ const NonClickableProcedure: React.FC<NonClickableProcedureProps> = ({
         }
       }
     }
+    console.log("========= Procedure");
+    console.log(noteDisplay);
   }, [stepTune, stepProcedure])
 
 
   return(
     <>
 
-    <Test
-      stepTune = {stepTune}
-      stepProcedure = {stepProcedure!}
+    <NonClickableProcedurePitchCircleSVG
+      tunerMode = {tunerMode}
+      freqA4 = {freqA4}
+      centerCircle  = {centerCircle}
+      thirdQualities = {thirdQualities}
+      fifthQualities = {fifthQualities}
+      frequencies = {frequencies}
+      temperament = {temperament}
+      actives = {noteDisplay}
     />
 
     </>
