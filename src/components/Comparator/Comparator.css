@@ -16,3 +16,12 @@
   color: var(--color-contrast);
   opacity: 0.8;
 }
+
+.comas-text {
+  margin-left: -5%;
+  font-family: "Karla";
+  font-style: normal;
+  font-weight: bold;
+  font-size: 0.8em;
+  color: var(--color-contrast);
+}
