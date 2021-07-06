@@ -102,6 +102,7 @@ const NonClickableProcedurePitchCircleSVG: React.FC<NonClickableProcedurePitchCi
 
   // Clean states
   useEffect( () => {
+    console.log(actives);
     if(actives !== undefined){
       console.log("========= SVG");
       console.log(actives);

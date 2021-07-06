@@ -77,7 +77,7 @@ const PitchCircle: React.FC<PitchCircleProps> = ({
       tunerMode={tunerMode}
       freqA4={freqA4}
       idTemperament={idTemperament}
-      centerCircle={false}
+      centerCircle={true}
       stepProcedure={stepProcedure}
       procedure={procedure}
     />)

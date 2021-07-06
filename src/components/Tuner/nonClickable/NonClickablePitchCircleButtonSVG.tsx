@@ -6,18 +6,17 @@ import Settings from '../../../engine/Settings';
 
 const colorButton = (state: NoteStates) => {
   let temp: string;
-  (Settings.darkTheme())?
-    temp = "#233C3A"
-    : temp = "#F7FBFC"
+  temp = "var(--color-theme)";
   switch (state) {
-    case NoteStates.SELECTED: // bouton activé 
-      return "#A7C5C3";
+    case NoteStates.SELECTED: // bouton activé
+      return "var(--color-light-grey)";
     case NoteStates.OCTAVE: // bouton activé à l'octave supérieur
-      return "#F75D4E";
-    default: //bouton déactivé
+      return "var(--color-hover)";
+    default:
+      //bouton déactivé
       return temp;
   }
-}
+};
 
 type NonClickablePitchCircleButtonSVGProps = {
   position: string,
