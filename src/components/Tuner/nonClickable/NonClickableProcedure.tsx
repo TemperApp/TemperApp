@@ -59,15 +59,26 @@ const NonClickableProcedure: React.FC<NonClickableProcedureProps> = ({
   }, [idTemperament, stepProcedure])
 
   useEffect( () => {
-    if(stepTune < 3){
-      console.log("stepTune : "+stepTune)
-      const timer = setTimeout(() => {
-        setStepTune(stepTune+1);
-        console.log('This will run after 1 second!');
-      }, 1000);
-      return () => clearTimeout(timer);
+    if( (procedure![stepProcedure!].length) === 2){
+      console.log("note simple");
+      let note1 = (Note.parse(procedure![stepProcedure!][0]))?.toNotes();
+      let note1_octave = ((Note.parse(procedure![stepProcedure!][0]))?.octave === 3)? NoteStates.SELECTED : NoteStates.OCTAVE;
+      console.log(note1);
+      console.log(note1_octave);
     }
-  }, [stepTune])
+    else{
+      if(stepTune < 3){
+        console.log("stepTune : "+stepTune)
+        console.log("mode : "+procedure![stepProcedure!][2])
+        const timer = setTimeout(() => {
+          setStepTune(stepTune+1);
+          console.log('This will run after 1 second!');
+        }, 1000);
+        return () => clearTimeout(timer);
+      }
+    }
+    
+  }, [stepTune, stepProcedure])
 
 
   return(
