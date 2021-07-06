@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import PitchCircleSVG from './clickable/PitchCircleSVG';
 import NonClickablePitchCircleSVG from './nonClickable/NonClickablePitchCircleSVG';
+import NonClickableProcedure from './nonClickable/NonClickableProcedure';
 
 export enum TunerMode {
   HZ, BPM
@@ -62,7 +63,17 @@ const PitchCircle: React.FC<PitchCircleProps> = ({
 
   const renderNonClickablePitchCircle = () =>{
     return(
+    /*
     <NonClickablePitchCircleSVG
+      tunerMode={tunerMode}
+      freqA4={freqA4}
+      idTemperament={idTemperament}
+      centerCircle={false}
+      stepProcedure={stepProcedure}
+      procedure={procedure}
+    />)
+    */
+    <NonClickableProcedure 
       tunerMode={tunerMode}
       freqA4={freqA4}
       idTemperament={idTemperament}
