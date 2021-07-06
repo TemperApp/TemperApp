@@ -6,11 +6,6 @@ import ThirdCircleSVG from "../common/ThirdCircleSVG";
 import NonClickablePitchCircleButtonSVG from "./NonClickablePitchCircleButtonSVG";
 import CenterCircle from "../common/CenterCircle";
 import { Temperament } from '../../../model/Temperament/Temperament';
-import EqualTemperament, { thirdEqualQ, fifthEqualQ } from '../../../model/Temperament/Equal';
-import { freqs4, thirdQ, fifthQ } from '../../../model/Divergence';
-import SoundEngine from '../../../engine/SoundEngine';
-import { fetchTemperamentPropsById } from '../../../engine/DataAccessor';
-import Note from '../../../model/Note/Note';
 
 //Types 
 import { PitchCircleButtonSVGPos as btnPosition, PitchCircleSVGLabels } from "../common/PitchCircleButtonSVGPos"
@@ -20,8 +15,6 @@ import { TunerMode } from '../PitchCircle';
 
 //Styles 
 import "../common/PitchCircleSVG.css";
-import * as Tone from 'tone';
-
 
 export enum NoteStates {
   IDLE,
@@ -51,9 +44,7 @@ type NonClickableProcedurePitchCircleSVGProps = {
 }
 
 const NonClickableProcedurePitchCircleSVG: React.FC<NonClickableProcedurePitchCircleSVGProps> = ({
-  tunerMode, freqA4, idTemperament, centerCircle, stepProcedure, 
-  procedure, thirdQualities, fifthQualities,
-  frequencies, temperament, actives
+  freqA4, centerCircle, thirdQualities, fifthQualities, frequencies, temperament, actives
 }) => {
 
   const [C       , setC      ] = useState<NoteStates>(NoteStates.IDLE);
@@ -104,7 +95,7 @@ const NonClickableProcedurePitchCircleSVG: React.FC<NonClickableProcedurePitchCi
   useEffect( () => {
     console.log(actives);
     if(actives !== undefined){
-      console.log("========= SVG");
+      //console.log("========= SVG");
       console.log(actives);
       console.log(actives[0].note)
       for (const note in states) {
@@ -132,7 +123,7 @@ const NonClickableProcedurePitchCircleSVG: React.FC<NonClickableProcedurePitchCi
   
   const displayCenterCircle = () => {
     if(centerCircle){
-      console.log("cercle central")
+      //console.log("cercle central")
       console.log(centerCircle)
       return(
         <CenterCircle

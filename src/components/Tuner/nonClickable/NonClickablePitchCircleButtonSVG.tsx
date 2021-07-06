@@ -1,8 +1,5 @@
 import React from 'react';
-import { ActiveNotes, NoteStates } from './NonClickablePitchCircleSVG';
-import { TunerMode } from '../PitchCircle';
-import { Notes } from '../../../model/Note/enums';
-import Settings from '../../../engine/Settings';
+import { NoteStates } from './NonClickablePitchCircleSVG';
 
 const colorButton = (state: NoteStates) => {
   let temp: string;

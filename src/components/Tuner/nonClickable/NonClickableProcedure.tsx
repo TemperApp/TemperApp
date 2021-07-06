@@ -1,10 +1,6 @@
 import React, { useEffect, useState } from "react";
 
 //Components
-import FifthCircleSVG from "../common/FifthCircleSVG";
-import ThirdCircleSVG from "../common/ThirdCircleSVG";
-import NonClickablePitchCircleButtonSVG from "./NonClickablePitchCircleButtonSVG";
-import CenterCircle from "../common/CenterCircle";
 import { Temperament } from '../../../model/Temperament/Temperament';
 import EqualTemperament, { thirdEqualQ, fifthEqualQ } from '../../../model/Temperament/Equal';
 import { freqs4, thirdQ, fifthQ } from '../../../model/Divergence';
@@ -13,19 +9,13 @@ import { fetchTemperamentPropsById } from '../../../engine/DataAccessor';
 import Note from '../../../model/Note/Note';
 
 //Types 
-import { PitchCircleButtonSVGPos as btnPosition, PitchCircleSVGLabels } from "../common/PitchCircleButtonSVGPos"
 import NotesMap from '../../../model/Note/NotesMap';
-import { NoteAlter, Notes } from '../../../model/Note/enums';
+import { Notes } from '../../../model/Note/enums';
 import { TunerMode } from '../PitchCircle';
 
 //Styles 
 import "../common/PitchCircleSVG.css";
-import * as Tone from 'tone';
-import { render } from "react-dom";
-import NonClickablePitchCircleSVG from "./NonClickablePitchCircleSVG";
-import Test from "./Test";
 import NonClickableProcedurePitchCircleSVG from "./NonClickableProcedurePitchCircleSVG";
-
 
 export enum NoteStates {
   IDLE,
@@ -90,7 +80,7 @@ const NonClickableProcedure: React.FC<NonClickableProcedureProps> = ({
 
   useEffect( () => {
     if( (procedure![stepProcedure!].length) === 2){
-      console.log("note simple");
+      //console.log("note simple");
       let note1 = (Note.parse(procedure![stepProcedure!][0]))?.toNotes();
       let note1_octave = ((Note.parse(procedure![stepProcedure!][0]))?.octave === 3)? NoteStates.SELECTED : NoteStates.OCTAVE;
       console.log(note1);
@@ -135,7 +125,7 @@ const NonClickableProcedure: React.FC<NonClickableProcedureProps> = ({
             return () => clearTimeout(timer);
           }
           else{
-            console.log("Battement : "+stepTune)
+            //console.log("Battement : "+stepTune)
             let note1 = (Note.parse(procedure![stepProcedure!][0]))?.toNotes();
             let note1_octave = ((Note.parse(procedure![stepProcedure!][0]))?.octave === 3)? NoteStates.SELECTED : NoteStates.OCTAVE;
             let note2 = (Note.parse(procedure![stepProcedure!][1]))?.toNotes();
@@ -172,7 +162,7 @@ const NonClickableProcedure: React.FC<NonClickableProcedureProps> = ({
           }
         }
         else{
-          console.log("Control : "+ stepTune)
+          //console.log("Control : "+ stepTune)
           let note1 = (Note.parse(procedure![stepProcedure!][0]))?.toNotes();
             let note1_octave = ((Note.parse(procedure![stepProcedure!][0]))?.octave === 3)? NoteStates.SELECTED : NoteStates.OCTAVE;
             let note2 = (Note.parse(procedure![stepProcedure!][1]))?.toNotes();
@@ -201,14 +191,11 @@ const NonClickableProcedure: React.FC<NonClickableProcedureProps> = ({
         }
       }
     }
-    console.log("========= Procedure "+stepProcedure);
+    //console.log("========= Procedure "+stepProcedure);
     console.log(noteDisplay);
   }, [stepTune, stepProcedure])
 
-
   return(
-    <>
-
     <NonClickableProcedurePitchCircleSVG
       tunerMode = {tunerMode}
       freqA4 = {freqA4}
@@ -219,8 +206,6 @@ const NonClickableProcedure: React.FC<NonClickableProcedureProps> = ({
       temperament = {temperament}
       actives = {noteDisplay}
     />
-
-    </>
   );
 
 };
