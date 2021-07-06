@@ -36,27 +36,29 @@ export type ActiveNote = {
 
 export type ActiveNotes = [ActiveNote, ActiveNote];
 
-type NonClickablePitchCircleSVGProps = {
+type NonClickableProcedurePitchCircleSVGProps = {
   tunerMode: TunerMode,
   freqA4: number,
   idTemperament: number,
   centerCircle : boolean,
   stepProcedure?: number,
   procedure?: Array<string>,
+  thirdQualities: NotesMap<number | null>
+  fifthQualities: NotesMap<number | null>
+  frequencies?: NotesMap<number>
+  temperament?: Temperament
 }
 
-const NonClickablePitchCircleSVG: React.FC<NonClickablePitchCircleSVGProps> = ({
-  tunerMode, freqA4, idTemperament, centerCircle, stepProcedure, procedure
+const NonClickableProcedurePitchCircleSVG: React.FC<NonClickableProcedurePitchCircleSVGProps> = ({
+  tunerMode, freqA4, idTemperament, centerCircle, stepProcedure, 
+  procedure, thirdQualities, fifthQualities,
+  frequencies, temperament
 }) => {
+
   const [actives, setActives] = useState<ActiveNotes>([
     { note: null, state: NoteStates.IDLE },
     { note: null, state: NoteStates.IDLE },
   ]);
-
-  const [temperament, setTemperament] = useState<Temperament>(EqualTemperament);
-  const [thirdQualities, setThirdQualities] = useState<NotesMap<number | null>>(thirdEqualQ());
-  const [fifthQualities, setFifthQualities] = useState<NotesMap<number | null>>(fifthEqualQ());
-  const [frequencies, setFrequencies] = useState<NotesMap<number>>(freqs4(440));
 
   const [C       , setC      ] = useState<NoteStates>(NoteStates.IDLE);
   const [C_sharp , setC_sharp] = useState<NoteStates>(NoteStates.IDLE);
@@ -126,107 +128,7 @@ const NonClickablePitchCircleSVG: React.FC<NonClickablePitchCircleSVGProps> = ({
     ]);
   }, [tunerMode]);
 
-  useEffect(() => {
-    // Update fitfhs and thirds circles and frequencies
-    (async () => {
-      const temp = await fetchTemperamentPropsById(idTemperament);
-      setTemperament(temp);
-      setFifthQualities(fifthQ(temp.cpExp5th));
-      setThirdQualities(thirdQ(temp.csExp3rd));
-      setFrequencies(freqs4(freqA4, temp.deviation));
-    })();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    cleanActive();
-
-  }, [idTemperament]);
-
-
-  // DEBUT TAMBOUILLE BENJAMIN
-
-  useEffect(() => {
-    if(procedure != undefined && stepProcedure! < (procedure?.length) && stepProcedure! > -1 ){
-      console.log("procedure n* "+stepProcedure);
-      console.log(procedure[stepProcedure!]);
-      if(procedure[stepProcedure!].length==2){
-        let note1 = (Note.parse(procedure[stepProcedure!][0]))?.toNotes();
-        let note1_octave = ((Note.parse(procedure[stepProcedure!][0]))?.octave === 3)? NoteStates.SELECTED : NoteStates.OCTAVE;
-        setActives(
-          [
-            {note: note1!, state: note1_octave},
-            {note: null, state: NoteStates.IDLE}
-          ]
-        )
-        setStates(note1!, note1_octave);
-      }
-      else{
-        let note1 = (Note.parse(procedure[stepProcedure!][0]))?.toNotes();
-        let note2 = (Note.parse(procedure[stepProcedure!][1]))?.toNotes();
-        let note1_octave = ((Note.parse(procedure[stepProcedure!][0]))?.octave === 3)? NoteStates.SELECTED : NoteStates.OCTAVE;
-        let note2_octave = ((Note.parse(procedure[stepProcedure!][1]))?.octave === 3)? NoteStates.SELECTED : NoteStates.OCTAVE;
-        setActives(
-          [
-            {note: note1!, state: note1_octave},
-            {note: note2!, state: note2_octave}
-          ]
-        )
-        setStates(note1!, note1_octave);
-        setStates(note2!, note2_octave);
-
-      }
-      console.log(actives);
-    }
-  },[stepProcedure])
-
-  useEffect(() => {
-    const freq1 = (actives[0].note === null)
-      ? 0
-      : frequencies[actives[0].note]
-        * (actives[0].state === NoteStates.OCTAVE ? 2 : 1);
-      (actives[0].note !== null)
-      ? SoundEngine.stopAndPlay(freq1)
-      : SoundEngine.stop();
-    const timer = setTimeout(() => {
-      SoundEngine.stop();
-      console.log('This will run after 1 second!')
-    }, 1000);
-    return () => clearTimeout(timer);
-  }, [stepProcedure]);
-
-  // FIN TAMBOUILLE BENJAMIN
-
-
-  useEffect(() => {
-    // Update frequencies
-    (async () => {
-      if (!temperament)
-        return;
-      setFrequencies(freqs4(freqA4, temperament.deviation));
-    })();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [freqA4]);
-
-  /* 
-  useEffect(() => {
-    // Play sound
-    const freq1 = (actives[0].note === null)
-      ? 0
-      : frequencies[actives[0].note]
-        * (actives[0].state === NoteStates.OCTAVE ? 2 : 1);
-
-    const freq2 = (actives[1].note === null)
-      ? 0
-      : frequencies[actives[1].note]
-        * (actives[1].state === NoteStates.OCTAVE ? 2 : 1);
-
-    (actives[0].note !== null)
-      ? SoundEngine.stopAndPlay(freq1)
-      : SoundEngine.stop();
-
-    actives[1].note !== null
-      ? SoundEngine.setPulseBPS(Math.abs(freq1 - freq2))
-      : SoundEngine.setPulseBPS(0);
-  }, [actives, frequencies]);
-*/
+ 
   // Clean states
   for (const note in states) {
     const n = note as Notes;
@@ -246,10 +148,10 @@ const NonClickablePitchCircleSVG: React.FC<NonClickablePitchCircleSVGProps> = ({
       return(
         <CenterCircle
             actives={actives}
-            frequencies={frequencies}
+            frequencies={frequencies!}
             freqA4={freqA4}
-            deviations={temperament.deviation}
-          />
+            deviations={temperament!.deviation}
+        />
       );
     }
   }
@@ -297,4 +199,4 @@ const NonClickablePitchCircleSVG: React.FC<NonClickablePitchCircleSVGProps> = ({
   );
 };
 
-export default NonClickablePitchCircleSVG;
+export default NonClickableProcedurePitchCircleSVG;

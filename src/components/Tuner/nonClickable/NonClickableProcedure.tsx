@@ -54,12 +54,16 @@ const NonClickableProcedure: React.FC<NonClickableProcedureProps> = ({
 
   const [stepTune, setStepTune] = useState<number>(0);
   const [temperament, setTemperament] = useState<Temperament>(EqualTemperament);
+  const [thirdQualities, setThirdQualities] = useState<NotesMap<number | null>>(thirdEqualQ());
+  const [fifthQualities, setFifthQualities] = useState<NotesMap<number | null>>(fifthEqualQ());
   const [frequencies, setFrequencies] = useState<NotesMap<number>>(freqs4(440));
 
   useEffect(() => {
     (async () => {
       const temp = await fetchTemperamentPropsById(idTemperament);
       setTemperament(temp);
+      setFifthQualities(fifthQ(temp.cpExp5th));
+      setThirdQualities(thirdQ(temp.csExp3rd));
       setFrequencies(freqs4(freqA4, temp.deviation));
     })();
   }, [idTemperament]);
@@ -86,33 +90,33 @@ const NonClickableProcedure: React.FC<NonClickableProcedureProps> = ({
       console.log(note1);
       console.log(note1_octave);
       const freq1 = (note1 === null)
-      ? 0
-      : frequencies[note1!]
-        * (note1_octave === NoteStates.OCTAVE ? 2 : 1);
+        ? 0
+        : frequencies[note1!]
+          * (note1_octave === NoteStates.OCTAVE ? 2 : 1);
       (note1 !== null)
-      ? SoundEngine.stopAndPlay(freq1)
-      : SoundEngine.stop();
+        ? SoundEngine.stopAndPlay(freq1)
+        : SoundEngine.stop();
     }
     else{
       if(stepTune < 3){
         console.log(procedure![stepProcedure!][2])
         if(procedure![stepProcedure!][2] === "tune"){
           if(stepTune === 0 || stepTune === 1){
-            console.log("Note pure : "+stepTune);
+            //console.log("Note pure : "+stepTune);
             let note1 = (Note.parse(procedure![stepProcedure!][stepTune]))?.toNotes();
             let note1_octave = ((Note.parse(procedure![stepProcedure!][stepTune]))?.octave === 3)? NoteStates.SELECTED : NoteStates.OCTAVE;
             const freq1 = (note1 === null)
-            ? 0
-            : frequencies[note1!]
-              * (note1_octave === NoteStates.OCTAVE ? 2 : 1);
+              ? 0
+              : frequencies[note1!]
+                * (note1_octave === NoteStates.OCTAVE ? 2 : 1);
             (note1 !== null)
-            ? SoundEngine.stopAndPlay(freq1)
-            : SoundEngine.stop();
+              ? SoundEngine.stopAndPlay(freq1)
+              : SoundEngine.stop();
             const timer = setTimeout(() => {
               SoundEngine.stop();
               setStepTune(stepTune+1);
-              console.log('This will run after 2 second!');
-            }, 2000);
+              //console.log('This will run after 2 second!');
+            }, 1000);
             return () => clearTimeout(timer);
           }
           else{
@@ -136,25 +140,44 @@ const NonClickableProcedure: React.FC<NonClickableProcedureProps> = ({
               ? SoundEngine.stopAndPlay(freq2)
               : SoundEngine.stop();
             (freq1 !== null && freq2 !== null)
-              ? SoundEngine.setPulseBPS(freq1-freq2)
+              ? (freq1>freq2)? SoundEngine.setPulseBPS(freq1-freq2): SoundEngine.setPulseBPS(freq2-freq1)
               : SoundEngine.setPulseBPS(0);
-            console.log("mode : "+procedure![stepProcedure!][2])
+            //console.log("mode : "+procedure![stepProcedure!][2])
             const timer = setTimeout(() => {
               setStepTune(stepTune+1);
               SoundEngine.stop()
               SoundEngine.setPulseBPS(0);
-              console.log('This will run after 3 second!');
+              //console.log('This will run after 3 second!');
             }, 3000);
             return () => clearTimeout(timer);
           }
         }
         else{
-
+          console.log("Control : "+stepTune)
+          let note1 = (Note.parse(procedure![stepProcedure!][0]))?.toNotes();
+          let note1_octave = ((Note.parse(procedure![stepProcedure!][0]))?.octave === 3)? NoteStates.SELECTED : NoteStates.OCTAVE;
+          let note2 = (Note.parse(procedure![stepProcedure!][1]))?.toNotes();
+          let note2_octave = ((Note.parse(procedure![stepProcedure!][1]))?.octave === 3)? NoteStates.SELECTED : NoteStates.OCTAVE;
+          const freq1 = (note1 === null)
+            ? 0
+            : frequencies[note1!]
+              * (note1_octave === NoteStates.OCTAVE ? 2 : 1);
+          const freq2 = (note2 === null)
+            ? 0
+            : frequencies[note2!]
+              * (note2_octave === NoteStates.OCTAVE ? 2 : 1);
+          (note1 !== null)
+            ? SoundEngine.stopAndPlay(freq1)
+            : SoundEngine.stop();
+          (note2 !== null)
+            ? SoundEngine.stopAndPlay(freq2)
+            : SoundEngine.stop();
+          (freq1 !== null && freq2 !== null)
+            ? (freq1>freq2)? SoundEngine.setPulseBPS(freq1-freq2): SoundEngine.setPulseBPS(freq2-freq1)
+            : SoundEngine.setPulseBPS(0);
         }
-       
       }
     }
-    
   }, [stepTune, stepProcedure])
 
 

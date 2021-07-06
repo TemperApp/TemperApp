@@ -41,7 +41,7 @@ const Test: React.FC<TestProps> = ({
     <>
     <div>
       <p>Procédure n° {stepProcedure}</p>
-      <p>n° {stepTune}</p>
+      <p>{(stepTune === 3)? "fin": "n° : "+stepTune}</p>
     </div>
     </>
   );
