@@ -18,14 +18,14 @@ const ComparatorFifthComaCircle: React.FC<ComparatorFifthComaCircleProps> = ({ t
     <>
       <g id="Note_1_Quinte">
         <path data-name="A"       fill={convertFifthQualityToColor(qualityNote1.A)}        d="M310.683 135.505C316.543 155.893 316.933 177.463 311.815 198.049L280.804 190.354C284.572 175.2 284.284 159.323 279.971 144.316L310.683 135.505Z"/>
-        <path data-name="E"       fill={convertFifthQualityToColor(qualityNote1.E)}   d="M312.097 196.891C307.182 217.527 296.923 236.509 282.347 251.932L258.988 229.898C269.696 218.566 277.233 204.621 280.844 189.461L312.097 196.891Z"/>  
-        <path data-name="B"       fill={convertFifthQualityToColor(qualityNote1.B)}   d="M282.257 252.028C267.286 267.836 248.323 279.316 227.368 285.258L218.595 254.372C233.988 250.007 247.918 241.574 258.915 229.962L282.257 252.028Z"/>  
+        <path data-name="E"       fill={convertFifthQualityToColor(qualityNote1.E)}        d="M312.097 196.891C307.182 217.527 296.923 236.509 282.347 251.932L258.988 229.898C269.696 218.566 277.233 204.621 280.844 189.461L312.097 196.891Z"/>  
+        <path data-name="B"       fill={convertFifthQualityToColor(qualityNote1.B)}        d="M282.257 252.028C267.286 267.836 248.323 279.316 227.368 285.258L218.595 254.372C233.988 250.007 247.918 241.574 258.915 229.962L282.257 252.028Z"/>  
         <path data-name="F_sharp" fill={convertFifthQualityToColor(qualityNote1.F_sharp)}  d="M227.382 285.254C206.825 291.085 185.09 291.377 164.384 286.099L172.378 254.792C187.554 258.66 203.483 258.446 218.549 254.172L227.382 285.254Z"/>
         <path data-name="C_sharp" fill={convertFifthQualityToColor(qualityNote1.C_sharp)}  d="M164.462 286.119C143.586 280.813 124.504 270.038 109.186 254.905L131.79 232.065C143.041 243.179 157.055 251.093 172.388 254.991L164.462 286.119Z"/>
         <path data-name="G_sharp" fill={convertFifthQualityToColor(qualityNote1.G_sharp)}  d="M109.291 255.008C94.1753 240.112 83.2463 221.507 77.6001 201.059L108.868 192.44C113.002 207.41 121.003 221.031 132.069 231.936L109.291 255.008Z"/>
-        <path data-name="E_flat"  fill={convertFifthQualityToColor(qualityNote1.E_flat)}        d="M77.8437 201.929C72.0448 181.523 71.7186 159.953 76.8978 139.381L108.68 147.369C104.902 162.372 105.14 178.103 109.369 192.986L77.8437 201.929Z"/>
+        <path data-name="E_flat"  fill={convertFifthQualityToColor(qualityNote1.E_flat)}   d="M77.8437 201.929C72.0448 181.523 71.7186 159.953 76.8978 139.381L108.68 147.369C104.902 162.372 105.14 178.103 109.369 192.986L77.8437 201.929Z"/>
         <path data-name="F"       fill={convertFifthQualityToColor(qualityNote1.F)}        d="M107.318 84.7601C122.16 69.4407 140.79 58.3127 161.322 52.5032L170.224 83.9071C155.232 88.149 141.628 96.2745 130.792 107.46L107.318 84.7601Z"/>
-        <path data-name="B_flat"  fill={convertFifthQualityToColor(qualityNote1.B_flat)}        d="M76.9162 139.308C82.1083 118.74 92.6225 99.8979 107.404 84.6714L131.128 107.661C120.382 118.731 112.737 132.43 108.963 147.383L76.9162 139.308Z"/>
+        <path data-name="B_flat"  fill={convertFifthQualityToColor(qualityNote1.B_flat)}   d="M76.9162 139.308C82.1083 118.74 92.6225 99.8979 107.404 84.6714L131.128 107.661C120.382 118.731 112.737 132.43 108.963 147.383L76.9162 139.308Z"/>
         <path data-name="C"       fill={convertFifthQualityToColor(qualityNote1.C)}        d="M161.244 52.5254C181.972 46.6456 203.894 46.3988 224.749 51.8105L216.663 82.9158C201.349 78.9418 185.25 79.123 170.03 83.4407L161.244 52.5254Z"/>
         <path data-name="G"       fill={convertFifthQualityToColor(qualityNote1.G)}        d="M224.575 51.7654C245.132 57.0673 263.932 67.677 279.09 82.5301L256.528 105.513C245.404 94.613 231.607 86.8269 216.521 82.936L224.575 51.7654Z"/>
         <path data-name="D"       fill={convertFifthQualityToColor(qualityNote1.D)}        d="M278.515 81.9703C293.771 96.7226 304.876 115.224 310.715 135.618L279.874 144.433C275.581 129.443 267.419 115.844 256.205 105L278.515 81.9703Z"/>     
@@ -72,23 +72,23 @@ const ComparatorFifthComaCircle: React.FC<ComparatorFifthComaCircleProps> = ({ t
         <text
           transform="matrix(1 0 0 1 187.301 311.505)"
           className="st22 st23"
-        >F#</text>
+        >F♯</text>
         <text
           transform="matrix(1 0 0 1 121.472 291.01)"
           className="st22 st23"
-        >C#</text>
+        >C♯</text>
         <text
           transform="matrix(1 0 0 1 70.4448 239.791)"
           className="st22 st23"
-        >G#</text>
+        >G♯</text>
         <text
           transform="matrix(1 0 0 1 50.5513 170.926)"
           className="st22 st23"
-        >Eb</text>
+        >E♭</text>
         <text
           transform="matrix(1 0 0 1 68.1022 105.54)"
           className="st22 st23"
-        >Bb</text>
+        >B♭</text>
         <text
           transform="matrix(1 0 0 1 122.729 57.5903)"
           className="st22 st23"

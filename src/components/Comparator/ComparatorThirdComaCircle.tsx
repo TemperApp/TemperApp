@@ -72,23 +72,23 @@ const ComparatorThirdComaCircle: React.FC<ComparatorThirdComaCircleProps> = ({ t
         <text
           transform="matrix(1 0 0 1 187.301 311.505)"
           className="st22 st23"
-        >F#</text>
+        >F♯</text>
         <text
           transform="matrix(1 0 0 1 121.472 291.01)"
           className="st22 st23"
-        >C#</text>
+        >C♯</text>
         <text
           transform="matrix(1 0 0 1 70.4448 239.791)"
           className="st22 st23"
-        >G#</text>
+        >G♯</text>
         <text
           transform="matrix(1 0 0 1 50.5513 170.926)"
           className="st22 st23"
-        >Eb</text>
+        >E♭</text>
         <text
           transform="matrix(1 0 0 1 68.1022 105.54)"
           className="st22 st23"
-        >Bb</text>
+        >B♭</text>
         <text
           transform="matrix(1 0 0 1 122.729 57.5903)"
           className="st22 st23"
