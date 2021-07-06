@@ -104,15 +104,15 @@ export const convertFifthQualityToColor = (quality: number | null) => {
 
 export const convertThirdQualityToColor = (quality: number | null) => {
   if (Settings.darkTheme()) {
-    if (quality === null) return "grey";
+    if (quality === null) return "#B9B9B9";
 
     if (quality < 0.005 && quality > -0.005) return "white";
 
     switch (Math.max(Math.min(Math.floor(quality), 20), -1)) {
       case -1:
-        return "grey"; // handle value between -1 and -0.005
+        return "#B9B9B9"; // handle value between -1 and -0.005
       case 0:
-        return "#FFFFFF"; // handle value between 0.005 and 1
+        return "#D98FD7"; // handle value between 0.005 and 1
       case 1:
         return "#D98FD7";
       case 2:
