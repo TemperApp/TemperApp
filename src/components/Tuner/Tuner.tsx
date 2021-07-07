@@ -12,7 +12,6 @@ import { TemperamentDBType } from "../../engine/DB";
 import PitchCircle from "./PitchCircle";
 import SoundEngine from "../../engine/SoundEngine";
 import EqualTemperament from "../../model/Temperament/Equal";
-import { arrowForward, arrowBack, play } from "ionicons/icons";
 
 type TunerProps = {
   setMainTitle: (t: string) => void,
@@ -90,7 +89,7 @@ const Tuner: React.FC<TunerProps> = ({
           idTemperament={temperament.idTemperament}
           stepProcedure={stepProcedure}
         />
-        <div className="procedure-nav w-full px-5 flex justify-center">
+        <div className="procedure-nav w-full flex justify-between px-12">
           {!isClickable
             ? 
             <>
@@ -100,8 +99,9 @@ const Tuner: React.FC<TunerProps> = ({
             onClick={() => setStepProcedure(stepProcedure-1)}
             >
             <IonIcon
+              style={{ fontSize: "3rem" } /* TODO Find a better way */}
               slot='icon-only'
-              icon={arrowBack}
+              src="/assets/logotypes/icon-procedure-left.svg"
             />
             </IonButton>
             <IonButton
@@ -110,8 +110,9 @@ const Tuner: React.FC<TunerProps> = ({
               onClick={() => setStepProcedure(stepProcedure+1)}
             >
             <IonIcon
+              style={{ fontSize: "3rem" } /* TODO Find a better way */}
               slot='icon-only'
-              icon={arrowForward}
+              src="/assets/logotypes/icon-procedure-right.svg"
             />
             </IonButton>
           </>

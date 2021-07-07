@@ -47,3 +47,8 @@
   position: absolute;
   top: 43%;
 }
+
+.px-12 {
+  padding-left: 4rem !important;
+  padding-right: 4rem !important;
+}
