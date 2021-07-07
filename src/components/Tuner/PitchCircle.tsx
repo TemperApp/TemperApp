@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import PitchCircleSVG from './clickable/PitchCircleSVG';
-import NonClickablePitchCircleSVG from './nonClickable/NonClickablePitchCircleSVG';
 import NonClickableProcedure from './nonClickable/NonClickableProcedure';
 
 export enum TunerMode {
@@ -98,3 +97,7 @@ const PitchCircle: React.FC<PitchCircleProps> = ({
 };
 
 export default PitchCircle;
+function setStepProcedure(arg0: number): void {
+  throw new Error('Function not implemented.');
+}
+

@@ -42,3 +42,8 @@
 #input-a4 input {
   padding-left: 0;
 }
+
+.procedure-nav {
+  position: absolute;
+  top: 43%;
+}

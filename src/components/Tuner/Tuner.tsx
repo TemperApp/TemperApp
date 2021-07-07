@@ -12,7 +12,7 @@ import { TemperamentDBType } from "../../engine/DB";
 import PitchCircle from "./PitchCircle";
 import SoundEngine from "../../engine/SoundEngine";
 import EqualTemperament from "../../model/Temperament/Equal";
-import { arrowForward, arrowBack } from "ionicons/icons";
+import { arrowForward, arrowBack, play } from "ionicons/icons";
 
 type TunerProps = {
   setMainTitle: (t: string) => void,
@@ -89,6 +89,34 @@ const Tuner: React.FC<TunerProps> = ({
           idTemperament={temperament.idTemperament}
           stepProcedure={stepProcedure}
         />
+        <div className="procedure-nav w-full px-5 flex justify-center">
+          {!isClickable
+            ? 
+            <>
+            <IonButton
+            fill="clear"
+            style={{ "--ripple-color": "transparent" }}
+            onClick={() => setStepProcedure(stepProcedure-1)}
+            >
+            <IonIcon
+              slot='icon-only'
+              icon={arrowBack}
+            />
+            </IonButton>
+            <IonButton
+              fill="clear"
+              style={{ "--ripple-color": "transparent" }}
+              onClick={() => setStepProcedure(stepProcedure+1)}
+            >
+            <IonIcon
+              slot='icon-only'
+              icon={arrowForward}
+            />
+            </IonButton>
+          </>
+            : <></>
+          }
+        </div>
       </section>
 
       {/* Buttons at the bottom */}
@@ -117,20 +145,7 @@ const Tuner: React.FC<TunerProps> = ({
             />
           </IonButton>
         </div>
-        <div>
-          <IonButton
-            fill="clear"
-            style={!isClickable ? { "--ripple-color": "transparent",
-            "display": "block"} 
-            : {"display": "none" }}
-            onClick={() => setStepProcedure(stepProcedure-1)}
-          >
-            <IonIcon
-              slot='icon-only'
-              icon={arrowBack}
-            />
-          </IonButton>
-        </div>
+    
         <div>
           <IonButton
             size="large"
@@ -148,21 +163,11 @@ const Tuner: React.FC<TunerProps> = ({
             />
           </IonButton>
         </div>
-        <div>
-          <IonButton
-            fill="clear"
-            style={!isClickable ? { "--ripple-color": "transparent",
-            "display": "block"} 
-            : {"display": "none" }}
-            onClick={() => setStepProcedure(stepProcedure+1)}
-          >
-            <IonIcon
-              slot='icon-only'
-              icon={arrowForward}
-            />
-          </IonButton>
-        </div>
+ 
         <div className="w-20 btn-mode">
+        {isClickable
+        ?
+        <>
           <IonButton
             onClick={() => setIsHzMode(false)}
             className={`btn-mode-bpm m-0
@@ -177,6 +182,15 @@ const Tuner: React.FC<TunerProps> = ({
           >
             Hz
           </IonButton>
+        </>
+        :
+          <IonButton fill="clear">
+            <IonIcon
+              slot='icon-only'
+              icon={play}>
+            </IonIcon>
+          </IonButton>
+        }
         </div>
       </section>
     </div>
