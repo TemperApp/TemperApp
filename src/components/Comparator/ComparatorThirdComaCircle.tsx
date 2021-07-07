@@ -106,78 +106,78 @@ const ComparatorThirdComaCircle: React.FC<ComparatorThirdComaCircleProps> = ({ t
       <g className="comas-text" fill="var(--color-contrast)">
         <text
           transform="matrix(1 0 0 1 184.981 62.501)"
-        >{temperament1.cpExp5th.C}</text>
+        >{temperament1.csExp3rd.C}</text>
         <text
           transform="matrix(1 0 0 1 238.428 75.578)"
-        >{temperament1.cpExp5th.G}</text>
+        >{temperament1.csExp3rd.G}</text>
         <text
           transform="matrix(1 0 0 1 277.149 112.63)"
-        >{temperament1.cpExp5th.A}</text>
+        >{temperament1.csExp3rd.A}</text>
         <text
           transform="matrix(1 0 0 1 290.783 164.939)"
-        >{temperament1.cpExp5th.A}</text>
+        >{temperament1.csExp3rd.A}</text>
         <text
           transform="matrix(1 0 0 1 276.604 215.068)"
-        >{temperament1.cpExp5th.E}</text>
+        >{temperament1.csExp3rd.E}</text>
         <text
           transform="matrix(1 0 0 1 240.146 257.569)"
-        >{temperament1.cpExp5th.B}</text>
+        >{temperament1.csExp3rd.B}</text>
         <text
           transform="matrix(1 0 0 1 188.126 270.645)"
-        >{temperament1.cpExp5th.F_sharp}</text>
+        >{temperament1.csExp3rd.F_sharp}</text>
         <text
           transform="matrix(1 0 0 1 135.968 257.567)"
-        >{temperament1.cpExp5th.C_sharp}</text>
+        >{temperament1.csExp3rd.C_sharp}</text>
         <text
           transform="matrix(1 0 0 1 97.7099 219.426)"
-        >{temperament1.cpExp5th.G_sharp}</text>
+        >{temperament1.csExp3rd.G_sharp}</text>
         <text
           transform="matrix(1 0 0 1 79.9238 168.207)"
-        >{temperament1.cpExp5th.E_flat}</text>
+        >{temperament1.csExp3rd.E_flat}</text>
         <text
           transform="matrix(1 0 0 1 93.9039 112.63)"
-        >{temperament1.cpExp5th.B_flat}</text>
+        >{temperament1.csExp3rd.B_flat}</text>
         <text
           transform="matrix(1 0 0 1 131.535 75.5785)"
-        >{temperament1.cpExp5th.F}</text>
+        >{temperament1.csExp3rd.F}</text>
       </g>
       <g className="comas-text" fill="var(--color-contrast)">
         <text
           transform="matrix(1 0 0 1 225.368 102.823)"
-        >{temperament2.cpExp5th.G}</text>
+        >{temperament2.csExp3rd.G}</text>
         <text
           transform="matrix(1 0 0 1 251.283 130.066)"
-        >{temperament2.cpExp5th.D}</text>
+        >{temperament2.csExp3rd.D}</text>
         <text
           transform="matrix(1 0 0 1 261.513 164.939)"
-        >{temperament2.cpExp5th.A}</text>
+        >{temperament2.csExp3rd.A}</text>
         <text
           transform="matrix(1 0 0 1 256.023 199.811)"
-        >{temperament2.cpExp5th.E}</text>
+        >{temperament2.csExp3rd.E}</text>
         <text
           transform="matrix(1 0 0 1 230.558 227.056)"
-        >{temperament2.cpExp5th.B}</text>
+        >{temperament2.csExp3rd.B}</text>
         <text
           transform="matrix(1 0 0 1 196.634 243.663)"
-        >{temperament2.cpExp5th.F_sharp}</text>
+        >{temperament2.csExp3rd.F_sharp}</text>
         <text
           transform="matrix(1 0 0 1 160.526 234.945)"
-        >{temperament2.cpExp5th.C_sharp}</text>
+        >{temperament2.csExp3rd.C_sharp}</text>
         <text
           transform="matrix(1 0 0 1 132.958 207.7)"
-        >{temperament2.cpExp5th.G_sharp}</text>
+        >{temperament2.csExp3rd.G_sharp}</text>
         <text
           transform="matrix(1 0 0 1 122.35 171.739)"
-        >{temperament2.cpExp5th.E_flat}</text>
+        >{temperament2.csExp3rd.E_flat}</text>
         <text
           transform="matrix(1 0 0 1 133.635 135.776)"
-        >{temperament2.cpExp5th.B_flat}</text>
+        >{temperament2.csExp3rd.B_flat}</text>
         <text
           transform="matrix(1 0 0 1 158.458 109.622)"
-        >{temperament2.cpExp5th.F}</text>
+        >{temperament2.csExp3rd.F}</text>
         <text
           transform="matrix(1 0 0 1 190.878 94.1044)"
-        >{temperament2.cpExp5th.C}</text>
+        >{temperament2.csExp3rd.C}</text>
       </g>
     </>
   );
