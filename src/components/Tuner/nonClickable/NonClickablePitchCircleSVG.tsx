@@ -15,12 +15,11 @@ import Note from '../../../model/Note/Note';
 //Types 
 import { PitchCircleButtonSVGPos as btnPosition, PitchCircleSVGLabels } from "../common/PitchCircleButtonSVGPos"
 import NotesMap from '../../../model/Note/NotesMap';
-import { NoteAlter, Notes } from '../../../model/Note/enums';
+import { Notes } from '../../../model/Note/enums';
 import { TunerMode } from '../PitchCircle';
 
 //Styles 
 import "../common/PitchCircleSVG.css";
-import * as Tone from 'tone';
 
 
 export enum NoteStates {
@@ -71,7 +70,7 @@ const NonClickablePitchCircleSVG: React.FC<NonClickablePitchCircleSVGProps> = ({
   const [B_flat  , setB_flat ] = useState<NoteStates>(NoteStates.IDLE);
   const [B       , setB      ] = useState<NoteStates>(NoteStates.IDLE);
 
-  const states = { C, C_sharp, D, E_flat, E, F, F_sharp, G, G_sharp, A, B_flat, B };
+  const states = {C, C_sharp, D, E_flat, E, F, F_sharp, G, G_sharp, A, B_flat, B};
 
   const setStates = (note: Notes, state: NoteStates) => {
     switch (note) {
@@ -119,7 +118,6 @@ const NonClickablePitchCircleSVG: React.FC<NonClickablePitchCircleSVGProps> = ({
   }
 
   useEffect(() => {
-    // Deactivate notes
     setActives([
       { note: null, state: NoteStates.IDLE },
       { note: null, state: NoteStates.IDLE },
@@ -135,18 +133,17 @@ const NonClickablePitchCircleSVG: React.FC<NonClickablePitchCircleSVGProps> = ({
       setThirdQualities(thirdQ(temp.csExp3rd));
       setFrequencies(freqs4(freqA4, temp.deviation));
     })();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
     cleanActive();
-
-  }, [idTemperament]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [idTemperament, freqA4]);
 
 
   // DEBUT TAMBOUILLE BENJAMIN
 
   useEffect(() => {
-    if(procedure != undefined && stepProcedure! < (procedure?.length) && stepProcedure! > -1 ){
+    if(procedure !== undefined && stepProcedure! < (procedure?.length) && stepProcedure! > -1 ){
       console.log(procedure[stepProcedure!]);
-      if(procedure[stepProcedure!].length==2){
+      if(procedure[stepProcedure!].length===2){
         let note1 = (Note.parse(procedure[stepProcedure!][0]))?.toNotes();
         let note1_octave = ((Note.parse(procedure[stepProcedure!][0]))?.octave === 3)? NoteStates.SELECTED : NoteStates.OCTAVE;
         setActives(
@@ -172,9 +169,8 @@ const NonClickablePitchCircleSVG: React.FC<NonClickablePitchCircleSVGProps> = ({
         setStates(note2!, note2_octave);
 
       }
-      console.log(actives);
     }
-  },[stepProcedure])
+  },[stepProcedure, procedure])
 
   useEffect(() => {
     const freq1 = (actives[0].note === null)
@@ -188,7 +184,7 @@ const NonClickablePitchCircleSVG: React.FC<NonClickablePitchCircleSVGProps> = ({
       SoundEngine.stop();
     }, 1000);
     return () => clearTimeout(timer);
-  }, [stepProcedure]);
+  }, [stepProcedure, frequencies, actives]);
 
   useEffect(() => {
     // Update frequencies
@@ -265,3 +261,12 @@ const NonClickablePitchCircleSVG: React.FC<NonClickablePitchCircleSVGProps> = ({
 };
 
 export default NonClickablePitchCircleSVG;
+
+/*
+export default React.memo(
+  NonClickablePitchCircleSVG,
+  (prevProps, nextProps) =>
+    prevProps.states === nextProps.states
+  // TODO TunerMode.BPM
+);
+*/

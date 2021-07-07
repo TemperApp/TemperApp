@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { IonRow } from '@ionic/react';
 import { fetchTemperamentPropsById } from '../../engine/DataAccessor';
 import EqualTemperament from '../../model/Temperament/Equal';
 import { fifthQ, thirdQ } from '../../model/Divergence';

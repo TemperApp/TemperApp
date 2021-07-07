@@ -8,8 +8,6 @@ import {
   IonRow,
   IonCol,
   IonCard,
-  IonCardHeader,
-  IonCardTitle,
   IonCardContent
 } from "@ionic/react";
 import PageHeader from "./Page/PageHeader";

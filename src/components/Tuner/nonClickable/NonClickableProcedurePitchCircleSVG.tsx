@@ -10,7 +10,7 @@ import { Temperament } from '../../../model/Temperament/Temperament';
 //Types 
 import { PitchCircleButtonSVGPos as btnPosition, PitchCircleSVGLabels } from "../common/PitchCircleButtonSVGPos"
 import NotesMap from '../../../model/Note/NotesMap';
-import { NoteAlter, Notes } from '../../../model/Note/enums';
+import { Notes } from '../../../model/Note/enums';
 import { TunerMode } from '../PitchCircle';
 
 //Styles 
@@ -60,6 +60,7 @@ const NonClickableProcedurePitchCircleSVG: React.FC<NonClickableProcedurePitchCi
   const [B_flat  , setB_flat ] = useState<NoteStates>(NoteStates.IDLE);
   const [B       , setB      ] = useState<NoteStates>(NoteStates.IDLE);
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const states = { C, C_sharp, D, E_flat, E, F, F_sharp, G, G_sharp, A, B_flat, B };
 
   const setStates = (note: Notes, state: NoteStates) => {
@@ -117,8 +118,7 @@ const NonClickableProcedurePitchCircleSVG: React.FC<NonClickableProcedurePitchCi
         }
       }  
     }
-    console.log(states);
-  }, [actives]);
+  }, [actives, states]);
   
   
   const displayCenterCircle = () => {
