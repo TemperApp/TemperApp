@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 26.458 26.458" height="100" width="100">
+    <g transform="matrix(.3024 0 0 .3024 80.675 32.17)">
+        <g style="stroke:var(--color-inner-button);stroke-opacity:1" transform="translate(-.342 .87)">
+            <path
+                d="M-235.458-71.004s-.525-4.34 3.17-9.377c3.693-5.038 11.549-5.976 15.915-3.625s6.785 6.735 6.833 12.109c.084 9.404-10.38 11.282-13.347 12.913-.949.521-.633 3.526-.633 3.526l.057 1.702"
+                style="fill:none;stroke:var(--color-inner-button);stroke-width:7;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+            <circle cy="-42.734" cx="-223.04"
+                style="fill:var(--color-inner-button);fill-opacity:1;stroke:var(--color-inner-button);stroke-width:3;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+                r="2.615" />
+        </g>
+    </g>
+</svg>

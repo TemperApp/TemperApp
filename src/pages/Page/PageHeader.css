@@ -22,13 +22,6 @@
   border-radius: 50%;
 }
 
-.btn-show-modal::after {
-  content: "?";
-  margin: auto;
-  color: var(--color-theme);
-  font-size: 20px;
-}
-
 .btn-go-back {
   background-color: var(--ion-background-color);
 }

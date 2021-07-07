@@ -26,7 +26,16 @@ const PageHeader: React.FC<PageHeaderProps> = ({
     ? (<button
         className="btn-show-modal h-10 w-10"
         onClick={onShowModal}
-      />)
+      >
+        <IonIcon
+          className="h-10 w-10"
+          style={{ fontSize: "3rem",
+          position: "relative",
+          left: "-0.06em"} /* TODO Find a better way */}
+          src={"/assets/logotypes/button-help.svg"}
+        ></IonIcon>
+      </button>
+      )
     : null;
 
   const btnGoBack = (canGoBack)

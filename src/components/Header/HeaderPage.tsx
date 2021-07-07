@@ -42,7 +42,10 @@ const HeaderPage: React.FC<headerProps> = ({
                   className="btn-header-modal"
                   onClick={() => setShowModal(true)}
                 >
-                  <span>?</span>
+                  <IonIcon
+                    style={{ fontSize: "3rem" } /* TODO Find a better way */}
+                    src={"/assets/logotypes/button-help.svg"}
+                  ></IonIcon>
                 </div>
               </IonCol>
             </IonRow>
@@ -97,7 +100,10 @@ const HeaderPage: React.FC<headerProps> = ({
                   className="btn-header-modal"
                   onClick={() => setShowModal(true)}
                 >
-                  <span>?</span>
+                  <IonIcon
+                    style={{ fontSize: "3rem" } /* TODO Find a better way */}
+                    src={"/assets/logotypes/button-help.svg"}
+                  ></IonIcon>
                 </div>
               </IonCol>
             </IonRow>

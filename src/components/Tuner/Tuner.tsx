@@ -29,6 +29,7 @@ const Tuner: React.FC<TunerProps> = ({
   const [isHzMode, setIsHzMode] = useState<boolean>(true);
   const [isClickable, setIsClickable] = useState<boolean>(true);
   const [stepProcedure, setStepProcedure] = useState<number>(0);
+  const [isPlayed, setIsPlayed] = useState<boolean>(true);
 
   useEffect(() => {
     setMainTitle(isHzMode ? "Pitch pipe" : "Battements")
@@ -184,12 +185,21 @@ const Tuner: React.FC<TunerProps> = ({
           </IonButton>
         </>
         :
-          <IonButton fill="clear">
-            <IonIcon
-              slot='icon-only'
-              icon={play}>
-            </IonIcon>
-          </IonButton>
+        <IonButton
+        size="large"
+        fill="clear"
+        style={{ "--ripple-color": "transparent" }}
+        onClick={() => setIsPlayed(!isPlayed)}
+      >
+        <IonIcon
+          src={
+            isPlayed
+              ? "/assets/logotypes/icon-play.svg"
+              : "/assets/logotypes/icon-stop.svg"
+          }
+          slot="icon-only"
+        />
+      </IonButton>
         }
         </div>
       </section>
