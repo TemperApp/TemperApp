@@ -8,3 +8,13 @@
   width: 90vw;
   height: 90vw;
 }
+
+#Container_PitchCircleSVG {
+  display: flex;
+}
+
+#NonClickablePitchCircleSVG {
+  margin: auto;
+  width: 95%;
+  height: 95%;
+}

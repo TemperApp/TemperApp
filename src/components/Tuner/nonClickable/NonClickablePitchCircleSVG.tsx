@@ -36,7 +36,7 @@ export type ActiveNote = {
 export type ActiveNotes = [ActiveNote, ActiveNote];
 
 type NonClickablePitchCircleSVGProps = {
-  tunerMode: TunerMode,
+  tunerMode?: TunerMode,
   freqA4: number,
   idTemperament: number,
   centerCircle : boolean,
@@ -226,7 +226,7 @@ const NonClickablePitchCircleSVG: React.FC<NonClickablePitchCircleSVGProps> = ({
   return (
     <div id="Container_PitchCircleSVG">
       <svg
-        id="PitchCircleSVG"
+        id="NonClickablePitchCircleSVG"
         xmlns="http://www.w3.org/2000/svg"
         width="370"
         height="370"

@@ -4,7 +4,8 @@ import { fetchTemperamentPropsById } from "../../engine/DataAccessor";
 import { Temperament } from "../../model/Temperament/Temperament";
 import EqualTemperament from "../../model/Temperament/Equal";
 import { useParams } from "react-router";
-import { IonButton, IonIcon } from '@ionic/react';
+import { IonButton, IonCard, IonCardContent, IonCardHeader, IonCardTitle, IonIcon } from '@ionic/react';
+import NonClickablePitchCircleSVG from '../Tuner/nonClickable/NonClickablePitchCircleSVG';
 
 const SheetTemperament: React.FC = () => {
 
@@ -34,6 +35,24 @@ const SheetTemperament: React.FC = () => {
         <p className="p-long"><b>Particularité scruturelle</b> : {particularity} </p>
       </div>
 
+      <IonCard>
+        <IonCardHeader>
+          <IonCardTitle className="px-4">
+            <h3>Fractions de comas affectant les quintes</h3>
+          </IonCardTitle>
+        </IonCardHeader>
+        <IonCardContent>
+          <div>
+            <NonClickablePitchCircleSVG
+              freqA4 = {440}
+              idTemperament={parseInt(id)}
+              centerCircle={false}
+            />
+          </div>
+          
+        </IonCardContent>
+      </IonCard>  
+
       <IonButton
         className="btn-round absolute right-4 bottom-4"
         routerLink={`/tune/`}
@@ -42,6 +61,7 @@ const SheetTemperament: React.FC = () => {
           style={{ fontSize: "3rem" } /* TODO Find a better way */}
           src="/assets/logotypes/button-tune.svg"
         />
+        
       </IonButton>
     </Sheet>
   );
