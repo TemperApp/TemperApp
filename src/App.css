@@ -99,6 +99,10 @@ hr {
   z-index: 100;
 }
 
+ul {
+  list-style-type: none;
+}
+
 /* TAB-BAR */
 
 ion-tab-bar {

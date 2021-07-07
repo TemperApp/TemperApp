@@ -59,7 +59,7 @@ export const SettingsModal: React.FC = () => {
             <div className="mt-3">
               <IonRow>
                 <IonCol size="8">
-                  <p>{Settings.darkTheme() ? "Thème sombre" : "Thème clair"}</p>
+                  <p>{Settings.darkTheme() ? "Thème sompe" : "Thème clair"}</p>
                 </IonCol>
                 <IonCol size="2" className="text-center" offset="1">
                   <IonToggle
@@ -110,7 +110,7 @@ export const SettingsModal: React.FC = () => {
           <IonGrid className="px-6 py-2">
             <IonRow>
               <IonCol size="12">
-                <h3>Présentation</h3>
+                <h3 className="py-5">Présentation</h3>
                 <hr />
               </IonCol>
             </IonRow>
@@ -123,6 +123,49 @@ export const SettingsModal: React.FC = () => {
                   scientifique et pédagogique favorisant l’apprentissage de
                   l’accord à l’oreille, dont le principe se base sur la notion
                   de rapport intervallaire.
+                </p>
+              </IonCol>
+            </IonRow>
+            <IonRow>
+              <IonCol size="12">
+                <h3 className="py-5">Crédits et sources</h3>
+                <hr />
+              </IonCol>
+            </IonRow>
+            <IonRow>
+              <IonCol size="12">
+                <p className="p-long">
+                  TemperApp est issue du travail de recherche réalisé par :
+                </p>
+                <p className="p-long">
+                  <strong>Elisa Barbessi</strong>, professeur de clavecin et histoire de la musique au CRR du Grand-Avignon, 
+                  à l’initiative du projet. Doctorante à l’université Sorbonne, mempe d’IReMus, Elisa est 
+                  directrice artistique d’ARTEMIDA. 
+                </p>
+                <p className="p-long">
+                  <strong>Jérôme Bertier</strong>, pianiste, claveciniste et organiste, professeur au conservatoire d’Auxerre. 
+                </p>
+                <p className="p-long">
+                  <strong>Pierre Cazes</strong>, claveciniste. Il enseigne au CNSMDP l'histoire, la théorie et la pratique des tempéraments, et la basse continue. Il est professeur de clavecin au CRR93 (Aubervilliers/La Courneuve).
+                </p>
+                <p className="p-long">
+                  <strong>Franck Jedrzejewski</strong>, chercheur au CEA, docteur habilité en musicologie et philosophie. Ancien Vice-président du Collège International de Philosophie, a publié une vingtaine d'ouvrages.
+                </p>
+                <p className="p-long">
+                  <strong>Théodora Psychoyou</strong>, IReMus - Sorbonne Université.
+                </p>
+
+                <p className="p-long">
+                  Le projet bénéficie de nompeux soutiens sous la forme de ressources humaines et techniques :
+                  <ul>
+                    <li>Le Conservatoire National Supérieur de Musique et de Danse de Paris,</li>
+                    <li>le laboratoire "Lutheries - Acoustique - Musique" (LAM),            </li>
+                    <li>l'Institut Jean le Rond d’Alembert,                                 </li>
+                    <li>IReMus,                                                             </li>
+                    <li>Revue Musicorum,                                                    </li>
+                    <li>l’association ARTEMIDA,                                             </li>
+                    <li>et le Conservatoire du Grand-Avignon.                               </li>
+                  </ul>
                 </p>
               </IonCol>
             </IonRow>
