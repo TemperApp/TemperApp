@@ -47,6 +47,7 @@ export type DivergenceDBType = {
   deviation: string,
   cpExp5th: string,
   csExp3rd: string,
+  procedure: string,
 };
 
 /**

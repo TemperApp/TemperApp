@@ -7,11 +7,13 @@ import {
   IonInput,
 } from "@ionic/react";
 import "./Tuner.css";
-import { fetchTemperaments } from "../../engine/DataAccessor";
+import { fetchTemperamentPropsById, fetchTemperaments } from "../../engine/DataAccessor";
 import { TemperamentDBType } from "../../engine/DB";
 import PitchCircle from "./PitchCircle";
 import SoundEngine from "../../engine/SoundEngine";
 import EqualTemperament from "../../model/Temperament/Equal";
+import { arrowForward, arrowBack } from "ionicons/icons";
+import { splitProcedure } from "./nonClickable/NonClickableUtils";
 
 type TunerProps = {
   setMainTitle: (t: string) => void,
@@ -29,6 +31,8 @@ const Tuner: React.FC<TunerProps> = ({
   const [isClickable, setIsClickable] = useState<boolean>(true);
   const [stepProcedure, setStepProcedure] = useState<number>(0);
   const [isPlayed, setIsPlayed] = useState<boolean>(true);
+  const [procedure, setProcedure] = useState<string>("");
+  const [splitedProcedure, setSplitedProcedure] = useState<Array<string>>([""]);
 
   useEffect(() => {
     setMainTitle(isHzMode ? "Pitch pipe" : "Battements")
@@ -43,6 +47,22 @@ const Tuner: React.FC<TunerProps> = ({
       setTemperamentsList(await fetchTemperaments());
     })();
   }, []);
+
+  useEffect(() => {
+    console.log(temperament);
+    (async () => {
+      const temp = await fetchTemperamentPropsById(temperament.idTemperament);
+      setProcedure(temp.procedure);
+    })();
+  },[temperament])
+
+  useEffect(() => {
+    setSplitedProcedure(splitProcedure(procedure));
+  },[procedure])
+
+  useEffect(() => {
+    console.log(" procedure : n° "+stepProcedure);
+  },[stepProcedure])
 
   return (
     <div className="h-full flex content-around flex-wrap">
@@ -88,6 +108,7 @@ const Tuner: React.FC<TunerProps> = ({
           freqA4={freqA4}
           idTemperament={temperament.idTemperament}
           stepProcedure={stepProcedure}
+          procedure={splitedProcedure}
         />
         <div className="procedure-nav w-full flex justify-between px-12">
           {!isClickable
@@ -125,13 +146,13 @@ const Tuner: React.FC<TunerProps> = ({
       <section className="w-full px-5 flex justify-between items-center">
         <div className="w-20">
           <IonButton 
-            className="btn-round" 
+            className={(procedure === "") ? "btn-round no-selected": "btn-round"} 
             onClick={() => {
-              isClickable
+              (isClickable && procedure!=="")
                 ? setIsClickable(false)
                 : setIsClickable(true)
                 setMainTitle(
-                  isClickable 
+                  (isClickable && procedure!=="") 
                     ? "Procédure" 
                     : "Pitch pipe"
                 )
@@ -142,12 +163,26 @@ const Tuner: React.FC<TunerProps> = ({
               src={
                 isClickable
                   ? "/assets/logotypes/icon-tuning-procedure.svg"
-                  : "/assets/logotypes/icon-tuning-procedure-TEMP.svg"
+                  : "/assets/logotypes/icon-tuning-procedure-back.svg"
               }
             />
           </IonButton>
         </div>
-    
+        <div>
+          <IonButton
+            fill="clear"
+            style={!isClickable 
+              ? {"--ripple-color": "transparent", "display": "block"} 
+              : {"display": "none" }
+              }
+            onClick={() => {if(stepProcedure >= 1 ) setStepProcedure(stepProcedure-1)} }
+          >
+            <IonIcon
+              slot='icon-only'
+              icon={arrowBack}
+            />
+          </IonButton>
+        </div>
         <div>
           <IonButton
             size="large"
@@ -165,7 +200,20 @@ const Tuner: React.FC<TunerProps> = ({
             />
           </IonButton>
         </div>
- 
+        <div>
+          <IonButton
+            fill="clear"
+            style={!isClickable ? { "--ripple-color": "transparent",
+            "display": "block"} 
+            : {"display": "none" }}
+            onClick={() => {if(stepProcedure < (splitedProcedure.length -1) ) setStepProcedure(stepProcedure+1)} }
+          >
+            <IonIcon
+              slot='icon-only'
+              icon={arrowForward}
+            />
+          </IonButton>
+        </div>
         <div className="w-20 btn-mode">
         {isClickable
         ?

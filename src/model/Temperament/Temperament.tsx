@@ -7,8 +7,9 @@ export type Temperament = {
   nameFR: string,
   deviation: NotesMap<number>,
   cpExp5th: NotesMap<string>,
-  csExp3rd: NotesMap<string>,
   csExp5th: NotesMap<string>
+  csExp3rd: NotesMap<string>,
+  procedure: string,
 };
 
 export const defaultTemperaments: Array<Temperament> = [
@@ -59,6 +60,7 @@ export const defaultTemperaments: Array<Temperament> = [
       E:       "+9/11",
       B:       "+11/11",
     },
+    procedure: "A4;A4-A3;A3-F3;F3-Bb3;Bb3-Eb4;Eb4-G#3;G#3-C#4;C#4:A3;C#4-F#3;F#3-B3;B3-E4;E4:A3;A3-D4;D4-G3;G3-C4;C4:F3;F#3-F#4;G3-G4;G#3-G#4",
     csExp5th: {
       F_sharp: "0",
       C_sharp: "0",
@@ -72,7 +74,7 @@ export const defaultTemperaments: Array<Temperament> = [
       A:       "-1/5,5",
       E:       "-1/5,5",
       B:       "0",
-    } 
+    }
   },{
     idTemperament: 3,
     name: "Meantone 1/4 G#Eb",
@@ -119,6 +121,7 @@ export const defaultTemperaments: Array<Temperament> = [
       E:       "0",
       B:       "21/11",
     },
+    procedure : "A4;A4-A3;A3-F3;F3-F4;A3-C#4;C#4:F4;{on divise la tierce F-A en quatre quintes tempérées à -¼ de comma}F3-C4;C4-G3;G3-G4;G3-D4;A3:D4;C4-E4;E4:A3;E4-G#4;G#4-G#3;G#3:C3;G3-B3;B3:E4;B3-Eb4;Eb4:G4;D4-F#4;F#4-F#3;F#3-Bb3;Bb3:D4",
     csExp5th: {
       F_sharp: "-1/4",
       C_sharp: "-1/4",
@@ -180,6 +183,7 @@ export const defaultTemperaments: Array<Temperament> = [
       E:       "13/11",
       B:       "17/11",
     },
+    procedure: "A4;A4-A3;A3-F3;F3-C4;C4-G3;G3-D4;D4:A3;D4-Bb3;C4-E4;G3-B3;Bb3-Eb4;Eb4-G#3;G#3-C#4;B3-F#3;F3-F4;F#3-F#4;G3-G4;G#3-G#4",
     csExp5th: {
       F_sharp: "+1/3,02",
       C_sharp: "+1/4,03",
@@ -241,6 +245,7 @@ export const defaultTemperaments: Array<Temperament> = [
       E:       "1/11",
       B:       "7/11",
     },
+    procedure: "A4;A4-A3;A3-C#;A3-E4;E4-B3;B3-F#3;F#3-C#4;F#3-F#4;F#4-D4;B3-G3;E4-C4;A3-F3;F3:C4;F3-Bb3;Bb3-Eb4;C#4-G#3;G#3:Eb4;F3-F4;G3-G4;G#3-G#4",
     csExp5th: {
       F_sharp: "-1/4",
       C_sharp: "-1/5,98",
@@ -302,6 +307,7 @@ export const defaultTemperaments: Array<Temperament> = [
       E:       "9/11",
       B:       "9/11",
     },
+    procedure: "A4;A4-A3;A3-F3;F3-C4;C4-E4;E4:A3;C4-G3;G3-D4;D4:A3;F3-Bb3;Bb3-Eb4;Eb4-G#3;G#3-C#4;C#4-F#3;E4-B3;B3:F#3;F3-F4;F#3-F#4;G3-G4;G#3-G#4",
     csExp5th: {
       F_sharp: "0",
       C_sharp: "0",
@@ -363,6 +369,7 @@ export const defaultTemperaments: Array<Temperament> = [
       E:       "8/11",
       B:       "8/11",
     },
+    procedure: "A4;A4-A3;A3-E4;E4-B3;B3-F#4;F#4-C#4;A3:C#4;C#4-G#4;G#4-D#4;D#4-Bb3;Bb3-F4;F4-F3;F3:A3;F4-C4;C4:E4;C4-G4;G4-D4;D4:A4;F4-F3;F#4-F#3",
     csExp5th: {
       F_sharp: "0",
       C_sharp: "0",
@@ -424,6 +431,7 @@ export const defaultTemperaments: Array<Temperament> = [
       E:       "5/11",
       B:       "8/11",
     },
+    procedure: "A4;A4-A3;A3-F3;F3-Bb3;Bb3-Eb4;Eb4-Eb3;Eb3-G3;F3-C4;C4:G3;G3-D4;D4:A3;A3-E4;E4:C3;E4-E3;E3-B3;G3:B3;B3-F#3;F#3-C#4;C#4:A3;C#4-G#3;G#3:Eb4;F3-F4;F#3-F#4;G3-G4;G#3-G#4",
     csExp5th: {
       F_sharp: "-1/3,67",
       C_sharp: "-1/3,67",
@@ -485,6 +493,7 @@ export const defaultTemperaments: Array<Temperament> = [
       E:       "11/11",
       B:       "-1/11",
     },
+    procedure: "",
     csExp5th: {
       F_sharp: "0",
       C_sharp: "0",
@@ -546,6 +555,7 @@ export const defaultTemperaments: Array<Temperament> = [
       E:       "10/11",
       B:       "10/11",
     },
+    procedure: "A4;A4-A3;A3-F3;F3-C4;C4-E4;E4:A3;C4-G3;G3-D4;D4:A3;F3-Bb3;Bb3-Eb4;Eb4-G#3;G#3-C#4;E4-B3;B3-F#3;F#3:C#4;F3-F4;F#3-F#4;G3-G4;G#3-G#4",
     csExp5th: {
       F_sharp: "-1/11,01",
       C_sharp: "0",
@@ -607,6 +617,7 @@ export const defaultTemperaments: Array<Temperament> = [
       E:       "9/11",
       B:       "10/11",
     },
+    procedure: "A4;A4-F3;F3-C4;C4-G3;G3-D4;D4:A3;A3-E4;E4:C4;E4-B3;B3:G3;B3-F#4;F#4:D3;F3-Bb3;Bb3:D4;Bb3-Eb4;Eb4-G#3;G#3-C#4;C#4:A3;C#4:F4;F4-F3;G3-G4;G#3-G#4",
     csExp5th: {
       F_sharp: "-1/41,03",
       C_sharp: "0",

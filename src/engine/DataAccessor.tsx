@@ -65,6 +65,7 @@ export const fetchTemperamentPropsById = async (
   const deviation = divergence.reduce((acc, d: DivergenceDBType) => (acc[d.noteSymbol] = d.deviation, acc), {});
   const cpExp5th  = divergence.reduce((acc, d: DivergenceDBType) => (acc[d.noteSymbol] = d.cpExp5th, acc), {});
   const csExp3rd  = divergence.reduce((acc, d: DivergenceDBType) => (acc[d.noteSymbol] = d.csExp3rd, acc), {});
+  const procedure  = divergence.reduce((acc, d: DivergenceDBType) => (acc[d.noteSymbol] = d.procedure, acc), {});
   return { ...tmpmt, deviation, cpExp5th, csExp3rd };
   */
 };

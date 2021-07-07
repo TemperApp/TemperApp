@@ -10,42 +10,14 @@ type PitchCircleProps = {
   isHzMode: boolean,
   isClickable: boolean,
   freqA4: number,
-  idTemperament: number
-  stepProcedure?: number
+  idTemperament: number,
+  stepProcedure?: number,
+  procedure?: Array<string>,
 };
 
 const PitchCircle: React.FC<PitchCircleProps> = ({
-  isHzMode, isClickable, freqA4, idTemperament, stepProcedure
+  isHzMode, isClickable, freqA4, idTemperament, stepProcedure, procedure,
 }) => {
-
-  const[procedure, setProcedure] = useState<Array<string>>([]);
-
-  useEffect(() => {
-    if(stepProcedure === 0){
-      let chaine = "A4;A4-F3;F3-C4;C4-G3;G3-D4;D4:A3;A3-E4;E4:C4;E4-B3;B3:G3;B3-F#4;F#4:D3;F3-Bb3;Bb3:D4;Bb3-Eb4;Eb4-G#3;G#3-C#4;C#4:A3;C#4:F4;F4-F3;G3-G4;G#3-G#4"
-      console.log(chaine);
-      let tabChaine = chaine.split(";");
-      // eslint-disable-next-line @typescript-eslint/no-array-constructor
-      let tempProcedure = new Array();
-      console.log(tabChaine);
-      tabChaine.forEach(element => {
-        if(element.includes(":")){
-          let temp = element.split(":")
-          tempProcedure.push([temp[0],temp[1],'control'])
-        }
-        else{
-          if(element.includes("-")){
-            let temp = element.split("-")
-            tempProcedure.push([temp[0],temp[1],'tune'])
-          }
-          else{
-            tempProcedure.push([element,"tune"]);
-          }
-        }
-      })
-      setProcedure(tempProcedure);
-    }
-  },[stepProcedure])
 
   const [tunerMode, setTunerMode] = useState(TunerMode.HZ);
 

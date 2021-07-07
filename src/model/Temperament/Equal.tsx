@@ -59,7 +59,8 @@ const EqualTemperament = {
     A:       "-1/11",
     E:       "-1/11",
     B:       "-1/11",
-  }
+  },
+  procedure: ""
 };
 
 export const fifthEqualQ = (): NotesMap<number|null> => (mapNotesMap(-1));

@@ -52,3 +52,7 @@
   padding-left: 4rem !important;
   padding-right: 4rem !important;
 }
+
+.no-selected {
+  --background: var(--color-light-grey) !important;
+}
