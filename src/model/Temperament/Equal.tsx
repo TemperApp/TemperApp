@@ -60,7 +60,17 @@ const EqualTemperament = {
     E:       "-1/11",
     B:       "-1/11",
   },
-  procedure: ""
+  procedure: "",
+  period : "",
+  theorist : "",
+  geographicalArea: "",
+  nature: "",
+  structuralParticularity: "",
+  wikipedia: "",
+  sources: [""],
+  references: [""],
+  soundReferences: "",
+  commentary: "",
 };
 
 export const fifthEqualQ = (): NotesMap<number|null> => (mapNotesMap(-1));
