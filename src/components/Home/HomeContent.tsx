@@ -62,7 +62,7 @@ const HomeContent: React.FC = () => {
                       className="btn-primary"
                       expand="block"
                       color="temperapp"
-                      routerLink={`/sheets/temperament/${t.idTemperament}`}
+                      routerLink={`/tune/pitchpipe/${t.idTemperament}`}
                     >
                       {t.nameFR}
                     </IonButton>

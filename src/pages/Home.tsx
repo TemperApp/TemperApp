@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   IonCol,
   IonContent,
@@ -13,8 +13,23 @@ import "./Home.css";
 import HomeContent from "../components/Home/HomeContent";
 import SettingsModal from "../components/Home/SettingsModal";
 import Settings from "../engine/Settings";
+import useSettings from "../hooks/useSettings";
 
 const Home: React.FC = () => {
+  console.log('début')
+
+  const settings = useSettings();
+  
+  useEffect(() => {
+    (async () => {
+      console.log('useEffect 1', settings.pitchRef)
+      settings.setPitchRef(450);
+    })().then(() => {
+      console.log('useEffect 2', settings.pitchRef)
+    });
+  }, [])
+  
+  console.log('gotta render', settings.pitchRef)
 
   return (
     <IonPage>
