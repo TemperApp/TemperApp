@@ -7,7 +7,8 @@ export type Temperament = {
   nameFR: string,
   deviation: NotesMap<number>,
   cpExp5th: NotesMap<string>,
-  csExp3rd: NotesMap<string>
+  csExp3rd: NotesMap<string>,
+  csExp5th: NotesMap<string>
 };
 
 export const defaultTemperaments: Array<Temperament> = [
@@ -57,7 +58,21 @@ export const defaultTemperaments: Array<Temperament> = [
       A:       "+7/11",
       E:       "+9/11",
       B:       "+11/11",
-    }
+    },
+    csExp5th: {
+      F_sharp: "0",
+      C_sharp: "0",
+      G_sharp: "0",
+      E_flat:  "0",
+      B_flat:  "0",
+      F:       "-1/5,5",
+      C:       "-1/5,5",
+      G:       "-1/5,5",
+      D:       "-1/5,5",
+      A:       "-1/5,5",
+      E:       "-1/5,5",
+      B:       "0",
+    } 
   },{
     idTemperament: 3,
     name: "Meantone 1/4 G#Eb",
@@ -103,6 +118,20 @@ export const defaultTemperaments: Array<Temperament> = [
       A:       "0",
       E:       "0",
       B:       "21/11",
+    },
+    csExp5th: {
+      F_sharp: "-1/4",
+      C_sharp: "-1/4",
+      G_sharp: "+1/0,6",
+      E_flat:  "-1/4",
+      B_flat:  "-1/4",
+      F:       "-1/4",
+      C:       "-1/4",
+      G:       "-1/4",
+      D:       "-1/4",
+      A:       "-1/4",
+      E:       "-1/4",
+      B:       "-1/4",
     }
   },
   {
@@ -150,6 +179,20 @@ export const defaultTemperaments: Array<Temperament> = [
       A:       "7/11",
       E:       "13/11",
       B:       "17/11",
+    },
+    csExp5th: {
+      F_sharp: "+1/3,02",
+      C_sharp: "+1/4,03",
+      G_sharp: "+1/6,05",
+      E_flat:  "+1/12,1",
+      B_flat:  "-1/4",
+      F:       "-1/4",
+      C:       "-1/4",
+      G:       "-1/4",
+      D:       "-1/4",
+      A:       "-1/4",
+      E:       "-1/4",
+      B:       "-1/5,98",
     }
   },
   {
@@ -197,6 +240,20 @@ export const defaultTemperaments: Array<Temperament> = [
       A:       "0",
       E:       "1/11",
       B:       "7/11",
+    },
+    csExp5th: {
+      F_sharp: "-1/4",
+      C_sharp: "-1/5,98",
+      G_sharp: "+1/3,02",
+      E_flat:  "+1/4,03",
+      B_flat:  "+1/6,05",
+      F:       "+1/12,1",
+      C:       "-1/4",
+      G:       "-1/4",
+      D:       "-1/4",
+      A:       "-1/4",
+      E:       "-1/4",
+      B:       "-1/4",
     }
   },
   {
@@ -244,6 +301,20 @@ export const defaultTemperaments: Array<Temperament> = [
       A:       "6/11",
       E:       "9/11",
       B:       "9/11",
+    },
+    csExp5th: {
+      F_sharp: "0",
+      C_sharp: "0",
+      G_sharp: "0",
+      E_flat:  "0",
+      B_flat:  "0",
+      F:       "0",
+      C:       "-1/4,58",
+      G:       "-1/4,58",
+      D:       "-1/4,58",
+      A:       "-1/4,58",
+      E:       "0",
+      B:       "-1/4,58",
     }
   },
   {
@@ -291,6 +362,20 @@ export const defaultTemperaments: Array<Temperament> = [
       A:       "8/11",
       E:       "8/11",
       B:       "8/11",
+    },
+    csExp5th: {
+      F_sharp: "0",
+      C_sharp: "0",
+      G_sharp: "0",
+      E_flat:  "0",
+      B_flat:  "0",
+      F:       "0",
+      C:       "-1/3,67",
+      G:       "-1/3,67",
+      D:       "-1/3,67",
+      A:       "0",
+      E:       "0",
+      B:       "-1/3,67",
     }
   },
   {
@@ -338,6 +423,20 @@ export const defaultTemperaments: Array<Temperament> = [
       A:       "5/11",
       E:       "5/11",
       B:       "8/11",
+    },
+    csExp5th: {
+      F_sharp: "-1/3,67",
+      C_sharp: "-1/3,67",
+      G_sharp: "+1/3,67",
+      E_flat:  "0",
+      B_flat:  "0",
+      F:       "-1/3,67",
+      C:       "0",
+      G:       "0",
+      D:       "-1/3,67",
+      A:       "-1/3,67",
+      E:       "0",
+      B:       "0",
     }
   },
   {
@@ -385,6 +484,20 @@ export const defaultTemperaments: Array<Temperament> = [
       A:       "11/11",
       E:       "11/11",
       B:       "-1/11",
+    },
+    csExp5th: {
+      F_sharp: "0",
+      C_sharp: "0",
+      G_sharp: "-1/0,92",
+      E_flat:  "0",
+      B_flat:  "0",
+      F:       "0",
+      C:       "0",
+      G:       "0",
+      D:       "0",
+      A:       "0",
+      E:       "0",
+      B:       "0",
     }
   },
   {
@@ -432,6 +545,20 @@ export const defaultTemperaments: Array<Temperament> = [
       A:       "7/11",
       E:       "10/11",
       B:       "10/11",
+    },
+    csExp5th: {
+      F_sharp: "-1/11,01",
+      C_sharp: "0",
+      G_sharp: "0",
+      E_flat:  "0",
+      B_flat:  "0",
+      F:       "0",
+      C:       "-1/4",
+      G:       "-1/4",
+      D:       "-1/4",
+      A:       "-1/4",
+      E:       "0",
+      B:       "0",
     }
   },
   {
@@ -479,6 +606,20 @@ export const defaultTemperaments: Array<Temperament> = [
       A:       "7/11",
       E:       "9/11",
       B:       "10/11",
+    },
+    csExp5th: {
+      F_sharp: "-1/41,03",
+      C_sharp: "0",
+      G_sharp: "0",
+      E_flat:  "-1/41,03",
+      B_flat:  "-1/15,03",
+      F:       "-1/8,67",
+      C:       "-1/6,35",
+      G:       "-1/5,5",
+      D:       "-1/5,5",
+      A:       "-1/6,35",
+      E:       "-1/8,67",
+      B:       "-1/15,03",
     }
   },
 ];

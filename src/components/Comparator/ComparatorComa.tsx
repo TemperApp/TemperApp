@@ -26,7 +26,7 @@ const ComparatorComa: React.FC<ComparatorComaProps> = ({
   temperament1, temperament2,
 }) => {
 
-  const [isCpMode, setIsCpMode] = useState<boolean>(true);
+  const [isCpMode, setCpMode] = useState<boolean>(true);
 
   return (
     <>
@@ -38,24 +38,25 @@ const ComparatorComa: React.FC<ComparatorComaProps> = ({
                 <h3>Fractions de comas affectant les quintes</h3>
               </IonCardTitle>
             </IonCardHeader>
-            <IonCardContent>
+            <IonCardContent> 
               <svg className="comparator-comas" width="375" height="351" viewBox="50 0 375 351" fill="none" xmlns="http://www.w3.org/2000/svg">                <ComparatorFifthComaCircle
                   temperament1={temperament1}
                   temperament2={temperament2}
                   qualityNote1={fifthQ(temperament1.cpExp5th)}
                   qualityNote2={fifthQ(temperament2.cpExp5th)}
+                  isCpMode={isCpMode}
                 />
               </svg>
               <div className="w-20 btn-mode">
                 <IonButton
-                  onClick={() => setIsCpMode(false)}
+                  onClick={() => setCpMode(false)}
                   className={`btn-mode-bpm m-0
                     ${!isCpMode ? " btn-mode-activated" : ""}`} 
                 >
                   cs
                 </IonButton>
                 <IonButton
-                  onClick={() => setIsCpMode(true)}
+                  onClick={() => setCpMode(true)}
                   className={`btn-mode-hz m-0
                     ${isCpMode ? " btn-mode-activated" : ""}`}
                 >

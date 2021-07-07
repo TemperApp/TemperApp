@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 //Style
 import './Comparator.css'
@@ -10,9 +10,10 @@ type ComparatorFifthComaCircleProps = {
   temperament2: Temperament,
   qualityNote1: { [key: string]: number | null }
   qualityNote2: { [key: string]: number | null }
+  isCpMode: boolean
 }
 
-const ComparatorFifthComaCircle: React.FC<ComparatorFifthComaCircleProps> = ({ temperament1, temperament2, qualityNote1, qualityNote2 }) => {
+const ComparatorFifthComaCircle: React.FC<ComparatorFifthComaCircleProps> = ({ temperament1, temperament2, qualityNote1, qualityNote2, isCpMode }) => {
 
   return (
     <>
@@ -103,6 +104,8 @@ const ComparatorFifthComaCircle: React.FC<ComparatorFifthComaCircleProps> = ({ t
         <line y1="-0.5" x2="245.176" y2="-0.5" transform="matrix(0.969311 0.24742 -0.247646 0.968448 76.6538 138.545)" stroke="var(--color-light-grey)"/>
         <ellipse cx="194.698" cy="169.458" rx="56.1734" ry="56.1228" fill="var(--color-theme)"/>
       </g>
+      {isCpMode ?
+      <>
       <g className="comas-text" fill="var(--color-contrast)">
         <text
           transform="matrix(1 0 0 1 184.981 62.501)"
@@ -179,6 +182,87 @@ const ComparatorFifthComaCircle: React.FC<ComparatorFifthComaCircleProps> = ({ t
           transform="matrix(1 0 0 1 190.878 94.1044)"
         >{temperament2.cpExp5th.C}</text>
       </g>
+      </>
+      :
+      <>
+      <g className="comas-text" fill="var(--color-contrast)">
+        <text
+          transform="matrix(1 0 0 1 184.981 62.501)"
+        >{temperament1.csExp5th.C}</text>
+        <text
+          transform="matrix(1 0 0 1 238.428 75.578)"
+        >{temperament1.csExp5th.G}</text>
+        <text
+          transform="matrix(1 0 0 1 277.149 112.63)"
+        >{temperament1.csExp5th.A}</text>
+        <text
+          transform="matrix(1 0 0 1 290.783 164.939)"
+        >{temperament1.csExp5th.A}</text>
+        <text
+          transform="matrix(1 0 0 1 276.604 215.068)"
+        >{temperament1.csExp5th.E}</text>
+        <text
+          transform="matrix(1 0 0 1 240.146 257.569)"
+        >{temperament1.csExp5th.B}</text>
+        <text
+          transform="matrix(1 0 0 1 188.126 270.645)"
+        >{temperament1.csExp5th.F_sharp}</text>
+        <text
+          transform="matrix(1 0 0 1 135.968 257.567)"
+        >{temperament1.csExp5th.C_sharp}</text>
+        <text
+          transform="matrix(1 0 0 1 97.7099 219.426)"
+        >{temperament1.csExp5th.G_sharp}</text>
+        <text
+          transform="matrix(1 0 0 1 79.9238 168.207)"
+        >{temperament1.csExp5th.E_flat}</text>
+        <text
+          transform="matrix(1 0 0 1 93.9039 112.63)"
+        >{temperament1.csExp5th.B_flat}</text>
+        <text
+          transform="matrix(1 0 0 1 131.535 75.5785)"
+        >{temperament1.csExp5th.F}</text>
+      </g>
+      <g className="comas-text" fill="var(--color-contrast)">
+        <text
+          transform="matrix(1 0 0 1 225.368 102.823)"
+        >{temperament2.csExp5th.G}</text>
+        <text
+          transform="matrix(1 0 0 1 251.283 130.066)"
+        >{temperament2.csExp5th.D}</text>
+        <text
+          transform="matrix(1 0 0 1 261.513 164.939)"
+        >{temperament2.csExp5th.A}</text>
+        <text
+          transform="matrix(1 0 0 1 256.023 199.811)"
+        >{temperament2.csExp5th.E}</text>
+        <text
+          transform="matrix(1 0 0 1 230.558 227.056)"
+        >{temperament2.csExp5th.B}</text>
+        <text
+          transform="matrix(1 0 0 1 196.634 243.663)"
+        >{temperament2.csExp5th.F_sharp}</text>
+        <text
+          transform="matrix(1 0 0 1 160.526 234.945)"
+        >{temperament2.csExp5th.C_sharp}</text>
+        <text
+          transform="matrix(1 0 0 1 132.958 207.7)"
+        >{temperament2.csExp5th.G_sharp}</text>
+        <text
+          transform="matrix(1 0 0 1 122.35 171.739)"
+        >{temperament2.csExp5th.E_flat}</text>
+        <text
+          transform="matrix(1 0 0 1 133.635 135.776)"
+        >{temperament2.csExp5th.B_flat}</text>
+        <text
+          transform="matrix(1 0 0 1 158.458 109.622)"
+        >{temperament2.csExp5th.F}</text>
+        <text
+          transform="matrix(1 0 0 1 190.878 94.1044)"
+        >{temperament2.csExp5th.C}</text>
+      </g>
+      </>
+}
     </>
   );
 };
