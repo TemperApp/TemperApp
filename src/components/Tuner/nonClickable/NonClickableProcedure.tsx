@@ -181,7 +181,8 @@ const NonClickableProcedure: React.FC<NonClickableProcedureProps> = ({
         }
       }
     }
-  }, [stepTune, stepProcedure, frequencies, noteDisplay, procedure])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [stepTune, stepProcedure])
 
   return(
     <NonClickableProcedurePitchCircleSVG

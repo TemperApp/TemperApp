@@ -38,20 +38,27 @@ const SheetTemperament: React.FC = () => {
       <IonCard>
         <IonCardHeader>
           <IonCardTitle className="px-4">
-            <h3>Fractions de comas affectant les quintes</h3>
+            <h3>Qualité des quintes et des tierces</h3>
           </IonCardTitle>
         </IonCardHeader>
         <IonCardContent>
-          <div>
-            <NonClickablePitchCircleSVG
-              freqA4 = {440}
-              idTemperament={parseInt(id)}
-              centerCircle={false}
-            />
-          </div>
-          
+          <NonClickablePitchCircleSVG
+            freqA4 = {440}
+            idTemperament={parseInt(id)}
+            centerCircle={false}
+          />
         </IonCardContent>
-      </IonCard>  
+      </IonCard>
+
+      <IonCard>
+        <IonCardHeader>
+          <IonCardTitle className="px-4">
+            <h3>Commas</h3>
+          </IonCardTitle>
+        </IonCardHeader>
+        <IonCardContent>
+        </IonCardContent>
+      </IonCard> 
 
       <IonButton
         className="btn-round absolute right-4 bottom-4"

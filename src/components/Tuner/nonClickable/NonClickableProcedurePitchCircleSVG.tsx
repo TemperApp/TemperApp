@@ -96,7 +96,7 @@ const NonClickableProcedurePitchCircleSVG: React.FC<NonClickableProcedurePitchCi
   useEffect( () => {
     console.log(actives);
     if(actives !== undefined){
-      //console.log("========= SVG");
+      console.log("========= SVG");
       console.log(actives);
       console.log(actives[0].note)
       for (const note in states) {
@@ -118,7 +118,8 @@ const NonClickableProcedurePitchCircleSVG: React.FC<NonClickableProcedurePitchCi
         }
       }  
     }
-  }, [actives, states]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [actives]);
   
   
   const displayCenterCircle = () => {
