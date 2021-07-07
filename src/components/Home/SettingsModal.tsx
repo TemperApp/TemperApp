@@ -139,14 +139,14 @@ export const SettingsModal: React.FC = () => {
                 </p>
                 <p className="p-long">
                   <strong>Elisa Barbessi</strong>, professeur de clavecin et histoire de la musique au CRR du Grand-Avignon, 
-                  à l’initiative du projet. Doctorante à l’université Sorbonne, mempe d’IReMus, Elisa est 
+                  à l’initiative du projet. Doctorante à l’université Sorbonne, membre d’IReMus, Elisa est 
                   directrice artistique d’ARTEMIDA. 
                 </p>
                 <p className="p-long">
                   <strong>Jérôme Bertier</strong>, pianiste, claveciniste et organiste, professeur au conservatoire d’Auxerre. 
                 </p>
                 <p className="p-long">
-                  <strong>Pierre Cazes</strong>, claveciniste. Il enseigne au CNSMDP l'histoire, la théorie et la pratique des tempéraments, et la basse continue. Il est professeur de clavecin au CRR93 (Aubervilliers/La Courneuve).
+                  <strong>Pierre Cazes</strong>, claveciniste. Il enseigne au CNSMDP l'histoire, la théorie et la pratique des tempéraments ainsi que la basse continue. Il est professeur de clavecin au CRR93 (Aubervilliers/La Courneuve).
                 </p>
                 <p className="p-long">
                   <strong>Franck Jedrzejewski</strong>, chercheur au CEA, docteur habilité en musicologie et philosophie. Ancien Vice-président du Collège International de Philosophie, a publié une vingtaine d'ouvrages.
