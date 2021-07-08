@@ -14,6 +14,7 @@ import {
 import PageHeader from "./Page/PageHeader";
 import PageModal from "./Page/PageModal";
 import Tuner from "../components/Tuner/Tuner";
+import "./Tune.css"
 
 const TuneModalContent: React.FC = () => (
   <>
@@ -22,12 +23,12 @@ const TuneModalContent: React.FC = () => (
       Le visuel TemperApp vous permet de prévoir en un coup
       d’oeil la sonorité de tous les accords majeurs dans
       le tempérament sélectionné. Chaque note du cycle des
-      quintes représente la tonalité majeur correspondantes.
+      quintes représente la tonalité majeure correspondante.
     </p>
     <p className="p-long">
       Pour chaque accord majeur, les qualités des quintes
       et des tierces sont représentées par une couleur. Les
-      tierces sont représentées à l’extérieur du cycle, les
+      tierces sont représentées à l’extérieur du cercle, les
       quintes à l’intérieur.
     </p>
     <div className="flex justify-center items-center py-5">
@@ -35,12 +36,12 @@ const TuneModalContent: React.FC = () => (
         className="h-12 w-12 mr-4 rounded-full"
         style={{ border: "2px solid var(--color-contrast)" }} />
       <div
-        className="mr-8"><h5>Tierce</h5></div>
+        className="mr-8"><h5>Tierces</h5></div>
       <div
         className="h-6 w-6 mr-4 rounded-full"
         style={{ border: "2px solid var(--color-contrast)" }} />
       <div
-        className="mr-8"><h5>Quinte</h5></div>
+        className="mr-8"><h5>Quintes</h5></div>
     </div>
     <p className="p-long">
       Plus la couleur de l’intervalle est sombre, plus celui-ci est tempéré. 
@@ -69,42 +70,21 @@ const TuneModalContent: React.FC = () => (
               </div>
             </IonCol>
             <IonCol size="4.5">
-              <div className="mr-4 w-full">
+              <div className="w-full">
                 <p className="p-legend">Excessivement tempérée</p>
-                <div style={{ 
-                  borderLeft: "2px solid var(--color-contrast)",
-                  height: "20px"
-                }}></div>
+                <div className="legend-line"></div>
                 <p className="p-legend">Très tempérée</p>
-                <div style={{ 
-                  borderLeft: "2px solid var(--color-contrast)",
-                  height: "20px"
-                }}></div>
+                <div className="legend-line"></div>
                 <p className="p-legend">Tempérée</p>
-                <div style={{ 
-                  borderLeft: "2px solid var(--color-contrast)",
-                  height: "20px"
-                }}></div>
+                <div className="legend-line"></div>
                 <p className="p-legend">Bien tempérée</p>
-                <div style={{ 
-                  borderLeft: "2px solid var(--color-contrast)",
-                  height: "20px"
-                }}></div>
+                <div className="legend-line"></div>
                 <p className="p-legend">Tempérée égal</p>
-                <div style={{ 
-                  borderLeft: "2px solid var(--color-contrast)",
-                  height: "20px"
-                }}></div>
+                <div className="legend-line"></div>
                 <p className="p-legend">PURE</p>
-                <div style={{ 
-                  borderLeft: "2px solid var(--color-contrast)",
-                  height: "20px"
-                }}></div>
+                <div className="legend-line"></div>
                 <p className="p-legend">Grande quinte</p>
-                <div style={{ 
-                  borderLeft: "2px solid var(--color-contrast)",
-                  height: "30px"
-                }}></div>
+                <div className="legend-line"></div>
                 <p className="p-legend">Loup</p>
               </div>
             </IonCol>            
@@ -118,40 +98,19 @@ const TuneModalContent: React.FC = () => (
             <IonCol size="4.5">
               <div className="mr-4 w-full">
                 <p className="p-legend">PURE</p>
-                <div style={{ 
-                  borderLeft: "2px solid var(--color-contrast)",
-                  height: "20px"
-                }}></div>
+                <div className="legend-line"></div>
                 <p className="p-legend">Faiblement tempérée</p>
-                <div style={{ 
-                  borderLeft: "2px solid var(--color-contrast)",
-                  height: "20px"
-                }}></div>
+                <div className="legend-line"></div>
                 <p className="p-legend">Bien tempérée</p>
-                <div style={{ 
-                  borderLeft: "2px solid var(--color-contrast)",
-                  height: "20px"
-                }}></div>
+                <div className="legend-line"></div>
                 <p className="p-legend">Tempérée</p>
-                <div style={{ 
-                  borderLeft: "2px solid var(--color-contrast)",
-                  height: "20px"
-                }}></div>
+                <div className="legend-line"></div>
                 <p className="p-legend">Tempérée égal</p>
-                <div style={{ 
-                  borderLeft: "2px solid var(--color-contrast)",
-                  height: "20px"
-                }}></div>
+                <div className="legend-line"></div>
                 <p className="p-legend">Très tempérée</p>
-                <div style={{ 
-                  borderLeft: "2px solid var(--color-contrast)",
-                  height: "20px"
-                }}></div>
+                <div className="legend-line"></div>
                 <p className="p-legend">Pythagoricienne</p>
-                <div style={{ 
-                  borderLeft: "2px solid var(--color-contrast)",
-                  height: "20px"
-                }}></div>
+                <div className="legend-line"></div>
                 <p className="p-legend">Loup</p>
               </div>
             </IonCol>  
@@ -163,8 +122,11 @@ const TuneModalContent: React.FC = () => (
     <strong>TemperApp propose deux accordeurs.</strong>
     <IonGrid>
       <IonRow>
-        <IonCol size="3">
-          <strong>Hz</strong>
+        <IonCol size="3" className="flex flex-wrap justify-center content-center">
+        <IonIcon
+            src="/assets/logotypes/icon-tuner-hz-mode.svg"
+            style={{stroke:"var(--color-contrast)"}}
+          ></IonIcon>
         </IonCol>
         <IonCol size="9">
           <p className="p-long">
@@ -174,14 +136,17 @@ const TuneModalContent: React.FC = () => (
         </IonCol>
       </IonRow>
       <IonRow>
-        <IonCol size="3">
-          <strong>bpm</strong>
+        <IonCol size="3" className="flex flex-wrap justify-center content-center">
+          <IonIcon
+            src="/assets/logotypes/icon-tuner-bpm-mode.svg"
+            style={{stroke:"var(--color-contrast)"}}
+          ></IonIcon>
         </IonCol>
         <IonCol size="9">
           <p className="p-long">
             L'accordeur <strong>“par battements”</strong> émet le battement prévu d’un 
             intervalle, sur le même principe que celui émis par 
-            l’instrument : les fréquences des harmoniques  les plus 
+            l’instrument : les fréquences des harmoniques  les plus 
             proches sont émises simultanément.
           </p>
         </IonCol>
@@ -190,7 +155,7 @@ const TuneModalContent: React.FC = () => (
     <h4 className="py-3">Procédure d'accord</h4>
     <IonGrid>
       <IonRow>
-        <IonCol size="3">
+        <IonCol size="3" className="flex flex-wrap justify-center content-center">
           <IonIcon
             src="/assets/logotypes/icon-tuning-procedure.svg"
             style={{background:"var(--color-button)", 
@@ -209,7 +174,7 @@ const TuneModalContent: React.FC = () => (
       </IonRow>
       </IonGrid>
       <p className="p-long">
-        A chaque étape vous êtes invité à accorder une note qui <strong>clignotera</strong> sur le cycle des quintes. 
+        A chaque étape vous êtes invité-e à accorder une note qui <strong>clignotera</strong> sur le cycle des quintes. 
       </p>
       <p className="p-long">
         Cette note sera accordée comme un intervalle sur une note indiquée en <strong>surbrillance</strong>.

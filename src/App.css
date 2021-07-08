@@ -88,7 +88,7 @@ ion-title,
   padding-bottom: 7px;
   color: var(--color-contrast) !important;
   opacity: 1 !important;
-  text-align: justify;
+  text-align: center;
   text-justify: inter-word;
 }
 

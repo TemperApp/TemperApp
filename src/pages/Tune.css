@@ -1,3 +1,9 @@
 .h2 {
   margin-top: 0;
 }
+
+.legend-line {
+  border-left: 1px solid var(--color-contrast);
+  height: 20px;
+  margin-left: 50%;
+}
