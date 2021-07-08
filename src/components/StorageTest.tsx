@@ -32,6 +32,7 @@ const StorageTest: React.FC = () => {
         print((success) ? "The set of tests ended" : "Tests stopped");
       });
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   let count = 1;

@@ -5,7 +5,6 @@ import Note from '../../../model/Note/Note';
 import { Notes } from '../../../model/Note/enums';
 import NotesMap from '../../../model/Note/NotesMap';
 import SoundEngine from '../../../engine/SoundEngine';
-import Settings from '../../../engine/Settings';
 
 //Styles
 import "./CenterCircle.css";

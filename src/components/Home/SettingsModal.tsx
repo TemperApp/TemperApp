@@ -1,8 +1,8 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import SettingsContext from "../../store/settings-context";
 import PageModal from "../../pages/Page/PageModal";
 import SettingToggle from "../inputs/SettingToggle";
-import SettingSelect from "../inputs/SettingSelect";
+//import SettingSelect from "../inputs/SettingSelect";
 import SettingInput from "../inputs/SettingInput";
 
 type SettingsModalProps = {
