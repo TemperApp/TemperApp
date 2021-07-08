@@ -254,7 +254,6 @@ ion-select::part(placeholder) {
 ion-button .button-native {
   --padding-end: 0 !important;
   --padding-start: 0 !important;
-  padding: 10px !important;
 }
 
 ion-button::part(native) {
