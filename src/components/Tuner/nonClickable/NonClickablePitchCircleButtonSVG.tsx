@@ -28,7 +28,7 @@ const NonClickablePitchCircleButtonSVG: React.FC<NonClickablePitchCircleButtonSV
     <path
       fill={colorButton(state)} stroke="#A7C5C3"
       strokeMiterlimit="10" strokeOpacity="1" strokeWidth="0.5"
-      transform="translate(-2.04 -1.82)" d={position}
+      transform="translate(-2.04 -1.82)" d={position} key={position}
     />
   );
 };

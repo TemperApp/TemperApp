@@ -8,7 +8,6 @@ import { IonButton, IonCard, IonCardContent, IonCardHeader, IonCardTitle, IonIco
 import NonClickablePitchCircleSVG from '../Tuner/nonClickable/NonClickablePitchCircleSVG';
 import ParagraphLearn from '../Learn/ParagraphLearn';
 import VideoLearn from '../Learn/VideoLearn';
-import ButtonLearnSVG from '../Learn/ButtonLearnSVG';
 import ResourcesLearn from '../Learn/ResourcesLearn';
 
 const SheetTemperament: React.FC = () => {
@@ -21,11 +20,6 @@ const SheetTemperament: React.FC = () => {
       setTemperament(await fetchTemperamentPropsById(id));
     })();
   }, [id]);
-
-  const period = "XXXe siècle"
-  const geographicalArea = "Inconnu"
-  const commaticNature = "X/XX de comma pythagoricien"
-  const particularity = "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum, officia? Sequi, dicta vero numquam quo eum reiciendis aliquam alias accusantium placeat fugiat recusandae officiis doloremque error ab dolores earum. Modi!"
 
   return (
     <Sheet
@@ -82,7 +76,7 @@ const SheetTemperament: React.FC = () => {
           />)
           })
         ) 
-        : (console.log(temperament.soundReferences)))
+        : "")
       }
 
       <ResourcesLearn 

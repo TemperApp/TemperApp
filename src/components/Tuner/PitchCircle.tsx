@@ -67,7 +67,5 @@ const PitchCircle: React.FC<PitchCircleProps> = ({
 };
 
 export default PitchCircle;
-function setStepProcedure(arg0: number): void {
-  throw new Error('Function not implemented.');
-}
+
 

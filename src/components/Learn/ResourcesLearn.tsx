@@ -13,7 +13,7 @@ const ResourcesLearn: React.FC<resourcesProps> = ({ resourcesList }) => {
   const completeTitle = (r: DataSources) => {
     if({author: "Lindley, Mark", book: "A quest for Bach’s ideal style of organ temperament", title:"", other: " in M. Lustig, ed., Stimmungen im 17. und 18.Jahrhundert, Michaelstein, ", date: "1997", page: "", url:"https://www.academia.edu/1134176/A_quest_for_Bach_s_ideal_style_of_organ_temperament"})
     if(r.author !== "" || r.title !=="" || r.other !== "" || r.date !== "" || r.page !== ""){
-      return [<p><b>{r.author} </b><u>{r.title} </u><i>{r.book} </i>{r.other} ({r.date}) {r.page}</p>];
+      return [<p key={"learnRessourceTitle_"+r.book}><b>{r.author} </b><u>{r.title} </u><i>{r.book} </i>{r.other} ({r.date}) {r.page}</p>];
     }
     return "";
   }
@@ -41,12 +41,10 @@ const ResourcesLearn: React.FC<resourcesProps> = ({ resourcesList }) => {
         let longTitle = completeTitle(r);
         let btn = buttonWithLink(r,idx);
         return(
-        <>
+        <div key={"learnRessource_"+r.book}>
           {btn}
-          <>
-            {longTitle}
-          </>
-        </>  
+          {longTitle}
+        </div>  
         )
       }
         

@@ -238,6 +238,7 @@ const NonClickablePitchCircleSVG: React.FC<NonClickablePitchCircleSVGProps> = ({
             <NonClickablePitchCircleButtonSVG
               position={btnPosition[n]}
               state={states[n]}
+              key={"nonclickablebutton"+n}
             />);
         })}
 
