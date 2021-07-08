@@ -56,4 +56,5 @@
 
 .no-selected {
   --background: var(--color-light-grey) !important;
+  --box-shadow: none !important;
 }
