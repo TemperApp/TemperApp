@@ -91,7 +91,7 @@ export const SettingsModal: React.FC = () => {
 
               <IonRow>
                 <IonCol size="4">
-                  <p>LA défault</p>
+                  <p>LA défaut</p>
                 </IonCol>
                 <IonCol size="3.5" className="text-center" offset="4">
                   <IonInput
@@ -135,7 +135,7 @@ export const SettingsModal: React.FC = () => {
             <IonRow>
               <IonCol size="12">
                 <p className="p-long">
-                  TemperApp est issue du travail de recherche réalisé par :
+                  TemperApp est issue du travail de recherche réalisé par :
                 </p>
                 <p className="p-long">
                   <strong>Elisa Barbessi</strong>, professeur de clavecin et histoire de la musique au CRR du Grand-Avignon, 
@@ -152,14 +152,14 @@ export const SettingsModal: React.FC = () => {
                   <strong>Franck Jedrzejewski</strong>, chercheur au CEA, docteur habilité en musicologie et philosophie. Ancien Vice-président du Collège International de Philosophie, a publié une vingtaine d'ouvrages.
                 </p>
                 <p className="p-long">
-                  <strong>Théodora Psychoyou</strong>, IReMus - Sorbonne Université.
+                  <strong>Théodora Psychoyou</strong>, IReMus - Sorbonne Université.
                 </p>
 
                 <p className="p-long">
-                  Le projet bénéficie de nombreux soutiens sous la forme de ressources humaines et techniques :
+                  Le projet bénéficie de nombreux soutiens sous la forme de ressources humaines et techniques :
                   <ul>
                     <li>Le Conservatoire National Supérieur de Musique et de Danse de Paris,</li>
-                    <li>le laboratoire "Lutheries - Acoustique - Musique" (LAM),            </li>
+                    <li>le laboratoire "Lutheries - Acoustique - Musique" (LAM),            </li>
                     <li>l'Institut Jean le Rond d’Alembert,                                 </li>
                     <li>IReMus,                                                             </li>
                     <li>Revue Musicorum,                                                    </li>
@@ -170,6 +170,7 @@ export const SettingsModal: React.FC = () => {
               </IonCol>
             </IonRow>
           </IonGrid>
+          <div className="py-10"></div>
         </IonContent>
       </IonModal>
     </>

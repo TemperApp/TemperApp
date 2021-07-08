@@ -285,6 +285,10 @@ ion-input {
   border-radius: 8px;
   height: 2rem;
   box-shadow: var(--color-shadow);
+  font-family: "Karla" !important;
+  font-style: normal;
+  font-weight: 300 !important;
+  font-size: 1rem !important;
 }
 
 .katex-display {
