@@ -8,6 +8,7 @@ import {
   IonCardContent,
   IonCardHeader,
   IonCardTitle,
+  IonGrid,
   IonItem,
   IonItemOptions,
   IonItemSliding,
@@ -33,20 +34,22 @@ const ComparatorComa: React.FC<ComparatorComaProps> = ({
       <IonItemSliding id="item100">
         <IonItem>
           <IonCard>
-            <IonCardHeader>
+            <IonCardHeader className="py-1">
               <IonCardTitle className="px-4">
                 <h3>Fractions de comas affectant les quintes</h3>
               </IonCardTitle>
             </IonCardHeader>
             <IonCardContent> 
-              <svg className="comparator-comas" width="375" height="351" viewBox="50 0 375 351" fill="none" xmlns="http://www.w3.org/2000/svg">                <ComparatorFifthComaCircle
-                  temperament1={temperament1}
-                  temperament2={temperament2}
-                  qualityNote1={fifthQ(temperament1.cpExp5th)}
-                  qualityNote2={fifthQ(temperament2.cpExp5th)}
-                  isCpMode={isCpMode}
-                />
-              </svg>
+              <div className="w-100 flex justify-center">
+                <svg className="comparator-comas" width="375" height="351" viewBox="15 0 350 351" fill="none" xmlns="http://www.w3.org/2000/svg">                <ComparatorFifthComaCircle
+                    temperament1={temperament1}
+                    temperament2={temperament2}
+                    qualityNote1={fifthQ(temperament1.cpExp5th)}
+                    qualityNote2={fifthQ(temperament2.cpExp5th)}
+                    isCpMode={isCpMode}
+                  />
+                </svg>
+              </div>
               <div className="w-20 btn-mode">
                 <IonButton
                   onClick={() => setCpMode(false)}
@@ -74,7 +77,8 @@ const ComparatorComa: React.FC<ComparatorComaProps> = ({
               </IonCardTitle>
             </IonCardHeader>
             <IonCardContent>
-              <svg className="comparator-comas" width="375" height="351" viewBox="50 0 375 351" fill="none" xmlns="http://www.w3.org/2000/svg">                
+              <div className="w-100 flex justify-center">
+              <svg className="comparator-comas" width="375" height="351" viewBox="15 0 375 351" fill="none" xmlns="http://www.w3.org/2000/svg">                
                 <ComparatorThirdComaCircle
                   temperament1={temperament1}
                   temperament2={temperament2}
@@ -82,6 +86,7 @@ const ComparatorComa: React.FC<ComparatorComaProps> = ({
                   qualityNote2={thirdQ(temperament2.csExp3rd)}
                 />
               </svg>
+              </div>
             </IonCardContent>
           </IonCard>
         </IonItemOptions>
