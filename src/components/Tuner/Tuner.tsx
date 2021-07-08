@@ -196,17 +196,23 @@ const Tuner: React.FC<TunerProps> = ({
         <>
           <IonButton
             onClick={() => setIsHzMode(false)}
-            className={`btn-mode-bpm m-0
+            className={`btn-mode-bpm m-0 p-0
               ${!isHzMode ? " btn-mode-activated" : ""}`}
           >
-            bpm
+            <IonIcon
+              font-size="3rem"
+              src="/assets/logotypes/icon-tuner-bpm-mode.svg"
+            ></IonIcon>
           </IonButton>
           <IonButton
             onClick={() => setIsHzMode(true)}
-            className={`btn-mode-hz m-0
+            className={`btn-mode-hz m-0 p-0
               ${isHzMode ? " btn-mode-activated" : ""}`}
           >
-            Hz
+            <IonIcon
+              font-size="3rem"
+              src="/assets/logotypes/icon-tuner-hz-mode.svg"
+            ></IonIcon>
           </IonButton>
         </>
         :

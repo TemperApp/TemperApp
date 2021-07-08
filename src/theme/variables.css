@@ -6,7 +6,7 @@ http://ionicframework.com/docs/theming/ */
 @import "./fonts/Nunito.css";
 
 :root {
-  --ion-font-family: "Karla", "Tahoma", sans-serif;
+  --ion-font-family: "Karla", sans-serif;
 }
 
 /** Ionic CSS Variables **/
