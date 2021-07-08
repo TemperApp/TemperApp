@@ -15,7 +15,18 @@ export const fetchTemperaments = async (): Promise<Array<TemperamentDBType>> => 
     idTemperament: t.idTemperament,
     name: t.name,
     nameFR: t.nameFR,
-  }));
+    period : t.period,
+    theorist : t.theorist,
+    geographicalArea: t.geographicalArea,
+    nature: t.nature,
+    structuralParticularity: t.structuralParticularity,
+    wikipedia: t.wikipedia,
+    sources: t.sources,
+    references: t.references,
+    soundReferences: t.soundReferences,
+    commentary: t.commentary,
+    externalLinks: t.externalLinks,
+    }));
   /*
   return await DB.query("SELECT * FROM temperament");
   */
@@ -37,6 +48,17 @@ export const fetchTemperamentById = async (
       idTemperament: t.idTemperament,
       name: t.name,
       nameFR: t.nameFR,
+      period : t.period,
+      theorist : t.theorist,
+      geographicalArea: t.geographicalArea,
+      nature: t.nature,
+      structuralParticularity: t.structuralParticularity,
+      wikipedia: t.wikipedia,
+      sources: t.sources,
+      references: t.references,
+      soundReferences: t.soundReferences,
+      commentary: t.commentary,
+      externalLinks: t.externalLinks,
     }))[0];
   // TODO Handle id not found
   /*

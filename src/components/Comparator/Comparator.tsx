@@ -6,11 +6,12 @@ import { TemperamentDBType } from '../../engine/DB';
 //Style
 import './Comparator.css'
 import ComparatorSVG from './ComparatorSVG';
+import EqualTemperament from '../../model/Temperament/Equal';
 
 const Comparator: React.FC = () => {
 
-  const [temperament1, setTemperament1] = useState<TemperamentDBType>({ idTemperament: 1, name: "Equal", nameFR: "Égal" });
-  const [temperament2, setTemperament2] = useState<TemperamentDBType>({ idTemperament: 1, name: "Equal", nameFR: "Égal" });
+  const [temperament1, setTemperament1] = useState<TemperamentDBType>(EqualTemperament);
+  const [temperament2, setTemperament2] = useState<TemperamentDBType>(EqualTemperament);
   const [temperamentsList, setTemperamentsList] = useState<Array<TemperamentDBType>>([]);
 
   useEffect(() => {

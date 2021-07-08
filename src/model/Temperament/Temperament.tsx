@@ -16,10 +16,11 @@ export type Temperament = {
   nature: string,
   structuralParticularity: string,
   wikipedia: Array<{name: string, url: string}>,
-  sources: Array<string>,
-  references: Array<{name: string, url: string}>,
-  soundReferences: string,
+  sources: Array<{author: string, book: string, title:string, other: string, date: string, page: string, url:string}>,
+  references: Array<{author: string, book: string, title:string, other: string, date: string, page: string, url:string}>,
+  soundReferences: Array<string>,
   commentary: string,
+  externalLinks: Array<{name: string, url: string}>,
 };
 
 export const defaultTemperaments: Array<Temperament> = [
@@ -85,18 +86,20 @@ export const defaultTemperaments: Array<Temperament> = [
       E:       "-1/5,5",
       B:       "0",
     },
-    period : "",
-    theorist : "",
-    geographicalArea: "",
-    nature: "",
-    structuralParticularity: "",
+    externalLinks:[{name: "Wikipedia Temperament Mésotonique (FR)", url: "https://fr.wikipedia.org/wiki/Temp%C3%A9rament_m%C3%A9sotonique"},],
+    theorist : "Pietro Aaron (1485-1545)",
     wikipedia: [
-      {name: "Wikipedia (FR) ", url: "https://fr.wikipedia.org/wiki/Francesco_Antonio_Vallotti"},
-      {name: "Wikipedia (EN) ", url: "https://en.wikipedia.org/wiki/Francesco_Antonio_Vallotti"}],
-    sources: [""],
-    references: [{name: "", url: ""}],
-    soundReferences: "",
-    commentary: "",
+      {name: "Wikipedia Pietro Aaron (FR) ", url: "https://fr.wikipedia.org/wiki/Pietro_Aaron"},],
+    period : "décrit au début du XVIe siècle, on présume une utilisation dès le XVe siècle. Son application est avérée sur l'orgue pendant la première moitié du XVIIIe siècle.",
+    geographicalArea: "plusieurs sources importantes en dehors de l'Italie (Praetorius, Mersenne) laissent à penser que cet accord est très tôt utilisé dans toute l'Europe.",
+    nature: "Comma syntonique",
+    structuralParticularity: "11 quintes sont diminuées d'un quart de comma syntonique. La douzième, l'intervalle résiduel entre sol# et mib, excède la valeur pure. Le système mésotonique classique produit huit tierces majeures pures. Chaque octave comporte 2 tierces pures et un intervalle résiduel (une quarte diminuée), excédant d’un comma enharmonique (2 ÷ (5/4)^3 = 41,05¢).",
+    sources: [
+      {author: "Pietro Aaron", book: "Toscanello de la musica", title:"", other: ", Venise", date: "1523", page: "", url:""}
+    ],
+    references: [{author: "Barbieri, Patrizio,", book: "Acustica accordatura e temperamento nell'illuminismo veneto. Insituto di Paleografia Musicale,", title:"", other: "Torre d'Orfeo, Roma", date: "1987", page: "", url:""}],
+    soundReferences: ["https://www.youtube.com/watch?v=TDCpdNOJC5s","https://www.youtube.com/watch?v=hw1O5t_Rrhg"],
+    commentary: "Nous proposons la lecture la plus partagée bien que certainement simplifiée de l'accord de Vallotti qui répartit lui-même le comma syntonique, selon la théorie italienne du XVIIIe siècle. L'accroissement des tierces majeures est parfaitement équilibré vers les dièses et vers les bémols.",
   },{
     idTemperament: 3,
     name: "Meantone 1/4 G#Eb",
@@ -158,15 +161,26 @@ export const defaultTemperaments: Array<Temperament> = [
       E:       "-1/4",
       B:       "-1/4",
     },
-    period : "",
-    theorist : "",
-    geographicalArea: "",
-    nature: "",
-    structuralParticularity: "",
-    wikipedia: [""],
-    sources: [""],
-    references: [""],
-    soundReferences: "",
+    externalLinks:[{name: "Wikipedia Temperament de Vallotti (FR)", url: "https://fr.wikipedia.org/wiki/Temp%C3%A9rament_de_Vallotti"},],
+    theorist : "Francesco Vallotti (1697-1780)",
+    wikipedia: [
+      {name: "Wikipedia Francesco Vallotti (FR) ", url: "https://fr.wikipedia.org/wiki/Francesco_Antonio_Vallotti"},
+      {name: "Wikipedia Francesco Vallotti (EN) ", url: "https://en.wikipedia.org/wiki/Francesco_Antonio_Vallotti"}],
+    period : "XVIIIe siècle",
+    geographicalArea: "Italie du Nord",
+    nature: "1/6 de comma pythagoricien",
+    structuralParticularity: "Six quintes tempérées au 1/6 de comma pythagoricien relient les notes naturelles, les six autres sont pures.",
+    sources: [
+      {author: "Francesco Antonio Vallotti", book: "Trattato della musica moderna", title:"", other: "inédit du temps de Vallotti. Zanini", date: "1950", page: "", url:""}
+    ],
+    references: [
+      {author: "Barbieri, Patrizio,", book: "Acustica accordatura e temperamento nell'illuminismo veneto. Insituto di Paleografia Musicale,", title:"", other: "Torre d'Orfeo, Roma", date: "1987", page: ", p. 37-51", url:""},
+      {author: "", book: "", title:"Thoscanello de la musica", other: "", date: "", page: "", url:"https://imslp.org/wiki/Thoscanello_de_la_musica_(Aron,_Pietro)"}],
+      soundReferences: [
+        "https://www.youtube.com/watch?v=KHlne0rAnTg",
+        "http://blog-clavicorde-lie.ch/laccord-mesotonique-realise-sur-linstrument/",
+        "https://www.youtube.com/watch?v=jcAIh1V2Zz8",
+        "https://www.youtube.com/watch?v=e83oOCnH_3w",],
     commentary: "",
   },
   {
@@ -230,15 +244,26 @@ export const defaultTemperaments: Array<Temperament> = [
       E:       "-1/4",
       B:       "-1/5,98",
     },
-    period : "",
+    externalLinks:[
+      {name: "", url: ""},
+    ],
     theorist : "",
+    wikipedia: [
+      {name: "", url: ""},
+      {name: "", url: ""},
+    ],
+    period : "",
     geographicalArea: "",
     nature: "",
     structuralParticularity: "",
-    wikipedia: [""],
-    sources: [""],
-    references: [""],
-    soundReferences: "",
+    sources: [
+      {author: "", book: "", title:"", other: "", date: "", page: "", url:""}
+    ],
+    references: [
+      {author: "", book: "", title:"", other: "", date: "", page: "", url: ""},
+    ],
+      soundReferences: [
+        "",],
     commentary: "",
   },
   {
@@ -302,15 +327,26 @@ export const defaultTemperaments: Array<Temperament> = [
       E:       "-1/4",
       B:       "-1/4",
     },
-    period : "",
+    externalLinks:[
+      {name: "", url: ""},
+    ],
     theorist : "",
+    wikipedia: [
+      {name: "", url: ""},
+      {name: "", url: ""},
+    ],
+    period : "",
     geographicalArea: "",
     nature: "",
     structuralParticularity: "",
-    wikipedia: [""],
-    sources: [""],
-    references: [""],
-    soundReferences: "",
+    sources: [
+      {author: "", book: "", title:"", other: "", date: "", page: "", url:""}
+    ],
+    references: [
+      {author: "", book: "", title:"", other: "", date: "", page: "", url: ""},
+    ],
+      soundReferences: [
+        "",],
     commentary: "",
   },
   {
@@ -374,15 +410,26 @@ export const defaultTemperaments: Array<Temperament> = [
       E:       "0",
       B:       "-1/4,58",
     },
-    period : "",
+    externalLinks:[
+      {name: "", url: ""},
+    ],
     theorist : "",
+    wikipedia: [
+      {name: "", url: ""},
+      {name: "", url: ""},
+    ],
+    period : "",
     geographicalArea: "",
     nature: "",
     structuralParticularity: "",
-    wikipedia: [""],
-    sources: [""],
-    references: [""],
-    soundReferences: "",
+    sources: [
+      {author: "", book: "", title:"", other: "", date: "", page: "", url:""}
+    ],
+    references: [
+      {author: "", book: "", title:"", other: "", date: "", page: "", url: ""},
+    ],
+    soundReferences: [
+        "",],
     commentary: "",
   },
   {
@@ -446,15 +493,26 @@ export const defaultTemperaments: Array<Temperament> = [
       E:       "0",
       B:       "-1/3,67",
     },
-    period : "",
+    externalLinks:[
+      {name: "", url: ""},
+    ],
     theorist : "",
+    wikipedia: [
+      {name: "", url: ""},
+      {name: "", url: ""},
+    ],
+    period : "",
     geographicalArea: "",
     nature: "",
     structuralParticularity: "",
-    wikipedia: [""],
-    sources: [""],
-    references: [""],
-    soundReferences: "",
+    sources: [
+      {author: "", book: "", title:"", other: "", date: "", page: "", url:""}
+    ],
+    references: [
+      {author: "", book: "", title:"", other: "", date: "", page: "", url: ""},
+    ],
+    soundReferences: [
+        "",],
     commentary: "",
   },
   {
@@ -518,15 +576,26 @@ export const defaultTemperaments: Array<Temperament> = [
       E:       "0",
       B:       "0",
     },
-    period : "",
+    externalLinks:[
+      {name: "", url: ""},
+    ],
     theorist : "",
+    wikipedia: [
+      {name: "", url: ""},
+      {name: "", url: ""},
+    ],
+    period : "",
     geographicalArea: "",
     nature: "",
     structuralParticularity: "",
-    wikipedia: [""],
-    sources: [""],
-    references: [""],
-    soundReferences: "",
+    sources: [
+      {author: "", book: "", title:"", other: "", date: "", page: "", url:""}
+    ],
+    references: [
+      {author: "", book: "", title:"", other: "", date: "", page: "", url: ""},
+    ],
+    soundReferences: [
+        "",],
     commentary: "",
   },
   {
@@ -590,15 +659,26 @@ export const defaultTemperaments: Array<Temperament> = [
       E:       "0",
       B:       "0",
     },
-    period : "",
+    externalLinks:[
+      {name: "", url: ""},
+    ],
     theorist : "",
+    wikipedia: [
+      {name: "", url: ""},
+      {name: "", url: ""},
+    ],
+    period : "",
     geographicalArea: "",
     nature: "",
     structuralParticularity: "",
-    wikipedia: [""],
-    sources: [""],
-    references: [""],
-    soundReferences: "",
+    sources: [
+      {author: "", book: "", title:"", other: "", date: "", page: "", url:""}
+    ],
+    references: [
+      {author: "", book: "", title:"", other: "", date: "", page: "", url: ""},
+    ],
+    soundReferences: [
+        "",],
     commentary: "",
   },
   {
@@ -662,15 +742,26 @@ export const defaultTemperaments: Array<Temperament> = [
       E:       "0",
       B:       "0",
     },
-    period : "",
+    externalLinks:[
+      {name: "", url: ""},
+    ],
     theorist : "",
+    wikipedia: [
+      {name: "", url: ""},
+      {name: "", url: ""},
+    ],
+    period : "",
     geographicalArea: "",
     nature: "",
     structuralParticularity: "",
-    wikipedia: [""],
-    sources: [""],
-    references: [""],
-    soundReferences: "",
+    sources: [
+      {author: "", book: "", title:"", other: "", date: "", page: "", url:""}
+    ],
+    references: [
+      {author: "", book: "", title:"", other: "", date: "", page: "", url: ""},
+    ],
+    soundReferences: [
+        "",],
     commentary: "",
   },
   {
@@ -734,15 +825,26 @@ export const defaultTemperaments: Array<Temperament> = [
       E:       "-1/8,67",
       B:       "-1/15,03",
     },
-    period : "",
+    externalLinks:[
+      {name: "", url: ""},
+    ],
     theorist : "",
+    wikipedia: [
+      {name: "", url: ""},
+      {name: "", url: ""},
+    ],
+    period : "",
     geographicalArea: "",
     nature: "",
     structuralParticularity: "",
-    wikipedia: [""],
-    sources: [""],
-    references: [""],
-    soundReferences: "",
+    sources: [
+      {author: "", book: "", title:"", other: "", date: "", page: "", url:""}
+    ],
+    references: [
+      {author: "", book: "", title:"", other: "", date: "", page: "", url: ""},
+    ],
+    soundReferences: [
+        "",],
     commentary: "",
   },
 ];

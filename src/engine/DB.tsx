@@ -35,6 +35,17 @@ export type TemperamentDBType = {
   idTemperament: number,
   name: string,
   nameFR: string,
+  period : string,
+  theorist : string,
+  geographicalArea: string,
+  nature: string,
+  structuralParticularity: string,
+  wikipedia: Array<{name: string, url: string}>,
+  sources: Array<{author: string, book: string, title:string, other: string, date: string, page: string, url:string}>,
+  references: Array<{author: string, book: string, title:string, other: string, date: string, page: string, url:string}>,
+  soundReferences: Array<string>,
+  commentary: string,
+  externalLinks: Array<{name: string, url: string}>,
 };
 
 export type NoteDBType = {

@@ -61,15 +61,26 @@ const EqualTemperament = {
     B:       "-1/11",
   },
   procedure: "",
-  period : "",
+  externalLinks:[
+    {name: "", url: ""},
+  ],
   theorist : "",
+  wikipedia: [
+    {name: "", url: ""},
+    {name: "", url: ""},
+  ],
+  period : "",
   geographicalArea: "",
   nature: "",
   structuralParticularity: "",
-  wikipedia: "",
-  sources: [""],
-  references: [""],
-  soundReferences: "",
+  sources: [
+    {author: "", book: "", title:"", other: "", date: "", page: "", url:""}
+  ],
+  references: [
+    {author: "", book: "", title:"", other: "", date: "", page: "", url: ""},
+  ],
+  soundReferences: [
+      "",],
   commentary: "",
 };
 
