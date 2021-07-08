@@ -10,6 +10,7 @@
   --background: var(--ion-background-color);
   --color: var(--color-button);
   text-transform: none;
+  --box-shadow: var(--color-shadow);
 }
 
 .btn-mode .btn-mode-bpm {

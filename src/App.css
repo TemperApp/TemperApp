@@ -235,6 +235,7 @@ ion-select::part(placeholder) {
   --background: var(--color-button);
   --padding-start: 0;
   --padding-end: 0;
+  --box-shadow: var(--color-shadow);
 }
 
 ion-button .button-native {
