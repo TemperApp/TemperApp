@@ -141,9 +141,9 @@ const Tuner: React.FC<TunerProps> = ({
         <div>
           <IonButton
             fill="clear"
-            style={!isClickable 
-              ? {"--ripple-color": "transparent", "display": "block"} 
-              : {"display": "none" }
+            style={!isClickable
+              ? {"--ripple-color": "transparent", display: "block"} 
+              : {display: "none"} 
               }
             onClick={() => {if(stepProcedure >= 1 ) setStepProcedure(stepProcedure-1)} }
           >

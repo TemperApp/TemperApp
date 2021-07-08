@@ -69,8 +69,21 @@ ion-title,
 .p-long {
   font-family: var(--ion-family-font);
   font-style: normal !important;
-  font-weight: 1 !important;
-  font-size: 13px !important;
+  font-weight: 300 !important;
+  font-size: 14px !important;
+  line-height: 20px;
+  padding-bottom: 7px;
+  color: var(--color-contrast) !important;
+  opacity: 1 !important;
+  text-align: justify;
+  text-justify: inter-word;
+}
+
+.p-legend {
+  font-family: var(--ion-family-font);
+  font-style: normal !important;
+  font-weight: 300 !important;
+  font-size: 11px !important;
   line-height: 20px;
   padding-bottom: 7px;
   color: var(--color-contrast) !important;
