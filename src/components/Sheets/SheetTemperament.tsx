@@ -6,6 +6,7 @@ import EqualTemperament from "../../model/Temperament/Equal";
 import { useParams } from "react-router";
 import { IonButton, IonCard, IonCardContent, IonCardHeader, IonCardTitle, IonIcon } from '@ionic/react';
 import NonClickablePitchCircleSVG from '../Tuner/nonClickable/NonClickablePitchCircleSVG';
+import ParagraphLearn from '../Learn/ParagraphLearn';
 
 const SheetTemperament: React.FC = () => {
 
@@ -29,11 +30,20 @@ const SheetTemperament: React.FC = () => {
       subTitle="Tempérament"
     >
       <div>
-        <p className="p-long"><b>Époque</b> : {temperament.period} </p>
-        <p className="p-long"><b>Aire géographique</b> : {temperament.geographicalArea}</p>
-        <p className="p-long"><b>Nature</b> : {temperament.nature} </p>
-        <p className="p-long"><b>Particularité scruturelle</b> : {temperament.structuralParticularity} </p>
+        {(temperament.theorist !== "")? (<p className="p-long"><b>Théoricien</b> : {temperament.theorist} </p>) : ("")}
+        {(temperament.period !== "")? (<p className="p-long"><b>Époque</b> : {temperament.period} </p>) : ("")}
+        {(temperament.geographicalArea !== "")? (<p className="p-long"><b>Aire géographique</b> : {temperament.geographicalArea} </p>) : ("")}
+        {(temperament.nature !== "")? (<p className="p-long"><b>Nature</b> : {temperament.nature} </p>) : ("")}
+        {(temperament.structuralParticularity !== "")? (<p className="p-long"><b>Particularité scruturelle</b> : {temperament.structuralParticularity} </p>) : ("")}
       </div>
+
+      {((temperament.commentary !== "")
+        ? (<ParagraphLearn 
+          titreText = "Commentaires"
+          contentText = {temperament.commentary}
+        />) 
+        : (""))
+      }
 
       <IonCard>
         <IonCardHeader>
@@ -59,6 +69,8 @@ const SheetTemperament: React.FC = () => {
         <IonCardContent>
         </IonCardContent>
       </IonCard> 
+
+      
 
       <IonButton
         className="btn-round absolute right-4 bottom-4"

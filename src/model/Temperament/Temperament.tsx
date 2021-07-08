@@ -86,16 +86,17 @@ export const defaultTemperaments: Array<Temperament> = [
       E:       "-1/5,5",
       B:       "0",
     },
-    externalLinks:[{name: "Wikipedia Temperament Mésotonique (FR)", url: "https://fr.wikipedia.org/wiki/Temp%C3%A9rament_m%C3%A9sotonique"},],
-    theorist : "Pietro Aaron (1485-1545)",
+    externalLinks:[{name: "Wikipedia Temperament de Vallotti (FR)", url: "https://fr.wikipedia.org/wiki/Temp%C3%A9rament_de_Vallotti"},],
+    theorist : "Francesco Vallotti (1697-1780)",
     wikipedia: [
-      {name: "Wikipedia Pietro Aaron (FR) ", url: "https://fr.wikipedia.org/wiki/Pietro_Aaron"},],
-    period : "décrit au début du XVIe siècle, on présume une utilisation dès le XVe siècle. Son application est avérée sur l'orgue pendant la première moitié du XVIIIe siècle.",
-    geographicalArea: "plusieurs sources importantes en dehors de l'Italie (Praetorius, Mersenne) laissent à penser que cet accord est très tôt utilisé dans toute l'Europe.",
-    nature: "Comma syntonique",
-    structuralParticularity: "11 quintes sont diminuées d'un quart de comma syntonique. La douzième, l'intervalle résiduel entre sol# et mib, excède la valeur pure. Le système mésotonique classique produit huit tierces majeures pures. Chaque octave comporte 2 tierces pures et un intervalle résiduel (une quarte diminuée), excédant d’un comma enharmonique (2 ÷ (5/4)^3 = 41,05¢).",
+      {name: "Wikipedia Francesco Vallotti (FR) ", url: "https://fr.wikipedia.org/wiki/Francesco_Antonio_Vallotti"},
+      {name: "Wikipedia Francesco Vallotti (EN) ", url: "https://en.wikipedia.org/wiki/Francesco_Antonio_Vallotti"}],
+    period : "XVIIIe siècle",
+    geographicalArea: "Italie du Nord",
+    nature: "1/6 de comma pythagoricien",
+    structuralParticularity: "Six quintes tempérées au 1/6 de comma pythagoricien relient les notes naturelles, les six autres sont pures.",
     sources: [
-      {author: "Pietro Aaron", book: "Toscanello de la musica", title:"", other: ", Venise", date: "1523", page: "", url:""}
+      {author: "Francesco Antonio Vallotti", book: "Trattato della musica moderna", title:"", other: "inédit du temps de Vallotti. Zanini", date: "1950", page: "", url:""}
     ],
     references: [{author: "Barbieri, Patrizio,", book: "Acustica accordatura e temperamento nell'illuminismo veneto. Insituto di Paleografia Musicale,", title:"", other: "Torre d'Orfeo, Roma", date: "1987", page: "", url:""}],
     soundReferences: ["https://www.youtube.com/watch?v=TDCpdNOJC5s","https://www.youtube.com/watch?v=hw1O5t_Rrhg"],
@@ -146,7 +147,7 @@ export const defaultTemperaments: Array<Temperament> = [
       E:       "0",
       B:       "21/11",
     },
-    procedure : "A4;A4-A3;A3-F3;F3-F4;A3-C#4;C#4:F4;{on divise la tierce F-A en quatre quintes tempérées à -¼ de comma}F3-C4;C4-G3;G3-G4;G3-D4;A3:D4;C4-E4;E4:A3;E4-G#4;G#4-G#3;G#3:C3;G3-B3;B3:E4;B3-Eb4;Eb4:G4;D4-F#4;F#4-F#3;F#3-Bb3;Bb3:D4",
+    procedure : "A4;A4-A3;A3-F3;F3-F4;A3-C#4;C#4:F4;F3-C4;C4-G3;G3-G4;G3-D4;A3:D4;C4-E4;E4:A3;E4-G#4;G#4-G#3;G#3:C3;G3-B3;B3:E4;B3-Eb4;Eb4:G4;D4-F#4;F#4-F#3;F#3-Bb3;Bb3:D4",
     csExp5th: {
       F_sharp: "-1/4",
       C_sharp: "-1/4",
@@ -161,26 +162,27 @@ export const defaultTemperaments: Array<Temperament> = [
       E:       "-1/4",
       B:       "-1/4",
     },
-    externalLinks:[{name: "Wikipedia Temperament de Vallotti (FR)", url: "https://fr.wikipedia.org/wiki/Temp%C3%A9rament_de_Vallotti"},],
-    theorist : "Francesco Vallotti (1697-1780)",
+    externalLinks:[{name: "Wikipedia Temperament Mésotonique (FR)", url: "https://fr.wikipedia.org/wiki/Temp%C3%A9rament_m%C3%A9sotonique"},],
+    theorist : "Pietro Aaron (1485-1545)",
     wikipedia: [
-      {name: "Wikipedia Francesco Vallotti (FR) ", url: "https://fr.wikipedia.org/wiki/Francesco_Antonio_Vallotti"},
-      {name: "Wikipedia Francesco Vallotti (EN) ", url: "https://en.wikipedia.org/wiki/Francesco_Antonio_Vallotti"}],
-    period : "XVIIIe siècle",
-    geographicalArea: "Italie du Nord",
-    nature: "1/6 de comma pythagoricien",
-    structuralParticularity: "Six quintes tempérées au 1/6 de comma pythagoricien relient les notes naturelles, les six autres sont pures.",
+      {name: "Wikipedia Pietro Aaron (FR) ", url: "https://fr.wikipedia.org/wiki/Pietro_Aaron"},],
+    period : "décrit au début du XVIe siècle, on présume une utilisation dès le XVe siècle. Son application est avérée sur l'orgue pendant la première moitié du XVIIIe siècle.",
+    geographicalArea: "plusieurs sources importantes en dehors de l'Italie (Praetorius, Mersenne) laissent à penser que cet accord est très tôt utilisé dans toute l'Europe.",
+    nature: "Comma syntonique",
+    structuralParticularity: "11 quintes sont diminuées d'un quart de comma syntonique. La douzième, l'intervalle résiduel entre sol# et mib, excède la valeur pure. Le système mésotonique classique produit huit tierces majeures pures. Chaque octave comporte 2 tierces pures et un intervalle résiduel (une quarte diminuée), excédant d’un comma enharmonique (2 ÷ (5/4)^3 = 41,05¢).",
     sources: [
-      {author: "Francesco Antonio Vallotti", book: "Trattato della musica moderna", title:"", other: "inédit du temps de Vallotti. Zanini", date: "1950", page: "", url:""}
+      {author: "Pietro Aaron", book: "Toscanello de la musica", title:"", other: ", Venise", date: "1523", page: "", url:""}
     ],
     references: [
-      {author: "Barbieri, Patrizio,", book: "Acustica accordatura e temperamento nell'illuminismo veneto. Insituto di Paleografia Musicale,", title:"", other: "Torre d'Orfeo, Roma", date: "1987", page: ", p. 37-51", url:""},
-      {author: "", book: "", title:"Thoscanello de la musica", other: "", date: "", page: "", url:"https://imslp.org/wiki/Thoscanello_de_la_musica_(Aron,_Pietro)"}],
-      soundReferences: [
-        "https://www.youtube.com/watch?v=KHlne0rAnTg",
-        "http://blog-clavicorde-lie.ch/laccord-mesotonique-realise-sur-linstrument/",
-        "https://www.youtube.com/watch?v=jcAIh1V2Zz8",
-        "https://www.youtube.com/watch?v=e83oOCnH_3w",],
+      {author: "Lindley, Mark.", book: "Proceedings of the Royal Musical Association 102", title:"Fifteenth-Century Evidence for Meantone Temperament", other: "Torre d'Orfeo, Roma", date: "1976", page: ", p. 37-51", url:""},
+      {author: "", book: "", title:"Thoscanello de la musica", other: "", date: "", page: "", url:"https://imslp.org/wiki/Thoscanello_de_la_musica_(Aron,_Pietro)"},
+    ],
+    soundReferences: [
+      "https://www.youtube.com/watch?v=KHlne0rAnTg",
+      "http://blog-clavicorde-lie.ch/laccord-mesotonique-realise-sur-linstrument/",
+      "https://www.youtube.com/watch?v=jcAIh1V2Zz8",
+      "https://www.youtube.com/watch?v=e83oOCnH_3w",
+    ],
     commentary: "",
   },
   {
@@ -247,24 +249,23 @@ export const defaultTemperaments: Array<Temperament> = [
     externalLinks:[
       {name: "", url: ""},
     ],
-    theorist : "",
+    theorist : "Jean-Philippe Rameau (1683-1764)",
     wikipedia: [
-      {name: "", url: ""},
-      {name: "", url: ""},
+      {name: "Wikipedia Jean-Philippe Rameau (FR)", url: "https://fr.wikipedia.org/wiki/Jean-Philippe_Rameau"},
     ],
-    period : "",
-    geographicalArea: "",
-    nature: "",
-    structuralParticularity: "",
+    period : "XVIIIe siècle",
+    geographicalArea: "France",
+    nature: "Cs",
+    structuralParticularity: "Sept quintes sont abaissées d’un quart de comma syntonique. Les autres sont augmentées de quantités variables selon des petits compléments.",
     sources: [
-      {author: "", book: "", title:"", other: "", date: "", page: "", url:""}
+      {author: "Jean-Philippe Rameau,", book: "Nouveau système de musique théorique", title:"", other: "", date: "1726", page: "", url:"https://gallica.bnf.fr/ark:/12148/btv1b8623246q.image"}
     ],
     references: [
       {author: "", book: "", title:"", other: "", date: "", page: "", url: ""},
     ],
       soundReferences: [
         "",],
-    commentary: "",
+    commentary: "Le tempérament de Rameau II, ou tempérament en sib, est identique au précédent mais sa construction se fait à partir du la et non du do. Les quintes de sib à si sont diminuées d’un quart de comma syntonique. La quinte si - fa# est diminuée d’un quart de comma et augmentée d’une valeur δ. Les quatre quintes restantes se répartissent l’excédent.\bRameau cite brièvement une alternative à sa première description : « Pour que les Intervalles conservent toute la justesse possible dans les Modulations les plus usitées, il faut commencer la Partition par Si B-mol, & ne rendre pour lors les Quintes un peu plus justes, que depuis Si à Fa# ». Plusieurs commentateurs ont considéré qu'il s'agissait d'une transposition de sa première formule.",
   },
   {
     idTemperament: 5,
@@ -330,24 +331,23 @@ export const defaultTemperaments: Array<Temperament> = [
     externalLinks:[
       {name: "", url: ""},
     ],
-    theorist : "",
+    theorist : "Jean-Philippe Rameau (1683-1764)",
     wikipedia: [
-      {name: "", url: ""},
-      {name: "", url: ""},
+      {name: "Wikipedia Jean-Philippe Rameau (FR)", url: "https://fr.wikipedia.org/wiki/Jean-Philippe_Rameau"},
     ],
-    period : "",
-    geographicalArea: "",
-    nature: "",
-    structuralParticularity: "",
+    period : "XVIIIe siècle",
+    geographicalArea: "France",
+    nature: "Cs",
+    structuralParticularity: "Sept quintes sont abaissées d’un quart de comma syntonique. Les autres sont augmentées de quantités variables selon des petits compléments.",
     sources: [
-      {author: "", book: "", title:"", other: "", date: "", page: "", url:""}
+      {author: "Jean-Philippe Rameau,", book: "Nouveau système de musique théorique", title:"", other: "", date: "1726", page: "", url:"https://gallica.bnf.fr/ark:/12148/btv1b8623246q.image"}
     ],
     references: [
       {author: "", book: "", title:"", other: "", date: "", page: "", url: ""},
     ],
       soundReferences: [
         "",],
-    commentary: "",
+    commentary: "Jean-Philippe Rameau a longuement étudié les problèmes théoriques de la musique. Il a proposé deux tempéraments, l’un “pour avantager les tonalités avec bémols”, dans lesquels les sept quintes sont diminuées d’un quart de comma (Nouveau système de musique théorique, Paris, 1726). Les cinq quintes restantes se répartissent l’excédent. \b Comme la plupart des descriptions des tempéraments français (ou tempérament ordinaire), celle de Rameau est imprécise et sujette à interprétation.\b Le problème d’interprétation qui se pose est de savoir sur quelles quintes s’effectue cette répartition. On se demande aussi si la répartition linéaire doit s’effectuer sur quatre ou cinq quintes. Dans le premier tempérament, les notes vont de quinte en quinte de do à mi dièse. C’est pourquoi, on l’appelle aussi tempérament en do. La partition est citée par plusieurs auteurs. ",
   },
   {
     idTemperament: 6,
@@ -411,26 +411,27 @@ export const defaultTemperaments: Array<Temperament> = [
       B:       "-1/4,58",
     },
     externalLinks:[
-      {name: "", url: ""},
+      {name: "Harpischords (EN)", url: "https://www.hpschd.nu/index.html?nav/nav-4.html&t/welcome.html&https://www.hpschd.nu/tech/tmp/kellner.html"},
     ],
-    theorist : "",
+    theorist : "Herbert Anton Kellner (1936-2003) - Jean-Sébastien Bach (1685-1750)",
     wikipedia: [
-      {name: "", url: ""},
-      {name: "", url: ""},
+      {name: "Wikipedia Jean-Sébastien Bach (FR)", url: "https://fr.wikipedia.org/wiki/Jean-S%C3%A9bastien_Bach"},
     ],
-    period : "",
-    geographicalArea: "",
-    nature: "",
-    structuralParticularity: "",
+    period : "XVIIIe-XIXe siècles",
+    geographicalArea: "Allemagne",
+    nature: "Comma pythagoricien",
+    structuralParticularity: "Cinq quintes sont abaissées d’un 1/5  de comma pythagoricien, les 7 autres sont pures.",
     sources: [
-      {author: "", book: "", title:"", other: "", date: "", page: "", url:""}
+      {author: "Herbert Anton Kellner,", book: "The Tuning of my Harpsichord Verlag Das Musikinstrument,", title:"", other: "Frankfurt am Main", date: "1980", page: "", url:""}
     ],
     references: [
-      {author: "", book: "", title:"", other: "", date: "", page: "", url: ""},
+      {author: "", book: "", title:"A MATHEMATICAL APPROACH RECONSTRUCTING J. S. BACH'S KEYBOARD TEMPERAMENT", other: "", date: "", page: "", url: "https://www.jstor.org/stable/41640471?seq=1"},
     ],
     soundReferences: [
-        "",],
-    commentary: "",
+      "https://www.youtube.com/watch?v=rHvI4Fh-lNY",
+      "https://www.youtube.com/watch?v=dNibEXPBA_w",
+    ],
+    commentary: "Nous ne savons pas quel tempérament utilisait Jean-Sébastien Bach et quel était donc son clavier “bien tempéré”. Des musicologues théoriciens du XXe siècle ont formulé plusieurs propositions : Herbert Kelletat (1960), Herbert Kellner (1980), Bradley Lehman (2005). Herbert Kellner (1980), partant de données symboliques et numériques tirées des œuvres de J. S. Bach, propose un tempérament assez proche de Werckmeister. Une de ses particularités est que la quinte do-sol bat à la même vitesse que la tierce do-mi.",
   },
   {
     idTemperament: 7,
@@ -494,26 +495,28 @@ export const defaultTemperaments: Array<Temperament> = [
       B:       "-1/3,67",
     },
     externalLinks:[
-      {name: "", url: ""},
+      {name: "Wikipedia Temperament Werckmeister (EN)", url: "https://en.wikipedia.org/wiki/Werckmeister_temperament"},
     ],
-    theorist : "",
+    theorist : "Andreas Werckmeister (1645-1706)",
     wikipedia: [
-      {name: "", url: ""},
-      {name: "", url: ""},
+      {name: "Wikipedia Andreas Werckmeister (FR)", url: "https://fr.wikipedia.org/wiki/Andreas_Werckmeister"},
+      {name: "Wikipedia Andreas Werckmeister (EN)", url: "https://en.wikipedia.org/wiki/Andreas_Werckmeister"},
     ],
-    period : "",
-    geographicalArea: "",
-    nature: "",
-    structuralParticularity: "",
+    period : "XVIIe siècle",
+    geographicalArea: "Allemagne",
+    nature: "Comma pythagoricien",
+    structuralParticularity: "Quatre quintes sont diminuées d’un quart de comma pythagoricien. Les huit autres quintes sont pures.",
     sources: [
-      {author: "", book: "", title:"", other: "", date: "", page: "", url:""}
+      {author: "Andreas Werckmeister,", book: "Musikalische Temperatur", title:"", other: "", date: "1691", page: "", url:"https://imslp.org/wiki/Musicalische_Temperatur_(Werckmeister%2C_Andreas)"},
+      {author: "Andreas Werckmeister,", book: "Orgel Probe", title:"", other: "", date: "", page: "1681", url:"https://imslp.org/wiki/Orgel-Probe_(Werckmeister,_Andreas) "}
     ],
     references: [
-      {author: "", book: "", title:"", other: "", date: "", page: "", url: ""},
+      {author: "Andreas Werckmeister,", book: "", title:"", other: "", date: "", page: "", url: ""},
     ],
     soundReferences: [
-        "",],
-    commentary: "",
+      "",
+    ],
+    commentary: "Très tôt appelé le tempérament de Werckmeister, c'est l'archétype du tempérament d'esthétique allemande. Il est encore cité par Türk en 1809 comme un bon tempérament inégal. C'est le premier tempérament inégal circulant qui ait été décrit : les plus grandes tierces majeures sont pythagoriciennes, à la limite prescrite par Werckmeister pour que toutes les tonalités puissent être jouées.",
   },
   {
     idTemperament: 8,
@@ -577,26 +580,29 @@ export const defaultTemperaments: Array<Temperament> = [
       B:       "0",
     },
     externalLinks:[
-      {name: "", url: ""},
+      {name: "Wikipedia Temperament Werckmeister (EN)", url: "https://en.wikipedia.org/wiki/Werckmeister_temperament"},
     ],
-    theorist : "",
+    theorist : "Andreas Werckmeister (1645-1706)",
     wikipedia: [
-      {name: "", url: ""},
-      {name: "", url: ""},
+      {name: "Wikipedia Andreas Werckmeister (FR)", url: "https://fr.wikipedia.org/wiki/Andreas_Werckmeister"},
+      {name: "Wikipedia Andreas Werckmeister (EN)", url: "https://en.wikipedia.org/wiki/Andreas_Werckmeister"},
     ],
-    period : "",
-    geographicalArea: "",
-    nature: "",
-    structuralParticularity: "",
+    period : "XVIIe siècle",
+    geographicalArea: "Allemagne",
+    nature: "Comma pythagoricien",
+    structuralParticularity: "Andreas Werckmeister (1645-1706) a publié son Musikalische Temperatur en 1691. Le troisième tempérament de Werckmeister est décrit comme le cinquième dans Orgel Probe, que Werckmeister a publié en 1681. Dans ce système, cinq quintes sont diminuées d’un quart de comma pythagoricien, une quinte est augmentée d’un quart de comma pythagoricien. Six quintes sont pures. Le système n’a aucune tierce pure.",
     sources: [
-      {author: "", book: "", title:"", other: "", date: "", page: "", url:""}
+      {author: "Andreas Werckmeister,", book: "Musikalische Temperatur", title:"", other: "", date: "1691", page: "", url:"https://imslp.org/wiki/Musicalische_Temperatur_(Werckmeister%2C_Andreas)"},
+      {author: "Andreas Werckmeister,", book: "Orgel Probe", title:"", other: "", date: "", page: "1681", url:"https://imslp.org/wiki/Orgel-Probe_(Werckmeister,_Andreas) "}
     ],
     references: [
-      {author: "", book: "", title:"", other: "", date: "", page: "", url: ""},
+      {author: "Andreas Werckmeister,", book: "", title:"", other: "", date: "", page: "", url: ""},
     ],
     soundReferences: [
-        "",],
-    commentary: "",
+      "https://www.youtube.com/watch?v=kAlnr5nmHC8",
+      "https://www.youtube.com/watch?v=CeaGCYsy6iU",
+    ],
+    commentary: "Ce tempérament circulant présente sur les tonalités avec peu d'altérations des tierces majeures plus grandes qu'en Werckmeister I (III).",
   },
   {
     idTemperament: 9,
@@ -660,27 +666,27 @@ export const defaultTemperaments: Array<Temperament> = [
       B:       "0",
     },
     externalLinks:[
-      {name: "", url: ""},
+      {name: "Wikipedia Accord Pythagoricien (FR)", url: "https://fr.wikipedia.org/wiki/Accord_pythagoricien"},
     ],
-    theorist : "",
+    theorist : "Attribué à Pythagore (env. 580-av. 495 av JC) - Henri Arnault de Zwolle (vers 1400-1466)",
     wikipedia: [
-      {name: "", url: ""},
-      {name: "", url: ""},
+      {name: "Wikipedia Pythagore (FR)", url: "https://fr.wikipedia.org/wiki/Pythagore"},
+      {name: "Wikipedia Henri Arnault de Zwolle (FR)", url: "https://fr.wikipedia.org/wiki/Henri_Arnault_de_Zwolle"},
     ],
-    period : "",
-    geographicalArea: "",
-    nature: "",
-    structuralParticularity: "",
+    period : "Moyen Age",
+    geographicalArea: "Europe",
+    nature: "Comma pythagoricien",
+    structuralParticularity: "Dans l’accord pythagoricien, toutes les quintes sont pures sauf une, appelée la quinte du loup. Selon le choix de l’accord, ici sol#-mi bémol, la quinte “sol# -mi b” est diminuée d’un comma pythagoricien.",
     sources: [
-      {author: "", book: "", title:"", other: "", date: "", page: "", url:""}
+      {author: "Henri Arnault de Zwolle,", book: "Descriptio instrumenti cujusdam astronomici,", title:"", other: "", date: "entre 1436 et 1461", page: "", url:"https://gallica.bnf.fr/ark:/12148/btv1b90725989/f134.item.r=7295"}
     ],
     references: [
-      {author: "", book: "", title:"", other: "", date: "", page: "", url: ""},
+      {author: "Donald H. Boalch,", book: "Makers of the harpsichord and clavichord 1440-1840, ", title:"", other: "Oxford, Oxford University Press,", date: "", page: "", url: "1974"},
     ],
     soundReferences: [
-        "",],
-    commentary: "",
-  },
+      "https://www.youtube.com/watch?v=mgEL3N55fwI",],
+    commentary: "C'est l'échelle de référence pour l'intonation jusqu'à la Renaissance. Son adaptation au clavier nécessite de décider de la place de la quinte du loup. Conventionnellement, elle est mise entre sol# et mib.\bPour privilégier les modulations dans les tonalités voisines en conservant des quintes pures, il suffit de choisir un accord des quintes de sorte que la quinte du loup ne soit jamais jouée. Si les modulations parcourent tout le spectre des tonalités, il faudrait envisager deux accords de clavecin ou un système adaptatif.",
+     },
   {
     idTemperament: 10,
     name: "Kirnberger III (1779)",
@@ -743,26 +749,25 @@ export const defaultTemperaments: Array<Temperament> = [
       B:       "0",
     },
     externalLinks:[
-      {name: "", url: ""},
+      {name: "Wikipedia Temperament Kirnberger (EN)", url: "https://en.wikipedia.org/wiki/Kirnberger_temperament"},
     ],
-    theorist : "",
+    theorist : "Johann Philipp Kirnberger (1721-1783)",
     wikipedia: [
-      {name: "", url: ""},
-      {name: "", url: ""},
+      {name: "Wikipedia Johann Philipp Kirnberger (FR)", url: "https://fr.wikipedia.org/wiki/Johann_Philipp_Kirnberger"},
     ],
-    period : "",
-    geographicalArea: "",
-    nature: "",
-    structuralParticularity: "",
+    period : "XVIIIe siècle",
+    geographicalArea: "Allemagne",
+    nature: "Comma syntonique",
+    structuralParticularity: "Dans le tempérament de Kirnberger III, quatre quintes sont diminuées d’un quart de comma syntonique, une quinte est diminuée du schisma restant (de sorte que les diminutions correspondent au comma pythagoricien). Les sept autres quintes sont pures.",
     sources: [
-      {author: "", book: "", title:"", other: "", date: "", page: "", url:""}
+      {author: "J.Ph. Kirnberger,", book: "Die Kunst des reinen Satzes", title:"", other: "", date: "1771, 1779", page: "", url:"https://imslp.org/wiki/Die_Kunst_des_reinen_Satzes_in_der_Musik_(Kirnberger%2C_Johann_Philipp)"}
     ],
     references: [
       {author: "", book: "", title:"", other: "", date: "", page: "", url: ""},
     ],
     soundReferences: [
         "",],
-    commentary: "",
+    commentary: "Kirnberger a proposé trois tempéraments différents dans lesquels il répartit le comma syntonique sur une, deux ou quatre quintes. La particularité de ses solutions est qu’elles répartissent indépendamment le schisma sur une quinte.\b Plus précisément, après avoir décrit deux formules : la première qui laisse le comma syntonique non réparti sur la quinte ré-la, et la seconde qui le partage sur ré-la et la-mi, Kirnberger propose en 1779, dans une lettre à J. N. Forkel, un troisième tempérament dans lequel la répartition se fait sur les quatre quintes entre do et mi.",
   },
   {
     idTemperament: 11,
@@ -826,19 +831,19 @@ export const defaultTemperaments: Array<Temperament> = [
       B:       "-1/15,03",
     },
     externalLinks:[
-      {name: "", url: ""},
+      {name: "academia Tempérament Elliptique (FR)", url: "https://www.academia.edu/10807733/The_Elliptical_Temperament"},
     ],
-    theorist : "",
+    theorist : "Jérôme BERTIER (1986-)",
     wikipedia: [
       {name: "", url: ""},
       {name: "", url: ""},
     ],
-    period : "",
-    geographicalArea: "",
-    nature: "",
-    structuralParticularity: "",
+    period : "XVIII",
+    geographicalArea: "Allemagne",
+    nature: "Comma pythagoricien",
+    structuralParticularity: "Le tempérament Elliptique est un “bien-tempéré” théorique dans lequel les tierces majeures sont progressivement plus tempérées de Do Majeur à Fa#Majeur, et symétriquement. Une tonalité à 3# aura la même qualité de tierce qu’une tonalité à 3 bémols. Ce tempérament met en valeur le rapport entre les couleurs tonales utilisé notamment par J.S Bach dans le Clavier Bien Tempéré. C’est une version “lissée” du premier tempérament de Thomas Young.",
     sources: [
-      {author: "", book: "", title:"", other: "", date: "", page: "", url:""}
+      {author: "Lindley, Mark", book: "A quest for Bach’s ideal style of organ temperament", title:"", other: " in M. Lustig, ed., Stimmungen im 17. und 18.Jahrhundert, Michaelstein, ", date: "1997", page: "", url:"https://www.academia.edu/1134176/A_quest_for_Bach_s_ideal_style_of_organ_temperament"}
     ],
     references: [
       {author: "", book: "", title:"", other: "", date: "", page: "", url: ""},
