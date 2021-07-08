@@ -49,9 +49,9 @@ const LearnSheet: React.FC = () => {
 
           <ResourcesLearn
             resourcesList={[
-              "Wikipedia",
-              "TemperamentWiki",
-              "Rapport de fréquence",
+              {author: "", book: "Wikipedie Gammes et tempéraments (FR)", title:"", other: "", date: "", page: "", url:"https://fr.wikipedia.org/wiki/Gammes_et_temp%C3%A9raments_dans_la_musique_occidentale"},
+              {author: "", book: "Acustica accordatura e temperamento nell'illuminismo veneto. Insituto di Paleografia Musicale,", title:"", other: "Torre d'Orfeo, Roma", date: "1987", page: "", url:""},
+              {author: "Barbieri, Patrizio,", book: "Acustica accordatura e temperamento nell'illuminismo veneto. Insituto di Paleografia Musicale,", title:"", other: "Torre d'Orfeo, Roma", date: "1987", page: "", url:""},
             ]}
           />
 

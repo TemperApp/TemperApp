@@ -1,6 +1,6 @@
 import { capSQLiteChanges } from '@capacitor-community/sqlite';
 import { sqlite } from '../App';
-import { defaultTemperaments } from '../model/Temperament/Temperament';
+import { DataSources, defaultTemperaments } from '../model/Temperament/Temperament';
 import { Notes } from "../model/Note/enums";
 
 const sqlDropTables = [
@@ -40,12 +40,9 @@ export type TemperamentDBType = {
   geographicalArea: string,
   nature: string,
   structuralParticularity: string,
-  wikipedia: Array<{name: string, url: string}>,
-  sources: Array<{author: string, book: string, title:string, other: string, date: string, page: string, url:string}>,
-  references: Array<{author: string, book: string, title:string, other: string, date: string, page: string, url:string}>,
+  sources: Array<DataSources>,
   soundReferences: Array<string>,
   commentary: string,
-  externalLinks: Array<{name: string, url: string}>,
 };
 
 export type NoteDBType = {

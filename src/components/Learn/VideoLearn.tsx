@@ -11,7 +11,9 @@ const VideoLearn: React.FC<videoProps> = ({ titreText, videoLink }) => {
   return (
     <div className="learn-box">
       <h3>{titreText}</h3>
-      <iframe name="soundReference" src="https://www.youtube.com/embed/2S24-y0Ij3Y" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+      
+      <iframe name="soundReference" src={videoLink.replace("/watch?v=","/embed/")} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+      
     </div>
   )
 };

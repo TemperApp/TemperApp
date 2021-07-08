@@ -8,6 +8,8 @@ import { IonButton, IonCard, IonCardContent, IonCardHeader, IonCardTitle, IonIco
 import NonClickablePitchCircleSVG from '../Tuner/nonClickable/NonClickablePitchCircleSVG';
 import ParagraphLearn from '../Learn/ParagraphLearn';
 import VideoLearn from '../Learn/VideoLearn';
+import ButtonLearnSVG from '../Learn/ButtonLearnSVG';
+import ResourcesLearn from '../Learn/ResourcesLearn';
 
 const SheetTemperament: React.FC = () => {
 
@@ -82,6 +84,10 @@ const SheetTemperament: React.FC = () => {
         ) 
         : (console.log(temperament.soundReferences)))
       }
+
+      <ResourcesLearn 
+        resourcesList={temperament.sources}
+      />
 
       <IonButton
         className="btn-round absolute right-4 bottom-4"

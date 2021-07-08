@@ -20,12 +20,9 @@ export const fetchTemperaments = async (): Promise<Array<TemperamentDBType>> => 
     geographicalArea: t.geographicalArea,
     nature: t.nature,
     structuralParticularity: t.structuralParticularity,
-    wikipedia: t.wikipedia,
     sources: t.sources,
-    references: t.references,
     soundReferences: t.soundReferences,
     commentary: t.commentary,
-    externalLinks: t.externalLinks,
     }));
   /*
   return await DB.query("SELECT * FROM temperament");
@@ -53,12 +50,9 @@ export const fetchTemperamentById = async (
       geographicalArea: t.geographicalArea,
       nature: t.nature,
       structuralParticularity: t.structuralParticularity,
-      wikipedia: t.wikipedia,
       sources: t.sources,
-      references: t.references,
       soundReferences: t.soundReferences,
       commentary: t.commentary,
-      externalLinks: t.externalLinks,
     }))[0];
   // TODO Handle id not found
   /*
