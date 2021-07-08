@@ -7,6 +7,7 @@ import { useParams } from "react-router";
 import { IonButton, IonCard, IonCardContent, IonCardHeader, IonCardTitle, IonIcon } from '@ionic/react';
 import NonClickablePitchCircleSVG from '../Tuner/nonClickable/NonClickablePitchCircleSVG';
 import ParagraphLearn from '../Learn/ParagraphLearn';
+import VideoLearn from '../Learn/VideoLearn';
 
 const SheetTemperament: React.FC = () => {
 
@@ -70,7 +71,17 @@ const SheetTemperament: React.FC = () => {
         </IonCardContent>
       </IonCard> 
 
-      
+      {((temperament.soundReferences[0] !== "")
+        ? (temperament.soundReferences.map(e => {
+          return(<VideoLearn 
+            titreText = "Références sonores"
+            videoLink = {e}
+            key={e}
+          />)
+          })
+        ) 
+        : (console.log(temperament.soundReferences)))
+      }
 
       <IonButton
         className="btn-round absolute right-4 bottom-4"
