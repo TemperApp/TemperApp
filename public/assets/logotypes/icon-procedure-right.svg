@@ -1,14 +1,8 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 26.458 26.458" height="100" width="100">
     <g
-        style="fill:#000;fill-opacity:1;stroke:#2ea39b;stroke-width:5.38958;stroke-miterlimit:3.33333;stroke-dasharray:none;stroke-opacity:1">
+        style="fill:#000;fill-opacity:1;stroke-width:5.38958;stroke-miterlimit:3.33333;stroke-dasharray:none;stroke-opacity:1">
         <path d="m103.206 247.89-13.448 14.77M103.206 247.259l-13.448-14.77"
-            style="fill:#000;fill-opacity:1;stroke:#2ea39b;stroke-width:5.38958;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:3.33333;stroke-dasharray:none;stroke-opacity:1"
+            style="fill:#000;fill-opacity:1;stroke-width:5.38958;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:3.33333;stroke-dasharray:none;stroke-opacity:1"
             transform="matrix(.71965 0 0 .71965 -55.794 -164.859)" />
-    </g>
-    <g
-        style="fill:#000;fill-opacity:1;stroke:#2ea39b;stroke-width:5.38958;stroke-miterlimit:3.33333;stroke-dasharray:none;stroke-opacity:1">
-        <path d="m103.206 247.89-13.448 14.77M103.206 247.259l-13.448-14.77"
-            style="fill:#000;fill-opacity:1;stroke:#2ea39b;stroke-width:5.38958;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:3.33333;stroke-dasharray:none;stroke-opacity:1"
-            transform="matrix(.9277 0 0 .9277 -39.701 -192.258)" />
     </g>
 </svg>

@@ -12,7 +12,7 @@ import { TemperamentDBType } from "../../engine/DB";
 import PitchCircle from "./PitchCircle";
 import SoundEngine from "../../engine/SoundEngine";
 import EqualTemperament from "../../model/Temperament/Equal";
-import { arrowForward, arrowBack } from "ionicons/icons";
+import { repeat } from "ionicons/icons";
 import { splitProcedure } from "./nonClickable/NonClickableUtils";
 
 type TunerProps = {
@@ -110,36 +110,6 @@ const Tuner: React.FC<TunerProps> = ({
           stepProcedure={stepProcedure}
           procedure={splitedProcedure}
         />
-        <div className="procedure-nav w-full flex justify-between px-12">
-          {!isClickable
-            ? 
-            <>
-            <IonButton
-            fill="clear"
-            style={{ "--ripple-color": "transparent" }}
-            onClick={() => setStepProcedure(stepProcedure-1)}
-            >
-            <IonIcon
-              style={{ fontSize: "3rem" } /* TODO Find a better way */}
-              slot='icon-only'
-              src="/assets/logotypes/icon-procedure-left.svg"
-            />
-            </IonButton>
-            <IonButton
-              fill="clear"
-              style={{ "--ripple-color": "transparent" }}
-              onClick={() => setStepProcedure(stepProcedure+1)}
-            >
-            <IonIcon
-              style={{ fontSize: "3rem" } /* TODO Find a better way */}
-              slot='icon-only'
-              src="/assets/logotypes/icon-procedure-right.svg"
-            />
-            </IonButton>
-          </>
-            : <></>
-          }
-        </div>
       </section>
 
       {/* Buttons at the bottom */}
@@ -177,9 +147,12 @@ const Tuner: React.FC<TunerProps> = ({
               }
             onClick={() => {if(stepProcedure >= 1 ) setStepProcedure(stepProcedure-1)} }
           >
-            <IonIcon
+            <IonIcon className="h-9 w-9"
+              style={(stepProcedure == 0) 
+                ?  {fontSize: "3rem", stroke:"var(--color-grey)"}
+                :  {fontSize: "3rem", stroke:"var(--color-button)" } /* TODO Find a better way */}
               slot='icon-only'
-              icon={arrowBack}
+              src="/assets/logotypes/icon-procedure-left.svg"
             />
           </IonButton>
         </div>
@@ -208,9 +181,12 @@ const Tuner: React.FC<TunerProps> = ({
             : {"display": "none" }}
             onClick={() => {if(stepProcedure < (splitedProcedure.length -1) ) setStepProcedure(stepProcedure+1)} }
           >
-            <IonIcon
+            <IonIcon className="h-9 w-9"
+              style={(stepProcedure == splitedProcedure.length-1) 
+                ?  {fontSize: "3rem", stroke:"var(--color-grey)"}
+                :  {fontSize: "3rem", stroke:"var(--color-button)" } /* TODO Find a better way */}
               slot='icon-only'
-              icon={arrowForward}
+              src="/assets/logotypes/icon-procedure-right.svg"
             />
           </IonButton>
         </div>
@@ -234,21 +210,8 @@ const Tuner: React.FC<TunerProps> = ({
           </IonButton>
         </>
         :
-        <IonButton
-        size="large"
-        fill="clear"
-        style={{ "--ripple-color": "transparent" }}
-        onClick={() => setIsPlayed(!isPlayed)}
-      >
-        <IonIcon
-          src={
-            isPlayed
-              ? "/assets/logotypes/icon-play.svg"
-              : "/assets/logotypes/icon-stop.svg"
-          }
-          slot="icon-only"
-        />
-      </IonButton>
+        <>
+        </>
         }
         </div>
       </section>
