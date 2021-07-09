@@ -12,6 +12,7 @@ import {
   IonItem,
   IonItemOptions,
   IonItemSliding,
+  IonRow,
 } from "@ionic/react";
 import { Temperament } from "../../model/Temperament/Temperament";
 import { fifthQ, thirdQ } from "../../model/Divergence";

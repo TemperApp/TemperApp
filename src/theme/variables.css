@@ -7,6 +7,7 @@ http://ionicframework.com/docs/theming/ */
 
 :root {
   --ion-font-family: "Karla", sans-serif;
+  --font: "Nunito Sans";
 }
 
 /** Ionic CSS Variables **/
@@ -55,7 +56,50 @@ http://ionicframework.com/docs/theming/ */
   --ion-color-primary-shade: #45cbc7;
   --ion-color-primary-tint: #45cbc7;
 
-  --font: "Nunito Sans";
+  --quinte-color-12: #9D2A68;
+  --quinte-color-11: #C03378;
+  --quinte-color-10: #D5327B;
+  --quinte-color-9: #E9307D;
+  --quinte-color-8: #F8313C;
+  --quinte-color-7: #ff321f;
+  --quinte-color-6: #ff5435;
+  --quinte-color-5: #ff764a;
+  --quinte-color-4: #ff9960;
+  --quinte-color-3: #ffbb75;
+  --quinte-color-2: #ffd592;
+  --quinte-color-1: #ffe5bb;
+  --quinte-color0: #CCE9E7;
+  --quinte-color1: #CCE9E7;
+  --quinte-color2: #BFDDDB;
+  --quinte-color3: #B6D4D2;
+  --quinte-color4: #ABC9C7;
+  --quinte-color5: #9AB9B7;
+  --quinte-color6: #8CAEAB;
+  --quinte-color7: #6D9693;
+  --quinte-default: #6D9693;
+
+  --tierce-color0: #FFE5BB;
+  --tierce-color1: #FFDCA3;
+  --tierce-color2: #FFDDA7;
+  --tierce-color3: #FFC984;
+  --tierce-color4: #FFBB75;
+  --tierce-color5: #FFAA6B;
+  --tierce-color6: #FF8B57;
+  --tierce-color7: #FF8352;
+  --tierce-color8: #FF7A4C;
+  --tierce-color9: #FF5E3B;
+  --tierce-color10: #FF5335;
+  --tierce-color11: #FF492E;
+  --tierce-color12: #FF321F;
+  --tierce-color13: #F93137;
+  --tierce-color14: #F5314A;
+  --tierce-color15: #F03060;
+  --tierce-color16: #E9307D;
+  --tierce-color17: #E23480;
+  --tierce-color18: #D93884;
+  --tierce-color19: #BB3176;
+  --tierce-color20: #9D2A68;
+  --tierce-default: #B9B9B9;
 }
 
 /*
@@ -105,49 +149,50 @@ body.dark {
   --ion-color-primary-shade: #2ea39b;
   --ion-color-primary-tint: #2ea39b;
 
-  --quinte-color-12: #4f0000;
-  --quinte-color-11: #7b0000;
-  --quinte-color-10: #ae0000;
-  --quinte-color-9: #e00000;
-  --quinte-color-8: #ff0d08;
-  --quinte-color-7: #ff321f;
-  --quinte-color-6: #ff5435;
-  --quinte-color-5: #ff764a;
-  --quinte-color-4: #ff9960;
-  --quinte-color-3: #ffbb75;
-  --quinte-color-2: #ffd592;
-  --quinte-color-1: #ffe5bb;
-  --quinte-color0: #b9b9b9;
-  --quinte-color1: #b9b9b9;
-  --quinte-color2: #9f9f9f;
-  --quinte-color3: #7e7e7e;
-  --quinte-color4: #666666;
-  --quinte-color5: #4d4d4d;
-  --quinte-color6: #333333;
-  --quinte-color7: #161616;
-  --quinte-default: #161616;
+  --quinte-color-12: #8587C6;
+  --quinte-color-11: #9675C6;
+  --quinte-color-10: #9E6CC5;
+  --quinte-color-9: #A763C5;
+  --quinte-color-8: #B158C5;
+  --quinte-color-7: #BD4CC5;
+  --quinte-color-6: #CB3DC5;
+  --quinte-color-5: #D640C1;
+  --quinte-color-4: #E268CE;
+  --quinte-color-3: #EC7CDA;
+  --quinte-color-2: #F4AFE9;
+  --quinte-color-1: #F7D4F1;
+  --quinte-color0: #C2D8D7;
+  --quinte-color1: #C2D8D7;
+  --quinte-color2: #AEC7C5;
+  --quinte-color3: #97B2B0;
+  --quinte-color4: #7E9C9A;
+  --quinte-color5: #6B8C89;
+  --quinte-color6: #5C807E;
+  --quinte-color7: #4A7370;
+  --quinte-default: #4A7370;
 
-  --tierce-color-12: #4f0000;
-  --tierce-color-11: #7b0000;
-  --tierce-color-10: #ae0000;
-  --tierce-color-9: #e00000;
-  --tierce-color-8: #ff0d08;
-  --tierce-color-7: #ff321f;
-  --tierce-color-6: #ff5435;
-  --tierce-color-5: #ff764a;
-  --tierce-color-4: #ff9960;
-  --tierce-color-3: #ffbb75;
-  --tierce-color-2: #ffd592;
-  --tierce-color-1: #ffe5bb;
-  --tierce-color0: #b9b9b9;
-  --tierce-color1: #b9b9b9;
-  --tierce-color2: #9f9f9f;
-  --tierce-color3: #7e7e7e;
-  --tierce-color4: #666666;
-  --tierce-color5: #4d4d4d;
-  --tierce-color6: #333333;
-  --tierce-color7: #161616;
-  --tierce-default: #161616;
+  --tierce-color0: #FBDDF6;
+  --tierce-color1: #FAD3F3;
+  --tierce-color2: #F8C9F1;
+  --tierce-color3: #F7BBED;
+  --tierce-color4: #F5B1EA;
+  --tierce-color5: #F4A8E8;
+  --tierce-color6: #F39EE5;
+  --tierce-color7: #EF7FDD;
+  --tierce-color8: #EE76DB;
+  --tierce-color9: #E65CD3;
+  --tierce-color10: #E149CD;
+  --tierce-color11: #C939BF;
+  --tierce-color12: #BC41BB;
+  --tierce-color13: #B248B8;
+  --tierce-color14: #A64FB5;
+  --tierce-color15: #9C5DB7;
+  --tierce-color16: #906CB9;
+  --tierce-color17: #8A73BA;
+  --tierce-color18: #8679BB;
+  --tierce-color19: #817FBC;
+  --tierce-color20: #758EBE;
+  --tierce-default: #B9B9B9;
 }
 
 /*

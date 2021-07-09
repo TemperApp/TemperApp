@@ -8,47 +8,47 @@ export const convertFifthQualityToColor = (quality: number | null) => {
 
     switch (Math.max(Math.min(Math.floor(quality), 7), -12)) {
       case -12:
-        return "#823B8F";
+        return "8587C6";
       case -11:
-        return "#914393";
+        return "#9675C6";
       case -10:
-        return "#9A4996";
+        return "#9E6CC5";
       case -9:
-        return "#A24F99";
+        return "#A763C5";
       case -8:
-        return "#A85DA0";
+        return "#B158C5";
       case -7:
-        return "#AD6AA8";
+        return "#BD4CC5";
       case -6:
-        return "#B47BB1";
+        return "#CB3DC5";
       case -5:
-        return "#BB8ABA";
+        return "#D640C1";
       case -4:
-        return "#C39CC4";
+        return "E268CE";
       case -3:
-        return "#CBABCD";
+        return "#EC7CDA";
       case -2:
-        return "#D4BCD5";
+        return "#F4AFE9";
       case -1:
-        return "#DCCBDD"; // handle value between -1 and -0.005
+        return "#F7D4F1"; // handle value between -1 and -0.005
       case 0:
-        return "#9CD4D9"; // handle value between 0.005 and 1
+        return "#C2D8D7"; // handle value between 0.005 and 1
       case 1:
-        return "#9CD4D9";
+        return "#C2D8D7";
       case 2:
-        return "#77C7C7";
+        return "#AEC7C5";
       case 3:
-        return "#6FC3B9";
+        return "#97B2B0";
       case 4:
-        return "#66BFAB";
+        return "#7E9C9A";
       case 5:
-        return "#5BBA99";
+        return "#6B8C89";
       case 6:
-        return "#4DB485";
+        return "#5C807E";
       case 7:
-        return "#41B074";
+        return "#4A7370";
       default:
-        return "#DCCBDD";
+        return "#4A7370";
     }
   }
 
@@ -58,47 +58,47 @@ export const convertFifthQualityToColor = (quality: number | null) => {
 
   switch (Math.max(Math.min(Math.floor(quality), 7), -12)) {
     case -12:
-      return "#4F0000";
+      return "#9D2A68";
     case -11:
-      return "#7B0000";
+      return "#C03378";
     case -10:
-      return "#AE0000";
+      return "#D5327B";
     case -9:
-      return "#E00000";
+      return "#E9307D";
     case -8:
-      return "#FF0D08";
+      return "#F8313C";
     case -7:
-      return "#FF321F";
+      return "#ff321f";
     case -6:
-      return "#FF5435";
+      return "#ff5435";
     case -5:
-      return "#FF764A";
+      return "#ff764a";
     case -4:
-      return "#FF9960";
+      return "#ff9960";
     case -3:
-      return "#FFBB75";
+      return "#ffbb75";
     case -2:
-      return "#FFD592";
+      return "#ffd592";
     case -1:
-      return "#FFE5BB"; // handle value between -1 and -0.005
+      return "#ffe5bb"; // handle value between -1 and -0.005
     case 0:
-      return "#B9B9B9"; // handle value between 0.005 and 1
+      return "#CCE9E7"; // handle value between 0.005 and 1
     case 1:
-      return "#B9B9B9";
+      return "#CCE9E7";
     case 2:
-      return "#9F9F9F";
+      return "#BFDDDB";
     case 3:
-      return "#7E7E7E";
+      return "#B6D4D2";
     case 4:
-      return "#666666";
+      return "#ABC9C7";
     case 5:
-      return "#4D4D4D";
+      return "#9AB9B7";
     case 6:
-      return "#333333";
+      return "#8CAEAB";
     case 7:
-      return "#161616";
+      return "#6D9693";
     default:
-      return "#161616";
+      return "#6D9693";
   }
 };
 
@@ -112,47 +112,47 @@ export const convertThirdQualityToColor = (quality: number | null) => {
       case -1:
         return "#B9B9B9"; // handle value between -1 and -0.005
       case 0:
-        return "#D98FD7"; // handle value between 0.005 and 1
+        return "#FBDDF6"; // handle value between 0.005 and 1
       case 1:
-        return "#D98FD7";
+        return "#FAD3F3";
       case 2:
-        return "#D1A5C8";
+        return "#F8C9F1";
       case 3:
-        return "#CA87B7";
+        return "#F7BBED";
       case 4:
-        return "#C46CA7";
+        return "#F5B1EA";
       case 5:
-        return "#AD6AA8";
+        return "#F4A8E8";
       case 6:
-        return "#BF549A";
+        return "#F39EE5";
       case 7:
-        return "#B54995";
+        return "#EF7FDD";
       case 8:
-        return "#B04693";
+        return "#EE76DB";
       case 9:
-        return "#AA4392";
+        return "#E65CD3";
       case 10:
-        return "#A64090";
+        return "#E149CD";
       case 11:
-        return "#9F3F90";
+        return "#C939BF";
       case 12:
-        return "#983F90";
+        return "#BC41BB";
       case 13:
-        return "#913F90";
+        return "#B248B8";
       case 14:
-        return "#883E90";
+        return "#A64FB5";
       case 15:
-        return "#813D90";
+        return "#9C5DB7";
       case 16:
-        return "#7D3D90";
+        return "#906CB9";
       case 17:
-        return "#793C8F";
+        return "#8A73BA";
       case 18:
-        return "#743C8F";
+        return "#8679BB";
       case 19:
-        return "#6D3B8F";
+        return "#817FBC";
       case 20:
-        return "#632D8E";
+        return "#758EBE";
       default:
         return "B9B9B9";
     }
@@ -165,47 +165,47 @@ export const convertThirdQualityToColor = (quality: number | null) => {
     case -1:
       return "#B9B9B9"; // handle value between -1 and -0.005
     case 0:
-      return "#FFEDD0"; // handle value between 0.005 and 1
+      return "#FFE5BB"; // handle value between 0.005 and 1
     case 1:
-      return "#FFEDD0";
+      return "#FFDCA3";
     case 2:
-      return "#FFE9C6";
-    case 3:
-      return "#FFE5BC";
-    case 4:
-      return "#FFE1B1";
-    case 5:
       return "#FFDDA7";
+    case 3:
+      return "#FFC984";
+    case 4:
+      return "#FFBB75";
+    case 5:
+      return "#FFAA6B";
     case 6:
-      return "#FFDA9E";
+      return "#FF8B57";
     case 7:
-      return "#FFD694";
+      return "#FF8352";
     case 8:
-      return "#FFD289";
+      return "#FF7A4C";
     case 9:
-      return "#FFC77D";
+      return "#FF5E3B";
     case 10:
-      return "#FFA669";
+      return "#FF5335";
     case 11:
-      return "#FF8654";
+      return "#FF492E";
     case 12:
-      return "#FF6741";
+      return "#FF321F";
     case 13:
-      return "#FF472D";
+      return "#F93137";
     case 14:
-      return "#FF2416";
+      return "#F5314A";
     case 15:
-      return "#FF0604";
+      return "#F03060";
     case 16:
-      return "#EB0000";
+      return "#E9307D";
     case 17:
-      return "#D40000";
+      return "#E23480";
     case 18:
-      return "#BC0000";
+      return "#D93884";
     case 19:
-      return "#A60000";
+      return "#BB3176";
     case 20:
-      return "#8A0000";
+      return "#9D2A68";
     default:
       return "#B9B9B9";
   }
