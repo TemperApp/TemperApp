@@ -84,6 +84,10 @@ const NonClickableProcedure: React.FC<NonClickableProcedureProps> = ({
   useEffect( () => {
     if( (procedure![stepProcedure!].length) === 2){
       if(procedure![stepProcedure!][1] == "explanation"){
+        setNoteDisplay([
+          { note: null, state: NoteStates.IDLE },
+          { note: null, state: NoteStates.IDLE },
+        ])
         SoundEngine.stop();
         setShowPopover({ showPopover: true, event: undefined, text: procedure![stepProcedure!][0] })
       }
