@@ -30,6 +30,7 @@ const Home: React.FC = () => {
         </div>
         <IonIcon
           className="absolute top-0 right-0 mt-4 p-5 h-7 w-7"
+          style={{ fill: "var(--color-contrast)" }}
           onClick={() => setShowModal(true)}
           icon={ellipsisVertical}
         />
