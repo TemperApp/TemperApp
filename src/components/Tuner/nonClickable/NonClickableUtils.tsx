@@ -10,12 +10,17 @@ export const splitProcedure = ( procedure: string) => {
       tempProcedure.push([temp[0],temp[1],'control'])
     }
     else{
-      if(element.includes("-")){
-        let temp = element.split("-")
-        tempProcedure.push([temp[0],temp[1],'tune'])
+      if(element.includes("{")){
+        tempProcedure.push([element,"explanation"])
       }
       else{
-        tempProcedure.push([element,"tune"]);
+        if(element.includes("-")){
+          let temp = element.split("-")
+          tempProcedure.push([temp[0],temp[1],'tune'])
+        }
+        else{
+          tempProcedure.push([element,"tune"]);
+        }
       }
     }
   })

@@ -16,6 +16,7 @@ import { TunerMode } from '../PitchCircle';
 //Styles 
 import "../common/PitchCircleSVG.css";
 import NonClickableProcedurePitchCircleSVG from "./NonClickableProcedurePitchCircleSVG";
+import { IonPopover, IonToast } from "@ionic/react";
 
 export enum NoteStates {
   IDLE,
@@ -53,6 +54,8 @@ const NonClickableProcedure: React.FC<NonClickableProcedureProps> = ({
     { note: null, state: NoteStates.IDLE },
   ]);
 
+  const [popoverState, setShowPopover] = useState({ showPopover: false, event: undefined, text: "" });
+
 
   useEffect(() => {
     (async () => {
@@ -80,7 +83,12 @@ const NonClickableProcedure: React.FC<NonClickableProcedureProps> = ({
 
   useEffect( () => {
     if( (procedure![stepProcedure!].length) === 2){
-      let note1 = (Note.parse(procedure![stepProcedure!][0]))?.toNotes();
+      if(procedure![stepProcedure!][1] == "explanation"){
+        SoundEngine.stop();
+        setShowPopover({ showPopover: true, event: undefined, text: procedure![stepProcedure!][0] })
+      }
+      else{
+        let note1 = (Note.parse(procedure![stepProcedure!][0]))?.toNotes();
       let note1_octave = ((Note.parse(procedure![stepProcedure!][0]))?.octave === 4)? NoteStates.SELECTED : NoteStates.OCTAVE;
       setNoteDisplay([
         { note: note1!, state: note1_octave },
@@ -93,6 +101,7 @@ const NonClickableProcedure: React.FC<NonClickableProcedureProps> = ({
       (note1 !== null)
         ? SoundEngine.stopAndPlay(freq1)
         : SoundEngine.stop();
+      }
     }
     else{
       if(stepTune < 3){
@@ -192,16 +201,28 @@ const NonClickableProcedure: React.FC<NonClickableProcedureProps> = ({
   }, [stepTune, stepProcedure])
 
   return(
-    <NonClickableProcedurePitchCircleSVG
-      tunerMode = {tunerMode}
-      freqA4 = {freqA4}
-      centerCircle  = {centerCircle}
-      thirdQualities = {thirdQualities}
-      fifthQualities = {fifthQualities}
-      frequencies = {frequencies}
-      temperament = {temperament}
-      actives = {noteDisplay}
-    />
+
+    <>
+      <IonPopover
+        cssClass='my-custom-class'
+        event={popoverState.event}
+        isOpen={popoverState.showPopover}
+        onDidDismiss={() => setShowPopover({ showPopover: false, event: undefined, text: "" })}
+      >
+        <p>{popoverState.text}</p>
+      </IonPopover>
+
+      <NonClickableProcedurePitchCircleSVG
+        tunerMode = {tunerMode}
+        freqA4 = {freqA4}
+        centerCircle  = {centerCircle}
+        thirdQualities = {thirdQualities}
+        fifthQualities = {fifthQualities}
+        frequencies = {frequencies}
+        temperament = {temperament}
+        actives = {noteDisplay}
+      />
+    </>
   );
 
 };
