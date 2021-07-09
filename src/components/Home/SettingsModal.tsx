@@ -50,9 +50,9 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
           />
         </section>
 
-        <section className="pl-8">
-          <h3 className="py-5">Présentation</h3>
-          <hr />
+        <section className="overflow-x-hidden">
+          <h4 className="pt-6">Présentation</h4>
+          <hr className="my-5" />
           
           <p className="p-long">
             TemperApp est une application à destination des musicien·ne·s,
@@ -63,8 +63,8 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
             de rapport intervallaire.
           </p>
           
-          <h3 className="py-5">Crédits et sources</h3>
-          <hr />
+          <h4 className="pt-6">Crédits et sources</h4>
+          <hr className="my-5" />
           
           <p className="p-long">
             TemperApp est issue du travail de recherche réalisé par :
