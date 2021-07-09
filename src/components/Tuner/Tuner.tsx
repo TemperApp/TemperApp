@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import {
   IonButton,
   IonIcon,
@@ -14,6 +14,8 @@ import SoundEngine from "../../engine/SoundEngine";
 import EqualTemperament from "../../model/Temperament/Equal";
 import { repeat } from "ionicons/icons";
 import { splitProcedure } from "./nonClickable/NonClickableUtils";
+import { arrowForward, arrowBack } from "ionicons/icons";
+import SettingsContext from "../../store/settings-context";
 
 type TunerProps = {
   setMainTitle: (t: string) => void,
@@ -23,9 +25,10 @@ const Tuner: React.FC<TunerProps> = ({
   setMainTitle,
 }) => {
 
+  const settings = useContext(SettingsContext);
   const [temperament, setTemperament] = useState<TemperamentDBType>(EqualTemperament);
   const [temperamentsList, setTemperamentsList] = useState<TemperamentDBType[]>([]);
-  const [freqA4, setFreqA4] = useState<number>(440);
+  const [freqA4, setFreqA4] = useState<number>(settings.freqA4);
   const [isMuted, setIsMuted] = useState<boolean>(true);
   const [isHzMode, setIsHzMode] = useState<boolean>(true);
   const [isClickable, setIsClickable] = useState<boolean>(true);
@@ -41,6 +44,10 @@ const Tuner: React.FC<TunerProps> = ({
   useEffect(() => {
     SoundEngine.volume(isMuted ? -128 : -24);
   }, [isMuted]);
+
+  useEffect(() => {
+    setFreqA4(settings.freqA4)
+  }, [settings.freqA4]);
 
   useEffect(() => {
     (async () => {
