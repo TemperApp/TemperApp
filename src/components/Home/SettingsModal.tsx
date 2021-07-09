@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import {
   IonModal,
   IonContent,
@@ -13,11 +13,12 @@ import {
   IonToolbar,
 } from "@ionic/react";
 import { ellipsisVertical } from "ionicons/icons";
-import Settings from "../../engine/Settings";
+import SettingsContext from "../../store/settings-context";
 
 import "../App/Modal.css";
 
 export const SettingsModal: React.FC = () => {
+  const settings = useContext(SettingsContext);
   const [showModal, setShowModal] = useState(false);
   const [number, setNumber] = useState<number>(440);
 
@@ -59,14 +60,14 @@ export const SettingsModal: React.FC = () => {
             <div className="mt-3">
               <IonRow>
                 <IonCol size="8">
-                  <p>{Settings.darkTheme() ? "Thème sompe" : "Thème clair"}</p>
+                  <p>{settings.darkTheme ? "Thème sombre" : "Thème clair"}</p>
                 </IonCol>
                 <IonCol size="2" className="text-center" offset="1">
                   <IonToggle
-                    checked={Settings.darkTheme()}
+                    checked={settings.darkTheme}
                     value="dark"
                     id="themeToggle"
-                    onClick={(e: any) => { Settings.darkTheme(e.target.checked) }}
+                    onClick={(e: any) => { settings.setDarkTheme(e.target.checked) }}
                   ></IonToggle>
                 </IonCol>
               </IonRow>

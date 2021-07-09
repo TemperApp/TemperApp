@@ -1,7 +1,7 @@
-import Settings from "../engine/Settings";
 
-export const convertFifthQualityToColor = (quality: number | null) => {
-  if (Settings.darkTheme()) {
+export const convertFifthQualityToColor = (quality: number | null, isDarkTheme: boolean) => {
+  
+  if (isDarkTheme) {
     if (quality === null) return "grey";
 
     if (quality < 0.005 && quality > -0.005) return "white";
@@ -102,8 +102,8 @@ export const convertFifthQualityToColor = (quality: number | null) => {
   }
 };
 
-export const convertThirdQualityToColor = (quality: number | null) => {
-  if (Settings.darkTheme()) {
+export const convertThirdQualityToColor = (quality: number | null, isDarkTheme: boolean) => {
+  if (isDarkTheme) {
     if (quality === null) return "#B9B9B9";
 
     if (quality < 0.005 && quality > -0.005) return "white";

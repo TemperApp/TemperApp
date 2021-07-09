@@ -1,18 +1,19 @@
-import React from 'react';
-import Settings from '../../engine/Settings';
+import React, { useContext } from 'react';
+import SettingsContext from '../../store/settings-context';
 import "./Waves.css"
 
 const Waves: React.FC = () => {
+  const settings = useContext(SettingsContext);
 
-  const colorWave1_1 = (Settings.darkTheme() ? "#45CBC7" : "#FFE0B1");
-  const colorWave1_2 = (Settings.darkTheme() ? "#2EA39B" : "#FFC09F");
-  const colorWave1_3 = (Settings.darkTheme() ? "#A3719D" : "#F88F8F");
-  const colorWave2_1 = (Settings.darkTheme() ? "#45CBC7" : "#FFE0B1");
-  const colorWave2_2 = (Settings.darkTheme() ? "#2EA39B" : "#FFC09F");
-  const colorWave2_3 = (Settings.darkTheme() ? "#A3719D" : "#F88F8F");
-  const colorWave3_1 = (Settings.darkTheme() ? "#45CBC7" : "#FFE0B1");
-  const colorWave3_2 = (Settings.darkTheme() ? "#2EA39B" : "#FFC09F");
-  const colorWave3_3 = (Settings.darkTheme() ? "#A3719D" : "#F88F8F");
+  const colorWave1_1 = (settings.darkTheme ? "#45CBC7" : "#FFE0B1");
+  const colorWave1_2 = (settings.darkTheme ? "#2EA39B" : "#FFC09F");
+  const colorWave1_3 = (settings.darkTheme ? "#A3719D" : "#F88F8F");
+  const colorWave2_1 = (settings.darkTheme ? "#45CBC7" : "#FFE0B1");
+  const colorWave2_2 = (settings.darkTheme ? "#2EA39B" : "#FFC09F");
+  const colorWave2_3 = (settings.darkTheme ? "#A3719D" : "#F88F8F");
+  const colorWave3_1 = (settings.darkTheme ? "#45CBC7" : "#FFE0B1");
+  const colorWave3_2 = (settings.darkTheme ? "#2EA39B" : "#FFC09F");
+  const colorWave3_3 = (settings.darkTheme ? "#A3719D" : "#F88F8F");
 
   return (
     <>

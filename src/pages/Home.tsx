@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useContext } from "react";
 import {
   IonCol,
   IonContent,
@@ -12,25 +12,10 @@ import {
 import "./Home.css";
 import HomeContent from "../components/Home/HomeContent";
 import SettingsModal from "../components/Home/SettingsModal";
-import Settings from "../engine/Settings";
-import useSettings from "../hooks/useSettings";
+import SettingsContext from "../store/settings-context";
 
 const Home: React.FC = () => {
-  console.log('début')
-
-  const settings = useSettings();
-  
-  useEffect(() => {
-    (async () => {
-      console.log('useEffect 1', settings.pitchRef)
-      settings.setPitchRef(450);
-    })().then(() => {
-      console.log('useEffect 2', settings.pitchRef)
-    });
-  }, [])
-  
-  console.log('gotta render', settings.pitchRef)
-
+  const settings = useContext(SettingsContext);
   return (
     <IonPage>
       <IonHeader className="ion-no-border">
@@ -41,7 +26,7 @@ const Home: React.FC = () => {
               <IonCol className="text-center " size="8">
                 <IonImg
                   src={
-                    (Settings.darkTheme())
+                    (settings.darkTheme)
                       ? "../../assets/logotypes/temperapp_logo-dark.svg"
                       : "../../assets/logotypes/temperapp_logo.svg"
                   }
