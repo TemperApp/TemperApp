@@ -89,16 +89,17 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
 
           <p className="p-long">
             Le projet bénéficie de nombreux soutiens sous la forme de ressources humaines et techniques :
-            <ul>
-              <li>Le Conservatoire National Supérieur de Musique et de Danse de Paris,</li>
-              <li>le laboratoire "Lutheries - Acoustique - Musique" (LAM),            </li>
-              <li>l'Institut Jean le Rond d’Alembert,                                 </li>
-              <li>IReMus,                                                             </li>
-              <li>Revue Musicorum,                                                    </li>
-              <li>l’association ARTEMIDA,                                             </li>
-              <li>et le Conservatoire du Grand-Avignon.                               </li>
-            </ul>
           </p>
+          
+          <ul>
+            <li>Le Conservatoire National Supérieur de Musique et de Danse de Paris,</li>
+            <li>le laboratoire "Lutheries - Acoustique - Musique" (LAM),            </li>
+            <li>l'Institut Jean le Rond d’Alembert,                                 </li>
+            <li>IReMus,                                                             </li>
+            <li>Revue Musicorum,                                                    </li>
+            <li>l’association ARTEMIDA,                                             </li>
+            <li>et le Conservatoire du Grand-Avignon.                               </li>
+          </ul>
         </section>
       </PageModal>
     </>

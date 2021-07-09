@@ -66,7 +66,8 @@ ion-title,
   color: var(--color-contrast);
 }
 
-.p-long {
+.p-long,
+ul {
   font-family: var(--ion-family-font);
   font-style: normal !important;
   font-weight: 300 !important;
