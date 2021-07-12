@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { IonCol, IonGrid, IonRow, IonSelect, IonSelectOption } from '@ionic/react';
+import { IonButton, IonCol, IonGrid, IonRow, IonSelect, IonSelectOption } from '@ionic/react';
 import { fetchTemperaments } from '../../engine/DataAccessor';
 import { TemperamentDBType } from '../../engine/DB';
 
@@ -24,7 +24,7 @@ const Comparator: React.FC = () => {
     <>
       <IonGrid className="px-5">
         <IonRow>
-          <IonCol size="6">
+          <IonCol size="5">
             <span className="select-label pb-1">
               Anneaux internes
             </span>
@@ -38,7 +38,17 @@ const Comparator: React.FC = () => {
               )}
             </IonSelect>
           </IonCol>
-          <IonCol size="6">
+          <IonCol size="2">
+            <IonButton onClick={() => {
+              if(temperament1.name !== temperament2.name){
+                console.log("switch possible");
+                let temp = temperament1;
+                setTemperament1(temperament2);
+                setTemperament2(temp);
+              }
+            }}>Switch</IonButton>
+          </IonCol>
+          <IonCol size="5">
             <span className="select-label pb-1">
               Anneaux externes
             </span>
