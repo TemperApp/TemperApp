@@ -36,6 +36,7 @@ const Tuner: React.FC<TunerProps> = ({
   const [isPlayed, setIsPlayed] = useState<boolean>(true);
   const [procedure, setProcedure] = useState<string>("");
   const [splitedProcedure, setSplitedProcedure] = useState<Array<string>>([""]);
+  const [stepTune, setStepTune] = useState<number>(0);
 
   useEffect(() => {
     setMainTitle(isHzMode ? "Pitch pipe" : "Battements")
@@ -116,6 +117,8 @@ const Tuner: React.FC<TunerProps> = ({
           idTemperament={temperament.idTemperament}
           stepProcedure={stepProcedure}
           procedure={splitedProcedure}
+          stepTune={stepTune}
+          setStepTune={setStepTune}
         />
       </section>
 
@@ -195,6 +198,17 @@ const Tuner: React.FC<TunerProps> = ({
               slot='icon-only'
               src="/assets/logotypes/icon-procedure-right.svg"
             />
+          </IonButton>
+        </div>
+        <div>
+          <IonButton
+            fill="clear"
+            style={!isClickable ? { "--ripple-color": "transparent",
+            "display": "block"} 
+            : {"display": "none" }}
+            onClick={() => {setStepTune(0)} }
+          >
+            RESET
           </IonButton>
         </div>
         <div className="w-20 btn-mode">

@@ -38,13 +38,14 @@ type NonClickableProcedureProps = {
   centerCircle : boolean,
   stepProcedure?: number,
   procedure?: Array<string>,
+  stepTune?: number,
+  setStepTune?: (step: number) => void,
 }
 
 const NonClickableProcedure: React.FC<NonClickableProcedureProps> = ({
-  tunerMode, freqA4, idTemperament, centerCircle, stepProcedure, procedure
+  tunerMode, freqA4, idTemperament, centerCircle, stepProcedure, procedure, stepTune, setStepTune
 }) => {
 
-  const [stepTune, setStepTune] = useState<number>(0);
   const [temperament, setTemperament] = useState<Temperament>(EqualTemperament);
   const [thirdQualities, setThirdQualities] = useState<NotesMap<number | null>>(thirdEqualQ());
   const [fifthQualities, setFifthQualities] = useState<NotesMap<number | null>>(fifthEqualQ());
@@ -78,7 +79,7 @@ const NonClickableProcedure: React.FC<NonClickableProcedureProps> = ({
   }, [freqA4]);
 
   useEffect( () => {
-    setStepTune(0);
+    setStepTune!(0);
   }, [idTemperament, stepProcedure])
 
   useEffect( () => {
@@ -108,7 +109,7 @@ const NonClickableProcedure: React.FC<NonClickableProcedureProps> = ({
       }
     }
     else{
-      if(stepTune < 3){
+      if(stepTune! < 3){
         if(procedure![stepProcedure!][2] === "tune"){
           SoundEngine.setPulseBPS(0);
           if(stepTune === 0 || stepTune === 1){
@@ -127,7 +128,7 @@ const NonClickableProcedure: React.FC<NonClickableProcedureProps> = ({
               : SoundEngine.stop();
             const timer = setTimeout(() => {
               SoundEngine.stop();
-              setStepTune(stepTune+1);
+              setStepTune!(stepTune+1);
             }, 1000);
             return () => clearTimeout(timer);
           }
@@ -158,7 +159,7 @@ const NonClickableProcedure: React.FC<NonClickableProcedureProps> = ({
               ? (freq1>freq2)? SoundEngine.setPulseBPS(freq1-freq2): SoundEngine.setPulseBPS(freq2-freq1)
               : SoundEngine.setPulseBPS(0);
             const timer = setTimeout(() => {
-              setStepTune(stepTune+1);
+              setStepTune!(stepTune!+1);
               SoundEngine.stop()
               SoundEngine.setPulseBPS(0);
             }, 5000);
@@ -193,7 +194,7 @@ const NonClickableProcedure: React.FC<NonClickableProcedureProps> = ({
             ? (freq1>freq2)? SoundEngine.setPulseBPS(freq1-freq2): SoundEngine.setPulseBPS(freq2-freq1)
             : SoundEngine.setPulseBPS(0);
           const timer = setTimeout(() => {
-            setStepTune(3);
+            setStepTune!(3);
             SoundEngine.stop()
             SoundEngine.setPulseBPS(0);
           }, 5000);

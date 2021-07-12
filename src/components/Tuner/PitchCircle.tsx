@@ -13,10 +13,12 @@ type PitchCircleProps = {
   idTemperament: number,
   stepProcedure?: number,
   procedure?: Array<string>,
+  stepTune?: number,
+  setStepTune?: (step: number) => void;
 };
 
 const PitchCircle: React.FC<PitchCircleProps> = ({
-  isHzMode, isClickable, freqA4, idTemperament, stepProcedure, procedure,
+  isHzMode, isClickable, freqA4, idTemperament, stepProcedure, procedure, stepTune, setStepTune
 }) => {
 
   const [tunerMode, setTunerMode] = useState(TunerMode.HZ);
@@ -49,6 +51,8 @@ const PitchCircle: React.FC<PitchCircleProps> = ({
       centerCircle={true}
       stepProcedure={stepProcedure}
       procedure={procedure}
+      stepTune={stepTune}
+      setStepTune={setStepTune}
     />)
   }
 
