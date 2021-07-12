@@ -12,9 +12,7 @@ import { TemperamentDBType } from "../../engine/DB";
 import PitchCircle from "./PitchCircle";
 import SoundEngine from "../../engine/SoundEngine";
 import EqualTemperament from "../../model/Temperament/Equal";
-import { repeat } from "ionicons/icons";
 import { splitProcedure } from "./nonClickable/NonClickableUtils";
-import { arrowForward, arrowBack } from "ionicons/icons";
 import SettingsContext from "../../store/settings-context";
 
 type TunerProps = {
@@ -33,7 +31,6 @@ const Tuner: React.FC<TunerProps> = ({
   const [isHzMode, setIsHzMode] = useState<boolean>(true);
   const [isClickable, setIsClickable] = useState<boolean>(true);
   const [stepProcedure, setStepProcedure] = useState<number>(0);
-  const [isPlayed, setIsPlayed] = useState<boolean>(true);
   const [procedure, setProcedure] = useState<string>("");
   const [splitedProcedure, setSplitedProcedure] = useState<Array<string>>([""]);
   const [stepTune, setStepTune] = useState<number>(0);
@@ -155,10 +152,10 @@ const Tuner: React.FC<TunerProps> = ({
               ? {"--ripple-color": "transparent", display: "block"} 
               : {display: "none"} 
               }
-            onClick={() => {if(stepProcedure >= 1 ) setStepProcedure(stepProcedure-1)} }
+            onClick={() => {if(stepProcedure >= 1 ) setStepProcedure(stepProcedure-1); setStepTune(0)} }
           >
             <IonIcon className="h-9 w-9"
-              style={(stepProcedure == 0) 
+              style={(stepProcedure === 0) 
                 ?  {fontSize: "3rem", stroke:"var(--color-grey)"}
                 :  {fontSize: "3rem", stroke:"var(--color-button)" } /* TODO Find a better way */}
               slot='icon-only'
@@ -189,10 +186,10 @@ const Tuner: React.FC<TunerProps> = ({
             style={!isClickable ? { "--ripple-color": "transparent",
             "display": "block"} 
             : {"display": "none" }}
-            onClick={() => {if(stepProcedure < (splitedProcedure.length -1) ) setStepProcedure(stepProcedure+1)} }
+            onClick={() => {if(stepProcedure < (splitedProcedure.length -1) ) setStepProcedure(stepProcedure+1); setStepTune(0)} }
           >
             <IonIcon className="h-9 w-9"
-              style={(stepProcedure == splitedProcedure.length-1) 
+              style={(stepProcedure === splitedProcedure.length-1) 
                 ?  {fontSize: "3rem", stroke:"var(--color-grey)"}
                 :  {fontSize: "3rem", stroke:"var(--color-button)" } /* TODO Find a better way */}
               slot='icon-only'

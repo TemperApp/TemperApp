@@ -16,7 +16,7 @@ import { TunerMode } from '../PitchCircle';
 //Styles 
 import "../common/PitchCircleSVG.css";
 import NonClickableProcedurePitchCircleSVG from "./NonClickableProcedurePitchCircleSVG";
-import { IonPopover, IonToast } from "@ionic/react";
+import { IonPopover } from "@ionic/react";
 
 export enum NoteStates {
   IDLE,
@@ -80,11 +80,12 @@ const NonClickableProcedure: React.FC<NonClickableProcedureProps> = ({
 
   useEffect( () => {
     setStepTune!(0);
-  }, [idTemperament, stepProcedure])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [idTemperament])
 
   useEffect( () => {
     if( (procedure![stepProcedure!].length) === 2){
-      if(procedure![stepProcedure!][1] == "explanation"){
+      if(procedure![stepProcedure!][1] === "explanation"){
         setNoteDisplay([
           { note: null, state: NoteStates.IDLE },
           { note: null, state: NoteStates.IDLE },

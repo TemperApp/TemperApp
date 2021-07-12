@@ -8,11 +8,9 @@ import {
   IonCardContent,
   IonCardHeader,
   IonCardTitle,
-  IonGrid,
   IonItem,
   IonItemOptions,
   IonItemSliding,
-  IonRow,
 } from "@ionic/react";
 import { Temperament } from "../../model/Temperament/Temperament";
 import { fifthQ, thirdQ } from "../../model/Divergence";
