@@ -24,13 +24,13 @@ export const convertFifthQualityToColor = (quality: number | null, isDarkTheme: 
       case -5:
         return "#D640C1";
       case -4:
-        return "E268CE";
+        return "DB4EC7";
       case -3:
-        return "#EC7CDA";
+        return "#E05BCD";
       case -2:
-        return "#F4AFE9";
+        return "#E86DD5";
       case -1:
-        return "#F7D4F1"; // handle value between -1 and -0.005
+        return "#EF7FDD"; // handle value between -1 and -0.005
       case 0:
         return "#C2D8D7"; // handle value between 0.005 and 1
       case 1:

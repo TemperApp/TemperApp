@@ -157,10 +157,10 @@ body.dark {
   --quinte-color-7: #BD4CC5;
   --quinte-color-6: #CB3DC5;
   --quinte-color-5: #D640C1;
-  --quinte-color-4: #E268CE;
-  --quinte-color-3: #EC7CDA;
-  --quinte-color-2: #F4AFE9;
-  --quinte-color-1: #F7D4F1;
+  --quinte-color-4: #DB4EC7;
+  --quinte-color-3: #E05BCD;
+  --quinte-color-2: #E86DD5;
+  --quinte-color-1: #EF7FDD; /*égal*/
   --quinte-color0: #C2D8D7;
   --quinte-color1: #C2D8D7;
   --quinte-color2: #AEC7C5;
@@ -178,7 +178,7 @@ body.dark {
   --tierce-color4: #F5B1EA;
   --tierce-color5: #F4A8E8;
   --tierce-color6: #F39EE5;
-  --tierce-color7: #EF7FDD;
+  --tierce-color7: #EF7FDD; /*égal*/
   --tierce-color8: #EE76DB;
   --tierce-color9: #E65CD3;
   --tierce-color10: #E149CD;
