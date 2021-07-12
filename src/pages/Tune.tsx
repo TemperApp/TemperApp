@@ -36,12 +36,12 @@ const TuneModalContent: React.FC = () => (
         className="h-12 w-12 mr-4 rounded-full"
         style={{ border: "2px solid var(--color-contrast)" }} />
       <div
-        className="mr-8"><h5>Tierces</h5></div>
+        className="mr-8"><h5>Quintes</h5></div>
       <div
         className="h-6 w-6 mr-4 rounded-full"
         style={{ border: "2px solid var(--color-contrast)" }} />
       <div
-        className="mr-8"><h5>Quintes</h5></div>
+        className="mr-8"><h5>Tierces</h5></div>
     </div>
     <p className="p-long">
       Plus la couleur de l’intervalle est sombre, plus celui-ci est tempéré. 
