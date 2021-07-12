@@ -57,17 +57,17 @@ http://ionicframework.com/docs/theming/ */
   --ion-color-primary-tint: #45cbc7;
 
   --quinte-color-12: #9D2A68;
-  --quinte-color-11: #C03378;
-  --quinte-color-10: #D5327B;
-  --quinte-color-9: #E9307D;
-  --quinte-color-8: #F8313C;
-  --quinte-color-7: #ff321f;
-  --quinte-color-6: #ff5435;
-  --quinte-color-5: #ff764a;
-  --quinte-color-4: #ff9960;
-  --quinte-color-3: #ffbb75;
-  --quinte-color-2: #ffd592;
-  --quinte-color-1: #ffe5bb;
+  --quinte-color-11: #C32D69;
+  --quinte-color-10: #D72F6A;
+  --quinte-color-9: #ED306A;
+  --quinte-color-8: #F33151;
+  --quinte-color-7: #FB3230;
+  --quinte-color-6: #FF321F;
+  --quinte-color-5: #FF5435;
+  --quinte-color-4: #FF623E;
+  --quinte-color-3: #FF6F46;
+  --quinte-color-2: #FF7A4C;
+  --quinte-color-1: #FF8352; /*égal*/
   --quinte-color0: #CCE9E7;
   --quinte-color1: #CCE9E7;
   --quinte-color2: #BFDDDB;
@@ -78,26 +78,26 @@ http://ionicframework.com/docs/theming/ */
   --quinte-color7: #6D9693;
   --quinte-default: #6D9693;
 
-  --tierce-color0: #FFE5BB;
-  --tierce-color1: #FFDCA3;
+  --tierce-color0: #F8F3E4;
+  --tierce-color1: #FAECD1;
   --tierce-color2: #FFDDA7;
   --tierce-color3: #FFC984;
   --tierce-color4: #FFBB75;
   --tierce-color5: #FFAA6B;
   --tierce-color6: #FF8B57;
-  --tierce-color7: #FF8352;
-  --tierce-color8: #FF7A4C;
-  --tierce-color9: #FF5E3B;
-  --tierce-color10: #FF5335;
-  --tierce-color11: #FF492E;
-  --tierce-color12: #FF321F;
-  --tierce-color13: #F93137;
-  --tierce-color14: #F5314A;
-  --tierce-color15: #F03060;
-  --tierce-color16: #E9307D;
-  --tierce-color17: #E23480;
-  --tierce-color18: #D93884;
-  --tierce-color19: #BB3176;
+  --tierce-color7: #FF8352;  /*égal*/
+  --tierce-color8: #FF7E4F;
+  --tierce-color9: #FF7A4C;
+  --tierce-color10: #FF6C44;
+  --tierce-color11: #FF603C;
+  --tierce-color12: #FF5535;
+  --tierce-color13: #FF492E;
+  --tierce-color14: #FB423C;
+  --tierce-color15: #F63B4B;
+  --tierce-color16: #F03060;
+  --tierce-color17: #E9307D;
+  --tierce-color18: #D32E77;
+  --tierce-color19: #B92C70;
   --tierce-color20: #9D2A68;
   --tierce-default: #B9B9B9;
 }

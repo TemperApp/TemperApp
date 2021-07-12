@@ -8,18 +8,19 @@ const FifthCircleSVG: React.FC<{ qualities: { [key: string]: number | null } }> 
   return (
     <>
       <g id="Fifth">
-        <path data-name="E"       fill={convertFifthQualityToColor(qualities.E, settings.darkTheme)} d="M272.9,205.41A95.14,95.14,0,0,1,248.21,248l-.42.41-13.28-13.28.42-.41a76.63,76.63,0,0,0,19.84-34.17Z" transform="translate(-2.04 -1.82)"/>
-        <path data-name="B"       fill={convertFifthQualityToColor(qualities.B, settings.darkTheme)} d="M234.51,235.13l13.28,13.28A95.15,95.15,0,0,1,204.63,273l-4.85-18.14A76.49,76.49,0,0,0,234.51,235.13Z" transform="translate(-2.04 -1.82)"/>
-        <path data-name="F_sharp" fill={convertFifthQualityToColor(qualities.F_sharp, settings.darkTheme)} d="M199.78,254.81,204.63,273a95.9,95.9,0,0,1-49.46-.36L160,254.46A77.27,77.27,0,0,0,199.78,254.81Z" transform="translate(-2.04 -1.82)"/>
-        <path data-name="C_sharp" fill={convertFifthQualityToColor(qualities.C_sharp, settings.darkTheme)} d="M160,254.46l-4.87,18.13A95.24,95.24,0,0,1,112.91,248l-.29-.29,13.29-13.29.28.3A76.62,76.62,0,0,0,160,254.46Z" transform="translate(-2.04 -1.82)"/>
-        <path data-name="G_sharp" fill={convertFifthQualityToColor(qualities.G_sharp, settings.darkTheme)} d="M106.27,200.19a76.39,76.39,0,0,0,19.64,34.23l-13.29,13.29a95.19,95.19,0,0,1-24.49-42.66Z" transform="translate(-2.04 -1.82)"/>
-        <path data-name="E_flat"  fill={convertFifthQualityToColor(qualities.E_flat, settings.darkTheme)} d="M106.2,160.74a77.13,77.13,0,0,0,.07,39.45l-18.14,4.86a95.9,95.9,0,0,1-.06-49.18Z" transform="translate(-2.04 -1.82)"/>
-        <path data-name="B_flat"  fill={convertFifthQualityToColor(qualities.B_flat, settings.darkTheme)} d="M112.5,113.12l13.28,13.28a76.46,76.46,0,0,0-19.58,34.33h0l-18.13-4.87A95.11,95.11,0,0,1,112.5,113.12Z" transform="translate(-2.04 -1.82)"/>
-        <path data-name="F"       fill={convertFifthQualityToColor(qualities.F, settings.darkTheme)} d="M155.11,88.11,160,106.25A76.58,76.58,0,0,0,126.19,126l-.41.42L112.5,113.12l.41-.42A95.2,95.2,0,0,1,155.11,88.11Z" transform="translate(-2.04 -1.82)"/>
-        <path data-name="C"       fill={convertFifthQualityToColor(qualities.C, settings.darkTheme)} d="M204.7,87.76l-4.86,18.14a77.12,77.12,0,0,0-39.87.35l-4.86-18.14A96,96,0,0,1,204.7,87.76Z" transform="translate(-2.04 -1.82)"/>
-        <path data-name="G"       fill={convertFifthQualityToColor(qualities.G, settings.darkTheme)} d="M247.92,112.41l-13.28,13.28a76.37,76.37,0,0,0-34.8-19.79l4.86-18.14A95.19,95.19,0,0,1,247.92,112.41Z" transform="translate(-2.04 -1.82)"/>
-        <path data-name="D"       fill={convertFifthQualityToColor(qualities.D, settings.darkTheme)} d="M247.92,112.41l.29.29A95.15,95.15,0,0,1,273,155.53l-18.14,4.85a76.44,76.44,0,0,0-19.9-34.4l-.29-.29Z" transform="translate(-2.04 -1.82)"/>
-        <path data-name="A"       fill={convertFifthQualityToColor(qualities.A, settings.darkTheme)} d="M254.83,160.38a77.3,77.3,0,0,1-.06,40.17l18.13,4.86h0a96.1,96.1,0,0,0,.06-49.88Z" transform="translate(-2.04 -1.82)"/>
+        
+        <path data-name="C"       fill={convertFifthQualityToColor(qualities.C, settings.darkTheme)}       d="M226.15,7.71l-7,25.93a152.2,152.2,0,0,0-78.59.36l-7-25.94A179.38,179.38,0,0,1,226.15,7.71Z" transform="translate(-2.04 -1.82)"/>
+        <path data-name="G"       fill={convertFifthQualityToColor(qualities.G, settings.darkTheme)}       d="M306.39,53.94,287.53,72.8A150.79,150.79,0,0,0,219.2,33.64l7-25.93A177.29,177.29,0,0,1,289.41,38.8l.27.21,1.11.88A196.43,196.43,0,0,1,306.39,53.94Z" transform="translate(-2.04 -1.82)"/>
+        <path data-name="D"       fill={convertFifthQualityToColor(qualities.D, settings.darkTheme)}       d="M306.39,53.94c23.27,23.27,37.79,48.43,46.31,80.22L327.09,141a150.85,150.85,0,0,0-39.27-67.93l-.29-.29Z" transform="translate(-2.04 -1.82)"/>
+        <path data-name="A"       fill={convertFifthQualityToColor(qualities.A, settings.darkTheme)}       d="M352.7,134.16a178,178,0,0,1,6.39,46.19v.19c0,.93,0,1.86,0,2.79s-.05,1.9-.08,2.85-.08,1.9-.12,2.85a182.76,182.76,0,0,1-6.17,37.76L327,219.91a152.49,152.49,0,0,0,.06-78.89Z" transform="translate(-2.04 -1.82)"/>
+        <path data-name="E"       fill={convertFifthQualityToColor(qualities.E, settings.darkTheme)}       d="M352.7,226.79a187.23,187.23,0,0,1-9.83,28c-.21.48-.43,1-.65,1.43h0a178.11,178.11,0,0,1-27.51,41.94l-2.16,2.41-1.9,2c-.63.67-1.26,1.33-1.9,2-.44.45-.87.9-1.32,1.34-.2.22-.41.43-.63.65l-.41.41-19-19,.41-.41A150.94,150.94,0,0,0,327,219.91Z" transform="translate(-2.04 -1.82)"/>
+        <path data-name="B"       fill={convertFifthQualityToColor(qualities.B, settings.darkTheme)}       d="M287.41,288l19,19c-.43.43-.86.84-1.28,1.27l-.35.35a1.9,1.9,0,0,1-.21.19A177.57,177.57,0,0,1,226.09,353l-7-25.94A151,151,0,0,0,287.41,288Z" transform="translate(-2.04 -1.82)"/>
+        <path data-name="F_sharp" fill={convertFifthQualityToColor(qualities.F_sharp, settings.darkTheme)} d="M219.14,327.07l7,25.94a179.24,179.24,0,0,1-92.37-.36l6.95-25.93A152.39,152.39,0,0,0,219.14,327.07Z" transform="translate(-2.04 -1.82)"/>
+        <path data-name="C_sharp" fill={convertFifthQualityToColor(qualities.C_sharp, settings.darkTheme)} d="M140.67,326.72l-6.95,25.93a177.67,177.67,0,0,1-79.4-46.06L54,306.3l19-19,.29.29A151.1,151.1,0,0,0,140.67,326.72Z" transform="translate(-2.04 -1.82)"/>
+        <path data-name="G_sharp" fill={convertFifthQualityToColor(qualities.G_sharp, settings.darkTheme)} d="M34,219.56a151,151,0,0,0,39,67.76l-19,19a177.77,177.77,0,0,1-46-79.79Z" transform="translate(-2.04 -1.82)"/>
+        <path data-name="E_flat"  fill={convertFifthQualityToColor(qualities.E_flat, settings.darkTheme)}  d="M34,141.38a152.36,152.36,0,0,0,0,78.18L8.07,226.51A179.42,179.42,0,0,1,8,134.43Z" transform="translate(-2.04 -1.82)"/>
+        <path data-name="B_flat"  fill={convertFifthQualityToColor(qualities.B_flat, settings.darkTheme)}  d="M53.91,54.52l19,19A150.83,150.83,0,0,0,34,141.38L8,134.43A177.73,177.73,0,0,1,53.91,54.52Z" transform="translate(-2.04 -1.82)"/>
+        <path data-name="F"       fill={convertFifthQualityToColor(qualities.F, settings.darkTheme)}       d="M133.66,8.06l7,25.94A150.72,150.72,0,0,0,73.3,73.09l-.41.41-19-19,.41-.41A177.7,177.7,0,0,1,133.66,8.06Z" transform="translate(-2.04 -1.82)"/>
       </g>
     </>
   );

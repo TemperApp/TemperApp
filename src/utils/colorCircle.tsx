@@ -60,27 +60,27 @@ export const convertFifthQualityToColor = (quality: number | null, isDarkTheme: 
     case -12:
       return "#9D2A68";
     case -11:
-      return "#C03378";
+      return "#C32D69";
     case -10:
-      return "#D5327B";
+      return "#D72F6A";
     case -9:
-      return "#E9307D";
+      return "#ED306A";
     case -8:
-      return "#F8313C";
+      return "#F33151";
     case -7:
-      return "#ff321f";
+      return "#FB3230";
     case -6:
-      return "#ff5435";
+      return "#FF321F";
     case -5:
-      return "#ff764a";
+      return "#FF5435";
     case -4:
-      return "#ff9960";
+      return "#FF623E";
     case -3:
-      return "#ffbb75";
+      return "#FF6F46";
     case -2:
-      return "#ffd592";
+      return "#FF7A4C";
     case -1:
-      return "#ffe5bb"; // handle value between -1 and -0.005
+      return "#FF8352"; // handle value between -1 and -0.005
     case 0:
       return "#CCE9E7"; // handle value between 0.005 and 1
     case 1:
@@ -165,9 +165,9 @@ export const convertThirdQualityToColor = (quality: number | null, isDarkTheme: 
     case -1:
       return "#B9B9B9"; // handle value between -1 and -0.005
     case 0:
-      return "#FFE5BB"; // handle value between 0.005 and 1
+      return "#F8F3E4"; // handle value between 0.005 and 1
     case 1:
-      return "#FFDCA3";
+      return "#FAECD1";
     case 2:
       return "#FFDDA7";
     case 3:
@@ -181,29 +181,29 @@ export const convertThirdQualityToColor = (quality: number | null, isDarkTheme: 
     case 7:
       return "#FF8352";
     case 8:
-      return "#FF7A4C";
+      return "#FF7E4F";
     case 9:
-      return "#FF5E3B";
+      return "#FF7A4C";
     case 10:
-      return "#FF5335";
+      return "#FF6C44";
     case 11:
-      return "#FF492E";
+      return "#FF603C";
     case 12:
-      return "#FF321F";
+      return "#FF5535";
     case 13:
-      return "#F93137";
+      return "#FF492E";
     case 14:
-      return "#F5314A";
+      return "#FB423C";
     case 15:
-      return "#F03060";
+      return "#F63B4B";
     case 16:
-      return "#E9307D";
+      return "#F03060";
     case 17:
-      return "#E23480";
+      return "#E9307D";
     case 18:
-      return "#D93884";
+      return "#D32E77";
     case 19:
-      return "#BB3176";
+      return "#B92C70";
     case 20:
       return "#9D2A68";
     default:

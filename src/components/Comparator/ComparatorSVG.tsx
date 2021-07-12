@@ -41,14 +41,14 @@ const ComparatorSVG: React.FC<ComparatorSVGProps> = ({
     <>
       <div className="px-4 pt-2 justify-center">
         <svg id="comparator" version="1.1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 400 400">
-          <ComparatorThirdCircle
-            qualityNote1={thirdQ(tmpmt1.csExp3rd)}
-            qualityNote2={thirdQ(tmpmt2.csExp3rd)}
-          />
-          <ComparatorNotesCircle />
           <ComparatorFifthCircle
             qualityNote1={fifthQ(tmpmt1.cpExp5th)}
             qualityNote2={fifthQ(tmpmt2.cpExp5th)}
+          />
+          <ComparatorNotesCircle />
+          <ComparatorThirdCircle
+            qualityNote1={thirdQ(tmpmt1.csExp3rd)}
+            qualityNote2={thirdQ(tmpmt2.csExp3rd)}
           />
         </svg>
       </div>
