@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { IonButton, IonCol, IonGrid, IonRow, IonSelect, IonSelectOption } from '@ionic/react';
+import { IonButton, IonCol, IonGrid, IonIcon, IonRow, IonSelect, IonSelectOption } from '@ionic/react';
 import { fetchTemperaments } from '../../engine/DataAccessor';
 import { TemperamentDBType } from '../../engine/DB';
 
@@ -24,11 +24,11 @@ const Comparator: React.FC = () => {
     <>
       <IonGrid className="px-5">
         <IonRow>
-          <IonCol size="5">
+          <IonCol size="5.25">
             <span className="select-label pb-1">
               Anneaux internes
             </span>
-            <IonSelect
+            <IonSelect className="w-full"
               value={temperament1} placeholder="Tempérament"
               onIonChange={e => setTemperament1(e.detail.value)}>
               {temperamentsList.map((t: TemperamentDBType) =>
@@ -38,21 +38,28 @@ const Comparator: React.FC = () => {
               )}
             </IonSelect>
           </IonCol>
-          <IonCol size="2">
-            <IonButton onClick={() => {
+          <IonCol size="1.5">
+            <IonButton
+            fill="clear"
+            onClick={() => {
               if(temperament1.name !== temperament2.name){
                 console.log("switch possible");
                 let temp = temperament1;
                 setTemperament1(temperament2);
                 setTemperament2(temp);
               }
-            }}>Switch</IonButton>
+            }}>
+              <IonIcon
+                src="assets/logotypes/icon-exchange.svg"
+                style={{stroke:"var(--color-contrast)"}}
+              ></IonIcon>
+            </IonButton>
           </IonCol>
-          <IonCol size="5">
+          <IonCol size="5.25">
             <span className="select-label pb-1">
               Anneaux externes
             </span>
-            <IonSelect
+            <IonSelect className="w-full"
               value={temperament2} placeholder="Tempérament"
               onIonChange={e => setTemperament2(e.detail.value)}>
               {temperamentsList.map((t: TemperamentDBType) =>
