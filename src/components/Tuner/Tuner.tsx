@@ -7,13 +7,22 @@ import {
   IonInput,
 } from "@ionic/react";
 import "./Tuner.css";
+import SettingsContext from "../../store/settings-context";
+
 import { fetchTemperamentPropsById, fetchTemperaments } from "../../engine/DataAccessor";
 import { TemperamentDBType } from "../../engine/DB";
+import EqualTemperament from "../../model/Temperament/Equal";
+
 import PitchCircle from "./PitchCircle";
 import SoundEngine from "../../engine/SoundEngine";
-import EqualTemperament from "../../model/Temperament/Equal";
+
 import { splitProcedure } from "./nonClickable/NonClickableUtils";
-import SettingsContext from "../../store/settings-context";
+
+export enum TuneMode {
+  BEATS = 'Battements', // TODO Find a better way to print text
+  PITCHPIPE = 'Pitch pipe',
+  PROCEDURE = 'Procédure',
+}
 
 type TunerProps = {
   setMainTitle: (t: string) => void,
@@ -28,16 +37,17 @@ const Tuner: React.FC<TunerProps> = ({
   const [temperamentsList, setTemperamentsList] = useState<TemperamentDBType[]>([]);
   const [freqA4, setFreqA4] = useState<number>(settings.freqA4);
   const [isMuted, setIsMuted] = useState<boolean>(true);
-  const [isHzMode, setIsHzMode] = useState<boolean>(true);
   const [isClickable, setIsClickable] = useState<boolean>(true);
   const [stepProcedure, setStepProcedure] = useState<number>(0);
   const [procedure, setProcedure] = useState<string>("");
   const [splitedProcedure, setSplitedProcedure] = useState<Array<string>>([""]);
   const [stepTune, setStepTune] = useState<number>(0);
 
+  const [tuneMode, setTuneMode] = useState(TuneMode.BEATS);
+
   useEffect(() => {
-    setMainTitle(isHzMode ? "Pitch pipe" : "Battements")
-  }, [isHzMode, setMainTitle]);
+    setMainTitle(tuneMode)
+  }, [tuneMode, setMainTitle]);
 
   useEffect(() => {
     SoundEngine.volume(isMuted ? -128 : -24);
@@ -54,7 +64,7 @@ const Tuner: React.FC<TunerProps> = ({
   }, []);
 
   useEffect(() => {
-    console.log(temperament);
+    // console.log(temperament);
     (async () => {
       const temp = await fetchTemperamentPropsById(temperament.idTemperament);
       setProcedure(temp.procedure);
@@ -66,7 +76,7 @@ const Tuner: React.FC<TunerProps> = ({
   },[procedure])
 
   useEffect(() => {
-    console.log(" procedure : n° "+stepProcedure);
+    // console.log(" procedure : n° "+stepProcedure);
   },[stepProcedure])
 
   return (
@@ -108,7 +118,7 @@ const Tuner: React.FC<TunerProps> = ({
       {/* Pitch circle buttons and wheels */}
       <section className="w-full">
         <PitchCircle
-          isHzMode={isHzMode}
+          tuneMode={tuneMode} 
           isClickable={isClickable}
           freqA4={freqA4}
           idTemperament={temperament.idTemperament}
@@ -125,14 +135,14 @@ const Tuner: React.FC<TunerProps> = ({
           <IonButton 
             className={(procedure === "") ? "btn-round no-selected": "btn-round"} 
             onClick={() => {
-              (isClickable && procedure!=="")
-                ? setIsClickable(false)
-                : setIsClickable(true)
-                setMainTitle(
-                  (isClickable && procedure!=="") 
-                    ? "Procédure" 
-                    : "Pitch pipe"
-                )
+              if (isClickable && procedure!=="") {
+                setIsClickable(false);
+                setTuneMode(TuneMode.PROCEDURE);
+              } else {
+                setIsClickable(true);
+                setTuneMode(TuneMode.BEATS);
+              }
+              setMainTitle(tuneMode)
               } 
             }>
             <IonIcon
@@ -155,7 +165,8 @@ const Tuner: React.FC<TunerProps> = ({
             onClick={() => {if(stepProcedure >= 1 ) setStepProcedure(stepProcedure-1); setStepTune(0)} }
           >
             <IonIcon className="h-9 w-9"
-              style={(stepProcedure === 0) 
+              // eslint-disable-next-line eqeqeq
+              style={(stepProcedure == 0) 
                 ?  {fontSize: "3rem", stroke:"var(--color-grey)"}
                 :  {fontSize: "3rem", stroke:"var(--color-button)" } /* TODO Find a better way */}
               slot='icon-only'
@@ -189,7 +200,8 @@ const Tuner: React.FC<TunerProps> = ({
             onClick={() => {if(stepProcedure < (splitedProcedure.length -1) ) setStepProcedure(stepProcedure+1); setStepTune(0)} }
           >
             <IonIcon className="h-9 w-9"
-              style={(stepProcedure === splitedProcedure.length-1) 
+              // eslint-disable-next-line eqeqeq
+              style={(stepProcedure == splitedProcedure.length-1) 
                 ?  {fontSize: "3rem", stroke:"var(--color-grey)"}
                 :  {fontSize: "3rem", stroke:"var(--color-button)" } /* TODO Find a better way */}
               slot='icon-only'
@@ -213,9 +225,9 @@ const Tuner: React.FC<TunerProps> = ({
         ?
         <>
           <IonButton
-            onClick={() => setIsHzMode(false)}
+            onClick={() => setTuneMode(TuneMode.BEATS)}
             className={`btn-mode-bpm m-0 p-0
-              ${!isHzMode ? " btn-mode-activated" : ""}`}
+              ${tuneMode === TuneMode.BEATS ? " btn-mode-activated" : ""}`}
           >
             <IonIcon
               style={{fontSize:"1em"}}
@@ -223,9 +235,9 @@ const Tuner: React.FC<TunerProps> = ({
             ></IonIcon>
           </IonButton>
           <IonButton
-            onClick={() => setIsHzMode(true)}
+            onClick={() => setTuneMode(TuneMode.PITCHPIPE)}
             className={`btn-mode-hz m-0 p-0
-              ${isHzMode ? " btn-mode-activated" : ""}`}
+              ${tuneMode === TuneMode.PITCHPIPE ? " btn-mode-activated" : ""}`}
           >
             <IonIcon
               style={{fontSize:"1em"}}

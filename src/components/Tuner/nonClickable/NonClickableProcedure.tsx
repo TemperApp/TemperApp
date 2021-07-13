@@ -11,7 +11,6 @@ import Note from '../../../model/Note/Note';
 //Types 
 import NotesMap from '../../../model/Note/NotesMap';
 import { Notes } from '../../../model/Note/enums';
-import { TunerMode } from '../PitchCircle';
 
 //Styles 
 import "../common/PitchCircleSVG.css";
@@ -32,7 +31,6 @@ export type ActiveNote = {
 export type ActiveNotes = [ActiveNote, ActiveNote];
 
 type NonClickableProcedureProps = {
-  tunerMode: TunerMode,
   freqA4: number,
   idTemperament: number,
   centerCircle : boolean,
@@ -43,7 +41,7 @@ type NonClickableProcedureProps = {
 }
 
 const NonClickableProcedure: React.FC<NonClickableProcedureProps> = ({
-  tunerMode, freqA4, idTemperament, centerCircle, stepProcedure, procedure, stepTune, setStepTune
+  freqA4, idTemperament, centerCircle, stepProcedure, procedure, stepTune, setStepTune
 }) => {
 
   const [temperament, setTemperament] = useState<Temperament>(EqualTemperament);
@@ -80,12 +78,13 @@ const NonClickableProcedure: React.FC<NonClickableProcedureProps> = ({
 
   useEffect( () => {
     setStepTune!(0);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [idTemperament])
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [idTemperament, stepProcedure])
 
   useEffect( () => {
     if( (procedure![stepProcedure!].length) === 2){
-      if(procedure![stepProcedure!][1] === "explanation"){
+      // eslint-disable-next-line eqeqeq
+      if(procedure![stepProcedure!][1] == "explanation"){
         setNoteDisplay([
           { note: null, state: NoteStates.IDLE },
           { note: null, state: NoteStates.IDLE },
@@ -168,7 +167,7 @@ const NonClickableProcedure: React.FC<NonClickableProcedureProps> = ({
           }
         }
         else{
-          console.log("CHECK !");
+          // console.log("CHECK !");
           let note1 = (Note.parse(procedure![stepProcedure!][0]))?.toNotes();
           let note1_octave = ((Note.parse(procedure![stepProcedure!][0]))?.octave === 4)? NoteStates.SELECTED : NoteStates.OCTAVE;
           let note2 = (Note.parse(procedure![stepProcedure!][1]))?.toNotes();
@@ -219,7 +218,6 @@ const NonClickableProcedure: React.FC<NonClickableProcedureProps> = ({
       </IonPopover>
 
       <NonClickableProcedurePitchCircleSVG
-        tunerMode = {tunerMode}
         freqA4 = {freqA4}
         centerCircle  = {centerCircle}
         thirdQualities = {thirdQualities}

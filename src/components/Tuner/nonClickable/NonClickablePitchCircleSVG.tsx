@@ -16,7 +16,6 @@ import Note from '../../../model/Note/Note';
 import { PitchCircleButtonSVGPos as btnPosition, PitchCircleSVGLabels } from "../common/PitchCircleButtonSVGPos"
 import NotesMap from '../../../model/Note/NotesMap';
 import { Notes } from '../../../model/Note/enums';
-import { TunerMode } from '../PitchCircle';
 
 //Styles 
 import "../common/PitchCircleSVG.css";
@@ -36,7 +35,6 @@ export type ActiveNote = {
 export type ActiveNotes = [ActiveNote, ActiveNote];
 
 type NonClickablePitchCircleSVGProps = {
-  tunerMode?: TunerMode,
   freqA4: number,
   idTemperament: number,
   centerCircle : boolean,
@@ -45,7 +43,7 @@ type NonClickablePitchCircleSVGProps = {
 }
 
 const NonClickablePitchCircleSVG: React.FC<NonClickablePitchCircleSVGProps> = ({
-  tunerMode, freqA4, idTemperament, centerCircle, stepProcedure, procedure
+  freqA4, idTemperament, centerCircle, stepProcedure, procedure
 }) => {
   const [actives, setActives] = useState<ActiveNotes>([
     { note: null, state: NoteStates.IDLE },
@@ -118,13 +116,6 @@ const NonClickablePitchCircleSVG: React.FC<NonClickablePitchCircleSVGProps> = ({
   }
 
   useEffect(() => {
-    setActives([
-      { note: null, state: NoteStates.IDLE },
-      { note: null, state: NoteStates.IDLE },
-    ]);
-  }, [tunerMode]);
-
-  useEffect(() => {
     // Update fitfhs and thirds circles and frequencies
     (async () => {
       const temp = await fetchTemperamentPropsById(idTemperament);
@@ -142,7 +133,7 @@ const NonClickablePitchCircleSVG: React.FC<NonClickablePitchCircleSVGProps> = ({
 
   useEffect(() => {
     if(procedure !== undefined && stepProcedure! < (procedure?.length) && stepProcedure! > -1 ){
-      console.log(procedure[stepProcedure!]);
+      // console.log(procedure[stepProcedure!]);
       if(procedure[stepProcedure!].length===2){
         let note1 = (Note.parse(procedure[stepProcedure!][0]))?.toNotes();
         let note1_octave = ((Note.parse(procedure[stepProcedure!][0]))?.octave === 3)? NoteStates.SELECTED : NoteStates.OCTAVE;
@@ -210,8 +201,8 @@ const NonClickablePitchCircleSVG: React.FC<NonClickablePitchCircleSVGProps> = ({
 
   const displayCenterCircle = () => {
     if(centerCircle){
-      console.log("cercle central")
-      console.log(centerCircle)
+      // console.log("cercle central")
+      // console.log(centerCircle)
       return(
         <CenterCircle
             actives={actives}
@@ -268,6 +259,6 @@ export default React.memo(
   NonClickablePitchCircleSVG,
   (prevProps, nextProps) =>
     prevProps.states === nextProps.states
-  // TODO TunerMode.BPM
+  // TODO TuneMode.BEATS
 );
 */

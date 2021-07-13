@@ -11,7 +11,6 @@ import { Temperament } from '../../../model/Temperament/Temperament';
 import { PitchCircleButtonSVGPos as btnPosition, PitchCircleSVGLabels } from "../common/PitchCircleButtonSVGPos"
 import NotesMap from '../../../model/Note/NotesMap';
 import { Notes } from '../../../model/Note/enums';
-import { TunerMode } from '../PitchCircle';
 
 //Styles 
 import "../common/PitchCircleSVG.css";
@@ -30,7 +29,6 @@ export type ActiveNote = {
 export type ActiveNotes = [ActiveNote, ActiveNote];
 
 type NonClickableProcedurePitchCircleSVGProps = {
-  tunerMode: TunerMode,
   freqA4: number,
   idTemperament?: number,
   centerCircle : boolean,
@@ -94,11 +92,11 @@ const NonClickableProcedurePitchCircleSVG: React.FC<NonClickableProcedurePitchCi
 
   // Clean states
   useEffect( () => {
-    console.log(actives);
+    // console.log(actives);
     if(actives !== undefined){
-      console.log("========= SVG");
-      console.log(actives);
-      console.log(actives[0].note)
+      // console.log("========= SVG");
+      // console.log(actives);
+      // console.log(actives[0].note)
       for (const note in states) {
         const n = note as Notes;
         if (
@@ -125,7 +123,7 @@ const NonClickableProcedurePitchCircleSVG: React.FC<NonClickableProcedurePitchCi
   const displayCenterCircle = () => {
     if(centerCircle){
       //console.log("cercle central")
-      console.log(centerCircle)
+      // console.log(centerCircle)
       return(
         <CenterCircle
             actives={actives!}
@@ -150,6 +148,7 @@ const NonClickableProcedurePitchCircleSVG: React.FC<NonClickableProcedurePitchCi
           const n = note as Notes;
           return (
             <NonClickablePitchCircleButtonSVG
+              key={n}
               position={btnPosition[n]}
               state={states[n]}
             />);

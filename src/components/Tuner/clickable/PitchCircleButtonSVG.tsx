@@ -1,8 +1,8 @@
 import React, { useRef } from "react";
 import useLongPress from "../../../hooks/useLongPress";
 import { ActiveNotes, NoteStates } from "./PitchCircleSVG";
-import { TunerMode } from "../PitchCircle";
 import { Notes } from "../../../model/Note/enums";
+import { TuneMode } from "../Tuner";
 
 type SVGPathElementOrNull = SVGPathElement | null;
 
@@ -24,7 +24,7 @@ type PitchCircleButtonSVGProps = {
   notesSymbol: Notes | null;
   position: string;
   state: NoteStates;
-  tunerMode: TunerMode;
+  tuneMode: TuneMode;
   actives: ActiveNotes;
   onChange: (state: NoteStates) => void;
   setActives: (notesSymbol: ActiveNotes) => void;
@@ -34,7 +34,7 @@ const PitchCircleButtonSVG: React.FC<PitchCircleButtonSVGProps> = ({
   notesSymbol,
   position,
   state,
-  tunerMode,
+  tuneMode,
   actives,
   onChange,
   setActives,
@@ -70,7 +70,7 @@ const PitchCircleButtonSVG: React.FC<PitchCircleButtonSVGProps> = ({
   );
 
   const setNoteState = (nState: NoteStates) => {
-    if (tunerMode === TunerMode.HZ) {
+    if (tuneMode === TuneMode.PITCHPIPE) {
       setActives([
         { note: notesSymbol, state: nState },
         { note: null, state: NoteStates.IDLE },
@@ -135,7 +135,7 @@ export default React.memo(
   PitchCircleButtonSVG,
   (prevProps, nextProps) =>
     prevProps.state === nextProps.state &&
-    prevProps.tunerMode === nextProps.tunerMode &&
-    prevProps.tunerMode === TunerMode.HZ
-  // TODO TunerMode.BPM
+    prevProps.tuneMode === nextProps.tuneMode &&
+    prevProps.tuneMode === TuneMode.PITCHPIPE
+  // TODO TuneMode.BEATS
 );

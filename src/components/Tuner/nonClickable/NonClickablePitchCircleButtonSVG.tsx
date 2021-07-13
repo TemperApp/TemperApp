@@ -37,5 +37,5 @@ export default React.memo(
   NonClickablePitchCircleButtonSVG,
   (prevProps, nextProps) => (
     prevProps.state === nextProps.state)
-    // TODO TunerMode.BPM
+    // TODO TuneMode.BEATS
 );

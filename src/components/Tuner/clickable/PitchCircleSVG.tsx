@@ -15,7 +15,7 @@ import { fetchTemperamentPropsById } from '../../../engine/DataAccessor';
 import { PitchCircleButtonSVGPos as btnPosition, PitchCircleSVGLabels } from "../common/PitchCircleButtonSVGPos"
 import NotesMap from '../../../model/Note/NotesMap';
 import { Notes } from '../../../model/Note/enums';
-import { TunerMode } from '../PitchCircle';
+import { TuneMode } from "../Tuner";
 
 //Styles 
 import "../common/PitchCircleSVG.css";
@@ -34,13 +34,13 @@ export type ActiveNote = {
 export type ActiveNotes = [ActiveNote, ActiveNote];
 
 type PitchCircleSVGProps = {
-  tunerMode: TunerMode,
+  tuneMode: TuneMode,
   freqA4: number,
   idTemperament: number,
 }
 
 const PitchCircleSVG: React.FC<PitchCircleSVGProps> = ({
-  tunerMode, freqA4, idTemperament
+  tuneMode, freqA4, idTemperament
 }) => {
   const [actives, setActives] = useState<ActiveNotes>([
     { note: null, state: NoteStates.IDLE },
@@ -103,7 +103,7 @@ const PitchCircleSVG: React.FC<PitchCircleSVGProps> = ({
       { note: null, state: NoteStates.IDLE },
       { note: null, state: NoteStates.IDLE },
     ]);
-  }, [tunerMode]);
+  }, [tuneMode]);
 
   useEffect(() => {
     // Update fitfhs and thirds circles and frequencies
@@ -177,7 +177,7 @@ const PitchCircleSVG: React.FC<PitchCircleSVGProps> = ({
               notesSymbol={n}
               position={btnPosition[n]}
               state={states[n]}
-              tunerMode={tunerMode}
+              tuneMode={tuneMode}
               actives={actives}
               onChange={(state: NoteStates) => setStates(n, state)}
               setActives={setActives}
