@@ -343,3 +343,7 @@ input[type=number]{
   margin-top: 5%;
   margin-bottom: 6px;
 }
+
+.page-header{
+  margin-top: var(--ion-safe-area-top);
+}

@@ -24,8 +24,8 @@ const Compare: React.FC = () => {
   const [showModal, setShowModal] = useState(false);
 
   return (
-    <IonPage>
-      <IonHeader className="ion-no-border">
+    <IonPage >
+      <IonHeader className="ion-no-border page-header">
         <PageHeader
           mainTitle="Comparateur"
           onShowModal={() => setShowModal(true)}

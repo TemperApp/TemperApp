@@ -19,7 +19,7 @@ const Home: React.FC = () => {
   
   return (
     <IonPage>
-      <IonHeader className="ion-no-border">
+      <IonHeader className="ion-no-border page-header">
         <div className="px-6">
           <IonImg
             src={(settings.darkTheme)

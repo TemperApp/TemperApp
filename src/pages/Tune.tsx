@@ -196,7 +196,7 @@ const Tune: React.FC = () => {
 
   return (
     <IonPage>
-      <IonHeader className="ion-no-border">
+      <IonHeader className="ion-no-border page-header">
         <PageHeader
           mainTitle={_mainTitle}
           subTitle="Accordeur"

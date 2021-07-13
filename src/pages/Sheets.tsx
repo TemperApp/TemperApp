@@ -10,7 +10,7 @@ import SheetsList from "../components/Sheets/SheetsList";
 const Sheets: React.FC = () => {
   return (
     <IonPage>
-      <IonHeader className="ion-no-border">
+      <IonHeader className="ion-no-border page-header">
         <PageHeader
           mainTitle="Fiches"
         />

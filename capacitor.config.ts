@@ -1,7 +1,7 @@
 import { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
-  appId: 'io.ionic.starter',
+  appId: 'fr.ludchieng.temperapp',
   appName: 'dev',
   webDir: 'build',
   bundledWebRuntime: false
