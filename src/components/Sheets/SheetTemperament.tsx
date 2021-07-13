@@ -84,11 +84,11 @@ const SheetTemperament: React.FC = () => {
       />
 
       <IonButton
-        className="btn-round absolute right-4 bottom-4"
+        className="btn-round fixed right-4 bottom-20"
         routerLink={`/tune/`}
       >
         <IonIcon
-          style={{ fontSize: "3rem" } /* TODO Find a better way */}
+          style={{ fontSize: "3rem"} /* TODO Find a better way */}
           src="/assets/logotypes/button-tune.svg"
         />
         
