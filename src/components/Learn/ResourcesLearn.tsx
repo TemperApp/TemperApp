@@ -28,7 +28,10 @@ const ResourcesLearn: React.FC<resourcesProps> = ({ resourcesList }) => {
         color="light"
         href={r.url}
         >
-        {r.book}
+        <span className="ion-text-left">
+          {r.book}
+        </span>
+
         </IonButton>
       );
     }
@@ -43,7 +46,9 @@ const ResourcesLearn: React.FC<resourcesProps> = ({ resourcesList }) => {
         return(
         <div key={"learnRessource_"+r.book}>
           {btn}
+          <div className="learn-ressources-not-btn">
           {longTitle}
+          </div>
         </div>  
         )
       }

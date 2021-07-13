@@ -23,13 +23,29 @@
 
 .learn-resources-btn {
   text-transform: capitalize;
-  --padding-top: 1.5em;
-  --padding-bottom: 1.5em;
   --border-radius: 8px;
-  margin-bottom: 10px;
-  text-align: left;
-  font-size: 14px;
+  --padding-top: 1.8em;
+  --padding-bottom: 1.8em;
   --box-shadow: var(--color-shadow);
+  margin-bottom: 25px;
+  font-size: 14px;
+  white-space: normal;
+}
+
+.learn-ressources-not-btn {
+  padding-left: 1em;
+  padding-right: 1em;
+  margin-bottom: 14px;
+}
+
+/*important for align text in ressource buttons*/
+span.ion-text-left {
+  margin-right: auto;
+}
+
+ion-button.learn-resources-btn::part(native) {
+  --padding-start: 1em !important;
+  --padding-end: 1em !important;
 }
 
 .learn-element {
