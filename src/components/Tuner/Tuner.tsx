@@ -165,12 +165,12 @@ const Tuner: React.FC<TunerProps> = ({
         </div>
         <div>
           <IonButton
-            size="large"
             fill="clear"
             style={{ "--ripple-color": "transparent" }}
             onClick={() => setIsMuted(!isMuted)}
           >
             <IonIcon
+              style={{fontSize: "2rem"}}
               src={
                 isMuted
                   ? "/assets/logotypes/icon-mute.svg"
@@ -207,7 +207,7 @@ const Tuner: React.FC<TunerProps> = ({
               ${!isHzMode ? " btn-mode-activated" : ""}`}
           >
             <IonIcon
-              font-size="3rem"
+              style={{fontSize:"1em"}}
               src="/assets/logotypes/icon-tuner-bpm-mode.svg"
             ></IonIcon>
           </IonButton>
@@ -217,7 +217,7 @@ const Tuner: React.FC<TunerProps> = ({
               ${isHzMode ? " btn-mode-activated" : ""}`}
           >
             <IonIcon
-              font-size="3rem"
+              style={{fontSize:"1em"}}
               src="/assets/logotypes/icon-tuner-hz-mode.svg"
             ></IonIcon>
           </IonButton>
