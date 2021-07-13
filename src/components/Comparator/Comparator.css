@@ -1,5 +1,6 @@
 .st21 {
   fill: var(--color-theme);
+  stroke: var(--color-hover);
 }
 
 .st23 {
