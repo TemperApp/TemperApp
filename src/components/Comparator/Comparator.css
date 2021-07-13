@@ -25,3 +25,7 @@
   font-size: 0.8em;
   color: var(--color-contrast);
 }
+
+.swiper-container-horizontal .swiper-pagination-bullets {
+  bottom: 5em !important;
+}
