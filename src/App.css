@@ -315,6 +315,16 @@ ion-input.sc-ion-input-ios-h {
   padding-left: 0.5rem !important;
 }
 
+input[type=number]::-webkit-outer-spin-button,
+input[type=number]::-webkit-inner-spin-button {
+    -webkit-appearance: none !important;
+    margin: 0;
+}
+
+input[type=number]{
+    -moz-appearance: textfield !important;
+}
+
 .katex-display {
   overflow: scroll hidden;
   padding: 15px 0 15px 0;
