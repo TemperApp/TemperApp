@@ -14,7 +14,9 @@
 
 .rc-collapse-content {
   padding: 0 0.5em 0 0.5em !important;
-  background: var(--ion-background-color);
+  position: relative;
+  z-index: 1;
+  background: transparent !important;
 }
 
 .rc-collapse-content-box {
