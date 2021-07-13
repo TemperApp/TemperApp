@@ -20,7 +20,7 @@ const PageModal: React.FC<PageModalProps> = ({
             <h3>{title}</h3>
           </div>
           <button
-            className="btn-quit h-10 w-10"
+            className="btn-quit h-9 w-9"
             onClick={onQuit}
           />
         </div>

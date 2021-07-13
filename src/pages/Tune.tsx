@@ -66,7 +66,7 @@ const TuneModalContent: React.FC = () => (
               <div className="h-12 mr-4 w-full"
                 style={{ border: "2px solid var(--color-theme)",
                         height: "400px",
-                        background: "linear-gradient(0.01deg, #000000 0.02%, #161616 2.41%, #333333 5.96%, #7E7E7E 17.2%, #9F9F9F 20.82%, #B9B9B9 25.48%, #60CFC5 29.36%, #FFE5BB 32.73%, #FFD592 37.91%, #FFBB75 43.09%, #FF9960 49.82%, #FF764A 54.48%, #FF5435 60.17%, #FF321F 66.39%, #FF0D08 72.08%, #DC0000 79.07%, #E00000 79.86%, #AE0000 85.29%, #7B0000 94.09%, #4F0000 99.6%, #161616 102.63%)"}}>
+                        background: "var(--legend-gradient-fifth)"}}>
               </div>
             </IonCol>
             <IonCol size="4.5">
@@ -92,7 +92,7 @@ const TuneModalContent: React.FC = () => (
               <div className="h-12 w-full mr-4"
                 style={{ border: "2px solid var(--color-theme)",
                         height: "60vh",
-                        background: "linear-gradient(180deg, #60CFC5 0%, #FFE5BB 8.12%, #FFD592 19.6%, #FFBB75 29.57%, #FF9960 42.99%, #FF764A 51.43%, #FF5435 57.95%, #FF321F 65.62%, #FF0D08 73.29%, #E00000 82.11%, #DC0000 89.01%, #AE0000 94.76%, #7B0000 100%)"}}>
+                        background: "var(--legend-gradient-third)"}}>
               </div>
             </IonCol>
             <IonCol size="4.5">

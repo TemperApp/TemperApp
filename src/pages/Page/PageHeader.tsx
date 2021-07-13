@@ -24,11 +24,11 @@ const PageHeader: React.FC<PageHeaderProps> = ({
 
   const btnShowModal = (onShowModal !== undefined)
     ? (<button
-        className="btn-show-modal h-10 w-10 p-0"
+        className="btn-show-modal h-9 w-9 p-0"
         onClick={onShowModal}
       >
         <IonIcon
-          className="h-10 w-10"
+          className="h-9 w-9"
           style={{ width: "1.8rem" } /* TODO Find a better way */}
           src={"/assets/logotypes/button-help.svg"}
         ></IonIcon>
@@ -38,7 +38,7 @@ const PageHeader: React.FC<PageHeaderProps> = ({
 
   const btnGoBack = (canGoBack)
       ? (<button
-          className="btn-go-back h-10 w-10"
+          className="btn-go-back h-9 w-9"
           onClick={(onGoBack) ? onGoBack : () => history.goBack()}
         >
           <IonIcon
