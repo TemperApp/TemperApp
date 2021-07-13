@@ -1,15 +1,15 @@
 .rc-collapse {
   border: 0px !important;
-  background: var(--ion-background-color);
+  background: transparent;
 }
 .rc-collapse-item {
   border-top: 0px !important;
-  background: var(--ion-background-color);
+  background: transparent;
 }
 
 .rc-collapse-item-active {
   border: 0px !important;
-  background: var(--ion-background-color);
+  background: transparent;
 }
 
 .rc-collapse-content {
