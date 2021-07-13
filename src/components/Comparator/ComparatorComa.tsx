@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { IonSlides, IonSlide, IonContent } from '@ionic/react';
 
 //Style
 import "./Comparator.css";
@@ -8,9 +9,6 @@ import {
   IonCardContent,
   IonCardHeader,
   IonCardTitle,
-  IonItem,
-  IonItemOptions,
-  IonItemSliding,
 } from "@ionic/react";
 import { Temperament } from "../../model/Temperament/Temperament";
 import { fifthQ, thirdQ } from "../../model/Divergence";
@@ -22,6 +20,12 @@ type ComparatorComaProps = {
   temperament2: Temperament,
 };
 
+const slideOpts = {
+  initialSlide: 0,
+  speed: 400
+};
+
+
 const ComparatorComa: React.FC<ComparatorComaProps> = ({
   temperament1, temperament2,
 }) => {
@@ -30,9 +34,10 @@ const ComparatorComa: React.FC<ComparatorComaProps> = ({
 
   return (
     <>
-      <IonItemSliding id="item100">
-        <IonItem>
-          <IonCard>
+        <IonContent>
+      <IonSlides pager={true} options={slideOpts}>
+          <IonSlide>
+          <IonCard className = "commaCard">
             <IonCardHeader className="py-1">
               <IonCardTitle className="px-4">
                 <h3>Fractions de comas affectant les quintes</h3>
@@ -67,9 +72,9 @@ const ComparatorComa: React.FC<ComparatorComaProps> = ({
               </div>
             </IonCardContent>
           </IonCard>
-        </IonItem> 
-        <IonItemOptions side="start">
-          <IonCard>
+          </IonSlide>
+          <IonSlide>
+          <IonCard className = "commaCard">
             <IonCardHeader>
               <IonCardTitle className="px-4">
                 <h3>Fractions de comas affectant les tierces</h3>
@@ -88,8 +93,9 @@ const ComparatorComa: React.FC<ComparatorComaProps> = ({
               </div>
             </IonCardContent>
           </IonCard>
-        </IonItemOptions>
-      </IonItemSliding>
+          </IonSlide>
+          </IonSlides>
+      </IonContent>
     </>
   );
 };

@@ -1,7 +1,8 @@
 /* TEXTS */
 
 ion-title,
-.pm-header h1, h1 {
+.pm-header h1,
+h1 {
   font-family: "Nunito" !important;
   font-style: normal;
   font-weight: bold;
@@ -13,7 +14,9 @@ ion-title,
   color: var(--color-contrast);
 }
 
-.pm-content h2, .ph-titles h2, h2 {
+.pm-content h2,
+.ph-titles h2,
+h2 {
   font-family: "Nunito" !important;
   font-style: normal;
   font-weight: bold;
@@ -25,7 +28,10 @@ ion-title,
   margin-top: 0;
 }
 
-.pm-titles h3, .ph-titles h3, h3, .item-label {
+.pm-titles h3,
+.ph-titles h3,
+h3,
+.item-label {
   font-family: "Nunito" !important;
   font-style: normal;
   font-weight: normal;
@@ -36,7 +42,8 @@ ion-title,
   margin-bottom: 0;
 }
 
-.pm-content h4, h4 {
+.pm-content h4,
+h4 {
   font-family: "Nunito" !important;
   font-style: normal;
   font-weight: normal;
@@ -47,7 +54,8 @@ ion-title,
   margin-bottom: 3%;
 }
 
-.pm-content h5, h5 {
+.pm-content h5,
+h5 {
   font-family: "Nunito" !important;
   font-style: normal;
   font-weight: normal;
@@ -57,7 +65,8 @@ ion-title,
   color: var(--color-contrast);
 }
 
-.pm-content p, p {
+.pm-content p,
+p {
   font-family: var(--ion-family-font);
   font-style: normal;
   font-weight: normal;
@@ -290,6 +299,11 @@ ion-card {
   margin-top: 10%;
   margin-bottom: 5%;
   box-shadow: var(--color-shadow);
+}
+
+.commaCard {
+  height: 472px;
+  margin-bottom: 40px;
 }
 
 ion-toggle {
