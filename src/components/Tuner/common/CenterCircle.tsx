@@ -115,7 +115,6 @@ const CenterCircle: React.FC<PitchCircleSVGProps> = ({
   console.info('🔹 [CenterCircle]: Render')
   return (
     <g id="CenterCercleInformation">
-      <circle className="st29" fill={(settings.darkTheme) ? ("#233C3A") : "#F7FBFC"} cx="178.5" cy="178.5" r="77.13" />
       <text transform="matrix(1 0 0 1 178.5 178.5)" className="st25 st30">
         <tspan
           x="0" className="st30"
