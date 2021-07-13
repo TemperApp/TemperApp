@@ -24,14 +24,12 @@ const PageHeader: React.FC<PageHeaderProps> = ({
 
   const btnShowModal = (onShowModal !== undefined)
     ? (<button
-        className="btn-show-modal h-10 w-10"
+        className="btn-show-modal h-10 w-10 p-0"
         onClick={onShowModal}
       >
         <IonIcon
           className="h-10 w-10"
-          style={{ fontSize: "3rem",
-          position: "relative",
-          left: "-0.06em"} /* TODO Find a better way */}
+          style={{ width: "1.8rem" } /* TODO Find a better way */}
           src={"/assets/logotypes/button-help.svg"}
         ></IonIcon>
       </button>

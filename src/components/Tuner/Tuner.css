@@ -7,11 +7,11 @@
 
 .btn-mode .btn-mode-bpm,
 .btn-mode .btn-mode-hz {
-  --background: var(--ion-background-color);
-  --color: var(--color-button);
+  --background: var(--color-light-grey);
   text-transform: none;
   --box-shadow: var(--color-shadow);
-  stroke: var(--color-button);
+  --color: #738b8a;
+  stroke: var(--color-hover);
 }
 
 .btn-mode .btn-mode-bpm {
@@ -28,10 +28,10 @@
 
 .btn-mode-bpm.btn-mode-activated,
 .btn-mode-hz.btn-mode-activated {
-  --background: var(--color-light-grey);
-  --box-shadow: inset 0.5px 0.5px 2px #0003;
-  --color: #738b8a;
-  stroke: var(--color-hover);
+  --background: var(--color-button);
+  --box-shadow: inset 1px 1px 3px #0003;
+  --color: var(--color-theme);
+  stroke: var(--color-theme);
 }
 
 #input-a4 {
