@@ -24,6 +24,7 @@ const NonClickablePitchCircleButtonSVG: React.FC<NonClickablePitchCircleButtonSV
   position, state
 }) => {
 
+  console.info('🔹 [NonClickablePitchCircleButtonSVG]: Render')
   return (
     <path
       fill={colorButton(state)} stroke="#A7C5C3"

@@ -160,6 +160,7 @@ const PitchCircleSVG: React.FC<PitchCircleSVGProps> = ({
     }
   }
 
+  console.info('🔹 [PitchCircleSVG]: Render')
   return (
     <div id="Container_PitchCircleSVG">
       <svg

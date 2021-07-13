@@ -17,6 +17,7 @@ type PitchCircleProps = {
 const PitchCircle: React.FC<PitchCircleProps> = ({
   tuneMode, isClickable, freqA4, idTemperament, stepProcedure, procedure, stepTune, setStepTune
 }) => {
+  console.info('🟣 [PitchCircle]: Render')
   return (
     <div className="flex justify-center">
       {

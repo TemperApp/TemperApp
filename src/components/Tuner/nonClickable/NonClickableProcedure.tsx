@@ -205,6 +205,7 @@ const NonClickableProcedure: React.FC<NonClickableProcedureProps> = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [stepTune, stepProcedure])
 
+  console.info('🔹 [NonClickableProcedure]: Render')
   return(
 
     <>

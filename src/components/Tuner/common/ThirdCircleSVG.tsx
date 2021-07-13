@@ -6,6 +6,8 @@ const ThirdCircleSVG: React.FC<{
   qualities: { [key: string]: number | null };
 }> = ({ qualities }) => {
   const settings = useContext(SettingsContext);
+
+  console.info('🔹 [ThirdCircleSVG]: Render')
   return (
     <>
       <g id="Third">

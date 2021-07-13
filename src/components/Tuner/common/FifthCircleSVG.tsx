@@ -5,6 +5,7 @@ import { convertFifthQualityToColor } from '../../../utils/colorCircle';
 const FifthCircleSVG: React.FC<{ qualities: { [key: string]: number | null } }> = ({ qualities }) => {
   const settings = useContext(SettingsContext);
   
+  console.info('🔹 [FifthCircleSVG]: Render')
   return (
     <>
       <g id="Fifth">

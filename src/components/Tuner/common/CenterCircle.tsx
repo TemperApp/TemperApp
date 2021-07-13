@@ -112,6 +112,7 @@ const CenterCircle: React.FC<PitchCircleSVGProps> = ({
     }
   }, [actives, frequencies, freqA4, deviations]);
 
+  console.info('🔹 [CenterCircle]: Render')
   return (
     <g id="CenterCercleInformation">
       <circle className="st29" fill={(settings.darkTheme) ? ("#233C3A") : "#F7FBFC"} cx="178.5" cy="178.5" r="77.13" />

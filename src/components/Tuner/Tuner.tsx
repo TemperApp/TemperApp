@@ -17,6 +17,8 @@ import PitchCircle from "./PitchCircle";
 import SoundEngine from "../../engine/SoundEngine";
 
 import { splitProcedure } from "./nonClickable/NonClickableUtils";
+import TunerHeader from "./TunerHeader";
+import TunerFooter from "./TunerFooter";
 
 export enum TuneMode {
   BEATS = 'Battements', // TODO Find a better way to print text
@@ -79,41 +81,24 @@ const Tuner: React.FC<TunerProps> = ({
     // console.log(" procedure : n° "+stepProcedure);
   },[stepProcedure])
 
+  console.info('⬜ [Tuner]: Render')
+
   return (
     <div className="h-full flex content-around flex-wrap">
       {/* Temperament and A4 freq inputs */}
-      <div className="pt-3 px-4 w-full flex items-center justify-between">
-        <IonSelect
-          className="flex-grow"
-          value={temperament}
-          placeholder="Tempérament"
-          onIonChange={(e) => {
-            setStepProcedure(0);
-            setTemperament(e.detail.value)
-          }}
-        >
-          {temperamentsList.map((t: TemperamentDBType) => (
-            <IonSelectOption key={t.idTemperament} value={t}>
-              {t.nameFR}
-            </IonSelectOption>
-          ))}
-        </IonSelect>
-        <div className="ml-4 flex items-center flex-shrink-0">
-          <span>A4 (Hz)</span>
-          <IonInput
-            id="input-a4"
-            className="w-16 ml-1"
-            type="number"
-            min="300"
-            max="500"
-            value={freqA4}
-            onIonChange={(e) => {
-              setStepProcedure(0);
-              setFreqA4(Number(e.detail.value));
-            }}
-          ></IonInput>
-        </div>
-      </div>
+      <TunerHeader 
+        defaultTemperament={temperament}
+        defaultFreqA4={freqA4}
+        temperamentsList={temperamentsList}
+        onTemperamentChange={(e: any) => {
+          setStepProcedure(0);
+          setTemperament(e.detail.value)
+        }}
+        onFreqA4Change={(e: any) => {
+          setStepProcedure(0);
+          setFreqA4(Number(e.detail.value));
+        }}
+      />
 
       {/* Pitch circle buttons and wheels */}
       <section className="w-full">
@@ -130,127 +115,41 @@ const Tuner: React.FC<TunerProps> = ({
       </section>
 
       {/* Buttons at the bottom */}
-      <section className="w-full px-5 flex justify-between items-center">
-        <div className="w-20">
-          <IonButton 
-            className={(procedure === "") ? "btn-round no-selected": "btn-round"} 
-            onClick={() => {
-              if (isClickable && procedure!=="") {
-                setIsClickable(false);
-                setTuneMode(TuneMode.PROCEDURE);
-              } else {
-                setIsClickable(true);
-                setTuneMode(TuneMode.BEATS);
-              }
-              setMainTitle(tuneMode)
-              } 
-            }>
-            <IonIcon
-              style={{ fontSize: "3rem" } /* TODO Find a better way */}
-              src={
-                isClickable
-                  ? "/assets/logotypes/icon-tuning-procedure.svg"
-                  : "/assets/logotypes/icon-tuning-procedure-back.svg"
-              }
-            />
-          </IonButton>
-        </div>
-        <div>
-          <IonButton
-            fill="clear"
-            style={!isClickable
-              ? {"--ripple-color": "transparent", display: "block"} 
-              : {display: "none"} 
-              }
-            onClick={() => {if(stepProcedure >= 1 ) setStepProcedure(stepProcedure-1); setStepTune(0)} }
-          >
-            <IonIcon className="h-9 w-9"
-              // eslint-disable-next-line eqeqeq
-              style={(stepProcedure == 0) 
-                ?  {fontSize: "3rem", stroke:"var(--color-grey)"}
-                :  {fontSize: "3rem", stroke:"var(--color-button)" } /* TODO Find a better way */}
-              slot='icon-only'
-              src="/assets/logotypes/icon-procedure-left.svg"
-            />
-          </IonButton>
-        </div>
-        <div>
-          <IonButton
-            fill="clear"
-            style={{ "--ripple-color": "transparent" }}
-            onClick={() => setIsMuted(!isMuted)}
-          >
-            <IonIcon
-              style={{fontSize: "2rem"}}
-              src={
-                isMuted
-                  ? "/assets/logotypes/icon-mute.svg"
-                  : "/assets/logotypes/icon-sound.svg"
-              }
-              slot="icon-only"
-            />
-          </IonButton>
-        </div>
-        <div>
-          <IonButton
-            fill="clear"
-            style={!isClickable ? { "--ripple-color": "transparent",
-            "display": "block"} 
-            : {"display": "none" }}
-            onClick={() => {if(stepProcedure < (splitedProcedure.length -1) ) setStepProcedure(stepProcedure+1); setStepTune(0)} }
-          >
-            <IonIcon className="h-9 w-9"
-              // eslint-disable-next-line eqeqeq
-              style={(stepProcedure == splitedProcedure.length-1) 
-                ?  {fontSize: "3rem", stroke:"var(--color-grey)"}
-                :  {fontSize: "3rem", stroke:"var(--color-button)" } /* TODO Find a better way */}
-              slot='icon-only'
-              src="/assets/logotypes/icon-procedure-right.svg"
-            />
-          </IonButton>
-        </div>
-        <div>
-          <IonButton
-            fill="clear"
-            style={!isClickable ? { "--ripple-color": "transparent",
-            "display": "block"} 
-            : {"display": "none" }}
-            onClick={() => {setStepTune(0)} }
-          >
-            RESET
-          </IonButton>
-        </div>
-        <div className="w-20 btn-mode">
-        {isClickable
-        ?
-        <>
-          <IonButton
-            onClick={() => setTuneMode(TuneMode.BEATS)}
-            className={`btn-mode-bpm m-0 p-0
-              ${tuneMode === TuneMode.BEATS ? " btn-mode-activated" : ""}`}
-          >
-            <IonIcon
-              style={{fontSize:"1em"}}
-              src="/assets/logotypes/icon-tuner-bpm-mode.svg"
-            ></IonIcon>
-          </IonButton>
-          <IonButton
-            onClick={() => setTuneMode(TuneMode.PITCHPIPE)}
-            className={`btn-mode-hz m-0 p-0
-              ${tuneMode === TuneMode.PITCHPIPE ? " btn-mode-activated" : ""}`}
-          >
-            <IonIcon
-              style={{fontSize:"1em"}}
-              src="/assets/logotypes/icon-tuner-hz-mode.svg"
-            ></IonIcon>
-          </IonButton>
-        </>
-        :
-        <>
-        </>
-        }
-        </div>
-      </section>
+      <TunerFooter
+        isMuted={isMuted}
+        tuneMode={tuneMode}
+        hasProcedure={procedure !== ""}
+        isProcedureFirstStep={stepProcedure === 0}
+        isProcedureLastStep={stepProcedure === splitedProcedure.length-1}
+        isClickable={isClickable}
+        onClickMute={() => setIsMuted(!isMuted)}
+        onClickBeats={() => setTuneMode(TuneMode.BEATS)}
+        onClickPitchPipe={() => setTuneMode(TuneMode.PITCHPIPE)}
+        onEnterProcedure={() => {
+          if (isClickable && procedure!=="") {
+            setIsClickable(false);
+            setTuneMode(TuneMode.PROCEDURE);
+          } else { // Exit procedure
+            setIsClickable(true);
+            setTuneMode(TuneMode.BEATS);
+          }
+          setMainTitle(tuneMode)
+        }}
+        onExitProcedure={() => {}}
+        onProcedureNext={() => {
+          if(stepProcedure < (splitedProcedure.length-1) )
+            setStepProcedure(stepProcedure+1);
+          setStepTune(0);
+        }}
+        onProcedurePrev={() => {
+          if(stepProcedure >= 1 )
+            setStepProcedure(stepProcedure-1);
+          setStepTune(0);
+        }}
+        onProcedureRepeatStep={() => {
+          setStepTune(0);
+        }}
+      />
     </div>
   );
 };

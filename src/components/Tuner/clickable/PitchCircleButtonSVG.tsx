@@ -116,6 +116,7 @@ const PitchCircleButtonSVG: React.FC<PitchCircleButtonSVGProps> = ({
     onChange(NoteStates.IDLE);
   };
 
+  console.info('🔹 [PitchCircleButtonSVG]: Render')
   return (
     <path
       fill={colorButton(state)}

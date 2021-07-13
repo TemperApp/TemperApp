@@ -214,6 +214,7 @@ const NonClickablePitchCircleSVG: React.FC<NonClickablePitchCircleSVGProps> = ({
     }
   }
 
+  console.info('🔹 [NonClickablePitchCircleSVG]: Render')
   return (
     <div id="Container_PitchCircleSVG">
       <svg
