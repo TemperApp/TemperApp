@@ -16,3 +16,6 @@ project(':capacitor-keyboard').projectDir = new File('../node_modules/@capacitor
 
 include ':capacitor-status-bar'
 project(':capacitor-status-bar').projectDir = new File('../node_modules/@capacitor/status-bar/android')
+
+include ':capacitor-data-storage-sqlite'
+project(':capacitor-data-storage-sqlite').projectDir = new File('../node_modules/capacitor-data-storage-sqlite/android')

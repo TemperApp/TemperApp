@@ -1,5 +1,5 @@
 {
-	"appId": "io.ionic.starter",
+	"appId": "fr.ludchieng.temperapp",
 	"appName": "dev",
 	"webDir": "build",
 	"bundledWebRuntime": false

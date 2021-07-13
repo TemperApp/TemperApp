@@ -18,5 +18,9 @@
 	{
 		"pkg": "@capacitor/status-bar",
 		"classpath": "com.capacitorjs.plugins.statusbar.StatusBarPlugin"
+	},
+	{
+		"pkg": "capacitor-data-storage-sqlite",
+		"classpath": "com.jeep.plugin.capacitor.capacitordatastoragesqlite.CapacitorDataStorageSqlitePlugin"
 	}
 ]
