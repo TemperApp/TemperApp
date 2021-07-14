@@ -9,8 +9,15 @@ type AcousticBeat = {
 }
 
 
+export const isValidIntervalForAcousticBeat = (
+  noteX: Note, noteY: Note,
+) => (
+  processAcousticBeat(noteX, noteY).carrierFreq !== null
+);
+
+
 export const processAcousticBeat = (
-  noteX: Note, noteY: Note, freqA4: number,
+  noteX: Note, noteY: Note, freqA4 = 440,
   deviations = mapNotesMap(0)
 ): AcousticBeat => {
 

@@ -32,7 +32,6 @@ const Tuner: React.FC<TunerProps> = ({
   const [temperamentsList, setTemperamentsList] = useState<TemperamentDBType[]>([]);
   const [freqA4, setFreqA4] = useState<number>(settings.freqA4);
   const [isMuted, setIsMuted] = useState<boolean>(true);
-  const [isClickable, setIsClickable] = useState<boolean>(true);
   const [stepProcedure, setStepProcedure] = useState<number>(0);
   const [procedure, setProcedure] = useState<string>("");
   const [splitedProcedure, setSplitedProcedure] = useState<Array<string>>([""]);
@@ -96,8 +95,7 @@ const Tuner: React.FC<TunerProps> = ({
       {/* Pitch circle buttons and wheels */}
       <section className="w-full">
         <PitchCircle
-          tuneMode={tuneMode} 
-          isClickable={isClickable}
+          tuneMode={tuneMode}
           freqA4={freqA4}
           idTemperament={temperament.idTemperament}
           stepProcedure={stepProcedure}
@@ -117,27 +115,19 @@ const Tuner: React.FC<TunerProps> = ({
         onClickMute={() => setIsMuted(!isMuted)}
         onClickBeats={() => setTuneMode(TuneMode.BEATS)}
         onClickPitchPipe={() => setTuneMode(TuneMode.PITCHPIPE)}
-        onEnterProcedure={() => {
-          setIsClickable(false);
-          setTuneMode(TuneMode.PROCEDURE);
-        }}
-        onExitProcedure={() => {
-          setIsClickable(true);
-          setTuneMode(TuneMode.BEATS);
-        }}
+        onEnterProcedure={() => setTuneMode(TuneMode.PROCEDURE)}
+        onExitProcedure={() => setTuneMode(TuneMode.BEATS)}
         onProcedureNext={() => {
           if(stepProcedure < (splitedProcedure.length-1) )
             setStepProcedure(stepProcedure+1);
           setStepTune(0);
         }}
         onProcedurePrev={() => {
-          if(stepProcedure >= 1 )
+          if(stepProcedure >= 1)
             setStepProcedure(stepProcedure-1);
           setStepTune(0);
         }}
-        onProcedureRepeatStep={() => {
-          setStepTune(0);
-        }}
+        onProcedureRepeatStep={() => setStepTune(0)}
       />
     </div>
   );

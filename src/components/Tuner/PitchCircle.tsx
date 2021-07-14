@@ -5,7 +5,6 @@ import NonClickableProcedure from './nonClickable/NonClickableProcedure';
 
 type PitchCircleProps = {
   tuneMode: TuneMode,
-  isClickable: boolean,
   freqA4: number,
   idTemperament: number,
   stepProcedure?: number,
@@ -15,19 +14,13 @@ type PitchCircleProps = {
 };
 
 const PitchCircle: React.FC<PitchCircleProps> = ({
-  tuneMode, isClickable, freqA4, idTemperament, stepProcedure, procedure, stepTune, setStepTune
+  tuneMode, freqA4, idTemperament, stepProcedure, procedure, stepTune, setStepTune
 }) => {
   console.info('🟣 [PitchCircle]: Render')
   return (
-    <div className="flex justify-center">
-      {
-        (isClickable)
-        ? (<PitchCircleSVG
-            tuneMode={tuneMode}
-            freqA4={freqA4}
-            idTemperament={idTemperament}
-          />)
-        : (<NonClickableProcedure
+    <section className="flex justify-center">
+      {(tuneMode === TuneMode.PROCEDURE)
+        ? (<NonClickableProcedure
             freqA4={freqA4}
             idTemperament={idTemperament}
             centerCircle={true}
@@ -36,8 +29,12 @@ const PitchCircle: React.FC<PitchCircleProps> = ({
             stepTune={stepTune}
             setStepTune={setStepTune}
           />)
-      }
-    </div>
+        : (<PitchCircleSVG
+            tuneMode={tuneMode}
+            freqA4={freqA4}
+            idTemperament={idTemperament}
+          />)}
+    </section>
   );
 };
 
