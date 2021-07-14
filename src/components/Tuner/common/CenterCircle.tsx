@@ -125,4 +125,11 @@ const CenterCircle: React.FC<PitchCircleSVGProps> = ({
   );
 };
 
-export default CenterCircle;
+export default React.memo(
+  CenterCircle,
+  (prevProps, nextProps) =>
+    prevProps.actives === nextProps.actives &&
+    prevProps.frequencies === nextProps.frequencies &&
+    prevProps.freqA4 === nextProps.freqA4 &&
+    prevProps.deviations === nextProps.deviations
+);

@@ -199,4 +199,10 @@ const PitchCircleSVG: React.FC<PitchCircleSVGProps> = ({
   );
 };
 
-export default PitchCircleSVG;
+export default React.memo(
+  PitchCircleSVG,
+  (prevProps, nextProps) =>
+    prevProps.tuneMode === nextProps.tuneMode &&
+    prevProps.idTemperament === nextProps.idTemperament &&
+    prevProps.freqA4 === nextProps.freqA4
+);

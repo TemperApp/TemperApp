@@ -28,7 +28,7 @@ const Tuner: React.FC<TunerProps> = ({
 }) => {
 
   const settings = useContext(SettingsContext);
-  const [temperament, setTemperament] = useState<TemperamentDBType>(EqualTemperament);
+  const [temperamentId, setTemperamentId] = useState<number>(EqualTemperament.idTemperament);
   const [temperamentsList, setTemperamentsList] = useState<TemperamentDBType[]>([]);
   const [freqA4, setFreqA4] = useState<number>(settings.freqA4);
   const [isMuted, setIsMuted] = useState<boolean>(true);
@@ -60,10 +60,10 @@ const Tuner: React.FC<TunerProps> = ({
   useEffect(() => {
     // console.log(temperament);
     (async () => {
-      const temp = await fetchTemperamentPropsById(temperament.idTemperament);
+      const temp = await fetchTemperamentPropsById(temperamentId);
       setProcedure(temp.procedure);
     })();
-  },[temperament])
+  },[temperamentId])
 
   useEffect(() => {
     setSplitedProcedure(splitProcedure(procedure));
@@ -79,12 +79,12 @@ const Tuner: React.FC<TunerProps> = ({
     <div className="h-full flex content-around flex-wrap">
       {/* Temperament and A4 freq inputs */}
       <TunerHeader 
-        defaultTemperament={temperament}
+        defaultTemperamentId={temperamentId}
         defaultFreqA4={freqA4}
         temperamentsList={temperamentsList}
         onTemperamentChange={(e: any) => {
           setStepProcedure(0);
-          setTemperament(e.detail.value)
+          setTemperamentId(e.detail.value)
         }}
         onFreqA4Change={(e: any) => {
           setStepProcedure(0);
@@ -97,7 +97,7 @@ const Tuner: React.FC<TunerProps> = ({
         <PitchCircle
           tuneMode={tuneMode}
           freqA4={freqA4}
-          idTemperament={temperament.idTemperament}
+          idTemperament={temperamentId}
           stepProcedure={stepProcedure}
           procedure={splitedProcedure}
           stepTune={stepTune}
