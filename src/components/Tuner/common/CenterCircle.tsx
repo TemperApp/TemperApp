@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import AcousticBeat, { processAcousticBeat } from '../../../model/AcousticBeat';
+import React, { useEffect } from 'react';
+import { processAcousticBeat } from '../../../model/AcousticBeat';
 import { ButtonState, NoteStates } from '../clickable/PitchCircleSVG';
 import Note from '../../../model/Note/Note';
 import { Notes } from '../../../model/Note/enums';
@@ -49,27 +49,6 @@ const CenterCircle: React.FC<PitchCircleSVGProps> = ({
   actives, frequencies, freqA4, deviations
 }) => {
 
-  const [beat, setBeat] = useState<AcousticBeat>({
-    carrierFreq: null,
-    modulationFreq: null
-  });
-
-  useEffect(() => {
-    if (beat.modulationFreq && beat.carrierFreq) {
-      SoundEngine.setPulseBPS(beat.modulationFreq);
-      let heardFreq = beat.carrierFreq;
-      while (heardFreq > 1000)
-        heardFreq /= 2;
-      SoundEngine.stopAndPlay(heardFreq);
-    }
-
-    const cFreq = document.getElementById("centerCircleFrequency")!;
-
-    cFreq.innerHTML = (beat.modulationFreq)
-      ? beatToStr(beat.modulationFreq, isBpm)
-      : "—";
-  }, [beat]);
-
   useEffect(() => {
     const cNote = document.getElementById("centerCircleNote")!;
     const cFreq = document.getElementById("centerCircleFrequency")!;
@@ -98,12 +77,24 @@ const CenterCircle: React.FC<PitchCircleSVGProps> = ({
         + notesToStr(actives[1].note!)
         + (refOctave + (isOctave1 ? -1 : 0));
 
-      setBeat(processAcousticBeat(
+      const {modulationFreq, carrierFreq} = processAcousticBeat(
         Note.create(actives[0].note!, (isOctave0 ? 3 : 4)),
         Note.create(actives[1].note!, (isOctave1 ? 3 : 4)),
         freqA4,
         deviations
-      ));
+      );
+
+      if (modulationFreq && carrierFreq) {
+        SoundEngine.setPulseBPS(modulationFreq);
+        let heardFreq = carrierFreq;
+        while (heardFreq > 1000)
+          heardFreq /= 2;
+        SoundEngine.stopAndPlay(heardFreq);
+      }
+  
+      cFreq.innerHTML = (modulationFreq)
+        ? beatToStr(modulationFreq, isBpm)
+        : "—";
     }
   }, [actives, frequencies, freqA4, deviations]);
 

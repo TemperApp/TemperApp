@@ -55,49 +55,45 @@ type PitchCircleSVGProps = {
 const PitchCircleSVG: React.FC<PitchCircleSVGProps> = ({
   tuneMode, freqA4, idTemperament
 }) => {
-
+  
   const statesReducer = useCallback((
     btnStates: NotesMap<NoteStates>,
     action: any // TODO Type this
   ) => {
     let res = {...btnStates};
-    switch (action.type) {
-      case Actions.SET_ALL_IDLE:
-        return mapNotesMap(NoteStates.IDLE);
-  
-      case Actions.SET:
-      {
-        const actives = getActiveBtns(btnStates);
-  
-        if (action.state === NoteStates.IDLE) {
-          return mapNotesMap(NoteStates.IDLE);
-        }
-          
-        if (action.state !== NoteStates.IDLE) {
-  
-          if (actives.length === 2) {
-            res[actives[0].note] = NoteStates.IDLE;
-            res[actives[1].note] = NoteStates.IDLE;
-          }
-          
-          if (actives.length === 1) {
-            if (tuneMode === TuneMode.PITCHPIPE
-              || !isValidIntervalForAcousticBeat(
-                  Note.create(actives[0].note, (actives[0].state === NoteStates.OCTAVE ? 3 : 4)),
-                  Note.create(action.note, (action.state === NoteStates.OCTAVE ? 3 : 4))
-                )
-            ) {
-              res[actives[0].note] = NoteStates.IDLE;
-            }
-          }
-        }
-        
-        return {...res, [action.note]: action.state};
-      }
-      default:
-        console.warn(`[PitchCircleSVG]: Unknown action type: ${action.type}`)
-        return btnStates;
+    
+    if (action.type === Actions.SET_ALL_IDLE)
+      return mapNotesMap(NoteStates.IDLE);
+      
+    if (action.type === Actions.SET
+      && action.state === NoteStates.IDLE
+    ) {
+      return mapNotesMap(NoteStates.IDLE);
     }
+
+    if (action.type === Actions.SET) {
+      const actives = getActiveBtns(btnStates);
+      
+      if (actives.length === 2) {
+        res[actives[0].note] = NoteStates.IDLE;
+        res[actives[1].note] = NoteStates.IDLE;
+      }
+      
+      if (actives.length === 1) {
+        if (tuneMode === TuneMode.PITCHPIPE
+          || !isValidIntervalForAcousticBeat(
+              Note.create(actives[0].note, (actives[0].state === NoteStates.OCTAVE ? 3 : 4)),
+              Note.create(action.note, (action.state === NoteStates.OCTAVE ? 3 : 4))
+            )
+        ) {
+          res[actives[0].note] = NoteStates.IDLE;
+        }
+      }
+      return {...res, [action.note]: action.state};
+    }
+
+    console.warn(`[PitchCircleSVG]: Unknown action type: ${action.type}`)
+    return btnStates;
   }, [tuneMode]);
 
 
