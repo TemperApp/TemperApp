@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useReducer, useState } from "react";
+import React, { useEffect, useState } from "react";
 
 //Components
 import FifthCircleSVG from "../common/FifthCircleSVG";
@@ -13,100 +13,30 @@ import { fetchTemperamentPropsById } from '../../../engine/DataAccessor';
 
 //Types 
 import { PitchCircleButtonSVGPos as btnPosition, PitchCircleSVGLabels } from "../common/PitchCircleButtonSVGPos"
-import NotesMap, { mapNotesMap } from '../../../model/Note/NotesMap';
+import NotesMap from '../../../model/Note/NotesMap';
 import { Notes } from '../../../model/Note/enums';
-import { TuneMode } from "../Tuner";
-import Note from "../../../model/Note/Note";
-import { isValidIntervalForAcousticBeat } from "../../../model/AcousticBeat";
+import { BtnActions, getActiveBtns, NoteStates } from "../PitchCircle";
 
 //Styles 
 import "../common/PitchCircleSVG.css";
 
-export enum NoteStates {
-  IDLE,
-  SELECTED,
-  OCTAVE,
-}
-
-export type ButtonState = {
-  note: Notes;
-  state: NoteStates;
-};
-
-enum Actions {
-  SET, SET_ALL_IDLE,
-}
-
-const getActiveBtns = (
-  btnStates: NotesMap<NoteStates>
-): ButtonState[] => (
-  Object.entries(btnStates)
-    .filter(([, state]) => state !== NoteStates.IDLE)
-    .map((entry) => ({note: entry[0] as Notes, state: entry[1]}))
-);
-
 
 type PitchCircleSVGProps = {
-  tuneMode: TuneMode,
   freqA4: number,
   idTemperament: number,
+  btnStates: NotesMap<NoteStates>,
+  dispatchState: (action: any) => void,
 }
 
 const PitchCircleSVG: React.FC<PitchCircleSVGProps> = ({
-  tuneMode, freqA4, idTemperament
+  freqA4, idTemperament, btnStates, dispatchState
 }) => {
-  
-  const statesReducer = useCallback((
-    btnStates: NotesMap<NoteStates>,
-    action: any // TODO Type this
-  ) => {
-    let res = {...btnStates};
-    
-    if (action.type === Actions.SET_ALL_IDLE)
-      return mapNotesMap(NoteStates.IDLE);
-      
-    if (action.type === Actions.SET
-      && action.state === NoteStates.IDLE
-    ) {
-      return mapNotesMap(NoteStates.IDLE);
-    }
 
-    if (action.type === Actions.SET) {
-      const actives = getActiveBtns(btnStates);
-      
-      if (actives.length === 2) {
-        res[actives[0].note] = NoteStates.IDLE;
-        res[actives[1].note] = NoteStates.IDLE;
-      }
-      
-      if (actives.length === 1) {
-        if (tuneMode === TuneMode.PITCHPIPE
-          || !isValidIntervalForAcousticBeat(
-              Note.create(actives[0].note, (actives[0].state === NoteStates.OCTAVE ? 3 : 4)),
-              Note.create(action.note, (action.state === NoteStates.OCTAVE ? 3 : 4))
-            )
-        ) {
-          res[actives[0].note] = NoteStates.IDLE;
-        }
-      }
-      return {...res, [action.note]: action.state};
-    }
-
-    console.warn(`[PitchCircleSVG]: Unknown action type: ${action.type}`)
-    return btnStates;
-  }, [tuneMode]);
-
-
-  const [btnStates, dispatchState] = useReducer(statesReducer, mapNotesMap(NoteStates.IDLE));
   const [temperament, setTemperament] = useState<Temperament>(EqualTemperament);
   const [thirdQualities, setThirdQualities] = useState<NotesMap<number | null>>(thirdEqualQ());
   const [fifthQualities, setFifthQualities] = useState<NotesMap<number | null>>(fifthEqualQ());
   const [frequencies, setFrequencies] = useState<NotesMap<number>>(freqs4(440));
 
-
-  useEffect(() => {
-    dispatchState({type: Actions.SET_ALL_IDLE});
-  }, [tuneMode]);
 
   useEffect(() => {
     // Update fitfhs and thirds circles and frequencies
@@ -170,7 +100,7 @@ const PitchCircleSVG: React.FC<PitchCircleSVGProps> = ({
               position={btnPosition[n]}
               state={btnStates[n]}
               onClick={(state: NoteStates) => {
-                dispatchState({type: Actions.SET, note: n, state})
+                dispatchState({type: BtnActions.SET, note: n, state})
               }}
             />);
         })}
@@ -198,7 +128,8 @@ const PitchCircleSVG: React.FC<PitchCircleSVGProps> = ({
 export default React.memo(
   PitchCircleSVG,
   (prevProps, nextProps) =>
-    prevProps.tuneMode === nextProps.tuneMode &&
     prevProps.idTemperament === nextProps.idTemperament &&
-    prevProps.freqA4 === nextProps.freqA4
+    prevProps.freqA4 === nextProps.freqA4 &&
+    prevProps.btnStates === nextProps.btnStates &&
+    prevProps.dispatchState === nextProps.dispatchState
 );

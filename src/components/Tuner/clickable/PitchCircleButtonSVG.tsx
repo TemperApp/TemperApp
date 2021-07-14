@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
 import useLongPress from "../../../hooks/useLongPress";
-import { NoteStates } from "./PitchCircleSVG";
+import { NoteStates } from "../PitchCircle";
 
 type SVGPathElementOrNull = SVGPathElement | null;
 

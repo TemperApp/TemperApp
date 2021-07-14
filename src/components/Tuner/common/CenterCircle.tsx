@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { processAcousticBeat } from '../../../model/AcousticBeat';
-import { ButtonState, NoteStates } from '../clickable/PitchCircleSVG';
+import { BtnState, NoteStates } from '../PitchCircle';
 import Note from '../../../model/Note/Note';
 import { Notes } from '../../../model/Note/enums';
 import NotesMap from '../../../model/Note/NotesMap';
@@ -39,7 +39,7 @@ const beatToStr = (bps: number, isBpm = false) => {
 };
 
 type PitchCircleSVGProps = {
-  actives: ButtonState[],
+  actives: BtnState[],
   frequencies: NotesMap<number>,
   freqA4: number,
   deviations: NotesMap<number>,
