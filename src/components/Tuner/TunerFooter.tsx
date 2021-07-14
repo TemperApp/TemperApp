@@ -1,5 +1,6 @@
 import React from 'react';
 import { IonButton, IonIcon } from '@ionic/react';
+import { reload } from 'ionicons/icons';
 import { TuneMode } from './Tuner';
 
 const TunerFooter: React.FC<any> = ({ // TODO Update any
@@ -8,7 +9,6 @@ const TunerFooter: React.FC<any> = ({ // TODO Update any
   canEnterProcedure,
   isProcedureFirstStep,
   isProcedureLastStep,
-  isClickable,
   onClickMute,
   onClickBeats,
   onClickPitchPipe,
@@ -21,10 +21,10 @@ const TunerFooter: React.FC<any> = ({ // TODO Update any
   console.info('🔹 [TunerFooter]: Render')
 
   const btnEnterProcedure = (
-    <IonButton 
+    <IonButton
       className='btn-round'
       disabled={!canEnterProcedure}
-      onClick={(canEnterProcedure) ? onEnterProcedure : () => {}}
+      onClick={(canEnterProcedure) ? onEnterProcedure : () => { }}
     >
       <IonIcon
         style={{ fontSize: "3rem" } /* TODO Find a better way */}
@@ -47,9 +47,9 @@ const TunerFooter: React.FC<any> = ({ // TODO Update any
 
   const btnProcedurePrev = (
     <IonButton
+      className='no-ripple'
       fill="clear"
       onClick={onProcedurePrev}
-      style={{"--ripple-color": "transparent", display: "block"}}
     >
       <IonIcon className="h-9 w-9"
         slot='icon-only'
@@ -64,9 +64,9 @@ const TunerFooter: React.FC<any> = ({ // TODO Update any
 
   const btnProcedureNext = (
     <IonButton
+      className='no-ripple'
       fill="clear"
       onClick={onProcedureNext}
-      style={{"--ripple-color": "transparent", display: "block"}}
     >
       <IonIcon className="h-9 w-9"
         slot='icon-only'
@@ -81,12 +81,12 @@ const TunerFooter: React.FC<any> = ({ // TODO Update any
 
   const btnMute = (
     <IonButton
+      className='no-ripple'
       fill="clear"
-      style={{ "--ripple-color": "transparent" }}
       onClick={onClickMute}
     >
       <IonIcon
-        style={{fontSize: "2rem"}}
+        style={{ fontSize: "2rem" }}
         src={
           isMuted
             ? "/assets/logotypes/icon-mute.svg"
@@ -99,69 +99,60 @@ const TunerFooter: React.FC<any> = ({ // TODO Update any
 
   const btnProcedureRepeatStep = (
     <IonButton
+      className='no-ripple'
       fill="clear"
-      style={{ "--ripple-color": "transparent", "display": "block"}}
       onClick={onProcedureRepeatStep}
     >
-      REPEAT
+      <IonIcon
+        style={{ fontSize: "2rem" }}
+        src={reload}
+        slot="icon-only"
+      />
     </IonButton>
   );
 
   return (
     <section className="w-full px-5 flex justify-between items-center">
-      <div className="w-20">
-        { (tuneMode === TuneMode.PROCEDURE)
-            ? btnExitProcedure
-            : btnEnterProcedure }
-      </div>
-      <div>
-        { (tuneMode === TuneMode.PROCEDURE)
-            ? btnProcedurePrev
-            : null }
-      </div>
-      <div>
-        { btnMute }
-      </div>
-      <div>
-        { (tuneMode === TuneMode.PROCEDURE)
-            ? btnProcedureNext
-            : null }
-      </div>
-      <div>
-        { (tuneMode === TuneMode.PROCEDURE)
-            ? btnProcedureRepeatStep
-            : null }
-      </div>
-      <div className="w-20 btn-mode">
-      {isClickable
-      ?
-      <>
-        <IonButton
-          onClick={onClickBeats}
-          className={`btn-mode-bpm m-0 p-0
-            ${tuneMode === TuneMode.BEATS ? " btn-mode-activated" : ""}`}
-        >
-          <IonIcon
-            style={{fontSize:"1em"}}
-            src="/assets/logotypes/icon-tuner-bpm-mode.svg"
-          ></IonIcon>
-        </IonButton>
-        <IonButton
-          onClick={onClickPitchPipe}
-          className={`btn-mode-hz m-0 p-0
-            ${tuneMode === TuneMode.PITCHPIPE ? " btn-mode-activated" : ""}`}
-        >
-          <IonIcon
-            style={{fontSize:"1em"}}
-            src="/assets/logotypes/icon-tuner-hz-mode.svg"
-          ></IonIcon>
-        </IonButton>
-      </>
-      :
-      <>
-      </>
-      }
-      </div>
+      {(tuneMode === TuneMode.PROCEDURE)
+        ? btnExitProcedure
+        : btnEnterProcedure}
+
+      {(tuneMode === TuneMode.PROCEDURE)
+        && btnProcedurePrev}
+
+      {btnMute}
+
+      {(tuneMode === TuneMode.PROCEDURE)
+        && btnProcedureNext}
+
+      {(tuneMode === TuneMode.PROCEDURE)
+        && btnProcedureRepeatStep}
+
+      {(tuneMode !== TuneMode.PROCEDURE)
+        && (
+          <div className="w-20 btn-mode">
+            <IonButton
+              onClick={onClickBeats}
+              className={`btn-mode-bpm m-0 p-0
+                ${tuneMode === TuneMode.BEATS ? " btn-mode-activated" : ""}`}
+            >
+              <IonIcon
+                style={{ fontSize: "1em" }}
+                src="/assets/logotypes/icon-tuner-bpm-mode.svg"
+              ></IonIcon>
+            </IonButton>
+            <IonButton
+              onClick={onClickPitchPipe}
+              className={`btn-mode-hz m-0 p-0
+                ${tuneMode === TuneMode.PITCHPIPE ? " btn-mode-activated" : ""}`}
+            >
+              <IonIcon
+                style={{ fontSize: "1em" }}
+                src="/assets/logotypes/icon-tuner-hz-mode.svg"
+              ></IonIcon>
+            </IonButton>
+          </div>
+        )}
     </section>
   );
 };

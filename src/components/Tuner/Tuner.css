@@ -57,8 +57,3 @@
   padding-left: 4rem !important;
   padding-right: 4rem !important;
 }
-
-ion-button:disabled {
-  --background: var(--color-light-grey) !important;
-  --box-shadow: none !important;
-}

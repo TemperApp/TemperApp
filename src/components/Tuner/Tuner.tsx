@@ -1,11 +1,4 @@
 import React, { useState, useEffect, useContext } from "react";
-import {
-  IonButton,
-  IonIcon,
-  IonSelect,
-  IonSelectOption,
-  IonInput,
-} from "@ionic/react";
 import "./Tuner.css";
 import SettingsContext from "../../store/settings-context";
 
@@ -121,7 +114,6 @@ const Tuner: React.FC<TunerProps> = ({
         canEnterProcedure={procedure !== ''}
         isProcedureFirstStep={stepProcedure === 0}
         isProcedureLastStep={stepProcedure === splitedProcedure.length-1}
-        isClickable={isClickable}
         onClickMute={() => setIsMuted(!isMuted)}
         onClickBeats={() => setTuneMode(TuneMode.BEATS)}
         onClickPitchPipe={() => setTuneMode(TuneMode.PITCHPIPE)}

@@ -261,6 +261,10 @@ ion-select::part(placeholder) {
   --box-shadow: var(--color-shadow);
 }
 
+ion-button.no-ripple {
+  --ripple-color: transparent;
+}
+
 ion-button .button-native {
   --padding-end: 0 !important;
   --padding-start: 0 !important;
@@ -271,6 +275,11 @@ ion-button::part(native) {
   --padding-start: 0 !important;
   --padding-inline-end: 0 !important;
   --padding-inline-start: 0 !important;
+}
+
+ion-button:disabled {
+  --background: var(--color-light-grey) !important;
+  --box-shadow: none !important;
 }
 
 /* ELEMENTS */
