@@ -1,6 +1,6 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import AcousticBeat, { processAcousticBeat } from '../../../model/AcousticBeat';
-import { ActiveNotes, NoteStates } from '../clickable/PitchCircleSVG';
+import { ButtonState, NoteStates } from '../clickable/PitchCircleSVG';
 import Note from '../../../model/Note/Note';
 import { Notes } from '../../../model/Note/enums';
 import NotesMap from '../../../model/Note/NotesMap';
@@ -8,7 +8,6 @@ import SoundEngine from '../../../engine/SoundEngine';
 
 //Styles
 import "./CenterCircle.css";
-import SettingsContext from '../../../store/settings-context';
 
 const isBpm = true;
 const refOctave = 4;
@@ -40,7 +39,7 @@ const beatToStr = (bps: number, isBpm = false) => {
 };
 
 type PitchCircleSVGProps = {
-  actives: ActiveNotes,
+  actives: ButtonState[],
   frequencies: NotesMap<number>,
   freqA4: number,
   deviations: NotesMap<number>,
@@ -49,8 +48,6 @@ type PitchCircleSVGProps = {
 const CenterCircle: React.FC<PitchCircleSVGProps> = ({
   actives, frequencies, freqA4, deviations
 }) => {
-  
-  const settings = useContext(SettingsContext);
 
   const [beat, setBeat] = useState<AcousticBeat>({
     carrierFreq: null,
@@ -77,17 +74,15 @@ const CenterCircle: React.FC<PitchCircleSVGProps> = ({
     const cNote = document.getElementById("centerCircleNote")!;
     const cFreq = document.getElementById("centerCircleFrequency")!;
 
-    const isIdle0 = actives[0].state === NoteStates.IDLE;
-    const isIdle1 = actives[1].state === NoteStates.IDLE;
-    const isOctave0 = actives[0].state === NoteStates.OCTAVE;
-    const isOctave1 = actives[1].state === NoteStates.OCTAVE;
+    const isOctave0 = (actives[0]) && actives[0].state === NoteStates.OCTAVE;
+    const isOctave1 = (actives[1]) && actives[1].state === NoteStates.OCTAVE;
 
-    if (isIdle0 && isIdle1) {
+    if (actives.length === 0) {
       cNote.innerHTML = "—";
       cFreq.innerHTML = "— Hz";
     }
 
-    if (!isIdle0 && isIdle1) {
+    if (actives.length === 1) {
       cNote.innerHTML = notesToStr(actives[0].note!)
         + (refOctave + (isOctave0 ? -1 : 0));
 
@@ -95,7 +90,7 @@ const CenterCircle: React.FC<PitchCircleSVGProps> = ({
         * (isOctave0 ? 0.5 : 1)).toFixed(1) + " Hz";
     }
 
-    if (!isIdle0 && !isIdle1) {
+    if (actives.length === 2) {
       cNote.innerHTML =
         notesToStr(actives[0].note!)
         + (refOctave + (isOctave0 ? -1 : 0))

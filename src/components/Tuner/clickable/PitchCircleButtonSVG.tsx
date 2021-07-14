@@ -1,8 +1,6 @@
 import React, { useRef } from "react";
 import useLongPress from "../../../hooks/useLongPress";
-import { ActiveNotes, NoteStates } from "./PitchCircleSVG";
-import { Notes } from "../../../model/Note/enums";
-import { TuneMode } from "../Tuner";
+import { NoteStates } from "./PitchCircleSVG";
 
 type SVGPathElementOrNull = SVGPathElement | null;
 
@@ -21,23 +19,15 @@ const colorButton = (state: NoteStates) => {
 };
 
 type PitchCircleButtonSVGProps = {
-  notesSymbol: Notes | null;
   position: string;
   state: NoteStates;
-  tuneMode: TuneMode;
-  actives: ActiveNotes;
-  onChange: (state: NoteStates) => void;
-  setActives: (notesSymbol: ActiveNotes) => void;
+  onClick: (state: NoteStates) => void;
 };
 
 const PitchCircleButtonSVG: React.FC<PitchCircleButtonSVGProps> = ({
-  notesSymbol,
   position,
   state,
-  tuneMode,
-  actives,
-  onChange,
-  setActives,
+  onClick,
 }) => {
   const note = useRef<SVGPathElementOrNull>(null);
 
@@ -47,20 +37,18 @@ const PitchCircleButtonSVG: React.FC<PitchCircleButtonSVGProps> = ({
       switch (state) {
         case NoteStates.IDLE:
         case NoteStates.SELECTED:
-          setNoteState(NoteStates.OCTAVE);
+          onClick(NoteStates.OCTAVE);
           break;
         case NoteStates.OCTAVE:
-          setNoteState(NoteStates.SELECTED);
+          onClick(NoteStates.SELECTED);
           break;
-        default:
-          deactivateNotes();
       }
     },
     () => {
       // onClick
       state === NoteStates.IDLE
-        ? setNoteState(NoteStates.SELECTED)
-        : deactivateNotes();
+        ? onClick(NoteStates.SELECTED)
+        : onClick(NoteStates.IDLE);
     },
     {
       // options
@@ -68,53 +56,6 @@ const PitchCircleButtonSVG: React.FC<PitchCircleButtonSVGProps> = ({
       delay: 500,
     }
   );
-
-  const setNoteState = (nState: NoteStates) => {
-    if (tuneMode === TuneMode.PITCHPIPE) {
-      setActives([
-        { note: notesSymbol, state: nState },
-        { note: null, state: NoteStates.IDLE },
-      ]);
-    } else {
-      // Tuner Mode is BPM
-      if (
-        actives[0].state === NoteStates.IDLE &&
-        actives[1].state === NoteStates.IDLE
-      ) {
-        setActives([
-          { note: notesSymbol, state: nState },
-          { note: null, state: NoteStates.IDLE },
-        ]);
-      } else {
-        if (
-          actives[0].state !== NoteStates.IDLE &&
-          actives[1].state === NoteStates.IDLE
-        ) {
-          if (nState !== NoteStates.IDLE && notesSymbol === actives[0].note)
-            return; // Prevent selecting two octave notes
-
-          setActives([
-            { note: actives[0].note, state: actives[0].state },
-            { note: notesSymbol, state: nState },
-          ]);
-        } else {
-          setActives([
-            { note: notesSymbol, state: nState },
-            { note: null, state: NoteStates.IDLE },
-          ]);
-        }
-      }
-    }
-    onChange(nState);
-  };
-
-  const deactivateNotes = () => {
-    setActives([
-      { note: null, state: NoteStates.IDLE },
-      { note: null, state: NoteStates.IDLE },
-    ]);
-    onChange(NoteStates.IDLE);
-  };
 
   console.info('🔹 [PitchCircleButtonSVG]: Render')
   return (
@@ -135,8 +76,5 @@ const PitchCircleButtonSVG: React.FC<PitchCircleButtonSVGProps> = ({
 export default React.memo(
   PitchCircleButtonSVG,
   (prevProps, nextProps) =>
-    prevProps.state === nextProps.state &&
-    prevProps.tuneMode === nextProps.tuneMode &&
-    prevProps.tuneMode === TuneMode.PITCHPIPE
-  // TODO TuneMode.BEATS
+  prevProps.state === nextProps.state 
 );
