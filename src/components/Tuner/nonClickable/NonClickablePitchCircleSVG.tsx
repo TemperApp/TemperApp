@@ -4,7 +4,6 @@ import React, { useEffect, useState } from "react";
 import FifthCircleSVG from "../common/FifthCircleSVG";
 import ThirdCircleSVG from "../common/ThirdCircleSVG";
 import NonClickablePitchCircleButtonSVG from "./NonClickablePitchCircleButtonSVG";
-import CenterCircle from "../common/CenterCircle";
 import { Temperament } from '../../../model/Temperament/Temperament';
 import EqualTemperament, { thirdEqualQ, fifthEqualQ } from '../../../model/Temperament/Equal';
 import { freqs4, thirdQ, fifthQ } from '../../../model/Divergence';
@@ -204,12 +203,7 @@ const NonClickablePitchCircleSVG: React.FC<NonClickablePitchCircleSVGProps> = ({
       // console.log("cercle central")
       // console.log(centerCircle)
       return(
-        <CenterCircle
-            actives={actives}
-            frequencies={frequencies}
-            freqA4={freqA4}
-            deviations={temperament.deviation}
-          />
+        <></>
       );
     }
   }
