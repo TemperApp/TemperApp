@@ -118,7 +118,7 @@ const Tuner: React.FC<TunerProps> = ({
       <TunerFooter
         isMuted={isMuted}
         tuneMode={tuneMode}
-        hasProcedure={procedure !== ""}
+        canEnterProcedure={procedure !== ''}
         isProcedureFirstStep={stepProcedure === 0}
         isProcedureLastStep={stepProcedure === splitedProcedure.length-1}
         isClickable={isClickable}
@@ -126,16 +126,13 @@ const Tuner: React.FC<TunerProps> = ({
         onClickBeats={() => setTuneMode(TuneMode.BEATS)}
         onClickPitchPipe={() => setTuneMode(TuneMode.PITCHPIPE)}
         onEnterProcedure={() => {
-          if (isClickable && procedure!=="") {
-            setIsClickable(false);
-            setTuneMode(TuneMode.PROCEDURE);
-          } else { // Exit procedure
-            setIsClickable(true);
-            setTuneMode(TuneMode.BEATS);
-          }
-          setMainTitle(tuneMode)
+          setIsClickable(false);
+          setTuneMode(TuneMode.PROCEDURE);
         }}
-        onExitProcedure={() => {}}
+        onExitProcedure={() => {
+          setIsClickable(true);
+          setTuneMode(TuneMode.BEATS);
+        }}
         onProcedureNext={() => {
           if(stepProcedure < (splitedProcedure.length-1) )
             setStepProcedure(stepProcedure+1);
