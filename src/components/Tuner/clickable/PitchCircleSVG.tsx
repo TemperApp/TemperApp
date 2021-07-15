@@ -7,7 +7,7 @@ import PitchCircleButtonSVG from "./PitchCircleButtonSVG";
 import CenterCircle from "../common/CenterCircle";
 import { Temperament } from '../../../model/Temperament/Temperament';
 import EqualTemperament, { thirdEqualQ, fifthEqualQ } from '../../../model/Temperament/Equal';
-import { freqs4, thirdQ, fifthQ } from '../../../model/Divergence';
+import { thirdQ, fifthQ } from '../../../model/Divergence';
 import SoundEngine from '../../../engine/SoundEngine';
 import { fetchTemperamentPropsById } from '../../../engine/DataAccessor';
 
@@ -15,10 +15,11 @@ import { fetchTemperamentPropsById } from '../../../engine/DataAccessor';
 import { PitchCircleButtonSVGPos as btnPosition, PitchCircleSVGLabels } from "../common/PitchCircleButtonSVGPos"
 import NotesMap from '../../../model/Note/NotesMap';
 import { Notes } from '../../../model/Note/enums';
-import { BtnActions, getActiveBtns, BtnStates } from "../PitchCircleController";
+import { BtnActions, getActiveBtns, BtnStates, createNoteFromActive } from "../PitchCircleController";
 
 //Styles 
 import "../common/PitchCircleSVG.css";
+import { processAcousticBeat } from "../../../model/AcousticBeat";
 
 
 type PitchCircleSVGProps = {
@@ -35,8 +36,6 @@ const PitchCircleSVG: React.FC<PitchCircleSVGProps> = ({
   const [temperament, setTemperament] = useState<Temperament>(EqualTemperament);
   const [thirdQualities, setThirdQualities] = useState<NotesMap<number | null>>(thirdEqualQ());
   const [fifthQualities, setFifthQualities] = useState<NotesMap<number | null>>(fifthEqualQ());
-  const [frequencies, setFrequencies] = useState<NotesMap<number>>(freqs4(440));
-
 
   useEffect(() => {
     // Update fitfhs and thirds circles and frequencies
@@ -45,42 +44,37 @@ const PitchCircleSVG: React.FC<PitchCircleSVGProps> = ({
       setTemperament(temp);
       setFifthQualities(fifthQ(temp.cpExp5th));
       setThirdQualities(thirdQ(temp.csExp3rd));
-      setFrequencies(freqs4(freqA4, temp.deviation));
     })();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [idTemperament]);
 
-  useEffect(() => {
-    // Update frequencies
-    (async () => {
-      if (!temperament)
-        return;
-      setFrequencies(freqs4(freqA4, temperament.deviation));
-    })();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [freqA4]);
+  const actives = getActiveBtns(btnStates);
+  
+  const noteX = (actives[0]) && createNoteFromActive(actives[0]);
+  const noteY = (actives[1]) && createNoteFromActive(actives[1]);
 
-  useEffect(() => {
-    // Play sound
-    const actives = getActiveBtns(btnStates);
-    const freq1 = (!actives[0])
-      ? 0
-      : frequencies[actives[0].note]
-        * (actives[0].state === BtnStates.OCTAVE ? 0.5 : 1);
+  if (!noteX && !noteY) {
+    SoundEngine.stop();
+  }
 
-    const freq2 = (!actives[1])
-      ? 0
-      : frequencies[actives[1].note]
-        * (actives[1].state === BtnStates.OCTAVE ? 0.5 : 1);
+  if (noteX && !noteY) {
+    SoundEngine.setPulseBPS(0);
+    SoundEngine.stopAndPlay(noteX.freq(freqA4, temperament.deviation));
+  }
 
-    (actives[0])
-      ? SoundEngine.stopAndPlay(freq1)
-      : SoundEngine.stop();
+  if (noteX && noteY) {
+    const { modulationFreq, carrierFreq } = processAcousticBeat(
+      noteX, noteY, freqA4, temperament.deviation
+    );
 
-    (actives[1])
-      ? SoundEngine.setPulseBPS(Math.abs(freq1 - freq2))
-      : SoundEngine.setPulseBPS(0);
-  }, [btnStates, frequencies]);
+    if (modulationFreq && carrierFreq) {
+      SoundEngine.setPulseBPS(modulationFreq);
+      let heardFreq = carrierFreq;
+      while (heardFreq > 1000)
+        heardFreq /= 2;
+      SoundEngine.stopAndPlay(heardFreq);
+    }
+  }
 
   console.info('🔹 [PitchCircleSVG]: Render')
   return (
@@ -114,8 +108,7 @@ const PitchCircleSVG: React.FC<PitchCircleSVGProps> = ({
           qualities={fifthQualities}
         />
         <CenterCircle
-          actives={getActiveBtns(btnStates)}
-          frequencies={frequencies}
+          actives={actives}
           freqA4={freqA4}
           deviations={temperament.deviation}
         />

@@ -80,6 +80,19 @@ export class Note implements INote {
   }
 
   /**
+   * @param noteX
+   * @param noteY
+   * @returns the notes encapsuled in an object
+   * with two props: 'lowest' and 'highest'
+   */
+  static getLowestAndHighest(noteX: Note, noteY: Note) {
+    return {
+      lowest: (noteX.isHigherThan(noteY)) ? noteY : noteX,
+      highest: (noteX.isHigherThan(noteY)) ? noteX : noteY,
+    }
+  }
+
+  /**
    * Compares the musical pitch (and not the frequency)
    * with another note.
    * @param note note to compare to

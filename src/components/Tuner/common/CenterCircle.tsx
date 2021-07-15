@@ -1,15 +1,14 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { processAcousticBeat } from '../../../model/AcousticBeat';
-import { ActiveBtn, createNoteFromActive, BtnStates } from '../PitchCircleController';
+import { ActiveBtn, createNoteFromActive } from '../PitchCircleController';
 import { Notes } from '../../../model/Note/enums';
 import NotesMap from '../../../model/Note/NotesMap';
-import SoundEngine from '../../../engine/SoundEngine';
 
 //Styles
 import "./CenterCircle.css";
+import Note from '../../../model/Note/Note';
 
 const isBpm = true;
-const refOctave = 4;
 
 export const notesToStr = (note: Notes) => {
   switch (note) {
@@ -39,63 +38,44 @@ const beatToStr = (bps: number, isBpm = false) => {
 
 type PitchCircleSVGProps = {
   actives: ActiveBtn[],
-  frequencies: NotesMap<number>,
   freqA4: number,
   deviations: NotesMap<number>,
 }
 
 const CenterCircle: React.FC<PitchCircleSVGProps> = ({
-  actives, frequencies, freqA4, deviations
+  actives, freqA4, deviations
 }) => {
 
-  useEffect(() => {
-    const cNote = document.getElementById("centerCircleNote")!;
-    const cFreq = document.getElementById("centerCircleFrequency")!;
+  let text;
+  let subtext;
 
-    const isOctave0 = (actives[0]) && actives[0].state === BtnStates.OCTAVE;
-    const isOctave1 = (actives[1]) && actives[1].state === BtnStates.OCTAVE;
+  const noteX = (actives[0]) && createNoteFromActive(actives[0]);
+  const noteY = (actives[1]) && createNoteFromActive(actives[1]);
 
-    if (actives.length === 0) {
-      cNote.innerHTML = "—";
-      cFreq.innerHTML = "— Hz";
-    }
+  if (!noteX && !noteY) {
+    text = "—";
+    subtext = "— Hz";
+  }
 
-    if (actives.length === 1) {
-      cNote.innerHTML = notesToStr(actives[0].note)
-        + (refOctave + (isOctave0 ? -1 : 0));
+  if (noteX && !noteY) {
+    text = noteX.string();
+    subtext = `${noteX.freq(freqA4, deviations).toFixed(1)} Hz`;
+  }
 
-      cFreq.innerHTML = (frequencies[actives[0].note]
-        * (isOctave0 ? 0.5 : 1)).toFixed(1) + " Hz";
-    }
+  if (noteX && noteY) {
+    const { lowest, highest } = Note.getLowestAndHighest(
+      noteX, noteY
+    );
 
-    if (actives.length === 2) {
-      cNote.innerHTML =
-        notesToStr(actives[0].note!)
-        + (refOctave + (isOctave0 ? -1 : 0))
-        + " · "
-        + notesToStr(actives[1].note!)
-        + (refOctave + (isOctave1 ? -1 : 0));
+    const { modulationFreq } = processAcousticBeat(
+      lowest, highest, freqA4, deviations
+    );
 
-      const { modulationFreq, carrierFreq } = processAcousticBeat(
-        createNoteFromActive(actives[0]),
-        createNoteFromActive(actives[1]),
-        freqA4,
-        deviations
-      );
-
-      if (modulationFreq && carrierFreq) {
-        SoundEngine.setPulseBPS(modulationFreq);
-        let heardFreq = carrierFreq;
-        while (heardFreq > 1000)
-          heardFreq /= 2;
-        SoundEngine.stopAndPlay(heardFreq);
-      }
-
-      cFreq.innerHTML = (modulationFreq)
-        ? beatToStr(modulationFreq, isBpm)
-        : "—";
-    }
-  }, [actives, frequencies, freqA4, deviations]);
+    text = `${lowest.string()} · ${highest.string()}`;
+    subtext = (modulationFreq)
+      ? beatToStr(modulationFreq, isBpm)
+      : "—";
+  }
 
   console.info('🔹 [CenterCircle]: Render')
   return (
@@ -103,12 +83,15 @@ const CenterCircle: React.FC<PitchCircleSVGProps> = ({
       <text transform="matrix(1 0 0 1 178.5 178.5)" className="st25 st30">
         <tspan
           x="0" className="st30"
-          textAnchor="middle" id="centerCircleNote">
+          textAnchor="middle" id="centerCircleNote"
+        >
+          {text}
         </tspan>
         <tspan
-          x="0" className="st31"
+          x="0" dy="30" className="st31"
           textAnchor="middle" id="centerCircleFrequency"
-          dy="30">
+        >
+          {subtext}
         </tspan>
       </text>
     </g>
@@ -119,7 +102,6 @@ export default React.memo(
   CenterCircle,
   (prevProps, nextProps) =>
     prevProps.actives === nextProps.actives &&
-    prevProps.frequencies === nextProps.frequencies &&
     prevProps.freqA4 === nextProps.freqA4 &&
     prevProps.deviations === nextProps.deviations
 );
