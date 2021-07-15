@@ -2,6 +2,7 @@ import React from 'react';
 import { IonButton, IonIcon } from '@ionic/react';
 import { reload } from 'ionicons/icons';
 import { TuneMode } from './Tuner';
+import Toggler from '../inputs/Toggler';
 
 const TunerFooter: React.FC<any> = ({ // TODO Update any
   tuneMode,
@@ -130,28 +131,17 @@ const TunerFooter: React.FC<any> = ({ // TODO Update any
 
       {(tuneMode !== TuneMode.PROCEDURE)
         && (
-          <div className="w-20 btn-mode">
-            <IonButton
-              onClick={onClickBeats}
-              className={`btn-mode-bpm m-0 p-0
-                ${tuneMode === TuneMode.BEATS ? " btn-mode-activated" : ""}`}
-            >
-              <IonIcon
-                style={{ fontSize: "1em" }}
-                src="/assets/logotypes/icon-tuner-bpm-mode.svg"
-              ></IonIcon>
-            </IonButton>
-            <IonButton
-              onClick={onClickPitchPipe}
-              className={`btn-mode-hz m-0 p-0
-                ${tuneMode === TuneMode.PITCHPIPE ? " btn-mode-activated" : ""}`}
-            >
-              <IonIcon
-                style={{ fontSize: "1em" }}
-                src="/assets/logotypes/icon-tuner-hz-mode.svg"
-              ></IonIcon>
-            </IonButton>
-          </div>
+          <Toggler 
+            typeContentText={false}
+            sizeSVG = '1em'
+            contentLeft = '/assets/logotypes/icon-tuner-bpm-mode.svg'
+            contentRight = '/assets/logotypes/icon-tuner-hz-mode.svg'
+            conditionLeft = {tuneMode === TuneMode.BEATS}
+            conditionRight = {tuneMode === TuneMode.PITCHPIPE}
+            onClickLeft = {onClickBeats} 
+            onClickRight = {onClickPitchPipe}
+
+          />
         )}
     </section>
   );

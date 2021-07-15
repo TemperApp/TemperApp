@@ -14,6 +14,7 @@ import { Temperament } from "../../model/Temperament/Temperament";
 import { fifthQ, thirdQ } from "../../model/Divergence";
 import ComparatorThirdComaCircle from "./ComparatorThirdComaCircle";
 import ComparatorFifthComaCircle from "./ComparatorFifthComaCircle";
+import Toggler from "../inputs/Toggler";
 
 type ComparatorComaProps = {
   temperament1: Temperament,
@@ -53,22 +54,16 @@ const ComparatorComa: React.FC<ComparatorComaProps> = ({
                       isCpMode={isCpMode}
                   /></svg>
                 </div>
-                <div className="w-20 btn-mode">
-                  <IonButton
-                    onClick={() => setCpMode(false)}
-                    className={`btn-mode-bpm m-0
-                      ${!isCpMode ? " btn-mode-activated" : ""}`} 
-                  >
-                    cs
-                  </IonButton>
-                  <IonButton
-                    onClick={() => setCpMode(true)}
-                    className={`btn-mode-hz m-0
-                      ${isCpMode ? " btn-mode-activated" : ""}`}
-                  >
-                    cp
-                  </IonButton>
-                </div>
+                <Toggler 
+                  typeContentText={true}
+                  contentLeft = 'Cs'
+                  contentRight = 'Cp'
+                  conditionLeft = {!isCpMode }
+                  conditionRight = {isCpMode}
+                  onClickLeft = {() => setCpMode(false)} 
+                  onClickRight = {() => setCpMode(true)}
+
+                />
              </IonCardContent>
            </IonCard>
           </IonSlide>
