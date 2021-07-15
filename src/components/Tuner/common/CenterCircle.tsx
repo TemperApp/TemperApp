@@ -79,17 +79,17 @@ const CenterCircle: React.FC<PitchCircleSVGProps> = ({
 
   console.info('🔹 [CenterCircle]: Render')
   return (
-    <g id="CenterCercleInformation">
-      <text transform="matrix(1 0 0 1 178.5 178.5)" className="st25 st30">
+    <g id="pc-centercircle">
+      <text transform="matrix(1 0 0 1 178.5 178.5)">
         <tspan
-          x="0" className="st30"
-          textAnchor="middle" id="centerCircleNote"
+          className="label-text"
+          x="0" textAnchor="middle"
         >
           {text}
         </tspan>
         <tspan
-          x="0" dy="30" className="st31"
-          textAnchor="middle" id="centerCircleFrequency"
+          className="label-subtext"
+          x="0" dy="30" textAnchor="middle"
         >
           {subtext}
         </tspan>

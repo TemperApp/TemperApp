@@ -17,17 +17,17 @@ export const PitchCircleButtonSVGPos = {
 
 export const PitchCircleSVGLabels: React.FC = () => (
   <>
-    <text className="cls-3" transform="translate(278.22 247.59)">E</text>
-    <text className="cls-3" transform="translate(231.53 293.77)">B</text>
-    <text className="cls-3" transform="translate(166.28 310.6)" >F<tspan className="cls-4" x="13.12" y="0">♯</tspan></text>
-    <text className="cls-3" transform="translate(104.23 293.77)">C<tspan className="cls-4" x="15.2" y="0" >♯</tspan></text>
-    <text className="cls-3" transform="translate(56.47 247.59)" >G<tspan className="cls-4" x="16.25" y="0">♯</tspan></text>
-    <text className="cls-3" transform="translate(48.05 185.52)" >E<tspan className="cls-7" x="14.08" y="0">♭</tspan></text>
-    <text className="cls-3" transform="translate(60.97 124.58)" >B<tspan className="cls-7" x="15.55" y="0">♭</tspan></text>
-    <text className="cls-3" transform="translate(106.28 80.52)" >F</text>
-    <text className="cls-3" transform="translate(170.28 62.27)" >C</text>
-    <text className="cls-3" transform="translate(231.53 80.52)" >G</text>
-    <text className="cls-3" transform="translate(278.22 124.58)">D</text>
-    <text className="cls-3" transform="translate(294.3 185.52)" >A</text>
+    <text className="pc-labels" transform="translate(278.22 247.59)">E</text>
+    <text className="pc-labels" transform="translate(231.53 293.77)">B</text>
+    <text className="pc-labels" transform="translate(166.28 310.6)" >F<tspan x="13.12" y="0">♯</tspan></text>
+    <text className="pc-labels" transform="translate(104.23 293.77)">C<tspan x="15.2" y="0" >♯</tspan></text>
+    <text className="pc-labels" transform="translate(56.47 247.59)" >G<tspan x="16.25" y="0">♯</tspan></text>
+    <text className="pc-labels" transform="translate(48.05 185.52)" >E<tspan x="14.08" y="0">♭</tspan></text>
+    <text className="pc-labels" transform="translate(60.97 124.58)" >B<tspan x="15.55" y="0">♭</tspan></text>
+    <text className="pc-labels" transform="translate(106.28 80.52)" >F</text>
+    <text className="pc-labels" transform="translate(170.28 62.27)" >C</text>
+    <text className="pc-labels" transform="translate(231.53 80.52)" >G</text>
+    <text className="pc-labels" transform="translate(278.22 124.58)">D</text>
+    <text className="pc-labels" transform="translate(294.3 185.52)" >A</text>
   </>
 );

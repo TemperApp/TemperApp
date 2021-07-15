@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useReducer } from 'react';
-import { TuneMode } from './Tuner';
 import PitchCircleSVG from './clickable/PitchCircleSVG';
 import NonClickableProcedure from './nonClickable/NonClickableProcedure';
+import { TuneMode } from './Tuner';
 import { mapNotesMap } from '../../model/Note/NotesMap';
 import { BtnActions, btnStatesReducer, BtnStates } from './PitchCircleController';
 
@@ -19,9 +19,11 @@ const PitchCircle: React.FC<PitchCircleProps> = ({
   tuneMode, freqA4, idTemperament, stepProcedure, procedure, stepTune, setStepTune
 }) => {
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  const statesReducer = useCallback(btnStatesReducer(tuneMode), [tuneMode]);
-  const [btnStates, dispatchState] = useReducer(statesReducer, mapNotesMap(BtnStates.IDLE));
+  const [btnStates, dispatchState] = useReducer(
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    useCallback(btnStatesReducer(tuneMode), [tuneMode]),
+    mapNotesMap(BtnStates.IDLE)
+  );
 
   useEffect(() => {
     dispatchState({ type: BtnActions.SET_ALL_IDLE });

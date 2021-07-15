@@ -1,16 +1,6 @@
-.cls-3 {
+.pc-labels {
   pointer-events: none;
   fill: var(--ion-text-color);
-}
-
-#PitchCircleSVG {
-  margin: 0px;
-  width: 90vw;
-  height: 90vw;
-}
-
-#Container_PitchCircleSVG {
-  display: flex;
 }
 
 #NonClickablePitchCircleSVG {

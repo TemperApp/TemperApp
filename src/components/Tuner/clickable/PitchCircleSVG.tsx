@@ -5,11 +5,14 @@ import FifthCircleSVG from "../common/FifthCircleSVG";
 import ThirdCircleSVG from "../common/ThirdCircleSVG";
 import PitchCircleButtonSVG from "./PitchCircleButtonSVG";
 import CenterCircle from "../common/CenterCircle";
+
 import { Temperament } from '../../../model/Temperament/Temperament';
-import EqualTemperament, { thirdEqualQ, fifthEqualQ } from '../../../model/Temperament/Equal';
+import EqualTemperament from '../../../model/Temperament/Equal';
 import { thirdQ, fifthQ } from '../../../model/Divergence';
-import SoundEngine from '../../../engine/SoundEngine';
 import { fetchTemperamentPropsById } from '../../../engine/DataAccessor';
+import { processAcousticBeat } from "../../../model/AcousticBeat";
+
+import SoundEngine from '../../../engine/SoundEngine';
 
 //Types 
 import { PitchCircleButtonSVGPos as btnPosition, PitchCircleSVGLabels } from "../common/PitchCircleButtonSVGPos"
@@ -19,7 +22,6 @@ import { BtnActions, getActiveBtns, BtnStates, createNoteFromActive } from "../P
 
 //Styles 
 import "../common/PitchCircleSVG.css";
-import { processAcousticBeat } from "../../../model/AcousticBeat";
 
 
 type PitchCircleSVGProps = {
@@ -34,16 +36,10 @@ const PitchCircleSVG: React.FC<PitchCircleSVGProps> = ({
 }) => {
 
   const [temperament, setTemperament] = useState<Temperament>(EqualTemperament);
-  const [thirdQualities, setThirdQualities] = useState<NotesMap<number | null>>(thirdEqualQ());
-  const [fifthQualities, setFifthQualities] = useState<NotesMap<number | null>>(fifthEqualQ());
 
   useEffect(() => {
-    // Update fitfhs and thirds circles and frequencies
     (async () => {
-      const temp = await fetchTemperamentPropsById(idTemperament);
-      setTemperament(temp);
-      setFifthQualities(fifthQ(temp.cpExp5th));
-      setThirdQualities(thirdQ(temp.csExp3rd));
+      setTemperament(await fetchTemperamentPropsById(idTemperament));
     })();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [idTemperament]);
@@ -78,12 +74,9 @@ const PitchCircleSVG: React.FC<PitchCircleSVGProps> = ({
 
   console.info('🔹 [PitchCircleSVG]: Render')
   return (
-    <div id="Container_PitchCircleSVG">
+    <div className="px-4 max-w-lg">
       <svg
-        id="PitchCircleSVG"
         xmlns="http://www.w3.org/2000/svg"
-        width="370"
-        height="370"
         viewBox="0 0 357.06 357.06"
       >
         {Object.keys(btnStates).map((note) => {
@@ -102,10 +95,10 @@ const PitchCircleSVG: React.FC<PitchCircleSVGProps> = ({
         <PitchCircleSVGLabels />
 
         <ThirdCircleSVG
-          qualities={thirdQualities}
+          qualities={thirdQ(temperament.csExp3rd)}
         />
         <FifthCircleSVG
-          qualities={fifthQualities}
+          qualities={fifthQ(temperament.cpExp5th)}
         />
         <CenterCircle
           actives={actives}

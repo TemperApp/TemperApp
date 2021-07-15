@@ -1,13 +1,9 @@
-#CenterCercleInformation {
-  display: flex;
-  flex-direction: column;
-}
-
-.st30 {
+.label-text {
   font-size: 32px;
   fill: var(--ion-text-color);
 }
-.st31 {
+
+.label-subtext {
   margin-top: 20px;
   font-size: 18px;
   fill: var(--ion-text-color);

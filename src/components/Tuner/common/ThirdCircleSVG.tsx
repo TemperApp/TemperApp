@@ -15,7 +15,7 @@ const ThirdCircleSVG: React.FC<ThirdCircleSVGProps> = ({
   console.info('🔹 [ThirdCircleSVG]: Render')
   return (
     <>
-      <g id="Third">
+      <g id="pc-thirdcircle">
         <path data-name="C"       stroke="var(--color-hover)" strokeWidth="1" fill={convertThirdQualityToColor(qualities.C, settings.darkTheme)}       d="M204.7,87.76l-4.86,18.14a77.12,77.12,0,0,0-39.87.35l-4.86-18.14A96,96,0,0,1,204.7,87.76Z" transform="translate(-2.04 -1.82)"/>
         <path data-name="G"       stroke="var(--color-hover)" strokeWidth="1" fill={convertThirdQualityToColor(qualities.G, settings.darkTheme)}       d="M247.92,112.41l-13.28,13.28a76.37,76.37,0,0,0-34.8-19.79l4.86-18.14A95.19,95.19,0,0,1,247.92,112.41Z" transform="translate(-2.04 -1.82)"/>
         <path data-name="D"       stroke="var(--color-hover)" strokeWidth="1" fill={convertThirdQualityToColor(qualities.D, settings.darkTheme)}       d="M247.92,112.41l.29.29A95.15,95.15,0,0,1,273,155.53l-18.14,4.85a76.44,76.44,0,0,0-19.9-34.4l-.29-.29Z" transform="translate(-2.04 -1.82)"/>
