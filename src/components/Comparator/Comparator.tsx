@@ -49,7 +49,7 @@ const Comparator: React.FC = () => {
                 setTemperament2(temp);
               }
             }}>
-              <IonIcon
+              <IonIcon className="flex items-end"
                 src="assets/logotypes/icon-exchange.svg"
                 style={{stroke:"var(--color-contrast)"}}
               ></IonIcon>
