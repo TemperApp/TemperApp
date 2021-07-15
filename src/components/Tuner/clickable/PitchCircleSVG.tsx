@@ -15,7 +15,7 @@ import { fetchTemperamentPropsById } from '../../../engine/DataAccessor';
 import { PitchCircleButtonSVGPos as btnPosition, PitchCircleSVGLabels } from "../common/PitchCircleButtonSVGPos"
 import NotesMap from '../../../model/Note/NotesMap';
 import { Notes } from '../../../model/Note/enums';
-import { BtnActions, getActiveBtns, NoteStates } from "../PitchCircle";
+import { BtnActions, getActiveBtns, BtnStates } from "../PitchCircleController";
 
 //Styles 
 import "../common/PitchCircleSVG.css";
@@ -24,7 +24,7 @@ import "../common/PitchCircleSVG.css";
 type PitchCircleSVGProps = {
   freqA4: number,
   idTemperament: number,
-  btnStates: NotesMap<NoteStates>,
+  btnStates: NotesMap<BtnStates>,
   dispatchState: (action: any) => void,
 }
 
@@ -66,12 +66,12 @@ const PitchCircleSVG: React.FC<PitchCircleSVGProps> = ({
     const freq1 = (!actives[0])
       ? 0
       : frequencies[actives[0].note]
-        * (actives[0].state === NoteStates.OCTAVE ? 0.5 : 1);
+        * (actives[0].state === BtnStates.OCTAVE ? 0.5 : 1);
 
     const freq2 = (!actives[1])
       ? 0
       : frequencies[actives[1].note]
-        * (actives[1].state === NoteStates.OCTAVE ? 0.5 : 1);
+        * (actives[1].state === BtnStates.OCTAVE ? 0.5 : 1);
 
     (actives[0])
       ? SoundEngine.stopAndPlay(freq1)
@@ -99,7 +99,7 @@ const PitchCircleSVG: React.FC<PitchCircleSVGProps> = ({
               key={n}
               position={btnPosition[n]}
               state={btnStates[n]}
-              onClick={(state: NoteStates) => {
+              onClick={(state: BtnStates) => {
                 dispatchState({type: BtnActions.SET, note: n, state})
               }}
             />);

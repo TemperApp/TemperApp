@@ -1,16 +1,16 @@
 import React, { useRef } from "react";
 import useLongPress from "../../../hooks/useLongPress";
-import { NoteStates } from "../PitchCircle";
+import { BtnStates } from "../PitchCircleController";
 
 type SVGPathElementOrNull = SVGPathElement | null;
 
-const colorButton = (state: NoteStates) => {
+const colorButton = (state: BtnStates) => {
   let temp: string;
   temp = "var(--color-theme)";
   switch (state) {
-    case NoteStates.SELECTED: // bouton activé
+    case BtnStates.SELECTED: // bouton activé
       return "var(--color-light-grey)";
-    case NoteStates.OCTAVE: // bouton activé à l'octave supérieur
+    case BtnStates.OCTAVE: // bouton activé à l'octave supérieur
       return "var(--color-hover)";
     default:
       //bouton déactivé
@@ -20,8 +20,8 @@ const colorButton = (state: NoteStates) => {
 
 type PitchCircleButtonSVGProps = {
   position: string;
-  state: NoteStates;
-  onClick: (state: NoteStates) => void;
+  state: BtnStates;
+  onClick: (state: BtnStates) => void;
 };
 
 const PitchCircleButtonSVG: React.FC<PitchCircleButtonSVGProps> = ({
@@ -35,20 +35,20 @@ const PitchCircleButtonSVG: React.FC<PitchCircleButtonSVGProps> = ({
     () => {
       // onLongPress
       switch (state) {
-        case NoteStates.IDLE:
-        case NoteStates.SELECTED:
-          onClick(NoteStates.OCTAVE);
+        case BtnStates.IDLE:
+        case BtnStates.SELECTED:
+          onClick(BtnStates.OCTAVE);
           break;
-        case NoteStates.OCTAVE:
-          onClick(NoteStates.SELECTED);
+        case BtnStates.OCTAVE:
+          onClick(BtnStates.SELECTED);
           break;
       }
     },
     () => {
       // onClick
-      state === NoteStates.IDLE
-        ? onClick(NoteStates.SELECTED)
-        : onClick(NoteStates.IDLE);
+      state === BtnStates.IDLE
+        ? onClick(BtnStates.SELECTED)
+        : onClick(BtnStates.IDLE);
     },
     {
       // options

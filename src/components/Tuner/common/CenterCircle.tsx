@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import { processAcousticBeat } from '../../../model/AcousticBeat';
-import { BtnState, NoteStates } from '../PitchCircle';
-import Note from '../../../model/Note/Note';
+import { ActiveBtn, createNoteFromActive, BtnStates } from '../PitchCircleController';
 import { Notes } from '../../../model/Note/enums';
 import NotesMap from '../../../model/Note/NotesMap';
 import SoundEngine from '../../../engine/SoundEngine';
@@ -39,7 +38,7 @@ const beatToStr = (bps: number, isBpm = false) => {
 };
 
 type PitchCircleSVGProps = {
-  actives: BtnState[],
+  actives: ActiveBtn[],
   frequencies: NotesMap<number>,
   freqA4: number,
   deviations: NotesMap<number>,
@@ -53,8 +52,8 @@ const CenterCircle: React.FC<PitchCircleSVGProps> = ({
     const cNote = document.getElementById("centerCircleNote")!;
     const cFreq = document.getElementById("centerCircleFrequency")!;
 
-    const isOctave0 = (actives[0]) && actives[0].state === NoteStates.OCTAVE;
-    const isOctave1 = (actives[1]) && actives[1].state === NoteStates.OCTAVE;
+    const isOctave0 = (actives[0]) && actives[0].state === BtnStates.OCTAVE;
+    const isOctave1 = (actives[1]) && actives[1].state === BtnStates.OCTAVE;
 
     if (actives.length === 0) {
       cNote.innerHTML = "—";
@@ -62,10 +61,10 @@ const CenterCircle: React.FC<PitchCircleSVGProps> = ({
     }
 
     if (actives.length === 1) {
-      cNote.innerHTML = notesToStr(actives[0].note!)
+      cNote.innerHTML = notesToStr(actives[0].note)
         + (refOctave + (isOctave0 ? -1 : 0));
 
-      cFreq.innerHTML = (frequencies[actives[0].note!]
+      cFreq.innerHTML = (frequencies[actives[0].note]
         * (isOctave0 ? 0.5 : 1)).toFixed(1) + " Hz";
     }
 
@@ -78,8 +77,8 @@ const CenterCircle: React.FC<PitchCircleSVGProps> = ({
         + (refOctave + (isOctave1 ? -1 : 0));
 
       const {modulationFreq, carrierFreq} = processAcousticBeat(
-        Note.create(actives[0].note!, (isOctave0 ? 3 : 4)),
-        Note.create(actives[1].note!, (isOctave1 ? 3 : 4)),
+        createNoteFromActive(actives[0]),
+        createNoteFromActive(actives[1]),
         freqA4,
         deviations
       );
