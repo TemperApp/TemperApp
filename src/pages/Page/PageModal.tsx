@@ -1,3 +1,4 @@
+import { IonButton, IonIcon } from "@ionic/react";
 import React from "react";
 import './PageModal.css'
 
@@ -21,8 +22,12 @@ const PageModal: React.FC<PageModalProps> = ({
           </div>
           <button
             className="btn-quit h-9 w-9"
-            onClick={onQuit}
-          />
+            onClick={onQuit}>
+            <IonIcon
+              className="btn-quit h-9 w-9"
+              src="assets/logotypes/icon-arrow-back.svg">
+            </IonIcon>
+          </button>
         </div>
         <hr />
       </section>

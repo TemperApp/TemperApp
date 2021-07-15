@@ -302,7 +302,6 @@ ion-searchbar .searchbar-input-container .searchbar-input {
 }
 
 ion-card {
-  width: 90vw;
   display: block;
   margin: 0 auto;
   margin-top: 10%;

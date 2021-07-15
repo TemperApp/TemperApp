@@ -78,7 +78,7 @@ const SheetTemperament: React.FC = () => {
         ) 
         : "")
       }
-
+      
       <ResourcesLearn 
         resourcesList={temperament.sources}
       />
