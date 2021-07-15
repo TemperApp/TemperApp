@@ -204,7 +204,7 @@ const Tune: React.FC = () => {
         />
       </IonHeader>
 
-      <IonModal isOpen={showModal} cssClass="modal-fullscreen">
+      <IonModal isOpen={showModal} cssClass="modal-fullscreen page-header">
         <PageModal
           title="Aide · Accordeur"
           onQuit={() => setShowModal(false)}

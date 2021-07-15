@@ -13,7 +13,7 @@ const LearnSheet: React.FC = () => {
   let { id } = useParams<any>();
   return (
     <IonPage>
-      <IonHeader className="ion-no-border">
+      <IonHeader className="ion-no-border page-header">
         <PageHeader
           mainTitle={id}
           canGoBack={true}

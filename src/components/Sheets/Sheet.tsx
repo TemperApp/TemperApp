@@ -22,7 +22,7 @@ const Sheet: React.FC<SheetProps> = ({
 
   return (
     <IonPage>
-      <IonHeader className="ion-no-border">
+      <IonHeader className="ion-no-border page-header">
         <PageHeader
           mainTitle={mainTitle}
           subTitle={subTitle}

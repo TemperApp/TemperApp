@@ -32,7 +32,7 @@ const Compare: React.FC = () => {
         />
       </IonHeader>
 
-      <IonModal isOpen={showModal} cssClass="modal-fullscreen">
+      <IonModal isOpen={showModal} cssClass="modal-fullscreen page-header">
         <PageModal
           title="Aide · Comparateur"
           onQuit={() => setShowModal(false)}

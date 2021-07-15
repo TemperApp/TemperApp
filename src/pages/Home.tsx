@@ -38,7 +38,7 @@ const Home: React.FC = () => {
 
       <IonModal 
         isOpen={showModal}
-        cssClass="modal-fullscreen"
+        cssClass="modal-fullscreen page-header"
         swipeToClose={true}
         backdrop-dismiss={true}
       >
