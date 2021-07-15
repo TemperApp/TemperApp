@@ -11,7 +11,7 @@ export enum BtnStates {
 export type ActiveBtn = {
   note: Notes,
   state: Exclude<BtnStates, BtnStates.IDLE>,
-}
+};
 
 
 export const getActiveBtns = (
@@ -37,6 +37,14 @@ export enum BtnActions {
   SET, SET_ALL_IDLE,
 };
 
+type BtnActionType = {
+  type: BtnActions.SET,
+  note: Notes,
+  state: BtnStates,
+} | {
+  type: BtnActions.SET_ALL_IDLE,
+};
+
 /**
  * @param tuneMode 
  * @returns reducer function for 'useReducer' React hook
@@ -44,7 +52,7 @@ export enum BtnActions {
 export const btnStatesReducer = (tuneMode: TuneMode) => {
   return (
     btnStates: NotesMap<BtnStates>,
-    action: any // TODO Type this
+    action: BtnActionType
   ) => {
     let res = { ...btnStates };
 
@@ -59,6 +67,10 @@ export const btnStatesReducer = (tuneMode: TuneMode) => {
 
     if (action.type === BtnActions.SET) {
       const actives = getActiveBtns(btnStates);
+      const triggered: ActiveBtn = {
+        note: action.note,
+        state: action.state as Exclude<BtnStates, BtnStates.IDLE>
+      };
 
       if (actives.length === 2) {
         res[actives[0].note] = BtnStates.IDLE;
@@ -68,8 +80,8 @@ export const btnStatesReducer = (tuneMode: TuneMode) => {
       if (actives.length === 1) {
         if (tuneMode === TuneMode.PITCHPIPE
           || !isValidIntervalForAcousticBeat(
-            Note.create(actives[0].note, (actives[0].state === BtnStates.OCTAVE ? 3 : 4)),
-            Note.create(action.note, (action.state === BtnStates.OCTAVE ? 3 : 4))
+            createNoteFromActive(actives[0]),
+            createNoteFromActive(triggered)
           )
         ) {
           res[actives[0].note] = BtnStates.IDLE;
@@ -78,7 +90,7 @@ export const btnStatesReducer = (tuneMode: TuneMode) => {
       return { ...res, [action.note]: action.state };
     }
 
-    console.warn(`[PitchCircleSVG]: Unknown action type: ${action.type}`)
+    console.warn('[PitchCircleSVG]: Could not handle action: ', action);
     return btnStates;
   }
 };
