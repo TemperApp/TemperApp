@@ -76,7 +76,7 @@ const CenterCircle: React.FC<PitchCircleSVGProps> = ({
         + notesToStr(actives[1].note!)
         + (refOctave + (isOctave1 ? -1 : 0));
 
-      const {modulationFreq, carrierFreq} = processAcousticBeat(
+      const { modulationFreq, carrierFreq } = processAcousticBeat(
         createNoteFromActive(actives[0]),
         createNoteFromActive(actives[1]),
         freqA4,
@@ -90,7 +90,7 @@ const CenterCircle: React.FC<PitchCircleSVGProps> = ({
           heardFreq /= 2;
         SoundEngine.stopAndPlay(heardFreq);
       }
-  
+
       cFreq.innerHTML = (modulationFreq)
         ? beatToStr(modulationFreq, isBpm)
         : "—";

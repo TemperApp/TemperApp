@@ -63,22 +63,22 @@ const Tuner: React.FC<TunerProps> = ({
       const temp = await fetchTemperamentPropsById(temperamentId);
       setProcedure(temp.procedure);
     })();
-  },[temperamentId])
+  }, [temperamentId])
 
   useEffect(() => {
     setSplitedProcedure(splitProcedure(procedure));
-  },[procedure])
+  }, [procedure])
 
   useEffect(() => {
     // console.log(" procedure : n° "+stepProcedure);
-  },[stepProcedure])
+  }, [stepProcedure])
 
   console.info('⬜ [Tuner]: Render')
 
   return (
     <div className="h-full flex content-around flex-wrap">
       {/* Temperament and A4 freq inputs */}
-      <TunerHeader 
+      <TunerHeader
         defaultTemperamentId={temperamentId}
         defaultFreqA4={freqA4}
         temperamentsList={temperamentsList}
@@ -111,20 +111,20 @@ const Tuner: React.FC<TunerProps> = ({
         tuneMode={tuneMode}
         canEnterProcedure={procedure !== ''}
         isProcedureFirstStep={stepProcedure === 0}
-        isProcedureLastStep={stepProcedure === splitedProcedure.length-1}
+        isProcedureLastStep={stepProcedure === splitedProcedure.length - 1}
         onClickMute={() => setIsMuted(!isMuted)}
         onClickBeats={() => setTuneMode(TuneMode.BEATS)}
         onClickPitchPipe={() => setTuneMode(TuneMode.PITCHPIPE)}
         onEnterProcedure={() => setTuneMode(TuneMode.PROCEDURE)}
         onExitProcedure={() => setTuneMode(TuneMode.BEATS)}
         onProcedureNext={() => {
-          if(stepProcedure < (splitedProcedure.length-1) )
-            setStepProcedure(stepProcedure+1);
+          if (stepProcedure < (splitedProcedure.length - 1))
+            setStepProcedure(stepProcedure + 1);
           setStepTune(0);
         }}
         onProcedurePrev={() => {
-          if(stepProcedure >= 1)
-            setStepProcedure(stepProcedure-1);
+          if (stepProcedure >= 1)
+            setStepProcedure(stepProcedure - 1);
           setStepTune(0);
         }}
         onProcedureRepeatStep={() => setStepTune(0)}

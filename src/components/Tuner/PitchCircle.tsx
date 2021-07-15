@@ -18,34 +18,34 @@ type PitchCircleProps = {
 const PitchCircle: React.FC<PitchCircleProps> = ({
   tuneMode, freqA4, idTemperament, stepProcedure, procedure, stepTune, setStepTune
 }) => {
-  
+
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const statesReducer = useCallback(btnStatesReducer(tuneMode), [tuneMode]);
   const [btnStates, dispatchState] = useReducer(statesReducer, mapNotesMap(BtnStates.IDLE));
 
   useEffect(() => {
-    dispatchState({type: BtnActions.SET_ALL_IDLE});
+    dispatchState({ type: BtnActions.SET_ALL_IDLE });
   }, [tuneMode]);
-  
+
   console.info('🟣 [PitchCircle]: Render')
   return (
     <section className="flex justify-center">
       {(tuneMode === TuneMode.PROCEDURE)
         ? (<NonClickableProcedure
-            freqA4={freqA4}
-            idTemperament={idTemperament}
-            centerCircle={true}
-            stepProcedure={stepProcedure}
-            procedure={procedure}
-            stepTune={stepTune}
-            setStepTune={setStepTune}
-          />)
+          freqA4={freqA4}
+          idTemperament={idTemperament}
+          centerCircle={true}
+          stepProcedure={stepProcedure}
+          procedure={procedure}
+          stepTune={stepTune}
+          setStepTune={setStepTune}
+        />)
         : (<PitchCircleSVG
-            freqA4={freqA4}
-            idTemperament={idTemperament}
-            btnStates={btnStates}
-            dispatchState={dispatchState}
-          />)}
+          freqA4={freqA4}
+          idTemperament={idTemperament}
+          btnStates={btnStates}
+          dispatchState={dispatchState}
+        />)}
     </section>
   );
 };

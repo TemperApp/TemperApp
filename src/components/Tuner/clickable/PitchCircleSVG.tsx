@@ -100,7 +100,7 @@ const PitchCircleSVG: React.FC<PitchCircleSVGProps> = ({
               position={btnPosition[n]}
               state={btnStates[n]}
               onClick={(state: BtnStates) => {
-                dispatchState({type: BtnActions.SET, note: n, state})
+                dispatchState({ type: BtnActions.SET, note: n, state })
               }}
             />);
         })}

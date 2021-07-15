@@ -50,9 +50,9 @@ const TunerHeader: React.FC<TunerHeaderProps> = ({
 export default React.memo(
   TunerHeader,
   (prevProps, nextProps) =>
-  prevProps.defaultTemperamentId === nextProps.defaultTemperamentId &&
-  prevProps.defaultFreqA4 === nextProps.defaultFreqA4 &&
-  prevProps.temperamentsList === nextProps.temperamentsList &&
-  prevProps.onTemperamentChange === nextProps.onTemperamentChange &&
-  prevProps.onFreqA4Change === nextProps.onFreqA4Change
+    prevProps.defaultTemperamentId === nextProps.defaultTemperamentId &&
+    prevProps.defaultFreqA4 === nextProps.defaultFreqA4 &&
+    prevProps.temperamentsList === nextProps.temperamentsList &&
+    prevProps.onTemperamentChange === nextProps.onTemperamentChange &&
+    prevProps.onFreqA4Change === nextProps.onFreqA4Change
 );
