@@ -52,4 +52,14 @@ const PitchCircle: React.FC<PitchCircleProps> = ({
   );
 };
 
-export default PitchCircle;
+export default React.memo(
+  PitchCircle,
+  (prevProps, nextProps) => 
+    prevProps.tuneMode === nextProps.tuneMode &&
+    prevProps.freqA4 === nextProps.freqA4 &&
+    prevProps.idTemperament === nextProps.idTemperament &&
+    prevProps.stepProcedure === nextProps.stepProcedure &&
+    prevProps.procedure === nextProps.procedure &&
+    prevProps.stepTune === nextProps.stepTune &&
+    prevProps.setStepTune === nextProps.setStepTune
+);

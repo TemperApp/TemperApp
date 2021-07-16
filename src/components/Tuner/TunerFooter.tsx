@@ -147,4 +147,14 @@ const TunerFooter: React.FC<any> = ({ // TODO Update any
   );
 };
 
-export default TunerFooter;
+export default React.memo(
+  TunerFooter,
+  (prevProps, nextProps) => 
+    prevProps.tuneMode === nextProps.tuneMode &&
+    prevProps.isMuted === nextProps.isMuted &&
+    prevProps.canEnterProcedure === nextProps.canEnterProcedure &&
+    prevProps.isProcedureFirstStep === nextProps.isProcedureFirstStep &&
+    prevProps.isProcedureLastStep === nextProps.isProcedureLastStep &&
+    prevProps.onProcedureNext === nextProps.onProcedureNext &&
+    prevProps.onProcedurePrev === nextProps.onProcedurePrev
+);

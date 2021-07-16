@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect, useContext, useCallback } from "react";
 import "./Tuner.css";
 import SettingsContext from "../../store/settings-context";
 
@@ -12,6 +12,7 @@ import SoundEngine from "../../engine/SoundEngine";
 import { splitProcedure } from "./nonClickable/NonClickableUtils";
 import TunerHeader from "./TunerHeader";
 import TunerFooter from "./TunerFooter";
+import { Temperament } from "../../model/Temperament/Temperament";
 
 export enum TuneMode {
   BEATS = 'Battements', // TODO Find a better way to print text
@@ -28,28 +29,26 @@ const Tuner: React.FC<TunerProps> = ({
 }) => {
 
   const settings = useContext(SettingsContext);
-  const [temperamentId, setTemperamentId] = useState<number>(EqualTemperament.idTemperament);
+  const [isMuted, setIsMuted] = useState<boolean>(true);
+  const [tuneMode, setTuneMode] = useState(TuneMode.BEATS);
+  const [temperament, setTemperament] = useState<Temperament>(EqualTemperament);
+  const [selectedTemperamentId, setSelectedTemperamentId] = useState<number>(temperament.idTemperament);
   const [temperamentsList, setTemperamentsList] = useState<TemperamentDBType[]>([]);
   const [freqA4, setFreqA4] = useState<number>(settings.freqA4);
-  const [isMuted, setIsMuted] = useState<boolean>(true);
   const [stepProcedure, setStepProcedure] = useState<number>(0);
-  const [procedure, setProcedure] = useState<string>("");
-  const [splitedProcedure, setSplitedProcedure] = useState<Array<string>>([""]);
   const [stepTune, setStepTune] = useState<number>(0);
 
-  const [tuneMode, setTuneMode] = useState(TuneMode.BEATS);
-
   useEffect(() => {
-    setMainTitle(tuneMode)
-  }, [tuneMode, setMainTitle]);
+    setFreqA4(settings.freqA4)
+  }, [settings.freqA4]);
 
   useEffect(() => {
     SoundEngine.volume(isMuted ? -128 : -24);
   }, [isMuted]);
 
   useEffect(() => {
-    setFreqA4(settings.freqA4)
-  }, [settings.freqA4]);
+    setMainTitle(tuneMode)
+  }, [tuneMode, setMainTitle]);
 
   useEffect(() => {
     (async () => {
@@ -58,33 +57,35 @@ const Tuner: React.FC<TunerProps> = ({
   }, []);
 
   useEffect(() => {
-    // console.log(temperament);
     (async () => {
-      const temp = await fetchTemperamentPropsById(temperamentId);
-      setProcedure(temp.procedure);
+      setTemperament(await fetchTemperamentPropsById(selectedTemperamentId));
     })();
-  }, [temperamentId])
+  }, [selectedTemperamentId]);
 
-  useEffect(() => {
-    setSplitedProcedure(splitProcedure(procedure));
-  }, [procedure])
+  const onProcedureNext = useCallback(() => { // useCallback for TuneFooter memoizing
+    if (stepProcedure < (splitProcedure(temperament.procedure).length - 1))
+      setStepProcedure(stepProcedure + 1);
+    setStepTune(0);
+  }, [stepProcedure, temperament.procedure]);
 
-  useEffect(() => {
-    // console.log(" procedure : n° "+stepProcedure);
-  }, [stepProcedure])
+  const onProcedurePrev = useCallback(() => { // useCallback for TuneFooter memoizing
+    if (stepProcedure >= 1)
+      setStepProcedure(stepProcedure - 1);
+    setStepTune(0);
+  }, [stepProcedure]);
 
-  console.info('⬜ [Tuner]: Render')
+  console.info('⬜ [Tuner]: Render: list fetched:', temperamentsList.length > 0, ', temperament fetched:', (temperament.idTemperament !== 1 && temperament.deviation !== undefined))
 
   return (
     <div className="h-full flex content-around flex-wrap">
       {/* Temperament and A4 freq inputs */}
       <TunerHeader
-        defaultTemperamentId={temperamentId}
+        defaultTemperamentId={selectedTemperamentId}
         defaultFreqA4={freqA4}
         temperamentsList={temperamentsList}
         onTemperamentChange={(e: any) => {
           setStepProcedure(0);
-          setTemperamentId(e.detail.value)
+          setSelectedTemperamentId(e.detail.value)
         }}
         onFreqA4Change={(e: any) => {
           setStepProcedure(0);
@@ -97,9 +98,9 @@ const Tuner: React.FC<TunerProps> = ({
         <PitchCircle
           tuneMode={tuneMode}
           freqA4={freqA4}
-          idTemperament={temperamentId}
+          idTemperament={temperament.idTemperament}
           stepProcedure={stepProcedure}
-          procedure={splitedProcedure}
+          procedure={splitProcedure(temperament.procedure)}
           stepTune={stepTune}
           setStepTune={setStepTune}
         />
@@ -109,28 +110,24 @@ const Tuner: React.FC<TunerProps> = ({
       <TunerFooter
         isMuted={isMuted}
         tuneMode={tuneMode}
-        canEnterProcedure={procedure !== ''}
+        canEnterProcedure={temperament.procedure !== ''}
         isProcedureFirstStep={stepProcedure === 0}
-        isProcedureLastStep={stepProcedure === splitedProcedure.length - 1}
+        isProcedureLastStep={stepProcedure === splitProcedure(temperament.procedure).length - 1}
         onClickMute={() => setIsMuted(!isMuted)}
         onClickBeats={() => setTuneMode(TuneMode.BEATS)}
         onClickPitchPipe={() => setTuneMode(TuneMode.PITCHPIPE)}
         onEnterProcedure={() => setTuneMode(TuneMode.PROCEDURE)}
         onExitProcedure={() => setTuneMode(TuneMode.BEATS)}
-        onProcedureNext={() => {
-          if (stepProcedure < (splitedProcedure.length - 1))
-            setStepProcedure(stepProcedure + 1);
-          setStepTune(0);
-        }}
-        onProcedurePrev={() => {
-          if (stepProcedure >= 1)
-            setStepProcedure(stepProcedure - 1);
-          setStepTune(0);
-        }}
+        onProcedureNext={onProcedureNext}
+        onProcedurePrev={onProcedurePrev}
         onProcedureRepeatStep={() => setStepTune(0)}
       />
     </div>
   );
 };
 
-export default Tuner;
+export default React.memo(
+  Tuner,
+  (prevProps, nextProps) =>
+    prevProps.setMainTitle === nextProps.setMainTitle
+);

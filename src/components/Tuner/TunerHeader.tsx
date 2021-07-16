@@ -17,6 +17,7 @@ const TunerHeader: React.FC<TunerHeaderProps> = ({
   onTemperamentChange,
   onFreqA4Change,
 }) => {
+  console.info('🔹 [TunerHeader]: Render')
   return (
     <section className="pt-3 px-4 w-full flex items-center justify-between">
       <IonSelect
@@ -52,7 +53,5 @@ export default React.memo(
   (prevProps, nextProps) =>
     prevProps.defaultTemperamentId === nextProps.defaultTemperamentId &&
     prevProps.defaultFreqA4 === nextProps.defaultFreqA4 &&
-    prevProps.temperamentsList === nextProps.temperamentsList &&
-    prevProps.onTemperamentChange === nextProps.onTemperamentChange &&
-    prevProps.onFreqA4Change === nextProps.onFreqA4Change
+    prevProps.temperamentsList === nextProps.temperamentsList
 );
