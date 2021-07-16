@@ -38,7 +38,7 @@ const ComparatorComa: React.FC<ComparatorComaProps> = ({
       <IonContent scroll-y="false">
         <IonSlides pager={true} options={slideOpts}>
           <IonSlide className="px-6">
-            <IonCard>
+            <IonCard className="comma-card">
               <IonCardHeader className="py-1">
                 <IonCardTitle className="px-4 text-left">
                   <h3>Fractions de comas affectant les quintes</h3>
@@ -68,7 +68,7 @@ const ComparatorComa: React.FC<ComparatorComaProps> = ({
            </IonCard>
           </IonSlide>
           <IonSlide className="px-6">
-            <IonCard>
+            <IonCard className="comma-card">
               <IonCardHeader>
                 <IonCardTitle className="px-1 text-left">
                   <h3>Fractions de comas affectant les tierces</h3>

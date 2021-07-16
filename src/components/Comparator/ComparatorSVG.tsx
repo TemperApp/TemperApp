@@ -10,6 +10,8 @@ import ComparatorFifthCircle from './ComparatorFifthCircle';
 import ComparatorNotesCircle from './ComparatorNotesCircle';
 import ComparatorThirdCircle from './ComparatorThirdCircle';
 import { Temperament } from '../../model/Temperament/Temperament';
+import ComparatorComa from './ComparatorComa';
+import ComparatorDivergence from './ComparatorDivergence';
 
 type ComparatorSVGProps = {
   idTemperament1: number,
@@ -37,7 +39,7 @@ const ComparatorSVG: React.FC<ComparatorSVGProps> = ({
 
   return (
     <>
-      <div className="pt-2 justify-center">
+      <div className="pt-2 px-6 justify-center">
         <svg id="comparator" version="1.1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 400 400">
           <ComparatorFifthCircle
             qualityNote1={fifthQ(tmpmt1.cpExp5th)}
@@ -49,6 +51,18 @@ const ComparatorSVG: React.FC<ComparatorSVGProps> = ({
             qualityNote2={thirdQ(tmpmt2.csExp3rd)}
           />
         </svg>
+      </div>
+    
+      <ComparatorComa
+        temperament1={tmpmt1}
+        temperament2={tmpmt2}
+      />
+
+      <div className="px-6 py-1">
+        <ComparatorDivergence
+          temperament1={tmpmt1}
+          temperament2={tmpmt2}
+        />
       </div>
     </>
   );

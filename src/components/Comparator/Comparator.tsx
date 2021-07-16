@@ -7,14 +7,9 @@ import { TemperamentDBType } from '../../engine/DB';
 import './Comparator.css'
 import ComparatorSVG from './ComparatorSVG';
 import EqualTemperament from '../../model/Temperament/Equal';
-import { Temperament } from '../../model/Temperament/Temperament';
-import ComparatorComa from './ComparatorComa';
-import ComparatorDivergence from './ComparatorDivergence';
 
 const Comparator: React.FC = () => {
   
-  const [tmpmt1, setTmpmt1] = useState<Temperament>(EqualTemperament);
-  const [tmpmt2, setTmpmt2] = useState<Temperament>(EqualTemperament);
   const [temperament1, setTemperament1] = useState<TemperamentDBType>(EqualTemperament);
   const [temperament2, setTemperament2] = useState<TemperamentDBType>(EqualTemperament);
   const [temperamentsList, setTemperamentsList] = useState<Array<TemperamentDBType>>([]);
@@ -24,18 +19,6 @@ const Comparator: React.FC = () => {
       setTemperamentsList(await fetchTemperaments());
     })();
   }, []);
-
-  useEffect(() => {
-    (async () => {
-      setTmpmt1(await fetchTemperamentPropsById(temperament1.idTemperament));
-    })();
-  }, [tmpmt1]);
-
-  useEffect(() => {
-    (async () => {
-      setTmpmt2(await fetchTemperamentPropsById(temperament2.idTemperament));
-    })();
-  }, [tmpmt2]);
 
   return (
     <>
@@ -89,24 +72,10 @@ const Comparator: React.FC = () => {
         </IonRow>
       </IonGrid>
 
-      <div className="px-6">
-        <ComparatorSVG
-          idTemperament1={temperament1.idTemperament}
-          idTemperament2={temperament2.idTemperament}
-        />
-      </div>
-
-      <ComparatorComa
-        temperament1={tmpmt1}
-        temperament2={tmpmt2}
+      <ComparatorSVG
+        idTemperament1={temperament1.idTemperament}
+        idTemperament2={temperament2.idTemperament}
       />
-
-      <div className="px-6">
-        <ComparatorDivergence
-          temperament1={tmpmt1}
-          temperament2={tmpmt2}
-        />
-      </div>
     </>
   );
 };
