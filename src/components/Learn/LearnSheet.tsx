@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { IonContent, IonHeader, IonPage } from "@ionic/react";
 import { useParams } from "react-router";
 import ParagraphLearn from "./ParagraphLearn";
@@ -9,8 +9,22 @@ import ResourcesLearn from "./ResourcesLearn";
 import FormulaLearn from "./FormulaLearn";
 import PageHeader from "../../pages/Page/PageHeader";
 
+import { learnSheets } from "../../model/Learn/learnSheets";
+import ReactMarkdown from 'react-markdown';
+import remarkMath from 'remark-math'
+import rehypeKatex from 'rehype-katex'
+import 'katex/dist/katex.min.css' // `rehype-katex` does not import the CSS for you
+
 const LearnSheet: React.FC = () => {
   let { id } = useParams<any>();
+
+  const [md, setMd] = useState('')
+
+  useEffect(() => {
+    setMd(learnSheets[1].content);
+    console.log(md)
+  }, [])
+
   return (
     <IonPage>
       <IonHeader className="ion-no-border page-header">
@@ -22,6 +36,12 @@ const LearnSheet: React.FC = () => {
 
       <IonContent className="learn">
         <div className="px-6">
+
+          <ReactMarkdown
+            remarkPlugins={[remarkMath]}
+            rehypePlugins={[rehypeKatex]}
+            children={md}
+          />
 
           <ParagraphLearn
             titreText = "Titre de paragraphe"
