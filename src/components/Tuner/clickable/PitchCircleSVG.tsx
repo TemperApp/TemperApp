@@ -32,7 +32,7 @@ const PitchCircleSVG: React.FC<PitchCircleSVGProps> = ({
 
   console.info('🔹 [PitchCircleSVG]: Render')
   return (
-    <div className="px-4 max-w-lg">
+    <section className="px-4 pt-2 w-full max-w-lg">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 357.06 357.06"
@@ -65,7 +65,7 @@ const PitchCircleSVG: React.FC<PitchCircleSVGProps> = ({
         />
 
       </svg>
-    </div>
+    </section>
   );
 };
 

@@ -35,7 +35,7 @@ const PitchCircle: React.FC<PitchCircleProps> = ({
 
   console.info('🟣 [PitchCircle]: Render')
   return (
-    <section className="flex justify-center">
+    <>
       {(tuneMode === TuneMode.PROCEDURE)
         ? (<NonClickableProcedure
           freqA4={freqA4}
@@ -52,7 +52,7 @@ const PitchCircle: React.FC<PitchCircleProps> = ({
           btnStates={btnStates}
           dispatchState={dispatchState}
         />)}
-    </section>
+    </>
   );
 };
 
