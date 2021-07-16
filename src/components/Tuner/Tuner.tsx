@@ -74,7 +74,7 @@ const Tuner: React.FC<TunerProps> = ({
     setStepTune(0);
   }, [stepProcedure]);
 
-  console.info('⬜ [Tuner]: Render: list fetched:', temperamentsList.length > 0, ', temperament fetched:', (temperament.idTemperament !== 1 && temperament.deviation !== undefined))
+  console.info('⬜ [Tuner]: Render: list fetched:', temperamentsList.length > 0, ', temperament fetched:', (temperament.idTemperament === selectedTemperamentId && temperament.deviation !== undefined))
 
   return (
     <div className="h-full flex content-around flex-wrap">
@@ -98,7 +98,7 @@ const Tuner: React.FC<TunerProps> = ({
         <PitchCircle
           tuneMode={tuneMode}
           freqA4={freqA4}
-          idTemperament={temperament.idTemperament}
+          temperament={temperament}
           stepProcedure={stepProcedure}
           procedure={splitProcedure(temperament.procedure)}
           stepTune={stepTune}

@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import { Notes } from '../../../model/Note/enums';
 import NotesMap from '../../../model/Note/NotesMap';
 import SettingsContext from '../../../store/settings-context';
 import { convertFifthQualityToColor } from '../../../utils/colorCircle';
@@ -35,6 +36,12 @@ const FifthCircleSVG: React.FC<FifthCircleSVGProps> = ({
 
 export default React.memo(
   FifthCircleSVG,
-  (prevProps, nextProps) =>
-  prevProps.qualities === nextProps.qualities 
+  (prevProps, nextProps) => {
+    for (const note in prevProps.qualities) {
+      const n = note as Notes;
+      if (prevProps.qualities[n] !== nextProps.qualities[n])
+        return false;
+    }
+    return true;
+  }
 );

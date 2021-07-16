@@ -1,4 +1,5 @@
-import { isValidIntervalForAcousticBeat } from '../../model/AcousticBeat';
+import SoundEngine from '../../engine/SoundEngine';
+import { isValidIntervalForAcousticBeat, processAcousticBeat } from '../../model/AcousticBeat';
 import { Notes } from '../../model/Note/enums';
 import Note from '../../model/Note/Note';
 import NotesMap, { mapNotesMap } from '../../model/Note/NotesMap';
@@ -94,3 +95,37 @@ export const btnStatesReducer = (tuneMode: TuneMode) => {
     return btnStates;
   }
 };
+
+
+export const playSound = (
+  btnStates: NotesMap<BtnStates>,
+  freqA4: number,
+  deviations: NotesMap<number>
+) => {
+  const [activeX, activeY] = getActiveBtns(btnStates);
+  const noteX = (activeX) && createNoteFromActive(activeX);
+  const noteY = (activeY) && createNoteFromActive(activeY);
+
+  if (!noteX && !noteY) {
+    SoundEngine.stop();
+  }
+
+  if (noteX && !noteY) {
+    SoundEngine.setPulseBPS(0);
+    SoundEngine.stopAndPlay(noteX.freq(freqA4, deviations));
+  }
+
+  if (noteX && noteY) {
+    const { modulationFreq, carrierFreq } = processAcousticBeat(
+      noteX, noteY, freqA4, deviations
+    );
+
+    if (modulationFreq && carrierFreq) {
+      SoundEngine.setPulseBPS(modulationFreq);
+      let heardFreq = carrierFreq;
+      while (heardFreq > 1000)
+        heardFreq /= 2;
+      SoundEngine.stopAndPlay(heardFreq);
+    }
+  }
+}

@@ -3,12 +3,13 @@ import PitchCircleSVG from './clickable/PitchCircleSVG';
 import NonClickableProcedure from './nonClickable/NonClickableProcedure';
 import { TuneMode } from './Tuner';
 import { mapNotesMap } from '../../model/Note/NotesMap';
-import { BtnActions, btnStatesReducer, BtnStates } from './PitchCircleController';
+import { BtnActions, btnStatesReducer, BtnStates, playSound } from './PitchCircleController';
+import { Temperament } from '../../model/Temperament/Temperament';
 
 type PitchCircleProps = {
   tuneMode: TuneMode,
   freqA4: number,
-  idTemperament: number,
+  temperament: Temperament,
   stepProcedure?: number,
   procedure?: Array<string>,
   stepTune?: number,
@@ -16,7 +17,7 @@ type PitchCircleProps = {
 };
 
 const PitchCircle: React.FC<PitchCircleProps> = ({
-  tuneMode, freqA4, idTemperament, stepProcedure, procedure, stepTune, setStepTune
+  tuneMode, freqA4, temperament, stepProcedure, procedure, stepTune, setStepTune
 }) => {
 
   const [btnStates, dispatchState] = useReducer(
@@ -29,13 +30,17 @@ const PitchCircle: React.FC<PitchCircleProps> = ({
     dispatchState({ type: BtnActions.SET_ALL_IDLE });
   }, [tuneMode]);
 
+  useEffect(() => {
+    playSound(btnStates, freqA4, temperament.deviation)
+  }, [btnStates, freqA4, temperament.deviation]);
+
   console.info('🟣 [PitchCircle]: Render')
   return (
     <section className="flex justify-center">
       {(tuneMode === TuneMode.PROCEDURE)
         ? (<NonClickableProcedure
           freqA4={freqA4}
-          idTemperament={idTemperament}
+          idTemperament={temperament.idTemperament}
           centerCircle={true}
           stepProcedure={stepProcedure}
           procedure={procedure}
@@ -44,7 +49,7 @@ const PitchCircle: React.FC<PitchCircleProps> = ({
         />)
         : (<PitchCircleSVG
           freqA4={freqA4}
-          idTemperament={idTemperament}
+          temperament={temperament}
           btnStates={btnStates}
           dispatchState={dispatchState}
         />)}
@@ -57,7 +62,7 @@ export default React.memo(
   (prevProps, nextProps) => 
     prevProps.tuneMode === nextProps.tuneMode &&
     prevProps.freqA4 === nextProps.freqA4 &&
-    prevProps.idTemperament === nextProps.idTemperament &&
+    prevProps.temperament === nextProps.temperament &&
     prevProps.stepProcedure === nextProps.stepProcedure &&
     prevProps.procedure === nextProps.procedure &&
     prevProps.stepTune === nextProps.stepTune &&
