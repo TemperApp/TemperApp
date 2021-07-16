@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useReducer } from 'react';
+import React, { useEffect, useReducer } from 'react';
 import PitchCircleSVG from './clickable/PitchCircleSVG';
 import NonClickableProcedure from './nonClickable/NonClickableProcedure';
 import { TuneMode } from './Tuner';
@@ -21,8 +21,7 @@ const PitchCircle: React.FC<PitchCircleProps> = ({
 }) => {
 
   const [btnStates, dispatchState] = useReducer(
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    useCallback(btnStatesReducer(tuneMode), [tuneMode]),
+    btnStatesReducer(tuneMode),
     mapNotesMap(BtnStates.IDLE)
   );
 
@@ -59,7 +58,7 @@ const PitchCircle: React.FC<PitchCircleProps> = ({
 
 export default React.memo(
   PitchCircle,
-  (prevProps, nextProps) => 
+  (prevProps, nextProps) =>
     prevProps.tuneMode === nextProps.tuneMode &&
     prevProps.freqA4 === nextProps.freqA4 &&
     prevProps.temperament === nextProps.temperament &&

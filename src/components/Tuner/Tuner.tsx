@@ -78,7 +78,6 @@ const Tuner: React.FC<TunerProps> = ({
 
   return (
     <div className="h-full flex content-around flex-wrap">
-      {/* Temperament and A4 freq inputs */}
       <TunerHeader
         defaultTemperamentId={selectedTemperamentId}
         defaultFreqA4={freqA4}
@@ -93,7 +92,6 @@ const Tuner: React.FC<TunerProps> = ({
         }}
       />
 
-      {/* Pitch circle buttons and wheels */}
       <section className="w-full">
         <PitchCircle
           tuneMode={tuneMode}
@@ -106,7 +104,6 @@ const Tuner: React.FC<TunerProps> = ({
         />
       </section>
 
-      {/* Buttons at the bottom */}
       <TunerFooter
         isMuted={isMuted}
         tuneMode={tuneMode}
