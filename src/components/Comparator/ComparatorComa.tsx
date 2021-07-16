@@ -36,8 +36,8 @@ const ComparatorComa: React.FC<ComparatorComaProps> = ({
   return (
     <>
       <IonContent scroll-y="false">
-        <IonSlides pager={true} options={slideOpts} className="h-100">
-          <IonSlide>
+        <IonSlides pager={true} options={slideOpts}>
+          <IonSlide className="px-6">
             <IonCard>
               <IonCardHeader className="py-1">
                 <IonCardTitle className="px-4 text-left">
@@ -45,7 +45,7 @@ const ComparatorComa: React.FC<ComparatorComaProps> = ({
                 </IonCardTitle>
               </IonCardHeader>
               <IonCardContent> 
-                <div className="w-100 flex justify-center">
+                <div className="w-full flex justify-center">
                   <svg className="comparator-comas" viewBox="15 0 350 351" fill="none" xmlns="http://www.w3.org/2000/svg">                <ComparatorFifthComaCircle
                       temperament1={temperament1}
                       temperament2={temperament2}
@@ -67,7 +67,7 @@ const ComparatorComa: React.FC<ComparatorComaProps> = ({
              </IonCardContent>
            </IonCard>
           </IonSlide>
-          <IonSlide>
+          <IonSlide className="px-6">
             <IonCard>
               <IonCardHeader>
                 <IonCardTitle className="px-1 text-left">

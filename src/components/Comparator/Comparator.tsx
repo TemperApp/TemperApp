@@ -1,15 +1,20 @@
 import React, { useEffect, useState } from 'react';
 import { IonButton, IonCol, IonGrid, IonIcon, IonRow, IonSelect, IonSelectOption } from '@ionic/react';
-import { fetchTemperaments } from '../../engine/DataAccessor';
+import { fetchTemperamentPropsById, fetchTemperaments } from '../../engine/DataAccessor';
 import { TemperamentDBType } from '../../engine/DB';
 
 //Style
 import './Comparator.css'
 import ComparatorSVG from './ComparatorSVG';
 import EqualTemperament from '../../model/Temperament/Equal';
+import { Temperament } from '../../model/Temperament/Temperament';
+import ComparatorComa from './ComparatorComa';
+import ComparatorDivergence from './ComparatorDivergence';
 
 const Comparator: React.FC = () => {
-
+  
+  const [tmpmt1, setTmpmt1] = useState<Temperament>(EqualTemperament);
+  const [tmpmt2, setTmpmt2] = useState<Temperament>(EqualTemperament);
   const [temperament1, setTemperament1] = useState<TemperamentDBType>(EqualTemperament);
   const [temperament2, setTemperament2] = useState<TemperamentDBType>(EqualTemperament);
   const [temperamentsList, setTemperamentsList] = useState<Array<TemperamentDBType>>([]);
@@ -20,9 +25,21 @@ const Comparator: React.FC = () => {
     })();
   }, []);
 
+  useEffect(() => {
+    (async () => {
+      setTmpmt1(await fetchTemperamentPropsById(temperament1.idTemperament));
+    })();
+  }, [tmpmt1]);
+
+  useEffect(() => {
+    (async () => {
+      setTmpmt2(await fetchTemperamentPropsById(temperament2.idTemperament));
+    })();
+  }, [tmpmt2]);
+
   return (
     <>
-      <IonGrid className="px-5">
+      <IonGrid className="px-6">
         <IonRow>
           <IonCol size="5.25">
             <span className="select-label pb-1">
@@ -72,10 +89,24 @@ const Comparator: React.FC = () => {
         </IonRow>
       </IonGrid>
 
-      <ComparatorSVG
-        idTemperament1={temperament1.idTemperament}
-        idTemperament2={temperament2.idTemperament}
+      <div className="px-6">
+        <ComparatorSVG
+          idTemperament1={temperament1.idTemperament}
+          idTemperament2={temperament2.idTemperament}
+        />
+      </div>
+
+      <ComparatorComa
+        temperament1={tmpmt1}
+        temperament2={tmpmt2}
       />
+
+      <div className="px-6">
+        <ComparatorDivergence
+          temperament1={tmpmt1}
+          temperament2={tmpmt2}
+        />
+      </div>
     </>
   );
 };
