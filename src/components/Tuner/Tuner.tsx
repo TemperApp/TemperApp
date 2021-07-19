@@ -12,8 +12,9 @@ import SoundEngine from "../../engine/SoundEngine";
 import TunerHeaderSelect from "./TunerHeaderSelect";
 import TunerFooter from "./TunerFooter";
 import { Temperament } from "../../model/Temperament/Temperament";
-import { Procedure } from "../../model/Procedure";
+import { ProcAction, Procedure } from "../../model/Procedure";
 import TunerHeaderPiano from "./TunerHeaderPiano";
+import Note from "../../model/Note/Note";
 
 export enum TuneMode {
   BEATS = 'Battements', // TODO Find a better way to print text
@@ -39,6 +40,7 @@ const Tuner: React.FC<TunerProps> = ({
   const [proc, setProc] = useState<Procedure | null>(null);
   const [procStepIdx, setProcStepIdx] = useState<number>(0);
   const [procRepeatCount, setProcRepeatCount] = useState<number>(0);
+  const [pianoColor, setPianoColor] = useState<Array<string>>([]);
 
   useEffect(() => {
     setFreqA4(settings.freqA4)
@@ -70,7 +72,18 @@ const Tuner: React.FC<TunerProps> = ({
   }, [temperament]);
 
   useEffect(() => {
-  }, [procStepIdx]);
+    let i = 0;
+    let Piano = [];
+    while(proc?.hasNext(i-1)){
+      const temp = proc.steps[i];
+      if(temp.action === ProcAction.TUNE_UNIQUE)
+        Piano.push(temp.noteX.string());
+      if(temp.action === ProcAction.TUNE_OCTAVE || temp.action === ProcAction.TUNE_PAIR )
+        Piano.push(temp.noteY.string());
+      i++;
+    }
+    setPianoColor(Piano);
+  }, [proc]);
 
   const onProcedureNext = useCallback(() => { // useCallback for TuneFooter memoizing
     setProcStepIdx(procStepIdx + 1);
@@ -104,7 +117,8 @@ const Tuner: React.FC<TunerProps> = ({
 
   const headerPiano = (
     <TunerHeaderPiano
-      temperamentId = {selectedTemperamentId}
+      pianoColor = {pianoColor}
+      procStepIdx = {procStepIdx}
     />
   )
 

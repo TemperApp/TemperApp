@@ -62,7 +62,21 @@
 
 .pianoKeys {
   fill: #ffffff;
-  stroke: #000000;
+  stroke: #010202;
+  stroke-width: 0.5;
+  stroke-miterlimit: 10;
+}
+
+.pianoKeysColored {
+  fill: #77ef00;
+  stroke: #010202;
+  stroke-width: 0.5;
+  stroke-miterlimit: 10;
+}
+
+.pianoBlackKeys {
+  fill: #010202;
+  stroke: #010202;
   stroke-width: 0.5;
   stroke-miterlimit: 10;
 }
@@ -81,4 +95,9 @@
 }
 .st3 {
   font-size: 14px;
+}
+
+.testHeader {
+  min-height: calc(94.6px + (0.5rem));
+  max-height: calc(94.6px + (0.5rem));
 }

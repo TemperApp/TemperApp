@@ -20,7 +20,7 @@ const TunerHeaderSelect: React.FC<TunerHeaderProps> = ({
   //console.info('🔹 [TunerHeader]: Render')
 
   return (
-    <section className="pt-3 px-4 w-full flex items-center justify-between">
+    <section className="pt-3 px-4 w-full flex items-center justify-between testHeader">
       <IonSelect
         className="flex-grow"
         value={defaultTemperamentId}
