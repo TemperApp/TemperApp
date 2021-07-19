@@ -1,5 +1,6 @@
 import React from "react";
 import {
+  IonButton,
   IonContent,
   IonHeader,
   IonIcon,
@@ -32,12 +33,15 @@ const Sheet: React.FC<SheetProps> = ({
 
       <IonContent className="sheet">
         <section className="px-6">
-          <div className="fixed h-10 w-10 right-4">
-            <IonIcon
-              className="icon-grey"
-              style={{ fontSize: "2.8rem" } /* TODO Find a better way */}
-              src="/assets/logotypes/bookmark.svg"
-            />
+          <div className="absolute h-10 w-10 right-4">
+            <IonButton
+              fill="clear">
+              <IonIcon
+                className="h-full p-0 m-0"
+                style={{ fontSize: "2.8rem" } /* TODO Find a better way */}
+                src="/assets/logotypes/icon-bookmark.svg"
+              />
+            </IonButton>
           </div>
 
           <div className="pt-3">

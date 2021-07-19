@@ -20,7 +20,7 @@ const Home: React.FC = () => {
   return (
     <IonPage>
       <IonHeader className="ion-no-border page-header">
-        <div className="px-6">
+        <div className="px-12">
           <IonImg
             src={(settings.darkTheme)
                 ? "../../assets/logotypes/temperapp_logo-dark.svg"
@@ -29,10 +29,9 @@ const Home: React.FC = () => {
           />
         </div>
         <IonIcon
-          className="absolute top-0 right-0 mt-4 p-5 h-7 w-7"
-          style={{ fill: "var(--color-contrast)" }}
+          className="absolute top-0 right-0 mt-4 px-5 h-9 w-9"
           onClick={() => setShowModal(true)}
-          icon={ellipsisVertical}
+          src="assets/logotypes/icon-settings.svg"
         />
       </IonHeader>
 

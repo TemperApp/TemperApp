@@ -2,13 +2,14 @@ import React from 'react';
 import { IonButton, IonIcon } from '@ionic/react';
 import { reload } from 'ionicons/icons';
 import { TuneMode } from './Tuner';
+import Toggler from '../inputs/Toggler';
 
 const TunerFooter: React.FC<any> = ({ // TODO Update any
   tuneMode,
   isMuted,
-  canEnterProcedure,
-  isProcedureFirstStep,
-  isProcedureLastStep,
+  enableEnterProcedure,
+  enableProcedurePrev,
+  enableProcedureNext,
   onClickMute,
   onClickBeats,
   onClickPitchPipe,
@@ -18,13 +19,13 @@ const TunerFooter: React.FC<any> = ({ // TODO Update any
   onProcedurePrev,
   onProcedureRepeatStep,
 }) => {
-  console.info('🔹 [TunerFooter]: Render')
+  // console.info('🔹 [TunerFooter]: Render')
 
   const btnEnterProcedure = (
     <IonButton
       className='btn-round'
-      disabled={!canEnterProcedure}
-      onClick={(canEnterProcedure) ? onEnterProcedure : () => { }}
+      disabled={!enableEnterProcedure}
+      onClick={(enableEnterProcedure) ? onEnterProcedure : () => { }}
     >
       <IonIcon
         style={{ fontSize: "3rem" } /* TODO Find a better way */}
@@ -47,8 +48,9 @@ const TunerFooter: React.FC<any> = ({ // TODO Update any
 
   const btnProcedurePrev = (
     <IonButton
-      className='no-ripple'
+      className='h-12 no-ripple'
       fill="clear"
+      disabled={!enableProcedurePrev}
       onClick={onProcedurePrev}
     >
       <IonIcon className="h-9 w-9"
@@ -56,7 +58,7 @@ const TunerFooter: React.FC<any> = ({ // TODO Update any
         src="/assets/logotypes/icon-procedure-left.svg"
         style={{
           fontSize: "3rem", /* TODO Find a better way */
-          stroke: (isProcedureFirstStep) ? "var(--color-grey)" : "var(--color-button)"
+          stroke: (enableProcedurePrev) ? "var(--color-button)" : "var(--color-grey)"
         }}
       />
     </IonButton>
@@ -64,8 +66,9 @@ const TunerFooter: React.FC<any> = ({ // TODO Update any
 
   const btnProcedureNext = (
     <IonButton
-      className='no-ripple'
+      className='h-12 no-ripple'
       fill="clear"
+      disabled={!enableProcedureNext}
       onClick={onProcedureNext}
     >
       <IonIcon className="h-9 w-9"
@@ -73,7 +76,7 @@ const TunerFooter: React.FC<any> = ({ // TODO Update any
         src="/assets/logotypes/icon-procedure-right.svg"
         style={{
           fontSize: "3rem", /* TODO Find a better way */
-          stroke: (isProcedureLastStep) ? "var(--color-grey)" : "var(--color-button)"
+          stroke: (enableProcedureNext) ? "var(--color-button)" : "var(--color-grey)"
         }}
       />
     </IonButton>
@@ -81,7 +84,7 @@ const TunerFooter: React.FC<any> = ({ // TODO Update any
 
   const btnMute = (
     <IonButton
-      className='no-ripple'
+      className='h-12 no-ripple'
       fill="clear"
       onClick={onClickMute}
     >
@@ -99,11 +102,12 @@ const TunerFooter: React.FC<any> = ({ // TODO Update any
 
   const btnProcedureRepeatStep = (
     <IonButton
-      className='no-ripple'
+      className='h-12 w-20 m-0 no-ripple'
       fill="clear"
       onClick={onProcedureRepeatStep}
     >
       <IonIcon
+        className="pr-2"
         style={{ fontSize: "2rem" }}
         src={reload}
         slot="icon-only"
@@ -130,31 +134,31 @@ const TunerFooter: React.FC<any> = ({ // TODO Update any
 
       {(tuneMode !== TuneMode.PROCEDURE)
         && (
-          <div className="w-20 btn-mode">
-            <IonButton
-              onClick={onClickBeats}
-              className={`btn-mode-bpm m-0 p-0
-                ${tuneMode === TuneMode.BEATS ? " btn-mode-activated" : ""}`}
-            >
-              <IonIcon
-                style={{ fontSize: "1em" }}
-                src="/assets/logotypes/icon-tuner-bpm-mode.svg"
-              ></IonIcon>
-            </IonButton>
-            <IonButton
-              onClick={onClickPitchPipe}
-              className={`btn-mode-hz m-0 p-0
-                ${tuneMode === TuneMode.PITCHPIPE ? " btn-mode-activated" : ""}`}
-            >
-              <IonIcon
-                style={{ fontSize: "1em" }}
-                src="/assets/logotypes/icon-tuner-hz-mode.svg"
-              ></IonIcon>
-            </IonButton>
-          </div>
+          <Toggler 
+            typeContentText={false}
+            sizeSVG = '1em'
+            contentLeft = '/assets/logotypes/icon-tuner-bpm-mode.svg'
+            contentRight = '/assets/logotypes/icon-tuner-hz-mode.svg'
+            conditionLeft = {tuneMode === TuneMode.BEATS}
+            conditionRight = {tuneMode === TuneMode.PITCHPIPE}
+            onClickLeft = {onClickBeats} 
+            onClickRight = {onClickPitchPipe}
+
+          />
         )}
     </section>
   );
 };
 
-export default TunerFooter;
+export default React.memo(
+  TunerFooter,
+  (prevProps, nextProps) => 
+    prevProps.tuneMode === nextProps.tuneMode &&
+    prevProps.isMuted === nextProps.isMuted &&
+    prevProps.enableEnterProcedure === nextProps.enableEnterProcedure &&
+    prevProps.enableProcedurePrev === nextProps.enableProcedurePrev &&
+    prevProps.enableProcedureNext === nextProps.enableProcedureNext &&
+    prevProps.onProcedureNext === nextProps.onProcedureNext &&
+    prevProps.onProcedurePrev === nextProps.onProcedurePrev &&
+    prevProps.onProcedureRepeatStep === nextProps.onProcedureRepeatStep
+);

@@ -14,6 +14,7 @@ import { Temperament } from "../../model/Temperament/Temperament";
 import { fifthQ, thirdQ } from "../../model/Divergence";
 import ComparatorThirdComaCircle from "./ComparatorThirdComaCircle";
 import ComparatorFifthComaCircle from "./ComparatorFifthComaCircle";
+import Toggler from "../inputs/Toggler";
 
 type ComparatorComaProps = {
   temperament1: Temperament,
@@ -35,16 +36,16 @@ const ComparatorComa: React.FC<ComparatorComaProps> = ({
   return (
     <>
       <IonContent scroll-y="false">
-        <IonSlides pager={true} options={slideOpts} className="h-100">
-          <IonSlide>
-            <IonCard className = "commaCard">
+        <IonSlides pager={true} options={slideOpts}>
+          <IonSlide className="px-6">
+            <IonCard className="comma-card">
               <IonCardHeader className="py-1">
-                <IonCardTitle className="px-1 text-left">
+                <IonCardTitle className="px-4 text-left">
                   <h3>Fractions de comas affectant les quintes</h3>
                 </IonCardTitle>
               </IonCardHeader>
               <IonCardContent> 
-                <div className="w-100 flex justify-center">
+                <div className="w-full flex justify-center">
                   <svg className="comparator-comas" viewBox="15 0 350 351" fill="none" xmlns="http://www.w3.org/2000/svg">                <ComparatorFifthComaCircle
                       temperament1={temperament1}
                       temperament2={temperament2}
@@ -53,27 +54,21 @@ const ComparatorComa: React.FC<ComparatorComaProps> = ({
                       isCpMode={isCpMode}
                   /></svg>
                 </div>
-                <div className="w-20 btn-mode">
-                  <IonButton
-                    onClick={() => setCpMode(false)}
-                    className={`btn-mode-bpm m-0
-                      ${!isCpMode ? " btn-mode-activated" : ""}`} 
-                  >
-                    cs
-                  </IonButton>
-                  <IonButton
-                    onClick={() => setCpMode(true)}
-                    className={`btn-mode-hz m-0
-                      ${isCpMode ? " btn-mode-activated" : ""}`}
-                  >
-                    cp
-                  </IonButton>
-                </div>
+                <Toggler 
+                  typeContentText={true}
+                  contentLeft = 'Cs'
+                  contentRight = 'Cp'
+                  conditionLeft = {!isCpMode }
+                  conditionRight = {isCpMode}
+                  onClickLeft = {() => setCpMode(false)} 
+                  onClickRight = {() => setCpMode(true)}
+
+                />
              </IonCardContent>
            </IonCard>
           </IonSlide>
-          <IonSlide>
-            <IonCard className = "commaCard">
+          <IonSlide className="px-6">
+            <IonCard className="comma-card">
               <IonCardHeader>
                 <IonCardTitle className="px-1 text-left">
                   <h3>Fractions de comas affectant les tierces</h3>

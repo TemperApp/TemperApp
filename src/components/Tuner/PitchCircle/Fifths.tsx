@@ -1,21 +1,24 @@
 import React, { useContext } from 'react';
-import NotesMap from '../../../model/Note/NotesMap';
 import SettingsContext from '../../../store/settings-context';
+
+import { Notes } from '../../../model/Note/enums';
+import NotesMap from '../../../model/Note/NotesMap';
+
 import { convertFifthQualityToColor } from '../../../utils/colorCircle';
 
-type FifthCircleSVGProps = {
+type PitchCircleFifthsProps = {
   qualities: NotesMap<number | null>
 };
 
-const FifthCircleSVG: React.FC<FifthCircleSVGProps> = ({
+const PitchCircleFifths: React.FC<PitchCircleFifthsProps> = ({
   qualities
 }) => {
   const settings = useContext(SettingsContext);
   
-  console.info('🔹 [FifthCircleSVG]: Render')
+  // console.info('🔹 [PitchCircleFifths]: Render')
   return (
     <>
-      <g id="Fifth">
+      <g id="pc-fifthcircle">
         <path data-name="C"       stroke="var(--color-hover)" strokeWidth="1" fill={convertFifthQualityToColor(qualities.C, settings.darkTheme)}       d="M226.15,7.71l-7,25.93a152.2,152.2,0,0,0-78.59.36l-7-25.94A179.38,179.38,0,0,1,226.15,7.71Z" transform="translate(-2.04 -1.82)"/>
         <path data-name="G"       stroke="var(--color-hover)" strokeWidth="1" fill={convertFifthQualityToColor(qualities.G, settings.darkTheme)}       d="M306.39,53.94,287.53,72.8A150.79,150.79,0,0,0,219.2,33.64l7-25.93A177.29,177.29,0,0,1,289.41,38.8l.27.21,1.11.88A196.43,196.43,0,0,1,306.39,53.94Z" transform="translate(-2.04 -1.82)"/>
         <path data-name="D"       stroke="var(--color-hover)" strokeWidth="1" fill={convertFifthQualityToColor(qualities.D, settings.darkTheme)}       d="M306.39,53.94c23.27,23.27,37.79,48.43,46.31,80.22L327.09,141a150.85,150.85,0,0,0-39.27-67.93l-.29-.29Z" transform="translate(-2.04 -1.82)"/>
@@ -34,7 +37,13 @@ const FifthCircleSVG: React.FC<FifthCircleSVGProps> = ({
 };
 
 export default React.memo(
-  FifthCircleSVG,
-  (prevProps, nextProps) =>
-  prevProps.qualities === nextProps.qualities 
+  PitchCircleFifths,
+  (prevProps, nextProps) => {
+    for (const note in prevProps.qualities) {
+      const n = note as Notes;
+      if (prevProps.qualities[n] !== nextProps.qualities[n])
+        return false;
+    }
+    return true;
+  }
 );

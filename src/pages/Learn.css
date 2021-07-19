@@ -14,7 +14,7 @@
 
 /*Composants avec boites*/
 .learn-box {
-  background: var(--background);
+  background: var(--color-theme);
   box-shadow: var(--color-shadow);
   border-radius: 8px;
   padding: 5px 10px 15px 10px;
@@ -46,6 +46,8 @@ span.ion-text-left {
 ion-button.learn-resources-btn::part(native) {
   --padding-start: 1em !important;
   --padding-end: 1em !important;
+  background: var(--color-theme);
+  color: var(--color-contrast);
 }
 
 .learn-element {

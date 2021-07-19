@@ -7,12 +7,12 @@ import PageModal from "./Page/PageModal";
 
 const CompareModalContent: React.FC = () => (
   <>
-    <h3>Comment comparer ?</h3>
+    <h4>Comment comparer ?</h4>
     <p className="p-long">
       Il est possible de comparer deux tempéraments pour visualiser
       rapidement la différence de pureté des tierces et des quintes. Les
-      quintes sont représentées à l'intérieur et les tierces à
-      l'extérieur.
+      quintes sont représentées à l'extérieur et les tierces à
+      l'intérieur.
     </p>
     <p className="p-long">
       Le 1er tempérament entoure la roue des notes :

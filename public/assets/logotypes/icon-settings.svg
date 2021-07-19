@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 26.458 26.458">
+    <g transform="matrix(.50713 0 0 .50713 60.542 -28.013)">
+        <path
+            style="fill:var(--color-contrast);fill-opacity:1;stroke:var(--color-contrast);stroke-width:2.665;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+            d="m-73.69 77.516 5.054 1.488v4.46l-5.053 1.838z" />
+        <circle r="17.865" cy="81.607" cx="-93.099"
+            style="fill:none;stroke:var(--color-contrast);stroke-width:5;stroke-linecap:round;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+        <path
+            style="fill:var(--color-contrast);fill-opacity:1;stroke:var(--color-contrast);stroke-width:2.665;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+            d="m-96.992 62.53 1.489-5.054h4.46l1.837 5.053zM-96.992 100.288l1.489 5.053h4.46l1.837-5.052zM-112.509 77.516l-5.053 1.488v4.46l5.053 1.838zM-76.516 92.39l2.52 4.626-3.153 3.153-4.872-2.273zM-103.906 98.082l-4.626 2.52-3.153-3.153 2.273-4.871zM-109.599 70.692l-2.52-4.625 3.154-3.154 4.871 2.273zM-82.208 65l4.625-2.52 3.154 3.153-2.273 4.872z" />
+        <circle
+            style="fill:none;fill-opacity:1;stroke:var(--color-contrast);stroke-width:3.73155;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+            cx="-93.099" cy="81.409" r="9.262" />
+    </g>
+</svg>

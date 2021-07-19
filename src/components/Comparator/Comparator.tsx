@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { IonButton, IonCol, IonGrid, IonIcon, IonRow, IonSelect, IonSelectOption } from '@ionic/react';
-import { fetchTemperaments } from '../../engine/DataAccessor';
+import { fetchTemperamentPropsById, fetchTemperaments } from '../../engine/DataAccessor';
 import { TemperamentDBType } from '../../engine/DB';
 
 //Style
@@ -9,7 +9,7 @@ import ComparatorSVG from './ComparatorSVG';
 import EqualTemperament from '../../model/Temperament/Equal';
 
 const Comparator: React.FC = () => {
-
+  
   const [temperament1, setTemperament1] = useState<TemperamentDBType>(EqualTemperament);
   const [temperament2, setTemperament2] = useState<TemperamentDBType>(EqualTemperament);
   const [temperamentsList, setTemperamentsList] = useState<Array<TemperamentDBType>>([]);
@@ -22,7 +22,7 @@ const Comparator: React.FC = () => {
 
   return (
     <>
-      <IonGrid className="px-5">
+      <IonGrid className="px-6">
         <IonRow>
           <IonCol size="5.25">
             <span className="select-label pb-1">
@@ -49,7 +49,7 @@ const Comparator: React.FC = () => {
                 setTemperament2(temp);
               }
             }}>
-              <IonIcon
+              <IonIcon className="flex items-end"
                 src="assets/logotypes/icon-exchange.svg"
                 style={{stroke:"var(--color-contrast)"}}
               ></IonIcon>

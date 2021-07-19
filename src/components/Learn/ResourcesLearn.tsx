@@ -22,16 +22,15 @@ const ResourcesLearn: React.FC<resourcesProps> = ({ resourcesList }) => {
     if(r.url !== ""){
       return(
         <IonButton
-        key={idx}
-        className="learn-resources-btn"
-        expand="block"
-        color="light"
-        href={r.url}
-        >
-        <span className="ion-text-left">
-          {r.book}
-        </span>
-
+          key={idx}
+          className="learn-resources-btn h-11"
+          expand="block"
+          color="light"
+          href={r.url}
+          >
+          <span className="ion-text-left">
+            {r.book}
+          </span>
         </IonButton>
       );
     }
@@ -39,7 +38,7 @@ const ResourcesLearn: React.FC<resourcesProps> = ({ resourcesList }) => {
 
   return (
     <div className="LearnResources">
-      <h3 className="TitleParagraphLearn">Ressources</h3>
+      <h3 className="TitleParagraphLearn py-3">Ressources</h3>
       {resourcesList.map((r, idx) => {
         let longTitle = completeTitle(r);
         let btn = buttonWithLink(r,idx);

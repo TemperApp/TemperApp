@@ -13,7 +13,7 @@ export const cpExp5thStrToNumber = (cpExp5th: string): number | null => {
   const match = cpExp5th.trim()
     .match(/^[+-]?0+$|^([+-])?([0-9]+)\/(([0-9]*[.])?[0-9]+)$/) as any[];
   if (!match) {
-    console.warn(`[Model]: Cannot parse cpExp5th string: ${cpExp5th}`);
+    console.warn('[Divergence]: Cannot parse cpExp5th string:', cpExp5th);
     return null;
   }
   if (String(Number(match[0])) === '0')
@@ -39,7 +39,7 @@ export const csExp3rdStrToNumber = (csExp3rd: string): number | null => {
     .match(/^[+-]?0+$|^([+-])?([0-9]+)\/11$/) as any[];
 
   if (!match) {
-    console.warn(`[Model]: Cannot parse csExp3rd string: ${csExp3rd}`);
+    console.warn('[Divergence]: Cannot parse csExp3rd string:', csExp3rd);
     return null;
   }
   if (String(Number(match[0])) === '0')

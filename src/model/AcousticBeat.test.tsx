@@ -1,4 +1,4 @@
-import { processAcousticBeat } from './AcousticBeat';
+import { acousticBeat } from './AcousticBeat';
 import { Notes } from './Note/enums';
 import Note from './Note/Note';
 
@@ -19,8 +19,8 @@ const meantone14gsebDeviation = {
 };
 
 
-test('processAcousticBeat_fifth_440_equal', () => {
-  expect(processAcousticBeat(
+test('acousticBeat_fifth_440_equal', () => {
+  expect(acousticBeat(
     Note.create(Notes.E, 4),
     Note.create(Notes.B, 4),
     440
@@ -30,8 +30,8 @@ test('processAcousticBeat_fifth_440_equal', () => {
   }, 2);
 });
   
-test('processAcousticBeat_maj3_440_equal', () => {
-  expect(processAcousticBeat(
+test('acousticBeat_maj3_440_equal', () => {
+  expect(acousticBeat(
     Note.create(Notes.C, 4),
     Note.create(Notes.E, 4),
     440
@@ -41,8 +41,8 @@ test('processAcousticBeat_maj3_440_equal', () => {
   }, 2);
 });
   
-test('processAcousticBeat_fourth_440_equal', () => {
-  expect(processAcousticBeat(
+test('acousticBeat_fourth_440_equal', () => {
+  expect(acousticBeat(
     Note.create(Notes.A, 3),
     Note.create(Notes.D, 4),
     440
@@ -53,8 +53,8 @@ test('processAcousticBeat_fourth_440_equal', () => {
 });
 
 
-test('processAcousticBeat_432_equal', () => {
-  expect(processAcousticBeat(
+test('acousticBeat_432_equal', () => {
+  expect(acousticBeat(
     Note.create(Notes.E, 4),
     Note.create(Notes.B, 4),
     432
@@ -63,7 +63,7 @@ test('processAcousticBeat_432_equal', () => {
     modulationFreq: 1.10
   }, 2);
   
-  expect(processAcousticBeat(
+  expect(acousticBeat(
     Note.create(Notes.C, 4),
     Note.create(Notes.E, 4),
     432
@@ -72,7 +72,7 @@ test('processAcousticBeat_432_equal', () => {
     modulationFreq: 10.19
   }, 2);
   
-  expect(processAcousticBeat(
+  expect(acousticBeat(
     Note.create(Notes.A, 3),
     Note.create(Notes.D, 4),
     432
@@ -84,8 +84,8 @@ test('processAcousticBeat_432_equal', () => {
 
 
 
-test('processAcousticBeat_440_meantone-1-4-g#eb', () => {
-  expect(processAcousticBeat(
+test('acousticBeat_440_meantone-1-4-g#eb', () => {
+  expect(acousticBeat(
     Note.create(Notes.G_sharp, 3),
     Note.create(Notes.E_flat, 4),
     440, meantone14gsebDeviation
@@ -94,7 +94,7 @@ test('processAcousticBeat_440_meantone-1-4-g#eb', () => {
     modulationFreq: 12.84
   }, 2);
   
-  expect(processAcousticBeat(
+  expect(acousticBeat(
     Note.create(Notes.C_sharp, 4),
     Note.create(Notes.F, 4),
     440, meantone14gsebDeviation
@@ -103,7 +103,7 @@ test('processAcousticBeat_440_meantone-1-4-g#eb', () => {
     modulationFreq: 33.00
   }, 2);
   
-  expect(processAcousticBeat(
+  expect(acousticBeat(
     Note.create(Notes.B_flat, 4),
     Note.create(Notes.D, 5),
     440, meantone14gsebDeviation

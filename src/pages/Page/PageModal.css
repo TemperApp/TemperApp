@@ -24,10 +24,11 @@
 .btn-quit {
   display: inline;
   flex-shrink: 0;
-  background-color: var(--color-sec);
+  background-color: transparent;
   border-radius: 50%;
 }
 
+ /*
 .btn-quit::after {
   content: "\00D7";
   vertical-align: 20%;
@@ -35,6 +36,7 @@
   color: var(--color-theme);
   font-size: 28px;
 }
+*/
 
 .pm-content {
   overflow-y: scroll;

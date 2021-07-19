@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 26.458 26.458" height="100" width="100">
+    <path
+        style="fill:none;stroke:var(--color-button);stroke-width:5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:3.33333;stroke-dasharray:none;stroke-opacity:1"
+        d="m204.299 39.214-48.1-.126M204.299 39.214l-12.476 13.703M204.299 38.63l-12.476-13.703"
+        transform="translate(-74.816 -6.034) scale(.48813)" />
+</svg>

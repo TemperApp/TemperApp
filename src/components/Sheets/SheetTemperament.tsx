@@ -5,10 +5,10 @@ import { Temperament } from "../../model/Temperament/Temperament";
 import EqualTemperament from "../../model/Temperament/Equal";
 import { useParams } from "react-router";
 import { IonButton, IonCard, IonCardContent, IonCardHeader, IonCardTitle, IonIcon } from '@ionic/react';
-import NonClickablePitchCircleSVG from '../Tuner/nonClickable/NonClickablePitchCircleSVG';
 import ParagraphLearn from '../Learn/ParagraphLearn';
 import VideoLearn from '../Learn/VideoLearn';
 import ResourcesLearn from '../Learn/ResourcesLearn';
+import PitchCircleView from '../Tuner/PitchCircle/View';
 
 const SheetTemperament: React.FC = () => {
 
@@ -49,11 +49,7 @@ const SheetTemperament: React.FC = () => {
           </IonCardTitle>
         </IonCardHeader>
         <IonCardContent>
-          <NonClickablePitchCircleSVG
-            freqA4 = {440}
-            idTemperament={parseInt(id)}
-            centerCircle={false}
-          />
+          <PitchCircleView temperament={temperament} />
         </IonCardContent>
       </IonCard>
 
@@ -78,7 +74,7 @@ const SheetTemperament: React.FC = () => {
         ) 
         : "")
       }
-
+      
       <ResourcesLearn 
         resourcesList={temperament.sources}
       />
