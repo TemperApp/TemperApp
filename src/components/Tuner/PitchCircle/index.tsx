@@ -158,7 +158,7 @@ const PitchCircle: React.FC<PitchCircleProps> = ({
 
 
   useEffect(() => {
-    if (!hasPopover)
+    if (!hasPopover || (hasPopover && procRepeatCount > 0))
       executeQueue();
   }, [
     tuneMode, freqA4, temperament,
