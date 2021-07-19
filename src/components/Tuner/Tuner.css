@@ -57,3 +57,28 @@
   padding-left: 4rem !important;
   padding-right: 4rem !important;
 }
+
+/* STYLE PIANO */
+
+.pianoKeys {
+  fill: #ffffff;
+  stroke: #000000;
+  stroke-width: 0.5;
+  stroke-miterlimit: 10;
+}
+
+.st0 {
+  fill: #ffffff;
+  stroke: #000000;
+  stroke-width: 0.5;
+  stroke-miterlimit: 10;
+}
+.st1 {
+  fill: #010202;
+}
+.st2 {
+  font-family: "Karla-Bold";
+}
+.st3 {
+  font-size: 14px;
+}

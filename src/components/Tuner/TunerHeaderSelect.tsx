@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { IonInput, IonSelect, IonSelectOption } from '@ionic/react';
 import { TemperamentDBType } from '../../engine/DB';
 
@@ -10,14 +10,15 @@ type TunerHeaderProps = {
   onFreqA4Change: (e: any) => void,
 }
 
-const TunerHeader: React.FC<TunerHeaderProps> = ({
+const TunerHeaderSelect: React.FC<TunerHeaderProps> = ({
   defaultTemperamentId,
   defaultFreqA4,
   temperamentsList,
   onTemperamentChange,
   onFreqA4Change,
 }) => {
-  // console.info('🔹 [TunerHeader]: Render')
+  //console.info('🔹 [TunerHeader]: Render')
+
   return (
     <section className="pt-3 px-4 w-full flex items-center justify-between">
       <IonSelect
@@ -43,13 +44,13 @@ const TunerHeader: React.FC<TunerHeaderProps> = ({
           value={defaultFreqA4}
           onIonChange={onFreqA4Change}
         ></IonInput>
-      </div>
+      </div>      
     </section>
   );
 };
 
 export default React.memo(
-  TunerHeader,
+  TunerHeaderSelect,
   (prevProps, nextProps) =>
     prevProps.defaultTemperamentId === nextProps.defaultTemperamentId &&
     prevProps.defaultFreqA4 === nextProps.defaultFreqA4 &&

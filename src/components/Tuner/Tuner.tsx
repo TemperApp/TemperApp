@@ -9,10 +9,11 @@ import EqualTemperament from "../../model/Temperament/Equal";
 import PitchCircle from "./PitchCircle";
 import SoundEngine from "../../engine/SoundEngine";
 
-import TunerHeader from "./TunerHeader";
+import TunerHeaderSelect from "./TunerHeaderSelect";
 import TunerFooter from "./TunerFooter";
 import { Temperament } from "../../model/Temperament/Temperament";
 import { Procedure } from "../../model/Procedure";
+import TunerHeaderPiano from "./TunerHeaderPiano";
 
 export enum TuneMode {
   BEATS = 'Battements', // TODO Find a better way to print text
@@ -83,9 +84,8 @@ const Tuner: React.FC<TunerProps> = ({
 
   // console.info('⬜ [Tuner]: Render: list fetched:', temperamentsList.length > 0, ', temperament fetched:', (temperament.idTemperament === selectedTemperamentId && temperament.deviation !== undefined))
 
-  return (
-    <div className="h-full flex content-around justify-center flex-wrap">
-      <TunerHeader
+  const headerSelect = (
+    <TunerHeaderSelect
         defaultTemperamentId={selectedTemperamentId}
         defaultFreqA4={freqA4}
         temperamentsList={temperamentsList}
@@ -99,7 +99,21 @@ const Tuner: React.FC<TunerProps> = ({
           setProcRepeatCount(0);
           setFreqA4(Number(e.detail.value));
         }}
-      />
+    />
+  );
+
+  const headerPiano = (
+    <TunerHeaderPiano
+      temperamentId = {selectedTemperamentId}
+    />
+  )
+
+  return (
+    <div className="h-full flex content-around justify-center flex-wrap">
+      
+      {
+        tuneMode === TuneMode.PROCEDURE ? headerPiano : headerSelect
+      }
 
       <PitchCircle
         tuneMode={tuneMode}
