@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useReducer } from 'react';
-import { IonPopover } from "@ionic/react";
+import { IonPopover, useIonViewWillLeave } from "@ionic/react";
 
 import PitchCircleView from './View';
 
@@ -40,6 +40,11 @@ const PitchCircle: React.FC<PitchCircleProps> = ({
   tuneMode, freqA4, temperament,
   proc, procStepIdx, procRepeatCount,
 }) => {
+  
+  useIonViewWillLeave(() => {
+    SoundEngine.stop();
+    dispatchState({ type: BtnActions.SET_ALL_IDLE });
+  });
 
   const [btnStates, dispatchState] = useReducer(
     btnStatesReducer(tuneMode),
