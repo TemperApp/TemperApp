@@ -37,6 +37,7 @@ http://ionicframework.com/docs/theming/ */
   );
   --color-button: #2ea39b;
   --color-inner-button: #f5fbfb;
+  --color-dark: #233c3a;
   --color-theme: #f5fbfb;
   --color-contrast: #233c3a;
   --color-light-grey: rgba(115, 139, 138, 0.25);

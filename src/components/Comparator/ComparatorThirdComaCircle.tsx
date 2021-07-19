@@ -49,7 +49,7 @@ const ComparatorThirdComaCircle: React.FC<ComparatorThirdComaCircleProps> = ({ t
     <ellipse cx="12.523" cy="13.574" rx="9.745" ry="9.698"/>
     <ellipse ry="6.344" rx="6.375" cy="13.574" cx="12.523" id="a" />
     <ellipse id="b" cx="12.523" cy="13.574" rx="3.161" ry="3.146" />
-    <g className="comas-text" fill="var(--color-contrast)">
+    <g className="comas-text" fill="var(--color-dark)">
       <text xmlSpace="preserve" transform="rotate(-100.643 12.302 13.24)"> <textPath xlinkHref="#a"><tspan>{temperament1.csExp3rd.C      } </tspan></textPath></text>
       <text transform="rotate(-69.005 12.362 13.061)" xmlSpace="preserve"> <textPath xlinkHref="#a"><tspan>{temperament1.csExp3rd.G      } </tspan></textPath></text>
       <text xmlSpace="preserve" transform="rotate(-39.366 12.496 12.66)">  <textPath xlinkHref="#a"><tspan>{temperament1.csExp3rd.D      } </tspan></textPath></text>
@@ -63,7 +63,7 @@ const ComparatorThirdComaCircle: React.FC<ComparatorThirdComaCircleProps> = ({ t
       <text xmlSpace="preserve" transform="rotate(-160.264 12.227 13.437)"><textPath xlinkHref="#a"><tspan>{temperament1.csExp3rd.B_flat } </tspan></textPath></text>
       <text transform="rotate(-132.894 12.256 13.363)" xmlSpace="preserve"><textPath xlinkHref="#a"><tspan>{temperament1.csExp3rd.F      } </tspan></textPath></text>
     </g>
-    <g className="comas-text" fill="var(--color-contrast)">
+    <g className="comas-text" fill="var(--color-dark)">
       <text transform="rotate(-106.725 11.991 12.788)" xmlSpace="preserve"><textPath xlinkHref="#b"><tspan>{temperament2.csExp3rd.C      } </tspan></textPath></text>
       <text xmlSpace="preserve" transform="rotate(-76.725 12.119 12.382)"> <textPath xlinkHref="#b"><tspan>{temperament2.csExp3rd.G      } </tspan></textPath></text>
       <text transform="rotate(-46.725 12.377 11.56)" xmlSpace="preserve">  <textPath xlinkHref="#b"><tspan>{temperament2.csExp3rd.D      } </tspan></textPath></text>
@@ -79,40 +79,40 @@ const ComparatorThirdComaCircle: React.FC<ComparatorThirdComaCircleProps> = ({ t
     </g>
     <g className="comas-note" fill="var(--color-contrast)">
       <text x="11.741" y="2.8440001">
-        <tspan x="11.741" y="2.8440001">C</tspan>
+        <tspan>C</tspan>
       </text>
       <text y="4.1127629" x="17.753832">
-        <tspan y="4.1127629"x="17.753832">G</tspan>
+        <tspan>G</tspan>
       </text>
       <text x="22.111757" y="8.6913424">
-        <tspan x="22.111757" y="8.6913424">D</tspan>
+        <tspan>D</tspan>
       </text>
       <text y="14.207703"x="23.325356">
-        <tspan y="14.207703"x="23.325356">A</tspan>
+        <tspan>A</tspan>
       </text>
       <text x="22.332413" y="19.724062">
-        <tspan x="22.332413" y="19.724062">E</tspan>
+        <tspan>E</tspan>
       </text>
       <text y="24.192314" x="17.974485">
-        <tspan y="24.192314"x="17.974485">B</tspan>
+        <tspan>B</tspan>
       </text>
       <text x="11.597335" y="25.418837">
-        <tspan x="11.597335" y="25.418837">F♯</tspan>
+        <tspan>F♯</tspan>
       </text>
       <text y="24.150074"x="5.474175">
-        <tspan y="24.150074"x="5.474175">C♯</tspan>
+        <tspan>C♯</tspan>
       </text>
       <text id="text1087"x="1.3920684" y="19.79215">
-        <tspan x="1.3920684" y="19.79215"> G♯</tspan>
+        <tspan>G♯</tspan>
       </text>
       <text y="14.330953"x="0.56461436">
-        <tspan y="14.330953"x="0.56461436">E♭</tspan>
+        <tspan>E♭</tspan>
       </text>
       <text x="1.5575591" y="8.4284468">
-        <tspan x="1.5575591" y="8.4284468">B♭</tspan>
+        <tspan>B♭</tspan>
       </text>
       <text y="4.1679263"x="6.3349671">
-        <tspan y="4.1679263"x="6.3349671">F</tspan>
+        <tspan>F</tspan>
       </text>
     </g>
   </>

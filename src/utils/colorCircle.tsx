@@ -2,13 +2,13 @@
 export const convertFifthQualityToColor = (quality: number | null, isDarkTheme: boolean) => {
   
   if (isDarkTheme) {
-    if (quality === null) return "grey";
+    if (quality === null) return "#4A7370";
 
     if (quality < 0.005 && quality > -0.005) return "#f5fbfb";
 
     switch (Math.max(Math.min(Math.floor(quality), 7), -12)) {
       case -12:
-        return "8587C6";
+        return "#8587C6";
       case -11:
         return "#9675C6";
       case -10:
@@ -52,7 +52,7 @@ export const convertFifthQualityToColor = (quality: number | null, isDarkTheme: 
     }
   }
 
-  if (quality === null) return "#161616";
+  if (quality === null) return "#6D9693";
 
   if (quality < 0.005 && quality > -0.005) return "#f5fbfb";
 
@@ -154,7 +154,7 @@ export const convertThirdQualityToColor = (quality: number | null, isDarkTheme: 
       case 20:
         return "#758EBE";
       default:
-        return "B9B9B9";
+        return "#B9B9B9";
     }
   }
   if (quality === null) return "#B9B9B9";
