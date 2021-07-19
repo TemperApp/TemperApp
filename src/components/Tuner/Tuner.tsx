@@ -9,10 +9,10 @@ import EqualTemperament from "../../model/Temperament/Equal";
 import PitchCircle from "./PitchCircle";
 import SoundEngine from "../../engine/SoundEngine";
 
-import { splitProcedure } from "./nonClickable/NonClickableUtils";
 import TunerHeader from "./TunerHeader";
 import TunerFooter from "./TunerFooter";
 import { Temperament } from "../../model/Temperament/Temperament";
+import { Procedure } from "../../model/Procedure";
 
 export enum TuneMode {
   BEATS = 'Battements', // TODO Find a better way to print text
@@ -35,15 +35,16 @@ const Tuner: React.FC<TunerProps> = ({
   const [selectedTemperamentId, setSelectedTemperamentId] = useState<number>(temperament.idTemperament);
   const [temperamentsList, setTemperamentsList] = useState<TemperamentDBType[]>([]);
   const [freqA4, setFreqA4] = useState<number>(settings.freqA4);
-  const [stepProcedure, setStepProcedure] = useState<number>(0);
-  const [stepTune, setStepTune] = useState<number>(0);
+  const [proc, setProc] = useState<Procedure | null>(null);
+  const [procStepIdx, setProcStepIdx] = useState<number>(0);
+  const [procRepeatCount, setProcRepeatCount] = useState<number>(0);
 
   useEffect(() => {
     setFreqA4(settings.freqA4)
   }, [settings.freqA4]);
 
   useEffect(() => {
-    SoundEngine.volume(isMuted ? -128 : -24);
+    SoundEngine.setVolume(isMuted ? -128 : SoundEngine.defaultVolume);
   }, [isMuted]);
 
   useEffect(() => {
@@ -62,19 +63,25 @@ const Tuner: React.FC<TunerProps> = ({
     })();
   }, [selectedTemperamentId]);
 
+  useEffect(() => {
+    if (temperament.procedure !== '')
+      setProc(Procedure.parse(temperament.procedure)!);
+  }, [temperament]);
+
+  useEffect(() => {
+  }, [procStepIdx]);
+
   const onProcedureNext = useCallback(() => { // useCallback for TuneFooter memoizing
-    if (stepProcedure < (splitProcedure(temperament.procedure).length - 1))
-      setStepProcedure(stepProcedure + 1);
-    setStepTune(0);
-  }, [stepProcedure, temperament.procedure]);
+    setProcStepIdx(procStepIdx + 1);
+    setProcRepeatCount(0);
+  }, [procStepIdx]);
 
   const onProcedurePrev = useCallback(() => { // useCallback for TuneFooter memoizing
-    if (stepProcedure >= 1)
-      setStepProcedure(stepProcedure - 1);
-    setStepTune(0);
-  }, [stepProcedure]);
+    setProcStepIdx(procStepIdx - 1);
+    setProcRepeatCount(0);
+  }, [procStepIdx]);
 
-  console.info('⬜ [Tuner]: Render: list fetched:', temperamentsList.length > 0, ', temperament fetched:', (temperament.idTemperament === selectedTemperamentId && temperament.deviation !== undefined))
+  // console.info('⬜ [Tuner]: Render: list fetched:', temperamentsList.length > 0, ', temperament fetched:', (temperament.idTemperament === selectedTemperamentId && temperament.deviation !== undefined))
 
   return (
     <div className="h-full flex content-around justify-center flex-wrap">
@@ -83,11 +90,13 @@ const Tuner: React.FC<TunerProps> = ({
         defaultFreqA4={freqA4}
         temperamentsList={temperamentsList}
         onTemperamentChange={(e: any) => {
-          setStepProcedure(0);
+          setProcStepIdx(0);
+          setProcRepeatCount(0);
           setSelectedTemperamentId(e.detail.value)
         }}
         onFreqA4Change={(e: any) => {
-          setStepProcedure(0);
+          setProcStepIdx(0);
+          setProcRepeatCount(0);
           setFreqA4(Number(e.detail.value));
         }}
       />
@@ -96,18 +105,17 @@ const Tuner: React.FC<TunerProps> = ({
         tuneMode={tuneMode}
         freqA4={freqA4}
         temperament={temperament}
-        stepProcedure={stepProcedure}
-        procedure={splitProcedure(temperament.procedure)}
-        stepTune={stepTune}
-        setStepTune={setStepTune}
+        proc={proc}
+        procStepIdx={procStepIdx}
+        procRepeatCount={procRepeatCount}
       />
 
       <TunerFooter
         isMuted={isMuted}
         tuneMode={tuneMode}
-        canEnterProcedure={temperament.procedure !== ''}
-        isProcedureFirstStep={stepProcedure === 0}
-        isProcedureLastStep={stepProcedure === splitProcedure(temperament.procedure).length - 1}
+        enableEnterProcedure={proc !== null}
+        enableProcedurePrev={proc && proc.hasPrev(procStepIdx)}
+        enableProcedureNext={proc && proc.hasNext(procStepIdx)}
         onClickMute={() => setIsMuted(!isMuted)}
         onClickBeats={() => setTuneMode(TuneMode.BEATS)}
         onClickPitchPipe={() => setTuneMode(TuneMode.PITCHPIPE)}
@@ -115,7 +123,7 @@ const Tuner: React.FC<TunerProps> = ({
         onExitProcedure={() => setTuneMode(TuneMode.BEATS)}
         onProcedureNext={onProcedureNext}
         onProcedurePrev={onProcedurePrev}
-        onProcedureRepeatStep={() => setStepTune(0)}
+        onProcedureRepeatStep={() => setProcRepeatCount(procRepeatCount + 1)}
       />
     </div>
   );

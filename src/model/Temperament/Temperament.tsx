@@ -78,7 +78,7 @@ export const defaultTemperaments: Array<Temperament> = [
       E:       "+9/11",
       B:       "+11/11",
     },
-    procedure: "A4;A4-A3;A3-F3;{on accorde les quintes pures à gauche de F};F3-Bb3;Bb3-Eb4;Eb4-G#3;G#3-C#4;C#4:A3;C#4-F#3;F#3-B3;B3-E4;E4:A3;A3-D4;D4-G3;G3-C4;C4:F3;F#3-F#4;G3-G4;G#3-G#4",
+    procedure: "A4;A4-A3;A3-F3;{On accorde les quintes pures à gauche de F.}F3-Bb3;Bb3-Eb4;Eb4-G#3;G#3-C#4;C#4:A3;C#4-F#3;F#3-B3;B3-E4;E4:A3;A3-D4;D4-G3;G3-C4;C4:F3;F#3-F#4;G3-G4;G#3-G#4",
     csExp5th: {
       F_sharp: "0",
       C_sharp: "0",

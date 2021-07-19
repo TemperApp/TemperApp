@@ -1,19 +1,21 @@
 import React, { useContext } from 'react';
+import SettingsContext from '../../../store/settings-context';
+
 import { Notes } from '../../../model/Note/enums';
 import NotesMap from '../../../model/Note/NotesMap';
-import SettingsContext from '../../../store/settings-context';
+
 import { convertFifthQualityToColor } from '../../../utils/colorCircle';
 
-type FifthCircleSVGProps = {
+type PitchCircleFifthsProps = {
   qualities: NotesMap<number | null>
 };
 
-const FifthCircleSVG: React.FC<FifthCircleSVGProps> = ({
+const PitchCircleFifths: React.FC<PitchCircleFifthsProps> = ({
   qualities
 }) => {
   const settings = useContext(SettingsContext);
   
-  console.info('🔹 [FifthCircleSVG]: Render')
+  // console.info('🔹 [PitchCircleFifths]: Render')
   return (
     <>
       <g id="pc-fifthcircle">
@@ -35,7 +37,7 @@ const FifthCircleSVG: React.FC<FifthCircleSVGProps> = ({
 };
 
 export default React.memo(
-  FifthCircleSVG,
+  PitchCircleFifths,
   (prevProps, nextProps) => {
     for (const note in prevProps.qualities) {
       const n = note as Notes;

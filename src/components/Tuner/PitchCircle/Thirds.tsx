@@ -4,16 +4,16 @@ import NotesMap from "../../../model/Note/NotesMap";
 import SettingsContext from "../../../store/settings-context";
 import { convertThirdQualityToColor } from "../../../utils/colorCircle";
 
-type ThirdCircleSVGProps = {
+type PitchCircleThirdsProps = {
   qualities: NotesMap<number | null>
 };
 
-const ThirdCircleSVG: React.FC<ThirdCircleSVGProps> = ({
+const PitchCircleThirds: React.FC<PitchCircleThirdsProps> = ({
   qualities
 }) => {
   const settings = useContext(SettingsContext);
 
-  console.info('🔹 [ThirdCircleSVG]: Render')
+  // console.info('🔹 [PitchCircleThirds]: Render')
   return (
     <>
       <g id="pc-thirdcircle">
@@ -35,7 +35,7 @@ const ThirdCircleSVG: React.FC<ThirdCircleSVGProps> = ({
 };
 
 export default React.memo(
-  ThirdCircleSVG,
+  PitchCircleThirds,
   (prevProps, nextProps) => {
     for (const note in prevProps.qualities) {
       const n = note as Notes;

@@ -66,6 +66,19 @@ export class Note implements INote {
 
 
   /**
+   * @param noteX
+   * @param noteY
+   * @returns semitones count between
+   * the two notes
+   */
+  static intervalBetween(noteX: Note, noteY: Note): PitchInterval {
+    const indexX = NotesIndex[noteX.toNotes()] + noteX.octave * 12;
+    const indexY = NotesIndex[noteY.toNotes()] + noteY.octave * 12;
+    return indexY - indexX as PitchInterval;
+  }
+
+
+  /**
    * @param noteX 
    * @param noteY 
    * @param pitchInterval semitone count between the
@@ -74,9 +87,7 @@ export class Note implements INote {
    * and 'noteY' is effectively 'pitchInterval'
    */
   static isInterval(noteX: Note, noteY: Note, pitchInterval: PitchInterval): boolean {
-    const indexX = NotesIndex[noteX.toNotes()] + noteX.octave * 12;
-    const indexY = NotesIndex[noteY.toNotes()] + noteY.octave * 12;
-    return indexY - indexX === pitchInterval;
+    return Note.intervalBetween(noteX, noteY) === pitchInterval;
   }
 
   /**
@@ -85,7 +96,7 @@ export class Note implements INote {
    * @returns the notes encapsuled in an object
    * with two props: 'lowest' and 'highest'
    */
-  static getLowestAndHighest(noteX: Note, noteY: Note) {
+  static compare(noteX: Note, noteY: Note) {
     return {
       lowest: (noteX.isHigherThan(noteY)) ? noteY : noteX,
       highest: (noteX.isHigherThan(noteY)) ? noteX : noteY,
@@ -132,6 +143,9 @@ export class Note implements INote {
    * @returns null, if parsing fails
    */
   static parse(note: string): Note | null {
+    if (!note)
+      return null;
+      
     const str = note.trim();
     if (Note.isSyllablesNotation(str)) {
       const [, syllable, alter, octave] =
@@ -152,7 +166,7 @@ export class Note implements INote {
         (!octave) ? 4 : Number(octave));
 
     } else {
-      console.warn(`[model]: Cannot parse as note: '${str}'`);
+      console.warn('[Note]: Cannot parse:', str);
       return null;
     }
   }
@@ -192,7 +206,7 @@ export class Note implements INote {
    * @returns A string representation of the note in
    * the American Std. Pitch Notation
    */
-  string(alterExactSymbol = false, withOctave = true): string {
+  string(alterExactSymbol = true, withOctave = true): string {
     return this.char
       + (this.alter === NoteAlter.NONE
         ? ""
@@ -210,7 +224,7 @@ export class Note implements INote {
    * @returns A string representation of the note as
    * a solfege syllable (do, ré, mi...)
    */
-  string2(alterExactSymbol = false, withOctave = true): string {
+  string2(alterExactSymbol = true, withOctave = true): string {
     return ASPN_TO_SYLLABLES[this.char]
       + (this.alter === NoteAlter.NONE
         ? ""

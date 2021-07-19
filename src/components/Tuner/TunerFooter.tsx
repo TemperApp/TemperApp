@@ -7,9 +7,9 @@ import Toggler from '../inputs/Toggler';
 const TunerFooter: React.FC<any> = ({ // TODO Update any
   tuneMode,
   isMuted,
-  canEnterProcedure,
-  isProcedureFirstStep,
-  isProcedureLastStep,
+  enableEnterProcedure,
+  enableProcedurePrev,
+  enableProcedureNext,
   onClickMute,
   onClickBeats,
   onClickPitchPipe,
@@ -19,13 +19,13 @@ const TunerFooter: React.FC<any> = ({ // TODO Update any
   onProcedurePrev,
   onProcedureRepeatStep,
 }) => {
-  console.info('🔹 [TunerFooter]: Render')
+  // console.info('🔹 [TunerFooter]: Render')
 
   const btnEnterProcedure = (
     <IonButton
       className='btn-round'
-      disabled={!canEnterProcedure}
-      onClick={(canEnterProcedure) ? onEnterProcedure : () => { }}
+      disabled={!enableEnterProcedure}
+      onClick={(enableEnterProcedure) ? onEnterProcedure : () => { }}
     >
       <IonIcon
         style={{ fontSize: "3rem" } /* TODO Find a better way */}
@@ -48,8 +48,9 @@ const TunerFooter: React.FC<any> = ({ // TODO Update any
 
   const btnProcedurePrev = (
     <IonButton
-      className='no-ripple'
+      className='h-12 no-ripple'
       fill="clear"
+      disabled={!enableProcedurePrev}
       onClick={onProcedurePrev}
     >
       <IonIcon className="h-9 w-9"
@@ -57,7 +58,7 @@ const TunerFooter: React.FC<any> = ({ // TODO Update any
         src="/assets/logotypes/icon-procedure-left.svg"
         style={{
           fontSize: "3rem", /* TODO Find a better way */
-          stroke: (isProcedureFirstStep) ? "var(--color-grey)" : "var(--color-button)"
+          stroke: (enableProcedurePrev) ? "var(--color-button)" : "var(--color-grey)"
         }}
       />
     </IonButton>
@@ -65,8 +66,9 @@ const TunerFooter: React.FC<any> = ({ // TODO Update any
 
   const btnProcedureNext = (
     <IonButton
-      className='no-ripple'
+      className='h-12 no-ripple'
       fill="clear"
+      disabled={!enableProcedureNext}
       onClick={onProcedureNext}
     >
       <IonIcon className="h-9 w-9"
@@ -74,7 +76,7 @@ const TunerFooter: React.FC<any> = ({ // TODO Update any
         src="/assets/logotypes/icon-procedure-right.svg"
         style={{
           fontSize: "3rem", /* TODO Find a better way */
-          stroke: (isProcedureLastStep) ? "var(--color-grey)" : "var(--color-button)"
+          stroke: (enableProcedureNext) ? "var(--color-button)" : "var(--color-grey)"
         }}
       />
     </IonButton>
@@ -82,7 +84,7 @@ const TunerFooter: React.FC<any> = ({ // TODO Update any
 
   const btnMute = (
     <IonButton
-      className='no-ripple'
+      className='h-12 no-ripple'
       fill="clear"
       onClick={onClickMute}
     >
@@ -100,11 +102,12 @@ const TunerFooter: React.FC<any> = ({ // TODO Update any
 
   const btnProcedureRepeatStep = (
     <IonButton
-      className='no-ripple'
+      className='h-12 w-20 m-0 no-ripple'
       fill="clear"
       onClick={onProcedureRepeatStep}
     >
       <IonIcon
+        className="pr-2"
         style={{ fontSize: "2rem" }}
         src={reload}
         slot="icon-only"
@@ -152,9 +155,10 @@ export default React.memo(
   (prevProps, nextProps) => 
     prevProps.tuneMode === nextProps.tuneMode &&
     prevProps.isMuted === nextProps.isMuted &&
-    prevProps.canEnterProcedure === nextProps.canEnterProcedure &&
-    prevProps.isProcedureFirstStep === nextProps.isProcedureFirstStep &&
-    prevProps.isProcedureLastStep === nextProps.isProcedureLastStep &&
+    prevProps.enableEnterProcedure === nextProps.enableEnterProcedure &&
+    prevProps.enableProcedurePrev === nextProps.enableProcedurePrev &&
+    prevProps.enableProcedureNext === nextProps.enableProcedureNext &&
     prevProps.onProcedureNext === nextProps.onProcedureNext &&
-    prevProps.onProcedurePrev === nextProps.onProcedurePrev
+    prevProps.onProcedurePrev === nextProps.onProcedurePrev &&
+    prevProps.onProcedureRepeatStep === nextProps.onProcedureRepeatStep
 );

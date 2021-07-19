@@ -17,7 +17,7 @@ const TunerHeader: React.FC<TunerHeaderProps> = ({
   onTemperamentChange,
   onFreqA4Change,
 }) => {
-  console.info('🔹 [TunerHeader]: Render')
+  // console.info('🔹 [TunerHeader]: Render')
   return (
     <section className="pt-3 px-4 w-full flex items-center justify-between">
       <IonSelect

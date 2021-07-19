@@ -1,0 +1,14 @@
+.pc-btn-labels {
+  pointer-events: none;
+  fill: var(--ion-text-color);
+}
+
+.pc-label-primary {
+  font-size: 32px;
+  fill: var(--ion-text-color);
+}
+
+.pc-label-secondary {
+  font-size: 18px;
+  fill: var(--ion-text-color);
+}
