@@ -3,11 +3,11 @@ import * as Tone from 'tone';
 /**
  * Singleton class to manage sound generating
  */
-class SoundEngine {
+class TemperTone {
 
   public static defaultVolume = -0.1;
   
-  private static instance: SoundEngine;
+  private static instance: TemperTone;
   private amsynth: Tone.AMSynth;
   private amsynthDist: Tone.Distortion;
   private amsynthEQ: Tone.EQ3;
@@ -17,7 +17,7 @@ class SoundEngine {
   private modFreq: number = 0;
 
   private constructor() {
-    SoundEngine.setVolume(SoundEngine.defaultVolume);
+    TemperTone.setVolume(TemperTone.defaultVolume);
 
     this.amsynthFilter = new Tone.Filter({
       type : 'lowpass',
@@ -62,10 +62,10 @@ class SoundEngine {
   }
 
 
-  private static get(): SoundEngine {
-    if (!SoundEngine.instance)
-      SoundEngine.instance = new SoundEngine();
-    return SoundEngine.instance;
+  private static get(): TemperTone {
+    if (!TemperTone.instance)
+      TemperTone.instance = new TemperTone();
+    return TemperTone.instance;
   }
 
 
@@ -125,4 +125,4 @@ class SoundEngine {
   }
 }
 
-export default SoundEngine;
+export default TemperTone;

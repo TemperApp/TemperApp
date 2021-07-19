@@ -1,7 +1,7 @@
 import Note from '../../../../model/Note/Note';
 import NotesMap from '../../../../model/Note/NotesMap';
 import { acousticBeat } from '../../../../model/AcousticBeat';
-import SoundEngine from '../../../../engine/SoundEngine';
+import TemperTone from '../../../../engine/TemperTone';
 
 export const playSound = (
   freqA4: number,
@@ -10,8 +10,8 @@ export const playSound = (
 ) => {
   switch (notes.length) {
     case 1:
-      SoundEngine.setPulseBPS(0);
-      SoundEngine.stopAndPlay(notes[0].freq(freqA4, deviations));
+      TemperTone.setPulseBPS(0);
+      TemperTone.stopAndPlay(notes[0].freq(freqA4, deviations));
       break;
 
     case 2:
@@ -23,14 +23,14 @@ export const playSound = (
         console.warn('[PitchCircleController]: playSound: unhandled notes:', notes, 'acoustic beat: ', modulationFreq, carrierFreq);
         return;
       }
-      SoundEngine.setPulseBPS(modulationFreq);
+      TemperTone.setPulseBPS(modulationFreq);
       let heardFreq = carrierFreq;
       while (heardFreq > 1000)
         heardFreq /= 2;
-      SoundEngine.stopAndPlay(heardFreq);
+      TemperTone.stopAndPlay(heardFreq);
       break;
 
     default:
-      SoundEngine.stop();
+      TemperTone.stop();
   }
 };

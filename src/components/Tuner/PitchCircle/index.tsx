@@ -10,7 +10,7 @@ import { Temperament } from '../../../model/Temperament/Temperament';
 import { Procedure } from '../../../model/Procedure';
 import { acousticBeatToStr, acousticBeat } from '../../../model/AcousticBeat';
 
-import SoundEngine from '../../../engine/SoundEngine';
+import TemperTone from '../../../engine/TemperTone';
 
 import {
   btnStatesReducer, BtnStates, getActiveBtns,
@@ -42,7 +42,7 @@ const PitchCircle: React.FC<PitchCircleProps> = ({
 }) => {
   
   useIonViewWillLeave(() => {
-    SoundEngine.stop();
+    TemperTone.stop();
     dispatchState({ type: BtnActions.SET_ALL_IDLE });
   });
 
@@ -75,7 +75,7 @@ const PitchCircle: React.FC<PitchCircleProps> = ({
     }
 
     timeout = setTimeout(() => {
-      SoundEngine.stop();
+      TemperTone.stop();
 
       if (substep.clear === ProcSubStepClear.AFTER)
         dispatchState({ type: BtnActions.SET_ALL_IDLE });
@@ -158,7 +158,7 @@ const PitchCircle: React.FC<PitchCircleProps> = ({
   useEffect(() => {
     clearInterval(timeout);
     dispatchState({ type: BtnActions.SET_ALL_IDLE });
-    SoundEngine.stop();
+    TemperTone.stop();
   }, [tuneMode, procStepIdx, procRepeatCount]);
 
 

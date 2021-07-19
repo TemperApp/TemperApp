@@ -7,7 +7,7 @@ import { TemperamentDBType } from "../../engine/DB";
 import EqualTemperament from "../../model/Temperament/Equal";
 
 import PitchCircle from "./PitchCircle";
-import SoundEngine from "../../engine/SoundEngine";
+import TemperTone from "../../engine/TemperTone";
 
 import TunerHeaderSelect from "./TunerHeaderSelect";
 import TunerFooter from "./TunerFooter";
@@ -50,7 +50,7 @@ const Tuner: React.FC<TunerProps> = ({
   }, [settings.freqA4]);
 
   useEffect(() => {
-    SoundEngine.setVolume(isMuted ? -128 : SoundEngine.defaultVolume);
+    TemperTone.setVolume(isMuted ? -128 : TemperTone.defaultVolume);
   }, [isMuted]);
 
   useEffect(() => {
