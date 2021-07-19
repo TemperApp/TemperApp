@@ -1,23 +1,59 @@
 import React, { useEffect, useState } from 'react';
 import { useStorageSQLite } from 'react-data-storage-sqlite-hook/dist';
 
-const settings = [{
+type Setting<T> = {
+  name: string,
+  defaultValue: T,
+  callback?: (state: T) => void,
+};
+
+
+type AllowedSetting = (
+  Setting<boolean>
+  | Setting<number>
+  | Setting<string>
+);
+
+
+const settings : readonly AllowedSetting[] = [{
     name: 'darkTheme',
     defaultValue: false,
     callback: (state: boolean) => { document.body.classList.toggle('dark', state) },
   },{
     name: 'freqA4',
     defaultValue: 440,
-  },
-];
+  }
+] as const;
 
 
-const SettingsContext = React.createContext({
-  darkTheme: false,
-  setDarkTheme: (v: boolean) => {},
-  freqA4: 440,
-  setFreqA4: (v: number) => {},
-});
+/**
+ * @example
+ * [{ name: 'darkTheme', defaultValue: false },
+ *  { name: 'freqA4', defaultValue: 440, }]
+ * 
+ * will returns
+ * 
+ * {
+ *   darkTheme: false,
+ *   setDarkTheme: (v: boolean) => {},
+ *   freqA4: 440,
+ *   setFreqA4: (v: number) => {},
+ * }
+ */
+const getCtxPropsList = (): any => (
+  settings.reduce((acc: object, s: AllowedSetting): object => {
+    const nameCapitalized = `${s.name.charAt(0).toUpperCase()}${s.name.slice(1)}`;
+    return {
+      ...acc,
+      [s.name]: s.defaultValue,
+      [`set${nameCapitalized}`]: (state: typeof s.defaultValue) => {},
+    }
+  }, {})
+)
+
+
+
+const SettingsContext = React.createContext(getCtxPropsList());
 
 
 export const SettingsContextProvider: React.FC = ({ children }) => {
