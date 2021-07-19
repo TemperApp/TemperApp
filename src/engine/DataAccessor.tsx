@@ -1,10 +1,11 @@
 /* eslint-disable no-sequences */
 import { Temperament } from '../model/Temperament/Temperament';
 import { TemperamentDBType } from '../engine/DB';
+import { LearnSheet } from '../model/Learn/learnSheets';
 
 // TODO Remove on production
 import { defaultTemperaments } from '../model/Temperament/Temperament';
-
+import { learnSheets } from '../model/Learn/learnSheets';
 
 /**
  * @returns All known temperaments in database
@@ -26,6 +27,20 @@ export const fetchTemperaments = async (): Promise<Array<TemperamentDBType>> => 
     }));
   /*
   return await DB.query("SELECT * FROM temperament");
+  */
+};
+
+/**
+ * @returns All known learnSheets in database
+ */
+ export const fetchLearnSheets = async (): Promise<Array<LearnSheet>> => {
+  // TODO Remove on production
+  return learnSheets.map((t) => ({
+    id: t.id,
+    content: t.content,
+    }));
+  /*
+  return await DB.query("SELECT * FROM learnSheets");
   */
 };
 
@@ -57,6 +72,27 @@ export const fetchTemperamentById = async (
   // TODO Handle id not found
   /*
   return (await DB.query("SELECT * FROM temperament WHERE idTemperament = ?;", [id]))[0];
+  */
+};
+
+/**
+ * @returns The learnSheet corresponding to
+ * the given 'id'
+ */
+ export const fetchLearnSheetById = async (
+  id: number | string
+): Promise<LearnSheet> => {
+  // TODO Remove on production
+  return learnSheets
+    // eslint-disable-next-line eqeqeq
+    .filter((t) => t.id == id)
+    .map((t) => ({
+      id: t.id,
+      content: t.content,
+    }))[0];
+  // TODO Handle id not found
+  /*
+  return (await DB.query("SELECT * FROM learnSheet WHERE idTemperament = ?;", [id]))[0];
   */
 };
 
