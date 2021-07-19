@@ -22,26 +22,7 @@ const ComparatorModal: React.FC<comparatorModalProps> = ({
     <>
       {/* MODAL EXPLICATION*/}
       <IonModal isOpen={showModal} cssClass="modal-fullscreen">
-        <IonHeader className="ion-no-border">
-          <IonToolbar>
-            <IonGrid className="px-6 py-2">
-              <IonRow className="ion-align-items-center">
-                <IonCol size="8">
-                  <h3>Explications</h3>
-                </IonCol>
-                <IonCol size="1" offset="2">
-                  <div
-                    className="btn-header-modal"
-                    onClick={() => setShowModal(false)}
-                  >
-                    <span>X</span>
-                  </div>
-                </IonCol>
-              </IonRow>
-            </IonGrid>
-          </IonToolbar>
-          <hr />
-        </IonHeader>
+
         <IonContent>
           <IonGrid className="px-6 py-2">
             <h4>COMMENT COMPARER ?</h4>

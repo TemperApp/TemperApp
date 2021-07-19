@@ -1,268 +1,125 @@
-import React, { useContext } from 'react';
-import './Comparator.css'
-import { convertFifthQualityToColor } from '../../utils/colorCircle';
-import { Temperament } from '../../model/Temperament/Temperament';
-import SettingsContext from '../../store/settings-context';
+import React, { useContext } from "react";
+import "./Comparator.css";
+import { convertFifthQualityToColor } from "../../utils/colorCircle";
+import { Temperament } from "../../model/Temperament/Temperament";
+import SettingsContext from "../../store/settings-context";
 
 type ComparatorFifthComaCircleProps = {
-  temperament1: Temperament,
-  temperament2: Temperament,
-  qualityNote1: { [key: string]: number | null }
-  qualityNote2: { [key: string]: number | null }
-  isCpMode: boolean
-}
+  temperament1: Temperament;
+  temperament2: Temperament;
+  qualityNote1: { [key: string]: number | null };
+  qualityNote2: { [key: string]: number | null };
+  isCpMode: boolean;
+};
 
-const ComparatorFifthComaCircle: React.FC<ComparatorFifthComaCircleProps> = ({ temperament1, temperament2, qualityNote1, qualityNote2, isCpMode }) => {
+const ComparatorFifthComaCircle: React.FC<ComparatorFifthComaCircleProps> = ({
+  temperament1,
+  temperament2,
+  qualityNote1,
+  qualityNote2,
+  isCpMode,
+}) => {
   const settings = useContext(SettingsContext);
 
   return (
     <>
-      <g id="Note_1_Quinte">
-        <path data-name="A"       fill={convertFifthQualityToColor(qualityNote1.A, settings.darkTheme)}        d="M310.683 135.505C316.543 155.893 316.933 177.463 311.815 198.049L280.804 190.354C284.572 175.2 284.284 159.323 279.971 144.316L310.683 135.505Z"/>
-        <path data-name="E"       fill={convertFifthQualityToColor(qualityNote1.E, settings.darkTheme)}        d="M312.097 196.891C307.182 217.527 296.923 236.509 282.347 251.932L258.988 229.898C269.696 218.566 277.233 204.621 280.844 189.461L312.097 196.891Z"/>  
-        <path data-name="B"       fill={convertFifthQualityToColor(qualityNote1.B, settings.darkTheme)}        d="M282.257 252.028C267.286 267.836 248.323 279.316 227.368 285.258L218.595 254.372C233.988 250.007 247.918 241.574 258.915 229.962L282.257 252.028Z"/>  
-        <path data-name="F_sharp" fill={convertFifthQualityToColor(qualityNote1.F_sharp, settings.darkTheme)}  d="M227.382 285.254C206.825 291.085 185.09 291.377 164.384 286.099L172.378 254.792C187.554 258.66 203.483 258.446 218.549 254.172L227.382 285.254Z"/>
-        <path data-name="C_sharp" fill={convertFifthQualityToColor(qualityNote1.C_sharp, settings.darkTheme)}  d="M164.462 286.119C143.586 280.813 124.504 270.038 109.186 254.905L131.79 232.065C143.041 243.179 157.055 251.093 172.388 254.991L164.462 286.119Z"/>
-        <path data-name="G_sharp" fill={convertFifthQualityToColor(qualityNote1.G_sharp, settings.darkTheme)}  d="M109.291 255.008C94.1753 240.112 83.2463 221.507 77.6001 201.059L108.868 192.44C113.002 207.41 121.003 221.031 132.069 231.936L109.291 255.008Z"/>
-        <path data-name="E_flat"  fill={convertFifthQualityToColor(qualityNote1.E_flat, settings.darkTheme)}   d="M77.8437 201.929C72.0448 181.523 71.7186 159.953 76.8978 139.381L108.68 147.369C104.902 162.372 105.14 178.103 109.369 192.986L77.8437 201.929Z"/>
-        <path data-name="F"       fill={convertFifthQualityToColor(qualityNote1.F, settings.darkTheme)}        d="M107.318 84.7601C122.16 69.4407 140.79 58.3127 161.322 52.5032L170.224 83.9071C155.232 88.149 141.628 96.2745 130.792 107.46L107.318 84.7601Z"/>
-        <path data-name="B_flat"  fill={convertFifthQualityToColor(qualityNote1.B_flat, settings.darkTheme)}   d="M76.9162 139.308C82.1083 118.74 92.6225 99.8979 107.404 84.6714L131.128 107.661C120.382 118.731 112.737 132.43 108.963 147.383L76.9162 139.308Z"/>
-        <path data-name="C"       fill={convertFifthQualityToColor(qualityNote1.C, settings.darkTheme)}        d="M161.244 52.5254C181.972 46.6456 203.894 46.3988 224.749 51.8105L216.663 82.9158C201.349 78.9418 185.25 79.123 170.03 83.4407L161.244 52.5254Z"/>
-        <path data-name="G"       fill={convertFifthQualityToColor(qualityNote1.G, settings.darkTheme)}        d="M224.575 51.7654C245.132 57.0673 263.932 67.677 279.09 82.5301L256.528 105.513C245.404 94.613 231.607 86.8269 216.521 82.936L224.575 51.7654Z"/>
-        <path data-name="D"       fill={convertFifthQualityToColor(qualityNote1.D, settings.darkTheme)}        d="M278.515 81.9703C293.771 96.7226 304.876 115.224 310.715 135.618L279.874 144.433C275.581 129.443 267.419 115.844 256.205 105L278.515 81.9703Z"/>     
-        </g>
-      <g id="Note_2_Quinte">
-        <path data-name="A"       fill={convertFifthQualityToColor(qualityNote2.A, settings.darkTheme)}       d="M278.327 144.787C282.557 159.507 282.839 175.079 279.144 189.941L247.934 182.196C250.27 172.802 250.092 162.959 247.418 153.655L278.327 144.787Z"/>
-        <path data-name="E"       fill={convertFifthQualityToColor(qualityNote2.E, settings.darkTheme)}       d="M279.348 189.105C275.8 204.003 268.393 217.707 257.87 228.843L234.431 206.733C241.073 199.704 245.748 191.054 247.988 181.65L279.348 189.105Z"/>
-        <path data-name="B"       fill={convertFifthQualityToColor(qualityNote2.B, settings.darkTheme)}       d="M257.804 228.912C246.996 240.324 233.306 248.612 218.177 252.902L209.596 222.691C219.284 219.944 228.051 214.636 234.973 207.327L257.804 228.912Z"/>
-        <path data-name="F_sharp" fill={convertFifthQualityToColor(qualityNote2.F_sharp, settings.darkTheme)} d="M218.187 252.899C203.346 257.109 187.655 257.32 172.706 253.51L180.559 222.753C190.075 225.178 200.063 225.044 209.509 222.364L218.187 252.899Z"/>
-        <path data-name="C_sharp" fill={convertFifthQualityToColor(qualityNote2.C_sharp, settings.darkTheme)} d="M172.762 253.524C157.69 249.693 143.914 241.914 132.855 230.989L155.063 208.549C162.126 215.526 170.924 220.494 180.549 222.941L172.762 253.524Z"/>
-        <path data-name="G_sharp" fill={convertFifthQualityToColor(qualityNote2.G_sharp, settings.darkTheme)} d="M132.931 231.063C122.018 220.309 114.128 206.877 110.051 192.114L140.221 183.799C142.838 193.276 147.903 201.898 154.908 208.802L132.931 231.063Z"/>
-        <path data-name="E_flat"  fill={convertFifthQualityToColor(qualityNote2.E_flat, settings.darkTheme)}  d="M110.227 192.742C106.041 178.01 105.805 162.437 109.544 147.586L141.176 155.535C138.832 164.845 138.979 174.607 141.604 183.841L110.227 192.742Z"/>
-        <path data-name="F"       fill={convertFifthQualityToColor(qualityNote2.F, settings.darkTheme)}       d="M131.507 108.152C142.222 97.0918 155.672 89.0578 170.495 84.8637L180.157 118.949C171.347 121.442 163.353 126.217 156.984 132.79L131.507 108.152Z"/>
-        <path data-name="B_flat"  fill={convertFifthQualityToColor(qualityNote2.B_flat, settings.darkTheme)}  d="M109.558 147.533C113.306 132.684 120.897 119.081 131.569 108.088L156.039 131.8C149.529 138.506 144.899 146.804 142.612 155.862L109.558 147.533Z"/>
-        <path data-name="C"       fill={convertFifthQualityToColor(qualityNote2.C, settings.darkTheme)}       d="M170.439 84.8797C185.403 80.6347 201.23 80.4566 216.286 84.3636L207.39 118.587C198.429 116.261 189.01 116.367 180.105 118.894L170.439 84.8797Z"/>
-        <path data-name="G"       fill={convertFifthQualityToColor(qualityNote2.G, settings.darkTheme)}       d="M216.161 84.331C231.002 88.1588 244.575 95.8185 255.518 106.542L233.101 129.377C226.166 122.581 217.564 117.727 208.159 115.301L216.161 84.331Z"/>
-        <path data-name="D"       fill={convertFifthQualityToColor(qualityNote2.D, settings.darkTheme)}       d="M255.103 106.138C266.117 116.788 274.134 130.145 278.35 144.869L246.352 154.015C243.742 144.897 238.777 136.626 231.957 130.031L255.103 106.138Z"/>
+      <g id="Note_2_Quinte" stroke="var(--color-hover)" strokeWidth="0.1px">
+        <path data-name="C"       fill={convertFifthQualityToColor(qualityNote2.C, settings.darkTheme)}       d="M11.04 10.471l-1.586-2.75s.613-.363 1.522-.61c.908-.248 1.566-.219 1.566-.219l-.005 3.175s-.28-.01-.772.12-.724.284-.724.284z" transform="rotate(15 11.458 13.139)" />
+        <path data-name="G"       fill={convertFifthQualityToColor(qualityNote2.G, settings.darkTheme)}       d="m12.639 10.074-.002-3.197s.712-.008 1.622.232c.91.24 1.478.607 1.478.607l-1.591 2.751s-.248-.168-.75-.293c-.5-.125-.757-.1-.757-.1z" transform="rotate(15 11.458 13.139)" />
+        <path data-name="D"       fill={convertFifthQualityToColor(qualityNote2.D, settings.darkTheme)}       d="M15.824 7.766s.611.321 1.28.984c.668.664.996 1.273.996 1.273l-2.753 1.586s-.154-.276-.512-.637c-.36-.361-.605-.46-.605-.46z" transform="rotate(15 11.458 13.139)" />
+        <path data-name="A"       fill={convertFifthQualityToColor(qualityNote2.A, settings.darkTheme)}       d="M18.142 10.12s.375.553.622 1.462c.247.909.224 1.645.224 1.645l-3.172-.022s-.007-.318-.125-.775a2.833 2.833 0 0 0-.295-.737z" transform="rotate(15 11.458 13.139)" />
+        <path data-name="E"       fill={convertFifthQualityToColor(qualityNote2.E, settings.darkTheme)}       d="M18.99 13.306s.033.667-.207 1.577a6.476 6.476 0 0 1-.616 1.535l-2.75-1.592s.155-.212.289-.704c.133-.49.11-.819.11-.819z" transform="rotate(15 11.458 13.139)" />
+        <path data-name="B"       fill={convertFifthQualityToColor(qualityNote2.B, settings.darkTheme)}       d="M18.113 16.5s-.256.55-.92 1.218a7.006 7.006 0 0 1-1.354 1.06l-1.584-2.753s.316-.164.65-.508c.335-.344.465-.604.465-.604z" transform="rotate(15 11.458 13.139)" />
+        <path data-name="F_sharp" fill={convertFifthQualityToColor(qualityNote2.F_sharp, settings.darkTheme)} d="M15.751 18.825s-.556.35-1.464.598c-.909.247-1.64.236-1.64.236v-3.181s.399 0 .827-.125c.428-.124.695-.277.695-.277z" transform="rotate(15 11.458 13.139)" />
+        <path data-name="C_sharp" fill={convertFifthQualityToColor(qualityNote2.C_sharp, settings.darkTheme)} d="M12.546 19.642s-.653.034-1.564-.206c-.91-.24-1.532-.627-1.532-.627l1.587-2.745s.3.183.735.299c.436.116.776.112.776.112z" transform="rotate(15 11.458 13.139)" />
+        <path data-name="G_sharp" fill={convertFifthQualityToColor(qualityNote2.G_sharp, settings.darkTheme)} d="M9.36 18.76s-.605-.323-1.273-.986c-.669-.664-.983-1.288-.983-1.288l2.753-1.584s.168.32.503.652c.336.332.597.455.597.455z" transform="rotate(15 11.458 13.139)" />
+        <path data-name="E_flat"  fill={convertFifthQualityToColor(qualityNote2.E_flat, settings.darkTheme)}  d="M7.056 16.4s-.357-.604-.605-1.513c-.247-.908-.206-1.58-.206-1.58l3.169-.006s-.017.303.113.795c.13.492.28.72.28.72z" transform="rotate(15 11.458 13.139)" />
+        <path data-name="B_flat"  fill={convertFifthQualityToColor(qualityNote2.B_flat, settings.darkTheme)}  d="M6.239 13.211s-.011-.703.229-1.613c.24-.91.602-1.47.602-1.47l2.748 1.59s-.17.254-.304.746c-.133.49-.101.748-.101.748z" transform="rotate(15 11.458 13.139)" />
+        <path data-name="F"       fill={convertFifthQualityToColor(qualityNote2.F, settings.darkTheme)}       d="m9.87 11.631-2.75-1.589s.349-.62 1.012-1.289c.663-.668 1.248-.972 1.248-.972l1.583 2.752s-.248.13-.61.49c-.36.358-.484.608-.484.608z" transform="rotate(15 11.458 13.139)" />
       </g>
-      <g id="Texte" fill="var(--color-contrast)">
-        <text
-          transform="matrix(1 0 0 1 194.88 40)"
-          className="st22 st23"
-        >C</text>
-        <text
-          transform="matrix(1 0 0 1 257.29 57.8)"
-          className="st22 st23"
-        >G</text>
-        <text
-          transform="matrix(1 0 0 1 303.84 92.54)"
-          className="st22 st23"
-        >D</text>
-        <text
-          transform="matrix(1 0 0 1 325.586 169.836)"
-          className="st22 st23"
-        >A</text>
-        <text
-          transform="matrix(1 0 0 1 309.477 239.581)"
-          className="st22 st23"
-        >E</text>
-        <text
-          transform="matrix(1 0 0 1 263.764 290.8)"
-          className="st22 st23"
-        >B</text>
-        <text
-          transform="matrix(1 0 0 1 187.301 311.505)"
-          className="st22 st23"
-        >F♯</text>
-        <text
-          transform="matrix(1 0 0 1 121.472 291.01)"
-          className="st22 st23"
-        >C♯</text>
-        <text
-          transform="matrix(1 0 0 1 70.4448 239.791)"
-          className="st22 st23"
-        >G♯</text>
-        <text
-          transform="matrix(1 0 0 1 50.5513 170.926)"
-          className="st22 st23"
-        >E♭</text>
-        <text
-          transform="matrix(1 0 0 1 68.1022 105.54)"
-          className="st22 st23"
-        >B♭</text>
-        <text
-          transform="matrix(1 0 0 1 122.729 57.5903)"
-          className="st22 st23"
-        >F</text>
+      <g id="Note_1_Quinte" stroke="var(--color-hover)" strokeWidth="0.1px">
+        <path data-name="C"       fill={convertFifthQualityToColor(qualityNote1.C, settings.darkTheme)}       d="m10.136 3.87.853 3.196s.658-.194 1.513-.21c.854-.015 1.708.201 1.708.201l.86-3.192s-1.088-.325-2.524-.31c-1.436.014-2.41.315-2.41.315z" transform="translate(-.073 .295)" />
+        <path data-name="G"       fill={convertFifthQualityToColor(qualityNote1.G, settings.darkTheme)}       d="m15.173 3.907-.866 3.176a7 7 0 0 0 1.421.593 7.732 7.732 0 0 1 1.376 1.008l2.344-2.315s-.779-.825-2.03-1.53c-1.251-.706-2.245-.932-2.245-.932z" transform="translate(-.073 .295)" />
+        <path data-name="D"       fill={convertFifthQualityToColor(qualityNote1.D, settings.darkTheme)}       d="M17.175 8.754s.53.521.97 1.253c.44.732.657 1.54.657 1.54l3.206-.812s-.262-1.124-.993-2.36c-.73-1.237-1.507-1.95-1.507-1.95z" transform="translate(-.073 .295)" />
+        <path data-name="A"       fill={convertFifthQualityToColor(qualityNote1.A, settings.darkTheme)}       d="M18.828 11.64s.205.717.221 1.571a6.645 6.645 0 0 1-.212 1.672l3.196.854s.325-1.086.31-2.523c-.015-1.436-.322-2.423-.322-2.423z" transform="translate(-.073 .295)" />
+        <path data-name="E"       fill={convertFifthQualityToColor(qualityNote1.E, settings.darkTheme)}       d="M18.812 14.977s-.2.705-.614 1.453c-.413.747-.999 1.357-.999 1.357l2.33 2.341s.856-.803 1.561-2.054.911-2.236.911-2.236z" transform="translate(-.073 .295)" />
+        <path data-name="B"       fill={convertFifthQualityToColor(qualityNote1.B, settings.darkTheme)}       d="M17.127 17.856s-.51.514-1.241.955c-.732.44-1.569.668-1.569.668l.846 3.193s1.135-.256 2.371-.987c1.237-.73 1.95-1.51 1.95-1.51z" transform="translate(-.073 .295)" />
+        <path data-name="F_sharp" fill={convertFifthQualityToColor(qualityNote1.F_sharp, settings.darkTheme)} d="M15.07 22.687l-.852-3.195s-.659.193-1.513.209a7.415 7.415 0 0 1-1.708-.201l-.86 3.193s1.087.325 2.524.31c1.436-.015 2.41-.316 2.41-.316z" transform="translate(-.073 .295)" />
+        <path data-name="C_sharp" fill={convertFifthQualityToColor(qualityNote1.C_sharp, settings.darkTheme)} d="M10 22.647l.867-3.177s-.674-.179-1.421-.592c-.748-.414-1.376-1.008-1.376-1.008l-2.344 2.315s.779.825 2.03 1.53c1.251.705 2.245.932 2.245.932z" transform="translate(-.073 .295)" />
+        <path data-name="G_sharp" fill={convertFifthQualityToColor(qualityNote1.G_sharp, settings.darkTheme)} d="M8.017 17.771s-.53-.52-.97-1.252c-.44-.732-.657-1.54-.657-1.54l-3.206.812s.262 1.124.993 2.36c.73 1.236 1.507 1.949 1.507 1.949z" transform="translate(-.073 .295)" />
+        <path data-name="E_flat"  fill={convertFifthQualityToColor(qualityNote1.E_flat, settings.darkTheme)}  d="M6.365 14.885s-.206-.716-.222-1.57c-.016-.855.212-1.673.212-1.673l-3.196-.854s-.325 1.087-.31 2.523c.015 1.436.322 2.424.322 2.424z" transform="translate(-.073 .295)" />
+        <path data-name="B_flat"  fill={convertFifthQualityToColor(qualityNote1.B_flat, settings.darkTheme)}  d="M6.38 11.549s.2-.705.614-1.453c.414-.747.999-1.357.999-1.357l-2.33-2.342s-.856.804-1.561 2.055c-.705 1.25-.91 2.236-.91 2.236z" transform="translate(-.073 .295)" />
+        <path data-name="F"       fill={convertFifthQualityToColor(qualityNote1.F, settings.darkTheme)}       d="M8.065 8.67s.51-.515 1.241-.955c.732-.44 1.569-.668 1.569-.668l-.846-3.193s-1.135.255-2.371.986-1.95 1.51-1.95 1.51z" transform="translate(-.073 .295)" />
       </g>
-      <g>
-        <line y1="-0.5" x2="245.215" y2="-0.5" transform="matrix(0.267961 0.963234 -0.963722 0.267614 162.311 51.3848)" stroke="var(--color-light-grey)"/>
-        <line y1="-0.5" x2="244.441" y2="-0.5" transform="matrix(-0.237541 0.970976 -0.971832 -0.237322 223.322 50.1675)" stroke="var(--color-light-grey)"/>
-        <line y1="-0.5" x2="245.354" y2="-0.5" transform="matrix(-0.691565 0.722024 -0.72295 -0.691204 279.874 80.4639)" stroke="var(--color-light-grey)"/>
-        <line y1="-0.5" x2="244.554" y2="-0.5" transform="matrix(-0.962032 0.273613 -0.273969 -0.961547 312.995 135.601)" stroke="var(--color-light-grey)"/>
-        <line y1="-0.5" x2="244.104" y2="-0.5" transform="matrix(-0.725332 -0.688708 0.689068 -0.724404 284.834 252.513)" stroke="var(--color-light-grey)"/>
-        <line y1="-0.5" x2="245.176" y2="-0.5" transform="matrix(0.969311 0.24742 -0.247646 0.968448 76.6538 138.545)" stroke="var(--color-light-grey)"/>
-        <ellipse cx="194.698" cy="169.458" rx="56.1734" ry="56.1228" fill="var(--color-theme)"/>
-      </g>
-      {isCpMode ?
-      <>
+      <ellipse cx="12.523" cy="13.574" rx="9.745" ry="9.698"/>
+      <ellipse ry="6.344" rx="6.375" cy="13.574" cx="12.523" id="a" />
+      <ellipse id="b" cx="12.523" cy="13.574" rx="3.161" ry="3.146" />
       <g className="comas-text" fill="var(--color-contrast)">
-        <text
-          transform="matrix(1 0 0 1 184.981 62.501)"
-        >{temperament1.cpExp5th.C}</text>
-        <text
-          transform="matrix(1 0 0 1 238.428 75.578)"
-        >{temperament1.cpExp5th.G}</text>
-        <text
-          transform="matrix(1 0 0 1 277.149 112.63)"
-        >{temperament1.cpExp5th.A}</text>
-        <text
-          transform="matrix(1 0 0 1 290.783 164.939)"
-        >{temperament1.cpExp5th.A}</text>
-        <text
-          transform="matrix(1 0 0 1 276.604 215.068)"
-        >{temperament1.cpExp5th.E}</text>
-        <text
-          transform="matrix(1 0 0 1 240.146 257.569)"
-        >{temperament1.cpExp5th.B}</text>
-        <text
-          transform="matrix(1 0 0 1 188.126 270.645)"
-        >{temperament1.cpExp5th.F_sharp}</text>
-        <text
-          transform="matrix(1 0 0 1 135.968 257.567)"
-        >{temperament1.cpExp5th.C_sharp}</text>
-        <text
-          transform="matrix(1 0 0 1 97.7099 219.426)"
-        >{temperament1.cpExp5th.G_sharp}</text>
-        <text
-          transform="matrix(1 0 0 1 79.9238 168.207)"
-        >{temperament1.cpExp5th.E_flat}</text>
-        <text
-          transform="matrix(1 0 0 1 93.9039 112.63)"
-        >{temperament1.cpExp5th.B_flat}</text>
-        <text
-          transform="matrix(1 0 0 1 131.535 75.5785)"
-        >{temperament1.cpExp5th.F}</text>
+        <text xmlSpace="preserve" transform="rotate(-100.643 12.302 13.24)"> <textPath xlinkHref="#a"><tspan>{isCpMode ? temperament1.cpExp5th.C       : temperament1.csExp5th.C      } </tspan></textPath></text>
+        <text transform="rotate(-69.005 12.362 13.061)" xmlSpace="preserve"> <textPath xlinkHref="#a"><tspan>{isCpMode ? temperament1.cpExp5th.G       : temperament1.csExp5th.G      } </tspan></textPath></text>
+        <text xmlSpace="preserve" transform="rotate(-39.366 12.496 12.66)">  <textPath xlinkHref="#a"><tspan>{isCpMode ? temperament1.cpExp5th.D       : temperament1.csExp5th.D      } </tspan></textPath></text>
+        <text transform="rotate(-10.238 13.4 10.193)" xmlSpace="preserve">   <textPath xlinkHref="#a"><tspan>{isCpMode ? temperament1.cpExp5th.A       : temperament1.csExp5th.A      } </tspan></textPath></text>
+        <text xmlSpace="preserve" transform="rotate(19.01 11.552 15.253)">   <textPath xlinkHref="#a"><tspan>{isCpMode ? temperament1.cpExp5th.E       : temperament1.csExp5th.E      } </tspan></textPath></text>
+        <text transform="rotate(51.115 11.977 14.098)" xmlSpace="preserve">  <textPath xlinkHref="#a"><tspan>{isCpMode ? temperament1.cpExp5th.B       : temperament1.csExp5th.B      } </tspan></textPath></text>
+        <text xmlSpace="preserve" transform="rotate(80.447 12.076 13.832)">  <textPath xlinkHref="#a"><tspan>{isCpMode ? temperament1.cpExp5th.F_sharp : temperament1.csExp5th.F_sharp} </tspan></textPath></text>
+        <text transform="rotate(110.329 12.13 13.694)" xmlSpace="preserve">  <textPath xlinkHref="#a"><tspan>{isCpMode ? temperament1.cpExp5th.C_sharp : temperament1.csExp5th.C_sharp} </tspan></textPath></text>
+        <text xmlSpace="preserve" transform="rotate(140.211 12.165 13.596)"> <textPath xlinkHref="#a"><tspan>{isCpMode ? temperament1.cpExp5th.G_sharp : temperament1.csExp5th.G_sharp} </tspan></textPath></text>
+        <text transform="rotate(170.656 12.198 13.509)" xmlSpace="preserve"> <textPath xlinkHref="#a"><tspan>{isCpMode ? temperament1.cpExp5th.E_flat  : temperament1.csExp5th.E_flat } </tspan></textPath></text>
+        <text xmlSpace="preserve" transform="rotate(-160.264 12.227 13.437)"><textPath xlinkHref="#a"><tspan>{isCpMode ? temperament1.cpExp5th.B_flat  : temperament1.csExp5th.B_flat } </tspan></textPath></text>
+        <text transform="rotate(-132.894 12.256 13.363)" xmlSpace="preserve"><textPath xlinkHref="#a"><tspan>{isCpMode ? temperament1.cpExp5th.F       : temperament1.csExp5th.F      } </tspan></textPath></text>
       </g>
       <g className="comas-text" fill="var(--color-contrast)">
-        <text
-          transform="matrix(1 0 0 1 225.368 102.823)"
-        >{temperament2.cpExp5th.G}</text>
-        <text
-          transform="matrix(1 0 0 1 251.283 130.066)"
-        >{temperament2.cpExp5th.D}</text>
-        <text
-          transform="matrix(1 0 0 1 261.513 164.939)"
-        >{temperament2.cpExp5th.A}</text>
-        <text
-          transform="matrix(1 0 0 1 256.023 199.811)"
-        >{temperament2.cpExp5th.E}</text>
-        <text
-          transform="matrix(1 0 0 1 230.558 227.056)"
-        >{temperament2.cpExp5th.B}</text>
-        <text
-          transform="matrix(1 0 0 1 196.634 243.663)"
-        >{temperament2.cpExp5th.F_sharp}</text>
-        <text
-          transform="matrix(1 0 0 1 160.526 234.945)"
-        >{temperament2.cpExp5th.C_sharp}</text>
-        <text
-          transform="matrix(1 0 0 1 132.958 207.7)"
-        >{temperament2.cpExp5th.G_sharp}</text>
-        <text
-          transform="matrix(1 0 0 1 122.35 171.739)"
-        >{temperament2.cpExp5th.E_flat}</text>
-        <text
-          transform="matrix(1 0 0 1 133.635 135.776)"
-        >{temperament2.cpExp5th.B_flat}</text>
-        <text
-          transform="matrix(1 0 0 1 158.458 109.622)"
-        >{temperament2.cpExp5th.F}</text>
-        <text
-          transform="matrix(1 0 0 1 190.878 94.1044)"
-        >{temperament2.cpExp5th.C}</text>
+        <text transform="rotate(-106.725 11.991 12.788)" xmlSpace="preserve"><textPath xlinkHref="#b"><tspan>{isCpMode ? temperament2.cpExp5th.C       : temperament2.csExp5th.C      } </tspan></textPath></text>
+        <text xmlSpace="preserve" transform="rotate(-76.725 12.119 12.382)"> <textPath xlinkHref="#b"><tspan>{isCpMode ? temperament2.cpExp5th.G       : temperament2.csExp5th.G      } </tspan></textPath></text>
+        <text transform="rotate(-46.725 12.377 11.56)" xmlSpace="preserve">  <textPath xlinkHref="#b"><tspan>{isCpMode ? temperament2.cpExp5th.D       : temperament2.csExp5th.D      } </tspan></textPath></text>
+        <text xmlSpace="preserve" transform="rotate(-16.725 13.48 8.053)">   <textPath xlinkHref="#b"><tspan>{isCpMode ? temperament2.cpExp5th.A       : temperament2.csExp5th.A      } </tspan></textPath></text>
+        <text transform="rotate(13.275 9.698 20.084)" xmlSpace="preserve">   <textPath xlinkHref="#b"><tspan>{isCpMode ? temperament2.cpExp5th.E       : temperament2.csExp5th.E      } </tspan></textPath></text>
+        <text xmlSpace="preserve" transform="rotate(43.275 11.19 15.339)">   <textPath xlinkHref="#b"><tspan>{isCpMode ? temperament2.cpExp5th.B       : temperament2.csExp5th.B      } </tspan></textPath></text>
+        <text transform="rotate(73.275 11.478 14.42)" xmlSpace="preserve">   <textPath xlinkHref="#b"><tspan>{isCpMode ? temperament2.cpExp5th.F_sharp : temperament2.csExp5th.F_sharp} </tspan></textPath></text>
+        <text xmlSpace="preserve" transform="rotate(103.275 11.614 13.988)"> <textPath xlinkHref="#b"><tspan>{isCpMode ? temperament2.cpExp5th.C_sharp : temperament2.csExp5th.C_sharp} </tspan></textPath></text>
+        <text transform="rotate(133.275 11.702 13.707)" xmlSpace="preserve"> <textPath xlinkHref="#b"><tspan>{isCpMode ? temperament2.cpExp5th.G_sharp : temperament2.csExp5th.G_sharp} </tspan></textPath></text>
+        <text xmlSpace="preserve" transform="rotate(163.275 11.772 13.484)"> <textPath xlinkHref="#b"><tspan>{isCpMode ? temperament2.cpExp5th.E_flat  : temperament2.csExp5th.E_flat } </tspan></textPath></text>
+        <text transform="rotate(-166.725 11.837 13.278)" xmlSpace="preserve"><textPath xlinkHref="#b"><tspan>{isCpMode ? temperament2.cpExp5th.B_flat  : temperament2.csExp5th.B_flat } </tspan></textPath></text>
+        <text xmlSpace="preserve" transform="rotate(-136.725 11.906 13.059)"><textPath xlinkHref="#b"><tspan>{isCpMode ? temperament2.cpExp5th.F       : temperament2.csExp5th.F      } </tspan></textPath></text>
       </g>
-      </>
-      :
-      <>
-      <g className="comas-text" fill="var(--color-contrast)">
-        <text
-          transform="matrix(1 0 0 1 184.981 62.501)"
-        >{temperament1.csExp5th.C}</text>
-        <text
-          transform="matrix(1 0 0 1 238.428 75.578)"
-        >{temperament1.csExp5th.G}</text>
-        <text
-          transform="matrix(1 0 0 1 277.149 112.63)"
-        >{temperament1.csExp5th.A}</text>
-        <text
-          transform="matrix(1 0 0 1 290.783 164.939)"
-        >{temperament1.csExp5th.A}</text>
-        <text
-          transform="matrix(1 0 0 1 276.604 215.068)"
-        >{temperament1.csExp5th.E}</text>
-        <text
-          transform="matrix(1 0 0 1 240.146 257.569)"
-        >{temperament1.csExp5th.B}</text>
-        <text
-          transform="matrix(1 0 0 1 188.126 270.645)"
-        >{temperament1.csExp5th.F_sharp}</text>
-        <text
-          transform="matrix(1 0 0 1 135.968 257.567)"
-        >{temperament1.csExp5th.C_sharp}</text>
-        <text
-          transform="matrix(1 0 0 1 97.7099 219.426)"
-        >{temperament1.csExp5th.G_sharp}</text>
-        <text
-          transform="matrix(1 0 0 1 79.9238 168.207)"
-        >{temperament1.csExp5th.E_flat}</text>
-        <text
-          transform="matrix(1 0 0 1 93.9039 112.63)"
-        >{temperament1.csExp5th.B_flat}</text>
-        <text
-          transform="matrix(1 0 0 1 131.535 75.5785)"
-        >{temperament1.csExp5th.F}</text>
+      <g className="comas-note" fill="var(--color-contrast)">
+        <text x="11.741" y="2.8440001">
+          <tspan x="11.741" y="2.8440001">C</tspan>
+        </text>
+        <text y="4.1127629" x="17.753832">
+          <tspan y="4.1127629"x="17.753832">G</tspan>
+        </text>
+        <text x="22.111757" y="8.6913424">
+          <tspan x="22.111757" y="8.6913424">D</tspan>
+        </text>
+        <text y="14.207703"x="23.325356">
+          <tspan y="14.207703"x="23.325356">A</tspan>
+        </text>
+        <text x="22.332413" y="19.724062">
+          <tspan x="22.332413" y="19.724062">E</tspan>
+        </text>
+        <text y="24.192314" x="17.974485">
+          <tspan y="24.192314"x="17.974485">B</tspan>
+        </text>
+        <text x="11.597335" y="25.418837">
+          <tspan x="11.597335" y="25.418837">F♯</tspan>
+        </text>
+        <text y="24.150074"x="5.474175">
+          <tspan y="24.150074"x="5.474175">C♯</tspan>
+        </text>
+        <text id="text1087"x="1.3920684" y="19.79215">
+          <tspan x="1.3920684" y="19.79215"> G♯</tspan>
+        </text>
+        <text y="14.330953"x="0.56461436">
+          <tspan y="14.330953"x="0.56461436">E♭</tspan>
+        </text>
+        <text x="1.5575591" y="8.4284468">
+          <tspan x="1.5575591" y="8.4284468">B♭</tspan>
+        </text>
+        <text y="4.1679263"x="6.3349671">
+          <tspan y="4.1679263"x="6.3349671">F</tspan>
+        </text>
       </g>
-      <g className="comas-text" fill="var(--color-contrast)">
-        <text
-          transform="matrix(1 0 0 1 225.368 102.823)"
-        >{temperament2.csExp5th.G}</text>
-        <text
-          transform="matrix(1 0 0 1 251.283 130.066)"
-        >{temperament2.csExp5th.D}</text>
-        <text
-          transform="matrix(1 0 0 1 261.513 164.939)"
-        >{temperament2.csExp5th.A}</text>
-        <text
-          transform="matrix(1 0 0 1 256.023 199.811)"
-        >{temperament2.csExp5th.E}</text>
-        <text
-          transform="matrix(1 0 0 1 230.558 227.056)"
-        >{temperament2.csExp5th.B}</text>
-        <text
-          transform="matrix(1 0 0 1 196.634 243.663)"
-        >{temperament2.csExp5th.F_sharp}</text>
-        <text
-          transform="matrix(1 0 0 1 160.526 234.945)"
-        >{temperament2.csExp5th.C_sharp}</text>
-        <text
-          transform="matrix(1 0 0 1 132.958 207.7)"
-        >{temperament2.csExp5th.G_sharp}</text>
-        <text
-          transform="matrix(1 0 0 1 122.35 171.739)"
-        >{temperament2.csExp5th.E_flat}</text>
-        <text
-          transform="matrix(1 0 0 1 133.635 135.776)"
-        >{temperament2.csExp5th.B_flat}</text>
-        <text
-          transform="matrix(1 0 0 1 158.458 109.622)"
-        >{temperament2.csExp5th.F}</text>
-        <text
-          transform="matrix(1 0 0 1 190.878 94.1044)"
-        >{temperament2.csExp5th.C}</text>
-      </g>
-      </>
-}
     </>
   );
 };
