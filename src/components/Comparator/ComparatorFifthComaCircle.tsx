@@ -55,32 +55,32 @@ const ComparatorFifthComaCircle: React.FC<ComparatorFifthComaCircleProps> = ({
       <ellipse ry="6.344" rx="6.375" cy="13.574" cx="12.523" id="a" />
       <ellipse id="b" cx="12.523" cy="13.574" rx="3.161" ry="3.146" />
       <g className="comas-text" fill="var(--color-dark)">
-        <text xmlSpace="preserve" transform="rotate(-100.643 12.302 13.24)"> <textPath xlinkHref="#a"><tspan>{isCpMode ? temperament1.cpExp5th.C       : temperament1.csExp5th.C      } </tspan></textPath></text>
-        <text transform="rotate(-69.005 12.362 13.061)" xmlSpace="preserve"> <textPath xlinkHref="#a"><tspan>{isCpMode ? temperament1.cpExp5th.G       : temperament1.csExp5th.G      } </tspan></textPath></text>
-        <text xmlSpace="preserve" transform="rotate(-39.366 12.496 12.66)">  <textPath xlinkHref="#a"><tspan>{isCpMode ? temperament1.cpExp5th.D       : temperament1.csExp5th.D      } </tspan></textPath></text>
-        <text transform="rotate(-10.238 13.4 10.193)" xmlSpace="preserve">   <textPath xlinkHref="#a"><tspan>{isCpMode ? temperament1.cpExp5th.A       : temperament1.csExp5th.A      } </tspan></textPath></text>
-        <text xmlSpace="preserve" transform="rotate(19.01 11.552 15.253)">   <textPath xlinkHref="#a"><tspan>{isCpMode ? temperament1.cpExp5th.E       : temperament1.csExp5th.E      } </tspan></textPath></text>
-        <text transform="rotate(51.115 11.977 14.098)" xmlSpace="preserve">  <textPath xlinkHref="#a"><tspan>{isCpMode ? temperament1.cpExp5th.B       : temperament1.csExp5th.B      } </tspan></textPath></text>
-        <text xmlSpace="preserve" transform="rotate(80.447 12.076 13.832)">  <textPath xlinkHref="#a"><tspan>{isCpMode ? temperament1.cpExp5th.F_sharp : temperament1.csExp5th.F_sharp} </tspan></textPath></text>
-        <text transform="rotate(110.329 12.13 13.694)" xmlSpace="preserve">  <textPath xlinkHref="#a"><tspan>{isCpMode ? temperament1.cpExp5th.C_sharp : temperament1.csExp5th.C_sharp} </tspan></textPath></text>
-        <text xmlSpace="preserve" transform="rotate(140.211 12.165 13.596)"> <textPath xlinkHref="#a"><tspan>{isCpMode ? temperament1.cpExp5th.G_sharp : temperament1.csExp5th.G_sharp} </tspan></textPath></text>
-        <text transform="rotate(170.656 12.198 13.509)" xmlSpace="preserve"> <textPath xlinkHref="#a"><tspan>{isCpMode ? temperament1.cpExp5th.E_flat  : temperament1.csExp5th.E_flat } </tspan></textPath></text>
-        <text xmlSpace="preserve" transform="rotate(-160.264 12.227 13.437)"><textPath xlinkHref="#a"><tspan>{isCpMode ? temperament1.cpExp5th.B_flat  : temperament1.csExp5th.B_flat } </tspan></textPath></text>
-        <text transform="rotate(-132.894 12.256 13.363)" xmlSpace="preserve"><textPath xlinkHref="#a"><tspan>{isCpMode ? temperament1.cpExp5th.F       : temperament1.csExp5th.F      } </tspan></textPath></text>
+        <text xmlSpace="preserve" transform="rotate(-100.643 12.302 13.24)"> <textPath xlinkHref="#a"><tspan>{isCpMode ? temperament2.cpExp5th.C       : temperament2.csExp5th.C      } </tspan></textPath></text>
+        <text transform="rotate(-69.005 12.362 13.061)" xmlSpace="preserve"> <textPath xlinkHref="#a"><tspan>{isCpMode ? temperament2.cpExp5th.G       : temperament2.csExp5th.G      } </tspan></textPath></text>
+        <text xmlSpace="preserve" transform="rotate(-39.366 12.496 12.66)">  <textPath xlinkHref="#a"><tspan>{isCpMode ? temperament2.cpExp5th.D       : temperament2.csExp5th.D      } </tspan></textPath></text>
+        <text transform="rotate(-10.238 13.4 10.193)" xmlSpace="preserve">   <textPath xlinkHref="#a"><tspan>{isCpMode ? temperament2.cpExp5th.A       : temperament2.csExp5th.A      } </tspan></textPath></text>
+        <text xmlSpace="preserve" transform="rotate(19.01 11.552 15.253)">   <textPath xlinkHref="#a"><tspan>{isCpMode ? temperament2.cpExp5th.E       : temperament2.csExp5th.E      } </tspan></textPath></text>
+        <text transform="rotate(51.115 11.977 14.098)" xmlSpace="preserve">  <textPath xlinkHref="#a"><tspan>{isCpMode ? temperament2.cpExp5th.B       : temperament2.csExp5th.B      } </tspan></textPath></text>
+        <text xmlSpace="preserve" transform="rotate(80.447 12.076 13.832)">  <textPath xlinkHref="#a"><tspan>{isCpMode ? temperament2.cpExp5th.F_sharp : temperament2.csExp5th.F_sharp} </tspan></textPath></text>
+        <text transform="rotate(110.329 12.13 13.694)" xmlSpace="preserve">  <textPath xlinkHref="#a"><tspan>{isCpMode ? temperament2.cpExp5th.C_sharp : temperament2.csExp5th.C_sharp} </tspan></textPath></text>
+        <text xmlSpace="preserve" transform="rotate(140.211 12.165 13.596)"> <textPath xlinkHref="#a"><tspan>{isCpMode ? temperament2.cpExp5th.G_sharp : temperament2.csExp5th.G_sharp} </tspan></textPath></text>
+        <text transform="rotate(170.656 12.198 13.509)" xmlSpace="preserve"> <textPath xlinkHref="#a"><tspan>{isCpMode ? temperament2.cpExp5th.E_flat  : temperament2.csExp5th.E_flat } </tspan></textPath></text>
+        <text xmlSpace="preserve" transform="rotate(-160.264 12.227 13.437)"><textPath xlinkHref="#a"><tspan>{isCpMode ? temperament2.cpExp5th.B_flat  : temperament2.csExp5th.B_flat } </tspan></textPath></text>
+        <text transform="rotate(-132.894 12.256 13.363)" xmlSpace="preserve"><textPath xlinkHref="#a"><tspan>{isCpMode ? temperament2.cpExp5th.F       : temperament2.csExp5th.F      } </tspan></textPath></text>
       </g>
       <g className="comas-text" fill="var(--color-dark)">
-        <text transform="rotate(-106.725 11.991 12.788)" xmlSpace="preserve"><textPath xlinkHref="#b"><tspan>{isCpMode ? temperament2.cpExp5th.C       : temperament2.csExp5th.C      } </tspan></textPath></text>
-        <text xmlSpace="preserve" transform="rotate(-76.725 12.119 12.382)"> <textPath xlinkHref="#b"><tspan>{isCpMode ? temperament2.cpExp5th.G       : temperament2.csExp5th.G      } </tspan></textPath></text>
-        <text transform="rotate(-46.725 12.377 11.56)" xmlSpace="preserve">  <textPath xlinkHref="#b"><tspan>{isCpMode ? temperament2.cpExp5th.D       : temperament2.csExp5th.D      } </tspan></textPath></text>
-        <text xmlSpace="preserve" transform="rotate(-16.725 13.48 8.053)">   <textPath xlinkHref="#b"><tspan>{isCpMode ? temperament2.cpExp5th.A       : temperament2.csExp5th.A      } </tspan></textPath></text>
-        <text transform="rotate(13.275 9.698 20.084)" xmlSpace="preserve">   <textPath xlinkHref="#b"><tspan>{isCpMode ? temperament2.cpExp5th.E       : temperament2.csExp5th.E      } </tspan></textPath></text>
-        <text xmlSpace="preserve" transform="rotate(43.275 11.19 15.339)">   <textPath xlinkHref="#b"><tspan>{isCpMode ? temperament2.cpExp5th.B       : temperament2.csExp5th.B      } </tspan></textPath></text>
-        <text transform="rotate(73.275 11.478 14.42)" xmlSpace="preserve">   <textPath xlinkHref="#b"><tspan>{isCpMode ? temperament2.cpExp5th.F_sharp : temperament2.csExp5th.F_sharp} </tspan></textPath></text>
-        <text xmlSpace="preserve" transform="rotate(103.275 11.614 13.988)"> <textPath xlinkHref="#b"><tspan>{isCpMode ? temperament2.cpExp5th.C_sharp : temperament2.csExp5th.C_sharp} </tspan></textPath></text>
-        <text transform="rotate(133.275 11.702 13.707)" xmlSpace="preserve"> <textPath xlinkHref="#b"><tspan>{isCpMode ? temperament2.cpExp5th.G_sharp : temperament2.csExp5th.G_sharp} </tspan></textPath></text>
-        <text xmlSpace="preserve" transform="rotate(163.275 11.772 13.484)"> <textPath xlinkHref="#b"><tspan>{isCpMode ? temperament2.cpExp5th.E_flat  : temperament2.csExp5th.E_flat } </tspan></textPath></text>
-        <text transform="rotate(-166.725 11.837 13.278)" xmlSpace="preserve"><textPath xlinkHref="#b"><tspan>{isCpMode ? temperament2.cpExp5th.B_flat  : temperament2.csExp5th.B_flat } </tspan></textPath></text>
-        <text xmlSpace="preserve" transform="rotate(-136.725 11.906 13.059)"><textPath xlinkHref="#b"><tspan>{isCpMode ? temperament2.cpExp5th.F       : temperament2.csExp5th.F      } </tspan></textPath></text>
+        <text transform="rotate(-106.725 11.991 12.788)" xmlSpace="preserve"><textPath xlinkHref="#b"><tspan>{isCpMode ? temperament1.cpExp5th.C       : temperament1.csExp5th.C      } </tspan></textPath></text>
+        <text xmlSpace="preserve" transform="rotate(-76.725 12.119 12.382)"> <textPath xlinkHref="#b"><tspan>{isCpMode ? temperament1.cpExp5th.G       : temperament1.csExp5th.G      } </tspan></textPath></text>
+        <text transform="rotate(-46.725 12.377 11.56)" xmlSpace="preserve">  <textPath xlinkHref="#b"><tspan>{isCpMode ? temperament1.cpExp5th.D       : temperament1.csExp5th.D      } </tspan></textPath></text>
+        <text xmlSpace="preserve" transform="rotate(-16.725 13.48 8.053)">   <textPath xlinkHref="#b"><tspan>{isCpMode ? temperament1.cpExp5th.A       : temperament1.csExp5th.A      } </tspan></textPath></text>
+        <text transform="rotate(13.275 9.698 20.084)" xmlSpace="preserve">   <textPath xlinkHref="#b"><tspan>{isCpMode ? temperament1.cpExp5th.E       : temperament1.csExp5th.E      } </tspan></textPath></text>
+        <text xmlSpace="preserve" transform="rotate(43.275 11.19 15.339)">   <textPath xlinkHref="#b"><tspan>{isCpMode ? temperament1.cpExp5th.B       : temperament1.csExp5th.B      } </tspan></textPath></text>
+        <text transform="rotate(73.275 11.478 14.42)" xmlSpace="preserve">   <textPath xlinkHref="#b"><tspan>{isCpMode ? temperament1.cpExp5th.F_sharp : temperament1.csExp5th.F_sharp} </tspan></textPath></text>
+        <text xmlSpace="preserve" transform="rotate(103.275 11.614 13.988)"> <textPath xlinkHref="#b"><tspan>{isCpMode ? temperament1.cpExp5th.C_sharp : temperament1.csExp5th.C_sharp} </tspan></textPath></text>
+        <text transform="rotate(133.275 11.702 13.707)" xmlSpace="preserve"> <textPath xlinkHref="#b"><tspan>{isCpMode ? temperament1.cpExp5th.G_sharp : temperament1.csExp5th.G_sharp} </tspan></textPath></text>
+        <text xmlSpace="preserve" transform="rotate(163.275 11.772 13.484)"> <textPath xlinkHref="#b"><tspan>{isCpMode ? temperament1.cpExp5th.E_flat  : temperament1.csExp5th.E_flat } </tspan></textPath></text>
+        <text transform="rotate(-166.725 11.837 13.278)" xmlSpace="preserve"><textPath xlinkHref="#b"><tspan>{isCpMode ? temperament1.cpExp5th.B_flat  : temperament1.csExp5th.B_flat } </tspan></textPath></text>
+        <text xmlSpace="preserve" transform="rotate(-136.725 11.906 13.059)"><textPath xlinkHref="#b"><tspan>{isCpMode ? temperament1.cpExp5th.F       : temperament1.csExp5th.F      } </tspan></textPath></text>
       </g>
       <g className="comas-note" fill="var(--color-contrast)">
         <text x="11.741" y="2.8440001">

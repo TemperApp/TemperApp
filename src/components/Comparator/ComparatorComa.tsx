@@ -59,15 +59,17 @@ const ComparatorComa: React.FC<ComparatorComaProps> = ({
                     />
                   </svg>
                 </div>
-                <Toggler
-                  typeContentText={true}
-                  contentLeft="Cs"
-                  contentRight="Cp"
-                  conditionLeft={!isCpMode}
-                  conditionRight={isCpMode}
-                  onClickLeft={() => setCpMode(false)}
-                  onClickRight={() => setCpMode(true)}
-                />
+                <div className="comma-toggler">
+                  <Toggler
+                    typeContentText={true}
+                    contentLeft="Cs"
+                    contentRight="Cp"
+                    conditionLeft={!isCpMode}
+                    conditionRight={isCpMode}
+                    onClickLeft={() => setCpMode(false)}
+                    onClickRight={() => setCpMode(true)}
+                  />
+                </div>
               </IonCardContent>
             </IonCard>
           </IonSlide>
@@ -79,7 +81,7 @@ const ComparatorComa: React.FC<ComparatorComaProps> = ({
                 </IonCardTitle>
               </IonCardHeader>
               <IonCardContent>
-                <div className="w-100">
+                <div className="w-100 flex justify-center">
                   <svg
                     className="comparator-comas"
                     viewBox="0 0 25 30"
