@@ -4,10 +4,13 @@ import App from './App';
 import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 import reportWebVitals from './reportWebVitals';
 import { SettingsContextProvider } from './store/settings-context'
+import { UserContextProvider } from './store/user-context';
 
 ReactDOM.render(
   <SettingsContextProvider>
-    <App />
+    <UserContextProvider>
+      <App />
+    </UserContextProvider>
   </SettingsContextProvider>,
   document.getElementById('root')
 );

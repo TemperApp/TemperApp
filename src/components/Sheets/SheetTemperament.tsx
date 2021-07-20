@@ -25,6 +25,7 @@ const SheetTemperament: React.FC = () => {
     <Sheet
       mainTitle={temperament.nameFR}
       subTitle="Tempérament"
+      id = {id}
     >
       <div>
         {(temperament.theorist !== "")? (<p className="p-long"><b>Théoricien</b> : {temperament.theorist} </p>) : ("")}
