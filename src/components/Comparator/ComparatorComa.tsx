@@ -38,7 +38,7 @@ const ComparatorComa: React.FC<ComparatorComaProps> = ({
           <IonCard className="comma-card">
             <IonCardHeader className="py-2">
               <IonCardTitle className="px-1 text-left">
-                <h3>Fractions de commas affectant les quintes</h3>
+                <h4>Fractions de commas affectant les quintes</h4>
               </IonCardTitle>
             </IonCardHeader>
             <IonCardContent>
@@ -76,7 +76,7 @@ const ComparatorComa: React.FC<ComparatorComaProps> = ({
           <IonCard className="comma-card">
             <IonCardHeader className="py-2">
               <IonCardTitle className="px-1 text-left">
-                <h3>Fractions de commas affectant les tierces</h3>
+                <h4>Fractions de commas affectant les tierces</h4>
               </IonCardTitle>
             </IonCardHeader>
             <IonCardContent>

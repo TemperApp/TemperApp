@@ -27,7 +27,7 @@ const ComparatorDivergence: React.FC<ComparatorDivergenceProps> = ({
       <IonCard>
         <IonCardHeader>
           <IonCardTitle className="px-2">
-            <h3>Déviation</h3>
+            <h4>Déviation</h4>
           </IonCardTitle>
         </IonCardHeader>
 

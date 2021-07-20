@@ -30,7 +30,7 @@
 .comas-note {
   font-family: "Karla";
   font-style: normal;
-  font-weight: bold;
+  font-weight: normal;
   font-size: 0.1em;
   color: var(--color-contrast);
 }
