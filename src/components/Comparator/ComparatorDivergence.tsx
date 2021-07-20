@@ -32,12 +32,12 @@ const ComparatorDivergence: React.FC<ComparatorDivergenceProps> = ({
         </IonCardHeader>
 
         <IonCardContent>
-          <IonGrid className="px-4">
+          <IonGrid>
             <IonRow className="justify-end items-end">
-              <IonCol size="5" offset="2">
+              <IonCol size="5.25" offset="1.25">
                 <strong>{temperament1.nameFR}</strong>
               </IonCol>
-              <IonCol size="5">
+              <IonCol size="5.25">
                 <strong>{temperament2.nameFR}</strong>
               </IonCol>
             </IonRow>
@@ -47,14 +47,14 @@ const ComparatorDivergence: React.FC<ComparatorDivergenceProps> = ({
                 key={idx}
                 className={`justify-end items-end ${idx % 2 ? 'color-gradient-bg' : ''}`}
               >
-                <IonCol size="2">
+                <IonCol size="1.5">
                   <strong>{note.string(true, false)}</strong>
                 </IonCol>
-                <IonCol size="5" className="text-right pr-12">
-                  {temperament1.deviation[note.toNotes()].toFixed(2)}
+                <IonCol size="5.25" className="text-right pr-12">
+                  <p>{temperament1.deviation[note.toNotes()].toFixed(2)}</p>
                 </IonCol>
-                <IonCol size="5" className="text-right pr-12">
-                  {temperament2.deviation[note.toNotes()].toFixed(2)}
+                <IonCol size="5.25" className="text-right pr-12">
+                  <p>{temperament2.deviation[note.toNotes()].toFixed(2)}</p>
                 </IonCol>
               </IonRow>
             ))}
