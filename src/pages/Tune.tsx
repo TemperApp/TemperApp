@@ -91,7 +91,7 @@ const TuneModalContent: React.FC = () => (
             <IonCol size="1.5">
               <div className="h-12 w-full mr-4"
                 style={{ border: "2px solid var(--color-theme)",
-                        height: "60vh",
+                        height: "400px",
                         background: "var(--legend-gradient-third)"}}>
               </div>
             </IonCol>
