@@ -78,7 +78,7 @@ export const defaultTemperaments: Array<Temperament> = [
       E:       "+9/11",
       B:       "+11/11",
     },
-    procedure: "A4;A4-A3;A3-F3;{On accorde les quintes pures à gauche de F.}F3-Bb3;Bb3-Eb4;Eb4-G#3;G#3-C#4;C#4:A3;C#4-F#3;F#3-B3;B3-E4;E4:A3;A3-D4;D4-G3;G3-C4;C4:F3;F#3-F#4;G3-G4;G#3-G#4",
+    procedure: "A4;A4-A3;A3-F3;{on accorde les quintes pures à gauche de F}F3-Bb3;Bb3-Eb4;Eb4-G#3;G#3-C#4;C#4:A3;C#4-F#3;F#3-B3;B3-E4;E4:A3;A3-D4;D4-G3;G3-C4;C4:F3;F#3-F#4;G3-G4;G#3-G#4;",
     csExp5th: {
       F_sharp: "0",
       C_sharp: "0",
@@ -155,7 +155,7 @@ export const defaultTemperaments: Array<Temperament> = [
       E:       "0",
       B:       "21/11",
     },
-    procedure : "A4;A4-A3;A3-F3;F3-F4;A3-C#4;C#4:F4;F3-C4;C4-G3;G3-G4;G3-D4;A3:D4;C4-E4;E4:A3;E4-G#4;G#4-G#3;G#3:C3;G3-B3;B3:E4;B3-Eb4;Eb4:G4;D4-F#4;F#4-F#3;F#3-Bb3;Bb3:D4",
+    procedure : "A4;A4-A3;A3-F3;F3-F4;A3-C#4;C#4:F4;{on divise la tierce F-A en quatre quintes tempérées à -¼ de comma}F3-C4;C4-G3;G3-G4;G3-D4;A3:D4;{on construit les tierces pures sur les notes accordées}C4-E4;E4:A3;E4-G#4;G#4-G#3;G#3:C3;G3-B3;B3:E4;B3-Eb4;Eb4:G4;D4-F#4;F#4-F#3;F#3-Bb3;Bb3:D4;",
     csExp5th: {
       F_sharp: "-1/4",
       C_sharp: "-1/4",
@@ -235,7 +235,7 @@ export const defaultTemperaments: Array<Temperament> = [
       E:       "13/11",
       B:       "17/11",
     },
-    procedure: "A4;A4-A3;A3-F3;F3-C4;C4-G3;G3-D4;D4:A3;D4-Bb3;C4-E4;G3-B3;Bb3-Eb4;Eb4-G#3;G#3-C#4;B3-F#3;F3-F4;F#3-F#4;G3-G4;G#3-G#4",
+    procedure: "A4;A4-A3;A3-F3;{On divise la tierce F3-A3 en quatre quintes à -¼Cs }F3-C4;C4-G3;G3-D4;D4:A3;{On construit les tierces pures du tempérament}D4-Bb3;C4-E4;G3-B3;{On élargit progressivement les quintes à gauche du Sib}Bb3-Eb4;Eb4-G#3;G#3-C#4;{Même si elle est atténuée, F#-C# reste notre “loup”, ici tempérée à env. +1/3Cs, nous allons donc finir cette procédure en revenant à Si et en accordant B-F# à -1/6Cs. La quinte du loup sera donc bien le résultat de l’accord. Attention! B-F# est affaiblie et non élargie}B3-F#3;F3-F4;F#3-F#4;G3-G4;G#3-G#4;",
     csExp5th: {
       F_sharp: "+1/3,02",
       C_sharp: "+1/4,03",
@@ -308,7 +308,7 @@ export const defaultTemperaments: Array<Temperament> = [
       E:       "1/11",
       B:       "7/11",
     },
-    procedure: "A4;A4-A3;A3-C#;A3-E4;E4-B3;B3-F#3;F#3-C#4;F#3-F#4;F#4-D4;B3-G3;E4-C4;A3-F3;F3:C4;F3-Bb3;Bb3-Eb4;C#4-G#3;G#3:Eb4;F3-F4;G3-G4;G#3-G#4",
+    procedure: "A4;A4-A3;A3-C#;{Nous allons diviser la tierce La3-Do#4 en quatre quintes égales à -1/4Cs, vous pouvez accorder à l’oreille et contrôler avec la suite de la procédure};A3-E4;E4-B3;B3-F#3;F#3-C#4;F#3-F#4;{Nous allons construire des tierces pures inférieures en parcourant le cycle vers les bémols};F#4-D4;B3-G3;E4-C4;{A partir du Do et vers les bémols, les quintes sont progressivement élargies, les quartes rétrécies. Nous commençons par construire Fa3 et vérifier que la quinte Fa-Do à environ +1/12Cs}A3-F3;F3:C4;F3-Bb3;Bb3-Eb4;{Même si elle est atténuée, Sol#-Mib reste notre “loup”, ici tempérée à env. +1/3Cs, nous allons donc finir cette procédure en revenant à Do# et en accordant Do#-Sol# à -1/6Cs. La quinte du loup sera donc bien le résultat de l’accord. Attention! C#-G# est affaiblie et non élargie}C#4-G#3;G#3:Eb4;F3-F4;G3-G4;G#3-G#4;",
     csExp5th: {
       F_sharp: "-1/4",
       C_sharp: "-1/5,98",
@@ -382,7 +382,7 @@ export const defaultTemperaments: Array<Temperament> = [
       E:       "9/11",
       B:       "9/11",
     },
-    procedure: "A4;A4-A3;A3-F3;F3-C4;C4-E4;E4:A3;C4-G3;G3-D4;D4:A3;F3-Bb3;Bb3-Eb4;Eb4-G#3;G#3-C#4;C#4-F#3;E4-B3;B3:F#3;F3-F4;F#3-F#4;G3-G4;G#3-G#4",
+    procedure: "A4;A4-A3;A3-F3;F3-C4;{Les quatre quintes composant C-E sont tempérées à -⅕ Cp, on propose d’accorder C4-E4 et de vérifier d’emblée le battement A3-A4, puis d’accorder les trois quintes restantes C-G-D-A}C4-E4;E4:A3;C4-G3;G3-D4;D4:A3;{Les quintes sont pures à gauche de F}F3-Bb3;Bb3-Eb4;Eb4-G#3;G#3-C#4;C#4-F#3;{Pour finir, la quinte pure E-B résulte en une quinte B-F# tempérée à -⅕Cp }E4-B3;B3:F#3;F3-F4;F#3-F#4;G3-G4;G#3-G#4;",
     csExp5th: {
       F_sharp: "0",
       C_sharp: "0",
@@ -459,7 +459,7 @@ export const defaultTemperaments: Array<Temperament> = [
       E:       "8/11",
       B:       "8/11",
     },
-    procedure: "A4;A4-A3;A3-E4;E4-B3;B3-F#4;F#4-C#4;A3:C#4;C#4-G#4;G#4-D#4;D#4-Bb3;Bb3-F4;F4-F3;F3:A3;F4-C4;C4:E4;C4-G4;G4-D4;D4:A4;F4-F3;F#4-F#3",
+    procedure: "A4;A4-A3;{On accorde les deux premières quintes pures}A3-E4;E4-B3;{La quinte Si-Fa# est tempérée à ¼ Cp}B3-F#4;F#4-C#4;A3:C#4;C#4-G#4;G#4-D#4;D#4-Bb3;Bb3-F4;F4-F3;F3:A3;F4-C4;C4:E4;C4-G4;G4-D4;D4:A4;F4-F3;F#4-F#3;",
     csExp5th: {
       F_sharp: "0",
       C_sharp: "0",
@@ -537,7 +537,7 @@ export const defaultTemperaments: Array<Temperament> = [
       E:       "5/11",
       B:       "8/11",
     },
-    procedure: "A4;A4-A3;A3-F3;F3-Bb3;Bb3-Eb4;Eb4-Eb3;Eb3-G3;F3-C4;C4:G3;G3-D4;D4:A3;A3-E4;E4:C3;E4-E3;E3-B3;G3:B3;B3-F#3;F#3-C#4;C#4:A3;C#4-G#3;G#3:Eb4;F3-F4;F#3-F#4;G3-G4;G#3-G#4",
+    procedure: "A4;A4-A3;A3-F3;F3-Bb3;Bb3-Eb4;Eb4-Eb3;Eb3-G3;F3-C4;C4:G3;G3-D4;D4:A3;A3-E4;E4:C3;E4-E3;E3-B3;G3:B3;B3-F#3;F#3-C#4;C#4:A3;C#4-G#3;G#3:Eb4;F3-F4;F#3-F#4;G3-G4;G#3-G#4;",
     csExp5th: {
       F_sharp: "-1/3,67",
       C_sharp: "-1/3,67",
@@ -693,7 +693,7 @@ export const defaultTemperaments: Array<Temperament> = [
       E:       "10/11",
       B:       "10/11",
     },
-    procedure: "A4;A4-A3;A3-F3;F3-C4;C4-E4;E4:A3;C4-G3;G3-D4;D4:A3;F3-Bb3;Bb3-Eb4;Eb4-G#3;G#3-C#4;E4-B3;B3-F#3;F#3:C#4;F3-F4;F#3-F#4;G3-G4;G#3-G#4",
+    procedure: "A4;A4-A3;{Pour Kirnberger III, le plus simple est d’accorder pure la tierce F3-A3 que l’on divise en quatre quintes égales à -¼Cs puis C4-E4 pure et enfin de réaccorder F3 comme quinte pure sous C4. L’application ne permettant pas de revenir sur une note déjà accordée, on propose d’accorder F3 directement à sa valeur de tierce à tempérée à 4/11 Cs sous A3. L'utilisateur peut utiliser cette procédure comme preuve}A3-F3;F3-C4;C4-E4;E4:A3;{division de C4-E4 en quatre quintes égales à -¼Cs }C4-G3;G3-D4;D4:A3;{4 quintes pures à gauche de F puis 2 à droite de E résultent en F#-C# au tempérament égal à -1/12Cp}F3-Bb3;Bb3-Eb4;Eb4-G#3;G#3-C#4;E4-B3;B3-F#3;F#3:C#4;F3-F4;F#3-F#4;G3-G4;G#3-G#4;",
     csExp5th: {
       F_sharp: "-1/11,01",
       C_sharp: "0",
@@ -768,7 +768,7 @@ export const defaultTemperaments: Array<Temperament> = [
       E:       "9/11",
       B:       "10/11",
     },
-    procedure: "A4;A4-F3;F3-C4;C4-G3;G3-D4;D4:A3;A3-E4;E4:C4;E4-B3;B3:G3;B3-F#4;F#4:D3;F3-Bb3;Bb3:D4;Bb3-Eb4;Eb4-G#3;G#3-C#4;C#4:A3;C#4:F4;F4-F3;G3-G4;G#3-G#4",
+    procedure: "A4;A4-F3;F3-C4;C4-G3;G3-D4;D4:A3;{On alterne simplement l’accord d’une quinte et la preuve de sa tierce inférieure}A3-E4;E4:C4;E4-B3;B3:G3;{On construit maintenant F# et Bb. Les Tierces Bb-D et D-F# étant tempérées de la même manière, leurs battements seront dans le rapport 4/5}B3-F#4;F#4:D3;F3-Bb3;Bb3:D4;Bb3-Eb4;Eb4-G#3;G#3-C#4;{La Tierce A-C# est au tempérament égal à +7/11 Cs}C#4:A3;C#4:F4;F4-F3;G3-G4;G#3-G#4;",
     csExp5th: {
       F_sharp: "-1/41,03",
       C_sharp: "0",

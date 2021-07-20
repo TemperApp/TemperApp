@@ -77,8 +77,13 @@ const Tuner: React.FC<TunerProps> = ({
       const temp = proc.steps[i];
       if(temp.action === ProcAction.TUNE_UNIQUE)
         Piano.push(temp.noteX.string());
-      if(temp.action === ProcAction.TUNE_OCTAVE || temp.action === ProcAction.TUNE_PAIR )
-        Piano.push(temp.noteY.string());
+      else {
+        if(temp.action === ProcAction.TUNE_OCTAVE || temp.action === ProcAction.TUNE_PAIR )
+          Piano.push(temp.noteY.string());
+        else{
+          Piano.push("");
+        }
+      }
       i++;
     }
     setPianoColor(Piano);
