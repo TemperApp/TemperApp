@@ -39,7 +39,7 @@ const Comparator: React.FC = () => {
             </IonSelect>
           </IonCol>
           <IonCol size="1.5">
-            <IonButton
+            <IonButton className="exchange-btn"
             fill="clear"
             onClick={() => {
               if(temperament1.name !== temperament2.name){
@@ -49,9 +49,9 @@ const Comparator: React.FC = () => {
                 setTemperament2(temp);
               }
             }}>
-              <IonIcon className="flex items-end"
+              <IonIcon className="flex items-end justify-end"
                 src="assets/logotypes/icon-exchange.svg"
-                style={{stroke:"var(--color-contrast)"}}
+                style={{stroke:"var(--color-button)"}}
               ></IonIcon>
             </IonButton>
           </IonCol>

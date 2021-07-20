@@ -33,74 +33,72 @@ const ComparatorComa: React.FC<ComparatorComaProps> = ({
 
   return (
     <>
-      <IonContent scroll-y="false">
-        <IonSlides pager={true} options={slideOpts}>
-          <IonSlide className="px-6">
-            <IonCard className="comma-card">
-              <IonCardHeader className="py-1">
-                <IonCardTitle className="px-4 text-left">
-                  <h3>Fractions de comas affectant les quintes</h3>
-                </IonCardTitle>
-              </IonCardHeader>
-              <IonCardContent>
-                <div className="w-full flex justify-center">
-                  <svg
-                    className="comparator-comas"
-                    viewBox="0 0 25 30"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <ComparatorFifthComaCircle
-                      temperament1={temperament1}
-                      temperament2={temperament2}
-                      qualityNote1={fifthQ(temperament1.cpExp5th)}
-                      qualityNote2={fifthQ(temperament2.cpExp5th)}
-                      isCpMode={isCpMode}
-                    />
-                  </svg>
-                </div>
-                <div className="comma-toggler">
-                  <Toggler
-                    typeContentText={true}
-                    contentLeft="Cs"
-                    contentRight="Cp"
-                    conditionLeft={!isCpMode}
-                    conditionRight={isCpMode}
-                    onClickLeft={() => setCpMode(false)}
-                    onClickRight={() => setCpMode(true)}
+      <IonSlides pager={true} options={slideOpts}>
+        <IonSlide className="px-6">
+          <IonCard className="comma-card">
+            <IonCardHeader className="py-2">
+              <IonCardTitle className="px-1 text-left">
+                <h3>Fractions de commas affectant les quintes</h3>
+              </IonCardTitle>
+            </IonCardHeader>
+            <IonCardContent>
+              <div className="w-full flex justify-center">
+                <svg
+                  className="comparator-comas"
+                  viewBox="0 0 25 30"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <ComparatorFifthComaCircle
+                    temperament1={temperament1}
+                    temperament2={temperament2}
+                    qualityNote1={fifthQ(temperament1.cpExp5th)}
+                    qualityNote2={fifthQ(temperament2.cpExp5th)}
+                    isCpMode={isCpMode}
                   />
-                </div>
-              </IonCardContent>
-            </IonCard>
-          </IonSlide>
-          <IonSlide className="px-6">
-            <IonCard className="comma-card">
-              <IonCardHeader>
-                <IonCardTitle className="px-1 text-left">
-                  <h3>Fractions de comas affectant les tierces</h3>
-                </IonCardTitle>
-              </IonCardHeader>
-              <IonCardContent>
-                <div className="w-100 flex justify-center">
-                  <svg
-                    className="comparator-comas"
-                    viewBox="0 0 25 30"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <ComparatorThirdComaCircle
-                      temperament1={temperament1}
-                      temperament2={temperament2}
-                      qualityNote1={thirdQ(temperament1.csExp3rd)}
-                      qualityNote2={thirdQ(temperament2.csExp3rd)}
-                    />
-                  </svg>
-                </div>
-              </IonCardContent>
-            </IonCard>
-          </IonSlide>
-        </IonSlides>
-      </IonContent>
+                </svg>
+              </div>
+              <div className="comma-toggler">
+                <Toggler
+                  typeContentText={true}
+                  contentLeft="Cs"
+                  contentRight="Cp"
+                  conditionLeft={!isCpMode}
+                  conditionRight={isCpMode}
+                  onClickLeft={() => setCpMode(false)}
+                  onClickRight={() => setCpMode(true)}
+                />
+              </div>
+            </IonCardContent>
+          </IonCard>
+        </IonSlide>
+        <IonSlide className="px-6">
+          <IonCard className="comma-card">
+            <IonCardHeader className="py-2">
+              <IonCardTitle className="px-1 text-left">
+                <h3>Fractions de commas affectant les tierces</h3>
+              </IonCardTitle>
+            </IonCardHeader>
+            <IonCardContent>
+              <div className="w-100 flex justify-center">
+                <svg
+                  className="comparator-comas"
+                  viewBox="0 0 25 30"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <ComparatorThirdComaCircle
+                    temperament1={temperament1}
+                    temperament2={temperament2}
+                    qualityNote1={thirdQ(temperament1.csExp3rd)}
+                    qualityNote2={thirdQ(temperament2.csExp3rd)}
+                  />
+                </svg>
+              </div>
+            </IonCardContent>
+          </IonCard>
+        </IonSlide>
+      </IonSlides>
     </>
   );
 };
