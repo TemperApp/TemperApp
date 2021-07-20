@@ -2,8 +2,5 @@
 	"appId": "fr.ludchieng.temperapp",
 	"appName": "dev",
 	"webDir": "build",
-	"bundledWebRuntime": false,
-	"server": {
-		"url": "http://192.168.1.16:8100"
-	}
+	"bundledWebRuntime": false
 }

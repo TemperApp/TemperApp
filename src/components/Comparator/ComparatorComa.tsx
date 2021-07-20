@@ -4,7 +4,6 @@ import { IonSlides, IonSlide, IonContent } from '@ionic/react';
 //Style
 import "./Comparator.css";
 import {
-  IonButton,
   IonCard,
   IonCardContent,
   IonCardHeader,

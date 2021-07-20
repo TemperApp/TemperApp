@@ -1,4 +1,4 @@
-import { IonButton, IonIcon } from "@ionic/react";
+import { IonIcon } from "@ionic/react";
 import React from "react";
 import './PageModal.css'
 

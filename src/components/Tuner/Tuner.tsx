@@ -14,7 +14,6 @@ import TunerFooter from "./TunerFooter";
 import { Temperament } from "../../model/Temperament/Temperament";
 import { ProcAction, Procedure } from "../../model/Procedure";
 import TunerHeaderPiano from "./TunerHeaderPiano";
-import Note from "../../model/Note/Note";
 
 export enum TuneMode {
   BEATS = 'Battements', // TODO Find a better way to print text

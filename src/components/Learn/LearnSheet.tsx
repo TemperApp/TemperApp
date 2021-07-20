@@ -1,15 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { IonContent, IonHeader, IonPage } from "@ionic/react";
 import { useParams } from "react-router";
-import ParagraphLearn from "./ParagraphLearn";
-import DiagramLearn from "./DiagramLearn";
-import CommaLearn from "./CommaLearn";
-import VideoLearn from "./VideoLearn";
-import ResourcesLearn from "./ResourcesLearn";
-import FormulaLearn from "./FormulaLearn";
 import PageHeader from "../../pages/Page/PageHeader";
 
-import { learnSheets } from "../../model/Learn/learnSheets";
 import ReactMarkdown from 'react-markdown';
 import remarkMath from 'remark-math'
 import rehypeKatex from 'rehype-katex'
@@ -27,7 +20,7 @@ const LearnSheet: React.FC = () => {
       const temp = await fetchLearnSheetById(id);
       setMd(temp.content);
     })();
-  }, [])
+  }, [id])
 
   return (
     <IonPage>
@@ -61,7 +54,5 @@ export default React.memo(
 );
 */
 export default LearnSheet;
-function fetchLearnSheetPropsById(id: any) {
-  throw new Error("Function not implemented.");
-}
+
 

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { IonButton, IonCol, IonGrid, IonIcon, IonRow, IonSelect, IonSelectOption } from '@ionic/react';
-import { fetchTemperamentPropsById, fetchTemperaments } from '../../engine/DataAccessor';
+import { fetchTemperaments } from '../../engine/DataAccessor';
 import { TemperamentDBType } from '../../engine/DB';
 
 //Style

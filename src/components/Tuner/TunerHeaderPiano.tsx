@@ -1,7 +1,4 @@
-import React, { useEffect } from 'react';
-import { IonInput, IonSelect, IonSelectOption } from '@ionic/react';
-import { TemperamentDBType } from '../../engine/DB';
-import Note from '../../model/Note/Note';
+import React from 'react';
 
 type TunerHeaderPianoProps = {
   pianoColor: Array<string>,
@@ -12,10 +9,6 @@ const TunerHeaderPiano: React.FC<TunerHeaderPianoProps> = ({
   pianoColor, procStepIdx
 }) => {
   //console.info('🔹 [TunerHeader]: Render')
-  useEffect(() => {
-    console.info(procStepIdx)
-    console.info(pianoColor)
-  }, [pianoColor, procStepIdx])
 
   const isColored = (note: string) => {
     for(let i = 0; i<procStepIdx; i++){

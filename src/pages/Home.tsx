@@ -11,7 +11,6 @@ import "./Home.css";
 import HomeContent from "../components/Home/HomeContent";
 import SettingsModal from "../components/Home/SettingsModal";
 import SettingsContext from "../store/settings-context";
-import { ellipsisVertical } from "ionicons/icons";
 
 const Home: React.FC = () => {
   const settings = useContext(SettingsContext);
