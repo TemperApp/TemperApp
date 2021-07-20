@@ -174,17 +174,17 @@ const TuneModalContent: React.FC = () => (
       </IonRow>
       </IonGrid>
       <p className="p-long">
-        A chaque étape vous êtes invité-e à accorder une note qui <strong>clignotera</strong> sur le cycle des quintes. 
+        À chaque étape vous êtes invité·e à accorder une note qui <strong>clignotera</strong> sur un affichage clavier. 
       </p>
       <p className="p-long">
-        Cette note sera accordée comme un intervalle sur une note indiquée en <strong>surbrillance</strong>.
+        Cette note sera accordée comme un intervalle sur une note déjà accordée.
       </p>
       <p className="p-long">
         Le battement de l’intervalle est affiché au centre du cercle et généré par 
         l’application.
       </p>
       <p className="p-long">
-        Toucher le centre du cercle permet de générer la note à accorder. A tout moment, vous pouvez aller à l’étape précédente, suivante ou interrompre la procédure. 
+        À tout moment, vous pouvez aller à l’étape précédente, suivante ou redémarrer l'étape. 
       </p>
       <div className="py-10"></div>
   </>
