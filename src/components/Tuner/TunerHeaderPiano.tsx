@@ -23,6 +23,8 @@ const TunerHeaderPiano: React.FC<TunerHeaderPianoProps> = ({
         return "pianoKeysColored";
       }
     }
+    if(pianoColor[procStepIdx]=== note)
+      return "pianoKeysActive";
     return "pianoKeys"
   }
 
@@ -32,6 +34,8 @@ const TunerHeaderPiano: React.FC<TunerHeaderPianoProps> = ({
         return "pianoKeysColored";
       }
     }
+    if(pianoColor[procStepIdx]=== note)
+      return "pianoKeysActive";
     return "pianoBlackKeys"
   }
 
