@@ -33,8 +33,8 @@ const FifthComaCircle: React.FC<FifthComaCircleProps> = ({
         <path data-name="B_flat"  fill={convertFifthQualityToColor(qualityNote.B_flat, settings.darkTheme)}  d="m3.198 10.737 1.422.39s.269-1.216.682-1.964c.414-.747 1.323-1.724 1.323-1.724l-.965-.977s-.825.78-1.53 2.03c-.705 1.252-.932 2.245-.932 2.245z" transform="translate(-.073 .295)"/>
         <path data-name="F"       fill={convertFifthQualityToColor(qualityNote.F, settings.darkTheme)}       d="m5.747 6.374 1.036 1.049s.841-.92 1.573-1.36c.732-.44 2.008-.832 2.008-.832l-.347-1.328s-1.104.262-2.34.993c-1.237.73-1.93 1.478-1.93 1.478z" transform="translate(-.073 .295)"/>
       </g>
-      <ellipse ry="9.698" rx="9.745" cy="13.574" cx="12.523" stroke="var(--color-theme)" strokeWidth="0.4px"/>
-      <ellipse ry="8.5" rx="8.5" cy="13.574" cx="12.523" stroke="var(--color-theme)" strokeWidth="0.8px"/>
+      <ellipse ry="9.698" rx="9.745" cy="13.574" cx="12.523" stroke="var(--color-hover)" strokeWidth="0.2px"/>
+      <ellipse ry="8.3" rx="8.3" cy="13.574" cx="12.523" stroke="var(--color-hover)" strokeWidth="0.2px"/>
       <ellipse id="a" cx="12.523" cy="13.574" rx="6.375" ry="6.344"/>
       <g className="commas-font" fill="var(--color-contrast)">
         <text xmlSpace="preserve" transform="rotate(-100.643 12.302 13.24)"> <textPath xlinkHref="#a"><tspan>{isCpMode ? temperament.cpExp5th.C       : temperament.csExp5th.C      } </tspan></textPath></text>
