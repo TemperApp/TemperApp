@@ -39,24 +39,57 @@ export const learnSheets: Array<LearnSheet> = [
   },
   {
     id: "characteristics",
-    content:`Depuis les auteurs grecs jusqu'au XIXe siècle, un intervalle est défini par un rapport de longueurs de cordes : par analogie, le rapport des sons est celui des longueurs des cordes qui les forment (ainsi le rapport mathématique est 1:2 pour l’octave, 2:3 pour la quinte, 3:4 pour la quarte, 4:5 pour la tierce majeure, 5:6 pour la tierce mineure, etc.). De nos jours, on emploie le rapport des fréquences des deux notes qui forment l'intervalle. On le nomme rapport acoustique, qui est l'inverse du rapport des longueurs. Les rapports acoustiques des intervalles simples à l'état pur sont ainsi les suivants : octave : 2 ; quinte : 3/2 ; quarte : 4/3 ; tierce majeure : 5/4 ; tierce mineure 6/5. Ces intervalles, auxquels ont peut ajouter les intervalles complémentaires des tierces dans l'octave, à savoir la sixte mineure (8/5) et la sixte majeure (5/3) émettent un battement perceptible si on les écarte de leur valeur pure (correspondant à l’exactitude du rapport acoustique). Le rapport acoustique est indépendant de la fréquence de la note sur laquelle on construit l’intervalle. Pour obtenir la quinte d’une note quelconque, il faudra toujours multiplier la fréquence de  cette note par 3/2. 
+    content:`Depuis les auteurs grecs jusqu'au XIXe siècle, un intervalle est défini par un rapport de longueurs de cordes : par analogie, le rapport des sons est celui des longueurs des cordes qui les forment (ainsi le rapport mathématique est 1:2 pour l’octave, 2:3 pour la quinte, 3:4 pour la quarte, 4:5 pour la tierce majeure, 5:6 pour la tierce mineure, etc.). De nos jours, on emploie le rapport des fréquences des deux notes qui forment l'intervalle. On le nomme rapport acoustique, qui est l'inverse du rapport des longueurs. Les rapports acoustiques des intervalles simples à l'état pur sont ainsi les suivants :
+
+  $ \\text{octave : 2 } $ 
+  $ \\text{quinte : 3/2 }$ 
+  $ \\text{quarte : 4/3 }$ 
+  $ \\text{tierce majeure : 5/4 }$ 
+  $ \\text{tierce mineure 6/5} $
     
-  De la même manière qu’on ajoute les intervalles sur un clavier en élevant successivement une note d’un intervalle puis d’un autre, on peut calculer le rapport acoustique qui en résulte : le rapport acoustique de la somme de deux intervalles est le produit des rapports acoustiques des deux intervalles. 
-
-  Ce principe s'illustre par la complémentarité des deux tierces dans la quinte :
-
-  tierce majeure + tierce mineure = quinte : $\\frac{5}{4} x \\frac{6}{5} = \\frac{3}{2}$
-
-  ou par la complémentarité de la quinte et de la quarte dans l'octave :
-
-  quinte + quarte = octave : $\\frac{3}{2} x \\frac{4}{3} = 2$.
-
-  Soustraire un intervalle à un deuxième revient à diviser le rapport acoustique de ce dernier par celui du premier, soit par exemple :
-
-  quarte – tierce majeure = demi-ton : $\\frac{4}{3} ÷ \\frac{5}{4} = \\frac{16}{15}$
-
-  Enfin le rapport acoustique correspondant à la division d’un intervalle en n intervalles égaux se calcule en prenant sa racine n-ième : C’est l’opération qui consiste à répartir le comma pythagoricien sur les douze quintes, qu’on abaisse toutes d’un petit intervalle dont la valeur est 12Cp. De même dans le tempérament mésotonique usuel, la tierce majeure est constituée de deux tons égaux dont le rapport acoustique est 54
+  Ces intervalles, auxquels ont peut ajouter les intervalles complémentaires des tierces dans l'octave, à savoir la sixte mineure ($8/5$) et la sixte majeure ($5/3$) émettent un battement perceptible si on les écarte de leur valeur pure (correspondant à l’exactitude du rapport acoustique). Le rapport acoustique est indépendant de la fréquence de la note sur laquelle on construit l’intervalle. Pour obtenir la quinte d’une note quelconque, il faudra toujours multiplier la fréquence de  cette note par $3/2$.
+    
+  De la même manière qu’on ajoute les intervalles sur un clavier en élevant successivement une note d’un intervalle puis d’un autre, on peut calculer le rapport acoustique qui en résulte : le rapport acoustique de la somme de deux intervalles est le produit des rapports acoustiques des deux intervalles.
   
+  Ce principe s'illustre par la complémentarité des deux tierces dans la quinte :
+  
+  $\\text{tierce majeure + tierce mineure = quinte}$
+  $\\Rightarrow  5/4$
+  $\\times  6/5 = 3/2 $
+  
+  ou par la complémentarité de la quinte et de la quarte dans l'octave :
+  
+  $\\text{quinte + quarte = octave}$ 
+  $\\Rightarrow  3/2$
+  $\\times  4/3 = 2 $
+  
+  Soustraire un intervalle à un deuxième revient à diviser le rapport acoustique de ce dernier par celui du premier, soit par exemple :
+  
+  $\\text{quarte – tierce majeure = demi-ton}$ 
+  $\\Rightarrow  4/3 $
+  $\\div 5/4 = 16/15 $
+
+  Enfin le rapport acoustique correspondant à la division d’un intervalle en n intervalles égaux se calcule en prenant sa racine n-ième : C’est l’opération qui consiste à répartir le comma pythagoricien sur les douze quintes, qu’on abaisse toutes d’un petit intervalle dont la valeur est $\\sqrt[12]{C_{p}}$. De même dans le tempérament mésotonique usuel, la tierce majeure est constituée de deux tons égaux dont le rapport acoustique est $\\sqrt{\\frac{5}{4}}$.
+  
+  La somme d'intervalles purs (qui, à l'audition, sont dénués de battement) entraîne la production de petits intervalles appelés commas qui affectent la pureté voire la jouabilité d'autres intervalles. Tempérer un intervalle, c'est l'éloigner de son état de pureté afin d'amoindrir voire annuler l'effet de ces commas.
+  
+  Par extension, un tempérament est une façon d'organiser ces déviations de la pureté dans une échelle donnée.
+
+  TemperApp utilise les commas syntonique et pythagoricien :
+
+  Le comma pythagoricien  ($C_{p}$) est l’intervalle entre une note élevée de douze quintes pures et la même note élevée de 7 octaves.
+
+  $$ \\LARGE C_{p} = \\dfrac{(\\dfrac{3}{2})^{12}}{2^{7}} = \\dfrac{3^{12}}{2^{19}}  $$
+
+  Le comma syntonique ($C_{s}$) ou comma zarlinien est l’intervalle entre une note élevée de quatre quintes pures et la même note élevée d’une tierce majeure pure et d’une octave.
+  
+  $$ \\LARGE C_{s} = \\dfrac{(\\dfrac{3}{2})^{4}}{2 . \\dfrac{5}{4}} = \\dfrac{81}{80} $$
+
+  Les deux nombres (fractions) représentant les intervalles $C_{s}$ et $C_{p}$ n’ont pas de relation arithmétique entre eux. Mais lorsqu’on les divise on remarque la quasi égalité suivante :
+
+  $$ \\LARGE \\dfrac{C_{p}}{12} \\approx \\dfrac{C_{s}}{11} $$
+
+
   ![image](https://i.ibb.co/ZBRmQp9/DabRose.gif)
   `,
   },
