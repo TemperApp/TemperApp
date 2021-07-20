@@ -12,7 +12,7 @@ const DiagramLearn: React.FC<diagramProps> = ({
 }) => {
   return (
     <div className="learn-box">
-      <h3>{titreText}</h3>
+      <h4>{titreText}</h4>
       <IonImg className="learn-element" src={"../assets/icon/imageType.png"} />
     </div>
   )

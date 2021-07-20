@@ -38,7 +38,7 @@ const ResourcesLearn: React.FC<resourcesProps> = ({ resourcesList }) => {
 
   return (
     <div className="LearnResources">
-      <h3 className="TitleParagraphLearn py-3">Ressources</h3>
+      <h4 className="TitleParagraphLearn py-3">Ressources</h4>
       {resourcesList.map((r, idx) => {
         let longTitle = completeTitle(r);
         let btn = buttonWithLink(r,idx);
@@ -46,7 +46,7 @@ const ResourcesLearn: React.FC<resourcesProps> = ({ resourcesList }) => {
         <div key={"learnRessource_"+r.book}>
           {btn}
           <div className="learn-ressources-not-btn">
-          {longTitle}
+            {longTitle}
           </div>
         </div>  
         )

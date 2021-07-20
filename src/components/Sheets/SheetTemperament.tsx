@@ -37,38 +37,39 @@ const SheetTemperament: React.FC = () => {
       subTitle="Tempérament"
       id = {id}
     >
-      <div>
+      <div className="px-6">
         {(temperament.theorist !== "")? (<p className="p-long"><b>Théoricien</b> : {temperament.theorist} </p>) : ("")}
         {(temperament.period !== "")? (<p className="p-long"><b>Époque</b> : {temperament.period} </p>) : ("")}
         {(temperament.geographicalArea !== "")? (<p className="p-long"><b>Aire géographique</b> : {temperament.geographicalArea} </p>) : ("")}
         {(temperament.nature !== "")? (<p className="p-long"><b>Nature</b> : {temperament.nature} </p>) : ("")}
         {(temperament.structuralParticularity !== "")? (<p className="p-long"><b>Particularité scruturelle</b> : {temperament.structuralParticularity} </p>) : ("")}
+        {((temperament.commentary !== "")
+          ? (<ParagraphLearn 
+            titreText = "Commentaires"
+            contentText = {temperament.commentary}
+          />) 
+          : (""))
+        }
       </div>
 
-      {((temperament.commentary !== "")
-        ? (<ParagraphLearn 
-          titreText = "Commentaires"
-          contentText = {temperament.commentary}
-        />) 
-        : (""))
-      }
-
-      <IonCard>
-        <IonCardHeader>
-          <IonCardTitle className="px-4">
-            <h4>Qualité des quintes et des tierces</h4>
-          </IonCardTitle>
-        </IonCardHeader>
-        <IonCardContent>
-          <PitchCircleView temperament={temperament} />
-        </IonCardContent>
-      </IonCard>
+      <div className="px-6">
+        <IonCard>
+          <IonCardHeader>
+            <IonCardTitle className="px-4">
+              <h4>Qualité des quintes et des tierces</h4>
+            </IonCardTitle>
+          </IonCardHeader>
+          <IonCardContent>
+            <PitchCircleView temperament={temperament} />
+          </IonCardContent>
+        </IonCard>
+      </div>
 
       <IonSlides pager={true} options={slideOpts}>
-          <IonSlide>
+          <IonSlide className="px-6">
             <IonCard className="comma-card">
-              <IonCardHeader className="py-1">
-                <IonCardTitle className="px-4 text-left">
+              <IonCardHeader className="py-2">
+                <IonCardTitle className="px-1 text-left">
                   <h4>Fractions de commas affectant les quintes</h4>
                 </IonCardTitle>
               </IonCardHeader>
@@ -102,9 +103,9 @@ const SheetTemperament: React.FC = () => {
               </IonCardContent>
             </IonCard>
           </IonSlide>
-          <IonSlide>
+          <IonSlide className="px-6">
             <IonCard className="comma-card">
-              <IonCardHeader>
+              <IonCardHeader className="py-2">
                 <IonCardTitle className="px-1 text-left">
                   <h4>Fractions de commas affectant les tierces</h4>
                 </IonCardTitle>
@@ -128,22 +129,23 @@ const SheetTemperament: React.FC = () => {
             </IonCard>
           </IonSlide>
         </IonSlides>
-
-      {((temperament.soundReferences[0] !== "")
-        ? (temperament.soundReferences.map(e => {
-          return(<VideoLearn 
-            titreText = "Références sonores"
-            videoLink = {e}
-            key={e}
-          />)
-          })
-        ) 
-        : "")
-      }
       
-      <ResourcesLearn 
-        resourcesList={temperament.sources}
-      />
+      <div className="px-6">
+        {((temperament.soundReferences[0] !== "")
+          ? (temperament.soundReferences.map(e => {
+            return(<VideoLearn 
+              titreText = "Références sonores"
+              videoLink = {e}
+              key={e}
+            />)
+            })
+          ) 
+          : "")
+        }
+        <ResourcesLearn 
+          resourcesList={temperament.sources}
+        />
+      </div>
 
       <IonButton
         className="btn-round fixed right-4 bottom-20"

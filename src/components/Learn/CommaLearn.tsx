@@ -10,7 +10,7 @@ type commaProps = {
 const CommaLearn: React.FC<commaProps> = ({ titreText, contentSVG }) => {
   return (
     <div className="learn-box">
-      <h3>{titreText}</h3>
+      <h4>{titreText}</h4>
       <IonImg src={contentSVG} />
     </div>
   )

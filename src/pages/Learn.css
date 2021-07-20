@@ -44,6 +44,13 @@ span.ion-text-left {
 }
 
 ion-button.learn-resources-btn::part(native) {
+  font-family: var(--ion-family-font);
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 19px;
+  letter-spacing: 0.03rem;
+  color: var(--color-contrast);
   --padding-start: 1em !important;
   --padding-end: 1em !important;
   background: var(--color-theme);
@@ -71,11 +78,18 @@ ion-button.learn-resources-btn::part(native) {
 .learn h3,
 .learn h4,
 .learn h5 {
-  line-height: normal;
-  font-size: 1rem;
+  font-family: var(--ion-family-font);
+  font-style: normal;
   font-weight: 700;
+  font-size: 1rem;
+  line-height: 19px;
+  color: var(--color-contrast);
 }
 .learn h2 {
+  font-family: var(--ion-family-font);
+  font-weight: normal;
+  line-height: 19px;
+  color: var(--color-contrast);
   font-size: 1.1rem;
   margin: 1rem 0 0.2rem 0;
 }
@@ -99,8 +113,10 @@ ion-button.learn-resources-btn::part(native) {
 }
 
 .learn p {
-  margin: 0 0 0.5rem 0;
+  font-family: var(--ion-family-font);
+  font-style: normal;
   font-weight: normal;
+  margin: 0 0 0.5rem 0;
   font-size: 0.95rem;
   line-height: 1.3rem;
   color: var(--color-contrast);

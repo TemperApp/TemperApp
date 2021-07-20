@@ -67,7 +67,7 @@ const Sheet: React.FC<SheetProps> = ({
       </IonHeader>
 
       <IonContent className="sheet">
-        <section className="px-6">
+        <section>
           <div className="absolute h-10 w-10 right-4">
             <IonButton
               fill="clear"
