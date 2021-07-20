@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   IonButton,
   IonContent,
@@ -21,6 +21,8 @@ const Sheet: React.FC<SheetProps> = ({
   children,
 }) => {
 
+  const [isFavorite, setIsFavorite] = useState<Boolean>(false);
+
   return (
     <IonPage>
       <IonHeader className="ion-no-border page-header">
@@ -35,11 +37,13 @@ const Sheet: React.FC<SheetProps> = ({
         <section className="px-6">
           <div className="absolute h-10 w-10 right-4">
             <IonButton
-              fill="clear">
+              fill="clear"
+              onClick={() => {setIsFavorite(!isFavorite)}}
+            >
               <IonIcon
                 className="h-full p-0 m-0"
                 style={{ fontSize: "2.8rem" } /* TODO Find a better way */}
-                src="/assets/logotypes/icon-bookmark.svg"
+                src={isFavorite?"/assets/logotypes/icon-bookmark-selected.svg":"/assets/logotypes/icon-bookmark-unselected.svg"}
               />
             </IonButton>
           </div>
