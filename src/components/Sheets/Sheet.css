@@ -45,3 +45,12 @@
   line-height: 1.3rem;
   color: var(--color-contrast);
 }
+
+.commas-font {
+  margin-left: -5%;
+  font-family: "Karla";
+  font-style: normal;
+  font-weight: bold;
+  font-size: 1px;
+  color: var(--color-contrast);
+}

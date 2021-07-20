@@ -259,6 +259,7 @@ ion-select::part(placeholder) {
   --padding-start: 0;
   --padding-end: 0;
   --box-shadow: var(--color-shadow);
+  z-index: 2;
 }
 
 ion-button.no-ripple {
