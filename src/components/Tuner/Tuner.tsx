@@ -14,6 +14,7 @@ import TunerFooter from "./TunerFooter";
 import { Temperament } from "../../model/Temperament/Temperament";
 import { ProcAction, Procedure } from "../../model/Procedure";
 import TunerHeaderPiano from "./TunerHeaderPiano";
+import { useHistory, useParams } from "react-router";
 
 export enum TuneMode {
   BEATS = 'Battements', // TODO Find a better way to print text
@@ -29,11 +30,14 @@ const Tuner: React.FC<TunerProps> = ({
   setMainTitle,
 }) => {
 
+  const history = useHistory();
+  const {id} = useParams<{ id: string }>(); // TODO Fix multiple rerender
+
   const settings = useContext(SettingsContext);
   const [isMuted, setIsMuted] = useState<boolean>(true);
   const [tuneMode, setTuneMode] = useState(TuneMode.BEATS);
   const [temperament, setTemperament] = useState<Temperament>(EqualTemperament);
-  const [selectedTemperamentId, setSelectedTemperamentId] = useState<number>(temperament.idTemperament);
+  const [selectedTemperamentId, setSelectedTemperamentId] = useState<number>(Number(id));
   const [temperamentsList, setTemperamentsList] = useState<TemperamentDBType[]>([]);
   const [freqA4, setFreqA4] = useState<number>(settings.freqA4);
   const [proc, setProc] = useState<Procedure | null>(null);
@@ -110,6 +114,7 @@ const Tuner: React.FC<TunerProps> = ({
           setProcStepIdx(0);
           setProcRepeatCount(0);
           setSelectedTemperamentId(e.detail.value)
+          history.push(`/tune/${e.detail.value}`);
         }}
         onFreqA4Change={(e: any) => {
           setProcStepIdx(0);
