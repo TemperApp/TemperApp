@@ -15,7 +15,15 @@ const CompareModalContent: React.FC = () => (
       l'intérieur.
     </p>
     <p className="p-long">
-      Le 1er tempérament entoure la roue des notes :
+      Le premier tempérament choisi est situé à l'intérieur et le deuxième à l'extérieur, 
+      les deux pouvant être échangés à tout moment. 
+    </p>
+    <p className="p-long">
+      On peut comparer les fractions de commas affectant les quintes en changeant l'unité 
+      entre comma syntonique et comma pythagoricien, ainsi que celles affectant les tierces. 
+    </p>
+    <p className="p-long">
+      Le tableau de déviation permet de visualiser le nombre de divergence. 
     </p>
   </>
 );
