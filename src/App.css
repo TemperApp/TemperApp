@@ -337,14 +337,14 @@ ion-input.sc-ion-input-ios-h {
   padding-left: 0.5rem !important;
 }
 
-input[type=number]::-webkit-outer-spin-button,
-input[type=number]::-webkit-inner-spin-button {
-    -webkit-appearance: none !important;
-    margin: 0;
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none !important;
+  margin: 0;
 }
 
-input[type=number]{
-    -moz-appearance: textfield !important;
+input[type="number"] {
+  -moz-appearance: textfield !important;
 }
 
 .katex-display {
@@ -366,6 +366,10 @@ input[type=number]{
   margin-bottom: 6px;
 }
 
-.page-header{
+.page-header {
   margin-top: var(--ion-safe-area-top);
+}
+
+.frac-line {
+  border-top: 1px solid var(--color-contrast);
 }
