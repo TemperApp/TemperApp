@@ -57,7 +57,7 @@ http://ionicframework.com/docs/theming/ */
   --ion-color-primary-shade: #45cbc7;
   --ion-color-primary-tint: #45cbc7;
 
-  --legend-gradient-fifth: linear-gradient(0.01deg, #6D9693 0.01%, #8CAEAB 5.79%, #9AB9B7 9.27%, #ABC9C7 13.43%, #B6D4D2 16.15%, #BFDDDB 19.19%, #CCE9E7 20.56%, #F5FBFB 22.37%, #F5FBFB 24.37%, #FF8352 29.57%, #FF7A4C 35.38%, #FF6F46 40.33%, #FF623E 46.79%, #FF5435 53.68%, #FF321F 61.86%, #FB3230 68.53%, #F33151 76.71%, #ED306A 83.16%, #D72F6A 89.19%, #C32D69 94.57%, #9D2A68 101.67%);
+  --legend-gradient-fifth: linear-gradient(0.01deg, #6D9693 0.01%, #BFDDDB 17.22%, #CCE9E7 22.65%, #F5FBFB 25.82%, #F5FBFB 31.71%, #FF8352 34.66%, #FF7A4C 41.45%, #FF6F46 48.02%, #FF623E 53.45%, #FF5435 59.34%, #FF321F 65.9%, #FB3230 72.92%, #ED306A 83.57%, #C32D69 93.98%, #9D2A68 101.67%);
   --legend-gradient-third: linear-gradient(180deg, #F5FBFB 0%, #F8F3E4 3.93%, #FAECD1 7.16%, #FFDDA7 11.86%, #FFC984 18.28%, #FFBB75 23.08%, #FFAA6B 27.39%, #FF8B57 32.99%, #FF8352 38.15%, #FF7E4F 42.89%, #FF7A4C 47.41%, #FF6C44 52.36%, #FF603C 56.88%, #FF5535 60.97%, #FF492E 65.38%, #FB423C 69.58%, #F63B4B 73.88%, #F03060 79.87%, #E9307D 85.08%, #D32E77 89.38%, #B92C70 94.55%, #9D2A68 100%);
 
   --quinte-color-12: #9D2A68;
@@ -153,7 +153,7 @@ body.dark {
   --ion-color-primary-shade: #2ea39b;
   --ion-color-primary-tint: #2ea39b;
 
-  --legend-gradient-fifth: linear-gradient(360deg, #4A7370 0.32%, #5C807E 3.35%, #6B8C89 6.11%, #7E9C9A 8.74%, #97B2B0 11.22%, #AEC7C5 13.36%, #C2D8D7 15.16%, #DAEEED 16.95%, #EDF7F6 18.68%, #FFFFFF 20.61%, #FFFFFF 22.34%, #EF7FDD 27.4%, #E86DD5 35.61%, #E05BCD 43.85%, #DB4EC7 50.67%, #D640C1 57.69%, #CB3DC5 65.32%, #BD4CC5 71.05%, #B158C5 75.21%, #A763C5 80.42%, #9E6CC5 86.17%, #9675C6 92.19%, #8587C6 97.89%);
+  --legend-gradient-fifth: linear-gradient(360deg, #4A7370 0.32%, #5C807E 3.35%, #6B8C89 6.11%, #7E9C9A 8.74%, #97B2B0 11.22%, #DAEEED 22.24%, #FFFFFF 26.32%, #FFFFFF 32.45%, #EF7FDD 36.76%, #E86DD5 43.11%, #E05BCD 48.1%, #DB4EC7 56.49%, #D640C1 61.48%, #CB3DC5 65.32%, #BD4CC5 71.92%, #B158C5 76.91%, #A763C5 80.42%, #9E6CC5 86.17%, #9675C6 92.19%, #8587C6 97.89%);
   --legend-gradient-third: linear-gradient(359.94deg, #2EA39B -17.99%, #45CBC7 -11.96%, #5DACC2 -3.8%, #758EBE 2.39%, #817FBC 5.48%, #8679BB 8.35%, #8A73BA 11.22%, #906CB9 14.62%, #9C5DB7 18.44%, #A64FB5 21.94%, #B248B8 25.04%, #BC41BB 29.39%, #C939BF 32.76%, #E149CD 38.02%, #E65CD3 43.74%, #EE76DB 49.34%, #EF7FDD 54.07%, #F39EE5 60%, #F4A8E8 66.7%, #F5B1EA 71.7%, #F7BBED 75.63%, #F8C9F1 80.2%, #FAD3F3 84.34%, #FBDDF6 88.61%, #FFFFFF 95.19%, #FFFFFF 101.12%);
 
   --quinte-color-12: #8587C6;
