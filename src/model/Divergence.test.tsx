@@ -1,7 +1,11 @@
 import {
   cpExp5thStrToNumber,
   csExp3rdStrToNumber,
+  formatCpExp5thStr,
+  formatCsExp3rdStr,
   freqs4,
+  isCpExp5thValid,
+  isCsExp3rdValid,
 } from './Divergence';
 
 test('cpExp5thStrToNumber_integer_denominator', () => {
@@ -73,6 +77,57 @@ test('csExp3rdStrToNumber_invalid_input', () => {
   expect(cpExp5thStrToNumber("/1")).toBeNull();
 });
 */
+
+
+test('formatCpExp5thStr', () => {
+  expect(formatCpExp5thStr("-0")).toEqual("0");
+  expect(formatCpExp5thStr("0")).toEqual("0");
+  expect(formatCpExp5thStr("+0")).toEqual("0");
+  expect(formatCpExp5thStr("-1/4.33")).toEqual("1/4.3");
+  expect(formatCpExp5thStr("+1/12.768")).toEqual("+1/12.8");
+  expect(formatCpExp5thStr("1/1.89")).toEqual("1/1.9");
+});
+
+
+test('isCpExp5thValid', () => {
+  expect(isCpExp5thValid("-1/4.33")).toEqual(true);
+  expect(isCpExp5thValid("1/12")).toEqual(true);
+  expect(isCpExp5thValid("1/1.1")).toEqual(true);
+  expect(isCpExp5thValid("+1/8.91")).toEqual(true);
+  expect(isCpExp5thValid("0")).toEqual(true);
+  expect(isCpExp5thValid("-0")).toEqual(true);
+  expect(isCpExp5thValid("+0")).toEqual(true);
+  expect(isCpExp5thValid("00")).toEqual(true);
+  expect(isCpExp5thValid(" 4/67")).toEqual(true);
+  expect(isCpExp5thValid("4")).toEqual(false);
+  expect(isCpExp5thValid("45")).toEqual(false);
+  
+  
+});
+
+
+test('isCsExp3rdValid', () => {
+  expect(isCsExp3rdValid("-1/11")).toEqual(true);
+  expect(isCsExp3rdValid("1/11")).toEqual(true);
+  expect(isCsExp3rdValid("1/11")).toEqual(true);
+  expect(isCsExp3rdValid("24/11")).toEqual(true);
+  expect(isCsExp3rdValid("0")).toEqual(true);
+  expect(isCsExp3rdValid("-0")).toEqual(true);
+  expect(isCsExp3rdValid("+0")).toEqual(true);
+  expect(isCsExp3rdValid("00")).toEqual(true);
+  expect(isCsExp3rdValid("4")).toEqual(false);
+  expect(isCsExp3rdValid("12/15")).toEqual(false);
+});
+
+
+test('csExp3rdStrToNumber', () => {
+  expect(formatCsExp3rdStr("-0")).toEqual("0");
+  expect(formatCsExp3rdStr("0")).toEqual("0");
+  expect(formatCsExp3rdStr("+0")).toEqual("0");
+  expect(formatCsExp3rdStr("+1/11")).toEqual("1/11");
+  expect(formatCsExp3rdStr("1/11")).toEqual("1/11");
+  expect(formatCsExp3rdStr("-1/11")).toEqual("-1/11");
+});
 
 
 

@@ -1,5 +1,15 @@
 import NotesMap, { mapNotesMap } from "./Note/NotesMap";
 
+
+export const isCpExp5thValid = (cpExp5th: string): boolean => {
+  return Boolean(cpExp5thRegexMatch(cpExp5th)); 
+}
+
+export const cpExp5thRegexMatch = (cpExp5th: string): RegExpMatchArray | null => {
+  return cpExp5th.trim()
+    .match(/^[+-]?0+$|^([+-])?([0-9]+)\/(([0-9]*[.])?[0-9]+)$/);
+}
+
 /**
  * @param cpExp5th the pythagorean comma exponent as string
  *                 with a common format of use.
@@ -10,8 +20,7 @@ import NotesMap, { mapNotesMap } from "./Note/NotesMap";
  * @returns null, if parsing fails
  */
 export const cpExp5thStrToNumber = (cpExp5th: string): number | null => {
-  const match = cpExp5th.trim()
-    .match(/^[+-]?0+$|^([+-])?([0-9]+)\/(([0-9]*[.])?[0-9]+)$/) as any[];
+  const match = cpExp5thRegexMatch(cpExp5th); 
   if (!match) {
     console.warn('[Divergence]: Cannot parse cpExp5th string:', cpExp5th);
     return null;
@@ -21,8 +30,31 @@ export const cpExp5thStrToNumber = (cpExp5th: string): number | null => {
   const [, sign, numerator, denominator] = match;
   return (
     (!sign ? -1 : (sign === '+' ? 1 : -1))
-    * numerator / denominator * 12);
+    * Number(numerator) / Number(denominator) * 12);
 };
+
+export const formatCpExp5thStr = (cpExp5th: string): string | null => {
+  const match = cpExp5thRegexMatch(cpExp5th);
+  if (!match) {
+    console.warn(`[Model]: Cannot parse cpExp5th string: ${cpExp5th}`);
+    return null;
+  }
+  if (String(Number(match[0])) === '0')
+    return '0';
+  const [, sign, numerator, denominator] = match;
+  return (
+    (sign === "+" ? "+" : "")
+    + numerator + "/" + Number(denominator).toFixed(1)
+  )};
+
+  export const isCsExp3rdValid = (csExp3rd: string): boolean => {
+    return Boolean(csExp3rdRegexMatch(csExp3rd)); 
+  }
+  
+  export const csExp3rdRegexMatch = (csExp3rd: string): RegExpMatchArray | null => {
+    return csExp3rd.trim()
+      .match(/^[+-]?0+$|^([+-])?([0-9]+)\/11$/);
+  }
 
 
 /**
@@ -35,9 +67,7 @@ export const cpExp5thStrToNumber = (cpExp5th: string): number | null => {
  * @returns null, if parsing fails
  */
 export const csExp3rdStrToNumber = (csExp3rd: string): number | null => {
-  const match = csExp3rd.trim()
-    .match(/^[+-]?0+$|^([+-])?([0-9]+)\/11$/) as any[];
-
+  const match = csExp3rdRegexMatch(csExp3rd);
   if (!match) {
     console.warn('[Divergence]: Cannot parse csExp3rd string:', csExp3rd);
     return null;
@@ -47,8 +77,26 @@ export const csExp3rdStrToNumber = (csExp3rd: string): number | null => {
   const [, sign, numerator] = match;
   return (
     (!sign ? 1 : (sign === '+' ? 1 : -1))
-    * numerator);
+    * Number(numerator));
 };
+
+export const formatCsExp3rdStr = (csExp3rd: string): string | null => {
+  const match = csExp3rdRegexMatch(csExp3rd);
+  if (!match) {
+    console.warn('[Divergence]: Cannot parse csExp3rd string:', csExp3rd);
+    return null;
+  }
+  if (String(Number(match[0])) === '0')
+    return "0";
+
+  const [, sign, numerator] = match;
+  return (
+    (sign === "-" ? "-" : "")
+    + numerator + "/11"
+  )};
+  
+
+
 
 
 /**
