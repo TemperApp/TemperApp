@@ -5,6 +5,7 @@ import './Comparator.css'
 import { convertThirdQualityToColor } from '../../utils/colorCircle';
 import { Temperament } from '../../model/Temperament/Temperament';
 import SettingsContext from '../../store/settings-context';
+import { formatCpExp5thStr, formatCsExp3rdStr } from '../../model/Divergence';
 
 type ComparatorThirdComaCircleProps = {
   temperament1: Temperament,
@@ -50,32 +51,32 @@ const ComparatorThirdComaCircle: React.FC<ComparatorThirdComaCircleProps> = ({ t
     <ellipse ry="6.344" rx="6.375" cy="13.574" cx="12.523" id="a" />
     <ellipse id="b" cx="12.523" cy="13.574" rx="3.161" ry="3.146" />
     <g className="comas-text" fill="var(--color-dark)">
-      <text xmlSpace="preserve" transform="rotate(-100.643 12.302 13.24)"> <textPath xlinkHref="#a"><tspan>{temperament1.csExp3rd.C      } </tspan></textPath></text>
-      <text transform="rotate(-69.005 12.362 13.061)" xmlSpace="preserve"> <textPath xlinkHref="#a"><tspan>{temperament1.csExp3rd.G      } </tspan></textPath></text>
-      <text xmlSpace="preserve" transform="rotate(-39.366 12.496 12.66)">  <textPath xlinkHref="#a"><tspan>{temperament1.csExp3rd.D      } </tspan></textPath></text>
-      <text transform="rotate(-10.238 13.4 10.193)" xmlSpace="preserve">   <textPath xlinkHref="#a"><tspan>{temperament1.csExp3rd.A      } </tspan></textPath></text>
-      <text xmlSpace="preserve" transform="rotate(19.01 11.552 15.253)">   <textPath xlinkHref="#a"><tspan>{temperament1.csExp3rd.E      } </tspan></textPath></text>
-      <text transform="rotate(51.115 11.977 14.098)" xmlSpace="preserve">  <textPath xlinkHref="#a"><tspan>{temperament1.csExp3rd.B      } </tspan></textPath></text>
-      <text xmlSpace="preserve" transform="rotate(80.447 12.076 13.832)">  <textPath xlinkHref="#a"><tspan>{temperament1.csExp3rd.F_sharp} </tspan></textPath></text>
-      <text transform="rotate(110.329 12.13 13.694)" xmlSpace="preserve">  <textPath xlinkHref="#a"><tspan>{temperament1.csExp3rd.C_sharp} </tspan></textPath></text>
-      <text xmlSpace="preserve" transform="rotate(140.211 12.165 13.596)"> <textPath xlinkHref="#a"><tspan>{temperament1.csExp3rd.G_sharp} </tspan></textPath></text>
-      <text transform="rotate(170.656 12.198 13.509)" xmlSpace="preserve"> <textPath xlinkHref="#a"><tspan>{temperament1.csExp3rd.E_flat } </tspan></textPath></text>
-      <text xmlSpace="preserve" transform="rotate(-160.264 12.227 13.437)"><textPath xlinkHref="#a"><tspan>{temperament1.csExp3rd.B_flat } </tspan></textPath></text>
-      <text transform="rotate(-132.894 12.256 13.363)" xmlSpace="preserve"><textPath xlinkHref="#a"><tspan>{temperament1.csExp3rd.F      } </tspan></textPath></text>
+      <text xmlSpace="preserve" transform="rotate(-100.643 12.302 13.24)"> <textPath xlinkHref="#a"><tspan>{formatCpExp5thStr(temperament1.csExp3rd.C      )} </tspan></textPath></text>
+      <text transform="rotate(-69.005 12.362 13.061)" xmlSpace="preserve"> <textPath xlinkHref="#a"><tspan>{formatCpExp5thStr(temperament1.csExp3rd.G      )} </tspan></textPath></text>
+      <text xmlSpace="preserve" transform="rotate(-39.366 12.496 12.66)">  <textPath xlinkHref="#a"><tspan>{formatCpExp5thStr(temperament1.csExp3rd.D      )} </tspan></textPath></text>
+      <text transform="rotate(-10.238 13.4 10.193)" xmlSpace="preserve">   <textPath xlinkHref="#a"><tspan>{formatCpExp5thStr(temperament1.csExp3rd.A      )} </tspan></textPath></text>
+      <text xmlSpace="preserve" transform="rotate(19.01 11.552 15.253)">   <textPath xlinkHref="#a"><tspan>{formatCpExp5thStr(temperament1.csExp3rd.E      )} </tspan></textPath></text>
+      <text transform="rotate(51.115 11.977 14.098)" xmlSpace="preserve">  <textPath xlinkHref="#a"><tspan>{formatCpExp5thStr(temperament1.csExp3rd.B      )} </tspan></textPath></text>
+      <text xmlSpace="preserve" transform="rotate(80.447 12.076 13.832)">  <textPath xlinkHref="#a"><tspan>{formatCpExp5thStr(temperament1.csExp3rd.F_sharp)} </tspan></textPath></text>
+      <text transform="rotate(110.329 12.13 13.694)" xmlSpace="preserve">  <textPath xlinkHref="#a"><tspan>{formatCpExp5thStr(temperament1.csExp3rd.C_sharp)} </tspan></textPath></text>
+      <text xmlSpace="preserve" transform="rotate(140.211 12.165 13.596)"> <textPath xlinkHref="#a"><tspan>{formatCpExp5thStr(temperament1.csExp3rd.G_sharp)} </tspan></textPath></text>
+      <text transform="rotate(170.656 12.198 13.509)" xmlSpace="preserve"> <textPath xlinkHref="#a"><tspan>{formatCpExp5thStr(temperament1.csExp3rd.E_flat )} </tspan></textPath></text>
+      <text xmlSpace="preserve" transform="rotate(-160.264 12.227 13.437)"><textPath xlinkHref="#a"><tspan>{formatCpExp5thStr(temperament1.csExp3rd.B_flat )} </tspan></textPath></text>
+      <text transform="rotate(-132.894 12.256 13.363)" xmlSpace="preserve"><textPath xlinkHref="#a"><tspan>{formatCpExp5thStr(temperament1.csExp3rd.F      )} </tspan></textPath></text>
     </g>
     <g className="comas-text" fill="var(--color-dark)">
-      <text transform="rotate(-106.725 11.991 12.788)" xmlSpace="preserve"><textPath xlinkHref="#b"><tspan>{temperament2.csExp3rd.C      } </tspan></textPath></text>
-      <text xmlSpace="preserve" transform="rotate(-76.725 12.119 12.382)"> <textPath xlinkHref="#b"><tspan>{temperament2.csExp3rd.G      } </tspan></textPath></text>
-      <text transform="rotate(-46.725 12.377 11.56)" xmlSpace="preserve">  <textPath xlinkHref="#b"><tspan>{temperament2.csExp3rd.D      } </tspan></textPath></text>
-      <text xmlSpace="preserve" transform="rotate(-16.725 13.48 8.053)">   <textPath xlinkHref="#b"><tspan>{temperament2.csExp3rd.A      } </tspan></textPath></text>
-      <text transform="rotate(13.275 9.698 20.084)" xmlSpace="preserve">   <textPath xlinkHref="#b"><tspan>{temperament2.csExp3rd.E      } </tspan></textPath></text>
-      <text xmlSpace="preserve" transform="rotate(43.275 11.19 15.339)">   <textPath xlinkHref="#b"><tspan>{temperament2.csExp3rd.B      } </tspan></textPath></text>
-      <text transform="rotate(73.275 11.478 14.42)" xmlSpace="preserve">   <textPath xlinkHref="#b"><tspan>{temperament2.csExp3rd.F_sharp} </tspan></textPath></text>
-      <text xmlSpace="preserve" transform="rotate(103.275 11.614 13.988)"> <textPath xlinkHref="#b"><tspan>{temperament2.csExp3rd.C_sharp} </tspan></textPath></text>
-      <text transform="rotate(133.275 11.702 13.707)" xmlSpace="preserve"> <textPath xlinkHref="#b"><tspan>{temperament2.csExp3rd.G_sharp} </tspan></textPath></text>
-      <text xmlSpace="preserve" transform="rotate(163.275 11.772 13.484)"> <textPath xlinkHref="#b"><tspan>{temperament2.csExp3rd.E_flat } </tspan></textPath></text>
-      <text transform="rotate(-166.725 11.837 13.278)" xmlSpace="preserve"><textPath xlinkHref="#b"><tspan>{temperament2.csExp3rd.B_flat } </tspan></textPath></text>
-      <text xmlSpace="preserve" transform="rotate(-136.725 11.906 13.059)"><textPath xlinkHref="#b"><tspan>{temperament2.csExp3rd.F      } </tspan></textPath></text>
+      <text transform="rotate(-106.725 11.991 12.788)" xmlSpace="preserve"><textPath xlinkHref="#b"><tspan>{formatCsExp3rdStr(temperament2.csExp3rd.C      )} </tspan></textPath></text>
+      <text xmlSpace="preserve" transform="rotate(-76.725 12.119 12.382)"> <textPath xlinkHref="#b"><tspan>{formatCsExp3rdStr(temperament2.csExp3rd.G      )} </tspan></textPath></text>
+      <text transform="rotate(-46.725 12.377 11.56)" xmlSpace="preserve">  <textPath xlinkHref="#b"><tspan>{formatCsExp3rdStr(temperament2.csExp3rd.D      )} </tspan></textPath></text>
+      <text xmlSpace="preserve" transform="rotate(-16.725 13.48 8.053)">   <textPath xlinkHref="#b"><tspan>{formatCsExp3rdStr(temperament2.csExp3rd.A      )} </tspan></textPath></text>
+      <text transform="rotate(13.275 9.698 20.084)" xmlSpace="preserve">   <textPath xlinkHref="#b"><tspan>{formatCsExp3rdStr(temperament2.csExp3rd.E      )} </tspan></textPath></text>
+      <text xmlSpace="preserve" transform="rotate(43.275 11.19 15.339)">   <textPath xlinkHref="#b"><tspan>{formatCsExp3rdStr(temperament2.csExp3rd.B      )} </tspan></textPath></text>
+      <text transform="rotate(73.275 11.478 14.42)" xmlSpace="preserve">   <textPath xlinkHref="#b"><tspan>{formatCsExp3rdStr(temperament2.csExp3rd.F_sharp)} </tspan></textPath></text>
+      <text xmlSpace="preserve" transform="rotate(103.275 11.614 13.988)"> <textPath xlinkHref="#b"><tspan>{formatCsExp3rdStr(temperament2.csExp3rd.C_sharp)} </tspan></textPath></text>
+      <text transform="rotate(133.275 11.702 13.707)" xmlSpace="preserve"> <textPath xlinkHref="#b"><tspan>{formatCsExp3rdStr(temperament2.csExp3rd.G_sharp)} </tspan></textPath></text>
+      <text xmlSpace="preserve" transform="rotate(163.275 11.772 13.484)"> <textPath xlinkHref="#b"><tspan>{formatCsExp3rdStr(temperament2.csExp3rd.E_flat )} </tspan></textPath></text>
+      <text transform="rotate(-166.725 11.837 13.278)" xmlSpace="preserve"><textPath xlinkHref="#b"><tspan>{formatCsExp3rdStr(temperament2.csExp3rd.B_flat )} </tspan></textPath></text>
+      <text xmlSpace="preserve" transform="rotate(-136.725 11.906 13.059)"><textPath xlinkHref="#b"><tspan>{formatCsExp3rdStr(temperament2.csExp3rd.F      )} </tspan></textPath></text>
     </g>
     <g className="comas-note" fill="var(--color-contrast)">
       <text x="11.741" y="2.8440001">
