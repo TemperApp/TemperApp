@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import SettingsContext from '../../store/settings/settings-context';
+import SettingsContext from '../../store/settings-context/';
 import "./Waves.css"
 
 const Waves: React.FC = () => {

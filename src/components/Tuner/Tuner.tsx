@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext, useCallback } from "react";
 import "./Tuner.css";
-import SettingsContext from "../../store/settings/settings-context";
+import SettingsContext from "../../store/settings-context";
 
 import { fetchTemperamentPropsById, fetchTemperaments } from "../../engine/DataAccessor";
 import { TemperamentDBType } from "../../engine/DB";

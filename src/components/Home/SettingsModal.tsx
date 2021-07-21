@@ -8,8 +8,8 @@ import { IonButton, IonIcon } from "@ionic/react";
 import { play } from 'ionicons/icons';
 import useTemperTone from "../../hooks/useTemperTone";
 import SettingRange from "../inputs/SettingRange";
-import { AllowedSettingValue } from "../../store/settings";
-import SettingsContext from "../../store/settings/settings-context";
+import { AllowedSettingValue } from "../../store/settings-context/settings";
+import SettingsContext from "../../store/settings-context";
 
 type SettingsModalProps = {
   onQuit: (e: any) => void,
@@ -52,7 +52,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
         <section className="mt-3">
 
           <SettingToggle
-            name={nextSettings.darkTheme ? 'Thème sombre' : 'Thème clair'}
+            name='Thème sombre'
             checked={settings.darkTheme}
             value="darktheme"
             onClick={(e: any) => setImmediatly('darkTheme', e.target.checked as boolean)}
@@ -80,7 +80,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
           />
 
           <SettingToggle
-            name={'Battements par seconde'}
+            name='Battements par seconde'
             checked={nextSettings.isBps}
             value="isBps"
             onClick={(e: any) => set('isBps', e.target.checked as boolean)}

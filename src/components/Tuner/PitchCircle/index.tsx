@@ -18,7 +18,7 @@ import {
 import {
   ProcSubStep, decomposeStep, ProcSubStepClear
 } from './utils/procedure';
-import SettingsContext from '../../../store/settings/settings-context';
+import SettingsContext from '../../../store/settings-context';
 import useTemperTone from '../../../hooks/useTemperTone';
 
 

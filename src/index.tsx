@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 import reportWebVitals from './reportWebVitals';
-import { SettingsContextProvider } from './store/settings/settings-context'
+import { SettingsContextProvider } from './store/settings-context'
 import { UserContextProvider } from './store/user-context';
 
 ReactDOM.render(

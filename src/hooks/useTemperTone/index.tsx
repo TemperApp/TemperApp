@@ -1,5 +1,5 @@
 import { useContext, useEffect, useMemo, useState } from "react";
-import SettingsContext from "../../store/settings/settings-context";
+import SettingsContext from "../../store/settings-context";
 import { equalsDeep } from "../../utils/functions";
 import TemperTone from "./TemperTone";
 

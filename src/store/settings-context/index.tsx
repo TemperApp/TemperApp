@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useStorageSQLite } from 'react-data-storage-sqlite-hook/dist';
-import settings, { AllowedSetting } from './';
+import settings, { AllowedSetting } from './settings';
 
 /**
  * @example
@@ -26,7 +26,6 @@ const getCtxPropsList = (): any => (
     }
   }, {})
 )
-
 
 
 const SettingsContext = React.createContext(getCtxPropsList());

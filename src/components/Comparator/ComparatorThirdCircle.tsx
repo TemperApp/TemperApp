@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import './Comparator.css'
 import { convertThirdQualityToColor } from '../../utils/colorCircle';
-import SettingsContext from '../../store/settings/settings-context';
+import SettingsContext from '../../store/settings-context';
 
 type ComparatorThirdCircleProps = {
   qualityNote1: { [key: string]: number | null }

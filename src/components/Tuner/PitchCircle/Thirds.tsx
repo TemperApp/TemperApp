@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { Notes } from "../../../model/Note/enums";
 import NotesMap from "../../../model/Note/NotesMap";
-import SettingsContext from "../../../store/settings/settings-context";
+import SettingsContext from "../../../store/settings-context";
 import { convertThirdQualityToColor } from "../../../utils/colorCircle";
 
 type PitchCircleThirdsProps = {

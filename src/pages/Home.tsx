@@ -10,8 +10,8 @@ import {
 import "./Home.css";
 import HomeContent from "../components/Home/HomeContent";
 import SettingsModal from "../components/Home/SettingsModal";
-import SettingsContext from "../store/settings/settings-context";
-import { updateSettings } from "../store/settings/utils";
+import SettingsContext from "../store/settings-context";
+import { updateSettings } from "../store/settings-context/utils";
 
 const Home: React.FC = () => {
   const settings = useContext(SettingsContext);
