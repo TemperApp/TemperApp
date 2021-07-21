@@ -308,11 +308,7 @@ ion-card {
   margin-top: 10%;
   margin-bottom: 5%;
   box-shadow: var(--color-shadow);
-}
-
-.commaCard {
-  height: 472px;
-  margin-bottom: 40px;
+  border-radius: 12px;
 }
 
 ion-toggle {
@@ -338,10 +334,19 @@ ion-input.sc-ion-input-ios-h {
   padding-left: 0.5rem !important;
 }
 
-input[type="number"]::-webkit-outer-spin-button,
-input[type="number"]::-webkit-inner-spin-button {
-  -webkit-appearance: none !important;
-  margin: 0;
+.swiper-pagination-bullet {
+  background: var(--color-button);
+}
+
+.swiper-container-horizontal .swiper-pagination-bullets {
+  bottom: 2em !important;
+  opacity: 1 !important;
+}
+
+input[type=number]::-webkit-outer-spin-button,
+input[type=number]::-webkit-inner-spin-button {
+    -webkit-appearance: none !important;
+    margin: 0;
 }
 
 input[type="number"] {

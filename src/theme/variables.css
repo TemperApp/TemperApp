@@ -140,7 +140,7 @@ body.dark {
   --color-theme: #233c3a;
   --color-contrast: #f5fbfb;
 
-  --color-shadow: 1px 1px 8px rgba(0, 0, 0, 0.5);
+  --color-shadow: 1px 1px 8px rgba(0, 0, 0, 0.8);
 
   --ion-background-color: #233c3a;
   --ion-toolbar-background: #233c3a;

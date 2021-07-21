@@ -35,13 +35,8 @@
   color: var(--color-contrast);
 }
 
-.swiper-container-horizontal .swiper-pagination-bullets {
-  bottom: 3em !important;
-  opacity: 1 !important;
-}
-
 .comma-card {
-  height: 70vh;
+  height: 30rem;
 }
 
 .comma-toggler{
