@@ -1,8 +1,11 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 26.458 26.458">
     <path
-        style="fill:#000;fill-opacity:1;stroke:#2ea39b;stroke-width:1.99901;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:3;stroke-dasharray:none;stroke-opacity:1"
+        style="fill:#000;fill-opacity:1;stroke:var(--color-button);stroke-width:1.85206;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:3;stroke-dasharray:none;stroke-opacity:1"
         d="m14.57 9.84 6.661 3.243zm6.886 3.177 3.851-6.329z" />
     <circle
-        style="fill:none;stroke:#2ea39b;stroke-width:1.99901;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+        style="fill:none;stroke:var(--color-button);stroke-width:1.99901;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
         transform="rotate(22.512)" />
+    <path
+        d="M11.523 2.917a10.673 10.673 0 1 0 8.2 17.532s.345-.761-.216-1.28c-.562-.519-1.365-.047-1.365-.047a8.659 8.659 0 1 1 1.895-6.862l2.053-.322a10.673 10.673 0 0 0-10.567-9.021z"
+        style="fill:var(--color-button);stroke-width:1.98635;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:3;stroke-dasharray:none" />
 </svg>

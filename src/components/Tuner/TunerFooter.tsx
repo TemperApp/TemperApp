@@ -109,7 +109,7 @@ const TunerFooter: React.FC<any> = ({ // TODO Update any
       <IonIcon
         className="pr-2"
         style={{ fontSize: "2rem" }}
-        src={reload}
+        src="/assets/logotypes/icon-repeat.svg"
         slot="icon-only"
       />
     </IonButton>
