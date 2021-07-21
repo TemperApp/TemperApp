@@ -42,7 +42,6 @@ const Home: React.FC = () => {
       >
         <SettingsModal
           onQuit={(nextSettings) => {
-            console.log('SettingsModal Quit')
             setShowModal(false);
             updateSettings(settings, nextSettings);
           }}

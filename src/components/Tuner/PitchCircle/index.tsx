@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useReducer } from 'react';
+import React, { useCallback, useContext, useEffect, useReducer } from 'react';
 import { IonPopover, useIonViewWillLeave } from "@ionic/react";
 
 import PitchCircleView from './View';
@@ -21,9 +21,8 @@ import {
   ProcSubStep, decomposeStep, ProcSubStepClear
 } from './utils/procedure';
 import { playSound } from './utils/sound';
+import SettingsContext from '../../../store/settings/settings-context';
 
-
-const isBpm = true;
 
 let timeout: NodeJS.Timeout;
 
@@ -45,6 +44,8 @@ const PitchCircle: React.FC<PitchCircleProps> = ({
     TemperTone.stop();
     dispatchState({ type: BtnActions.SET_ALL_IDLE });
   });
+
+  const settings = useContext(SettingsContext);
 
   const [btnStates, dispatchState] = useReducer(
     btnStatesReducer(tuneMode),
@@ -135,7 +136,7 @@ const PitchCircle: React.FC<PitchCircleProps> = ({
       const { lowest, highest } = Note.compare(noteX, noteY);
       return [
         `${lowest.string()} · ${highest.string()}`,
-        (modulationFreq !== null) ? acousticBeatToStr(modulationFreq, isBpm) : "—"
+        (modulationFreq !== null) ? acousticBeatToStr(modulationFreq, settings.isBps) : "—"
       ];
     }
     return ["—", "— Hz"];

@@ -79,6 +79,12 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
             classNameInput="max-w-20"
           />
 
+          <SettingToggle
+            name={'Battements par seconde'}
+            checked={nextSettings.isBps}
+            value="isBps"
+            onClick={(e: any) => set('isBps', e.target.checked as boolean)}
+          />
 
           <SettingsGroup
             title='Volume audio'

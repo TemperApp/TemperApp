@@ -27,6 +27,9 @@ const settings : readonly AllowedSetting[] = [{
     name: 'freqA4',
     defaultValue: 440,
   },{
+    name: 'isBps',
+    defaultValue: false,
+  },{
     name: 'masterVolume',
     defaultValue: -0.1,
   },{
