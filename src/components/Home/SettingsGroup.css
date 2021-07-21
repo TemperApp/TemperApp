@@ -1,0 +1,16 @@
+.title-container {
+  background-color: var(--ion-background-color);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.titles {
+  min-width: 0;
+  white-space: nowrap;
+}
+
+.titles > * {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

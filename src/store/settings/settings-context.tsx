@@ -1,37 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { useStorageSQLite } from 'react-data-storage-sqlite-hook/dist';
-
-type Setting<T> = {
-  name: string,
-  defaultValue: T,
-  callback?: (state: T) => void,
-};
-
-
-type AllowedSetting = (
-  Setting<boolean>
-  | Setting<number>
-  | Setting<string>
-);
-
-
-const settings : readonly AllowedSetting[] = [{
-    name: 'darkTheme',
-    defaultValue: false,
-    callback: (state: boolean) => { document.body.classList.toggle('dark', state) },
-  },{
-    name: 'freqA4',
-    defaultValue: 440,
-  }
-] as const;
-
+import settings, { AllowedSetting } from './';
 
 /**
  * @example
  * [{ name: 'darkTheme', defaultValue: false },
  *  { name: 'freqA4', defaultValue: 440, }]
  * 
- * will returns
+ * // will returns
  * 
  * {
  *   darkTheme: false,

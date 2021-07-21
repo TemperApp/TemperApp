@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import SettingsContext from '../../../store/settings-context';
+import SettingsContext from '../../../store/settings/settings-context';
 
 import { Notes } from '../../../model/Note/enums';
 import NotesMap from '../../../model/Note/NotesMap';

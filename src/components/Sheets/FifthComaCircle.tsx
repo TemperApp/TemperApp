@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { convertFifthQualityToColor } from "../../utils/colorCircle";
 import { Temperament } from "../../model/Temperament/Temperament";
-import SettingsContext from "../../store/settings-context";
+import SettingsContext from "../../store/settings/settings-context";
 import "../../components/Comparator/Comparator.css"
 
 type FifthComaCircleProps = {

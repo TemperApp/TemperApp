@@ -10,7 +10,8 @@ import {
 import "./Home.css";
 import HomeContent from "../components/Home/HomeContent";
 import SettingsModal from "../components/Home/SettingsModal";
-import SettingsContext from "../store/settings-context";
+import SettingsContext from "../store/settings/settings-context";
+import updateSettings from "../store/settings/update";
 
 const Home: React.FC = () => {
   const settings = useContext(SettingsContext);
@@ -37,10 +38,15 @@ const Home: React.FC = () => {
       <IonModal 
         isOpen={showModal}
         cssClass="modal-fullscreen page-header"
-        swipeToClose={true}
         backdrop-dismiss={true}
       >
-        <SettingsModal onQuit={() => setShowModal(false)} />
+        <SettingsModal
+          settingsCopy={{ ...settings }}
+          onQuit={(settingsChanges) => {
+            setShowModal(false);
+            updateSettings(settings, settingsChanges);
+          }}
+        />
       </IonModal>
       
       <IonContent fullscreen scrollY={true}>

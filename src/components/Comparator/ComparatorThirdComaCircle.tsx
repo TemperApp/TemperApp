@@ -4,7 +4,7 @@ import React, { useContext } from 'react';
 import './Comparator.css'
 import { convertThirdQualityToColor } from '../../utils/colorCircle';
 import { Temperament } from '../../model/Temperament/Temperament';
-import SettingsContext from '../../store/settings-context';
+import SettingsContext from '../../store/settings/settings-context';
 import { formatCpExp5thStr, formatCsExp3rdStr } from '../../model/Divergence';
 
 type ComparatorThirdComaCircleProps = {

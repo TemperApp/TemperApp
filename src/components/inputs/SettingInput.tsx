@@ -12,6 +12,7 @@ type SettingInputProps = {
   type?: InputType,
   value?: string | number,
   placeholder?: string,
+  attributes?: object,
   className?: string,
   classNameDefault?: string,
   classNameText?: string,
@@ -24,6 +25,7 @@ const SettingInput: React.FC<SettingInputProps> = ({
   type = 'text',
   value = '',
   placeholder = '',
+  attributes = {},
   className = '',
   classNameDefault = 'flex items-center justify-between px-0 my-3',
   classNameText = 'pt-1',
@@ -41,6 +43,7 @@ const SettingInput: React.FC<SettingInputProps> = ({
         value={value}
         placeholder={placeholder}
         onIonChange={onChange}
+        {...attributes}
       />
     </div>
   );

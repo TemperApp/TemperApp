@@ -43,8 +43,6 @@ import Sheets from './pages/Sheets';
 import LearnSheet from './components/Learn/LearnSheet';
 import Learn from './pages/Learn';
 import SheetTemperament from './components/Sheets/SheetTemperament';
-import StorageTest from './components/StorageTest';
-import SoundEngine from './engine/SoundEngine';
 
 /* SQLite */
 export let sqlite: any; // singleton

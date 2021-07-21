@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext, useCallback } from "react";
 import "./Tuner.css";
-import SettingsContext from "../../store/settings-context";
+import SettingsContext from "../../store/settings/settings-context";
 
 import { fetchTemperamentPropsById, fetchTemperaments } from "../../engine/DataAccessor";
 import { TemperamentDBType } from "../../engine/DB";
@@ -15,6 +15,7 @@ import { Temperament } from "../../model/Temperament/Temperament";
 import { ProcAction, Procedure } from "../../model/Procedure";
 import TunerHeaderPiano from "./TunerHeaderPiano";
 import { useHistory, useParams } from "react-router";
+import useTemperTone from "../../hooks/useTemperTone";
 
 export enum TuneMode {
   BEATS = 'Battements', // TODO Find a better way to print text
@@ -32,6 +33,8 @@ const Tuner: React.FC<TunerProps> = ({
 
   const history = useHistory();
   const {id} = useParams<{ id: string }>(); // TODO Fix multiple rerender
+
+  const tempertone = useTemperTone();
 
   const settings = useContext(SettingsContext);
   const [isMuted, setIsMuted] = useState<boolean>(true);
@@ -61,6 +64,9 @@ const Tuner: React.FC<TunerProps> = ({
     (async () => {
       setTemperamentsList(await fetchTemperaments());
     })();
+    setTimeout(() => {
+      //tempertone.play(220);
+    }, 1500)
   }, []);
 
   useEffect(() => {
