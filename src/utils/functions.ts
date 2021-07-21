@@ -1,6 +1,6 @@
 import { DeepPartial } from './types';
 
-export const mergeDeep = <T,>(target: T, source: DeepPartial<T>) => {
+const mergeDeepTogether = <T,>(target: T, source: DeepPartial<T>) => {
   // Iterate through `source` properties and if an `Object` set property to merge of `target` and `source` properties
   for (const key of Object.keys(source)) {
     const k = key as keyof T;
@@ -14,6 +14,12 @@ export const mergeDeep = <T,>(target: T, source: DeepPartial<T>) => {
   // Join `target` and modified `source`
   Object.assign(target || {}, source)
   return target
+};
+
+
+export const mergeDeep = <T,>(first: T, second: DeepPartial<T>) => {
+  const firstCopy = {...first};
+  return mergeDeepTogether(firstCopy, second);
 };
 
 

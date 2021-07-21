@@ -11,7 +11,7 @@ import "./Home.css";
 import HomeContent from "../components/Home/HomeContent";
 import SettingsModal from "../components/Home/SettingsModal";
 import SettingsContext from "../store/settings/settings-context";
-import updateSettings from "../store/settings/update";
+import { updateSettings } from "../store/settings/utils";
 
 const Home: React.FC = () => {
   const settings = useContext(SettingsContext);
@@ -41,10 +41,10 @@ const Home: React.FC = () => {
         backdrop-dismiss={true}
       >
         <SettingsModal
-          settingsCopy={{ ...settings }}
-          onQuit={(settingsChanges) => {
+          onQuit={(nextSettings) => {
+            console.log('SettingsModal Quit')
             setShowModal(false);
-            updateSettings(settings, settingsChanges);
+            updateSettings(settings, nextSettings);
           }}
         />
       </IonModal>

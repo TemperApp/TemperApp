@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import PageModal from "../../pages/Page/PageModal";
 import SettingToggle from "../inputs/SettingToggle";
 //import SettingSelect from "../inputs/SettingSelect";
@@ -8,78 +8,41 @@ import { IonButton, IonIcon } from "@ionic/react";
 import { play } from 'ionicons/icons';
 import useTemperTone from "../../hooks/useTemperTone";
 import SettingRange from "../inputs/SettingRange";
-
-export const SettingVolume: React.FC<any> = React.memo(({
-  settingsCopy, TemperTone
-}) => {
-  
-  console.info('🔺 [SettingsModal]: Render');
-  return (
-  <SettingsGroup
-    title='Volume audio'
-    titleAside={
-      <IonButton 
-        size='small'
-        fill='clear'
-        onClick={() => {
-          TemperTone.play(440, 1)}}
-      >
-        <IonIcon
-          style={{ fontSize: "1.5rem" }}
-          src={play}
-          slot='icon-only'
-        />
-      </IonButton>
-    }
-  >
-    
-    <SettingRange
-      name="Volume global"
-      attributes={{ min: 0, max: 10, step: 1 }}
-      value={settingsCopy.masterVolume*10}
-      onChange={(e) => {
-        TemperTone.amsynthGain.gain.rampTo(e.detail.value/10)
-        /*settingsCopy.setMasterVolume(Number(e.detail.value/10))*/}}
-      classNameIonRange="max-w-32"
-    />
-
-    <SettingRange
-      name="Volume (son pur)"
-      attributes={{ min: 0, max: 10, step: 1 }}
-      value={settingsCopy.amSynthVolume}
-      onChange={(e) => {
-        TemperTone.amsynthGain.gain.rampTo(e.detail.value/10)
-        /*settingsCopy.setAmSynthVolume(Number(e.detail.value/10))*/}}
-      classNameIonRange="max-w-32"
-    />
-
-    <SettingRange
-      name="Volume (diapason)"
-      attributes={{ min: 0, max: 10, step: 1 }}
-      value={settingsCopy.forkVolume}
-      onChange={(e) => {
-        TemperTone.forkGain.gain.rampTo(e.detail.value/10)
-        /*settingsCopy.setForkVolume(Number(e.detail.value/10))*/}}
-      classNameIonRange="max-w-32"
-    />
-  </SettingsGroup>
-)},
-() => true);
-
+import { AllowedSettingValue } from "../../store/settings";
+import SettingsContext from "../../store/settings/settings-context";
 
 type SettingsModalProps = {
-  settingsCopy: any,
   onQuit: (e: any) => void,
 };
 
 export const SettingsModal: React.FC<SettingsModalProps> = ({
-  settingsCopy,
   onQuit = (nextSettings: any) => { },
 }) => {
-  const [nextSettings, set] = useState(settingsCopy);
+  const settings = useContext(SettingsContext);
+  const [nextSettings, setNextSettings] = useState({...settings});
   const TemperTone = useTemperTone();
 
-  console.info(' [SettingsModal]: Render');
+  const set = (name: string, value: AllowedSettingValue) => {
+    if (settings[name] === undefined) {
+      console.error('[SettingsModal]: Cannot update settings: unknown setting name:', name);
+      return;
+    }
+    setNextSettings((prevNextSettings: any) => ({
+      ...prevNextSettings, [name]: value,
+    }));
+  };
+  
+  const setImmediatly = (name: string, value: AllowedSettingValue) => {
+    if (settings[name] === undefined) {
+      console.error('[SettingsModal]: Cannot update settings: unknown setting name:', name);
+      return;
+    }
+    const settingSetter = settings[`set${name.charAt(0).toUpperCase()}${name.slice(1)}`]; // e.g.: settings.setDarkTheme
+    settingSetter(value);
+    set(name, value);
+  };
+  
+  console.info('[SettingsModal]: Render');
   return (
     <>
       <PageModal
@@ -87,11 +50,12 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
         onQuit={() => onQuit(nextSettings)}
       >
         <section className="mt-3">
+
           <SettingToggle
-            name={settingsCopy.darkTheme ? 'Thème sombre' : 'Thème clair'}
-            checked={settingsCopy.darkTheme}
+            name={nextSettings.darkTheme ? 'Thème sombre' : 'Thème clair'}
+            checked={settings.darkTheme}
             value="darktheme"
-            onClick={(e: any) => set({ ...nextSettings, darkTheme: e.target.checked})}
+            onClick={(e: any) => setImmediatly('darkTheme', e.target.checked as boolean)}
           />
 
           {/*
@@ -109,12 +73,45 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
           <SettingInput
             name="A4 (Hz)"
             type="number"
-            value={settingsCopy.freqA4}
+            value={nextSettings.freqA4}
             onChange={(e) =>
-              settingsCopy.setFreqA4(Number(e.detail.value))}
+              set('freqA4', Number(e.detail.value))}
             classNameInput="max-w-20"
           />
-          <SettingVolume settingsCopy={settingsCopy} TemperTone={TemperTone} />
+
+
+          <SettingsGroup
+            title='Volume audio'
+            titleAside={
+              <IonButton 
+                size='small' fill='clear'
+                onClick={() => TemperTone.play(440, 1)}
+              >
+                <IonIcon src={play} slot='icon-only' />
+              </IonButton>
+            }
+          >
+            <SettingRange
+              name="Volume (son pur)"
+              attributes={{ min: 0, max: 10, step: 1 }}
+              value={nextSettings.amSynthVolume*10}
+              onChange={(e) => {
+                set('amSynthVolume', e.detail.value/10)
+                TemperTone.amsynthGain.gain.rampTo(e.detail.value/10)}}
+              classNameIonRange="max-w-32"
+            />
+        
+            <SettingRange
+              name="Volume (diapason)"
+              attributes={{ min: 0, max: 10, step: 1 }}
+              value={nextSettings.forkVolume*10}
+              onChange={(e) => {
+                set('forkVolume', e.detail.value/10)
+                TemperTone.forkGain.gain.rampTo(e.detail.value/10)}}
+              classNameIonRange="max-w-32"
+            />
+          </SettingsGroup>
+
         </section>
 
         <section className="overflow-x-hidden">

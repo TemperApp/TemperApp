@@ -5,6 +5,13 @@ export type Setting<T> = {
 };
 
 
+export type AllowedSettingValue = (
+  boolean
+  | number
+  | string
+);
+
+
 export type AllowedSetting = (
   Setting<boolean>
   | Setting<number>
