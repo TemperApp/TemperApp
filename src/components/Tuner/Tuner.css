@@ -61,22 +61,22 @@
 /* STYLE PIANO */
 
 .pianoKeys {
-  fill: #ffffff;
-  stroke: #010202;
+  fill: var(--color-inner-button);
+  stroke: var(--color-dark);
   stroke-width: 0.5;
   stroke-miterlimit: 10;
 }
 
 .pianoKeysColored {
-  fill: #77ef00;
-  stroke: #010202;
+  fill: var(--color-sec);
+  stroke: var(--color-dark);
   stroke-width: 0.5;
   stroke-miterlimit: 10;
 }
 
 .pianoKeysActive {
-  fill: #5fdb13;
-  stroke: #010202;
+  fill: var(--color-sec);
+  stroke: var(--color-dark);
   stroke-width: 0.5;
   stroke-miterlimit: 10;
   animation-name: pianoNoteActive;
@@ -86,31 +86,31 @@
 
 @keyframes pianoNoteActive {
   0% {
-    fill: #77ef00;
+    fill: var(--color-sec);
   }
   50% {
-    fill: #ffffff;
+    fill: var(--color-inner-button);
   }
   100% {
-    fill: #77ef00;
+    fill: var(--color-sec);
   }
 }
 
 .pianoBlackKeys {
-  fill: #010202;
-  stroke: #010202;
+  fill: var(--color-dark);
+  stroke: var(--color-dark);
   stroke-width: 0.5;
   stroke-miterlimit: 10;
 }
 
 .st0 {
-  fill: #ffffff;
-  stroke: #000000;
+  fill: var(--color-inner-button);
+  stroke: var(--color-dark);
   stroke-width: 0.5;
   stroke-miterlimit: 10;
 }
 .st1 {
-  fill: #010202;
+  fill: var(--color-contrast);
 }
 .st2 {
   font-family: "Karla-Bold";

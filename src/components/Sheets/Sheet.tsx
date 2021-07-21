@@ -68,22 +68,25 @@ const Sheet: React.FC<SheetProps> = ({
           canGoBack={true}
           onGoBack={() => history.push('/sheets/')}
         />
-      </IonHeader>
-
-      <IonContent className="sheet">
-        <section>
-          <div className="absolute h-10 w-10 right-4">
+         <div className="absolute h-9 w-9 right-20 top-3">
             <IonButton
               fill="clear"
               onClick={() => {setIsFavorite(!isFavorite)}}
             >
               <IonIcon
                 className="h-full p-0 m-0"
-                style={{ fontSize: "2.8rem" } /* TODO Find a better way */}
-                src={isFavorite?"/assets/logotypes/icon-bookmark-selected.svg":"/assets/logotypes/icon-bookmark-unselected.svg"}
+                style={isFavorite? 
+                  { fontSize: "2.8rem", fill:"var(--color-sec)"} /* TODO Find a better way */
+                : { fontSize: "2.8rem", fill:"var(--color-grey)"}}
+                src={"/assets/logotypes/icon-fav.svg"}
               />
             </IonButton>
           </div>
+      </IonHeader>
+
+      <IonContent className="sheet">
+        <section>
+         
 
           <div className="pt-3">
             {children}

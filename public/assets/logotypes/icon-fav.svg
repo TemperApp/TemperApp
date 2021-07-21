@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 26.458 26.458">
+    <circle
+        style="fill:none;stroke:#2ea39b;stroke-width:1.99901;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+        transform="rotate(22.512)" />
+    <path
+        style="fill-opacity:1;stroke:none;stroke-width:1.13771;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:3;stroke-opacity:1"
+        d="M-495.011 248.653c-4.608 3.652-7.406 27.708-13.282 27.954-5.875.247-10.679-23.49-15.577-26.743-4.898-3.254-28.64 1.518-30.69-3.994-2.05-5.511 19.039-17.415 20.62-23.079 1.581-5.663-10.294-26.77-5.686-30.422 4.608-3.653 22.446 12.726 28.322 12.48 5.875-.247 22.278-18.063 27.176-14.81 4.898 3.254-5.167 25.281-3.117 30.793 2.05 5.511 24.063 15.606 22.482 21.27-1.58 5.664-25.64 2.898-30.248 6.55z"
+        transform="rotate(36.847 10.333 275.268) scale(.28182)" />
+</svg>
