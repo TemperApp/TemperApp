@@ -1,5 +1,5 @@
 import { Notes } from "./enums";
-import { Note } from "./Note";
+import Note from "./Note";
 
 export const FIFTHS: Array<Note> = [
   Note.create(Notes.C),

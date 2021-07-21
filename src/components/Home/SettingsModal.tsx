@@ -91,7 +91,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
             titleAside={
               <IonButton 
                 size='small' fill='clear'
-                onClick={() => TemperTone.play(440, 1)}
+                onClick={() => TemperTone.trigger(440, 1)}
               >
                 <IonIcon src={play} slot='icon-only' />
               </IonButton>

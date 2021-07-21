@@ -10,8 +10,6 @@ import { Temperament } from '../../../model/Temperament/Temperament';
 import { Procedure } from '../../../model/Procedure';
 import { acousticBeatToStr, acousticBeat } from '../../../model/AcousticBeat';
 
-import TemperTone from '../../../engine/TemperTone';
-
 import {
   btnStatesReducer, BtnStates, getActiveBtns,
   createNotesFromActive, createNoteFromActive, BtnActions,
@@ -20,8 +18,8 @@ import {
 import {
   ProcSubStep, decomposeStep, ProcSubStepClear
 } from './utils/procedure';
-import { playSound } from './utils/sound';
 import SettingsContext from '../../../store/settings/settings-context';
+import useTemperTone from '../../../hooks/useTemperTone';
 
 
 let timeout: NodeJS.Timeout;
@@ -46,6 +44,7 @@ const PitchCircle: React.FC<PitchCircleProps> = ({
   });
 
   const settings = useContext(SettingsContext);
+  const TemperTone = useTemperTone();
 
   const [btnStates, dispatchState] = useReducer(
     btnStatesReducer(tuneMode),
@@ -68,7 +67,7 @@ const PitchCircle: React.FC<PitchCircleProps> = ({
       dispatchState({ type: BtnActions.SET_ALL_IDLE });
 
     if (substep.notes.length > 0) {
-      playSound(freqA4, temperament.deviation, substep.notes);
+      TemperTone.play(freqA4, temperament.deviation, substep.notes);
       dispatchState({
         type: BtnActions.SET,
         buttons: createActiveBtnsFromNote(substep.notes)
@@ -85,7 +84,7 @@ const PitchCircle: React.FC<PitchCircleProps> = ({
         executeQueueStep(queue.slice(1));
     }, substep.duration * 1000);
 
-  }, [freqA4, temperament.deviation]);
+  }, [TemperTone, freqA4, temperament.deviation]);
 
 
   const executeQueue = useCallback(() => {
@@ -146,7 +145,7 @@ const PitchCircle: React.FC<PitchCircleProps> = ({
 
   useEffect(() => {
     if (tuneMode !== TuneMode.PROCEDURE) {
-      playSound(
+      TemperTone.play(
         freqA4,
         temperament.deviation,
         createNotesFromActive(getActiveBtns(btnStates))
@@ -160,7 +159,7 @@ const PitchCircle: React.FC<PitchCircleProps> = ({
     clearInterval(timeout);
     dispatchState({ type: BtnActions.SET_ALL_IDLE });
     TemperTone.stop();
-  }, [tuneMode, procStepIdx, procRepeatCount]);
+  }, [tuneMode, procStepIdx, procRepeatCount, TemperTone]);
 
 
   useEffect(() => {

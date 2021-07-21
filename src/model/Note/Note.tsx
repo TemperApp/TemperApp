@@ -11,7 +11,7 @@ export interface INote {
 }
 
 
-export class Note implements INote {
+class Note implements INote {
   char: string;
   alter: NoteAlter;
   octave: number;

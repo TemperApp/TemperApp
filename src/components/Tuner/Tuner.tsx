@@ -7,7 +7,6 @@ import { TemperamentDBType } from "../../engine/DB";
 import EqualTemperament from "../../model/Temperament/Equal";
 
 import PitchCircle from "./PitchCircle";
-import TemperTone from "../../engine/TemperTone";
 
 import TunerHeaderSelect from "./TunerHeaderSelect";
 import TunerFooter from "./TunerFooter";
@@ -34,7 +33,7 @@ const Tuner: React.FC<TunerProps> = ({
   const history = useHistory();
   const {id} = useParams<{ id: string }>(); // TODO Fix multiple rerender
 
-  const tempertone = useTemperTone();
+  const TemperTone = useTemperTone();
 
   const settings = useContext(SettingsContext);
   const [isMuted, setIsMuted] = useState<boolean>(true);
@@ -53,8 +52,8 @@ const Tuner: React.FC<TunerProps> = ({
   }, [settings.freqA4]);
 
   useEffect(() => {
-    TemperTone.setVolume(isMuted ? -128 : TemperTone.defaultVolume);
-  }, [isMuted]);
+    TemperTone.toggleMute(isMuted);
+  }, [TemperTone, isMuted]);
 
   useEffect(() => {
     setMainTitle(tuneMode)
@@ -64,9 +63,6 @@ const Tuner: React.FC<TunerProps> = ({
     (async () => {
       setTemperamentsList(await fetchTemperaments());
     })();
-    setTimeout(() => {
-      //tempertone.play(220);
-    }, 1500)
   }, []);
 
   useEffect(() => {

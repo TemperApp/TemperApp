@@ -3,6 +3,9 @@ import SettingsContext from "../store/settings/settings-context";
 import * as Tone from 'tone';
 import { DeepPartial } from "../utils/types";
 import { equalsDeep, mergeDeep } from "../utils/functions";
+import NotesMap from "../model/Note/NotesMap";
+import Note from "../model/Note/Note";
+import { acousticBeat } from "../model/AcousticBeat";
 
 type TemperToneConfig = {
   masterVolume: number,
@@ -75,7 +78,7 @@ const fallbackConfig: TemperToneConfig = {
  * Creates the TemperTone singleton
  */
 class TemperTone {
-  cfg: TemperToneConfig;
+  cfg: TemperToneConfig = fallbackConfig;
   isMuted: boolean = false;
 
   amsynth: Tone.AMSynth;
@@ -92,7 +95,7 @@ class TemperTone {
 
   constructor(config: DeepPartial<TemperToneConfig> = {}) {
     this.toggleMute(false);
-    
+
     // Main Gain
     this.gain = new Tone.Gain(1)
       .toDestination();
@@ -101,18 +104,18 @@ class TemperTone {
     this.amsynthGain = new Tone.Gain(1)
       .connect(this.gain);
 
-    // Filter
+    // AM Synth Filter
     this.amsynthFilter = new Tone.Filter({
       type: 'lowpass',
       ...fallbackConfig.amsynth.filter,
     }).connect(this.amsynthGain);
 
-    // EQ
+    // AM Synth EQ
     this.amsynthEQ = new Tone.EQ3({
       ...fallbackConfig.amsynth.eq,
     }).connect(this.amsynthFilter);
 
-    // Distortion
+    // AM Synth Distortion
     this.amsynthDist = new Tone.Distortion(1)
       .connect(this.amsynthEQ);
 
@@ -141,15 +144,14 @@ class TemperTone {
     }).connect(this.forkGain);
 
     // Handle config
-    this.cfg = mergeDeep(fallbackConfig, config);
-    this.update(this.cfg);
+    this.update(config);
   }
 
 
-  update(config: TemperToneConfig) {
+  update(config: DeepPartial<TemperToneConfig>) {
     this.cfg = mergeDeep(fallbackConfig, config);
 
-    this.gain.gain.rampTo(config.masterVolume);
+    this.gain.gain.rampTo(this.cfg.masterVolume);
     this.amsynthGain.gain.rampTo(this.cfg.amsynth.volume);
     this.amsynth.oscillator.partials = this.cfg.amsynth.partials;
     this.amsynth.envelope.set(this.cfg.amsynth.envelope);
@@ -159,12 +161,46 @@ class TemperTone {
     this.forkGain.gain.rampTo(this.cfg.fork.volume);
   }
 
-  play(freq: number, duration?: number): void {
+
+  play(
+    freqA4: number,
+    deviations: NotesMap<number>,
+    notes: Note[],
+  ) {
+    switch (notes.length) {
+      case 1:
+        this.setPulseBPS(0);
+        this.stopAndPlay(notes[0].freq(freqA4, deviations));
+        break;
+
+      case 2:
+        const { modulationFreq, carrierFreq } = acousticBeat(
+          notes[0], notes[1], freqA4, deviations
+        );
+
+        if (modulationFreq === null || carrierFreq === null) {
+          console.warn('[TemperTone]: play: unhandled notes:', notes, 'acoustic beat: ', modulationFreq, carrierFreq);
+          return;
+        }
+        this.setPulseBPS(modulationFreq);
+        let heardFreq = carrierFreq;
+        while (heardFreq > 1000)
+          heardFreq /= 2;
+        this.stopAndPlay(heardFreq);
+        break;
+
+      default:
+        this.stop();
+    }
+  }
+
+
+  trigger(freq: number, duration?: number): void {
     this.freq = freq;
     try {
       this.updateHarmonicity();
       this.amsynthDist.wet.rampTo(this.amsynthDistortionWet(), 0.1);
-      
+
       if (duration)
         this.amsynth.triggerAttackRelease(this.freq, duration, '+0.02');
       else
@@ -176,40 +212,48 @@ class TemperTone {
     }
   }
 
+
   stop(): void {
     this.amsynth.triggerRelease();
   }
 
+
   stopAndPlay(freq: number): void {
     this.stop();
-    this.play(freq);
+    this.trigger(freq);
   }
+
 
   toggleMute(mute?: boolean): void {
     this.isMuted = (mute !== undefined) ? mute : !this.isMuted;
     Tone.Destination.volume.rampTo(this.isMuted ? -192 : -0.1, 0.05);
   }
 
+
   setPulseBPM(pulseBPM: number): void {
     this.setPulseBPS(pulseBPM / 60);
   }
+
 
   setPulseBPS(pulseBPS: number): void {
     this.modFreq = (pulseBPS < 0) ? 0 : pulseBPS;
     this.updateHarmonicity();
   }
 
+
   private updateHarmonicity(): void {
     const carrierFreq = this.freq;
     const harmonicity = (carrierFreq + this.modFreq) / carrierFreq - 1; // minus 1 because: 0 is unison, 1 is upper octave
     this.amsynth.harmonicity.value = harmonicity;
   }
-  
+
+
   private forkFreq(): number {
     return 330
       + Math.max(0, (this.freq - 330) / 2) // lerp
       + Math.random() * 20;                // random variation
   }
+
 
   private amsynthDistortionWet(): number {
     const { amount, lowFrequency, highFrequency } = this.cfg.amsynth.distortion;
@@ -261,9 +305,10 @@ const useTemperTone = () => {
     };
 
     if (!equalsDeep(config, prevConfig)) {
-     TemperToneInstance.update(config);
+      TemperToneInstance.update(config);
       setPrevConfig(config);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [settings]);
 
   return TemperToneInstance;
