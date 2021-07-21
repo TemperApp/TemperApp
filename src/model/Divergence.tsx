@@ -7,7 +7,7 @@ export const isCpExp5thValid = (cpExp5th: string): boolean => {
 
 export const cpExp5thRegexMatch = (cpExp5th: string): RegExpMatchArray | null => {
   return cpExp5th.trim()
-    .match(/^[+-]?0+$|^([+-])?([0-9]+)\/(([0-9]*[.])?[0-9]+)$/);
+    .match(/^[+-]?0+$|^([+-])?([0-9]+)\/(([0-9]*[.,])?[0-9]+)$/);
 }
 
 /**

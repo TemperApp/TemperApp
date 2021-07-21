@@ -3,7 +3,7 @@ import "./Comparator.css";
 import { convertFifthQualityToColor } from "../../utils/colorCircle";
 import { Temperament } from "../../model/Temperament/Temperament";
 import SettingsContext from "../../store/settings-context";
-import { formatCpExp5thStr, formatCsExp3rdStr } from "../../model/Divergence";
+import { formatCpExp5thStr } from "../../model/Divergence";
 
 type ComparatorFifthComaCircleProps = {
   temperament1: Temperament;
@@ -70,23 +70,26 @@ const ComparatorFifthComaCircle: React.FC<ComparatorFifthComaCircleProps> = ({
         <text transform="rotate(-132.894 12.256 13.363)" xmlSpace="preserve"><textPath xlinkHref="#a"><tspan>{isCpMode ? formatCpExp5thStr(temperament2.cpExp5th.F      ) : formatCpExp5thStr(temperament2.csExp5th.F      )} </tspan></textPath></text>
       </g>
       <g className="comas-text" fill="var(--color-dark)">
-        <text transform="rotate(-106.725 11.991 12.788)" xmlSpace="preserve"><textPath xlinkHref="#b"><tspan>{isCpMode ? formatCsExp3rdStr(temperament1.cpExp5th.C      ) : formatCsExp3rdStr(temperament1.csExp5th.C      )} </tspan></textPath></text>
-        <text xmlSpace="preserve" transform="rotate(-76.725 12.119 12.382)"> <textPath xlinkHref="#b"><tspan>{isCpMode ? formatCsExp3rdStr(temperament1.cpExp5th.G      ) : formatCsExp3rdStr(temperament1.csExp5th.G      )} </tspan></textPath></text>
-        <text transform="rotate(-46.725 12.377 11.56)" xmlSpace="preserve">  <textPath xlinkHref="#b"><tspan>{isCpMode ? formatCsExp3rdStr(temperament1.cpExp5th.D      ) : formatCsExp3rdStr(temperament1.csExp5th.D      )} </tspan></textPath></text>
-        <text xmlSpace="preserve" transform="rotate(-16.725 13.48 8.053)">   <textPath xlinkHref="#b"><tspan>{isCpMode ? formatCsExp3rdStr(temperament1.cpExp5th.A      ) : formatCsExp3rdStr(temperament1.csExp5th.A      )} </tspan></textPath></text>
-        <text transform="rotate(13.275 9.698 20.084)" xmlSpace="preserve">   <textPath xlinkHref="#b"><tspan>{isCpMode ? formatCsExp3rdStr(temperament1.cpExp5th.E      ) : formatCsExp3rdStr(temperament1.csExp5th.E      )} </tspan></textPath></text>
-        <text xmlSpace="preserve" transform="rotate(43.275 11.19 15.339)">   <textPath xlinkHref="#b"><tspan>{isCpMode ? formatCsExp3rdStr(temperament1.cpExp5th.B      ) : formatCsExp3rdStr(temperament1.csExp5th.B      )} </tspan></textPath></text>
-        <text transform="rotate(73.275 11.478 14.42)" xmlSpace="preserve">   <textPath xlinkHref="#b"><tspan>{isCpMode ? formatCsExp3rdStr(temperament1.cpExp5th.F_sharp) : formatCsExp3rdStr(temperament1.csExp5th.F_sharp)} </tspan></textPath></text>
-        <text xmlSpace="preserve" transform="rotate(103.275 11.614 13.988)"> <textPath xlinkHref="#b"><tspan>{isCpMode ? formatCsExp3rdStr(temperament1.cpExp5th.C_sharp) : formatCsExp3rdStr(temperament1.csExp5th.C_sharp)} </tspan></textPath></text>
-        <text transform="rotate(133.275 11.702 13.707)" xmlSpace="preserve"> <textPath xlinkHref="#b"><tspan>{isCpMode ? formatCsExp3rdStr(temperament1.cpExp5th.G_sharp) : formatCsExp3rdStr(temperament1.csExp5th.G_sharp)} </tspan></textPath></text>
-        <text xmlSpace="preserve" transform="rotate(163.275 11.772 13.484)"> <textPath xlinkHref="#b"><tspan>{isCpMode ? formatCsExp3rdStr(temperament1.cpExp5th.E_flat ) : formatCsExp3rdStr(temperament1.csExp5th.E_flat )} </tspan></textPath></text>
-        <text transform="rotate(-166.725 11.837 13.278)" xmlSpace="preserve"><textPath xlinkHref="#b"><tspan>{isCpMode ? formatCsExp3rdStr(temperament1.cpExp5th.B_flat ) : formatCsExp3rdStr(temperament1.csExp5th.B_flat )} </tspan></textPath></text>
-        <text xmlSpace="preserve" transform="rotate(-136.725 11.906 13.059)"><textPath xlinkHref="#b"><tspan>{isCpMode ? formatCsExp3rdStr(temperament1.cpExp5th.F      ) : formatCsExp3rdStr(temperament1.csExp5th.F      )} </tspan></textPath></text>
+        <text transform="rotate(-106.725 11.991 12.788)" xmlSpace="preserve"><textPath xlinkHref="#b"><tspan>{isCpMode ? formatCpExp5thStr(temperament1.cpExp5th.C      ) : formatCpExp5thStr(temperament1.csExp5th.C      )} </tspan></textPath></text>
+        <text xmlSpace="preserve" transform="rotate(-76.725 12.119 12.382)"> <textPath xlinkHref="#b"><tspan>{isCpMode ? formatCpExp5thStr(temperament1.cpExp5th.G      ) : formatCpExp5thStr(temperament1.csExp5th.G      )} </tspan></textPath></text>
+        <text transform="rotate(-46.725 12.377 11.56)" xmlSpace="preserve">  <textPath xlinkHref="#b"><tspan>{isCpMode ? formatCpExp5thStr(temperament1.cpExp5th.D      ) : formatCpExp5thStr(temperament1.csExp5th.D      )} </tspan></textPath></text>
+        <text xmlSpace="preserve" transform="rotate(-16.725 13.48 8.053)">   <textPath xlinkHref="#b"><tspan>{isCpMode ? formatCpExp5thStr(temperament1.cpExp5th.A      ) : formatCpExp5thStr(temperament1.csExp5th.A      )} </tspan></textPath></text>
+        <text transform="rotate(13.275 9.698 20.084)" xmlSpace="preserve">   <textPath xlinkHref="#b"><tspan>{isCpMode ? formatCpExp5thStr(temperament1.cpExp5th.E      ) : formatCpExp5thStr(temperament1.csExp5th.E      )} </tspan></textPath></text>
+        <text xmlSpace="preserve" transform="rotate(43.275 11.19 15.339)">   <textPath xlinkHref="#b"><tspan>{isCpMode ? formatCpExp5thStr(temperament1.cpExp5th.B      ) : formatCpExp5thStr(temperament1.csExp5th.B      )} </tspan></textPath></text>
+        <text transform="rotate(73.275 11.478 14.42)" xmlSpace="preserve">   <textPath xlinkHref="#b"><tspan>{isCpMode ? formatCpExp5thStr(temperament1.cpExp5th.F_sharp) : formatCpExp5thStr(temperament1.csExp5th.F_sharp)} </tspan></textPath></text>
+        <text xmlSpace="preserve" transform="rotate(103.275 11.614 13.988)"> <textPath xlinkHref="#b"><tspan>{isCpMode ? formatCpExp5thStr(temperament1.cpExp5th.C_sharp) : formatCpExp5thStr(temperament1.csExp5th.C_sharp)} </tspan></textPath></text>
+        <text transform="rotate(133.275 11.702 13.707)" xmlSpace="preserve"> <textPath xlinkHref="#b"><tspan>{isCpMode ? formatCpExp5thStr(temperament1.cpExp5th.G_sharp) : formatCpExp5thStr(temperament1.csExp5th.G_sharp)} </tspan></textPath></text>
+        <text xmlSpace="preserve" transform="rotate(163.275 11.772 13.484)"> <textPath xlinkHref="#b"><tspan>{isCpMode ? formatCpExp5thStr(temperament1.cpExp5th.E_flat ) : formatCpExp5thStr(temperament1.csExp5th.E_flat )} </tspan></textPath></text>
+        <text transform="rotate(-166.725 11.837 13.278)" xmlSpace="preserve"><textPath xlinkHref="#b"><tspan>{isCpMode ? formatCpExp5thStr(temperament1.cpExp5th.B_flat ) : formatCpExp5thStr(temperament1.csExp5th.B_flat )} </tspan></textPath></text>
+        <text xmlSpace="preserve" transform="rotate(-136.725 11.906 13.059)"><textPath xlinkHref="#b"><tspan>{isCpMode ? formatCpExp5thStr(temperament1.cpExp5th.F      ) : formatCpExp5thStr(temperament1.csExp5th.F      )} </tspan></textPath></text>
       </g>
+      
       <g className="comas-note" fill="var(--color-contrast)">
         <text x="11.741" y="2.8440001">
           <tspan >C</tspan>
         </text>
+      </g>
+        {/** 
         <text y="4.1127629" x="17.753832">
           <tspan>G</tspan>
         </text>
@@ -121,6 +124,7 @@ const ComparatorFifthComaCircle: React.FC<ComparatorFifthComaCircleProps> = ({
           <tspan>F</tspan>
         </text>
       </g>
+      */}
     </>
   );
 };
