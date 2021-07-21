@@ -53,13 +53,13 @@ const SheetTemperament: React.FC = () => {
       </div>
 
       <div className="px-6">
-        <IonCard>
-          <IonCardHeader>
-            <IonCardTitle className="px-4">
+        <IonCard className="quality-card">
+          <IonCardHeader className="py-2">
+            <IonCardTitle className="px-1">
               <h4>Qualité des quintes et des tierces</h4>
             </IonCardTitle>
           </IonCardHeader>
-          <IonCardContent>
+          <IonCardContent className="quality-wheel">
             <PitchCircleView temperament={temperament} />
           </IonCardContent>
         </IonCard>

@@ -39,7 +39,7 @@ const PitchCircleView: React.FC<PitchCircleViewProps> = ({
 
   // console.info('🔹 [PitchCircleView]: Render')
   return (
-    <section className="px-4 pt-2 w-full max-w-lg">
+    <section className="px-6 pt-2 w-full max-w-lg">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 357.06 357.06"

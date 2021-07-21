@@ -26,7 +26,11 @@
   margin-left: -5%;
   font-family: "Karla";
   font-style: normal;
-  font-weight: bold;
+  font-weight: normal;
   font-size: 1px;
   color: var(--color-contrast);
+}
+
+.quality-wheel {
+  font-size: 18px;
 }

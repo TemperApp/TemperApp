@@ -19,7 +19,7 @@ const FifthComaCircle: React.FC<FifthComaCircleProps> = ({
 
   return (
     <>
-      <g id="Note_1_Quinte" stroke="var(--color-hover)" strokeWidth="0.1px">
+      <g id="Note_1_Quinte" stroke="var(--color-hover)" strokeWidth="0.05px">
         <path data-name="C"       fill={convertFifthQualityToColor(qualityNote.C, settings.darkTheme)}       d="m10.136 3.87.373 1.426s1.188-.375 2.042-.39c.854-.016 2.155.283 2.155.283l.363-1.324s-1.087-.325-2.523-.31c-1.436.014-2.41.315-2.41.315z" transform="translate(-.073 .295)"/>
         <path data-name="G"       fill={convertFifthQualityToColor(qualityNote.G, settings.darkTheme)}       d="m15.19 3.896-.39 1.422s1.215.268 1.963.682c.747.413 1.724 1.323 1.724 1.323l.977-.965s-.779-.825-2.03-1.53c-1.251-.705-2.245-.932-2.245-.932z" transform="translate(-.073 .295)"/>
         <path data-name="D"       fill={convertFifthQualityToColor(qualityNote.D, settings.darkTheme)}       d="M19.552 6.445 18.504 7.48s.895.888 1.336 1.62c.44.731.855 1.96.855 1.96l1.328-.347s-.262-1.104-.993-2.34c-.73-1.236-1.478-1.93-1.478-1.93z" transform="translate(-.073 .295)"/>
@@ -33,8 +33,10 @@ const FifthComaCircle: React.FC<FifthComaCircleProps> = ({
         <path data-name="B_flat"  fill={convertFifthQualityToColor(qualityNote.B_flat, settings.darkTheme)}  d="m3.198 10.737 1.422.39s.269-1.216.682-1.964c.414-.747 1.323-1.724 1.323-1.724l-.965-.977s-.825.78-1.53 2.03c-.705 1.252-.932 2.245-.932 2.245z" transform="translate(-.073 .295)"/>
         <path data-name="F"       fill={convertFifthQualityToColor(qualityNote.F, settings.darkTheme)}       d="m5.747 6.374 1.036 1.049s.841-.92 1.573-1.36c.732-.44 2.008-.832 2.008-.832l-.347-1.328s-1.104.262-2.34.993c-1.237.73-1.93 1.478-1.93 1.478z" transform="translate(-.073 .295)"/>
       </g>
-      <ellipse ry="9.698" rx="9.745" cy="13.574" cx="12.523" stroke="var(--color-hover)" strokeWidth="0.2px"/>
-      <ellipse ry="8.3" rx="8.3" cy="13.574" cx="12.523" stroke="var(--color-hover)" strokeWidth="0.2px"/>
+      <ellipse ry="9.698" rx="9.745" cy="13.574" cx="12.523" stroke="var(--color-theme)" strokeWidth="0.4px"/>
+      <ellipse ry="8.3" rx="8.3" cy="13.574" cx="12.523" stroke="var(--color-theme)" strokeWidth="0.3px"/>
+      <ellipse ry="9.573" rx="9.62" cy="13.574" cx="12.523" stroke="var(--color-hover)" strokeWidth="0.08px"/>
+      <ellipse ry="8.45" rx="8.45" cy="13.574" cx="12.523" stroke="var(--color-hover)" strokeWidth="0.08px"/>
       <ellipse id="a" cx="12.523" cy="13.574" rx="6.375" ry="6.344"/>
       <g className="commas-font" fill="var(--color-contrast)">
         <text xmlSpace="preserve" transform="rotate(-100.643 12.302 13.24)"> <textPath xlinkHref="#a"><tspan>{isCpMode ? temperament.cpExp5th.C       : temperament.csExp5th.C      } </tspan></textPath></text>

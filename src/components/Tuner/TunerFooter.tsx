@@ -116,7 +116,7 @@ const TunerFooter: React.FC<any> = ({ // TODO Update any
   );
 
   return (
-    <section className="w-full px-5 flex justify-between items-center">
+    <section className="w-full px-6 pb-2 flex justify-between items-center">
       {(tuneMode === TuneMode.PROCEDURE)
         ? btnExitProcedure
         : btnEnterProcedure}

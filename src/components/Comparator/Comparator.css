@@ -31,12 +31,16 @@
   font-family: "Karla";
   font-style: normal;
   font-weight: normal;
-  font-size: 0.1em;
+  font-size: 0.08em;
   color: var(--color-contrast);
 }
 
 .comma-card {
   height: 30rem;
+}
+
+.quality-card {
+  height: 23rem;
 }
 
 .comma-toggler{

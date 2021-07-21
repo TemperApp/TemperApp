@@ -50,7 +50,7 @@ const Learn: React.FC = () => {
             <div className="flex w-full items-center justify-start">
               <IonIcon className="ml-8 item-icon" />
               <IonLabel className="pl-6 item-label">
-                {label}
+                <h3>{label}</h3>
               </IonLabel>
             </div>
           </IonButton>

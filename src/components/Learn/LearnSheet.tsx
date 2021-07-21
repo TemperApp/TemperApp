@@ -32,7 +32,7 @@ const LearnSheet: React.FC = () => {
       </IonHeader>
 
       <IonContent className="learn">
-        <div className="px-6">
+        <div className="px-6 py-2">
 
           <ReactMarkdown
             remarkPlugins={[remarkMath]}
