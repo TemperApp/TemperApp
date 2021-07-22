@@ -42,7 +42,7 @@ const ComparatorComa: React.FC<ComparatorComaProps> = ({
               </IonCardTitle>
             </IonCardHeader>
             <IonCardContent>
-              <div className="w-full flex justify-center">
+              <div>
                 <svg
                   className="comparator-comas"
                   viewBox="0 0 25 30"
@@ -80,7 +80,7 @@ const ComparatorComa: React.FC<ComparatorComaProps> = ({
               </IonCardTitle>
             </IonCardHeader>
             <IonCardContent>
-              <div className="w-full flex justify-center">
+              <div>
                 <svg
                   className="comparator-comas"
                   viewBox="0 0 25 30"

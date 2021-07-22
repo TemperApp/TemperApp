@@ -74,7 +74,7 @@ const SheetTemperament: React.FC = () => {
                 </IonCardTitle>
               </IonCardHeader>
               <IonCardContent>
-                <div className="w-full flex justify-center">
+                <div>
                   <svg
                     className="comparator-comas"
                     viewBox="0 0 25 30"
@@ -111,7 +111,7 @@ const SheetTemperament: React.FC = () => {
                 </IonCardTitle>
               </IonCardHeader>
               <IonCardContent>
-                <div className="w-100 flex justify-center">
+                <div>
                   <svg
                     className="comparator-comas"
                     viewBox="0 0 25 30"
