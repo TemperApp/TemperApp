@@ -33,9 +33,11 @@ const TunerHeaderPiano: React.FC<TunerHeaderPianoProps> = ({
   }
 
   return (
-    <section className="pt-3 px-4 w-full flex items-center justify-between testHeader">
-      <svg version="1.1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"viewBox="0 0 351.1 94.6">
-        <rect id="C3" y="0.58"            className={isColored("C3")} width="25.08" height="94.62"/>
+    <section className="px-6 pt-2 w-full max-w-lg">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 351.1 94.6">
+        <rect id="C3" y="0.58"            className={isColored("D3")} width="25.08" height="94.62"/>
         <rect id="D3" x="25.08" y="0.58"  className={isColored("D3")} width="25.08" height="94.62"/>
         <rect id="E3" x="50.16" y="0.58"  className={isColored("E3")} width="25.08" height="94.62"/>
         <rect id="F3" x="75.24" y="0.58"  className={isColored("F3")} width="25.08" height="94.62"/>
