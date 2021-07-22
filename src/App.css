@@ -14,7 +14,6 @@ h1 {
   color: var(--color-contrast);
 }
 
-.pm-content h2,
 .ph-titles h2,
 h2 {
   font-family: "Nunito" !important;
@@ -42,7 +41,6 @@ h3,
   margin-bottom: 0;
 }
 
-.pm-content h4,
 h4 {
   font-family: "Nunito" !important;
   font-style: normal;
@@ -54,7 +52,6 @@ h4 {
   margin-bottom: 3%;
 }
 
-.pm-content h5,
 h5 {
   font-family: "Nunito" !important;
   font-style: normal;
@@ -65,7 +62,6 @@ h5 {
   color: var(--color-contrast);
 }
 
-.pm-content p,
 p {
   font-family: var(--ion-family-font);
   font-style: normal;
@@ -339,10 +335,10 @@ ion-input.sc-ion-input-ios-h {
   opacity: 1 !important;
 }
 
-input[type=number]::-webkit-outer-spin-button,
-input[type=number]::-webkit-inner-spin-button {
-    -webkit-appearance: none !important;
-    margin: 0;
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none !important;
+  margin: 0;
 }
 
 input[type="number"] {

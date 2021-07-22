@@ -112,12 +112,22 @@ ion-button.learn-resources-btn::part(native) {
   font-style: italic;
 }
 
-.learn p {
+.markdown-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.markdown-content p {
+  margin: auto;
+  margin-top: 0.5rem;
   font-family: var(--ion-family-font);
-  font-style: normal;
-  font-weight: normal;
-  margin: 0 0 0.5rem 0;
-  font-size: 0.95rem;
-  line-height: 1.3rem;
-  color: var(--color-contrast);
+  font-style: normal !important;
+  font-weight: 300 !important;
+  font-size: 14px !important;
+  line-height: 20px;
+  padding-bottom: 7px;
+  color: var(--color-contrast) !important;
+  opacity: 1 !important;
+  text-align: justify;
+  text-justify: inter-word;
 }
