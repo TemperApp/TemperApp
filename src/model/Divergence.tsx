@@ -28,6 +28,7 @@ export const cpExp5thStrToNumber = (cpExp5th: string): number | null => {
   if (String(Number(match[0])) === '0')
     return 0;
   const [, sign, numerator, denominator] = match;
+
   return (
     (!sign ? -1 : (sign === '+' ? 1 : -1))
     * Number(numerator) / Number(denominator) * 12);
@@ -39,6 +40,8 @@ export const formatCpExp5thStr = (cpExp5th: string): string | null => {
     console.warn(`[Model]: Cannot parse cpExp5th string: ${cpExp5th}`);
     return null;
   }
+
+  
   if (String(Number(match[0])) === '0')
     return '0';
   const [, sign, numerator, denominator] = match;
