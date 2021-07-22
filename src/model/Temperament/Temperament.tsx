@@ -770,7 +770,7 @@ export const defaultTemperaments: Array<Temperament> = [
     },
     procedure: "A4;A4-F3;F3-C4;C4-G3;G3-D4;D4:A3;{On alterne simplement l’accord d’une quinte et la preuve de sa tierce inférieure}A3-E4;E4:C4;E4-B3;B3:G3;{On construit maintenant F# et Bb. Les Tierces Bb-D et D-F# étant tempérées de la même manière, leurs battements seront dans le rapport 4/5}B3-F#4;F#4:D3;F3-Bb3;Bb3:D4;Bb3-Eb4;Eb4-G#3;G#3-C#4;{La Tierce A-C# est au tempérament égal à +7/11 Cs}C#4:A3;C#4:F4;F4-F3;G3-G4;G#3-G#4;",
     csExp5th: {
-      F_sharp: "-1/4.,03",
+      F_sharp: "-1/4.03",
       C_sharp: "0",
       G_sharp: "0",
       E_flat:  "-1/41.03",
