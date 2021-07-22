@@ -24,7 +24,7 @@ const ComparatorFifthComaCircle: React.FC<ComparatorFifthComaCircleProps> = ({
 
   return (
     <>
-      <g id="Note_2_Quinte" stroke="var(--color-hover)" strokeWidth="0.1px" transform="matrix(0.24271985,0,0,0.24271985,0.44515871,1.3132924)" >
+      <g id="Note_2_Quinte" stroke="var(--color-hover)" strokeWidth="0.2px" transform="matrix(0.24271985,0,0,0.24271985,0.44515871,1.3132924)" >
         <path data-name="C"       fill={convertFifthQualityToColor(qualityNote2.C, settings.darkTheme)}       d="M49.556641 10.451172C43.644755 10.51142 39.63902 11.744932 39.628906 11.748047L41.828125 19.994141A31.477272 31.477272 0 0 1 49.761719 18.976562A31.477272 31.477272 0 0 1 57.722656 20.001953L59.951172 11.724609C59.951172 11.724609 55.472018 10.389782 49.556641 10.451172z"  />
         <path data-name="G"       fill={convertFifthQualityToColor(qualityNote2.G, settings.darkTheme)}       d="M60.378906 11.900391L58.140625 20.113281A31.477272 31.477272 0 0 1 71.892578 28.070312L77.992188 22.044922C77.992188 22.044922 74.783839 18.642258 69.628906 15.738281C64.473974 12.834304 60.378906 11.900391 60.378906 11.900391z" />
         <path data-name="D"       fill={convertFifthQualityToColor(qualityNote2.D, settings.darkTheme)}       d="M78.242188 22.277344L72.164062 28.34375A31.477272 31.477272 0 0 1 80.126953 42.162109L88.541016 40.033203C88.541016 40.033203 87.46062 35.402136 84.449219 30.308594C81.437818 25.215052 78.242187 22.277344 78.242188 22.277344z" />
@@ -38,7 +38,7 @@ const ComparatorFifthComaCircle: React.FC<ComparatorFifthComaCircleProps> = ({
         <path data-name="B_flat"  fill={convertFifthQualityToColor(qualityNote2.B_flat, settings.darkTheme)}  d="M21.199219 22.160156C21.199219 22.160156 17.671555 25.472021 14.767578 30.626953C11.860688 35.77684 11.015625 39.837891 11.015625 39.837891L19.410156 42.105469A31.477272 31.477272 0 0 1 27.355469 28.347656L21.199219 22.160156z" />
         <path data-name="F"       fill={convertFifthQualityToColor(qualityNote2.F, settings.darkTheme)}       d="M39.1875 11.681641C39.1875 11.681641 34.511511 12.734693 29.417969 15.746094C24.324427 18.757495 21.382812 21.966797 21.382812 21.966797L27.607422 28.09375A31.477272 31.477272 0 0 1 41.416016 20.103516L39.1875 11.681641z" />
       </g>
-      <g id="Note_1_Quinte" stroke="var(--color-hover)" strokeWidth="0.1px" transform="matrix(0.24271985,0,0,0.24271985,0.44515871,1.3132924) scale(.8) translate(12.5 12.5)" >
+      <g id="Note_1_Quinte" stroke="var(--color-hover)" strokeWidth="0.2px" transform="matrix(0.24271985,0,0,0.24271985,0.44515871,1.3132924) scale(.8) translate(12.5 12.5)" >
         <path data-name="C"       fill={convertFifthQualityToColor(qualityNote1.C, settings.darkTheme)}       d="M49.557 10.451c-5.912.06-9.918 1.294-9.928 1.297l2.2 8.246a31.477 31.477 0 0 1 7.933-1.017 31.477 31.477 0 0 1 7.96 1.025l2.23-8.277s-4.48-1.335-10.395-1.274z"/>
         <path data-name="G"       fill={convertFifthQualityToColor(qualityNote1.G, settings.darkTheme)}       d="M60.378906 11.900391L58.140625 20.113281A31.477272 31.477272 0 0 1 71.892578 28.070312L77.992188 22.044922C77.992188 22.044922 74.783839 18.642258 69.628906 15.738281C64.473974 12.834304 60.378906 11.900391 60.378906 11.900391z" />
         <path data-name="D"       fill={convertFifthQualityToColor(qualityNote1.D, settings.darkTheme)}       d="M78.242188 22.277344L72.164062 28.34375A31.477272 31.477272 0 0 1 80.126953 42.162109L88.541016 40.033203C88.541016 40.033203 87.46062 35.402136 84.449219 30.308594C81.437818 25.215052 78.242187 22.277344 78.242188 22.277344z" />
@@ -52,7 +52,7 @@ const ComparatorFifthComaCircle: React.FC<ComparatorFifthComaCircleProps> = ({
         <path data-name="B_flat"  fill={convertFifthQualityToColor(qualityNote1.B_flat, settings.darkTheme)}  d="M21.199219 22.160156C21.199219 22.160156 17.671555 25.472021 14.767578 30.626953C11.860688 35.77684 11.015625 39.837891 11.015625 39.837891L19.410156 42.105469A31.477272 31.477272 0 0 1 27.355469 28.347656L21.199219 22.160156z" />
         <path data-name="F"       fill={convertFifthQualityToColor(qualityNote1.F, settings.darkTheme)}       d="M39.1875 11.681641C39.1875 11.681641 34.511511 12.734693 29.417969 15.746094C24.324427 18.757495 21.382812 21.966797 21.382812 21.966797L27.607422 28.09375A31.477272 31.477272 0 0 1 41.416016 20.103516L39.1875 11.681641z" />
       </g>
-      <ellipse cx="12.523" cy="13.574" rx="9.745" ry="9.698"/>
+      <ellipse cx="12.523" cy="13.574" rx="7.8" ry="7.8" stroke-width="0.1px" stroke="var(--color-hover)"/>
       <ellipse ry="6" rx="6" cy="13.574" cx="12.523" id="a" />
       <ellipse id="b" cx="12.523" cy="13.574" rx="7" ry="7" />
       <g className="comas-text" fill="var(--color-dark)">
