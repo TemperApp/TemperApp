@@ -55,7 +55,7 @@ const settings : readonly AllowedSetting[] = [{
     defaultValue: 1,
   },{
     name: 'amSynthFilterFrequency',
-    defaultValue: 600,
+    defaultValue: 4000,
   },{
     name: 'amSynthFilterRollOff',
     defaultValue: -24,
