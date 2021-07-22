@@ -47,6 +47,38 @@ export const formatCpExp5thStr = (cpExp5th: string): string | null => {
     + numerator + "/" + Number(denominator).toFixed(1)
   )};
 
+
+  
+  export const cpExp5thToCsExp5th = (cpExp5th : string): string | null => {
+    const match = cpExp5thRegexMatch(cpExp5th);
+    if (!match) {
+      console.warn(`[Model]: Cannot parse cpExp5th string: ${cpExp5th}`);
+      return null;
+    }
+    if (String(Number(match[0])) === '0')
+    return '0';
+
+    const [, sign, , denominator] = match;
+    const result = (sign + "1/" + (Number(denominator)*(11/12)).toFixed(2))
+                    .match(/^[+-]?0+$|^[+-]?[0-9]+\/(([0-9]*[.])?([0-9])([0-9])+)$/);
+    
+    if (!result) {
+      console.warn(`[Model]: Cannot parse cpExp5th string: ${cpExp5th}`);
+      return null;
+    }
+
+    const [ , , unit, tenth, hundredth] = result; 
+    console.log(result);
+    return (
+      sign + "1/" + unit + (tenth === "0" && Number(hundredth) > 5 ? String((Number(tenth) + 1)) : tenth + (hundredth === "0" ? "" : hundredth))
+    )}; 
+
+
+
+
+
+
+
   export const isCsExp3rdValid = (csExp3rd: string): boolean => {
     return Boolean(csExp3rdRegexMatch(csExp3rd)); 
   }
@@ -55,7 +87,6 @@ export const formatCpExp5thStr = (cpExp5th: string): string | null => {
     return csExp3rd.trim()
       .match(/^[+-]?0+$|^([+-])?([0-9]+)\/11$/);
   }
-
 
 /**
  * @param csExp3rd the syntonic comma exponent as string

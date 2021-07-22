@@ -1,5 +1,6 @@
 import {
   cpExp5thStrToNumber,
+  cpExp5thToCsExp5th,
   csExp3rdStrToNumber,
   formatCpExp5thStr,
   formatCsExp3rdStr,
@@ -103,6 +104,21 @@ test('isCpExp5thValid', () => {
   expect(isCpExp5thValid("45")).toEqual(false);
   
   
+});
+
+
+test('cpExp5thToCsExp5th', () => {
+  expect(cpExp5thToCsExp5th("-1/6")).toEqual("-1/5.5");
+  expect(cpExp5thToCsExp5th("+1/0.66")).toEqual("+1/0.6");
+  expect(cpExp5thToCsExp5th("-1/4.36")).toEqual("-1/4.0");
+  expect(cpExp5thToCsExp5th("-1/6.52")).toEqual("-1/5.98");
+  expect(cpExp5thToCsExp5th("+1/13.19")).toEqual("+1/12.1");
+  expect(cpExp5thToCsExp5th("+1/3.3")).toEqual("+1/3.02");
+  expect(cpExp5thToCsExp5th("+1/6.6")).toEqual("+1/6.05");
+  expect(cpExp5thToCsExp5th("0")).toEqual("0");
+  expect(cpExp5thToCsExp5th("-1/5")).toEqual("-1/4.58");
+  expect(cpExp5thToCsExp5th("+1/4")).toEqual("+1/3.67");
+  expect(cpExp5thToCsExp5th("-1/1")).toEqual("-1/0.92");
 });
 
 
