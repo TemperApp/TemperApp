@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import {
   IonContent,
   IonHeader,
@@ -17,6 +17,10 @@ const Home: React.FC = () => {
   const settings = useContext(SettingsContext);
   const [showModal, setShowModal] = useState(false);
   
+  useEffect( () =>{
+    console.log(" 🚪 OPEN ? "+showModal)
+  },[showModal])
+
   return (
     <IonPage>
       <IonHeader className="ion-no-border page-header">
@@ -39,6 +43,7 @@ const Home: React.FC = () => {
         isOpen={showModal}
         cssClass="modal-fullscreen page-header"
         backdrop-dismiss={true}
+        onDidDismiss= {() => setShowModal(false)}
       >
         <SettingsModal
           onQuit={(nextSettings) => {
