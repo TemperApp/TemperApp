@@ -131,12 +131,13 @@ const SheetTemperament: React.FC = () => {
         </IonSlides>
       
       <div className="px-6">
-        {((temperament.soundReferences[0] !== "")
+        {((temperament.soundReferences[0].url !== "")
           ? (temperament.soundReferences.map(e => {
             return(<VideoLearn 
-              titreText = "Références sonores"
-              videoLink = {e}
-              key={e}
+              titreText = {e.title}
+              videoLink = {e.url}
+              thumbnail = {e.img !== undefined ? e.img : "assets/icon/thumbnail.png"}
+              key={e.url}
             />)
             })
           ) 

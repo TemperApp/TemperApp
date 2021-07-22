@@ -80,7 +80,7 @@ const EqualTemperament = {
     {author: "", book: "", title:"", other: "", date: "", page: "", url: ""},
   ],
   soundReferences: [
-      "",],
+    {title: "", url: "",}],
   commentary: "",
 };
 

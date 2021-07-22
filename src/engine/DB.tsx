@@ -1,6 +1,6 @@
 import { capSQLiteChanges } from '@capacitor-community/sqlite';
 import { sqlite } from '../App';
-import { DataSources, defaultTemperaments } from '../model/Temperament/Temperament';
+import { DataSound, DataSources, defaultTemperaments } from '../model/Temperament/Temperament';
 import { Notes } from "../model/Note/enums";
 
 const sqlDropTables = [
@@ -41,7 +41,7 @@ export type TemperamentDBType = {
   nature: string,
   structuralParticularity: string,
   sources: Array<DataSources>,
-  soundReferences: Array<string>,
+  soundReferences: Array<DataSound>,
   commentary: string,
 };
 

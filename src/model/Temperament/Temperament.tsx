@@ -16,7 +16,7 @@ export type Temperament = {
   nature: string,
   structuralParticularity: string,
   sources: Array<DataSources>,
-  soundReferences: Array<string>,
+  soundReferences: Array<DataSound>,
   commentary: string,
 };
 
@@ -27,6 +27,12 @@ export type DataSources = {
   other: string, 
   date: string, 
   page: string, 
+  url:string,
+};
+
+export type DataSound = {
+  img?: string,
+  title:string, 
   url:string,
 };
 
@@ -106,8 +112,8 @@ export const defaultTemperaments: Array<Temperament> = [
       {author: "Barbieri, Patrizio,", book: "Acustica accordatura e temperamento nell'illuminismo veneto.", title:"", other: " Insituto di Paleografia Musicale, Torre d'Orfeo, Roma", date: "1987", page: "", url:""},
     ],
     soundReferences: [
-      "https://www.youtube.com/watch?v=TDCpdNOJC5s",
-      "https://www.youtube.com/watch?v=hw1O5t_Rrhg"],
+      {title: "Francesco Antonio Vallotti (1697-1780) Lamentazioni del Profeta", url: "https://www.youtube.com/watch?v=TDCpdNOJC5s"},
+      {title: "Francesco A. Vallotti: Lezione II per il Venerdì Santo for alto, violoncello obbligato & b.c.", url: "https://www.youtube.com/watch?v=hw1O5t_Rrhg"}],
     commentary: "Nous proposons la lecture la plus partagée bien que certainement simplifiée de l'accord de Vallotti qui répartit lui-même le comma syntonique, selon la théorie italienne du XVIIIe siècle. L'accroissement des tierces majeures est parfaitement équilibré vers les dièses et vers les bémols.",
   },{
     idTemperament: 3,
@@ -182,10 +188,10 @@ export const defaultTemperaments: Array<Temperament> = [
       {author: "Lindley, Mark.", book: "Proceedings of the Royal Musical Association 102", title:"Fifteenth-Century Evidence for Meantone Temperament", other: "Torre d'Orfeo, Roma", date: "1976", page: ", p. 37-51", url:""},
     ],
     soundReferences: [
-      "https://www.youtube.com/watch?v=KHlne0rAnTg",
-      "http://blog-clavicorde-lie.ch/laccord-mesotonique-realise-sur-linstrument/",
-      "https://www.youtube.com/watch?v=jcAIh1V2Zz8",
-      "https://www.youtube.com/watch?v=e83oOCnH_3w",
+      {title: "MA Cavazzoni : Ricercar III L Tamminga San Petronio Bologna", url: "https://www.youtube.com/watch?v=KHlne0rAnTg"},
+      {title: "L’accord mésotonique réalisé sur l’instrument", url: "http://blog-clavicorde-lie.ch/laccord-mesotonique-realise-sur-linstrument/"},
+      {title: "Pietro Aron 1/4 Syntonic Meantone Temperament", url: "https://www.youtube.com/watch?v=jcAIh1V2Zz8"},
+      {title: "Pietro Aron (1480- dopo il 1545) - Io non posso più durare a 4", url: "https://www.youtube.com/watch?v=e83oOCnH_3w"},
     ],
     commentary: "",
   },
@@ -259,7 +265,7 @@ export const defaultTemperaments: Array<Temperament> = [
       {author: "", book: "Wikipedia - Jean-Philippe Rameau (FR)", title: "", other: "", date: "", page: "", url: "https://fr.wikipedia.org/wiki/Jean-Philippe_Rameau"},
       {author: "Jean-Philippe Rameau,", book: "Nouveau système de musique théorique", title:"", other: "", date: "1726", page: "", url:"https://gallica.bnf.fr/ark:/12148/btv1b8623246q.image"}
     ],
-    soundReferences: [""],
+    soundReferences: [{title: "", url:""}],
     commentary: "Le tempérament de Rameau II, ou tempérament en sib, est identique au précédent mais sa construction se fait à partir du la et non du do. Les quintes de sib à si sont diminuées d’un quart de comma syntonique. La quinte si - fa# est diminuée d’un quart de comma et augmentée d’une valeur δ. Les quatre quintes restantes se répartissent l’excédent.\bRameau cite brièvement une alternative à sa première description : « Pour que les Intervalles conservent toute la justesse possible dans les Modulations les plus usitées, il faut commencer la Partition par Si B-mol, & ne rendre pour lors les Quintes un peu plus justes, que depuis Si à Fa# ». Plusieurs commentateurs ont considéré qu'il s'agissait d'une transposition de sa première formule.",
   },
   {
@@ -332,8 +338,7 @@ export const defaultTemperaments: Array<Temperament> = [
       {author: "", book: "Wikipedia - Jean-Philippe Rameau (FR)", title: "", other: "", date: "", page: "", url: "https://fr.wikipedia.org/wiki/Jean-Philippe_Rameau"},
       {author: "Jean-Philippe Rameau,", book: "Nouveau système de musique théorique", title:"", other: "", date: "1726", page: "", url:"https://gallica.bnf.fr/ark:/12148/btv1b8623246q.image"}
     ],
-      soundReferences: [
-        "",],
+      soundReferences: [{title: "", url:""}],
     commentary: "Jean-Philippe Rameau a longuement étudié les problèmes théoriques de la musique. Il a proposé deux tempéraments, l’un “pour avantager les tonalités avec bémols”, dans lesquels les sept quintes sont diminuées d’un quart de comma (Nouveau système de musique théorique, Paris, 1726). Les cinq quintes restantes se répartissent l’excédent. \b Comme la plupart des descriptions des tempéraments français (ou tempérament ordinaire), celle de Rameau est imprécise et sujette à interprétation.\b Le problème d’interprétation qui se pose est de savoir sur quelles quintes s’effectue cette répartition. On se demande aussi si la répartition linéaire doit s’effectuer sur quatre ou cinq quintes. Dans le premier tempérament, les notes vont de quinte en quinte de do à mi dièse. C’est pourquoi, on l’appelle aussi tempérament en do. La partition est citée par plusieurs auteurs. ",
   },
   {
@@ -408,8 +413,8 @@ export const defaultTemperaments: Array<Temperament> = [
       {author: "Herbert Anton Kellner,", book: "The Tuning of my Harpsichord Verlag Das Musikinstrument,", title:"", other: "Frankfurt am Main", date: "1980", page: "", url:""}
     ],
     soundReferences: [
-      "https://www.youtube.com/watch?v=rHvI4Fh-lNY",
-      "https://www.youtube.com/watch?v=dNibEXPBA_w",
+      {title: "Kellner", url: "https://www.youtube.com/watch?v=rHvI4Fh-lNY"},
+      {title: "Concert de la passion - Les Idées heureuses", url: "https://www.youtube.com/watch?v=dNibEXPBA_w"},
     ],
     commentary: "Nous ne savons pas quel tempérament utilisait Jean-Sébastien Bach et quel était donc son clavier “bien tempéré”. Des musicologues théoriciens du XXe siècle ont formulé plusieurs propositions : Herbert Kelletat (1960), Herbert Kellner (1980), Bradley Lehman (2005). Herbert Kellner (1980), partant de données symboliques et numériques tirées des œuvres de J. S. Bach, propose un tempérament assez proche de Werckmeister. Une de ses particularités est que la quinte do-sol bat à la même vitesse que la tierce do-mi.",
   },
@@ -486,9 +491,7 @@ export const defaultTemperaments: Array<Temperament> = [
       {author: "Andreas Werckmeister,", book: "Musikalische Temperatur", title:"", other: "", date: "1691", page: "", url:"https://imslp.org/wiki/Musicalische_Temperatur_(Werckmeister%2C_Andreas)"},
       {author: "Andreas Werckmeister,", book: "Orgel Probe", title:"", other: "", date: "", page: "1681", url:"https://imslp.org/wiki/Orgel-Probe_(Werckmeister,_Andreas) "}
     ],
-    soundReferences: [
-      "",
-    ],
+    soundReferences: [{title: "", url:""}],
     commentary: "Très tôt appelé le tempérament de Werckmeister, c'est l'archétype du tempérament d'esthétique allemande. Il est encore cité par Türk en 1809 comme un bon tempérament inégal. C'est le premier tempérament inégal circulant qui ait été décrit : les plus grandes tierces majeures sont pythagoriciennes, à la limite prescrite par Werckmeister pour que toutes les tonalités puissent être jouées.",
   },
   {
@@ -565,8 +568,8 @@ export const defaultTemperaments: Array<Temperament> = [
       {author: "Andreas Werckmeister,", book: "Orgel Probe", title:"", other: "", date: "", page: "1681", url:"https://imslp.org/wiki/Orgel-Probe_(Werckmeister,_Andreas) "}
     ],
     soundReferences: [
-      "https://www.youtube.com/watch?v=kAlnr5nmHC8",
-      "https://www.youtube.com/watch?v=CeaGCYsy6iU",
+      {title: "Werckmeister III", url: "https://www.youtube.com/watch?v=kAlnr5nmHC8"},
+      {title: "J S Bach BWV 565 (I) Temperament: Werckmeister III", url: "https://www.youtube.com/watch?v=CeaGCYsy6iU"},
     ],
     commentary: "Ce tempérament circulant présente sur les tonalités avec peu d'altérations des tierces majeures plus grandes qu'en Werckmeister I (III).",
   },
@@ -644,7 +647,7 @@ export const defaultTemperaments: Array<Temperament> = [
       {author: "Donald H. Boalch,", book: "Makers of the harpsichord and clavichord 1440-1840, ", title:"", other: "Oxford, Oxford University Press,", date: "1974", page: "", url: ""},
     ],
     soundReferences: [
-      "https://www.youtube.com/watch?v=mgEL3N55fwI",],
+      {title: "Kleines harmonisches Labyrinth in fünf Stimmungen (Temperaturen)", url: "https://www.youtube.com/watch?v=mgEL3N55fwI"},],
     commentary: "C'est l'échelle de référence pour l'intonation jusqu'à la Renaissance. Son adaptation au clavier nécessite de décider de la place de la quinte du loup. Conventionnellement, elle est mise entre sol# et mib.\bPour privilégier les modulations dans les tonalités voisines en conservant des quintes pures, il suffit de choisir un accord des quintes de sorte que la quinte du loup ne soit jamais jouée. Si les modulations parcourent tout le spectre des tonalités, il faudrait envisager deux accords de clavecin ou un système adaptatif.",
      },
   {
@@ -718,8 +721,7 @@ export const defaultTemperaments: Array<Temperament> = [
       {author: "", book: "Wikipedia - Johann Philipp Kirnberger (FR)", title: "", other: "", date: "", page: "", url: "https://fr.wikipedia.org/wiki/Johann_Philipp_Kirnberger"},
       {author: "J.Ph. Kirnberger,", book: "Die Kunst des reinen Satzes", title:"", other: "", date: "1771, 1779", page: "", url:"https://imslp.org/wiki/Die_Kunst_des_reinen_Satzes_in_der_Musik_(Kirnberger%2C_Johann_Philipp)"}
     ],
-    soundReferences: [
-        "",],
+    soundReferences: [{title: "", url:""}],
     commentary: "Kirnberger a proposé trois tempéraments différents dans lesquels il répartit le comma syntonique sur une, deux ou quatre quintes. La particularité de ses solutions est qu’elles répartissent indépendamment le schisma sur une quinte.\b Plus précisément, après avoir décrit deux formules : la première qui laisse le comma syntonique non réparti sur la quinte ré-la, et la seconde qui le partage sur ré-la et la-mi, Kirnberger propose en 1779, dans une lettre à J. N. Forkel, un troisième tempérament dans lequel la répartition se fait sur les quatre quintes entre do et mi.",
   },
   {
@@ -792,8 +794,7 @@ export const defaultTemperaments: Array<Temperament> = [
       {author: "", book: "Academia - Tempérament Elliptique (FR)", title: "", other: "", date: "", page: "", url: "https://www.academia.edu/10807733/The_Elliptical_Temperament"},
       {author: "Lindley, Mark", book: "A quest for Bach’s ideal style of organ temperament", title:"", other: " in M. Lustig, ed., Stimmungen im 17. und 18.Jahrhundert, Michaelstein, ", date: "1997", page: "", url:"https://www.academia.edu/1134176/A_quest_for_Bach_s_ideal_style_of_organ_temperament"}
     ],
-    soundReferences: [
-        "",],
+    soundReferences: [{title: "", url:""}],
     commentary: "",
   },
 ];
