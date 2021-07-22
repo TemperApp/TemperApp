@@ -76,7 +76,8 @@ const Tuner: React.FC<TunerProps> = ({
   }, [selectedTemperamentId]);
 
   useEffect(() => {
-    setTuneMode(TuneMode.BEATS)
+    if (tuneMode === TuneMode.PROCEDURE)
+      setTuneMode(TuneMode.BEATS)
     setProc(
       (temperament.procedure !== '')
       ? Procedure.parse(temperament.procedure)!

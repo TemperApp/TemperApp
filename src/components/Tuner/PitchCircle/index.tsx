@@ -1,5 +1,5 @@
 import React, { useCallback, useContext, useEffect, useReducer } from 'react';
-import { IonPopover, useIonViewWillLeave } from "@ionic/react";
+import { IonPopover } from "@ionic/react";
 
 import PitchCircleView from './View';
 
@@ -20,6 +20,7 @@ import {
 } from './utils/procedure';
 import SettingsContext from '../../../store/settings-context';
 import useTemperTone from '../../../hooks/useTemperTone';
+import { useHistory } from 'react-router';
 
 
 let timeout: NodeJS.Timeout;
@@ -37,15 +38,28 @@ const PitchCircle: React.FC<PitchCircleProps> = ({
   tuneMode, freqA4, temperament,
   proc, procStepIdx, procRepeatCount,
 }) => {
+
+  const history = useHistory();
+
+  const settings = useContext(SettingsContext);
+  const TemperTone = useTemperTone();
   
+  /*
   useIonViewWillLeave(() => {
+    // Works when ionic is handling the routes
+    // but not with <Switch> from ReactRouter
     TemperTone.stop();
     clearTimeout(timeout);
     dispatchState({ type: BtnActions.SET_ALL_IDLE });
   });
+  */
 
-  const settings = useContext(SettingsContext);
-  const TemperTone = useTemperTone();
+  // TODO Find a better way with router
+  // Commented block above does not work
+  history.listen((location) => {
+    if (!location.pathname.match(/\/tune\/.*/))
+      TemperTone.stop();
+  });
 
   const [btnStates, dispatchState] = useReducer(
     btnStatesReducer(tuneMode),
