@@ -5,11 +5,12 @@ import SettingToggle from "../inputs/SettingToggle";
 import SettingInput from "../inputs/SettingInput";
 import SettingsGroup from "./SettingsGroup";
 import { IonButton, IonIcon } from "@ionic/react";
-import { play } from 'ionicons/icons';
+import { play, bug } from 'ionicons/icons';
 import useTemperTone from "../../hooks/useTemperTone";
 import SettingRange from "../inputs/SettingRange";
 import { AllowedSettingValue } from "../../store/settings-context/settings";
 import SettingsContext from "../../store/settings-context";
+import { useStorageSQLite } from "react-data-storage-sqlite-hook/dist";
 
 type SettingsModalProps = {
   onQuit: (e: any) => void,
@@ -19,8 +20,14 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
   onQuit = (nextSettings: any) => { },
 }) => {
   const settings = useContext(SettingsContext);
-  const [nextSettings, setNextSettings] = useState({...settings});
+  
   const TemperTone = useTemperTone();
+  const {clear, isAvailable} = useStorageSQLite();
+  const store = {clear, isAvailable};
+
+  const [nextSettings, setNextSettings] = useState({...settings});
+  const [debugMode, setDebugMode] = useState(false);
+  
 
   const set = (name: string, value: AllowedSettingValue) => {
     if (settings[name] === undefined) {
@@ -171,6 +178,44 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
             <li>et le Conservatoire du Grand-Avignon.                               </li>
           </ul>
         </section>
+
+        <section className="my-4">
+          <IonButton
+            fill='clear'
+            size='small'
+            style={{ opacity: 1, color: 'var(--color-contrast)' }}
+            onClick={() => setDebugMode(!debugMode)}
+          >
+            <IonIcon
+              style={{ opacity: debugMode ? 0.9 : 0.5 }}
+              className='mr-2' src={bug}/>
+            <span
+              style={{ opacity: 0.5 }}
+            >
+              {debugMode ? 'Cacher' : 'Montrer'} les options de debug
+            </span>
+          </IonButton>
+
+          { debugMode && store.isAvailable 
+            && <>
+              <IonButton
+                fill='clear'
+                color='danger'
+                onClick={() => store.clear()}
+              >
+                Réinitialiser le stockage local
+              </IonButton>
+              <IonButton
+                fill='clear'
+                color='danger'
+                routerLink={'/storage'}
+              >
+                Accéder au StorageTest
+              </IonButton>
+          </>}
+
+        </section>
+
       </PageModal>
     </>
   );

@@ -14,7 +14,6 @@ const StorageTest: React.FC = () => {
     if (store.isAvailable) {
       (async () => {
         await store.openStore({});
-        await store.clear();
 
         const person = {
           name: 'Donna',
@@ -23,8 +22,8 @@ const StorageTest: React.FC = () => {
         await store.setItem('person', JSON.stringify(person));
         const p = JSON.parse((await store.getItem('person'))!);
 
-        if(p)
-          print(`Hello! My name is ${p.name}, I'm ${p.age}`); 
+        if(p.name === person.name && p.age === person.age)
+          print(`success setItem and getItem`); 
         
         return true;
 
@@ -38,8 +37,15 @@ const StorageTest: React.FC = () => {
   let count = 1;
 
   return (
-    <>
-      <h3>Storage Test</h3>
+    <section className="p-4">
+      <h2>Storage</h2>
+      <button
+        className="mr-4 p-2"
+        onClick={() => (async () => store.clear())().then(() => print('Store cleared'))}
+      >
+        Clear store
+      </button>
+      <h3>Test Logs</h3>
       <div>
         {(store.isAvailable)
           ? logs.map((line) => (
@@ -48,7 +54,7 @@ const StorageTest: React.FC = () => {
           : "Store is not available :("
         }
       </div>
-    </>
+    </section>
   )
 };
 
