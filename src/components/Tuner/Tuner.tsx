@@ -40,7 +40,7 @@ const Tuner: React.FC<TunerProps> = ({
   const [isMuted, setIsMuted] = useState<boolean>(true);
   const [tuneMode, setTuneMode] = useState(TuneMode.BEATS);
   const [temperament, setTemperament] = useState<Temperament>(EqualTemperament);
-  const [selectedTemperamentId, setSelectedTemperamentId] = useState<number>(Number(id));
+  const [selectedTemperamentId, setSelectedTemperamentId] = useState<number>(1);
   const [temperamentsList, setTemperamentsList] = useState<TemperamentDBType[]>([]);
   const [freqA4, setFreqA4] = useState<number>(settings.freqA4);
   const [proc, setProc] = useState<Procedure | null>(null);
@@ -70,14 +70,22 @@ const Tuner: React.FC<TunerProps> = ({
   }, []);
 
   useEffect(() => {
+    setSelectedTemperamentId(Number(id) || 1);
+  }, [id]);
+
+  useEffect(() => {
     (async () => {
       setTemperament(await fetchTemperamentPropsById(selectedTemperamentId));
     })();
   }, [selectedTemperamentId]);
 
   useEffect(() => {
-    if (temperament.procedure !== '')
-      setProc(Procedure.parse(temperament.procedure)!);
+    setTuneMode(TuneMode.BEATS)
+    setProc(
+      (temperament.procedure !== '')
+      ? Procedure.parse(temperament.procedure)!
+      : null
+    );
   }, [temperament]);
 
   useEffect(() => {
@@ -172,8 +180,4 @@ const Tuner: React.FC<TunerProps> = ({
   );
 };
 
-export default React.memo(
-  Tuner,
-  (prevProps, nextProps) =>
-    prevProps.setMainTitle === nextProps.setMainTitle
-);
+export default Tuner;

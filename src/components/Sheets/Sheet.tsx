@@ -9,6 +9,7 @@ import {
 import './Sheet.css'
 import PageHeader from "../../pages/Page/PageHeader";
 import UserContext from "../../store/user-context";
+import { useHistory } from "react-router";
 
 type SheetProps = {
   mainTitle?: string,
@@ -24,6 +25,7 @@ const Sheet: React.FC<SheetProps> = ({
   id
 }) => {
 
+  const history = useHistory();
   const user = useContext(UserContext);
   const [isFavorite, setIsFavorite] = useState<Boolean>(false);
 
@@ -63,6 +65,7 @@ const Sheet: React.FC<SheetProps> = ({
           mainTitle={mainTitle}
           subTitle={subTitle}
           canGoBack={true}
+          onGoBack={() => history.push('/sheets/')}
         />
       </IonHeader>
 
