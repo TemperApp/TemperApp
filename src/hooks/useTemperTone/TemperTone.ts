@@ -46,12 +46,16 @@ class TemperTone {
     }).connect(this.amsynthFilter);
 
     // AM Synth Distortion
-    this.amsynthDist = new Tone.Distortion(1)
-      .connect(this.amsynthEQ);
+    this.amsynthDist = new Tone.Distortion(
+      fallbackConfig.amsynth.distortion.amount
+    ).connect(this.amsynthEQ);
 
     // AM synth
     this.amsynth = new Tone.AMSynth({
       harmonicity: 0, // 0 is unison, 1 is upper octave
+      oscillator: {
+        type: fallbackConfig.amsynth.type
+      },
       modulation: {
         type: 'sine'
       },
@@ -83,11 +87,12 @@ class TemperTone {
 
     this.gain.gain.rampTo(this.cfg.masterVolume);
     this.amsynthGain.gain.rampTo(this.cfg.amsynth.volume);
-    this.amsynth.oscillator.partials = this.cfg.amsynth.partials;
+    this.amsynth.oscillator.type = this.cfg.amsynth.type;
     this.amsynth.envelope.set(this.cfg.amsynth.envelope);
     this.amsynthFilter.frequency.rampTo(this.cfg.amsynth.filter.frequency, 0.1);
-    this.amsynthFilter.set({rolloff: this.cfg.amsynth.filter.rolloff});
+    this.amsynthFilter.set({ rolloff: this.cfg.amsynth.filter.rolloff });
     this.amsynthEQ.set(this.cfg.amsynth.eq);
+    this.amsynthDist.set({ distortion: this.cfg.amsynth.distortion.amount });
     this.forkGain.gain.rampTo(this.cfg.fork.volume);
   }
 

@@ -18,8 +18,8 @@ const SettingRange: React.FC<SettingRangeProps> = ({
   value,
   attributes = {},
   className = '',
-  classNameDefault = 'flex items-center justify-between px-0 my-3',
-  classNameText = 'pt-1',
+  classNameDefault = 'flex items-center justify-between px-0',
+  classNameText = 'pt-5',
   classNameIonRange = '',
   onChange = () => {},
 }) => {

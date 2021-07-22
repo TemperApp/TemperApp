@@ -1,16 +1,23 @@
 import React, { useContext, useState } from "react";
-import PageModal from "../../pages/Page/PageModal";
-import SettingToggle from "../inputs/SettingToggle";
-//import SettingSelect from "../inputs/SettingSelect";
-import SettingInput from "../inputs/SettingInput";
-import SettingsGroup from "./SettingsGroup";
 import { IonButton, IonIcon } from "@ionic/react";
 import { play, bug } from 'ionicons/icons';
-import useTemperTone from "../../hooks/useTemperTone";
+
+import PageModal from "../../pages/Page/PageModal";
+import SettingToggle from "../inputs/SettingToggle";
+import SettingSelect from "../inputs/SettingSelect";
+import SettingInput from "../inputs/SettingInput";
+import SettingsGroup from "./SettingsGroup";
 import SettingRange from "../inputs/SettingRange";
-import { AllowedSettingValue } from "../../store/settings-context/settings";
-import SettingsContext from "../../store/settings-context";
+
+import useTemperTone from "../../hooks/useTemperTone";
 import { useStorageSQLite } from "react-data-storage-sqlite-hook/dist";
+
+import SettingsContext from "../../store/settings-context";
+import { AllowedSettingValue } from "../../store/settings-context/settings";
+
+import { lerp } from "../../utils/maths";
+import { FilterRollOff } from "tone";
+
 
 type SettingsModalProps = {
   onQuit: (e: any) => void,
@@ -93,8 +100,16 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
             onClick={(e: any) => set('isBps', e.target.checked as boolean)}
           />
 
+          <SettingToggle
+            name="Forme d'onde triangle"
+            checked={settings.waveTriangle}
+            value="triangle"
+            onClick={(e: any) => setImmediatly('waveTriangle', e.target.checked as boolean)}
+          />
+
+
           <SettingsGroup
-            title='Volume audio'
+            title='Volume'
             titleAside={
               <IonButton 
                 size='small' fill='clear'
@@ -105,23 +120,190 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
             }
           >
             <SettingRange
-              name="Volume (son pur)"
+              name="Onde périodique"
               attributes={{ min: 0, max: 10, step: 1 }}
               value={nextSettings.amSynthVolume}
               onChange={(e) => {
-                set('amSynthVolume', e.detail.value)
-                TemperTone.amsynthGain.gain.rampTo(e.detail.value)}}
+                set('amSynthVolume', e.detail.value);
+                TemperTone.amsynthGain.gain.rampTo(lerp(0, 10, 0, 1, e.detail.value));
+              }}
               classNameIonRange="max-w-32"
             />
         
             <SettingRange
-              name="Volume (diapason)"
+              name="Diapason"
               attributes={{ min: 0, max: 10, step: 1 }}
               value={nextSettings.forkVolume}
               onChange={(e) => {
-                set('forkVolume', e.detail.value)
-                TemperTone.forkGain.gain.rampTo(e.detail.value)}}
+                set('forkVolume', e.detail.value);
+                TemperTone.forkGain.gain.rampTo(lerp(0, 10, 0, 1, e.detail.value));
+              }}
               classNameIonRange="max-w-32"
+            />
+
+          </SettingsGroup>
+
+
+          <SettingsGroup
+            title='Filtre passe-bas'
+            titleAside={
+              <IonButton 
+                size='small' fill='clear'
+                onClick={() => TemperTone.trigger(440, 1)}
+              >
+                <IonIcon src={play} slot='icon-only' />
+              </IonButton>
+            }
+          >
+            <SettingRange
+              name="Fréquence"
+              attributes={{ min: 100, max: 4000, step: 50 }}
+              value={nextSettings.amSynthFilterFrequency}
+              onChange={(e) => {
+                set('amSynthFilterFrequency', e.detail.value);
+                TemperTone.amsynthFilter.frequency.rampTo(e.detail.value, 0.1);
+              }}
+              classNameIonRange="max-w-44"
+            />
+
+            <SettingSelect
+              name="Rolloff (dB/octave)"
+              placeholder="Selectionner..."
+              options={[
+                {value: "-12", label: "-12"},
+                {value: "-24", label: "-24"},
+                {value: "-48", label: "-48"},
+                {value: "-96", label: "-96"},
+              ]}
+              value={String(nextSettings.amSynthFilterRollOff)}
+              onChange={(e) => {
+                const rolloff = Number(e.detail.value) as FilterRollOff;
+                console.log(rolloff)
+                set('amSynthFilterRollOff', rolloff);
+                TemperTone.amsynthFilter.set({ rolloff: rolloff});
+              }}
+              classNameSelect="w-20"
+            />
+
+          </SettingsGroup>
+
+
+          <SettingsGroup
+            title='Égaliseur audio'
+            titleAside={
+              <IonButton 
+                size='small' fill='clear'
+                onClick={() => TemperTone.trigger(440, 1)}
+              >
+                <IonIcon src={play} slot='icon-only' />
+              </IonButton>
+            }
+          >
+
+            <SettingRange
+              name="Low (dB)"
+              attributes={{ min: -96, max: 0, step: 3 }}
+              value={nextSettings.amSynthEQLow}
+              onChange={(e) => {
+                set('amSynthEQLow', e.detail.value);
+                TemperTone.amsynthEQ.low.rampTo(e.detail.value);
+              }}
+              classNameIonRange="max-w-40"
+            />
+
+            <SettingRange
+              name="Mid (dB)"
+              attributes={{ min: -96, max: 0, step: 3 }}
+              value={nextSettings.amSynthEQMid}
+              onChange={(e) => {
+                set('amSynthEQMid', e.detail.value);
+                TemperTone.amsynthEQ.mid.rampTo(e.detail.value);
+              }}
+              classNameIonRange="max-w-40"
+            />
+
+            <SettingRange
+              name="High (dB)"
+              attributes={{ min: -96, max: 0, step: 3 }}
+              value={nextSettings.amSynthEQHigh}
+              onChange={(e) => {
+                set('amSynthEQHigh', e.detail.value);
+                TemperTone.amsynthEQ.high.rampTo(e.detail.value);
+              }}
+              classNameIonRange="max-w-40"
+            />
+
+            <SettingInput
+              name="Low/Mid (Hz)"
+              type="number"
+              attributes={{ min: 100, max: 1000, step: 50 }}
+              value={nextSettings.amSynthEQLowFrequency}
+              onChange={(e) => {
+                set('amSynthEQLowFrequency', e.detail.value);
+                TemperTone.amsynthEQ.lowFrequency.rampTo(e.detail.value, 0.1);
+              }}
+              classNameInput="max-w-20"
+            />
+
+            <SettingInput
+              name="Mid/High (Hz)"
+              type="number"
+              attributes={{ min: 100, max: 1000, step: 50 }}
+              value={nextSettings.amSynthEQHighFrequency}
+              onChange={(e) => {
+                set('amSynthEQHighFrequency', e.detail.value);
+                TemperTone.amsynthEQ.highFrequency.rampTo(e.detail.value, 0.1);
+              }}
+              classNameInput="max-w-20"
+            />
+          </SettingsGroup>
+
+
+          <SettingsGroup
+            title='Distortion audio'
+            titleAside={
+              <IonButton 
+                size='small' fill='clear'
+                onClick={() => TemperTone.trigger(440, 1)}
+              >
+                <IonIcon src={play} slot='icon-only' />
+              </IonButton>
+            }
+          >
+        
+            <SettingRange
+              name="Quantité"
+              attributes={{ min: 0, max: 1, step: 0.05 }}
+              value={nextSettings.amSynthDistortionAmount}
+              onChange={(e) => {
+                set('amSynthDistortionAmount', e.detail.value);
+                TemperTone.amsynthDist.set({ distortion: e.detail.value });
+              }}
+              classNameIonRange="max-w-36"
+            />
+
+            <SettingInput
+              name="Distortion max fréquence"
+              type="number"
+              attributes={{ min: 100, max: 500, step: 20 }}
+              value={nextSettings.amSynthDistortionLowFrequency}
+              onChange={(e) => {
+                set('amSynthDistortionLowFrequency', e.detail.value);
+                TemperTone.amsynthDist.set({ distortion: e.detail.value });
+              }}
+              classNameInput="max-w-20"
+            />
+
+            <SettingInput
+              name="Distortion min fréquence"
+              type="number"
+              attributes={{ min: 100, max: 500, step: 20 }}
+              value={nextSettings.amSynthDistortionHighFrequency}
+              onChange={(e) => {
+                set('amSynthDistortionHighFrequency', e.detail.value);
+                TemperTone.amsynthDist.set({ distortion: e.detail.value });
+              }}
+              classNameInput="max-w-20"
             />
           </SettingsGroup>
 
@@ -183,15 +365,11 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
           <IonButton
             fill='clear'
             size='small'
-            style={{ opacity: 1, color: 'var(--color-contrast)' }}
+            style={{ opacity: 0.35, color: 'var(--color-contrast' }}
             onClick={() => setDebugMode(!debugMode)}
           >
-            <IonIcon
-              style={{ opacity: debugMode ? 0.9 : 0.5 }}
-              className='mr-2' src={bug}/>
-            <span
-              style={{ opacity: 0.5 }}
-            >
+            <IonIcon className='mr-2' src={bug}/>
+            <span>
               {debugMode ? 'Cacher' : 'Montrer'} les options de debug
             </span>
           </IonButton>
@@ -199,15 +377,13 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
           { debugMode && store.isAvailable 
             && <>
               <IonButton
-                fill='clear'
-                color='danger'
+                fill='clear' color='danger'
                 onClick={() => store.clear()}
               >
                 Réinitialiser le stockage local
               </IonButton>
               <IonButton
-                fill='clear'
-                color='danger'
+                fill='clear' color='danger'
                 routerLink={'/storage'}
               >
                 Accéder au StorageTest

@@ -17,6 +17,7 @@ type SettingSelectProps = {
   classNameDefault?: string,
   classNameText?: string,
   classNameSelect?: string,
+  onChange?: (e: any) => void,
 };
 
 const SettingSelect: React.FC<SettingSelectProps> = ({
@@ -30,6 +31,7 @@ const SettingSelect: React.FC<SettingSelectProps> = ({
   classNameDefault = 'flex items-center justify-between px-0 my-3',
   classNameText = 'pt-1',
   classNameSelect = '',
+  onChange = () => {},
 }) => {
   return (
     <div className={`${classNameDefault} ${className}`}>
@@ -42,6 +44,7 @@ const SettingSelect: React.FC<SettingSelectProps> = ({
           value={value}
           okText={okText}
           cancelText={cancelText}
+          onIonChange={onChange}
         >
           { options.map(({label, value}, idx) => (
               <IonSelectOption

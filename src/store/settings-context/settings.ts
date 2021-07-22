@@ -30,6 +30,9 @@ const settings : readonly AllowedSetting[] = [{
     name: 'isBps',
     defaultValue: false,
   },{
+    name: 'waveTriangle',
+    defaultValue: false,
+  },{
     name: 'masterVolume',
     defaultValue: 10,
   },{
@@ -52,7 +55,7 @@ const settings : readonly AllowedSetting[] = [{
     defaultValue: 1,
   },{
     name: 'amSynthFilterFrequency',
-    defaultValue: 620,
+    defaultValue: 600,
   },{
     name: 'amSynthFilterRollOff',
     defaultValue: -24,
@@ -73,7 +76,7 @@ const settings : readonly AllowedSetting[] = [{
     defaultValue: 550,
   },{
     name: 'amSynthDistortionAmount',
-    defaultValue: 1,
+    defaultValue: 0,
   },{
     name: 'amSynthDistortionLowFrequency',
     defaultValue: 120,

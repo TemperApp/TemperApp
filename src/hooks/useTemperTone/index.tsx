@@ -1,15 +1,16 @@
 import { useContext, useEffect, useMemo, useState } from "react";
 import { FilterRollOff } from "tone";
 import SettingsContext from "../../store/settings-context";
-import { equalsDeep } from "../../utils/functions";
-import { bound, lerp, magnet } from "../../utils/maths";
+import { equalsDeep, mergeDeep } from "../../utils/functions";
+import { lerp, bound, magnet } from "../../utils/maths";
+import { DeepPartial } from "../../utils/types";
 import TemperTone from "./TemperTone";
 
 export type TemperToneConfig = {
   masterVolume: number,
   amsynth: {
+    type: 'triangle' | 'sine',
     volume: number,
-    partials: number[],
     envelope: {
       attack: number,
       decay: number,
@@ -42,8 +43,8 @@ export type TemperToneConfig = {
 export const fallbackConfig: TemperToneConfig = {
   masterVolume: 1,
   amsynth: {
+    type: 'sine',
     volume: 1,
-    partials: [1, 0.05, 0, 0.01],
     envelope: {
       attack: 0.01,
       decay: 1,
@@ -73,44 +74,86 @@ export const fallbackConfig: TemperToneConfig = {
 };
 
 
+export const formatConfig = (
+  config: DeepPartial<TemperToneConfig>
+): TemperToneConfig => {
+  const cfg = mergeDeep(fallbackConfig, config);
+  return {
+    masterVolume: lerp(0, 10, 0, 1, cfg.masterVolume),
+    amsynth: {
+      volume: lerp(0, 10, 0, 1, cfg.amsynth.volume),
+      type: cfg.amsynth.type,
+      envelope: {
+        attack: bound(0, 15, cfg.amsynth.envelope.attack),
+        decay: bound(0, 15, cfg.amsynth.envelope.decay),
+        sustain: bound(0, 15, cfg.amsynth.envelope.sustain),
+        release: bound(0, 15, cfg.amsynth.envelope.release),
+      },
+      filter: {
+        frequency: bound(0.01, 22000, cfg.amsynth.filter.frequency),
+        rolloff: magnet([-96, -48, -24, -12], cfg.amsynth.filter.rolloff) as FilterRollOff,
+      },
+      eq: {
+        low: bound(-192, 0, cfg.amsynth.eq.low),
+        mid: bound(-192, 0, cfg.amsynth.eq.mid),
+        high: bound(-192, 0, cfg.amsynth.eq.high),
+        lowFrequency: bound(0.01, 22000, cfg.amsynth.eq.lowFrequency),
+        highFrequency: bound(0.01, 22000, cfg.amsynth.eq.highFrequency),
+      },
+      distortion: {
+        amount: bound(0.01, 1, cfg.amsynth.distortion.amount),
+        lowFrequency: bound(0.01, 22000, cfg.amsynth.distortion.lowFrequency),
+        highFrequency: bound(0.01, 22000, cfg.amsynth.distortion.highFrequency),
+      },
+    },
+    fork: {
+      volume: lerp(0, 10, 0, 1, cfg.fork.volume),
+    },
+  };
+};
+
+
 const useTemperTone = () => {
   const settings = useContext(SettingsContext);
   const TemperToneInstance = useMemo(() => new TemperTone(), []);
   const [prevConfig, setPrevConfig] = useState(fallbackConfig);
 
   useEffect(() => {
-    const config = {
-      masterVolume: lerp(0, 10, 0, 1, settings.masterVolume),
+    const settingsMatchedWithConfig: DeepPartial<TemperToneConfig> = {
+      masterVolume: settings.masterVolume,
       amsynth: {
-        volume: lerp(0, 10, 0, 1, settings.amSynthVolume),
-        partials: [1, 0.05, 0, 0.01],
+        type: settings.waveTriangle ? 'triangle' : 'sine',
+        volume: settings.amSynthVolume,
         envelope: {
-          attack: bound(0, 15, settings.amSynthEnvelopeAttack),
-          decay: bound(0, 15, settings.amSynthEnvelopeDecay),
-          sustain: bound(0, 15, settings.amSynthEnvelopeSustain),
-          release: bound(0, 15, settings.amSynthEnvelopeRelease),
+          attack: settings.amSynthEnvelopeAttack,
+          decay: settings.amSynthEnvelopeDecay,
+          sustain: settings.amSynthEnvelopeSustain,
+          release: settings.amSynthEnvelopeRelease,
         },
         filter: {
-          frequency: bound(0.01, 22000, settings.amSynthFilterFrequency),
-          rolloff: magnet([-96, -48, -24, -12], settings.amSynthFilterRollOff) as FilterRollOff,
+          frequency: settings.amSynthFilterFrequency,
+          rolloff: settings.amSynthFilterRollOff,
         },
         eq: {
-          low: bound(-192, 0, settings.amSynthEQLow),
-          mid: bound(-192, 0, settings.amSynthEQMid),
-          high: bound(-192, 0, settings.amSynthEQHigh),
-          lowFrequency: bound(0.01, 22000, settings.amSynthEQLowFrequency),
-          highFrequency: bound(0.01, 22000, settings.amSynthEQHighFrequency),
+          low: settings.amSynthEQLow,
+          mid: settings.amSynthEQMid,
+          high: settings.amSynthEQHigh,
+          lowFrequency: settings.amSynthEQLowFrequency,
+          highFrequency: settings.amSynthEQHighFrequency,
         },
         distortion: {
-          amount: bound(0.01, 1, settings.amSynthDistortionAmount),
-          lowFrequency: bound(0.01, 22000, settings.amSynthDistortionLowFrequency),
-          highFrequency: bound(0.01, 22000, settings.amSynthDistortionHighFrequency),
+          amount: settings.amSynthDistortionAmount,
+          lowFrequency: settings.amSynthDistortionLowFrequency,
+          highFrequency: settings.amSynthDistortionHighFrequency,
         },
       },
       fork: {
-        volume: lerp(0, 10, 0, 1, settings.forkVolume),
+        volume: settings.forkVolume,
       },
     };
+    console.log(settings.amSynthFilterRollOff)
+
+    const config = formatConfig(settingsMatchedWithConfig);
 
     if (!equalsDeep(config, prevConfig)) {
       TemperToneInstance.update(config);

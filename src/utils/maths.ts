@@ -27,27 +27,33 @@ export const random = (
 );
 
 export const magnet = (
-  set: [number, ...number[]], // non empty array
+  set: number[],
   x: number,
 ): typeof set[number] => {
+  if (set.length === 0) {
+    console.error('[maths] magnets invalid set: ', set, x);
+    return 0;
+  }
   if (set.length === 1)
     return set[0];
 
-  set = set.sort((a, b) => a - b);
+  const _set = set.sort((a, b) => a - b);
 
-  if (x < set[0])
-    return set[0];
+  if (x < _set[0])
+    return _set[0];
 
-  if (x > set[set.length-1])
-    return set[set.length-1];
+  if (x > _set[_set.length-1])
+    return _set[_set.length-1];
 
   do {
-    if (set[0] === x)
-      return set[0];
-    if (set[0] < x && x < set[1])
-      return (x - set[0] <= set[1] - x) ? set[0] : set[1];
-    set.shift();
-  } while (set.length >= 2);
+    if (_set[0] === x)
+      return _set[0];
+    if (_set[1] === x)
+      return _set[1];
+    if (_set[0] < x && x < _set[1])
+      return (x - _set[0] <= _set[1] - x) ? _set[0] : _set[1];
+    _set.shift();
+  } while (_set.length >= 2);
   
   console.error('[maths] magnets failed: ', set, x);
   return 0;
