@@ -1,6 +1,6 @@
 /* eslint-disable no-sequences */
 import { Temperament } from '../model/Temperament/Temperament';
-import { TemperamentDBType } from '../engine/DB';
+import { TemperamentDBType } from './DB';
 import { LearnSheet } from '../model/Learn/learnSheets';
 
 // TODO Remove on production
