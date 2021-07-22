@@ -40,6 +40,7 @@ const PitchCircle: React.FC<PitchCircleProps> = ({
   
   useIonViewWillLeave(() => {
     TemperTone.stop();
+    clearTimeout(timeout);
     dispatchState({ type: BtnActions.SET_ALL_IDLE });
   });
 

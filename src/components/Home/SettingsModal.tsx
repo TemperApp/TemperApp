@@ -100,20 +100,20 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
             <SettingRange
               name="Volume (son pur)"
               attributes={{ min: 0, max: 10, step: 1 }}
-              value={nextSettings.amSynthVolume*10}
+              value={nextSettings.amSynthVolume}
               onChange={(e) => {
-                set('amSynthVolume', e.detail.value/10)
-                TemperTone.amsynthGain.gain.rampTo(e.detail.value/10)}}
+                set('amSynthVolume', e.detail.value)
+                TemperTone.amsynthGain.gain.rampTo(e.detail.value)}}
               classNameIonRange="max-w-32"
             />
         
             <SettingRange
               name="Volume (diapason)"
               attributes={{ min: 0, max: 10, step: 1 }}
-              value={nextSettings.forkVolume*10}
+              value={nextSettings.forkVolume}
               onChange={(e) => {
-                set('forkVolume', e.detail.value/10)
-                TemperTone.forkGain.gain.rampTo(e.detail.value/10)}}
+                set('forkVolume', e.detail.value)
+                TemperTone.forkGain.gain.rampTo(e.detail.value)}}
               classNameIonRange="max-w-32"
             />
           </SettingsGroup>

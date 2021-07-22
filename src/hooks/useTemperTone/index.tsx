@@ -1,6 +1,8 @@
 import { useContext, useEffect, useMemo, useState } from "react";
+import { FilterRollOff } from "tone";
 import SettingsContext from "../../store/settings-context";
 import { equalsDeep } from "../../utils/functions";
+import { bound, lerp, magnet } from "../../utils/maths";
 import TemperTone from "./TemperTone";
 
 export type TemperToneConfig = {
@@ -16,7 +18,7 @@ export type TemperToneConfig = {
     },
     filter: {
       frequency: number,
-      rolloff: -12 | -24 | -48,
+      rolloff: FilterRollOff,
     },
     eq: {
       low: number,
@@ -38,9 +40,9 @@ export type TemperToneConfig = {
 
 
 export const fallbackConfig: TemperToneConfig = {
-  masterVolume: -0.1,
+  masterVolume: 1,
   amsynth: {
-    volume: -1,
+    volume: 1,
     partials: [1, 0.05, 0, 0.01],
     envelope: {
       attack: 0.01,
@@ -66,7 +68,7 @@ export const fallbackConfig: TemperToneConfig = {
     },
   },
   fork: {
-    volume: -18,
+    volume: 1,
   },
 };
 
@@ -78,35 +80,35 @@ const useTemperTone = () => {
 
   useEffect(() => {
     const config = {
-      masterVolume: settings.masterVolume,
+      masterVolume: lerp(0, 10, 0, 1, settings.masterVolume),
       amsynth: {
-        volume: settings.amSynthVolume,
+        volume: lerp(0, 10, 0, 1, settings.amSynthVolume),
         partials: [1, 0.05, 0, 0.01],
         envelope: {
-          attack: settings.amSynthEnvelopeAttack,
-          decay: settings.amSynthEnvelopeDecay,
-          sustain: settings.amSynthEnvelopeSustain,
-          release: settings.amSynthEnvelopeRelease,
+          attack: bound(0, 15, settings.amSynthEnvelopeAttack),
+          decay: bound(0, 15, settings.amSynthEnvelopeDecay),
+          sustain: bound(0, 15, settings.amSynthEnvelopeSustain),
+          release: bound(0, 15, settings.amSynthEnvelopeRelease),
         },
         filter: {
-          frequency: settings.amSynthFilterFrequency,
-          rolloff: settings.amSynthFilterRollOff,
+          frequency: bound(0.01, 22000, settings.amSynthFilterFrequency),
+          rolloff: magnet([-96, -48, -24, -12], settings.amSynthFilterRollOff) as FilterRollOff,
         },
         eq: {
-          low: settings.amSynthEQLow,
-          mid: settings.amSynthEQMid,
-          high: settings.amSynthEQHigh,
-          lowFrequency: settings.amSynthEQLowFrequency,
-          highFrequency: settings.amSynthEQHighFrequency,
+          low: bound(-192, 0, settings.amSynthEQLow),
+          mid: bound(-192, 0, settings.amSynthEQMid),
+          high: bound(-192, 0, settings.amSynthEQHigh),
+          lowFrequency: bound(0.01, 22000, settings.amSynthEQLowFrequency),
+          highFrequency: bound(0.01, 22000, settings.amSynthEQHighFrequency),
         },
         distortion: {
-          amount: settings.amSynthDistortionAmount,
-          lowFrequency: settings.amSynthDistortionLowFrequency,
-          highFrequency: settings.amSynthDistortionHighFrequency,
+          amount: bound(0.01, 1, settings.amSynthDistortionAmount),
+          lowFrequency: bound(0.01, 22000, settings.amSynthDistortionLowFrequency),
+          highFrequency: bound(0.01, 22000, settings.amSynthDistortionHighFrequency),
         },
       },
       fork: {
-        volume: settings.forkVolume,
+        volume: lerp(0, 10, 0, 1, settings.forkVolume),
       },
     };
 

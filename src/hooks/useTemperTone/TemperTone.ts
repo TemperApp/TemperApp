@@ -5,6 +5,7 @@ import NotesMap from "../../model/Note/NotesMap";
 import Note from "../../model/Note/Note";
 import { acousticBeat } from "../../model/AcousticBeat";
 import { fallbackConfig, TemperToneConfig } from '.';
+import { bound, lerp, random } from '../../utils/maths';
 
 class TemperTone {
   cfg: TemperToneConfig = fallbackConfig;
@@ -85,7 +86,7 @@ class TemperTone {
     this.amsynth.oscillator.partials = this.cfg.amsynth.partials;
     this.amsynth.envelope.set(this.cfg.amsynth.envelope);
     this.amsynthFilter.frequency.rampTo(this.cfg.amsynth.filter.frequency, 0.1);
-    this.amsynthFilter.set(this.cfg.amsynth.filter);
+    this.amsynthFilter.set({rolloff: this.cfg.amsynth.filter.rolloff});
     this.amsynthEQ.set(this.cfg.amsynth.eq);
     this.forkGain.gain.rampTo(this.cfg.fork.volume);
   }
@@ -173,23 +174,24 @@ class TemperTone {
   private updateHarmonicity(): void {
     const carrierFreq = this.freq;
     const harmonicity = (carrierFreq + this.modFreq) / carrierFreq - 1; // minus 1 because: 0 is unison, 1 is upper octave
-    this.amsynth.harmonicity.value = harmonicity;
+    this.amsynth.harmonicity.rampTo(harmonicity, 0.05);
   }
 
 
   private forkFreq(): number {
-    return 330
-      + Math.max(0, (this.freq - 330) / 2) // lerp
-      + Math.random() * 20;                // random variation
+    return random(-20, 20)
+      + bound(330, 550, 
+          lerp(120, 800, 330, 550, this.freq)
+        );
   }
 
 
   private amsynthDistortionWet(): number {
     const { amount, lowFrequency, highFrequency } = this.cfg.amsynth.distortion;
-    return Math.min(1, Math.max(0,                      // bounded between [0,1]
-      (1 - (this.freq - lowFrequency) / highFrequency)  // lerp
-      * amount
-    ));
+    return amount
+      * bound(0, 1,
+          lerp(lowFrequency, highFrequency, 1, 0, this.freq)
+        );
   }
 }
 

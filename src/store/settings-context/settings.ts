@@ -31,13 +31,13 @@ const settings : readonly AllowedSetting[] = [{
     defaultValue: false,
   },{
     name: 'masterVolume',
-    defaultValue: -0.1,
+    defaultValue: 10,
   },{
     name: 'forkVolume',
-    defaultValue: -18,
+    defaultValue: 10,
   },{
     name: 'amSynthVolume',
-    defaultValue: -1,
+    defaultValue: 10,
   },{
     name: 'amSynthEnvelopeAttack',
     defaultValue: 0.01,
