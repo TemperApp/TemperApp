@@ -16,7 +16,7 @@ const SettingsGroup: React.FC<SettingsGroupProps> = ({
     <div className="title-container pt-3 pb-2">
       <div className="titles">
         {title
-          && <h3>{title}</h3>}
+          && <h4>{title}</h4>}
       </div>
       {titleAside || null}
     </div>
