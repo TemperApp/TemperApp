@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 26.458 26.458" height="100" width="100">
+    <circle transform="rotate(22.512)"
+        style="fill:none;stroke:#2ea39b;stroke-width:1.99901;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    <path
+        style="fill:none;stroke:var(--color-inner-button);stroke-width:.990408;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+        d="M25.345 13.778s-1.144 4.163-2.478 4.25c-1.334.087-1.139-9.838-3.039-9.867-1.9-.029-2.127 10.074-3.962 10.103-1.835.03-2.006-9.87-3.844-9.867-1.838.003-2.366 9.833-4.083 9.942-1.717.108-1.948-9.658-3.723-9.706-1.775-.048-2.517 8.134-2.898 9.671" />
+    <path
+        d="M25.989 12.602s-1.313 3.44-2.744 3.419c-1.742-.027-1.492-3.803-4.224-3.803s-2.052 3.802-4.303 3.85c-2.25.049-1.367-3.724-3.771-3.739-2.404-.014-1.854 3.71-4.273 3.787-2.419.078-1.893-3.774-3.777-3.808-1.884-.035-2.206 1.855-2.61 2.954"
+        style="fill:none;stroke:var(--color-inner-button);stroke-width:.862833;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+</svg>

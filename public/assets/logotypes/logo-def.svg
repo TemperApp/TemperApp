@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 26.458 26.458" height="100" width="100">
+    <circle transform="rotate(22.512)"
+        style="fill:none;stroke:#2ea39b;stroke-width:1.99901;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    <g style="fill:var(--color-inner-button);stroke-width:1.00012;stroke-miterlimit:4;stroke-dasharray:none;fill-opacity:1"
+        transform="translate(-13.894 -18.34) scale(.34739)">
+        <circle r="4.744" cy="60.136" cx="77.576"
+            style="fill:var(--color-inner-button);fill-opacity:1;stroke:none;stroke-width:1.00012;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none" />
+        <circle
+            style="fill:var(--color-inner-button);fill-opacity:1;stroke:none;stroke-width:1.00012;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none"
+            cx="113.005" cy="9.094" r="4.744" transform="rotate(30)" />
+        <circle transform="rotate(60)" r="4.744" cy="-52.823" cx="118.167"
+            style="fill:var(--color-inner-button);fill-opacity:1;stroke:none;stroke-width:1.00012;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none" />
+        <circle
+            style="fill:var(--color-inner-button);fill-opacity:1;stroke:none;stroke-width:1.00012;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none"
+            cx="91.679" cy="-109.027" r="4.744" transform="rotate(90)" />
+        <circle transform="rotate(120)" r="4.744" cy="-143.446" cx="40.021"
+            style="fill:var(--color-inner-button);fill-opacity:1;stroke:none;stroke-width:1.00012;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none" />
+        <circle
+            style="fill:var(--color-inner-button);fill-opacity:1;stroke:none;stroke-width:1.00012;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none"
+            cx="-21.825" cy="-148.297" r="4.744" transform="rotate(150)" />
+        <circle transform="scale(-1)" r="4.744" cy="-121.619" cx="-77.672"
+            style="fill:var(--color-inner-button);fill-opacity:1;stroke:none;stroke-width:1.00012;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none" />
+        <circle
+            style="fill:var(--color-inner-button);fill-opacity:1;stroke:none;stroke-width:1.00012;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none"
+            cx="-113.363" cy="-70.411" r="4.744" transform="rotate(-150)" />
+        <circle transform="rotate(-120)" r="4.744" cy="-8.588" cx="-117.789"
+            style="fill:var(--color-inner-button);fill-opacity:1;stroke:none;stroke-width:1.00012;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none" />
+        <circle
+            style="fill:var(--color-inner-button);fill-opacity:1;stroke:none;stroke-width:1.00012;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none"
+            cx="-91.493" cy="46.977" r="4.744" transform="rotate(-90)" />
+        <circle transform="rotate(-60)" r="4.744" cy="82.094" cx="-40.508"
+            style="fill:var(--color-inner-button);fill-opacity:1;stroke:none;stroke-width:1.00012;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none" />
+        <circle
+            style="fill:var(--color-inner-button);fill-opacity:1;stroke:none;stroke-width:1.00012;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none"
+            cx="21.372" cy="86.624" r="4.744" transform="rotate(-30)" />
+    </g>
+    <path
+        d="M13.203 2.066A11.165 11.165 0 0 0 2.038 13.23a11.165 11.165 0 0 0 11.165 11.165A11.165 11.165 0 0 0 24.368 13.23 11.165 11.165 0 0 0 13.203 2.066zm0 .65A10.515 10.515 0 0 1 23.718 13.23a10.515 10.515 0 0 1-10.515 10.515A10.515 10.515 0 0 1 2.688 13.23 10.515 10.515 0 0 1 13.203 2.716z"
+        style="fill:var(--color-inner-button);fill-opacity:1;stroke:none;stroke-width:.152393;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none" />
+</svg>

@@ -16,15 +16,19 @@ const Learn: React.FC = () => {
     {
       label: "Definition",
       routerLink: "/learn/definition",
+      src: "/assets/logotypes/logo-def.svg",
     }, {
       label: "Caractéristiques",
       routerLink: "/learn/characteristics",
+      src: "/assets/logotypes/logo-def.svg",
     }, {
       label: "Physique",
       routerLink: "/learn/physics",
+      src: "/assets/logotypes/logo-phys.svg",
     }, {
       label: "Histoire",
       routerLink: "/learn/history",
+      src: "/assets/logotypes/logo-def.svg",
     }
   ]
 
@@ -38,7 +42,7 @@ const Learn: React.FC = () => {
 
       <IonContent fullscreen scrollY={true}>
 
-        {items.map(({ label, routerLink }, idx) => (
+        {items.map(({ label, routerLink, src }, idx) => (
           <IonButton
             key={idx}
             className="h-28 item-btn"
@@ -48,7 +52,9 @@ const Learn: React.FC = () => {
             routerLink={routerLink}
           >
             <div className="flex w-full items-center justify-start">
-              <IonIcon className="ml-8 item-icon" />
+              <IonIcon className="ml-8 item-icon" 
+                src={src}
+              />
               <IonLabel className="pl-6 item-label">
                 <h3>{label}</h3>
               </IonLabel>
