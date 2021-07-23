@@ -47,7 +47,7 @@ const ComparatorThirdComaCircle: React.FC<ComparatorThirdComaCircleProps> = ({ t
       <path data-name="B_flat"  fill={convertThirdQualityToColor(qualityNote1.B_flat, settings.darkTheme)}  d="M21.199219 22.160156C21.199219 22.160156 17.671555 25.472021 14.767578 30.626953C11.860688 35.77684 11.015625 39.837891 11.015625 39.837891L19.410156 42.105469A31.477272 31.477272 0 0 1 27.355469 28.347656L21.199219 22.160156z" />
       <path data-name="F"       fill={convertThirdQualityToColor(qualityNote1.F, settings.darkTheme)}       d="M39.1875 11.681641C39.1875 11.681641 34.511511 12.734693 29.417969 15.746094C24.324427 18.757495 21.382812 21.966797 21.382812 21.966797L27.607422 28.09375A31.477272 31.477272 0 0 1 41.416016 20.103516L39.1875 11.681641z" />
     </g>
-    <ellipse cx="12.523" cy="13.574" rx="9.745" ry="9.698"/>
+      <ellipse cx="12.523" cy="13.574" rx="7.8" ry="7.8" stroke-width="0.1px" stroke="var(--color-hover)"/>
       <ellipse ry="6" rx="6" cy="13.574" cx="12.523" id="a" />
       <ellipse id="b" cx="12.523" cy="13.574" rx="7" ry="7" />
     <g className="comas-text" fill="var(--color-dark)">
