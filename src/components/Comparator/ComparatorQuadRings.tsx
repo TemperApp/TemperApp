@@ -66,14 +66,14 @@ const innerSmallestRingCoords = {
 };
 
 
-type ComparatorTemp2CircleProps = {
+type ComparatorQuadRingsProps = {
   t1FifthsQ: { [key: string]: number | null },
   t1ThirdsQ: { [key: string]: number | null },
   t2FifthsQ: { [key: string]: number | null },
   t2ThirdsQ: { [key: string]: number | null },
 };
 
-const ComparatorTemp2Circle: React.FC<ComparatorTemp2CircleProps> = ({
+const ComparatorQuadRings: React.FC<ComparatorQuadRingsProps> = ({
   t1FifthsQ,
   t1ThirdsQ,
   t2FifthsQ,
@@ -157,4 +157,4 @@ const ComparatorTemp2Circle: React.FC<ComparatorTemp2CircleProps> = ({
   );
 };
 
-export default ComparatorTemp2Circle;
+export default ComparatorQuadRings;

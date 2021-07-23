@@ -1,7 +1,4 @@
 import React from "react";
-
-//Style
-import "./Comparator.css";
 import {
   IonCard,
   IonCardContent,
@@ -11,8 +8,11 @@ import {
   IonGrid,
   IonRow,
 } from "@ionic/react";
+
 import { Temperament } from "../../model/Temperament/Temperament";
 import { FIFTHS } from "../../model/Note/sequences";
+
+import "./Comparator.css";
 
 type ComparatorDivergenceProps = {
   temperament1: Temperament,

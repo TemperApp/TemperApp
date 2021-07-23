@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 
 import ComparatorComa from './ComparatorComa';
 import ComparatorDivergence from './ComparatorDivergence';
-import ComparatorTemp2Circle from './ComparatorTemp2Circle';
+import ComparatorQuadRings from './ComparatorQuadRings';
 
 import { fetchTemperamentPropsById } from '../../engine/DataAccessor';
 import EqualTemperament from '../../model/Temperament/Equal';
@@ -38,7 +38,7 @@ const ComparatorSVG: React.FC<ComparatorSVGProps> = ({
   return (
     <>
       <div className="pt-2 px-6 justify-center max-w-lg comparator-svg">
-        <ComparatorTemp2Circle
+        <ComparatorQuadRings
           t1FifthsQ={fifthQ(temperament1.cpExp5th)}
           t1ThirdsQ={thirdQ(temperament1.csExp3rd)}
           t2FifthsQ={fifthQ(temperament2.cpExp5th)}

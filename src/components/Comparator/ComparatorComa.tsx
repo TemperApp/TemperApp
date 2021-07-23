@@ -1,19 +1,17 @@
 import React, { useState } from "react";
-import { IonSlides, IonSlide, IonContent } from "@ionic/react";
-
-//Style
-import "./Comparator.css";
 import {
-  IonCard,
-  IonCardContent,
-  IonCardHeader,
-  IonCardTitle,
+  IonSlides, IonSlide, IonCard,
+  IonCardContent, IonCardHeader, IonCardTitle,
 } from "@ionic/react";
-import { Temperament } from "../../model/Temperament/Temperament";
-import { fifthQ, thirdQ } from "../../model/Divergence";
+
+import Toggler from "../inputs/Toggler";
 import ComparatorThirdComaCircle from "./ComparatorThirdComaCircle";
 import ComparatorFifthComaCircle from "./ComparatorFifthComaCircle";
-import Toggler from "../inputs/Toggler";
+
+import { Temperament } from "../../model/Temperament/Temperament";
+import { fifthQ, thirdQ } from "../../model/Divergence";
+
+import "./Comparator.css";
 
 type ComparatorComaProps = {
   temperament1: Temperament;
