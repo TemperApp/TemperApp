@@ -65,7 +65,7 @@ const SheetTemperament: React.FC = () => {
         </IonCard>
       </div>
 
-      <IonSlides pager={true} options={slideOpts}>
+      <IonSlides pager={true} options={slideOpts} className="max-w-lg max-h-lg">
           <IonSlide className="px-6">
             <IonCard className="comma-card h-full">
               <IonCardHeader className="py-2">
@@ -74,7 +74,7 @@ const SheetTemperament: React.FC = () => {
                 </IonCardTitle>
               </IonCardHeader>
               <IonCardContent>
-                <div>
+                <div className="max-w-lg max-h-lg">
                   <svg
                     className="comparator-comas"
                     viewBox="0 0 25 30"
@@ -111,7 +111,7 @@ const SheetTemperament: React.FC = () => {
                 </IonCardTitle>
               </IonCardHeader>
               <IonCardContent>
-                <div>
+                <div className="max-w-lg max-h-lg">
                   <svg
                     className="comparator-comas"
                     viewBox="0 0 25 30"
