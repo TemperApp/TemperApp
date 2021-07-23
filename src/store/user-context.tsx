@@ -29,6 +29,7 @@ export const UserContextProvider: React.FC = ({ children }) => {
     
       })();
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

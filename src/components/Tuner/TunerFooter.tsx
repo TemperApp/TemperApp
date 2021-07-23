@@ -1,6 +1,5 @@
 import React from 'react';
 import { IonButton, IonCol, IonIcon } from '@ionic/react';
-import { reload } from 'ionicons/icons';
 import { TuneMode } from './Tuner';
 import Toggler from '../inputs/Toggler';
 

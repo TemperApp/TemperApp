@@ -84,7 +84,7 @@ const Tuner: React.FC<TunerProps> = ({
       ? Procedure.parse(temperament.procedure)!
       : null
     );
-  }, [temperament]);
+  }, [temperament, tuneMode]);
 
   useEffect(() => {
     let i = 0;

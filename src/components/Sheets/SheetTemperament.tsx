@@ -4,7 +4,7 @@ import { fetchTemperamentPropsById } from "../../engine/DataAccessor";
 import { Temperament } from "../../model/Temperament/Temperament";
 import EqualTemperament from "../../model/Temperament/Equal";
 import { useParams } from "react-router";
-import { IonButton, IonCard, IonCardContent, IonCardHeader, IonCardTitle, IonContent, IonIcon, IonSlide, IonSlides } from '@ionic/react';
+import { IonButton, IonCard, IonCardContent, IonCardHeader, IonCardTitle, IonIcon, IonSlide, IonSlides } from '@ionic/react';
 import ParagraphLearn from '../Learn/ParagraphLearn';
 import VideoLearn from '../Learn/VideoLearn';
 import ResourcesLearn from '../Learn/ResourcesLearn';

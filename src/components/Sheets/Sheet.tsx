@@ -32,31 +32,19 @@ const Sheet: React.FC<SheetProps> = ({
 
   useEffect(() => {
     user.setFavorite([id]);
-    //console.info("👤 : User Data");
     let temp = [""]; 
     temp = user.favorite;
-    //console.info("⌚ user : " + user.favorite)
-    //console.info("⌚ temp : " + temp)
     isFavorite?temp.push(id):(temp=temp.filter(e => (e !== id && e !== undefined && e!=="")));
-    //console.info("🧭 temp : " + temp)
-    //console.log(temp[0]);
-    //console.log("taille temp : "+temp.length);
     if(temp.length === 0 && temp[0] === undefined){
-      //console.log("empty");
       user.setFavorite([])
-      //console.log("🔴 user favorite"+ user.favorite)
     }
     if(temp.length === 1 && temp[0] !== ""){
-      //console.log("one");
       user.setFavorite(temp)
-      //console.log("🟢 user favorite"+ user.favorite)
     }
     if(temp.length > 1){
-      //console.log("multi");
       user.setFavorite(temp)
-      //console.log("🔵 user favorite"+ user.favorite)
     }
-    //console.info(user.favorite);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isFavorite]);
 
   return (
