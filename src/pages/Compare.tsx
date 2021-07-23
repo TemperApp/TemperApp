@@ -4,6 +4,7 @@ import "./Compare.css";
 import Comparator from "../components/Comparator/Comparator";
 import PageHeader from "./Page/PageHeader";
 import PageModal from "./Page/PageModal";
+import ComparatorModalLegendSVG from "../components/Comparator/ComparatorModalLegendSVG";
 
 const CompareModalContent: React.FC = () => (
   <>
@@ -18,6 +19,9 @@ const CompareModalContent: React.FC = () => (
       Le premier tempérament choisi est situé à l'intérieur et le deuxième à l'extérieur, 
       les deux pouvant être échangés à tout moment. 
     </p>
+
+    <ComparatorModalLegendSVG />
+
     <p className="p-long">
       On peut comparer les fractions de commas affectant les quintes en changeant l'unité 
       entre comma syntonique et comma pythagoricien, ainsi que celles affectant les tierces. 

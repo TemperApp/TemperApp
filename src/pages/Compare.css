@@ -1,1 +1,31 @@
-
+.fill-dark-blue {
+  fill: #2ea39b;
+}
+.fill-blue {
+  fill: #45cbc7;
+}
+.fill-dark-purple {
+  fill: #a04a9a;
+}
+.fill-purple {
+  fill: #a3719d;
+}
+.line-legend-comparator {
+  fill: none;
+  stroke: #ffffff;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-miterlimit: 10;
+}
+.color-legend-theme {
+  fill: #ffffff;
+}
+.font-legend {
+  font-family: "Karla-Regular";
+}
+.text-size-temp {
+  font-size: 20px;
+}
+.text-size-type {
+  font-size: 16.45px;
+}
