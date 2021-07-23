@@ -102,9 +102,13 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
 
           <SettingToggle
             name="Forme d'onde triangle"
-            checked={settings.waveTriangle}
+            checked={nextSettings.waveTriangle}
             value="triangle"
-            onClick={(e: any) => setImmediatly('waveTriangle', e.target.checked as boolean)}
+            onClick={(e: any) => {
+              const waveTriangle = e.target.checked as boolean;
+              set('waveTriangle', waveTriangle);
+              TemperTone.amsynth.oscillator.type = (waveTriangle) ? 'triangle' : 'sine';
+            }}
           />
 
 
