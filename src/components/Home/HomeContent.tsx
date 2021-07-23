@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import "rc-collapse/assets/index.css";
 import Collapse, { Panel } from "rc-collapse";
 import collapseMotion from "../../utils/collapseMotion";
@@ -11,9 +11,12 @@ import Waves from "./Waves";
 import { TemperamentDBType } from "../../engine/DB";
 import ArrowCollapseSVG from "../Sheets/ArrowCollapseSVG";
 import { fetchTemperaments } from "../../engine/DataAccessor";
+import { ascendingOrder, temperamentFavorite } from "../../utils/favorite";
+import UserContext from "../../store/user-context";
 
 const HomeContent: React.FC = () => {
 
+  const user = useContext(UserContext);
   const [favoriteTemperaments, setMyTemperaments] = useState<TemperamentDBType[]>([]);
   const [famousTemperaments, setFamousTemperaments] = useState<TemperamentDBType[]>([]);
 
@@ -29,7 +32,7 @@ const HomeContent: React.FC = () => {
   const items = [
     {
       key: "0",
-      label: "Mes tempéraments",
+      label: "Mes favoris",
       elements: favoriteTemperaments
     }, {
       key: "1",
@@ -48,15 +51,26 @@ const HomeContent: React.FC = () => {
         expandIcon={(e: any) => <ArrowCollapseSVG isActive={e.isActive} />}
       >
 
-        {items.map(({ key, label, elements }) =>
-          <Panel
-            key={key}
-            header={label}
-            headerClass="rc-collapse-header"
-          >
-            <IonGrid>
-              <IonRow>
-                {elements.map((t: TemperamentDBType) => (
+        <Panel
+          key={items[0].key}
+          header={items[0].label}
+          headerClass="rc-collapse-header"
+        >
+          <IonGrid>
+            <IonRow>
+              {items[0].elements
+                .filter(
+                  (t: TemperamentDBType) =>
+                    t.nameFR
+                      .normalize("NFD")
+                      .replace(/[\u0300-\u036f]/g, "")
+                )
+                .sort(ascendingOrder)
+                .filter(
+                  (t: TemperamentDBType) =>
+                  temperamentFavorite(t.idTemperament.toString(), user.favorite) === true
+                )
+                .map((t: TemperamentDBType) => (
                   <IonCol size="6" key={t.idTemperament}>
                     <IonButton
                       className="btn-primary"
@@ -67,12 +81,41 @@ const HomeContent: React.FC = () => {
                       {t.nameFR}
                     </IonButton>
                   </IonCol>
-                ))}
-              </IonRow>
-            </IonGrid>
-          </Panel>
-        )}
+              ))}
+            </IonRow>
+          </IonGrid>
+        </Panel>
 
+        <Panel
+          key={items[1].key}
+          header={items[1].label}
+          headerClass="rc-collapse-header"
+        >
+          <IonGrid>
+            <IonRow>
+              {items[1].elements
+                .filter(
+                  (t: TemperamentDBType) =>
+                    t.nameFR
+                      .normalize("NFD")
+                      .replace(/[\u0300-\u036f]/g, "")
+                )
+                .sort(ascendingOrder)
+                .map((t: TemperamentDBType) => (
+                  <IonCol size="6" key={t.idTemperament}>
+                    <IonButton
+                      className="btn-primary"
+                      expand="block"
+                      color="temperapp"
+                      routerLink={`/tune/${t.idTemperament}`}
+                    >
+                      {t.nameFR}
+                    </IonButton>
+                  </IonCol>
+              ))}
+            </IonRow>
+          </IonGrid>
+        </Panel>
       </Collapse>
     </div>
   );

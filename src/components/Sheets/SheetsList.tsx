@@ -11,7 +11,7 @@ import { TemperamentDBType } from "../../engine/DB";
 import ArrowCollapseSVG from "./ArrowCollapseSVG";
 import { fetchTemperaments } from "../../engine/DataAccessor";
 import UserContext from "../../store/user-context";
-import { temperamentFavorite } from "../../utils/favorite";
+import { ascendingOrder, temperamentFavorite } from "../../utils/favorite";
 
 const sort = (tmpmts: TemperamentDBType[]) => {
   return tmpmts.sort((t1, t2) => {
@@ -110,6 +110,7 @@ const SheetsMenu: React.FC = () => {
                       .replace(/[\u0300-\u036f]/g, "")
                       .search(request) !== -1
                 )
+                .sort(ascendingOrder)
                 .filter(
                   (t: TemperamentDBType) =>
                   temperamentFavorite(t.idTemperament.toString(), user.favorite) === true
@@ -145,6 +146,7 @@ const SheetsMenu: React.FC = () => {
                       .replace(/[\u0300-\u036f]/g, "")
                       .search(request) !== -1
                 )
+                .sort(ascendingOrder)
                 .map((t: TemperamentDBType) => (
                   <IonCol size="6" key={t.idTemperament}>
                     <IonButton
@@ -176,6 +178,7 @@ const SheetsMenu: React.FC = () => {
                       .replace(/[\u0300-\u036f]/g, "")
                       .search(request) !== -1
                 )
+                .sort(ascendingOrder)
                 .map((t: TemperamentDBType) => (
                   <IonCol size="6" key={t.idTemperament}>
                     <IonButton
