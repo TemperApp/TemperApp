@@ -1,3 +1,8 @@
+#pitch-circle {
+  max-width: calc(55vh - 1rem);
+  margin: calc(5vh - 2rem) auto calc(10vh - 4.9rem) auto;
+}
+
 .pc-btn-labels {
   pointer-events: none;
   fill: var(--ion-text-color);
