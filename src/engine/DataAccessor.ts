@@ -16,15 +16,15 @@ export const fetchTemperaments = async (): Promise<Array<TemperamentDBType>> => 
     idTemperament: t.idTemperament,
     name: t.name,
     nameFR: t.nameFR,
-    period : t.period,
-    theorist : t.theorist,
+    period: t.period,
+    theorist: t.theorist,
     geographicalArea: t.geographicalArea,
     nature: t.nature,
     structuralParticularity: t.structuralParticularity,
     sources: t.sources,
     soundReferences: t.soundReferences,
     commentary: t.commentary,
-    }));
+  }));
   /*
   return await DB.query("SELECT * FROM temperament");
   */
@@ -33,12 +33,13 @@ export const fetchTemperaments = async (): Promise<Array<TemperamentDBType>> => 
 /**
  * @returns All known learnSheets in database
  */
- export const fetchLearnSheets = async (): Promise<Array<LearnSheet>> => {
+export const fetchLearnSheets = async (): Promise<Array<LearnSheet>> => {
   // TODO Remove on production
   return learnSheets.map((t) => ({
     id: t.id,
+    label: t.label,
     content: t.content,
-    }));
+  }));
   /*
   return await DB.query("SELECT * FROM learnSheets");
   */
@@ -60,8 +61,8 @@ export const fetchTemperamentById = async (
       idTemperament: t.idTemperament,
       name: t.name,
       nameFR: t.nameFR,
-      period : t.period,
-      theorist : t.theorist,
+      period: t.period,
+      theorist: t.theorist,
       geographicalArea: t.geographicalArea,
       nature: t.nature,
       structuralParticularity: t.structuralParticularity,
@@ -79,7 +80,7 @@ export const fetchTemperamentById = async (
  * @returns The learnSheet corresponding to
  * the given 'id'
  */
- export const fetchLearnSheetById = async (
+export const fetchLearnSheetById = async (
   id: number | string
 ): Promise<LearnSheet> => {
   // TODO Remove on production
@@ -88,6 +89,7 @@ export const fetchTemperamentById = async (
     .filter((t) => t.id == id)
     .map((t) => ({
       id: t.id,
+      label: t.label,
       content: t.content,
     }))[0];
   // TODO Handle id not found

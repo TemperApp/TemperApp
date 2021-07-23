@@ -14,7 +14,7 @@ const Learn: React.FC = () => {
 
   const items = [
     {
-      label: "Definition",
+      label: "Définition",
       routerLink: "/learn/definition",
       src: "/assets/logotypes/logo-def.svg",
     }, {

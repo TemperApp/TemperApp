@@ -13,12 +13,14 @@ const LearnSheet: React.FC = () => {
   let { id } = useParams<any>();
 
   const [md, setMd] = useState('')
+  const [title, setTitle] = useState('')
 
   useEffect(() => {
     (async () => {
       console.log(id);
       const temp = await fetchLearnSheetById(id);
       setMd(temp.content);
+      setTitle(temp.label);
     })();
   }, [id])
 
@@ -26,7 +28,7 @@ const LearnSheet: React.FC = () => {
     <IonPage>
       <IonHeader className="ion-no-border page-header">
         <PageHeader
-          mainTitle={id}
+          mainTitle={title}
           canGoBack={true}
         />
       </IonHeader>
