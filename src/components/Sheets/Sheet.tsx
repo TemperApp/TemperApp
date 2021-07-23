@@ -74,9 +74,11 @@ const Sheet: React.FC<SheetProps> = ({
               onClick={() => {setIsFavorite(!isFavorite)}}
             >
               <IonIcon
-                className="h-full p-0 m-0"
+                className={isFavorite?
+                  "h-9 w-9 fav-btn-click"
+                : "h-9 w-9 fav-btn"}
                 style={isFavorite? 
-                  { fontSize: "2.8rem", fill:"var(--color-sec)"} /* TODO Find a better way */
+                  { fontSize: "2.8rem", fill:"var(--color-sec)" } /* TODO Find a better way */
                 : { fontSize: "2.8rem", fill:"var(--color-grey)"}}
                 src={"/assets/logotypes/icon-fav.svg"}
               />
