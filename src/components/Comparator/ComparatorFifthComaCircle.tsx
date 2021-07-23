@@ -84,12 +84,10 @@ const ComparatorFifthComaCircle: React.FC<ComparatorFifthComaCircleProps> = ({
         <text xmlSpace="preserve" transform="rotate(-136.725 11.906 13.059)"><textPath xlinkHref="#b"><tspan>{isCpMode ? formatCpExp5thStr(temperament2.cpExp5th.F      ) : formatCpExp5thStr(temperament2.csExp5th.F      )} </tspan></textPath></text>
       </g>
       
-      <g className="comas-note" fill="var(--color-contrast)">
+      <g className="comas-note" fill="var(--color-contrast)" transform="scale(.45) translate(15.5 16)">
         <text x="11.741" y="2.8440001">
           <tspan >C</tspan>
         </text>
-      </g>
-        {/** 
         <text y="4.1127629" x="17.753832">
           <tspan>G</tspan>
         </text>
@@ -124,7 +122,6 @@ const ComparatorFifthComaCircle: React.FC<ComparatorFifthComaCircleProps> = ({
           <tspan>F</tspan>
         </text>
       </g>
-      */}
     </>
   );
 };
