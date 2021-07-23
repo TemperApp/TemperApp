@@ -7,6 +7,7 @@ import { TemperamentDBType } from '../../engine/DB';
 import './Comparator.css'
 import ComparatorSVG from './ComparatorSVG';
 import EqualTemperament from '../../model/Temperament/Equal';
+import { ascendingOrder } from '../../utils/favorite';
 
 const Comparator: React.FC = () => {
   
@@ -32,7 +33,7 @@ const Comparator: React.FC = () => {
               value={temperament1} placeholder="Tempérament"
               onIonChange={e => setTemperament1(e.detail.value)}
               >
-              {temperamentsList.map((t: TemperamentDBType) =>
+              {temperamentsList.sort(ascendingOrder).map((t: TemperamentDBType) =>
                 <IonSelectOption key={t.idTemperament} value={t}>
                   {t.nameFR}
                 </IonSelectOption>
@@ -65,7 +66,7 @@ const Comparator: React.FC = () => {
               value={temperament2} placeholder="Tempérament"
               onIonChange={e => setTemperament2(e.detail.value)}
             >
-              {temperamentsList.map((t: TemperamentDBType) =>
+              {temperamentsList.sort(ascendingOrder).map((t: TemperamentDBType) =>
                 <IonSelectOption key={t.idTemperament} value={t}>
                   {t.nameFR}
                 </IonSelectOption>
