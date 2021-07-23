@@ -47,8 +47,8 @@ const ComparatorSVG: React.FC<ComparatorSVGProps> = ({
       </div>
     
       <ComparatorComa
-        temperament1={temperament1}
-        temperament2={temperament2}
+        temperamentInner={temperament2}
+        temperamentOuter={temperament1}
       />
 
       <div className="px-6 py-1">

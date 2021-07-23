@@ -14,8 +14,8 @@ import { fifthQ, thirdQ } from "../../model/Divergence";
 import "./Comparator.css";
 
 type ComparatorComaProps = {
-  temperament1: Temperament;
-  temperament2: Temperament;
+  temperamentInner: Temperament;
+  temperamentOuter: Temperament;
 };
 
 const slideOpts = {
@@ -24,8 +24,8 @@ const slideOpts = {
 };
 
 const ComparatorComa: React.FC<ComparatorComaProps> = ({
-  temperament1,
-  temperament2,
+  temperamentInner,
+  temperamentOuter,
 }) => {
   const [isCpMode, setCpMode] = useState<boolean>(true);
 
@@ -48,10 +48,10 @@ const ComparatorComa: React.FC<ComparatorComaProps> = ({
                   xmlns="http://www.w3.org/2000/svg"
                 >
                   <ComparatorFifthComaCircle
-                    temperament1={temperament1}
-                    temperament2={temperament2}
-                    qualityNote1={fifthQ(temperament1.cpExp5th)}
-                    qualityNote2={fifthQ(temperament2.cpExp5th)}
+                    temperamentInner={temperamentInner}
+                    temperamentOuter={temperamentOuter}
+                    qualityNoteInner={fifthQ(temperamentInner.cpExp5th)}
+                    qualityNoteOuter={fifthQ(temperamentOuter.cpExp5th)}
                     isCpMode={isCpMode}
                   />
                 </svg>
@@ -86,10 +86,10 @@ const ComparatorComa: React.FC<ComparatorComaProps> = ({
                   xmlns="http://www.w3.org/2000/svg"
                 >
                   <ComparatorThirdComaCircle
-                    temperament1={temperament1}
-                    temperament2={temperament2}
-                    qualityNote1={thirdQ(temperament1.csExp3rd)}
-                    qualityNote2={thirdQ(temperament2.csExp3rd)}
+                    temperamentInner={temperamentInner}
+                    temperamentOuter={temperamentOuter}
+                    qualityNoteInner={thirdQ(temperamentInner.csExp3rd)}
+                    qualityNoteOuter={thirdQ(temperamentOuter.csExp3rd)}
                   />
                 </svg>
               </div>
