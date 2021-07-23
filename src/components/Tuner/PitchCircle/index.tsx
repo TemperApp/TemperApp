@@ -1,4 +1,4 @@
-import React, { useCallback, useContext, useEffect, useReducer } from 'react';
+import React, { useCallback, useContext, useEffect, useReducer, useState } from 'react';
 import { IonPopover } from "@ionic/react";
 
 import PitchCircleView from './View';
@@ -7,7 +7,7 @@ import { TuneMode } from '../Tuner';
 import Note from '../../../model/Note/Note';
 import { mapNotesMap } from '../../../model/Note/NotesMap';
 import { Temperament } from '../../../model/Temperament/Temperament';
-import { Procedure } from '../../../model/Procedure';
+import { ProcAction, Procedure } from '../../../model/Procedure';
 import { acousticBeatToStr, acousticBeat } from '../../../model/AcousticBeat';
 
 import {
@@ -43,6 +43,7 @@ const PitchCircle: React.FC<PitchCircleProps> = ({
 
   const settings = useContext(SettingsContext);
   const TemperTone = useTemperTone();
+  const [isCheck, setIsCheck] = useState(false);
   
   /*
   useIonViewWillLeave(() => {
@@ -119,7 +120,6 @@ const PitchCircle: React.FC<PitchCircleProps> = ({
   const getLabels = useCallback((): string[] => {
     const actives = getActiveBtns(btnStates);
     const [noteX, noteY] = createNotesFromActive(actives);
-
     if (noteX && !noteY) {
       if (tuneMode === TuneMode.PROCEDURE && proc
         && proc.steps[procStepIdx].action === 'tune octave'
@@ -186,6 +186,10 @@ const PitchCircle: React.FC<PitchCircleProps> = ({
     executeQueue, hasPopover,
   ]);
 
+  useEffect(() => {
+    (proc && proc.steps[procStepIdx].action === ProcAction.CHECK)?setIsCheck(true):setIsCheck(false)
+  },[procStepIdx])
+
 
   // console.info('🟣 [PitchCircle]: Render: states:', Object.values(btnStates).reduce((acc, e) => acc + ' ' + e, ''))
   return (
@@ -204,6 +208,7 @@ const PitchCircle: React.FC<PitchCircleProps> = ({
           temperament={temperament}
           labels={getLabels()}
           btnStates={btnStates}
+          isCheck={isCheck}
         />)
         : (<PitchCircleView
           temperament={temperament}

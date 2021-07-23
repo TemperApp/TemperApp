@@ -12,3 +12,8 @@
   font-size: 18px;
   fill: var(--ion-text-color);
 }
+
+.pc-label-check {
+  font-size: 18px;
+  fill: var(--color-strong);
+}

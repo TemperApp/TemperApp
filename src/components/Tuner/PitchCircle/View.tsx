@@ -20,13 +20,15 @@ type PitchCircleViewProps = {
   labels?: string[],
   btnStates?: NotesMap<BtnStates>,
   dispatchState?: (action: any) => void,
+  isCheck?: boolean,
 };
 
 const PitchCircleView: React.FC<PitchCircleViewProps> = ({
   temperament,
   labels,
   btnStates,
-  dispatchState
+  dispatchState,
+  isCheck
 }) => {
 
   const onBtnClick = useCallback(( // useCallback for PitchCircleBtn memoizing
@@ -65,6 +67,7 @@ const PitchCircleView: React.FC<PitchCircleViewProps> = ({
         <PitchCircleLabels
           label1={(labels && labels[0]) || ''}
           label2={(labels && labels[1]) || ''}
+          isCheck={isCheck}
         />
 
         <text className="pc-btn-labels" transform="translate(278.22 247.59)">E</text>
