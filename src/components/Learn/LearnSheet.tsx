@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { IonContent, IonHeader, IonPage } from "@ionic/react";
-import { useParams } from "react-router";
+import { useHistory, useParams } from "react-router";
 import PageHeader from "../../pages/Page/PageHeader";
 
 import ReactMarkdown from 'react-markdown';
@@ -12,6 +12,7 @@ import { fetchLearnSheetById } from "../../engine/DataAccessor";
 const LearnSheet: React.FC = () => {
   let { id } = useParams<any>();
 
+  const history = useHistory();
   const [md, setMd] = useState('')
   const [title, setTitle] = useState('')
 
@@ -30,6 +31,7 @@ const LearnSheet: React.FC = () => {
         <PageHeader
           mainTitle={title}
           canGoBack={true}
+          onGoBack={() => history.push('/learn/')}
         />
       </IonHeader>
 
