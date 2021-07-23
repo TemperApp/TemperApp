@@ -30,7 +30,8 @@ const Comparator: React.FC = () => {
             </span>
             <IonSelect className="w-full"
               value={temperament1} placeholder="Tempérament"
-              onIonChange={e => setTemperament1(e.detail.value)}>
+              onIonChange={e => setTemperament1(e.detail.value)}
+              >
               {temperamentsList.map((t: TemperamentDBType) =>
                 <IonSelectOption key={t.idTemperament} value={t}>
                   {t.nameFR}
@@ -38,15 +39,15 @@ const Comparator: React.FC = () => {
               )}
             </IonSelect>
           </IonCol>
+
           <IonCol size="1.5">
             <IonButton className="exchange-btn"
             fill="clear"
             onClick={() => {
               if(temperament1.name !== temperament2.name){
-                console.log("switch possible");
-                let temp = temperament1;
+                const aux = temperament1;
                 setTemperament1(temperament2);
-                setTemperament2(temp);
+                setTemperament2(aux);
               }
             }}>
               <IonIcon className="flex items-end justify-end"
@@ -55,13 +56,15 @@ const Comparator: React.FC = () => {
               ></IonIcon>
             </IonButton>
           </IonCol>
+
           <IonCol size="5.25">
             <span className="select-label pb-1">
               Anneaux externes
             </span>
             <IonSelect className="w-full"
               value={temperament2} placeholder="Tempérament"
-              onIonChange={e => setTemperament2(e.detail.value)}>
+              onIonChange={e => setTemperament2(e.detail.value)}
+            >
               {temperamentsList.map((t: TemperamentDBType) =>
                 <IonSelectOption key={t.idTemperament} value={t}>
                   {t.nameFR}
