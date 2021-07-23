@@ -25,9 +25,9 @@ test('acousticBeat_fifth_440_equal', () => {
     Note.create(Notes.B, 4),
     440
   )).toEqualCloseTo({
-    carrierFreq: 988.32,
-    modulationFreq: 1.12
-  }, 2);
+    carrierFreq: 988.3,
+    modulationFreq: 1.1
+  }, 1);
 });
   
 test('acousticBeat_maj3_440_equal', () => {
@@ -36,9 +36,9 @@ test('acousticBeat_maj3_440_equal', () => {
     Note.create(Notes.E, 4),
     440
   )).toEqualCloseTo({
-    carrierFreq: 1313.32,
-    modulationFreq: 10.38
-  }, 2);
+    carrierFreq: 1313.3,
+    modulationFreq: 10.4
+  }, 1);
 });
   
 test('acousticBeat_fourth_440_equal', () => {
@@ -49,7 +49,7 @@ test('acousticBeat_fourth_440_equal', () => {
   )).toEqualCloseTo({
     carrierFreq: 880.50,
     modulationFreq: 0.99
-  }, 2);
+  }, 1);
 });
 
 
@@ -61,7 +61,7 @@ test('acousticBeat_432_equal', () => {
   )).toEqualCloseTo({
     carrierFreq: 970.36,
     modulationFreq: 1.10
-  }, 2);
+  }, 1);
   
   expect(acousticBeat(
     Note.create(Notes.C, 4),
@@ -70,7 +70,7 @@ test('acousticBeat_432_equal', () => {
   )).toEqualCloseTo({
     carrierFreq: 1289.44,
     modulationFreq: 10.19
-  }, 2);
+  }, 1);
   
   expect(acousticBeat(
     Note.create(Notes.A, 3),
@@ -79,7 +79,7 @@ test('acousticBeat_432_equal', () => {
   )).toEqualCloseTo({
     carrierFreq: 864.49,
     modulationFreq: 0.98
-  }, 2);
+  }, 1);
 });
 
 
@@ -92,7 +92,7 @@ test('acousticBeat_440_meantone-1-4-g#eb', () => {
   )).toEqualCloseTo({
     carrierFreq: 623.25,
     modulationFreq: 12.84
-  }, 2);
+  }, 1);
   
   expect(acousticBeat(
     Note.create(Notes.C_sharp, 4),
@@ -101,7 +101,7 @@ test('acousticBeat_440_meantone-1-4-g#eb', () => {
   )).toEqualCloseTo({
     carrierFreq: 1391.50,
     modulationFreq: 33.00
-  }, 2);
+  }, 1);
   
   expect(acousticBeat(
     Note.create(Notes.B_flat, 4),
@@ -110,5 +110,5 @@ test('acousticBeat_440_meantone-1-4-g#eb', () => {
   )).toEqualCloseTo({
     carrierFreq: 2353.96,
     modulationFreq: 0.00
-  }, 2);
+  }, 1);
 });
