@@ -1,6 +1,7 @@
 import React  from 'react';
 import { IonInput, IonSelect, IonSelectOption } from '@ionic/react';
 import { TemperamentDBType } from '../../engine/DB';
+import { ascendingOrder } from '../../utils/favorite';
 
 type TunerHeaderProps = {
   defaultTemperamentId: number,
@@ -27,7 +28,7 @@ const TunerHeaderSelect: React.FC<TunerHeaderProps> = ({
         placeholder="Tempérament"
         onIonChange={onTemperamentChange}
       >
-        {temperamentsList.map((t: TemperamentDBType) => (
+        {temperamentsList.sort(ascendingOrder).map((t: TemperamentDBType) => (
           <IonSelectOption key={t.idTemperament} value={t.idTemperament}>
             {t.nameFR}
           </IonSelectOption>
