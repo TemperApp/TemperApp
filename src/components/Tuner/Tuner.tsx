@@ -15,6 +15,7 @@ import { ProcAction, Procedure } from "../../model/Procedure";
 import TunerHeaderPiano from "./TunerHeaderPiano";
 import { useHistory, useParams } from "react-router";
 import useTemperTone from "../../hooks/useTemperTone";
+import { IonGrid, IonRow } from "@ionic/react";
 
 export enum TuneMode {
   BEATS = 'Battements', // TODO Find a better way to print text
@@ -157,22 +158,25 @@ const Tuner: React.FC<TunerProps> = ({
         procStepIdx={procStepIdx}
         procRepeatCount={procRepeatCount}
       />
-
-      <TunerFooter
-        isMuted={isMuted}
-        tuneMode={tuneMode}
-        enableEnterProcedure={proc !== null}
-        enableProcedurePrev={proc && proc.hasPrev(procStepIdx)}
-        enableProcedureNext={proc && proc.hasNext(procStepIdx)}
-        onClickMute={() => setIsMuted(!isMuted)}
-        onClickBeats={() => setTuneMode(TuneMode.BEATS)}
-        onClickPitchPipe={() => setTuneMode(TuneMode.PITCHPIPE)}
-        onEnterProcedure={() => setTuneMode(TuneMode.PROCEDURE)}
-        onExitProcedure={() => setTuneMode(TuneMode.BEATS)}
-        onProcedureNext={onProcedureNext}
-        onProcedurePrev={onProcedurePrev}
-        onProcedureRepeatStep={() => setProcRepeatCount(procRepeatCount + 1)}
-      />
+      <IonGrid className="w-full">
+        <IonRow >
+          <TunerFooter
+            isMuted={isMuted}
+            tuneMode={tuneMode}
+            enableEnterProcedure={proc !== null}
+            enableProcedurePrev={proc && proc.hasPrev(procStepIdx)}
+            enableProcedureNext={proc && proc.hasNext(procStepIdx)}
+            onClickMute={() => setIsMuted(!isMuted)}
+            onClickBeats={() => setTuneMode(TuneMode.BEATS)}
+            onClickPitchPipe={() => setTuneMode(TuneMode.PITCHPIPE)}
+            onEnterProcedure={() => setTuneMode(TuneMode.PROCEDURE)}
+            onExitProcedure={() => setTuneMode(TuneMode.BEATS)}
+            onProcedureNext={onProcedureNext}
+            onProcedurePrev={onProcedurePrev}
+            onProcedureRepeatStep={() => setProcRepeatCount(procRepeatCount + 1)}
+          />
+        </IonRow>
+      </IonGrid>
     </div>
   );
 };
