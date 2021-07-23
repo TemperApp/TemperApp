@@ -58,8 +58,11 @@ const PitchCircle: React.FC<PitchCircleProps> = ({
   // TODO Find a better way with router
   // Commented block above does not work
   history.listen((location) => {
-    if (!location.pathname.match(/\/tune\/.*/))
+    if (!location.pathname.match(/\/tune\/.*/)) {
+      clearInterval(timeout);
+      dispatchState({ type: BtnActions.SET_ALL_IDLE });
       TemperTone.stop();
+    }
   });
 
   const [btnStates, dispatchState] = useReducer(
@@ -188,6 +191,7 @@ const PitchCircle: React.FC<PitchCircleProps> = ({
 
   useEffect(() => {
     (proc && proc.steps[procStepIdx].action === ProcAction.CHECK)?setIsCheck(true):setIsCheck(false)
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   },[procStepIdx])
 
 
