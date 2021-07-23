@@ -74,44 +74,6 @@ ion-button.learn-resources-btn::part(native) {
   margin-top: 0;
 }
 
-.learn h2,
-.learn h3,
-.learn h4,
-.learn h5 {
-  font-family: var(--ion-family-font);
-  font-style: normal;
-  font-weight: 700;
-  font-size: 1rem;
-  line-height: 19px;
-  color: var(--color-contrast);
-}
-.learn h2 {
-  font-family: var(--ion-family-font);
-  font-weight: normal;
-  line-height: 19px;
-  color: var(--color-contrast);
-  font-size: 1.1rem;
-  margin: 1rem 0 0.2rem 0;
-}
-
-.learn h3 {
-  font-size: 1.02rem;
-  margin: 0.8rem 0 0.2rem 0;
-}
-
-.learn h4 {
-  font-size: 0.9rem;
-  margin: 0.8rem 0 0.2rem 0;
-  font-weight: 800;
-}
-
-.learn h5 {
-  font-size: 0.82rem;
-  margin: 0.8rem 0 0.2rem 0;
-  font-weight: 800;
-  font-style: italic;
-}
-
 .markdown-content {
   display: flex;
   flex-direction: column;
