@@ -131,3 +131,12 @@ ion-button.learn-resources-btn::part(native) {
   text-align: justify;
   text-justify: inter-word;
 }
+
+.markdown-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.markdown-content p {
+  margin: auto;
+}

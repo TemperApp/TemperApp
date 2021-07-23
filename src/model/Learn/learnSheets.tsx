@@ -97,6 +97,8 @@ export const learnSheets: Array<LearnSheet> = [
 
 
   ![image](https://i.ibb.co/ZBRmQp9/DabRose.gif)
+
+  ![image](assets/icon/videoType.png)
   `,
   },
   {
