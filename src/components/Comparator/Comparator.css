@@ -39,18 +39,20 @@
   height: 30rem;
 }
 
-.quality-card {
-  height: 23rem;
-}
-
 .comma-toggler{
   position: absolute;
   right: 1rem;
-  bottom: 0rem;
+  bottom: 1rem;
 }
 
 .exchange-btn {
   display: flex;
   margin: 0 auto;
   margin-top: 1rem;
+}
+
+.comparator-svg {
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
 }

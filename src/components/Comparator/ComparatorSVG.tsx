@@ -39,7 +39,7 @@ const ComparatorSVG: React.FC<ComparatorSVGProps> = ({
 
   return (
     <>
-      <div className="pt-2 px-6 justify-center">
+      <div className="pt-2 px-6 justify-center max-w-lg comparator-svg">
         <svg id="comparator" version="1.1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 400 400">
           <ComparatorTemp2Circle
             qualityNoteQ={fifthQ(tmpmt2.cpExp5th)}

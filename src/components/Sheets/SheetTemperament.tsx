@@ -59,7 +59,7 @@ const SheetTemperament: React.FC = () => {
               <h4>Qualité des quintes et des tierces</h4>
             </IonCardTitle>
           </IonCardHeader>
-          <IonCardContent className="quality-wheel">
+          <IonCardContent className="quality-wheel py-6">
             <PitchCircleView temperament={temperament} />
           </IonCardContent>
         </IonCard>
@@ -67,7 +67,7 @@ const SheetTemperament: React.FC = () => {
 
       <IonSlides pager={true} options={slideOpts}>
           <IonSlide className="px-6">
-            <IonCard className="comma-card">
+            <IonCard className="comma-card h-full">
               <IonCardHeader className="py-2">
                 <IonCardTitle className="px-1 text-left">
                   <h4>Fractions de commas affectant les quintes</h4>
@@ -104,7 +104,7 @@ const SheetTemperament: React.FC = () => {
             </IonCard>
           </IonSlide>
           <IonSlide className="px-6">
-            <IonCard className="comma-card">
+            <IonCard className="comma-card h-full">
               <IonCardHeader className="py-2">
                 <IonCardTitle className="px-1 text-left">
                   <h4>Fractions de commas affectant les tierces</h4>

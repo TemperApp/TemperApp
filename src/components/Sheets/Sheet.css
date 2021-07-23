@@ -33,6 +33,13 @@
 
 .quality-wheel {
   font-size: 18px;
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+.coma-card {
+  height: 100%;
 }
 
 .fav-btn {
