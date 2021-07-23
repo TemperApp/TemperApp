@@ -112,7 +112,7 @@ test('isCpExp5thValid', () => {
 test('cpExp5thToCsExp5th', () => {
   expect(cpExp5thToCsExp5th("-1/6")).toEqual("-1/5.5");
   expect(cpExp5thToCsExp5th("+1/0.66")).toEqual("+1/0.6");
-  expect(cpExp5thToCsExp5th("-1/4.36")).toEqual("-1/4.0");
+  expect(cpExp5thToCsExp5th("-1/4.36")).toEqual("-1/4");
   expect(cpExp5thToCsExp5th("-1/6.52")).toEqual("-1/5.98");
   expect(cpExp5thToCsExp5th("+1/13.19")).toEqual("+1/12.1");
   expect(cpExp5thToCsExp5th("+1/3.3")).toEqual("+1/3.02");
