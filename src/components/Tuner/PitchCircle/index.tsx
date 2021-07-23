@@ -136,7 +136,7 @@ const PitchCircle: React.FC<PitchCircleProps> = ({
         const { lowest, highest } = Note.compare(noteX, noteX2);
         return [
           `${lowest.string()} · ${highest.string()}`,
-          `${highest.freq(freqA4, temperament.deviation).toFixed(1)} Hz`,
+          `— Hz`,
         ];
       } else {
         return [
