@@ -7,7 +7,7 @@ export const isCpExp5thValid = (cpExp5th: string): boolean => {
 
 export const cpExp5thRegexMatch = (cpExp5th: string): RegExpMatchArray | null => {
   return cpExp5th.trim()
-    .match(/^[+-]?0+$|^([+-])?([0-9]+)\/(([0-9]*[.,])?[0-9]+)$/);
+    .match(/^[+-]?0+$|^([+-])?([0-9]+)\/(([0-9]*[.])?([0-9]?)([0-9]+))$/);
 }
 
 /**
@@ -34,6 +34,17 @@ export const cpExp5thStrToNumber = (cpExp5th: string): number | null => {
     * Number(numerator) / Number(denominator) * 12);
 };
 
+
+/**
+ * @param cpExp5th the pythagorean comma exponent as string
+ *                 with a common format of use.
+ *                 (e.g.: -1/12, 0, +1/4.36, 2/0.66).
+ *                 No sign provided means 'minus' (-) by default
+ * @returns a the CpExp5th formated (without sign "-" and with accuracy deux digits after the decimal point)
+ *            (e.g.: 1/3.34, 0, -1/5, , 1/6.6).
+ * @returns null, if parsing fails
+ */
+
 export const formatCpExp5thStr = (cpExp5th: string): string | null => {
   const match = cpExp5thRegexMatch(cpExp5th);
   if (!match) {
@@ -44,14 +55,23 @@ export const formatCpExp5thStr = (cpExp5th: string): string | null => {
   
   if (String(Number(match[0])) === '0')
     return '0';
-  const [, sign, numerator, denominator] = match;
+  const [, sign, numerator, denominator, , emptyOrFist, onlyOrNext] = match;
   return (
     (sign === "+" ? "+" : "")
-    + numerator + "/" + Number(denominator).toFixed(1)
+    + numerator + "/" + (emptyOrFist === "" && onlyOrNext === "0" ? Number(denominator).toFixed(0) : Number(denominator).toFixed(1))
   )};
-
-
   
+/**
+ * @param cpExp5th the pythagorean comma exponent as string
+ *                 with a common format of use.
+ *                 (e.g.: -1/12, 0, +1/4.36, 2/0.66).
+ *                 No sign provided means 'minus' (-) by default
+ * @returns a the CsExp5th representing the syntonic comma exponent as string
+ *            with a common format of use thanks to "denominator(cpExp5th) *(11/12) = denominator(csExp5th)"
+ *            (e.g.: 1/3.34, 0, -1/5, , 1/6.6).
+ * @returns null, if parsing fails
+ */
+
   export const cpExp5thToCsExp5th = (cpExp5th : string): string | null => {
     const match = cpExp5thRegexMatch(cpExp5th);
     if (!match) {
@@ -71,15 +91,9 @@ export const formatCpExp5thStr = (cpExp5th: string): string | null => {
     }
 
     const [ , , unit, tenth, hundredth] = result; 
-    console.log(result);
     return (
       sign + "1/" + unit + (tenth === "0" && Number(hundredth) > 5 ? String((Number(tenth) + 1)) : tenth + (hundredth === "0" ? "" : hundredth))
     )}; 
-
-
-
-
-
 
 
   export const isCsExp3rdValid = (csExp3rd: string): boolean => {
@@ -129,9 +143,6 @@ export const formatCsExp3rdStr = (csExp3rd: string): string | null => {
     + numerator + "/11"
   )};
   
-
-
-
 
 /**
  * Computes the frequencies of the 12 notes of the 4th

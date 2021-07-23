@@ -87,6 +87,8 @@ test('formatCpExp5thStr', () => {
   expect(formatCpExp5thStr("-1/4.33")).toEqual("1/4.3");
   expect(formatCpExp5thStr("+1/12.768")).toEqual("+1/12.8");
   expect(formatCpExp5thStr("1/1.89")).toEqual("1/1.9");
+  expect(formatCpExp5thStr("1/4.0")).toEqual("1/4");
+  expect(formatCpExp5thStr("1/4.20")).toEqual("1/4.2");
 });
 
 
