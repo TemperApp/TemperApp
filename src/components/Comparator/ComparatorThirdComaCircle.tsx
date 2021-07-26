@@ -78,7 +78,7 @@ const ComparatorThirdComaCircle: React.FC<ComparatorThirdComaCircleProps> = ({ t
       <text transform="rotate(-166.725 11.837 13.278)" xmlSpace="preserve"><textPath xlinkHref="#b"><tspan>{formatCsExp3rdStr(temperamentOuter.csExp3rd.B_flat )} </tspan></textPath></text>
       <text xmlSpace="preserve" transform="rotate(-136.725 11.906 13.059)"><textPath xlinkHref="#b"><tspan>{formatCsExp3rdStr(temperamentOuter.csExp3rd.F      )} </tspan></textPath></text>
     </g>
-    <g className="comas-note" fill="var(--color-contrast)" transform="scale(.45) translate(15.5 16)">
+    <g className="comas-note" fill="var(--color-contrast)" transform="scale(.45) translate(15.25 16.75)">
       <text x="11.741" y="2.8440001">
         <tspan>C</tspan>
       </text>
