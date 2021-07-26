@@ -362,17 +362,18 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
               le laboratoire "Lutheries - Acoustique - Musique" (LAM),
             </li>
             <li className="mb-2">
+              l'Institut Collegium Musicae,
+            </li>
+            <li className="mb-2">
               l'Institut Jean le Rond d’Alembert,
             </li>
             <li className="mb-2">
               l'Institut de recherche en Musicologie (IReMus),
             </li>
             <li className="mb-2">
-              l’association ARTEMIDA,
+              et l’association ARTEMIDA.
             </li>
-            <li className="mb-2">
-              et le Conservatoire du Grand-Avignon.
-            </li>
+            
           </ul>
         </section>
 
