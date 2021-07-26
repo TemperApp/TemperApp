@@ -41,6 +41,7 @@ http://ionicframework.com/docs/theming/ */
   --color-theme: #f5fbfb;
   --color-contrast: #233c3a;
   --color-light-grey: rgba(115, 139, 138, 0.25);
+  --color-check: #47E7D3;
 
   --color-shadow: 1px 1px 6px rgba(0, 0, 0, 0.3);
 

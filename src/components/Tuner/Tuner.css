@@ -68,14 +68,14 @@
 }
 
 .pianoKeysColored {
-  fill: var(--color-sec);
+  fill: var(--color-check);
   stroke: var(--color-dark);
   stroke-width: 0.5;
   stroke-miterlimit: 10;
 }
 
 .pianoKeysActive {
-  fill: var(--color-sec);
+  fill: var(--color-check);
   stroke: var(--color-dark);
   stroke-width: 0.5;
   stroke-miterlimit: 10;
@@ -86,13 +86,13 @@
 
 @keyframes pianoNoteActive {
   0% {
-    fill: var(--color-sec);
+    fill: var(--color-check);
   }
   50% {
     fill: var(--color-inner-button);
   }
   100% {
-    fill: var(--color-sec);
+    fill: var(--color-check);
   }
 }
 
