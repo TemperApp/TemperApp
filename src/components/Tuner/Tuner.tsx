@@ -147,10 +147,10 @@ const Tuner: React.FC<TunerProps> = ({
               setSelectedTemperamentId(e.detail.value)
               history.push(`/tune/${e.detail.value}`);
             }}
-            onFreqA4Change={(e: any) => {
+            onFreqA4Change={(inputFreqA4: number) => {
               setProcStepIdx(0);
               setProcRepeatCount(0);
-              setFreqA4(Number(e.detail.value));
+              setFreqA4(inputFreqA4);
             }}
           />
       }

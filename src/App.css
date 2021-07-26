@@ -347,6 +347,10 @@ input[type="number"] {
   -moz-appearance: textfield !important;
 }
 
+input:invalid {
+  color: var(--color-danger) !important;
+}
+
 .katex-display {
   overflow: scroll hidden;
   padding: 15px 0 15px 0;

@@ -2,6 +2,7 @@ import React from 'react';
 import { IonInput, IonSelect, IonSelectOption } from '@ionic/react';
 import { TemperamentDBType } from '../../engine/DB';
 import { ascendingOrder } from '../../utils/favorite';
+import { FREQ_A4_MAX, FREQ_A4_MIN } from '../../model/Note/a4';
 
 type TunerHeaderProps = {
   defaultTemperamentId: number,
@@ -39,10 +40,14 @@ const TunerHeaderInputs: React.FC<TunerHeaderProps> = ({
           id="input-a4"
           className="w-16 ml-1"
           type="number"
-          min="300"
-          max="500"
           value={defaultFreqA4}
-          onIonChange={onFreqA4Change}
+          min={String(FREQ_A4_MIN)}
+          max={String(FREQ_A4_MAX)}
+          onIonChange={(e) => {
+            const value = Number(e.detail.value);
+            if (value >= FREQ_A4_MIN && value <= FREQ_A4_MAX)
+              onFreqA4Change(value);
+          }}
         ></IonInput>
       </div>
     </section>

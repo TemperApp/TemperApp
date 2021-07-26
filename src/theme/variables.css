@@ -43,6 +43,8 @@ http://ionicframework.com/docs/theming/ */
   --color-light-grey: rgba(115, 139, 138, 0.25);
   --color-check: #47E7D3;
 
+  --color-danger: #d85c5c;
+
   --color-shadow: 1px 1px 6px rgba(0, 0, 0, 0.3);
 
   --ion-background-color: #f5fbfb;
@@ -140,6 +142,8 @@ body.dark {
 
   --color-theme: #233c3a;
   --color-contrast: #f5fbfb;
+
+  --color-danger: #f59191;
 
   --color-shadow: 1px 1px 8px rgba(0, 0, 0, 0.8);
 

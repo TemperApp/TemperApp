@@ -17,6 +17,7 @@ import { AllowedSettingValue } from "../../store/settings-context/settings";
 
 import { lerp } from "../../utils/maths";
 import { FilterRollOff } from "tone";
+import { FREQ_A4_MAX, FREQ_A4_MIN } from "../../model/Note/a4";
 
 
 type SettingsModalProps = {
@@ -87,8 +88,15 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
             name="A4 (Hz)"
             type="number"
             value={nextSettings.freqA4}
-            onChange={(e) =>
-              set('freqA4', Number(e.detail.value))}
+            attributes={{
+              min: String(FREQ_A4_MIN),
+              max: String(FREQ_A4_MAX)
+            }}
+            onChange={(e) => {
+              const value = Number(e.detail.value);
+              if (value >= FREQ_A4_MIN && value <= FREQ_A4_MAX)
+                set('freqA4', value);
+            }}
             classNameInput="max-w-20"
           />
 
@@ -152,8 +160,12 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
               name="Pause entre les notes"
               type="number"
               value={nextSettings.procedureSubStepDurationPause}
-              onChange={(e) =>
-                set('procedureSubStepDurationPause', Number(e.detail.value))}
+              attributes={{ min: 0, max: 60, step: 0.1 }}
+              onChange={(e) => {
+                const value = Number(e.detail.value);
+                if (value >= 0 && value <= 60)
+                  set('procedureSubStepDurationPause', value);
+              }}
               classNameInput="max-w-12"
             />
             
@@ -161,8 +173,12 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
               name="Note (unique)"
               type="number"
               value={nextSettings.procedureSubStepDurationUnique}
-              onChange={(e) =>
-                set('procedureSubStepDurationUnique', Number(e.detail.value))}
+              attributes={{ min: 0, max: 60, step: 0.1 }}
+              onChange={(e) => {
+                const value = Number(e.detail.value);
+                if (value >= 0 && value <= 60)
+                  set('procedureSubStepDurationUnique', value);
+              }}
               classNameInput="max-w-12"
             />
             
@@ -170,8 +186,12 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
               name="Note (paire)"
               type="number"
               value={nextSettings.procedureSubStepDurationPair}
-              onChange={(e) =>
-                set('procedureSubStepDurationPair', Number(e.detail.value))}
+              attributes={{ min: 0, max: 60, step: 0.1 }}
+              onChange={(e) => {
+                const value = Number(e.detail.value);
+                if (value >= 0 && value <= 60)
+                  set('procedureSubStepDurationPair', value);
+              }}
               classNameInput="max-w-12"
             />
             
@@ -179,8 +199,12 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
               name="Battement"
               type="number"
               value={nextSettings.procedureSubStepDurationBeat}
-              onChange={(e) =>
-                set('procedureSubStepDurationBeat', Number(e.detail.value))}
+              attributes={{ min: 0, max: 60, step: 0.1 }}
+              onChange={(e) => {
+                const value = Number(e.detail.value);
+                if (value >= 0 && value <= 60)
+                  set('procedureSubStepDurationBeat', value);
+              }}
               classNameInput="max-w-12"
             />
             
@@ -188,8 +212,12 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
               name="Absence de battement"
               type="number"
               value={nextSettings.procedureSubStepDurationNoBeat}
-              onChange={(e) =>
-                set('procedureSubStepDurationNoBeat', Number(e.detail.value))}
+              attributes={{ min: 0, max: 60, step: 0.1 }}
+              onChange={(e) => {
+                const value = Number(e.detail.value);
+                if (value >= 0 && value <= 60)
+                  set('procedureSubStepDurationNoBeat', value);
+              }}
               classNameInput="max-w-12"
             />
           </SettingsGroup>
@@ -287,24 +315,28 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
             <SettingInput
               name="Low/Mid (Hz)"
               type="number"
-              attributes={{ min: 100, max: 1000, step: 50 }}
+              attributes={{ min: 10, max: 22000, step: 1 }}
               value={nextSettings.amSynthEQLowFrequency}
               onChange={(e) => {
-                set('amSynthEQLowFrequency', e.detail.value);
-                TemperTone.get().amsynthEQ.lowFrequency.rampTo(e.detail.value, 0.1);
-              }}
+                const value = Number(e.detail.value);
+                if (value >= 10 && value <= 22000) {
+                  set('amSynthEQLowFrequency', value);
+                  TemperTone.get().amsynthEQ.lowFrequency.rampTo(value, 0.1);
+                }}}
               classNameInput="max-w-20"
             />
 
             <SettingInput
               name="Mid/High (Hz)"
               type="number"
-              attributes={{ min: 100, max: 1000, step: 50 }}
+              attributes={{ min: 10, max: 22000, step: 1 }}
               value={nextSettings.amSynthEQHighFrequency}
               onChange={(e) => {
-                set('amSynthEQHighFrequency', e.detail.value);
-                TemperTone.get().amsynthEQ.highFrequency.rampTo(e.detail.value, 0.1);
-              }}
+                const value = Number(e.detail.value);
+                if (value >= 10 && value <= 22000) {
+                  set('amSynthEQHighFrequency', value);
+                  TemperTone.get().amsynthEQ.highFrequency.rampTo(value, 0.1);
+                }}}
               classNameInput="max-w-20"
             />
           </SettingsGroup>
@@ -339,9 +371,11 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
               attributes={{ min: 100, max: 500, step: 20 }}
               value={nextSettings.amSynthDistortionLowFrequency}
               onChange={(e) => {
-                set('amSynthDistortionLowFrequency', e.detail.value);
-                TemperTone.get().amsynthDist.set({ distortion: e.detail.value });
-              }}
+                const value = Number(e.detail.value);
+                if (value >= 100 && value <= 500) {
+                  set('amSynthDistortionLowFrequency', value);
+                  TemperTone.get().amsynthDist.set({ distortion: value });
+                }}}
               classNameInput="max-w-20"
             />
 
@@ -351,9 +385,11 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
               attributes={{ min: 100, max: 500, step: 20 }}
               value={nextSettings.amSynthDistortionHighFrequency}
               onChange={(e) => {
-                set('amSynthDistortionHighFrequency', e.detail.value);
-                TemperTone.get().amsynthDist.set({ distortion: e.detail.value });
-              }}
+                const value = Number(e.detail.value);
+                if (value >= 100 && value <= 500) {
+                  set('amSynthDistortionHighFrequency', e.detail.value);
+                  TemperTone.get().amsynthDist.set({ distortion: e.detail.value });
+              }}}
               classNameInput="max-w-20"
             />
           </SettingsGroup>
