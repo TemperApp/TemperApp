@@ -25,10 +25,12 @@ export enum TuneMode {
 
 type TunerProps = {
   setMainTitle: (t: string) => void,
+  setSubTitle: (t: string) => void,
 }
 
 const Tuner: React.FC<TunerProps> = ({
   setMainTitle,
+  setSubTitle,
 }) => {
 
   const history = useHistory();
@@ -48,6 +50,7 @@ const Tuner: React.FC<TunerProps> = ({
   const [procRepeatCount, setProcRepeatCount] = useState<number>(0);
   const [pianoColor, setPianoColor] = useState<Array<string>>([]);
 
+
   useEffect(() => {
     setFreqA4(settings.freqA4)
   }, [settings.freqA4]);
@@ -57,8 +60,16 @@ const Tuner: React.FC<TunerProps> = ({
   }, [TemperTone, isMuted]);
 
   useEffect(() => {
-    setMainTitle(tuneMode)
-  }, [tuneMode, setMainTitle]);
+    tuneMode === TuneMode.PROCEDURE ? 
+    setSubTitle("Procédure d'accord")
+    : setSubTitle("Accordeur")
+  }, [tuneMode, setSubTitle, setMainTitle]);
+
+  useEffect(() => {
+    tuneMode === TuneMode.PROCEDURE ? 
+     setMainTitle(temperament.nameFR)
+    : setMainTitle(tuneMode)
+  }, [tuneMode, setMainTitle, temperament.nameFR]);
 
   useEffect(() => {
     (async () => {

@@ -192,6 +192,7 @@ const TuneModalContent: React.FC = () => (
 
 const Tune: React.FC = () => {
   const [_mainTitle, setMainTitle] = useState('');
+  const [_subTitle, setSubTitle] = useState('');
   const [showModal, setShowModal] = useState(false);
 
   return (
@@ -199,7 +200,7 @@ const Tune: React.FC = () => {
       <IonHeader className="ion-no-border page-header">
         <PageHeader
           mainTitle={_mainTitle}
-          subTitle="Accordeur"
+          subTitle={_subTitle}
           onShowModal={() => setShowModal(true)}
         />
       </IonHeader>
@@ -216,6 +217,7 @@ const Tune: React.FC = () => {
       <IonContent scrollY={false}> {/* TODO Align self safe center when height is too small */}
         <Tuner
           setMainTitle={setMainTitle}
+          setSubTitle={setSubTitle}
         />
       </IonContent>
     </IonPage>
