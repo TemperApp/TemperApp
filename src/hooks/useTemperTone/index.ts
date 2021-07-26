@@ -1,4 +1,4 @@
-import { useContext, useEffect, useMemo, useState } from "react";
+import { useContext, useEffect } from "react";
 import { FilterRollOff } from "tone";
 import SettingsContext from "../../store/settings-context";
 import { equalsDeep, mergeDeep } from "../../utils/functions";
@@ -115,8 +115,6 @@ export const formatConfig = (
 
 const useTemperTone = () => {
   const settings = useContext(SettingsContext);
-  const TemperToneInstance = useMemo(() => new TemperTone(), []);
-  const [prevConfig, setPrevConfig] = useState(fallbackConfig);
 
   useEffect(() => {
     const settingsMatchedWithConfig: DeepPartial<TemperToneConfig> = {
@@ -151,18 +149,15 @@ const useTemperTone = () => {
         volume: settings.forkVolume,
       },
     };
-    console.log(settings.amSynthFilterRollOff)
 
-    const config = formatConfig(settingsMatchedWithConfig);
+    const nextConfig = formatConfig(settingsMatchedWithConfig);
 
-    if (!equalsDeep(config, prevConfig)) {
-      TemperToneInstance.update(config);
-      setPrevConfig(config);
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    if (!equalsDeep(nextConfig, TemperTone.getConfig()))
+      TemperTone.update(nextConfig);
+      
   }, [settings]);
 
-  return TemperToneInstance;
+  return TemperTone;
 }
 
 export default useTemperTone;

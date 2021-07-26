@@ -7,7 +7,13 @@ import { acousticBeat } from "../../model/AcousticBeat";
 import { fallbackConfig, TemperToneConfig } from '.';
 import { bound, lerp, random } from '../../utils/maths';
 
+/**
+ * Singleton class handling the emission of sound
+ */
 class TemperTone {
+
+  static instance: TemperTone;
+
   cfg: TemperToneConfig = fallbackConfig;
   isMuted: boolean = false;
 
@@ -23,8 +29,8 @@ class TemperTone {
   freq: number = 440;
   modFreq: number = 0;
 
-  constructor(config: DeepPartial<TemperToneConfig> = {}) {
-    this.toggleMute(false);
+
+  constructor() {
 
     // Main Gain
     this.gain = new Tone.Gain(1)
@@ -76,32 +82,51 @@ class TemperTone {
       urls: { A4: "fork-hit.wav", },
       baseUrl: "/assets/samples/"
     }).connect(this.forkGain);
-
-    // Handle config
-    this.update(config);
   }
 
 
-  update(config: DeepPartial<TemperToneConfig>) {
-    this.cfg = mergeDeep(fallbackConfig, config);
+  static get(): TemperTone {
+    if (!TemperTone.instance)
+      TemperTone.instance = new TemperTone();
+    return TemperTone.instance;
+  }
 
-    this.gain.gain.rampTo(this.cfg.masterVolume);
-    this.amsynthGain.gain.rampTo(this.cfg.amsynth.volume);
-    this.amsynth.oscillator.type = this.cfg.amsynth.type;
-    this.amsynth.envelope.set(this.cfg.amsynth.envelope);
-    this.amsynthFilter.frequency.rampTo(this.cfg.amsynth.filter.frequency, 0.1);
-    this.amsynthFilter.set({ rolloff: this.cfg.amsynth.filter.rolloff });
-    this.amsynthEQ.set(this.cfg.amsynth.eq);
-    this.amsynthDist.set({ distortion: this.cfg.amsynth.distortion.amount });
-    this.forkGain.gain.rampTo(this.cfg.fork.volume);
+  static getConfig() {
+    return this.get().cfg;
   }
 
 
-  play(
+  /**
+   * Updates the TemperTone configuration
+   * @param config 
+   */
+  static update(config: DeepPartial<TemperToneConfig>) {
+    this.get().cfg = mergeDeep(fallbackConfig, config);
+
+    this.get().gain.gain.rampTo(this.get().cfg.masterVolume);
+    this.get().amsynthGain.gain.rampTo(this.get().cfg.amsynth.volume);
+    this.get().amsynth.oscillator.type = this.get().cfg.amsynth.type;
+    this.get().amsynth.envelope.set(this.get().cfg.amsynth.envelope);
+    this.get().amsynthFilter.frequency.rampTo(this.get().cfg.amsynth.filter.frequency, 0.1);
+    this.get().amsynthFilter.set({ rolloff: this.get().cfg.amsynth.filter.rolloff });
+    this.get().amsynthEQ.set(this.get().cfg.amsynth.eq);
+    this.get().amsynthDist.set({ distortion: this.get().cfg.amsynth.distortion.amount });
+    this.get().forkGain.gain.rampTo(this.get().cfg.fork.volume);
+  }
+
+
+  /**
+   * Plays the notes
+   * @param freqA4 the pitch frequency of the A4 note
+   * @param deviations the deviation values of the temperament
+   * @param notes an array of notes to play
+   * @returns 
+   */
+  static play(
     freqA4: number,
     deviations: NotesMap<number>,
     notes: Note[],
-  ) {
+  ): void {
     switch (notes.length) {
       case 1:
         this.setPulseBPS(0);
@@ -130,72 +155,98 @@ class TemperTone {
   }
 
 
-  trigger(freq: number, duration?: number): void {
-    this.freq = freq;
+  /**
+   * Triggers a periodic sound
+   * @param freq frequency of the sound
+   * @param duration duration in seconds
+   */
+  static trigger(freq: number, duration?: number): void {
+    this.get().freq = freq;
     try {
       this.updateHarmonicity();
-      this.amsynthDist.wet.rampTo(this.amsynthDistortionWet(), 0.1);
+      this.get().amsynthDist.wet.rampTo(this.amsynthDistortionWet(), 0.1);
 
       if (duration)
-        this.amsynth.triggerAttackRelease(this.freq, duration, '+0.02');
+        this.get().amsynth.triggerAttackRelease(this.get().freq, duration, '+0.02');
       else
-        this.amsynth.triggerAttack(this.freq, '+0.02');
+        this.get().amsynth.triggerAttack(this.get().freq, '+0.02');
 
-      this.fork.triggerAttackRelease(this.forkFreq(), 1);
+      this.get().fork.triggerAttackRelease(this.forkFreq(), 1);
     } catch (e) {
       console.warn(e);
     }
   }
 
 
-  stop(): void {
-    this.amsynth.triggerRelease();
+  /**
+   * Stops the sound that is currently playing
+   */
+  static stop(): void {
+    this.get().amsynth.triggerRelease();
   }
 
 
-  stopAndPlay(freq: number): void {
+  /**
+   * Stops the sound that is currently playing
+   * and triggers another periodic sound
+   * @param freq frequency of the sound to play
+   * @param duration duration in seconds
+   */
+  static stopAndPlay(freq: number, duration?: number): void {
     this.stop();
-    this.trigger(freq);
+    this.trigger(freq, duration);
   }
 
 
-  toggleMute(mute?: boolean): void {
-    this.isMuted = (mute !== undefined) ? mute : !this.isMuted;
-    Tone.Destination.volume.rampTo(this.isMuted ? -192 : -0.1, 0.05);
+  static toggleMute(mute?: boolean): void {
+    this.get().isMuted = (mute !== undefined) ? mute : !this.get().isMuted;
+    Tone.Destination.volume.rampTo(this.get().isMuted ? -192 : -0.1, 0.05);
   }
 
 
-  setPulseBPM(pulseBPM: number): void {
+  static setPulseBPM(pulseBPM: number): void {
     this.setPulseBPS(pulseBPM / 60);
   }
 
 
-  setPulseBPS(pulseBPS: number): void {
-    this.modFreq = (pulseBPS < 0) ? 0 : pulseBPS;
+  static setPulseBPS(pulseBPS: number): void {
+    this.get().modFreq = (pulseBPS < 0) ? 0 : pulseBPS;
     this.updateHarmonicity();
   }
 
 
-  private updateHarmonicity(): void {
-    const carrierFreq = this.freq;
-    const harmonicity = (carrierFreq + this.modFreq) / carrierFreq - 1; // minus 1 because: 0 is unison, 1 is upper octave
-    this.amsynth.harmonicity.rampTo(harmonicity, 0.05);
+  /**
+   * Updates the modulation frequency of the synth
+   */
+  private static updateHarmonicity(): void {
+    const carrierFreq = this.get().freq;
+    const harmonicity = (carrierFreq + this.get().modFreq) / carrierFreq - 1; // minus 1 because: 0 is unison, 1 is upper octave
+    this.get().amsynth.harmonicity.rampTo(harmonicity, 0.05);
   }
 
 
-  private forkFreq(): number {
+  /**
+   * @returns the pitch frequency of the fork sound
+   * to be played
+   */
+  private static forkFreq(): number {
     return random(-20, 20)
       + bound(330, 550, 
-          lerp(120, 800, 330, 550, this.freq)
+          lerp(120, 800, 330, 550, this.get().freq)
         );
   }
 
-
-  private amsynthDistortionWet(): number {
-    const { amount, lowFrequency, highFrequency } = this.cfg.amsynth.distortion;
+  /**
+   * @returns a value between 0 and 1 representing
+   * the amount of distortion depending on the frequency
+   * of the sound. A low pitch will have more distortion
+   * and vice versa
+   */
+  private static amsynthDistortionWet(): number {
+    const { amount, lowFrequency, highFrequency } = this.get().cfg.amsynth.distortion;
     return amount
       * bound(0, 1,
-          lerp(lowFrequency, highFrequency, 1, 0, this.freq)
+          lerp(lowFrequency, highFrequency, 1, 0, this.get().freq)
         );
   }
 }

@@ -107,7 +107,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
             onClick={(e: any) => {
               const waveTriangle = e.target.checked as boolean;
               set('waveTriangle', waveTriangle);
-              TemperTone.amsynth.oscillator.type = (waveTriangle) ? 'triangle' : 'sine';
+              TemperTone.get().amsynth.oscillator.type = (waveTriangle) ? 'triangle' : 'sine';
             }}
           />
 
@@ -129,7 +129,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
               value={nextSettings.amSynthVolume}
               onChange={(e) => {
                 set('amSynthVolume', e.detail.value);
-                TemperTone.amsynthGain.gain.rampTo(lerp(0, 10, 0, 1, e.detail.value));
+                TemperTone.get().amsynthGain.gain.rampTo(lerp(0, 10, 0, 1, e.detail.value));
               }}
               classNameIonRange="max-w-32"
             />
@@ -140,7 +140,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
               value={nextSettings.forkVolume}
               onChange={(e) => {
                 set('forkVolume', e.detail.value);
-                TemperTone.forkGain.gain.rampTo(lerp(0, 10, 0, 1, e.detail.value));
+                TemperTone.get().forkGain.gain.rampTo(lerp(0, 10, 0, 1, e.detail.value));
               }}
               classNameIonRange="max-w-32"
             />
@@ -165,7 +165,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
               value={nextSettings.amSynthFilterFrequency}
               onChange={(e) => {
                 set('amSynthFilterFrequency', e.detail.value);
-                TemperTone.amsynthFilter.frequency.rampTo(e.detail.value, 0.1);
+                TemperTone.get().amsynthFilter.frequency.rampTo(e.detail.value, 0.1);
               }}
               classNameIonRange="max-w-44"
             />
@@ -184,7 +184,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
                 const rolloff = Number(e.detail.value) as FilterRollOff;
                 console.log(rolloff)
                 set('amSynthFilterRollOff', rolloff);
-                TemperTone.amsynthFilter.set({ rolloff: rolloff});
+                TemperTone.get().amsynthFilter.set({ rolloff: rolloff});
               }}
               classNameSelect="w-20"
             />
@@ -210,7 +210,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
               value={nextSettings.amSynthEQLow}
               onChange={(e) => {
                 set('amSynthEQLow', e.detail.value);
-                TemperTone.amsynthEQ.low.rampTo(e.detail.value);
+                TemperTone.get().amsynthEQ.low.rampTo(e.detail.value);
               }}
               classNameIonRange="max-w-40"
             />
@@ -221,7 +221,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
               value={nextSettings.amSynthEQMid}
               onChange={(e) => {
                 set('amSynthEQMid', e.detail.value);
-                TemperTone.amsynthEQ.mid.rampTo(e.detail.value);
+                TemperTone.get().amsynthEQ.mid.rampTo(e.detail.value);
               }}
               classNameIonRange="max-w-40"
             />
@@ -232,7 +232,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
               value={nextSettings.amSynthEQHigh}
               onChange={(e) => {
                 set('amSynthEQHigh', e.detail.value);
-                TemperTone.amsynthEQ.high.rampTo(e.detail.value);
+                TemperTone.get().amsynthEQ.high.rampTo(e.detail.value);
               }}
               classNameIonRange="max-w-40"
             />
@@ -244,7 +244,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
               value={nextSettings.amSynthEQLowFrequency}
               onChange={(e) => {
                 set('amSynthEQLowFrequency', e.detail.value);
-                TemperTone.amsynthEQ.lowFrequency.rampTo(e.detail.value, 0.1);
+                TemperTone.get().amsynthEQ.lowFrequency.rampTo(e.detail.value, 0.1);
               }}
               classNameInput="max-w-20"
             />
@@ -256,7 +256,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
               value={nextSettings.amSynthEQHighFrequency}
               onChange={(e) => {
                 set('amSynthEQHighFrequency', e.detail.value);
-                TemperTone.amsynthEQ.highFrequency.rampTo(e.detail.value, 0.1);
+                TemperTone.get().amsynthEQ.highFrequency.rampTo(e.detail.value, 0.1);
               }}
               classNameInput="max-w-20"
             />
@@ -281,7 +281,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
               value={nextSettings.amSynthDistortionAmount}
               onChange={(e) => {
                 set('amSynthDistortionAmount', e.detail.value);
-                TemperTone.amsynthDist.set({ distortion: e.detail.value });
+                TemperTone.get().amsynthDist.set({ distortion: e.detail.value });
               }}
               classNameIonRange="max-w-36"
             />
@@ -293,7 +293,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
               value={nextSettings.amSynthDistortionLowFrequency}
               onChange={(e) => {
                 set('amSynthDistortionLowFrequency', e.detail.value);
-                TemperTone.amsynthDist.set({ distortion: e.detail.value });
+                TemperTone.get().amsynthDist.set({ distortion: e.detail.value });
               }}
               classNameInput="max-w-20"
             />
@@ -305,7 +305,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
               value={nextSettings.amSynthDistortionHighFrequency}
               onChange={(e) => {
                 set('amSynthDistortionHighFrequency', e.detail.value);
-                TemperTone.amsynthDist.set({ distortion: e.detail.value });
+                TemperTone.get().amsynthDist.set({ distortion: e.detail.value });
               }}
               classNameInput="max-w-20"
             />
