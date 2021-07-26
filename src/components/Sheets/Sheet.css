@@ -31,15 +31,19 @@
   color: var(--color-contrast);
 }
 
+.commas-note {
+  font-family: "Karla";
+  font-style: normal;
+  font-weight: normal;
+  font-size: 0.08em;
+  color: var(--color-contrast);
+}
+
 .quality-wheel {
   font-size: 18px;
   display: flex;
   justify-content: center;
   margin: 0 auto;
-}
-
-.coma-card {
-  height: 100%;
 }
 
 .fav-btn {

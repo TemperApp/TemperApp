@@ -52,7 +52,7 @@ const ThirdComaCircle: React.FC<ThirdComaCircleProps> = ({
         <text transform="rotate(-132.894 12.256 13.363)" xmlSpace="preserve"><textPath xlinkHref="#a"><tspan>{formatCsExp3rdStr(temperament.csExp3rd.F      )} </tspan></textPath></text>
       </g>
 
-      <g className="comas-note" fill="var(--color-contrast)">
+      <g className="commas-note" fill="var(--color-contrast)">
         <text x="11.741" y="2.8440001">
           <tspan >C</tspan>
         </text>
