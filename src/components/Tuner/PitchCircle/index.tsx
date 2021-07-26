@@ -111,12 +111,18 @@ const PitchCircle: React.FC<PitchCircleProps> = ({
       return;
 
     const queue: ProcSubStep[][] = proc.steps.map((step) =>
-      decomposeStep(step, temperament)
+      decomposeStep(step, temperament, {
+        pause: settings.procedureSubStepDurationPause,
+        unique: settings.procedureSubStepDurationUnique,
+        pair: settings.procedureSubStepDurationPair,
+        beat: settings.procedureSubStepDurationBeat,
+        noBeat: settings.procedureSubStepDurationNoBeat,
+      })
     );
     executeQueueStep(queue[procStepIdx]);
 
   }, [executeQueueStep, proc, procStepIdx,
-    temperament, tuneMode
+    temperament, tuneMode, settings
   ]);
 
 

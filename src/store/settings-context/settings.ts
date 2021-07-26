@@ -36,6 +36,21 @@ const settings : readonly AllowedSetting[] = [{
     name: 'masterVolume',
     defaultValue: 10,
   },{
+    name: 'procedureSubStepDurationPause',
+    defaultValue: 0.2,
+  },{
+    name: 'procedureSubStepDurationUnique',
+    defaultValue: 3.0,
+  },{
+    name: 'procedureSubStepDurationPair',
+    defaultValue: 1.0,
+  },{
+    name: 'procedureSubStepDurationBeat',
+    defaultValue: 5.0,
+  },{
+    name: 'procedureSubStepDurationNoBeat',
+    defaultValue: 1.5,
+  },{
     name: 'forkVolume',
     defaultValue: 10,
   },{

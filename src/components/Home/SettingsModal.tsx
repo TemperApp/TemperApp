@@ -148,6 +148,54 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
           </SettingsGroup>
 
 
+          <SettingsGroup title="Durées en procédure d'accord">
+            <SettingInput
+              name="Pause entre les notes"
+              type="number"
+              value={nextSettings.procedureSubStepDurationPause}
+              onChange={(e) =>
+                set('procedureSubStepDurationPause', Number(e.detail.value))}
+              classNameInput="max-w-12"
+            />
+            
+            <SettingInput
+              name="Note (unique)"
+              type="number"
+              value={nextSettings.procedureSubStepDurationUnique}
+              onChange={(e) =>
+                set('procedureSubStepDurationUnique', Number(e.detail.value))}
+              classNameInput="max-w-12"
+            />
+            
+            <SettingInput
+              name="Note (paire)"
+              type="number"
+              value={nextSettings.procedureSubStepDurationPair}
+              onChange={(e) =>
+                set('procedureSubStepDurationPair', Number(e.detail.value))}
+              classNameInput="max-w-12"
+            />
+            
+            <SettingInput
+              name="Battement"
+              type="number"
+              value={nextSettings.procedureSubStepDurationBeat}
+              onChange={(e) =>
+                set('procedureSubStepDurationBeat', Number(e.detail.value))}
+              classNameInput="max-w-12"
+            />
+            
+            <SettingInput
+              name="Absence de battement"
+              type="number"
+              value={nextSettings.procedureSubStepDurationNoBeat}
+              onChange={(e) =>
+                set('procedureSubStepDurationNoBeat', Number(e.detail.value))}
+              classNameInput="max-w-12"
+            />
+          </SettingsGroup>
+
+
           <SettingsGroup
             title='Filtre passe-bas'
             titleAside={

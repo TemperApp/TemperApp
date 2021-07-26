@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 import {
   IonContent,
   IonHeader,
@@ -16,10 +16,6 @@ import { updateSettings } from "../store/settings-context/utils";
 const Home: React.FC = () => {
   const settings = useContext(SettingsContext);
   const [showModal, setShowModal] = useState(false);
-  
-  useEffect( () =>{
-    console.log(" 🚪 OPEN ? "+showModal)
-  },[showModal])
 
   return (
     <IonPage>
