@@ -59,7 +59,8 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -d build",
+    "resources": "cordova-res ios && cordova-res android && node resources/resources.js"
   },
   "eslintConfig": {
     "extends": [
@@ -81,6 +82,7 @@
   },
   "devDependencies": {
     "@capacitor/cli": "3.0.0",
+    "cordova-res": "^0.15.3",
     "react-data-storage-sqlite-hook": "^1.0.0",
     "react-scripts": "4.0.3"
   },
