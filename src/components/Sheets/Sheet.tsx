@@ -79,7 +79,7 @@ const Sheet: React.FC<SheetProps> = ({
                 : "h-9 w-9 fav-btn"}
                 style={isFavorite? 
                   { fontSize: "2.8rem", fill:"var(--color-sec)" } /* TODO Find a better way */
-                : { fontSize: "2.8rem", fill:"var(--color-grey)"}}
+                : { fontSize: "2.8rem", fill:"var(--color-light-grey)"}}
                 src={"/assets/logotypes/icon-fav.svg"}
               />
             </IonButton>

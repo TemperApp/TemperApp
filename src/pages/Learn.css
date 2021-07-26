@@ -102,3 +102,7 @@ ion-button.learn-resources-btn::part(native) {
 .markdown-content p {
   margin: auto;
 }
+
+.btn-play {
+  fill: var(--color-button);
+}
