@@ -46,7 +46,7 @@ const EqualTemperament = {
     E:       "+7/11",
     B:       "+7/11",
   },
-  procedure: "",
+  procedure: "A4-A3;A3-F3;F3-F4;A3-C#4;C#4:F4;A3-E4;E4-B3;B3-F#4;F#4:C#4;C#4-G#4;G#4-Eb4;Eb4-Bb4;Bb4-Bb3;Bb3:F4;F4-C4;C4-G4;G4-D4;D4:A4",
   externalLinks:[
     {name: "", url: ""},
   ],
