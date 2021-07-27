@@ -60,13 +60,13 @@ const Tuner: React.FC<TunerProps> = ({
   }, [TemperTone, isMuted]);
 
   useEffect(() => {
-    if (tuneMode === TuneMode.PROCEDURE){
-      setSubTitle("Procédure d'accord")
-      setMainTitle(temperament.nameFR)
+    if (tuneMode === TuneMode.PROCEDURE) {
+      setSubTitle("Procédure d'accord");
+      setMainTitle(temperament.nameFR);
     }
-    else{
-      setSubTitle("Accordeur")
-      setMainTitle(tuneMode)
+    else {
+      setSubTitle("Accordeur");
+      setMainTitle(tuneMode);
     }
   }, [tuneMode, setSubTitle, setMainTitle, temperament.nameFR]);
 
@@ -94,7 +94,8 @@ const Tuner: React.FC<TunerProps> = ({
       ? Procedure.parse(temperament.procedure)!
       : null
     );
-  }, [temperament, tuneMode]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [temperament]);
 
   useEffect(() => {
     let i = 0;
@@ -125,7 +126,7 @@ const Tuner: React.FC<TunerProps> = ({
     setProcRepeatCount(0);
   }, [procStepIdx]);
 
-  // console.info('⬜ [Tuner]: Render: list fetched:', temperamentsList.length > 0, ', temperament fetched:', (temperament.idTemperament === selectedTemperamentId && temperament.deviation !== undefined))
+  console.info('⬜ [Tuner]: Render: list fetched:', temperamentsList.length > 0, ', temperament fetched:', (temperament.idTemperament === selectedTemperamentId && temperament.deviation !== undefined))
 
   const headerSelect = (
     <TunerHeaderSelect
@@ -191,4 +192,10 @@ const Tuner: React.FC<TunerProps> = ({
   );
 };
 
-export default Tuner;
+export default React.memo(
+  Tuner,
+  (prevProps, nextProps) => (
+    prevProps.setMainTitle === nextProps.setMainTitle &&
+    prevProps.setSubTitle === nextProps.setSubTitle
+  )
+);
