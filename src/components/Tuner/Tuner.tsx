@@ -60,16 +60,15 @@ const Tuner: React.FC<TunerProps> = ({
   }, [TemperTone, isMuted]);
 
   useEffect(() => {
-    tuneMode === TuneMode.PROCEDURE ? 
-    setSubTitle("Procédure d'accord")
-    : setSubTitle("Accordeur")
-  }, [tuneMode, setSubTitle, setMainTitle]);
-
-  useEffect(() => {
-    tuneMode === TuneMode.PROCEDURE ? 
-     setMainTitle(temperament.nameFR)
-    : setMainTitle(tuneMode)
-  }, [tuneMode, setMainTitle, temperament.nameFR]);
+    if (tuneMode === TuneMode.PROCEDURE){
+      setSubTitle("Procédure d'accord")
+      setMainTitle(temperament.nameFR)
+    }
+    else{
+      setSubTitle("Accordeur")
+      setMainTitle(tuneMode)
+    }
+  }, [tuneMode, setSubTitle, setMainTitle, temperament.nameFR]);
 
   useEffect(() => {
     (async () => {
