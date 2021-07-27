@@ -23,8 +23,8 @@ const Comparator: React.FC = () => {
 
   return (
     <>
-      <IonGrid className="px-6">
-        <IonRow>
+      <IonGrid id="comparator-inputs" className="px-6 w-full fixed">
+        <IonRow className="items-center">
           <IonCol size="5.25">
             <IonSelect className="w-full"
               value={temperament1} placeholder="Tempérament"
@@ -39,7 +39,7 @@ const Comparator: React.FC = () => {
           </IonCol>
 
           <IonCol size="1.5">
-            <IonButton className="switch-inputs-btn"
+            <IonButton className="switch-inputs-btn h-6"
             fill="clear"
             onClick={() => {
               if(temperament1.name !== temperament2.name){
@@ -70,10 +70,12 @@ const Comparator: React.FC = () => {
         </IonRow>
       </IonGrid>
 
-      <ComparatorSVG
-        idTemperament1={temperament1.idTemperament}
-        idTemperament2={temperament2.idTemperament}
-      />
+      <section className="mt-16">
+        <ComparatorSVG
+          idTemperament1={temperament1.idTemperament}
+          idTemperament2={temperament2.idTemperament}
+        />
+      </section>
     </>
   );
 };
