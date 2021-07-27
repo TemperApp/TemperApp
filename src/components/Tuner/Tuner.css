@@ -58,33 +58,33 @@
   padding-right: 4rem !important;
 }
 
-/* STYLE PIANO */
+/* KEYBOARD */
 
-.pianoKeys {
+.keyboardKeys {
   fill: var(--color-inner-button);
   stroke: var(--color-dark);
   stroke-width: 0.5;
   stroke-miterlimit: 10;
 }
 
-.pianoKeysColored {
+.keyboardKeysColored {
   fill: var(--color-check);
   stroke: var(--color-dark);
   stroke-width: 0.5;
   stroke-miterlimit: 10;
 }
 
-.pianoKeysActive {
+.keyboardKeysActive {
   fill: var(--color-check);
   stroke: var(--color-dark);
   stroke-width: 0.5;
   stroke-miterlimit: 10;
-  animation-name: pianoNoteActive;
+  animation-name: keyboardNoteActive;
   animation-duration: 1s;
   animation-iteration-count: infinite;
 }
 
-@keyframes pianoNoteActive {
+@keyframes keyboardNoteActive {
   0% {
     fill: var(--color-check);
   }
@@ -96,7 +96,7 @@
   }
 }
 
-.pianoBlackKeys {
+.keyboardBlackKeys {
   fill: var(--color-dark);
   stroke: var(--color-dark);
   stroke-width: 0.5;

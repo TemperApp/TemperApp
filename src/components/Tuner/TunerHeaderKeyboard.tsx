@@ -1,34 +1,34 @@
 import React from 'react';
 
-type TunerHeaderPianoProps = {
-  pianoColor: Array<string>,
+type TunerHeaderKeyboardProps = {
+  keyboardColor: Array<string>,
   procStepIdx: number
 }
 
-const TunerHeaderPiano: React.FC<TunerHeaderPianoProps> = ({
-  pianoColor, procStepIdx
+const TunerHeaderKeyboard: React.FC<TunerHeaderKeyboardProps> = ({
+  keyboardColor, procStepIdx
 }) => {
 
   const isColored = (note: string) => {
     for(let i = 0; i<procStepIdx; i++){
-      if(pianoColor[i] === note){
-        return "pianoKeysColored";
+      if(keyboardColor[i] === note){
+        return "keyboardKeysColored";
       }
     }
-    if(pianoColor[procStepIdx]=== note)
-      return "pianoKeysActive";
-    return "pianoKeys"
+    if(keyboardColor[procStepIdx]=== note)
+      return "keyboardKeysActive";
+    return "keyboardKeys"
   }
 
   const isBlackKeysColored = (note: string) => {
     for(let i = 0; i<procStepIdx; i++){
-      if(pianoColor[i] === note){
-        return "pianoKeysColored";
+      if(keyboardColor[i] === note){
+        return "keyboardKeysColored";
       }
     }
-    if(pianoColor[procStepIdx]=== note)
-      return "pianoKeysActive";
-    return "pianoBlackKeys"
+    if(keyboardColor[procStepIdx]=== note)
+      return "keyboardKeysActive";
+    return "keyboardBlackKeys"
   }
 
   return (
@@ -81,7 +81,7 @@ const TunerHeaderPiano: React.FC<TunerHeaderPianoProps> = ({
 };
 
 export default React.memo(
-  TunerHeaderPiano,
+  TunerHeaderKeyboard,
   (prevProps, nextProps) =>
     prevProps.procStepIdx === nextProps.procStepIdx 
 );

@@ -1,21 +1,23 @@
 import React, { useState, useEffect, useContext, useCallback } from "react";
-import "./Tuner.css";
+import { IonGrid, IonRow } from "@ionic/react";
+
 import SettingsContext from "../../store/settings-context";
+import { useHistory, useParams } from "react-router";
+import useTemperTone from "../../hooks/useTemperTone";
+
+import TunerHeaderInputs from "./TunerHeaderInputs";
+import TunerHeaderKeyboard from "./TunerHeaderKeyboard";
+import TunerFooter from "./TunerFooter";
+import PitchCircle from "./PitchCircle";
+
+import EqualTemperament from "../../model/Temperament/Equal";
+import { Temperament } from "../../model/Temperament/Temperament";
+import { ProcAction, Procedure } from "../../model/Procedure";
 
 import { fetchTemperamentPropsById, fetchTemperaments } from "../../engine/DataAccessor";
 import { TemperamentDBType } from "../../engine/DB";
-import EqualTemperament from "../../model/Temperament/Equal";
 
-import PitchCircle from "./PitchCircle";
-
-import TunerHeaderSelect from "./TunerHeaderSelect";
-import TunerFooter from "./TunerFooter";
-import { Temperament } from "../../model/Temperament/Temperament";
-import { ProcAction, Procedure } from "../../model/Procedure";
-import TunerHeaderPiano from "./TunerHeaderPiano";
-import { useHistory, useParams } from "react-router";
-import useTemperTone from "../../hooks/useTemperTone";
-import { IonGrid, IonRow } from "@ionic/react";
+import "./Tuner.css";
 
 export enum TuneMode {
   BEATS = 'Battements', // TODO Find a better way to print text
@@ -48,7 +50,7 @@ const Tuner: React.FC<TunerProps> = ({
   const [proc, setProc] = useState<Procedure | null>(null);
   const [procStepIdx, setProcStepIdx] = useState<number>(0);
   const [procRepeatCount, setProcRepeatCount] = useState<number>(0);
-  const [pianoColor, setPianoColor] = useState<Array<string>>([]);
+  const [keyboardColor, setKeyboardColor] = useState<Array<string>>([]);
 
 
   useEffect(() => {
@@ -99,21 +101,21 @@ const Tuner: React.FC<TunerProps> = ({
 
   useEffect(() => {
     let i = 0;
-    let Piano = [];
+    let Keyboard = [];
     while(proc?.hasNext(i-1)){
       const temp = proc.steps[i];
       if(temp.action === ProcAction.TUNE_UNIQUE)
-        Piano.push(temp.noteX.string());
+        Keyboard.push(temp.noteX.string());
       else {
         if(temp.action === ProcAction.TUNE_OCTAVE || temp.action === ProcAction.TUNE_PAIR )
-          Piano.push(temp.noteY.string());
+          Keyboard.push(temp.noteY.string());
         else{
-          Piano.push("");
+          Keyboard.push("");
         }
       }
       i++;
     }
-    setPianoColor(Piano);
+    setKeyboardColor(Keyboard);
   }, [proc]);
 
   const onProcedureNext = useCallback(() => { // useCallback for TuneFooter memoizing
@@ -130,12 +132,12 @@ const Tuner: React.FC<TunerProps> = ({
     <div className="h-full flex content-around justify-center flex-wrap">
       
       { tuneMode === TuneMode.PROCEDURE
-        ? <TunerHeaderPiano
-            pianoColor = {pianoColor}
+        ? <TunerHeaderKeyboard
+            keyboardColor = {keyboardColor}
             procStepIdx = {procStepIdx}
           />
           
-        : <TunerHeaderSelect
+        : <TunerHeaderInputs
             defaultTemperamentId={selectedTemperamentId}
             defaultFreqA4={freqA4}
             temperamentsList={temperamentsList}

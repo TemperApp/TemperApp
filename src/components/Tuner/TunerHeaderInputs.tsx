@@ -11,7 +11,7 @@ type TunerHeaderProps = {
   onFreqA4Change: (e: any) => void,
 }
 
-const TunerHeaderSelect: React.FC<TunerHeaderProps> = ({
+const TunerHeaderInputs: React.FC<TunerHeaderProps> = ({
   defaultTemperamentId,
   defaultFreqA4,
   temperamentsList,
@@ -50,7 +50,7 @@ const TunerHeaderSelect: React.FC<TunerHeaderProps> = ({
 };
 
 export default React.memo(
-  TunerHeaderSelect,
+  TunerHeaderInputs,
   (prevProps, nextProps) =>
     prevProps.defaultTemperamentId === nextProps.defaultTemperamentId &&
     prevProps.defaultFreqA4 === nextProps.defaultFreqA4 &&
