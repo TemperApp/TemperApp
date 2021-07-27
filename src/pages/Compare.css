@@ -5,20 +5,20 @@
   fill: #45cbc7;
 }
 .fill-dark-purple {
-  fill: #a04a9a;
+  fill: var(--color-strong);
 }
 .fill-purple {
-  fill: #a3719d;
+  fill: var(--color-sec);
 }
 .line-legend-comparator {
   fill: none;
-  stroke: #ffffff;
+  stroke: var(--color-contrast);
   stroke-width: 2;
   stroke-linecap: round;
   stroke-miterlimit: 10;
 }
 .color-legend-theme {
-  fill: #ffffff;
+  fill: var(--color-contrast);
 }
 .font-legend {
   font-family: "Karla-Regular";
