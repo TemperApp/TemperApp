@@ -1,6 +1,6 @@
 {
 	"appId": "fr.ludchieng.temperapp",
-	"appName": "dev",
+	"appName": "Temperapp",
 	"webDir": "build",
 	"bundledWebRuntime": false
 }

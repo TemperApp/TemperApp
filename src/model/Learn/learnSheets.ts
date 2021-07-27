@@ -42,7 +42,7 @@ export const learnSheets: Array<LearnSheet> = [
   {
     id: "characteristics",
     label: "Caractéristiques",
-    content:`Depuis les auteurs grecs jusqu'au XIXe siècle, un intervalle est défini par un rapport de longueurs de cordes : par analogie, le rapport des sons est celui des longueurs des cordes qui les forment (ainsi le rapport mathématique est 1:2 pour l’octave, 2:3 pour la quinte, 3:4 pour la quarte, 4:5 pour la tierce majeure, 5:6 pour la tierce mineure, etc.). De nos jours, on emploie le rapport des fréquences des deux notes qui forment l'intervalle. On le nomme rapport acoustique, qui est l'inverse du rapport des longueurs. Les rapports acoustiques des intervalles simples à l'état pur sont ainsi les suivants :
+    content: `Depuis les auteurs grecs jusqu'au XIXe siècle, un intervalle est défini par un rapport de longueurs de cordes : par analogie, le rapport des sons est celui des longueurs des cordes qui les forment (ainsi le rapport mathématique est 1:2 pour l’octave, 2:3 pour la quinte, 3:4 pour la quarte, 4:5 pour la tierce majeure, 5:6 pour la tierce mineure, etc.). De nos jours, on emploie le rapport des fréquences des deux notes qui forment l'intervalle. On le nomme rapport acoustique, qui est l'inverse du rapport des longueurs. Les rapports acoustiques des intervalles simples à l'état pur sont ainsi les suivants :
 
   $ \\small  \\text{octave : 2 } $ 
 
@@ -107,7 +107,7 @@ export const learnSheets: Array<LearnSheet> = [
   {
     id: "physics",
     label: "Physique",
-    content:`Une corde pincée ou frappée vibre à certaines fréquences qui dépendent de sa tension, de sa masse par unité de longueur, de son diamètre et d’autres paramètres physiques. Les règles de calculs des vibrations s’appliquent de la même manière pour les tuyaux sonores.
+    content: `Une corde pincée ou frappée vibre à certaines fréquences qui dépendent de sa tension, de sa masse par unité de longueur, de son diamètre et d’autres paramètres physiques. Les règles de calculs des vibrations s’appliquent de la même manière pour les tuyaux sonores.
     
   Lors de la vibration, plusieurs fréquences se superposent : une corde vibre sur toute sa longueur, mais chacune de ses subdivisions en 2, 3 et jusqu’à une infinité de parties vibrent aussi, à des fréquences plus élevées et à des amplitudes plus faibles. On nomme ces vibrations les “partiels”. 
   
@@ -160,7 +160,7 @@ export const learnSheets: Array<LearnSheet> = [
   {
     id: "history",
     label: "Histoire",
-    content:``,
+    content: ``,
   },
 
 ];
