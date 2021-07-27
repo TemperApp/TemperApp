@@ -72,8 +72,10 @@ p {
 }
 
 .p-long,
-ul {
-  font-family: var(--ion-family-font);
+ul,
+.katex,
+.textrm {
+  font-family: var(--ion-family-font) !important;
   font-style: normal !important;
   font-weight: 300 !important;
   font-size: 14px !important;

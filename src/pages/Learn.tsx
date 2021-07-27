@@ -18,18 +18,14 @@ const Learn: React.FC = () => {
       routerLink: "/learn/definition",
       src: "/assets/logotypes/logo-def.svg",
     }, {
-      label: "Caractéristiques",
-      routerLink: "/learn/characteristics",
-      src: "/assets/logotypes/logo-def.svg",
+      label: "Mathématiques",
+      routerLink: "/learn/mathematics",
+      src: "/assets/logotypes/logo-maths.svg",
     }, {
       label: "Physique",
       routerLink: "/learn/physics",
       src: "/assets/logotypes/logo-phys.svg",
-    }, {
-      label: "Histoire",
-      routerLink: "/learn/history",
-      src: "/assets/logotypes/logo-def.svg",
-    }
+    },
   ]
 
   return (
