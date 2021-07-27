@@ -149,7 +149,7 @@ const SheetTemperament: React.FC = () => {
       </div>
 
       <IonButton
-        className="btn-round fixed right-4 bottom-20"
+        className="btn-round fixed right-4 btn-tune-sheet"
         routerLink={`/tune/${temperament.idTemperament}`}
       >
         <IonIcon
