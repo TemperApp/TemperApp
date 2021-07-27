@@ -47,13 +47,13 @@ export const learnSheets: Array<LearnSheet> = [
 
   $ \\small  \\text{octave : 2 } $ 
 
-  $ \\small  \\text{quinte : 3/2 }$ 
+  $ \\small  \\text{quinte : } \\dfrac{3}{2} $ 
 
-  $ \\small  \\text{quarte : 4/3 }$ 
+  $ \\small  \\text{quarte : } \\dfrac{4}{3} $ 
 
-  $ \\small  \\text{tierce majeure : 5/4 }$ 
+  $ \\small  \\text{tierce majeure : } \\dfrac{5}{4} $ 
 
-  $ \\small  \\text{tierce mineure : 6/5} $
+  $ \\small  \\text{tierce mineure : } \\dfrac{6}{5} $
     
   Ces intervalles, auxquels ont peut ajouter les intervalles complémentaires des tierces dans l'octave, à savoir la sixte mineure ($\\small  8/5$) et la sixte majeure ($\\small  5/3$) émettent un battement perceptible si on les écarte de leur valeur pure (correspondant à l’exactitude du rapport acoustique). Le rapport acoustique est indépendant de la fréquence de la note sur laquelle on construit l’intervalle. Pour obtenir la quinte d’une note quelconque, il faudra toujours multiplier la fréquence de  cette note par $ \\small  3/2$.
     
