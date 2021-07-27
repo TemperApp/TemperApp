@@ -50,7 +50,7 @@ const PageHeader: React.FC<PageHeaderProps> = ({
 
   return (
     <>
-      <div className="ph-content h-16 px-6 pb-0">
+      <div className="ph-content h-17 px-6 pb-1">
         <div className="ph-titles">
           <h3>{subTitle}</h3>
           <h2>{mainTitle}</h2>
@@ -59,7 +59,7 @@ const PageHeader: React.FC<PageHeaderProps> = ({
         {btnGoBack}
         {children}
       </div>
-      <hr />
+      <hr className="ph-hr" />
     </>
   )
 };

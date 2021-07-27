@@ -25,3 +25,8 @@
 .btn-go-back {
   background-color: var(--ion-background-color);
 }
+
+.ph-hr {
+  position: absolute;
+  bottom: 0;
+}
