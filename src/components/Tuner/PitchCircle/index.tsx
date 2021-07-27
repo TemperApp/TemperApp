@@ -1,5 +1,5 @@
 import React, { useCallback, useContext, useEffect, useReducer, useState } from 'react';
-import { IonPopover } from "@ionic/react";
+import { IonPopover, IonToast } from "@ionic/react";
 
 import PitchCircleView from './View';
 
@@ -8,7 +8,7 @@ import Note from '../../../model/Note/Note';
 import { mapNotesMap } from '../../../model/Note/NotesMap';
 import { Temperament } from '../../../model/Temperament/Temperament';
 import { ProcAction, Procedure } from '../../../model/Procedure';
-import { acousticBeatToStr, acousticBeat } from '../../../model/AcousticBeat';
+import { acousticBeatToStr, acousticBeat, isValidIntervalForAcousticBeat } from '../../../model/AcousticBeat';
 
 import {
   btnStatesReducer, BtnStates, getActiveBtns,
@@ -44,7 +44,9 @@ const PitchCircle: React.FC<PitchCircleProps> = ({
   const settings = useContext(SettingsContext);
   const TemperTone = useTemperTone();
   const [isCheck, setIsCheck] = useState(false);
-
+  const [showToast, setShowToast] = useState(false);
+  const [toastMessage, setToastMessage] = useState('');
+  
   /*
   useIonViewWillLeave(() => {
     // Works when ionic is handling the routes
@@ -91,6 +93,16 @@ const PitchCircle: React.FC<PitchCircleProps> = ({
         type: BtnActions.SET,
         buttons: createActiveBtnsFromNote(substep.notes)
       });
+
+      // Show Toast if it cannot handle interval
+      if (substep.notes.length === 2) {
+        const [noteX, noteY] = substep.notes;
+        if (!isValidIntervalForAcousticBeat(noteX, noteY)) {
+          setToastMessage(`Intervalle non valide : ${Note.intervalBetween(noteX, noteY)} demi-tons`);
+          setShowToast(true);
+        }
+      }
+
     }
 
     timeout = setTimeout(() => {
@@ -189,6 +201,7 @@ const PitchCircle: React.FC<PitchCircleProps> = ({
   useEffect(() => {
     if (!hasPopover || (hasPopover && procRepeatCount > 0))
       executeQueue();
+    setShowToast(false);
   }, [
     tuneMode, freqA4, temperament,
     proc, procStepIdx, procRepeatCount,
@@ -224,6 +237,16 @@ const PitchCircle: React.FC<PitchCircleProps> = ({
           btnStates={btnStates}
           dispatchState={dispatchState}
         />)}
+
+      <IonToast
+        isOpen={showToast}
+        onDidDismiss={() => setShowToast(false)}
+        duration={5000}
+        message={toastMessage}
+        position="bottom"
+        color="warning"
+      />
+
     </>
   );
 };

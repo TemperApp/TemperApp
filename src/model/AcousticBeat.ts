@@ -53,7 +53,6 @@ export const acousticBeat = (
     beatFreqX = 2 * lowest.freq(freqA4, deviations);
     beatFreqY = 1 * highest.freq(freqA4, deviations);
   } else {
-    console.warn('[AcousticBeat]: acousticBeat: unhandled interval: ', interval, lowest, highest);
     return {
       carrierFreq: null,
       modulationFreq: null,

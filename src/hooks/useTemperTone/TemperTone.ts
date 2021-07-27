@@ -138,10 +138,9 @@ class TemperTone {
           notes[0], notes[1], freqA4, deviations
         );
 
-        if (modulationFreq === null || carrierFreq === null) {
-          console.warn('[TemperTone]: play: unhandled notes:', notes, 'acoustic beat: ', modulationFreq, carrierFreq);
+        if (modulationFreq === null || carrierFreq === null)
           return;
-        }
+          
         this.setPulseBPS(modulationFreq);
         let heardFreq = carrierFreq;
         while (heardFreq > 1000)

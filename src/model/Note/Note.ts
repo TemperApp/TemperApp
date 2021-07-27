@@ -74,7 +74,7 @@ class Note implements INote {
   static intervalBetween(noteX: Note, noteY: Note): PitchInterval {
     const indexX = NotesIndex[noteX.toNotes()] + noteX.octave * 12;
     const indexY = NotesIndex[noteY.toNotes()] + noteY.octave * 12;
-    return indexY - indexX as PitchInterval;
+    return Math.abs(indexY - indexX) as PitchInterval;
   }
 
 
