@@ -126,39 +126,31 @@ const Tuner: React.FC<TunerProps> = ({
     setProcRepeatCount(0);
   }, [procStepIdx]);
 
-  console.info('⬜ [Tuner]: Render: list fetched:', temperamentsList.length > 0, ', temperament fetched:', (temperament.idTemperament === selectedTemperamentId && temperament.deviation !== undefined))
-
-  const headerSelect = (
-    <TunerHeaderSelect
-        defaultTemperamentId={selectedTemperamentId}
-        defaultFreqA4={freqA4}
-        temperamentsList={temperamentsList}
-        onTemperamentChange={(e: any) => {
-          setProcStepIdx(0);
-          setProcRepeatCount(0);
-          setSelectedTemperamentId(e.detail.value)
-          history.push(`/tune/${e.detail.value}`);
-        }}
-        onFreqA4Change={(e: any) => {
-          setProcStepIdx(0);
-          setProcRepeatCount(0);
-          setFreqA4(Number(e.detail.value));
-        }}
-    />
-  );
-
-  const headerPiano = (
-    <TunerHeaderPiano
-      pianoColor = {pianoColor}
-      procStepIdx = {procStepIdx}
-    />
-  )
-
   return (
     <div className="h-full flex content-around justify-center flex-wrap">
       
-      {
-        tuneMode === TuneMode.PROCEDURE ? headerPiano : headerSelect
+      { tuneMode === TuneMode.PROCEDURE
+        ? <TunerHeaderPiano
+            pianoColor = {pianoColor}
+            procStepIdx = {procStepIdx}
+          />
+          
+        : <TunerHeaderSelect
+            defaultTemperamentId={selectedTemperamentId}
+            defaultFreqA4={freqA4}
+            temperamentsList={temperamentsList}
+            onTemperamentChange={(e: any) => {
+              setProcStepIdx(0);
+              setProcRepeatCount(0);
+              setSelectedTemperamentId(e.detail.value)
+              history.push(`/tune/${e.detail.value}`);
+            }}
+            onFreqA4Change={(e: any) => {
+              setProcStepIdx(0);
+              setProcRepeatCount(0);
+              setFreqA4(Number(e.detail.value));
+            }}
+          />
       }
 
       <PitchCircle

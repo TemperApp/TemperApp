@@ -18,7 +18,6 @@ const TunerFooter: React.FC<any> = ({ // TODO Update any
   onProcedurePrev,
   onProcedureRepeatStep,
 }) => {
-  // console.info('🔹 [TunerFooter]: Render')
 
   const btnEnterProcedure = (
     <IonCol size="5">

@@ -120,7 +120,10 @@
 }
 
 
-.testHeader {
+.tune-header-select {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   min-height: calc(94.6px + (0.5rem));
   max-height: calc(94.6px + (0.5rem));
 }

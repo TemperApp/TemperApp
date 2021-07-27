@@ -68,7 +68,6 @@ const PitchCircleBtn: React.FC<PitchCircleBtnProps> = ({
     }
   );
 
-  // console.info('🔹 [PitchCircleBtn]: Render')
   return (
     <path
       fill={fillColor(state)}

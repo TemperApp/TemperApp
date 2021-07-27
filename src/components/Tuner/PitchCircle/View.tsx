@@ -39,7 +39,6 @@ const PitchCircleView: React.FC<PitchCircleViewProps> = ({
       dispatchState({ type: BtnActions.SET, buttons: [{ note: note, state }] });
   }, [dispatchState]);
 
-  // console.info('🔹 [PitchCircleView]: Render')
   return (
     <section className="px-6 pt-2 w-full">
       <section id="pitch-circle" className="max-w-lg">

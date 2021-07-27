@@ -1,4 +1,4 @@
-import React  from 'react';
+import React from 'react';
 import { IonInput, IonSelect, IonSelectOption } from '@ionic/react';
 import { TemperamentDBType } from '../../engine/DB';
 import { ascendingOrder } from '../../utils/favorite';
@@ -18,10 +18,9 @@ const TunerHeaderSelect: React.FC<TunerHeaderProps> = ({
   onTemperamentChange,
   onFreqA4Change,
 }) => {
-  //console.info('🔹 [TunerHeader]: Render')
 
   return (
-    <section className="pt-3 px-4 w-full flex items-center justify-between testHeader">
+    <section className="px-4 pt-2 w-full tune-header-select">
       <IonSelect
         className="flex-grow"
         value={defaultTemperamentId}
@@ -45,7 +44,7 @@ const TunerHeaderSelect: React.FC<TunerHeaderProps> = ({
           value={defaultFreqA4}
           onIonChange={onFreqA4Change}
         ></IonInput>
-      </div>      
+      </div>
     </section>
   );
 };

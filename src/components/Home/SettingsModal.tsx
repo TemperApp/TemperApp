@@ -56,7 +56,6 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
     set(name, value);
   };
   
-  console.info('[SettingsModal]: Render');
   return (
     <>
       <PageModal

@@ -8,7 +8,6 @@ type TunerHeaderPianoProps = {
 const TunerHeaderPiano: React.FC<TunerHeaderPianoProps> = ({
   pianoColor, procStepIdx
 }) => {
-  //console.info('🔹 [TunerHeader]: Render')
 
   const isColored = (note: string) => {
     for(let i = 0; i<procStepIdx; i++){

@@ -14,8 +14,7 @@ const PitchCircleFifths: React.FC<PitchCircleFifthsProps> = ({
   qualities
 }) => {
   const settings = useContext(SettingsContext);
-  
-  // console.info('🔹 [PitchCircleFifths]: Render')
+
   return (
     <>
       <g id="pc-fifthcircle">

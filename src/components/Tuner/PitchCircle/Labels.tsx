@@ -13,7 +13,7 @@ const PitchCircleLabels: React.FC<PitchCircleLabelsProps> = ({
 }) => {
 
   const normalDisplay = () => {
-    return(
+    return (
       <text transform="matrix(1 0 0 1 178.5 178.5)">
         <tspan
           className="pc-label-primary"
@@ -29,10 +29,10 @@ const PitchCircleLabels: React.FC<PitchCircleLabelsProps> = ({
         </tspan>
       </text>
     )
-  } 
+  }
 
   const checkDisplay = () => {
-    return(
+    return (
       <text transform="matrix(1 0 0 1 178.5 178.5)">
         <tspan
           className="pc-label-primary"
@@ -52,11 +52,10 @@ const PitchCircleLabels: React.FC<PitchCircleLabelsProps> = ({
         >
           {label2}
         </tspan>
-        </text>
+      </text>
     )
-  } 
+  }
 
-  // console.info('🔹 [PitchCircleLabels]: Render')
   return (
     <g id="pc-centercircle">
       {isCheck === true ? checkDisplay() : normalDisplay()}

@@ -13,7 +13,6 @@ const PitchCircleThirds: React.FC<PitchCircleThirdsProps> = ({
 }) => {
   const settings = useContext(SettingsContext);
 
-  // console.info('🔹 [PitchCircleThirds]: Render')
   return (
     <>
       <g id="pc-thirdcircle">

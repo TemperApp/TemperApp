@@ -44,7 +44,7 @@ const PitchCircle: React.FC<PitchCircleProps> = ({
   const settings = useContext(SettingsContext);
   const TemperTone = useTemperTone();
   const [isCheck, setIsCheck] = useState(false);
-  
+
   /*
   useIonViewWillLeave(() => {
     // Works when ionic is handling the routes
@@ -196,12 +196,10 @@ const PitchCircle: React.FC<PitchCircleProps> = ({
   ]);
 
   useEffect(() => {
-    (proc && proc.steps[procStepIdx].action === ProcAction.CHECK)?setIsCheck(true):setIsCheck(false)
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  },[procStepIdx])
+    (proc && proc.steps[procStepIdx].action === ProcAction.CHECK) ? setIsCheck(true) : setIsCheck(false)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [procStepIdx])
 
-
-  // console.info('🟣 [PitchCircle]: Render: states:', Object.values(btnStates).reduce((acc, e) => acc + ' ' + e, ''))
   return (
     <>
       <IonPopover
