@@ -46,14 +46,11 @@
   bottom: 1rem;
 }
 
-.exchange-btn {
+.switch-inputs-btn {
   display: flex;
   margin: 0 auto;
-  margin-top: 1rem;
 }
 
 .comparator-svg {
-  display: flex;
-  justify-content: center;
   margin: 0 auto;
 }
