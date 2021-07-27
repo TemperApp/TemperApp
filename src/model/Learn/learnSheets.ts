@@ -11,7 +11,7 @@ export const learnSheets: Array<LearnSheet> = [
     label: "Définition",
     content: `### Qu’est ce qu’un tempérament ?
   > « Opération par laquelle, au moyen dʼune légère altération dans les Intervalles, faisant évanouir la différence de deux sons voisins, on les confond en un, qui, sans choquer lʼoreille, forme les Intervalles respectifs de lʼun & de lʼautre. Par cette opération lʼon simplifie lʼEchelle, en diminuant le nombre des Sons nécessaires. Sans le Tempérament, au lieu de douze Sons seulement que contient lʼOctave, il en faudroit plus de soixante pour moduler dans tous les Tons ».  
-  — J. J. Rousseau, Extrait de « Tempérament », _Dictionnaire de la musique_, 1764.
+  > - J. J. Rousseau, Extrait de « Tempérament », _Dictionnaire de la musique_, 1764.
   
   Le **tempérament musical** est l’ensemble des choix esthétiques faits au cours de l'accord d’un instrument de musique. La définition de Jean-Jacques Rousseau résume ce qu’on peut considérer comme un triple compromis que constitue un tempérament musical. Il s’agit de trouver une solution qui combine de la façon la plus satisfaisante, selon le contexte (le répertoire, les instruments concernés, etc.) : un paramètre physique et matériel (la “jouabilité” sur les instruments, sur un clavier, un manche avec des frettes, etc.), un paramètre musical (pouvoir moduler le plus librement et le plus loin possible), et un paramètre esthétique (conserver ou pas le plus possible d’intervalles purs “sans choquer l’oreille”).
     
