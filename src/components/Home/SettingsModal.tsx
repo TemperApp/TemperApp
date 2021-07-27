@@ -343,7 +343,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
 
 
           <SettingsGroup
-            title='Distortion audio'
+            title='Distorsion audio'
             titleAside={
               <IonButton 
                 size='small' fill='clear'
@@ -356,7 +356,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
         
             <SettingRange
               name="Quantité"
-              attributes={{ min: 0, max: 1, step: 0.05 }}
+              attributes={{ min: 0, max: 1, step: 0.05, pin: false }}
               value={nextSettings.amSynthDistortionAmount}
               onChange={(e) => {
                 set('amSynthDistortionAmount', e.detail.value);
@@ -368,7 +368,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
             <SettingInput
               name="Distortion max fréquence"
               type="number"
-              attributes={{ min: 100, max: 500, step: 20 }}
+              attributes={{ min: 10, max: 22000, step: 1 }}
               value={nextSettings.amSynthDistortionLowFrequency}
               onChange={(e) => {
                 const value = Number(e.detail.value);
@@ -382,7 +382,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
             <SettingInput
               name="Distortion min fréquence"
               type="number"
-              attributes={{ min: 100, max: 500, step: 20 }}
+              attributes={{ min: 10, max: 22000, step: 1 }}
               value={nextSettings.amSynthDistortionHighFrequency}
               onChange={(e) => {
                 const value = Number(e.detail.value);

@@ -4,7 +4,7 @@ import { IonRange } from "@ionic/react";
 type SettingRangeProps = {
   name?: string,
   value: number,
-  attributes?: object,
+  attributes?: any,
   className?: string,
   classNameDefault?: string,
   classNameText?: string,
@@ -29,7 +29,7 @@ const SettingRange: React.FC<SettingRangeProps> = ({
         {name}
       </p>
       <IonRange
-        className={classNameIonRange}
+        className={`${classNameIonRange} ${attributes.pin ? '' : 'pt-5'}`}
         pin={true}
         value={value}
         onIonChange={onChange}
