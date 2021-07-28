@@ -5,13 +5,12 @@ import './PageModal.css'
 type PageModalProps = {
   title?: string,
   onQuit: (e: any) => void,
-  children?: React.ReactNode,
 };
 
 const PageModal: React.FC<PageModalProps> = ({
+  children = null,
   title = '',
   onQuit,
-  children = null,
 }) => {
   return (
     <>

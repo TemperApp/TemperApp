@@ -15,14 +15,13 @@ import { useHistory } from "react-router";
 type SheetProps = {
   mainTitle?: string,
   subTitle?: string,
-  children: React.ReactNode,
   id: string,
 }
 
 const Sheet: React.FC<SheetProps> = ({
+  children,
   mainTitle = '',
   subTitle = '',
-  children,
   id
 }) => {
 

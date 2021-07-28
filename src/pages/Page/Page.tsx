@@ -8,15 +8,14 @@ type PageProps = {
   subTitle?: string,
   modalTitle?: string,
   modalContent?: React.ReactNode,
-  children?: React.ReactNode,
 }
 
 const Page: React.FC<PageProps> = ({
+  children = null,
   mainTitle = '',
   subTitle = '',
   modalTitle = '',
   modalContent = null,
-  children = null,
 }) => {
   const [_mainTitle,] = useState(mainTitle);
   const [_subTitle,] = useState(subTitle);

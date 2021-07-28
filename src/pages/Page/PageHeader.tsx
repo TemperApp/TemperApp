@@ -9,16 +9,15 @@ type PageHeaderProps = {
   onShowModal?: (event: any) => void,
   canGoBack?: boolean,
   onGoBack?: (event: any) => void,
-  children?: React.ReactNode,
 }
 
 const PageHeader: React.FC<PageHeaderProps> = ({
+  children = null,
   mainTitle = '',
   subTitle = '',
   onShowModal,
   canGoBack = false,
   onGoBack = null,
-  children = null,
 }) => {
   const history = useHistory();
 
