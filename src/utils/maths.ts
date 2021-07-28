@@ -1,3 +1,8 @@
+export const cos = Math.cos;
+export const sin = Math.sin;
+export const PI = Math.PI;
+export const epsilon = 0.00001;
+
 export const lerp = (
   xmin: number,
   xmax: number,
@@ -25,6 +30,7 @@ export const random = (
 ) => (
   Math.random() * (max - min) + min
 );
+
 
 export const magnet = (
   set: number[],
