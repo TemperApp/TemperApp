@@ -13,9 +13,11 @@ import ArrowCollapseSVG from "../Sheets/ArrowCollapseSVG";
 import { fetchTemperaments } from "../../engine/DataAccessor";
 import { ascendingOrder, temperamentFavorite } from "../../utils/favorite";
 import UserContext from "../../store/user-context";
+import GlobalStatesContext from "../../store/global-states-context";
 
 const HomeContent: React.FC = () => {
 
+  const global = useContext(GlobalStatesContext);
   const user = useContext(UserContext);
   const [favoriteTemperaments, setMyTemperaments] = useState<TemperamentDBType[]>([]);
   const [famousTemperaments, setFamousTemperaments] = useState<TemperamentDBType[]>([]);
@@ -76,7 +78,8 @@ const HomeContent: React.FC = () => {
                       className="btn-primary"
                       expand="block"
                       color="temperapp"
-                      routerLink={`/tune/${t.idTemperament}`}
+                      onClick={() => global.setTunerTemperamentId(t.idTemperament)}
+                      routerLink={`/tune`}
                     >
                       {t.nameFR}
                     </IonButton>
@@ -107,7 +110,8 @@ const HomeContent: React.FC = () => {
                       className="btn-primary"
                       expand="block"
                       color="temperapp"
-                      routerLink={`/tune/${t.idTemperament}`}
+                      onClick={() => global.setTunerTemperamentId(t.idTemperament)}
+                      routerLink={`/tune`}
                     >
                       {t.nameFR}
                     </IonButton>

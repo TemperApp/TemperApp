@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext, useCallback } from "react";
 import { IonGrid, IonRow } from "@ionic/react";
 
 import SettingsContext from "../../store/settings-context";
-import { useHistory, useParams } from "react-router";
+import GlobalStatesContext from "../../store/global-states-context";
 import useTemperTone from "../../hooks/useTemperTone";
 
 import TunerHeaderInputs from "./TunerHeaderInputs";
@@ -35,16 +35,13 @@ const Tuner: React.FC<TunerProps> = ({
   setSubTitle,
 }) => {
 
-  const history = useHistory();
-  const {id} = useParams<{ id: string }>(); // TODO Fix multiple rerender
-
+  const settings = useContext(SettingsContext);
+  const global = useContext(GlobalStatesContext);
   const TemperTone = useTemperTone();
 
-  const settings = useContext(SettingsContext);
   const [isMuted, setIsMuted] = useState<boolean>(true);
   const [tuneMode, setTuneMode] = useState(TuneMode.BEATS);
   const [temperament, setTemperament] = useState<Temperament>(EqualTemperament);
-  const [selectedTemperamentId, setSelectedTemperamentId] = useState<number>(1);
   const [temperamentsList, setTemperamentsList] = useState<TemperamentDBType[]>([]);
   const [freqA4, setFreqA4] = useState<number>(settings.freqA4);
   const [proc, setProc] = useState<Procedure | null>(null);
@@ -79,14 +76,10 @@ const Tuner: React.FC<TunerProps> = ({
   }, []);
 
   useEffect(() => {
-    setSelectedTemperamentId(Number(id) || 1);
-  }, [id]);
-
-  useEffect(() => {
     (async () => {
-      setTemperament(await fetchTemperamentPropsById(selectedTemperamentId));
+      setTemperament(await fetchTemperamentPropsById(global.tunerTemperamentId));
     })();
-  }, [selectedTemperamentId]);
+  }, [global.tunerTemperamentId]);
 
   useEffect(() => {
     if (tuneMode === TuneMode.PROCEDURE)
@@ -138,14 +131,13 @@ const Tuner: React.FC<TunerProps> = ({
           />
           
         : <TunerHeaderInputs
-            defaultTemperamentId={selectedTemperamentId}
+            defaultTemperamentId={global.tunerTemperamentId}
             defaultFreqA4={freqA4}
             temperamentsList={temperamentsList}
             onTemperamentChange={(e: any) => {
               setProcStepIdx(0);
               setProcRepeatCount(0);
-              setSelectedTemperamentId(e.detail.value)
-              history.push(`/tune/${e.detail.value}`);
+              global.setTunerTemperamentId(e.detail.value);
             }}
             onFreqA4Change={(inputFreqA4: number) => {
               setProcStepIdx(0);
@@ -163,6 +155,7 @@ const Tuner: React.FC<TunerProps> = ({
         procStepIdx={procStepIdx}
         procRepeatCount={procRepeatCount}
       />
+      
       <IonGrid className="w-full">
         <IonRow >
           <TunerFooter

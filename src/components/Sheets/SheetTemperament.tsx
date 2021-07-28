@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import Sheet from './Sheet';
 import { fetchTemperamentPropsById } from "../../engine/DataAccessor";
 import { Temperament } from "../../model/Temperament/Temperament";
@@ -13,6 +13,7 @@ import FifthComaCircle from './FifthComaCircle';
 import { fifthQ, thirdQ } from '../../model/Divergence';
 import Toggler from '../inputs/Toggler';
 import ThirdComaCircle from './ThirdComaCircle';
+import GlobalStatesContext from '../../store/global-states-context';
 
 const slideOpts = {
   initialSlide: 0,
@@ -21,6 +22,7 @@ const slideOpts = {
 
 const SheetTemperament: React.FC = () => {
 
+  const global = useContext(GlobalStatesContext);
   const { id } = useParams<{ id: string }>();
   const [temperament, setTemperament] = useState<Temperament>(EqualTemperament);
   const [isCpMode, setCpMode] = useState<boolean>(true);
@@ -149,8 +151,10 @@ const SheetTemperament: React.FC = () => {
       </div>
 
       <IonButton
+        id="btn-goto-tune"
         className="btn-round fixed right-4 btn-tune-sheet"
-        routerLink={`/tune/${temperament.idTemperament}`}
+        onClick={() => global.setTunerTemperamentId(temperament.idTemperament)}
+        routerLink={`/tune`}
       >
         <IonIcon
           style={{ fontSize: "3rem"} /* TODO Find a better way */}

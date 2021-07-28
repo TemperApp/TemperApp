@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Redirect, Route, Switch } from "react-router-dom";
+import { Redirect, Route } from "react-router-dom";
 import { IonApp, IonRouterOutlet } from "@ionic/react";
 import { IonReactRouter } from "@ionic/react-router";
 import {
@@ -84,29 +84,25 @@ const App: React.FC = () => {
       <IonReactRouter>
         <IonTabs>
           <IonRouterOutlet>
-            <Switch>
-              <Route exact path="/:tab(tune)/:id" children={<Tune />} />
-              <Redirect from="/:tab(tune)" to="/:tab(tune)/1" />
+            {/*
+              Using the render method prop cuts down the number of renders your components will have due to route changes.
+              Use the component prop when your component depends on the RouterComponentProps passed in automatically.
+              https://github.com/ionic-team/ionic-react-conference-app/blob/master/src/pages/MainTabs.tsx#L20-L24
+            */}
+            <Route exact path="/tune" render={() => <Tune />} />
+            <Route exact path="/compare" render={() => <Compare />} />
+            <Route exact path="/home" render={() => <Home />} />
+            <Route exact path="/sheets" render={() => <Sheets />} />
+            <Route exact path="/learn" render={() => <Learn />} />
 
-              <Route exact path="/:tab(compare)" children={<Compare />} />
-              <Redirect from="/:tab(compare)" to="/:tab(compare)" />
+            <Route path="/sheets/temperament/:id" component={SheetTemperament} />
+            <Route path="/learn/:id" component={LearnSheet} />
 
-              <Route exact path="/:tab(home)" children={<Home />} />
-              <Redirect from="/:tab(home)" to="/:tab(home)" />
+            <Route exact path="/storage" render={() => <StorageTest />} />
 
-              <Route exact path="/:tab(sheets)" children={<Sheets />} />
-              <Route path="/:tab(sheets)/temperament/:id" children={<SheetTemperament />} />
-              <Redirect from="/:tab(sheets)" to="/:tab(sheets)" />
-
-              <Route exact path="/:tab(learn)" children={<Learn />} />
-              <Route path="/:tab(learn)/:id" children={<LearnSheet />} />
-              <Redirect from="/:tab(learn)" to="/:tab(learn)" />
-
-              <Route exact path="/storage" children={<StorageTest />} />
-
-              <Redirect from="/" to="/home" />
-            </Switch>
+            <Redirect exact from="/" to="/home" />
           </IonRouterOutlet>
+          
           <IonTabBar slot="bottom">
             <IonTabButton className="ion-no-padding" tab="tune" href="/tune">
               <IonIcon

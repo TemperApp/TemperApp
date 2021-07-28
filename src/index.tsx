@@ -5,11 +5,14 @@ import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 import reportWebVitals from './reportWebVitals';
 import { SettingsContextProvider } from './store/settings-context'
 import { UserContextProvider } from './store/user-context';
+import { GlobalStatesContextProvider } from './store/global-states-context';
 
 ReactDOM.render(
   <SettingsContextProvider>
     <UserContextProvider>
-      <App />
+      <GlobalStatesContextProvider>
+        <App />
+      </GlobalStatesContextProvider>
     </UserContextProvider>
   </SettingsContextProvider>,
   document.getElementById('root')
