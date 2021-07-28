@@ -2,7 +2,6 @@
   "name": "temperapp",
   "version": "0.0.1",
   "private": true,
-  "homepage": "https://benjaminbriere.github.io/",
   "dependencies": {
     "@capacitor-community/sqlite": "^2.9.16",
     "@capacitor/android": "3.0.0",
@@ -86,5 +85,5 @@
     "react-data-storage-sqlite-hook": "^1.0.0",
     "react-scripts": "4.0.3"
   },
-  "description": "An Ionic project"
+  "description": "Musical instrument tuning app using Ionic"
 }
