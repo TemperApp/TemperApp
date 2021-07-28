@@ -16,7 +16,7 @@ const Sheets: React.FC = () => {
         />
       </IonHeader>
 
-      <IonContent fullscreen scrollY={true}>
+      <IonContent scrollY={true}>
         <SheetsList />
       </IonContent>
     </IonPage>

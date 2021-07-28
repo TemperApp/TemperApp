@@ -152,7 +152,7 @@ const SheetTemperament: React.FC = () => {
 
       <IonButton
         id="btn-goto-tune"
-        className="btn-round fixed right-4 btn-tune-sheet"
+        className="btn-round fixed right-4"
         onClick={() => global.setTunerTemperamentId(temperament.idTemperament)}
         routerLink={`/tune`}
       >
