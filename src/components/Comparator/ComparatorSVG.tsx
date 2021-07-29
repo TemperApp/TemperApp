@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-import ComparatorComa from './ComparatorComa';
+import ComparatorComma from './Comma';
 import ComparatorDivergence from './ComparatorDivergence';
 
 import { fetchTemperamentPropsById } from '../../engine/DataAccessor';
@@ -46,7 +46,7 @@ const ComparatorSVG: React.FC<ComparatorSVGProps> = ({
         />
       </div>
     
-      <ComparatorComa
+      <ComparatorComma
         temperamentInner={temperament2}
         temperamentOuter={temperament1}
       />
