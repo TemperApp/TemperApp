@@ -8,6 +8,7 @@ type LabelsRingProps = {
   c: vec2,
   innerR: number,
   outerR: number,
+  fontSize?: number,
   hasStroke?: boolean;
   attributes?: any,
 };
@@ -18,6 +19,7 @@ const LabelsRing: React.FC<LabelsRingProps> = ({
   c,
   innerR,
   outerR,
+  fontSize,
   hasStroke = false,
   attributes = {},
 }) => {
@@ -25,6 +27,7 @@ const LabelsRing: React.FC<LabelsRingProps> = ({
     <Ring innerR={innerR} outerR={outerR} c={c}
       data={labels.map((label) => ({ label, fill }))}
       hasStroke={hasStroke}
+      fontSize={fontSize}
       isTextHorizontal
       {...attributes} />
   );

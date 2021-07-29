@@ -88,6 +88,9 @@ test('formatCpExp5thStr', () => {
   expect(formatCpExp5thStr("+1/12.768")).toEqual("+1/12.8");
   expect(formatCpExp5thStr("1/1.89")).toEqual("1/1.9");
   expect(formatCpExp5thStr("1/4.0")).toEqual("1/4");
+  expect(formatCpExp5thStr("1/4")).toEqual("1/4");
+  expect(formatCpExp5thStr("1/12.0")).toEqual("1/12");
+  expect(formatCpExp5thStr("1/12.01")).toEqual("1/12.0");
   expect(formatCpExp5thStr("1/4.20")).toEqual("1/4.2");
 });
 
@@ -110,17 +113,18 @@ test('isCpExp5thValid', () => {
 
 
 test('cpExp5thToCsExp5th', () => {
-  expect(cpExp5thToCsExp5th("-1/6")).toEqual("-1/5.5");
+  expect(cpExp5thToCsExp5th("1/12")).toEqual("1/11");
+  expect(cpExp5thToCsExp5th("-1/6")).toEqual("1/5.5");
   expect(cpExp5thToCsExp5th("+1/0.66")).toEqual("+1/0.6");
-  expect(cpExp5thToCsExp5th("-1/4.36")).toEqual("-1/4");
-  expect(cpExp5thToCsExp5th("-1/6.52")).toEqual("-1/5.98");
+  expect(cpExp5thToCsExp5th("-1/4.36")).toEqual("1/4");
+  expect(cpExp5thToCsExp5th("-1/6.52")).toEqual("1/6.0");
   expect(cpExp5thToCsExp5th("+1/13.19")).toEqual("+1/12.1");
-  expect(cpExp5thToCsExp5th("+1/3.3")).toEqual("+1/3.02");
-  expect(cpExp5thToCsExp5th("+1/6.6")).toEqual("+1/6.05");
+  expect(cpExp5thToCsExp5th("+1/3.3")).toEqual("+1/3.0");
+  expect(cpExp5thToCsExp5th("+1/6.61")).toEqual("+1/6.1");
   expect(cpExp5thToCsExp5th("0")).toEqual("0");
-  expect(cpExp5thToCsExp5th("-1/5")).toEqual("-1/4.58");
-  expect(cpExp5thToCsExp5th("+1/4")).toEqual("+1/3.67");
-  expect(cpExp5thToCsExp5th("-1/1")).toEqual("-1/0.92");
+  expect(cpExp5thToCsExp5th("-1/5")).toEqual("1/4.6");
+  expect(cpExp5thToCsExp5th("+1/4")).toEqual("+1/3.7");
+  expect(cpExp5thToCsExp5th("-1/1")).toEqual("1/0.9");
 });
 
 

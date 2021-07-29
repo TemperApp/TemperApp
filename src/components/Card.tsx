@@ -5,14 +5,20 @@ import { IonCard, IonCardHeader,
 
 type CardProps = {
   title?: string,
+  className?: string,
+  classNameDefault?: string,
+  classNameContent?: string,
 }
 
 const Card: React.FC<CardProps> = ({
   children,
   title,
+  className = '',
+  classNameDefault = 'h-full',
+  classNameContent = '',
 }) => {
   return (
-      <IonCard className="comma-card h-full">
+      <IonCard className={`${classNameDefault} ${className}`}>
         {title
           && <IonCardHeader className="py-0">
             <IonCardTitle className="px-1 text-left">
@@ -20,7 +26,7 @@ const Card: React.FC<CardProps> = ({
             </IonCardTitle>
           </IonCardHeader>
         }
-        <IonCardContent>
+        <IonCardContent className={classNameContent}>
           {children}
         </IonCardContent>
       </IonCard>

@@ -12,8 +12,9 @@ type SectorProps = {
   fill?: string,
   label?: string,
   isTextHorizontal?: boolean,
+  fontSize?: number,
   hasStroke?: boolean;
-  attributes?: any,
+  attributesPath?: any,
 };
 
 const Sector: React.FC<SectorProps> = ({
@@ -27,10 +28,10 @@ const Sector: React.FC<SectorProps> = ({
   fill = 'transparent',
   label = '',
   isTextHorizontal = false,
+  fontSize = Math.max(6, (outerR - innerR) / 1.6),
   hasStroke = true,
-  attributes = {},
+  attributesPath = {},
 }) => {
-  const fontSize = 10.5;
   const offsetAngles = offsetAngle + offsetAngle2;
   const middleR = (innerR + outerR)/2;
   const isTextPathInverted = (offsetAngles >= 0 && offsetAngles < PI-angle/2);
@@ -55,7 +56,7 @@ const Sector: React.FC<SectorProps> = ({
         fill={fill}
         stroke="var(--color-hover)"
         strokeWidth={hasStroke ? '0.5px' : '0'}
-        {...attributes}
+        {...attributesPath}
         d={`
           M ${toCartesian(0, c, outerR).x} ${toCartesian(0, c, outerR).y}
 

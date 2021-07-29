@@ -14,8 +14,10 @@ type RingProps = {
   innerR: number,
   outerR: number,
   isTextHorizontal?: boolean,
+  fontSize?: number,
   hasStroke?: boolean;
   attributes?: any,
+  attributesSector?: any,
 };
 
 const Ring: React.FC<RingProps> = ({
@@ -24,8 +26,10 @@ const Ring: React.FC<RingProps> = ({
   innerR,
   outerR,
   isTextHorizontal = false,
+  fontSize,
   hasStroke = true,
   attributes = {},
+  attributesSector = {},
 }) => (
   <g {...attributes}>
     {data.map(({fill, label}, idx) =>
@@ -41,6 +45,8 @@ const Ring: React.FC<RingProps> = ({
         label={label || ''}
         isTextHorizontal={isTextHorizontal}
         hasStroke={hasStroke}
+        fontSize={fontSize}
+        {...attributesSector}
       />
     )}
   </g>

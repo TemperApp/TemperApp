@@ -1,18 +1,24 @@
 import React, { useEffect, useState } from 'react';
 import { IonButton, IonCol, IonGrid, IonIcon, IonRow, IonSelect, IonSelectOption } from '@ionic/react';
-import { fetchTemperaments } from '../../engine/DataAccessor';
+import { fetchTemperamentPropsById, fetchTemperaments } from '../../engine/DataAccessor';
 import { TemperamentDBType } from '../../engine/DB';
 
-//Style
-import './Comparator.css'
-import ComparatorSVG from './ComparatorSVG';
+import ComparatorQuadRings from './QuadRings';
+import ComparatorComma from './Comma';
+import ComparatorDivergence from './ComparatorDivergence';
+
 import EqualTemperament from '../../model/Temperament/Equal';
+import { Temperament } from '../../model/Temperament/Temperament';
 import { ascendingOrder } from '../../utils/favorite';
+
+import './Comparator.css';
 
 const Comparator: React.FC = () => {
   
-  const [temperament1, setTemperament1] = useState<TemperamentDBType>(EqualTemperament);
-  const [temperament2, setTemperament2] = useState<TemperamentDBType>(EqualTemperament);
+  const [idTemperament1, setIdTemperament1] = useState<number>(1);
+  const [idTemperament2, setIdTemperament2] = useState<number>(1);
+  const [temperament1, setTemperament1] = useState<Temperament>(EqualTemperament);
+  const [temperament2, setTemperament2] = useState<Temperament>(EqualTemperament);
   const [temperamentsList, setTemperamentsList] = useState<Array<TemperamentDBType>>([]);
 
   useEffect(() => {
@@ -21,17 +27,29 @@ const Comparator: React.FC = () => {
     })();
   }, []);
 
+  useEffect(() => {
+    (async () => {
+      setTemperament1(await fetchTemperamentPropsById(idTemperament1));
+    })();
+  }, [idTemperament1]);
+
+  useEffect(() => {
+    (async () => {
+      setTemperament2(await fetchTemperamentPropsById(idTemperament2));
+    })();
+  }, [idTemperament2]);
+
   return (
     <>
       <IonGrid id="comparator-inputs" className="px-6 w-full fixed">
         <IonRow className="items-center">
           <IonCol size="5.25">
             <IonSelect className="w-full"
-              value={temperament1} placeholder="Tempérament"
-              onIonChange={e => setTemperament1(e.detail.value)}
+              value={idTemperament1} placeholder="Tempérament"
+              onIonChange={e => setIdTemperament1(e.detail.value)}
               >
               {temperamentsList.sort(ascendingOrder).map((t: TemperamentDBType) =>
-                <IonSelectOption key={t.idTemperament} value={t}>
+                <IonSelectOption key={t.idTemperament} value={t.idTemperament}>
                   {t.nameFR}
                 </IonSelectOption>
               )}
@@ -42,11 +60,9 @@ const Comparator: React.FC = () => {
             <IonButton className="switch-inputs-btn h-6"
             fill="clear"
             onClick={() => {
-              if(temperament1.name !== temperament2.name){
-                const aux = temperament1;
-                setTemperament1(temperament2);
-                setTemperament2(aux);
-              }
+              const aux = idTemperament1;
+              setIdTemperament1(idTemperament2);
+              setIdTemperament2(aux);
             }}>
               <IonIcon className="flex items-end justify-end"
                 src="assets/logotypes/icon-exchange.svg"
@@ -57,11 +73,11 @@ const Comparator: React.FC = () => {
 
           <IonCol size="5.25">
             <IonSelect className="w-full"
-              value={temperament2} placeholder="Tempérament"
-              onIonChange={e => setTemperament2(e.detail.value)}
+              value={idTemperament2} placeholder="Tempérament"
+              onIonChange={e => setIdTemperament2(e.detail.value)}
             >
               {temperamentsList.sort(ascendingOrder).map((t: TemperamentDBType) =>
-                <IonSelectOption key={t.idTemperament} value={t}>
+                <IonSelectOption key={t.idTemperament} value={t.idTemperament}>
                   {t.nameFR}
                 </IonSelectOption>
               )}
@@ -70,12 +86,20 @@ const Comparator: React.FC = () => {
         </IonRow>
       </IonGrid>
 
-      <section className="mt-16">
-        <ComparatorSVG
-          idTemperament1={temperament1.idTemperament}
-          idTemperament2={temperament2.idTemperament}
-        />
-      </section>
+      <ComparatorQuadRings
+        t1={temperament1}
+        t2={temperament2}
+      />
+    
+      <ComparatorComma
+        t1={temperament1}
+        t2={temperament2}
+      />
+
+      <ComparatorDivergence
+        t1={temperament1}
+        t2={temperament2}
+      />
     </>
   );
 };

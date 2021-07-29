@@ -13,7 +13,7 @@ export const isCsExp3rdValid = (csExp3rd: string): boolean => {
 
 export const cpExp5thRegexMatch = (cpExp5th: string): RegExpMatchArray | null => {
   return cpExp5th.trim()
-    .match(/^[+-]?0+$|^([+-])?([0-9]+)\/(([0-9]*)[.]?([0-9]?)([0-9]+))$/);
+    .match(/^[+-]?0+$|^([+-])?([0-9]+)\/((?:[0-9]*)[.]?[0-9]?[0-9]+)$/);
 }
 
 
@@ -65,13 +65,13 @@ export const formatCpExp5thStr = (cpExp5th: string): string | null => {
   
   if (String(Number(match[0])) === '0')
     return '0';
-  const [, sign, numerator, denominator, , emptyOrFist, onlyOrNext] = match;
+  const [, sign, numerator, denominator] = match;
   return (
     (sign === "+" ? "+" : "")
     + numerator
     + "/"
-    + ((emptyOrFist === "" && onlyOrNext === "0")
-      ? Number(denominator).toFixed(0)
+    + (String(Number(denominator)) === Number(denominator).toFixed(0)
+      ? Number(denominator)
       : Number(denominator).toFixed(1))
   );
 };
@@ -80,7 +80,7 @@ export const formatCpExp5thStr = (cpExp5th: string): string | null => {
 /**
  * @param cpExp5th the pythagorean comma exponent as string
  *                 with a common format of use.
- *                 (e.g.: -1/12, 0, +1/4.36, 2/0.66).
+ *                 (e.g.: -1/12, 0, +1/4.36).
  *                 No sign provided means 'minus' (-) by default
  * @returns the corresponding CsExp5th according to:
  * "denominator(cpExp5th) * (11/12) = denominator(csExp5th)"
@@ -92,26 +92,20 @@ export const cpExp5thToCsExp5th = (cpExp5th : string): string | null => {
     console.warn(`[Model]: Cannot parse cpExp5th string: ${cpExp5th}`);
     return null;
   }
+
   if (String(Number(match[0])) === '0')
-  return '0';
+    return '0';
 
-  const [, sign, , denominator] = match;
-  const result = ((sign || '') + "1/" + (Number(denominator)*(11/12)).toFixed(2))
-                  .match(/^[+-]?0+$|^[+-]?[0-9]+\/(([0-9]*[.])?([0-9])([0-9])+)$/);
-  if (!result) {
-    console.log((sign || '') + "1/" + (Number(denominator)*(11/12)).toFixed(2));
-    console.warn(`[Model]: cpExp5thToCsExp5th: error cpExp5th: ${cpExp5th}`);
-    return null;
-  }
+  const sign = (match[1] === "+" ? "+" : "");
+  const numerator = Number(match[2]);
+  const denominator = Number(match[3]) * 11/12 / numerator;
 
-  const [ , , unit, tenth, hundredth] = result; 
   return (
-    sign + "1/" + (tenth === "0" ?
-    (hundredth === "0" ? 
-      Number(denominator).toFixed(0) : 
-      Number(hundredth) > 5 ? unit + String((Number(tenth) + 1)) : unit + tenth + hundredth
-    ) :  
-    unit + tenth + (hundredth === "0" ? "" : hundredth))
+    sign + "1/"
+    + (Math.abs(denominator - Math.round(denominator)) < 0.01
+        ? (denominator).toFixed(0)
+        : (denominator).toFixed(1)
+      )
   );
 };
 
@@ -189,6 +183,7 @@ export const freqs4 = (
  *                    with a common format of use.
  *                    (e.g.: +7/11, 0, -1/11, , 20/11).
  *                    No sign provided means 'plus' (+) by default
+ * @param fallbackValue value to return if parsing fails
  * @returns thirds quality number value
  */
 export const thirdQ = (
@@ -204,6 +199,7 @@ export const thirdQ = (
  *                    with a common format of use.
  *                    (e.g.: -1/12, 0, +1/4.36, 2/0.66).
  *                    No sign provided means 'minus' (-) by default
+ * @param fallbackValue value to return if parsing fails
  * @returns fitfhs quality number value
  */
 export const fifthQ = (

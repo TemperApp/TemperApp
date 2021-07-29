@@ -40,11 +40,6 @@
   color: var(--color-contrast);
 }
 
-.comma-card {
-  height: 30rem;
-  padding-bottom: 24px;
-}
-
 .comma-toggler{
   position: absolute;
   right: 1rem;
