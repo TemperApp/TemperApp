@@ -44,7 +44,7 @@ import LearnSheet from './components/Learn/LearnSheet';
 import Learn from './pages/Learn';
 import SheetTemperament from './components/Sheets/SheetTemperament';
 import StorageTest from './components/StorageTest';
-import Doughnut from './utils/svg/doughnut';
+import Doughnut from './components/Doughnut';
 import { cpExp5thStrToNumber, formatCpExp5thStr } from './model/Divergence';
 import { convertFifthQualityToColor } from './utils/colorCircle';
 import SettingsContext from './store/settings-context';

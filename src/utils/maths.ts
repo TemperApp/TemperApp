@@ -3,6 +3,59 @@ export const sin = Math.sin;
 export const PI = Math.PI;
 export const epsilon = 0.00001;
 
+
+export type vec2 = {
+  x: number,
+  y: number,
+};
+
+export type vec3 = {
+  x: number,
+  y: number,
+  z: number,
+};
+
+
+/**
+ * @param x angle in radians
+ * @returns the angle in degrees
+ */
+export const toDegrees = (x: number) => (x / (2*PI) * 360);
+
+
+/**
+ * @param x angle in degrees
+ * @returns the angle in radians
+ */
+export const toRad = (x: number) => (x / 360 * 2*PI);
+
+
+/**
+ * Performs conversion from polar
+ * to cartesian coordinate system
+ * @param angle 
+ * @param c center
+ * @param r radius
+ */
+export const toCartesian = (
+  angle: number,
+  c={ x:0, y:0 },
+  r = 1
+): vec2 => ({
+  x: r * cos(angle) + c.x,
+  y: r * sin(angle) + c.y
+});
+
+
+/**
+ * Performs linear interpolation
+ * @param xmin 
+ * @param xmax 
+ * @param ymin 
+ * @param ymax 
+ * @param x 
+ * @returns 
+ */
 export const lerp = (
   xmin: number,
   xmax: number,
@@ -15,6 +68,13 @@ export const lerp = (
 );
 
 
+/**
+ * Constraints value to stay between
+ * given min and max values
+ * @param min 
+ * @param max 
+ * @param x
+ */
 export const bound = (
   min: number,
   max: number,
@@ -24,6 +84,11 @@ export const bound = (
 );
 
 
+/**
+ * @param min 
+ * @param max 
+ * @returns a random float between given min and max
+ */
 export const random = (
   min = 0,
   max = 1,
@@ -32,6 +97,12 @@ export const random = (
 );
 
 
+/**
+ * @param set set of possible values
+ * @param x value to magnet
+ * @returns the nearest value of the set
+ * corresponding to 'x'
+ */
 export const magnet = (
   set: number[],
   x: number,
