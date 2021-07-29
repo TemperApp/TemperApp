@@ -1,15 +1,15 @@
 import React from 'react';
 import { PI, vec2 } from '../../utils/maths';
 import Sector from './Sector';
-import './Doughnut.css';
+import './Ring.css';
 
-type DoughnutSector = {
+type RingSector = {
   fill?: string,
   label?: string,
 };
 
-type DoughnutProps = {
-  data: DoughnutSector[],
+type RingProps = {
+  data: RingSector[],
   c: vec2,
   innerR: number,
   outerR: number,
@@ -18,7 +18,7 @@ type DoughnutProps = {
   attributes?: any,
 };
 
-const Doughnut: React.FC<DoughnutProps> = ({
+const Ring: React.FC<RingProps> = ({
   data,
   c,
   innerR,
@@ -46,4 +46,4 @@ const Doughnut: React.FC<DoughnutProps> = ({
   </g>
 );
 
-export default Doughnut;
+export default Ring;

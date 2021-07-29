@@ -5,7 +5,6 @@ import ComparatorDivergence from './ComparatorDivergence';
 
 import { fetchTemperamentPropsById } from '../../engine/DataAccessor';
 import EqualTemperament from '../../model/Temperament/Equal';
-import { fifthQ, thirdQ } from '../../model/Divergence';
 import { Temperament } from '../../model/Temperament/Temperament';
 
 import './Comparator.css'
@@ -39,10 +38,8 @@ const ComparatorSVG: React.FC<ComparatorSVGProps> = ({
     <>
       <div className="pt-2 px-6 justify-center max-w-lg comparator-svg">
         <ComparatorQuadRings
-          t1FifthsQ={fifthQ(temperament1.cpExp5th)}
-          t1ThirdsQ={thirdQ(temperament1.csExp3rd)}
-          t2FifthsQ={fifthQ(temperament2.cpExp5th)}
-          t2ThirdsQ={thirdQ(temperament2.csExp3rd)}
+          t1={temperament1}
+          t2={temperament2}
         />
       </div>
     

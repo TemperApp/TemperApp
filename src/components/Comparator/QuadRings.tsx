@@ -1,66 +1,30 @@
-import React, { useCallback, useContext } from 'react';
-import './Comparator.css'
-import { convertFifthQualityToColor, convertThirdQualityToColor } from '../../utils/colorCircle';
-import SettingsContext from '../../store/settings-context';
-import Doughnut from '../Doughnut';
-import NotesMap, { notesMapToArray, OrderBy } from '../../model/Note/NotesMap';
+import React from 'react';
 import SVG from '../SVG';
 import { FIFTHS } from '../../model/Note/sequences';
+import CommasRing from '../Ring/CommasRing';
+import LabelsRing from '../Ring/LabelsRing';
+import { Temperament } from '../../model/Temperament/Temperament';
+import './Comparator.css'
 
 type ComparatorQuadRingsProps = {
-  t1FifthsQ: NotesMap<number>,
-  t1ThirdsQ: NotesMap<number>,
-  t2FifthsQ: NotesMap<number>,
-  t2ThirdsQ: NotesMap<number>,
+  t1: Temperament,
+  t2: Temperament,
 };
 
 const ComparatorQuadRings: React.FC<ComparatorQuadRingsProps> = ({
-  t1FifthsQ,
-  t1ThirdsQ,
-  t2FifthsQ,
-  t2ThirdsQ,
+  t1, t2,
 }) => {
-  const settings = useContext(SettingsContext);
-
-  const formatData = useCallback((
-    notesMap: NotesMap<number>,
-    is5th: boolean
-  ) => (
-    notesMapToArray(notesMap, OrderBy.FIFTHS_CIRCLE)
-      .map((note) => ({
-        label: '',
-        fill: is5th
-          ? convertFifthQualityToColor(note.value, settings.darkTheme)
-          : convertThirdQualityToColor(note.value, settings.darkTheme),
-      }))
-  ), [settings.darkTheme]);
-  
   const vbsize = { x: 200 + 5, y: 200 + 5};
   const center = { x: vbsize.x / 2, y: vbsize.y / 2};
-  const radius = [34, 45, 56, 76, 88, 100];
+  const r = [34, 45, 56, 76, 88, 100];
 
   return (
-    <SVG className="doughnut" viewBoxSize={vbsize} >
-      <Doughnut innerR={radius[0]} outerR={radius[1]} c={center}
-        data={formatData(t2ThirdsQ, false)}
-        isTextHorizontal />
-      
-      <Doughnut innerR={radius[1]} outerR={radius[2]} c={center}
-        data={formatData(t2FifthsQ, true)}
-        isTextHorizontal />
-      
-      <Doughnut innerR={radius[2]} outerR={radius[3]} c={center}
-        data={FIFTHS.map((f) => ({ label: f.string(true, false) }))}
-        isTextHorizontal hasStroke={false} />
-      
-      <Doughnut innerR={radius[3]} outerR={radius[4]} c={center}
-        data={formatData(t1ThirdsQ, false)}
-        isTextHorizontal />
-      
-      <Doughnut innerR={radius[4]} outerR={radius[5]} c={center}
-        data={formatData(t1FifthsQ, true)}
-        isTextHorizontal />
-      
+    <SVG className="ring" viewBoxSize={vbsize} >
+      <CommasRing innerR={r[0]} outerR={r[1]} c={center} is3rd commas={t2.csExp3rd} />
+      <CommasRing innerR={r[1]} outerR={r[2]} c={center} commas={t2.cpExp5th} />
+      <LabelsRing innerR={r[2]} outerR={r[3]} c={center} labels={FIFTHS.map((f) => f.string(true, false))} />
+      <CommasRing innerR={r[3]} outerR={r[4]} c={center} is3rd commas={t1.csExp3rd} />
+      <CommasRing innerR={r[4]} outerR={r[5]} c={center} commas={t1.cpExp5th} />
     </SVG>
   );
 };
@@ -68,9 +32,7 @@ const ComparatorQuadRings: React.FC<ComparatorQuadRingsProps> = ({
 export default React.memo(
   ComparatorQuadRings,
   (prevProps, nextProps) => (
-    prevProps.t1FifthsQ === nextProps.t1FifthsQ &&
-    prevProps.t1ThirdsQ === nextProps.t1ThirdsQ &&
-    prevProps.t2FifthsQ === nextProps.t2FifthsQ &&
-    prevProps.t2ThirdsQ === nextProps.t2ThirdsQ
+    prevProps.t1 === nextProps.t1 &&
+    prevProps.t2 === nextProps.t2
   )
 );
