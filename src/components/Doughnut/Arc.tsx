@@ -20,8 +20,7 @@ const Arc: React.FC<ArcProps> = ({
 }) => (
   <path
     id={id}
-    stroke="blue"
-    strokeWidth={1}
+    strokeWidth={0}
     fill="transparent"
     {...attributes}
     d={`

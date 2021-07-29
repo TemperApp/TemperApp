@@ -39,6 +39,22 @@ export enum NotesIndex {
 };
 
 
+export enum FifthsIndex {
+  C =       0,
+  G =       1,
+  A =       2,
+  D =       3,
+  E =       4,
+  B =       5,
+  F_sharp = 6,
+  C_sharp = 7,
+  G_sharp = 8,
+  E_flat =  9,
+  B_flat =  10,
+  F =       11,
+};
+
+
  export enum PitchInterval {
   UNISON  =  0,
   MIN2    =  1,

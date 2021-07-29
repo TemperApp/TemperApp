@@ -1,4 +1,4 @@
-import { Notes } from "./enums";
+import { FifthsIndex, Notes, NotesIndex } from "./enums";
 
 type NotesMap<T> = { [key in keyof typeof Notes]: T }
 
@@ -15,25 +15,53 @@ type NotesMap<T> = { [key in keyof typeof Notes]: T }
  *          for each note.
  * @returns the mapped NotesMap
  */
-export function mapNotesMap<T>(
+export const mapNotesMap = <T>(
   values: T | NotesMap<any>,
-  f = (value: any): T => value
-): NotesMap<T> {
+  f = (value: any): T | null => value,
+  fallbackValue: T | null = null,
+): NotesMap<T> => {
   const isNotesMap = typeof values !== "number" && typeof values !== "string";
+  const valueNoteMap = values as NotesMap<any>;
   return ({
-    C       : f(isNotesMap ? (values as NotesMap<any>).C       : values),
-    C_sharp : f(isNotesMap ? (values as NotesMap<any>).C_sharp : values),
-    D       : f(isNotesMap ? (values as NotesMap<any>).D       : values),
-    E_flat  : f(isNotesMap ? (values as NotesMap<any>).E_flat  : values),
-    E       : f(isNotesMap ? (values as NotesMap<any>).E       : values),
-    F       : f(isNotesMap ? (values as NotesMap<any>).F       : values),
-    F_sharp : f(isNotesMap ? (values as NotesMap<any>).F_sharp : values),
-    G       : f(isNotesMap ? (values as NotesMap<any>).G       : values),
-    G_sharp : f(isNotesMap ? (values as NotesMap<any>).G_sharp : values),
-    A       : f(isNotesMap ? (values as NotesMap<any>).A       : values),
-    B_flat  : f(isNotesMap ? (values as NotesMap<any>).B_flat  : values),
-    B       : f(isNotesMap ? (values as NotesMap<any>).B       : values),
+    C       : f(isNotesMap ? valueNoteMap.C       : values) ?? fallbackValue!,
+    C_sharp : f(isNotesMap ? valueNoteMap.C_sharp : values) ?? fallbackValue!,
+    D       : f(isNotesMap ? valueNoteMap.D       : values) ?? fallbackValue!,
+    E_flat  : f(isNotesMap ? valueNoteMap.E_flat  : values) ?? fallbackValue!,
+    E       : f(isNotesMap ? valueNoteMap.E       : values) ?? fallbackValue!,
+    F       : f(isNotesMap ? valueNoteMap.F       : values) ?? fallbackValue!,
+    F_sharp : f(isNotesMap ? valueNoteMap.F_sharp : values) ?? fallbackValue!,
+    G       : f(isNotesMap ? valueNoteMap.G       : values) ?? fallbackValue!,
+    G_sharp : f(isNotesMap ? valueNoteMap.G_sharp : values) ?? fallbackValue!,
+    A       : f(isNotesMap ? valueNoteMap.A       : values) ?? fallbackValue!,
+    B_flat  : f(isNotesMap ? valueNoteMap.B_flat  : values) ?? fallbackValue!,
+    B       : f(isNotesMap ? valueNoteMap.B       : values) ?? fallbackValue!,
   });
-}
+};
+
+
+export enum OrderBy {
+  PITCH, FIFTHS_CIRCLE
+};
+
+/**
+ * @param notesMap 
+ * @returns an array of objects
+ *  with two props: 'note' and 'value'
+ */
+export const notesMapToArray = <T>(
+  notesMap: NotesMap<T>,
+  orderBy: OrderBy,
+): Array<{note: Notes, value: T}> => (
+  Object.entries(notesMap).map((
+      [n, value]: [string, T]
+    ) => ({
+        note: n as Notes,
+        value,
+        orderIdx: (orderBy === OrderBy.FIFTHS_CIRCLE)
+          ? FifthsIndex[n as Notes]
+          : NotesIndex[n as Notes],
+    })
+  ).sort((a, b) => a.orderIdx - b.orderIdx)
+);
 
 export default NotesMap;

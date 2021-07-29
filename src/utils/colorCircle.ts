@@ -24,7 +24,7 @@ export const convertFifthQualityToColor = (quality: number | null, isDarkTheme: 
       case -5:
         return "#D640C1";
       case -4:
-        return "DB4EC7";
+        return "#DB4EC7";
       case -3:
         return "#E05BCD";
       case -2:

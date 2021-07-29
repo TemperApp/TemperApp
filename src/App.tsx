@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { Redirect, Route } from "react-router-dom";
 import { IonApp, IonRouterOutlet } from "@ionic/react";
 import { IonReactRouter } from "@ionic/react-router";
@@ -44,17 +44,11 @@ import LearnSheet from './components/Learn/LearnSheet';
 import Learn from './pages/Learn';
 import SheetTemperament from './components/Sheets/SheetTemperament';
 import StorageTest from './components/StorageTest';
-import Doughnut from './components/Doughnut';
-import { cpExp5thStrToNumber, formatCpExp5thStr } from './model/Divergence';
-import { convertFifthQualityToColor } from './utils/colorCircle';
-import SettingsContext from './store/settings-context';
 
 /* SQLite */
 export let sqlite: any; // singleton
 
 const App: React.FC = () => {
-
-  const settings = useContext(SettingsContext);
 
   const { echo, getPlatform, createConnection, closeConnection,
     retrieveConnection, retrieveAllConnections, closeAllConnections,
@@ -85,21 +79,6 @@ const App: React.FC = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const doughnutData = [
-    { fill: convertFifthQualityToColor(cpExp5thStrToNumber("+1/3.3"), settings.darkTheme), label: formatCpExp5thStr("+1/3.3")!},
-    { fill: convertFifthQualityToColor(cpExp5thStrToNumber("+1/4.4"), settings.darkTheme), label: formatCpExp5thStr("+1/4.4")!},
-    { fill: convertFifthQualityToColor(cpExp5thStrToNumber("+1/6.6"), settings.darkTheme), label: formatCpExp5thStr("+1/6.6")!},
-    { fill: convertFifthQualityToColor(cpExp5thStrToNumber("+1/13.19"), settings.darkTheme), label: formatCpExp5thStr("+1/13.19")!},
-    { fill: convertFifthQualityToColor(cpExp5thStrToNumber("-1/4.36"), settings.darkTheme), label: formatCpExp5thStr("-1/4.36")!},
-    { fill: convertFifthQualityToColor(cpExp5thStrToNumber("-1/4.36"), settings.darkTheme), label: formatCpExp5thStr("-1/4.36")!},
-    { fill: convertFifthQualityToColor(cpExp5thStrToNumber("-1/4.36"), settings.darkTheme), label: formatCpExp5thStr("-1/4.36")!},
-    { fill: convertFifthQualityToColor(cpExp5thStrToNumber("-1/4.36"), settings.darkTheme), label: formatCpExp5thStr("-1/4.36")!},
-    { fill: convertFifthQualityToColor(cpExp5thStrToNumber("-1/4.36"), settings.darkTheme), label: formatCpExp5thStr("-1/4.36")!},
-    { fill: convertFifthQualityToColor(cpExp5thStrToNumber("-1/4.36"), settings.darkTheme), label: formatCpExp5thStr("-1/4.36")!},
-    { fill: convertFifthQualityToColor(cpExp5thStrToNumber("-1/4.36"), settings.darkTheme), label: formatCpExp5thStr("-1/4.36")!},
-    { fill: convertFifthQualityToColor(cpExp5thStrToNumber("-1/6.52"), settings.darkTheme), label: formatCpExp5thStr("-1/6.52")!},
-  ]
-
   return (
     <IonApp>
       <IonReactRouter>
@@ -120,7 +99,6 @@ const App: React.FC = () => {
             <Route path="/learn/:id" component={LearnSheet} />
 
             <Route exact path="/storage" render={() => <StorageTest />} />
-            <Route exact path="/doughnut" render={() => <Doughnut data={doughnutData} />} />
 
             <Redirect exact from="/" to="/home" />
           </IonRouterOutlet>

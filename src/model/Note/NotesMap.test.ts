@@ -87,3 +87,38 @@ test('mapToMap_with_NotesMap_and_function', () => {
     B       : 36,
   }, 1);
 });
+
+
+test('mapToMap_with_fallback', () => {
+
+  const sqrt = (x: number) => ((x >= 0) ? Math.sqrt(x) : null);
+
+  expect(mapNotesMap({
+    C       : 1,
+    C_sharp : 4,
+    D       : 9,
+    E_flat  : 16,
+    E       : 25,
+    F       : 36,
+    F_sharp : -151541,
+    G       : 64,
+    G_sharp : 81,
+    A       : 100,
+    B_flat  : 121,
+    B       : 144,
+  }, sqrt, -1)
+  ).toEqual({
+    C       : 1,
+    C_sharp : 2,
+    D       : 3,
+    E_flat  : 4,
+    E       : 5,
+    F       : 6,
+    F_sharp : -1,
+    G       : 8,
+    G_sharp : 9,
+    A       : 10,
+    B_flat  : 11,
+    B       : 12,
+  });
+});

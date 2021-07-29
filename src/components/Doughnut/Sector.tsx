@@ -1,15 +1,18 @@
 import { PI, toDegrees, toCartesian, vec2 } from "../../utils/maths";
 import Arc from './Arc';
 
-
 type SectorProps = {
   idx: number,
   c: vec2,
   angle: number,
   offsetAngle: number,
-  fill: string,
-  label: string,
+  offsetAngle2?: number,
+  innerR: number,
+  outerR: number,
+  fill?: string,
+  label?: string,
   isTextHorizontal?: boolean,
+  hasStroke?: boolean;
   attributes?: any,
 };
 
@@ -18,27 +21,30 @@ const Sector: React.FC<SectorProps> = ({
   c,
   angle,
   offsetAngle,
-  fill,
-  label,
+  offsetAngle2 = -PI/2 - angle/2,
+  innerR,
+  outerR,
+  fill = 'transparent',
+  label = '',
   isTextHorizontal = false,
+  hasStroke = true,
   attributes = {},
 }) => {
-  const innerR = 75;
-  const outerR = 100;
+  const fontSize = 10.5;
+  const offsetAngles = offsetAngle + offsetAngle2;
   const middleR = (innerR + outerR)/2;
-  const isTextPathInverted = (offsetAngle >= PI/2 && offsetAngle < 3*PI/2);
-  const textPathR = middleR + (isTextPathInverted ? 3.5 : -4) ;
-  
+  const isTextPathInverted = (offsetAngles >= 0 && offsetAngles < PI-angle/2);
+  const textPathR = middleR + (isTextHorizontal ? 0 : (isTextPathInverted ? 3.5 : -4));
+
   return (
     <g transform={`
-        rotate(-90, ${c.x}, ${c.y})
-        rotate(${toDegrees(offsetAngle)}, ${c.x}, ${c.y})`}
+        rotate(${toDegrees(offsetAngles)}, ${c.x}, ${c.y})`}
     >
-      { !isTextHorizontal
+      { label && !isTextHorizontal
         &&
         <defs>
           <Arc
-            id={`text-path-outer-${idx}`}
+            id={`text-path-${innerR}-${outerR}-${idx}`}
             r={textPathR} c={c} angle={angle}
             inverse={isTextPathInverted}
           />
@@ -47,6 +53,8 @@ const Sector: React.FC<SectorProps> = ({
 
       <path
         fill={fill}
+        stroke="var(--color-hover)"
+        strokeWidth={hasStroke ? '0.5px' : '0'}
         {...attributes}
         d={`
           M ${toCartesian(0, c, outerR).x} ${toCartesian(0, c, outerR).y}
@@ -69,32 +77,34 @@ const Sector: React.FC<SectorProps> = ({
         `}
       />
       
-      { !isTextHorizontal
-        ? <text
-            x={textPathR * angle / 2}
-            textAnchor='middle'
-            fontSize={11}
-            fill="black"
-          >
-            <textPath xlinkHref={`#text-path-outer-${idx}`}>
+      { label !== ''
+        && (
+          !isTextHorizontal
+          ? <text
+              x={textPathR * angle / 2}
+              textAnchor='middle'
+              fontSize={fontSize}
+            >
+              <textPath xlinkHref={`#text-path-${innerR}-${outerR}-${idx}`}>
+                {label}
+              </textPath>
+            </text>
+            
+          : <text
+              x={toCartesian((angle)/2, c, textPathR).x}
+              y={toCartesian((angle)/2, c, textPathR).y + fontSize/3}
+              transform={`
+                rotate(
+                  ${-toDegrees(offsetAngles)},
+                  ${toCartesian((angle)/2, c, textPathR).x},
+                  ${toCartesian((angle)/2, c, textPathR).y})`}
+              textAnchor='middle'
+              fontSize={fontSize}
+              fill="black"
+            >
               {label}
-            </textPath>
-          </text>
-          
-        : <text
-            x={toCartesian((angle)/2, c, textPathR).x}
-            y={toCartesian((angle)/2, c, textPathR).y}
-            transform={`
-              rotate(
-                ${toDegrees(PI/2-offsetAngle)},
-                ${toCartesian((angle)/2, c, textPathR).x},
-                ${toCartesian((angle)/2, c, textPathR).y})`}
-            textAnchor='middle'
-            fontSize={11}
-            fill="black"
-          >
-            {label}
-          </text>
+            </text>
+        )
       }
     </g>
 )};

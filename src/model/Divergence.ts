@@ -191,8 +191,11 @@ export const freqs4 = (
  *                    No sign provided means 'plus' (+) by default
  * @returns thirds quality number value
  */
-export const thirdQ = (csExp3rdMap: NotesMap<string>): NotesMap<number | null> => (
-  mapNotesMap(csExp3rdMap, csExp3rdStrToNumber)
+export const thirdQ = (
+  csExp3rdMap: NotesMap<string>,
+  fallbackValue: number = -99999
+): NotesMap<number> => (
+  mapNotesMap(csExp3rdMap, csExp3rdStrToNumber, fallbackValue)
 );
 
 
@@ -203,6 +206,9 @@ export const thirdQ = (csExp3rdMap: NotesMap<string>): NotesMap<number | null> =
  *                    No sign provided means 'minus' (-) by default
  * @returns fitfhs quality number value
  */
-export const fifthQ = (cpExp5thMap: NotesMap<string>): NotesMap<number | null> => (
-  mapNotesMap(cpExp5thMap, cpExp5thStrToNumber)
+export const fifthQ = (
+  cpExp5thMap: NotesMap<string>,
+  fallbackValue: number = -99999
+): NotesMap<number> => (
+  mapNotesMap(cpExp5thMap, cpExp5thStrToNumber, fallbackValue)
 );

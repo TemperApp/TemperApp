@@ -1,6 +1,7 @@
 import React from 'react';
-import { PI } from '../../utils/maths';
+import { PI, vec2 } from '../../utils/maths';
 import Sector from './Sector';
+import './Doughnut.css';
 
 type DoughnutSector = {
   fill?: string,
@@ -9,20 +10,24 @@ type DoughnutSector = {
 
 type DoughnutProps = {
   data: DoughnutSector[],
+  c: vec2,
+  innerR: number,
+  outerR: number,
+  isTextHorizontal?: boolean,
+  hasStroke?: boolean;
+  attributes?: any,
 };
 
 const Doughnut: React.FC<DoughnutProps> = ({
   data,
-}) => {
-  const size = { x: 200 + 5, y: 200 + 5};
-  const c = { x: size.x / 2, y: size.y / 2};
-
-  return (
-  <svg className="doughnut block mx-auto"
-    width="300" height="300"
-    xmlns="http://www.w3.org/2000/svg"
-    viewBox={`0 0 ${size.x} ${size.y}`}
-  >
+  c,
+  innerR,
+  outerR,
+  isTextHorizontal = false,
+  hasStroke = true,
+  attributes = {},
+}) => (
+  <g {...attributes}>
     {data.map(({fill, label}, idx) =>
       <Sector
         key={idx}
@@ -30,11 +35,15 @@ const Doughnut: React.FC<DoughnutProps> = ({
         c={c}
         angle={2*PI / data.length}
         offsetAngle={idx * 2*PI / data.length}
+        innerR={innerR}
+        outerR={outerR}
         fill={fill || 'transparent'}
         label={label || ''}
+        isTextHorizontal={isTextHorizontal}
+        hasStroke={hasStroke}
       />
-  )}
-  </svg>
-)};
+    )}
+  </g>
+);
 
 export default Doughnut;

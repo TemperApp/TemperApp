@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 
 import ComparatorComa from './ComparatorComa';
 import ComparatorDivergence from './ComparatorDivergence';
-import ComparatorQuadRings from './ComparatorQuadRings';
 
 import { fetchTemperamentPropsById } from '../../engine/DataAccessor';
 import EqualTemperament from '../../model/Temperament/Equal';
@@ -10,6 +9,7 @@ import { fifthQ, thirdQ } from '../../model/Divergence';
 import { Temperament } from '../../model/Temperament/Temperament';
 
 import './Comparator.css'
+import ComparatorQuadRings from './QuadRings';
 
 type ComparatorSVGProps = {
   idTemperament1: number,
