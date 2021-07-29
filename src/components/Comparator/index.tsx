@@ -4,8 +4,8 @@ import { fetchTemperamentPropsById, fetchTemperaments } from '../../engine/DataA
 import { TemperamentDBType } from '../../engine/DB';
 
 import ComparatorQuadRings from './QuadRings';
-import ComparatorComma from './Comma';
-import ComparatorDivergence from './ComparatorDivergence';
+import ComparatorCommas from './Commas';
+import ComparatorDeviations from './Deviations';
 
 import EqualTemperament from '../../model/Temperament/Equal';
 import { Temperament } from '../../model/Temperament/Temperament';
@@ -91,12 +91,12 @@ const Comparator: React.FC = () => {
         t2={temperament2}
       />
     
-      <ComparatorComma
+      <ComparatorCommas
         t1={temperament1}
         t2={temperament2}
       />
 
-      <ComparatorDivergence
+      <ComparatorDeviations
         t1={temperament1}
         t2={temperament2}
       />

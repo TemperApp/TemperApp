@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { IonContent, IonHeader, IonModal, IonPage } from "@ionic/react";
 import "./Compare.css";
-import Comparator from "../components/Comparator/Comparator";
+import Comparator from "../components/Comparator";
 import PageHeader from "./Page/PageHeader";
 import PageModal from "./Page/PageModal";
 import ComparatorModalLegendSVG from "../components/Comparator/ComparatorModalLegendSVG";

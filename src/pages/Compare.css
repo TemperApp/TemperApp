@@ -1,15 +1,19 @@
 .fill-dark-2 {
   fill: #2ea39b;
 }
+
 .fill-2 {
   fill: #45cbc7;
 }
+
 .fill-dark-1 {
   fill: var(--color-strong);
 }
+
 .fill-1 {
   fill: var(--color-sec);
 }
+
 .line-legend-comparator {
   fill: none;
   stroke: var(--color-contrast);
@@ -17,15 +21,7 @@
   stroke-linecap: round;
   stroke-miterlimit: 10;
 }
+
 .color-legend-theme {
   fill: var(--color-contrast);
-}
-.font-legend {
-  font-family: "Karla-Regular";
-}
-.text-size-temp {
-  font-size: 20px;
-}
-.text-size-type {
-  font-size: 16.45px;
 }

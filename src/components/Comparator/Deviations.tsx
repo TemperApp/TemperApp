@@ -7,12 +7,12 @@ import { FIFTHS } from "../../model/Note/sequences";
 
 import "./Comparator.css";
 
-type ComparatorDivergenceProps = {
+type DeviationsProps = {
   t1: Temperament,
   t2: Temperament,
 };
 
-const ComparatorDivergence: React.FC<ComparatorDivergenceProps> = ({
+const Deviations: React.FC<DeviationsProps> = ({
   t1, t2
 }) => {
   return (
@@ -51,4 +51,4 @@ const ComparatorDivergence: React.FC<ComparatorDivergenceProps> = ({
   );
 };
 
-export default ComparatorDivergence;
+export default Deviations;
