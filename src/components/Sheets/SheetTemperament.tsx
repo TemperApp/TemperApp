@@ -8,10 +8,10 @@ import { IonButton, IonIcon } from '@ionic/react';
 import ParagraphLearn from '../Learn/ParagraphLearn';
 import VideoLearn from '../Learn/VideoLearn';
 import ResourcesLearn from '../Learn/ResourcesLearn';
-import PitchCircleView from '../Tuner/PitchCircle/View';
 import GlobalStatesContext from '../../store/global-states-context';
 import Card from '../Card';
-import Commas from './Commas';
+import Commas from './SheetCommas';
+import SheetDoubleRings from './SheetDoubleRings';
 
 const SheetTemperament: React.FC = () => {
 
@@ -48,7 +48,7 @@ const SheetTemperament: React.FC = () => {
 
       <section className="px-6 mx-auto max-w-lg">
         <Card title="Qualité des quintes et des tierces">
-          <PitchCircleView temperament={temperament} />
+          <SheetDoubleRings temperament={temperament} />
         </Card>
       </section>
             
