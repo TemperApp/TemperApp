@@ -1,3 +1,4 @@
+import { lightenDarkenColor } from "../../utils/colors";
 import { PI, toDegrees, toCartesian, vec2 } from "../../utils/maths";
 import Arc from './Arc';
 import './Sector.css'
@@ -59,7 +60,7 @@ const Sector: React.FC<SectorProps> = ({
 
       <path
         fill={fill}
-        stroke="var(--color-hover)"
+        stroke={lightenDarkenColor(fill, -40, 'var(--color-contrast-light)')}
         strokeWidth={hasStroke ? '0.5px' : '0'}
         {...attributesPath}
         d={`

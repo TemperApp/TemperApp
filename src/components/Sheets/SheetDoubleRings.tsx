@@ -30,11 +30,8 @@ const SheetoubleRings: React.FC<SheetoubleRingsProps> = ({
     <>
       <SVG className="ring" viewBoxSize={vbsize} >
         <CommasRing innerR={r[0]} outerR={r[1]} c={center}
-          is3rd={false} hasLabels
-          commas={
-            isCpMode
-            ? temperament.cpExp5th
-            : mapNotesMap(temperament.cpExp5th, cpExp5thToCsExp5th)}
+          is3rd commas={temperament.csExp3rd}
+          hasLabels
         />
 
         <LabelsRing innerR={r[1]} outerR={r[2]} c={center}
@@ -43,8 +40,11 @@ const SheetoubleRings: React.FC<SheetoubleRingsProps> = ({
         />
 
         <CommasRing innerR={r[2]} outerR={r[3]} c={center}
-          is3rd commas={temperament.csExp3rd}
-          hasLabels
+          is3rd={false} hasLabels
+          commas={
+            isCpMode
+            ? temperament.cpExp5th
+            : mapNotesMap(temperament.cpExp5th, cpExp5thToCsExp5th)}
         />
       </SVG>
       <div className="absolute right-4">

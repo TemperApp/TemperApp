@@ -43,7 +43,7 @@ const PitchCircleView: React.FC<PitchCircleViewProps> = ({
 
   const vbsize = { x: 200 + 2, y: 200 + 2 };
   const center = { x: vbsize.x / 2, y: vbsize.y / 2 };
-  const r = [51, 63, 87, 100];
+  const r = [46, 59, 85, 100];
 
   return (
     <section className="px-6 pt-2 w-full">
