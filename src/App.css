@@ -189,10 +189,6 @@ ion-icon.icon-grey {
   margin-top: 2rem;
 }
 
-.headerPages {
-  height: 5rem;
-}
-
 /* SELECT BOX */
 
 .select-text {
@@ -298,9 +294,7 @@ ion-searchbar .searchbar-input-container .searchbar-input {
 
 ion-card {
   display: block;
-  margin: 0 auto;
-  margin-top: 10%;
-  margin-bottom: 5%;
+  margin: 1rem auto;
   box-shadow: var(--color-shadow);
   border-radius: 12px;
 }

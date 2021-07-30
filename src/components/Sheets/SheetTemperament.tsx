@@ -4,28 +4,20 @@ import { fetchTemperamentPropsById } from "../../engine/DataAccessor";
 import { Temperament } from "../../model/Temperament/Temperament";
 import EqualTemperament from "../../model/Temperament/Equal";
 import { useParams } from "react-router";
-import { IonButton, IonIcon, IonSlide, IonSlides } from '@ionic/react';
+import { IonButton, IonIcon } from '@ionic/react';
 import ParagraphLearn from '../Learn/ParagraphLearn';
 import VideoLearn from '../Learn/VideoLearn';
 import ResourcesLearn from '../Learn/ResourcesLearn';
 import PitchCircleView from '../Tuner/PitchCircle/View';
-import FifthComaCircle from './FifthComaCircle';
-import Toggler from '../inputs/Toggler';
-import ThirdComaCircle from './ThirdComaCircle';
 import GlobalStatesContext from '../../store/global-states-context';
 import Card from '../Card';
-
-const slideOpts = {
-  initialSlide: 0,
-  speed: 400,
-};
+import Commas from './Commas';
 
 const SheetTemperament: React.FC = () => {
 
   const global = useContext(GlobalStatesContext);
   const { id } = useParams<{ id: string }>();
   const [temperament, setTemperament] = useState<Temperament>(EqualTemperament);
-  const [isCpMode, setCpMode] = useState<boolean>(true);
 
   useEffect(() => {
     (async () => {
@@ -39,7 +31,7 @@ const SheetTemperament: React.FC = () => {
       subTitle="Tempérament"
       id = {id}
     >
-      <div className="px-6">
+      <section className="px-6">
         {(temperament.theorist !== "")? (<p className="p-long"><b>Théoricien</b> : {temperament.theorist} </p>) : ("")}
         {(temperament.period !== "")? (<p className="p-long"><b>Époque</b> : {temperament.period} </p>) : ("")}
         {(temperament.geographicalArea !== "")? (<p className="p-long"><b>Aire géographique</b> : {temperament.geographicalArea} </p>) : ("")}
@@ -52,55 +44,19 @@ const SheetTemperament: React.FC = () => {
           />) 
           : (""))
         }
-      </div>
+      </section>
 
-      <div className="px-6">
+      <section className="px-6 mx-auto max-w-lg">
         <Card title="Qualité des quintes et des tierces">
           <PitchCircleView temperament={temperament} />
         </Card>
-      </div>
-
-      
+      </section>
             
-      <IonSlides pager={true} options={slideOpts} className="max-w-lg max-h-lg">
-          <IonSlide className="px-6">
-            <Card
-              title="Fractions de commas affectant les quintes"
-              classNameContent='pb-14' className='pb-6'
-            >
-              <div className="max-w-lg max-h-lg">
-                <FifthComaCircle 
-                  temperament={temperament}
-                  isCpMode={isCpMode}
-                >
-                </FifthComaCircle>
-              </div>
-              <div className="comma-toggler">
-                <Toggler
-                  typeContentText={true}
-                  contentLeft="Cs"
-                  contentRight="Cp"
-                  conditionLeft={!isCpMode}
-                  conditionRight={isCpMode}
-                  onClickLeft={() => setCpMode(false)}
-                  onClickRight={() => setCpMode(true)}
-                />
-              </div>
-            </Card>
-          </IonSlide>
-          <IonSlide className="px-6">
-            <Card
-              title="Fractions de commas affectant les tierces"
-              classNameContent='pb-14' className='pb-6'
-            >
-              <div className="max-w-lg max-h-lg">
-                <ThirdComaCircle temperament={temperament} />
-              </div>
-            </Card>
-          </IonSlide>
-        </IonSlides>
+      <section className="mx-auto max-w-lg">
+        <Commas temperament={temperament} />
+      </section>
 
-      <div className="px-6">
+      <section className="px-6 mx-auto max-w-lg">
         {((temperament.soundReferences[0].url !== "")
           ? (temperament.soundReferences.map(e => {
             return(<VideoLearn 
@@ -116,7 +72,7 @@ const SheetTemperament: React.FC = () => {
         <ResourcesLearn 
           resourcesList={temperament.sources}
         />
-      </div>
+      </section>
 
       <IonButton
         id="btn-goto-tune"

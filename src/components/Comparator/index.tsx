@@ -57,7 +57,7 @@ const Comparator: React.FC = () => {
           </IonCol>
 
           <IonCol size="1.5">
-            <IonButton className="switch-inputs-btn h-6"
+            <IonButton className="flex my-0 mx-auto h-6"
             fill="clear"
             onClick={() => {
               const aux = idTemperament1;

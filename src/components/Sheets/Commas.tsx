@@ -12,11 +12,8 @@ import { cpExp5thToCsExp5th } from "../../model/Divergence";
 import { FIFTHS } from "../../model/Note/sequences";
 import { mapNotesMap } from "../../model/Note/NotesMap";
 
-import "./Comparator.css";
-
-type ComparatorCommaProps = {
-  t1: Temperament;
-  t2: Temperament;
+type SheetCommasProps = {
+  temperament: Temperament;
 };
 
 const slideOpts = {
@@ -24,19 +21,21 @@ const slideOpts = {
   speed: 400,
 };
 
-const ComparatorComma: React.FC<ComparatorCommaProps> = ({
-  t1,
-  t2,
+const SheetCommas: React.FC<SheetCommasProps> = ({
+  temperament
 }) => {
   const [isCpMode, setCpMode] = useState<boolean>(true);
   const vbsize = { x: 200 + 5, y: 200 + 5};
   const center = { x: vbsize.x / 2, y: vbsize.y / 2};
-
-  const r = [40, 65, 80, 85, 100];
+  const r = [57, 70, 80, 100];
 
   return (
     <>
-      <IonSlides pager={true} options={slideOpts} className="px-5 max-w-lg max-h-lg">
+      <IonSlides
+        pager={true}
+        options={slideOpts}
+        className="px-5 max-w-lg"
+      >
         <IonSlide className="px-1">
           <Card
             title="Fractions de commas affectant les quintes"
@@ -45,19 +44,19 @@ const ComparatorComma: React.FC<ComparatorCommaProps> = ({
           >
             <div className="max-w-lg max-h-lg">
               <SVG className="ring" viewBoxSize={vbsize}>
-                <LabelsRing innerR={r[0]} outerR={r[1]} c={center}
-                  labels={FIFTHS.map((f) => f.string(true, false))}
-                  fontSize={10}
+                <CommasRing innerR={r[0]} outerR={r[1]} c={center}
+                  hasLabels={true} is3rd={false} fill={false} hasStroke={false}
+                  commas={isCpMode ? temperament.cpExp5th : mapNotesMap(temperament.cpExp5th, cpExp5thToCsExp5th)}
+                  fontSize={9}
                 />
                 <CommasRing innerR={r[1]} outerR={r[2]} c={center}
-                  hasLabels is3rd={false}
-                  commas={isCpMode ? t2.cpExp5th : mapNotesMap(t2.cpExp5th, cpExp5thToCsExp5th)}
+                  hasLabels={false} is3rd={false}
+                  commas={isCpMode ? temperament.cpExp5th : mapNotesMap(temperament.cpExp5th, cpExp5thToCsExp5th)}
                   fontSize={9}
                 />
-                <CommasRing innerR={r[3]} outerR={r[4]} c={center}
-                  hasLabels is3rd={false}
-                  commas={isCpMode ? t1.cpExp5th : mapNotesMap(t1.cpExp5th, cpExp5thToCsExp5th)}
-                  fontSize={9}
+                <LabelsRing innerR={r[2]} outerR={r[3]} c={center}
+                  labels={FIFTHS.map((f) => f.string(true, false))}
+                  fontSize={10}
                 />
               </SVG>
             </div>
@@ -83,19 +82,19 @@ const ComparatorComma: React.FC<ComparatorCommaProps> = ({
           >
             <div className="max-w-lg max-h-lg">
               <SVG className="ring" viewBoxSize={vbsize}>
-                <LabelsRing innerR={r[0]} outerR={r[1]} c={center}
-                  labels={FIFTHS.map((f) => f.string(true, false))}
-                  fontSize={10}
+                <CommasRing innerR={r[0]} outerR={r[1]} c={center}
+                  hasLabels={true} is3rd fill={false} hasStroke={false}
+                  commas={temperament.csExp3rd}
+                  fontSize={9}
                 />
                 <CommasRing innerR={r[1]} outerR={r[2]} c={center}
-                  hasLabels is3rd
-                  commas={t2.csExp3rd}
+                  hasLabels={false} is3rd
+                  commas={temperament.csExp3rd}
                   fontSize={9}
                 />
-                <CommasRing innerR={r[3]} outerR={r[4]} c={center}
-                  hasLabels is3rd
-                  commas={t1.csExp3rd}
-                  fontSize={9}
+                <LabelsRing innerR={r[2]} outerR={r[3]} c={center}
+                  labels={FIFTHS.map((f) => f.string(true, false))}
+                  fontSize={10}
                 />
               </SVG>
             </div>
@@ -106,4 +105,4 @@ const ComparatorComma: React.FC<ComparatorCommaProps> = ({
   );
 };
 
-export default ComparatorComma;
+export default SheetCommas;

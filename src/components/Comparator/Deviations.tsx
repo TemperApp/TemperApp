@@ -16,7 +16,7 @@ const Deviations: React.FC<DeviationsProps> = ({
   t1, t2
 }) => {
   return (
-    <section className="px-6">
+    <section className="px-6 mx-auto max-w-lg">
       <Card title='Déviations par rapport au tempérament égal'>
         <IonGrid>
           <IonRow className="justify-end items-end">
