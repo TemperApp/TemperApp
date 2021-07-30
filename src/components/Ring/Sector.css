@@ -1,4 +1,4 @@
-.ring text {
+.sector text {
   fill: var(--color-contrast);
   pointer-events: none;
 }

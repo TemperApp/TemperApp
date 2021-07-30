@@ -1,5 +1,6 @@
 import { PI, toDegrees, toCartesian, vec2 } from "../../utils/maths";
 import Arc from './Arc';
+import './Sector.css'
 
 type SectorProps = {
   idx: number,
@@ -14,6 +15,7 @@ type SectorProps = {
   isTextHorizontal?: boolean,
   fontSize?: number,
   hasStroke?: boolean;
+  attributesText?: any,
   attributesPath?: any,
 };
 
@@ -30,6 +32,7 @@ const Sector: React.FC<SectorProps> = ({
   isTextHorizontal = false,
   fontSize = Math.max(6, (outerR - innerR) / 1.6),
   hasStroke = true,
+  attributesText = {},
   attributesPath = {},
 }) => {
   const offsetAngles = offsetAngle + offsetAngle2;
@@ -38,8 +41,10 @@ const Sector: React.FC<SectorProps> = ({
   const textPathR = middleR + (isTextHorizontal ? 0 : (isTextPathInverted ? 3.5 : -4));
 
   return (
-    <g transform={`
+    <g 
+      transform={`
         rotate(${toDegrees(offsetAngles)}, ${c.x}, ${c.y})`}
+      className='sector'
     >
       { label && !isTextHorizontal
         &&
@@ -85,6 +90,7 @@ const Sector: React.FC<SectorProps> = ({
               x={textPathR * angle / 2}
               textAnchor='middle'
               fontSize={fontSize}
+              {...attributesText}
             >
               <textPath xlinkHref={`#text-path-${innerR}-${outerR}-${idx}`}>
                 {label}
@@ -102,6 +108,7 @@ const Sector: React.FC<SectorProps> = ({
               textAnchor='middle'
               fontSize={fontSize}
               fill="black"
+              {...attributesText}
             >
               {label}
             </text>

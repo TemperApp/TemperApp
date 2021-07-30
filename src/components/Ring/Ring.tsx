@@ -1,7 +1,6 @@
 import React from 'react';
 import { PI, vec2 } from '../../utils/maths';
 import Sector from './Sector';
-import './Ring.css';
 
 type RingSector = {
   fill?: string,

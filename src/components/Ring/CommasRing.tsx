@@ -67,6 +67,9 @@ const CommasRing: React.FC<CommasRingProps> = ({
       data={formatData(commas, is3rd)}
       hasStroke={hasStroke}
       fontSize={fontSize}
+      attributesSector={{ attributesText: { style: {
+        textShadow: '0 0 1.5px #0006'
+       }}}}
       {...attributes} />
   );
 };
