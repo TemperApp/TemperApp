@@ -216,7 +216,7 @@ export const defaultTemperaments: Array<Temperament> = [
     theorist : "Jean-Philippe Rameau (1683-1764)",
     period : "XVIIIe siècle",
     geographicalArea: "France",
-    nature: "Cs",
+    nature: "Comma syntonique",
     structuralParticularity: "Sept quintes sont abaissées d’un quart de comma syntonique. Les autres sont augmentées de quantités variables selon des petits compléments.",
     sources: [
       {author: "", book: "Wikipedia - Jean-Philippe Rameau (FR)", title: "", other: "", date: "", page: "", url: "https://fr.wikipedia.org/wiki/Jean-Philippe_Rameau"},
@@ -275,7 +275,7 @@ export const defaultTemperaments: Array<Temperament> = [
     theorist : "Jean-Philippe Rameau (1683-1764)",
     period : "XVIIIe siècle",
     geographicalArea: "France",
-    nature: "Cs",
+    nature: "Comma syntonique",
     structuralParticularity: "Sept quintes sont abaissées d’un quart de comma syntonique. Les autres sont augmentées de quantités variables selon des petits compléments.",
     sources: [
       {author: "", book: "Wikipedia - Jean-Philippe Rameau (FR)", title: "", other: "", date: "", page: "", url: "https://fr.wikipedia.org/wiki/Jean-Philippe_Rameau"},
@@ -556,7 +556,7 @@ export const defaultTemperaments: Array<Temperament> = [
       B:       -1.467,
     },
     cpExp5th: {
-      F_sharp: "-1/12.01",
+      F_sharp: "-1/12",
       C_sharp: "0",
       G_sharp: "0",
       E_flat:  "0",

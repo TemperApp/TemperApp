@@ -108,6 +108,13 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
           />
 
           <SettingToggle
+            name='Accordeur afficher commas'
+            checked={nextSettings.tunerShowCommas}
+            value="tunerShowCommas"
+            onClick={(e: any) => set('tunerShowCommas', e.target.checked as boolean)}
+          />
+
+          <SettingToggle
             name="Forme d'onde triangle"
             checked={nextSettings.waveTriangle}
             value="triangle"
@@ -436,7 +443,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
             Le projet bénéficie de nombreux soutiens sous la forme de ressources humaines et techniques :
           </p>
 
-          <ul>
+          <ul className="mb-0">
             <li className="mb-2">
               le Conservatoire National Supérieur de Musique et de Danse de Paris,
             </li>
@@ -452,24 +459,29 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
             <li className="mb-2">
               l'Institut de recherche en Musicologie (IReMus),
             </li>
-            <li className="mb-2">
+            <li>
               et l’association ARTEMIDA.
             </li>
             
           </ul>
         </section>
 
-        <section className="my-4">
+        <section>
           <IonButton
+            className="h-8 w-full"
             fill='clear'
             size='small'
             style={{ opacity: 0.35, color: 'var(--color-contrast' }}
             onClick={() => setDebugMode(!debugMode)}
           >
-            <IonIcon className='mr-2' src={bug}/>
-            <span>
-              {debugMode ? 'Cacher' : 'Montrer'} les options de debug
-            </span>
+            {debugMode && 
+              <div className="w-full text-left">
+                <IonIcon className='mr-2' src={bug}/>
+                <span>
+                  Options de debug
+                </span>
+              </div>
+            }
           </IonButton>
 
           { debugMode && store.isAvailable 
@@ -483,6 +495,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
               <IonButton
                 fill='clear' color='danger'
                 routerLink={'/storage'}
+                onClick={onQuit}
               >
                 Accéder au StorageTest
               </IonButton>

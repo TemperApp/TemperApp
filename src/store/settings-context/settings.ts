@@ -30,6 +30,9 @@ const settings : readonly AllowedSetting[] = [{
     name: 'isBps',
     defaultValue: false,
   },{
+    name: 'tunerShowCommas',
+    defaultValue: true,
+  },{
     name: 'waveTriangle',
     defaultValue: false,
   },{

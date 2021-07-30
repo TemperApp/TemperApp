@@ -84,11 +84,6 @@ const App: React.FC = () => {
       <IonReactRouter>
         <IonTabs>
           <IonRouterOutlet>
-            {/*
-              Using the render method prop cuts down the number of renders your components will have due to route changes.
-              Use the component prop when your component depends on the RouterComponentProps passed in automatically.
-              https://github.com/ionic-team/ionic-react-conference-app/blob/master/src/pages/MainTabs.tsx#L20-L24
-            */}
             <Route exact path="/tune" render={() => <Tune />} />
             <Route exact path="/compare" render={() => <Compare />} />
             <Route exact path="/home" render={() => <Home />} />
@@ -98,7 +93,7 @@ const App: React.FC = () => {
             <Route path="/sheets/temperament/:id" component={SheetTemperament} />
             <Route path="/learn/:id" component={LearnSheet} />
 
-            <Route exact path="/storage" render={() => <StorageTest />} />
+            <Route exact path="/storage" children={<StorageTest />} />
 
             <Redirect exact from="/" to="/home" />
           </IonRouterOutlet>

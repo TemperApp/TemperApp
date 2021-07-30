@@ -1,4 +1,4 @@
-import React, { useCallback } from "react";
+import React, { useCallback, useContext } from "react";
 
 import PitchCircleLabels from "./Labels";
 import PitchCircleButton from "./Button";
@@ -6,13 +6,15 @@ import CommasRing from "../../Ring/CommasRing";
 import SVG from "../../SVG";
 
 import { Temperament } from '../../../model/Temperament/Temperament';
-import NotesMap from '../../../model/Note/NotesMap';
+import NotesMap, { mapNotesMap } from '../../../model/Note/NotesMap';
 import { Notes } from '../../../model/Note/enums';
 import { FIFTHS } from "../../../model/Note/sequences";
 
 import { BtnActions, BtnStates } from "./utils/buttons";
 
 import "./PitchCircle.css";
+import { cpExp5thToCsExp5th } from "../../../model/Divergence";
+import SettingsContext from "../../../store/settings-context";
 
 
 type PitchCircleViewProps = {
@@ -29,6 +31,8 @@ const PitchCircleView: React.FC<PitchCircleViewProps> = ({
   dispatchState,
 }) => {
 
+  const settings = useContext(SettingsContext);
+
   const onBtnClick = useCallback(( // useCallback for PitchCircleBtn memoizing
     note: Notes,
     state: BtnStates
@@ -39,15 +43,26 @@ const PitchCircleView: React.FC<PitchCircleViewProps> = ({
 
   const vbsize = { x: 200 + 2, y: 200 + 2 };
   const center = { x: vbsize.x / 2, y: vbsize.y / 2 };
-  const r = [45, 56, 88, 100];
+  const r = [51, 63, 87, 100];
 
   return (
     <section className="px-6 pt-2 w-full">
       <section id="pitch-circle" className="max-w-lg">
         <SVG className="ring" viewBoxSize={vbsize} >
 
-          <CommasRing innerR={r[0]} outerR={r[1]} is3rd commas={temperament.csExp3rd} c={center} />
-          <CommasRing innerR={r[2]} outerR={r[3]} is3rd={false} commas={temperament.cpExp5th} c={center} />
+          <CommasRing innerR={r[0]} outerR={r[1]} is3rd
+            commas={temperament.csExp3rd} c={center}
+            hasLabels={settings.tunerShowCommas}
+          />
+          <CommasRing innerR={r[2]} outerR={r[3]} is3rd={false}
+            commas={
+              !temperament.nature.match(/comma synto/gi)
+              ? temperament.cpExp5th
+              : mapNotesMap(temperament.cpExp5th, cpExp5thToCsExp5th)
+            }
+            c={center}
+            hasLabels={settings.tunerShowCommas}
+          />
 
           {FIFTHS.map((f, idx) => {
             return (

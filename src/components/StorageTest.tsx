@@ -1,5 +1,5 @@
-import React from 'react';
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
+import { IonPage } from '@ionic/react';
 import { useStorageSQLite } from 'react-data-storage-sqlite-hook/dist';
 
 const StorageTest: React.FC = () => {
@@ -37,7 +37,7 @@ const StorageTest: React.FC = () => {
   let count = 1;
 
   return (
-    <section className="p-4">
+    <IonPage className="p-4">
       <h2>Storage</h2>
       <button
         className="mr-4 p-2"
@@ -54,7 +54,7 @@ const StorageTest: React.FC = () => {
           : "Store is not available :("
         }
       </div>
-    </section>
+    </IonPage>
   )
 };
 

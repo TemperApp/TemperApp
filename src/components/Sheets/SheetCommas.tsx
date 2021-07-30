@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { IonSlides, IonSlide } from "@ionic/react";
 
 import Toggler from "../inputs/Toggler";
@@ -29,6 +29,10 @@ const SheetCommas: React.FC<SheetCommasProps> = ({
   const center = { x: vbsize.x / 2, y: vbsize.y / 2};
   const r = [57, 70, 80, 100];
 
+  useEffect(() => {
+    setCpMode(Boolean(!temperament.nature.match(/comma synto/gi)))
+  }, [temperament]);
+
   return (
     <>
       <IonSlides
@@ -46,13 +50,19 @@ const SheetCommas: React.FC<SheetCommasProps> = ({
               <SVG className="ring" viewBoxSize={vbsize}>
                 <CommasRing innerR={r[0]} outerR={r[1]} c={center}
                   hasLabels is3rd={false} fill={false} hasStroke={false}
-                  commas={isCpMode ? temperament.cpExp5th : mapNotesMap(temperament.cpExp5th, cpExp5thToCsExp5th)}
                   fontSize={9}
+                  commas={
+                    isCpMode
+                    ? temperament.cpExp5th
+                    : mapNotesMap(temperament.cpExp5th, cpExp5thToCsExp5th)}
                 />
                 <CommasRing innerR={r[1]} outerR={r[2]} c={center}
                   hasLabels={false} is3rd={false}
-                  commas={isCpMode ? temperament.cpExp5th : mapNotesMap(temperament.cpExp5th, cpExp5thToCsExp5th)}
                   fontSize={9}
+                  commas={
+                    isCpMode
+                    ? temperament.cpExp5th
+                    : mapNotesMap(temperament.cpExp5th, cpExp5thToCsExp5th)}
                 />
                 <LabelsRing innerR={r[2]} outerR={r[3]} c={center}
                   labels={FIFTHS.map((f) => f.string(true, false))}

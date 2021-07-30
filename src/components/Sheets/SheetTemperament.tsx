@@ -47,7 +47,10 @@ const SheetTemperament: React.FC = () => {
       </section>
 
       <section className="px-6 mx-auto max-w-lg">
-        <Card title="Qualité des quintes et des tierces">
+        <Card
+          title="Qualité des quintes et des tierces"
+          classNameContent='pb-14'
+        >
           <SheetDoubleRings temperament={temperament} />
         </Card>
       </section>
