@@ -19,6 +19,7 @@ type CommasRingProps = {
   hasLabels?: boolean,
   hasStroke?: boolean;
   attributes?: any,
+  fill?: boolean,
 };
 
 const CommasRing: React.FC<CommasRingProps> = ({
@@ -31,6 +32,7 @@ const CommasRing: React.FC<CommasRingProps> = ({
   hasLabels = false,
   hasStroke = true,
   attributes = {},
+  fill = true,
 }) => {
   const settings = useContext(SettingsContext);
 
@@ -50,13 +52,15 @@ const CommasRing: React.FC<CommasRingProps> = ({
             : formatCpExp5thStr(commas[n]));
           return ({
           label: label !== '0' ? label : '',
-          fill: is3rd
-            ? convertThirdQualityToColor(qualities[n], settings.darkTheme)
-            : convertFifthQualityToColor(qualities[n], settings.darkTheme),
+          fill: fill 
+            ? is3rd 
+              ? convertThirdQualityToColor(qualities[n], settings.darkTheme)
+              : convertFifthQualityToColor(qualities[n], settings.darkTheme)
+            : 'transparent',
         })
       })
     )
-  }, [hasLabels, settings.darkTheme]);
+  }, [hasLabels, fill, settings.darkTheme]);
 
   return (
     <Ring innerR={innerR} outerR={outerR} c={c}

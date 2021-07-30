@@ -10,7 +10,6 @@ import VideoLearn from '../Learn/VideoLearn';
 import ResourcesLearn from '../Learn/ResourcesLearn';
 import PitchCircleView from '../Tuner/PitchCircle/View';
 import FifthComaCircle from './FifthComaCircle';
-import { fifthQ, thirdQ } from '../../model/Divergence';
 import Toggler from '../inputs/Toggler';
 import ThirdComaCircle from './ThirdComaCircle';
 import GlobalStatesContext from '../../store/global-states-context';
@@ -78,7 +77,6 @@ const SheetTemperament: React.FC = () => {
                 >
                   <FifthComaCircle 
                     temperament={temperament}
-                    qualityNote={fifthQ(temperament.cpExp5th)}
                     isCpMode={isCpMode}
                   >
                   </FifthComaCircle>
@@ -111,7 +109,6 @@ const SheetTemperament: React.FC = () => {
                 >
                   <ThirdComaCircle 
                     temperament={temperament}
-                    qualityNote={thirdQ(temperament.csExp3rd)}
                   >
                   </ThirdComaCircle>
                 </svg>
