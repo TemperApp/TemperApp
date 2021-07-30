@@ -66,21 +66,14 @@ const SheetTemperament: React.FC = () => {
           <IonSlide className="px-6">
             <Card
               title="Fractions de commas affectant les quintes"
-              classNameContent='pb-4' className='pb-6'
+              classNameContent='pb-14' className='pb-6'
             >
               <div className="max-w-lg max-h-lg">
-                <svg
-                  className="comparator-comas"
-                  viewBox="0 0 25 30"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
+                <FifthComaCircle 
+                  temperament={temperament}
+                  isCpMode={isCpMode}
                 >
-                  <FifthComaCircle 
-                    temperament={temperament}
-                    isCpMode={isCpMode}
-                  >
-                  </FifthComaCircle>
-                </svg>
+                </FifthComaCircle>
               </div>
               <div className="comma-toggler">
                 <Toggler
@@ -98,20 +91,10 @@ const SheetTemperament: React.FC = () => {
           <IonSlide className="px-6">
             <Card
               title="Fractions de commas affectant les tierces"
-              classNameContent='pb-4' className='pb-6'
+              classNameContent='pb-14' className='pb-6'
             >
               <div className="max-w-lg max-h-lg">
-                <svg
-                  className="comparator-comas"
-                  viewBox="0 0 25 30"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <ThirdComaCircle 
-                    temperament={temperament}
-                  >
-                  </ThirdComaCircle>
-                </svg>
+                <ThirdComaCircle temperament={temperament} />
               </div>
             </Card>
           </IonSlide>

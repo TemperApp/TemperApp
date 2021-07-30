@@ -22,7 +22,7 @@ const ThirdComaCircle: React.FC<ThirdComaCircleProps> = ({
     <>
       <SVG className="ring" viewBoxSize={vbsize}>
         <CommasRing innerR={r[1]} outerR={r[2]} c={center}
-          hasLabels={false} is3rd={false}
+          hasLabels={false} is3rd
           commas={temperament.csExp3rd}
           fontSize={9}
         />
@@ -31,7 +31,7 @@ const ThirdComaCircle: React.FC<ThirdComaCircleProps> = ({
           fontSize={10}
         />
         <CommasRing innerR={r[0]} outerR={r[1]} c={center}
-          hasLabels={true} is3rd={false} fill={false} hasStroke={false}
+          hasLabels={true} is3rd fill={false} hasStroke={false}
           commas={temperament.csExp3rd}
           fontSize={9}
         />

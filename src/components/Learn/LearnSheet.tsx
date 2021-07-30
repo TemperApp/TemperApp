@@ -18,7 +18,6 @@ const LearnSheet: React.FC = () => {
 
   useEffect(() => {
     (async () => {
-      console.log(id);
       const temp = await fetchLearnSheetById(id);
       setMd(temp.content);
       setTitle(temp.label);

@@ -257,7 +257,6 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
               value={String(nextSettings.amSynthFilterRollOff)}
               onChange={(e) => {
                 const rolloff = Number(e.detail.value) as FilterRollOff;
-                console.log(rolloff)
                 set('amSynthFilterRollOff', rolloff);
                 TemperTone.get().amsynthFilter.set({ rolloff: rolloff});
               }}

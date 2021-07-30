@@ -41,7 +41,6 @@ const PitchCircleBtn: React.FC<PitchCircleBtnProps> = ({
   const onPress = useLongPress(
     () => {
       // onLongPress
-      console.log('long press', idx)
       switch (state) {
         case BtnStates.IDLE:
         case BtnStates.SELECTED:
