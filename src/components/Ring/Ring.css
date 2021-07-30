@@ -1,3 +1,4 @@
 .ring text {
   fill: var(--color-contrast);
+  pointer-events: none;
 }

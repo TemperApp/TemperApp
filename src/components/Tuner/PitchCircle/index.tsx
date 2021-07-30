@@ -41,7 +41,6 @@ const PitchCircle: React.FC<PitchCircleProps> = ({
   const settings = useContext(SettingsContext);
   const TemperTone = useTemperTone();
   
-  const [isCheck, setIsCheck] = useState(false);
   const [showToast, setShowToast] = useState(false);
   const [toastMessage, setToastMessage] = useState('');
   
@@ -125,9 +124,11 @@ const PitchCircle: React.FC<PitchCircleProps> = ({
   const getLabels = useCallback((): string[] => {
     const actives = getActiveBtns(btnStates);
     const [noteX, noteY] = createNotesFromActive(actives);
+    const pAction = proc && proc.steps[procStepIdx].action
+
     if (noteX && !noteY) {
-      if (tuneMode === TuneMode.PROCEDURE && proc
-        && proc.steps[procStepIdx].action === 'tune octave'
+      if (tuneMode === TuneMode.PROCEDURE
+        && pAction === ProcAction.TUNE_OCTAVE
       ) {
         const noteX2 = createNoteFromActive({
           note: actives[0].note,
@@ -154,8 +155,9 @@ const PitchCircle: React.FC<PitchCircleProps> = ({
       );
       const { lowest, highest } = Note.compare(noteX, noteY);
       return [
-        `${lowest.string()} · ${highest.string()}`,
-        (modulationFreq !== null) ? acousticBeatToStr(modulationFreq, settings.isBps) : "—"
+        `${lowest.string()} ${(pAction === ProcAction.CHECK) ? ':' : '·'} ${highest.string()}`,
+        (modulationFreq !== null) ? acousticBeatToStr(modulationFreq, settings.isBps) : "—",
+        (pAction === ProcAction.CHECK) ? 'CHECK' : ''
       ];
     }
     return ["—", "— Hz"];
@@ -192,11 +194,6 @@ const PitchCircle: React.FC<PitchCircleProps> = ({
     executeQueue, hasPopover,
   ]);
 
-  useEffect(() => {
-    (proc && proc.steps[procStepIdx].action === ProcAction.CHECK) ? setIsCheck(true) : setIsCheck(false)
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [procStepIdx])
-
   return (
     <>
       <IonPopover
@@ -213,7 +210,6 @@ const PitchCircle: React.FC<PitchCircleProps> = ({
           temperament={temperament}
           labels={getLabels()}
           btnStates={btnStates}
-          isCheck={isCheck}
         />)
         : (<PitchCircleView
           temperament={temperament}

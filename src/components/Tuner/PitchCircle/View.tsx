@@ -1,15 +1,15 @@
 import React, { useCallback } from "react";
 
-import PitchCircleFifths from "./Fifths";
-import PitchCircleThirds from "./Thirds";
-import PitchCircleBtn from "./Button";
 import PitchCircleLabels from "./Labels";
+import PitchCircleButton from "./Button";
+import CommasRing from "../../Ring/CommasRing";
+import SVG from "../../SVG";
 
 import { Temperament } from '../../../model/Temperament/Temperament';
-import { thirdQ, fifthQ } from '../../../model/Divergence';
-
 import NotesMap from '../../../model/Note/NotesMap';
 import { Notes } from '../../../model/Note/enums';
+import { FIFTHS } from "../../../model/Note/sequences";
+
 import { BtnActions, BtnStates } from "./utils/buttons";
 
 import "./PitchCircle.css";
@@ -20,7 +20,6 @@ type PitchCircleViewProps = {
   labels?: string[],
   btnStates?: NotesMap<BtnStates>,
   dispatchState?: (action: any) => void,
-  isCheck?: boolean,
 };
 
 const PitchCircleView: React.FC<PitchCircleViewProps> = ({
@@ -28,7 +27,6 @@ const PitchCircleView: React.FC<PitchCircleViewProps> = ({
   labels,
   btnStates,
   dispatchState,
-  isCheck
 }) => {
 
   const onBtnClick = useCallback(( // useCallback for PitchCircleBtn memoizing
@@ -39,50 +37,40 @@ const PitchCircleView: React.FC<PitchCircleViewProps> = ({
       dispatchState({ type: BtnActions.SET, buttons: [{ note: note, state }] });
   }, [dispatchState]);
 
+  const vbsize = { x: 200 + 2, y: 200 + 2 };
+  const center = { x: vbsize.x / 2, y: vbsize.y / 2 };
+  const r = [45, 56, 88, 100];
+
   return (
     <section className="px-6 pt-2 w-full">
       <section id="pitch-circle" className="max-w-lg">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 357.06 357.06"
-        >
-          {Object.keys(Notes).map((note) => {
-            const n = note as Notes;
+        <SVG className="ring" viewBoxSize={vbsize} >
+
+          <CommasRing innerR={r[0]} outerR={r[1]} is3rd commas={temperament.csExp3rd} c={center} />
+          <CommasRing innerR={r[2]} outerR={r[3]} is3rd={false} commas={temperament.cpExp5th} c={center} />
+
+          {FIFTHS.map((f, idx) => {
             return (
-              <PitchCircleBtn
-                key={n}
-                note={n}
-                state={(btnStates) ? btnStates[n] : BtnStates.IDLE}
+              <PitchCircleButton
+                key={idx}
+                idx={idx}
+                c={center}
+                innerR={r[1]}
+                outerR={r[2]}
+                note={f.toNotes()}
+                state={(btnStates) ? btnStates[f.toNotes()] : BtnStates.IDLE}
                 onClick={onBtnClick}
               />)
           })}
 
-          <PitchCircleThirds
-            qualities={thirdQ(temperament.csExp3rd)}
-          />
-          <PitchCircleFifths
-            qualities={fifthQ(temperament.cpExp5th)}
-          />
-
           <PitchCircleLabels
+            c={center}
             label1={(labels && labels[0]) || ''}
             label2={(labels && labels[1]) || ''}
-            isCheck={isCheck}
+            label3={(labels && labels[2]) || ''}
           />
 
-          <text className="pc-btn-labels" transform="translate(278.22 247.59)">E</text>
-          <text className="pc-btn-labels" transform="translate(231.53 293.77)">B</text>
-          <text className="pc-btn-labels" transform="translate(166.28 310.6)" >F<tspan x="13.12" y="0">♯</tspan></text>
-          <text className="pc-btn-labels" transform="translate(104.23 293.77)">C<tspan x="15.2" y="0" >♯</tspan></text>
-          <text className="pc-btn-labels" transform="translate(56.47 247.59)" >G<tspan x="16.25" y="0">♯</tspan></text>
-          <text className="pc-btn-labels" transform="translate(48.05 185.52)" >E<tspan x="14.08" y="0">♭</tspan></text>
-          <text className="pc-btn-labels" transform="translate(60.97 124.58)" >B<tspan x="15.55" y="0">♭</tspan></text>
-          <text className="pc-btn-labels" transform="translate(106.28 80.52)" >F</text>
-          <text className="pc-btn-labels" transform="translate(170.28 62.27)" >C</text>
-          <text className="pc-btn-labels" transform="translate(231.53 80.52)" >G</text>
-          <text className="pc-btn-labels" transform="translate(278.22 124.58)">D</text>
-          <text className="pc-btn-labels" transform="translate(294.3 185.52)" >A</text>
-        </svg>
+        </SVG>
       </section>
     </section>
   );

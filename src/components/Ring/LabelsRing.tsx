@@ -9,7 +9,7 @@ type LabelsRingProps = {
   innerR: number,
   outerR: number,
   fontSize?: number,
-  hasStroke?: boolean;
+  hasStroke?: boolean,
   attributes?: any,
 };
 
@@ -29,7 +29,8 @@ const LabelsRing: React.FC<LabelsRingProps> = ({
       hasStroke={hasStroke}
       fontSize={fontSize}
       isTextHorizontal
-      {...attributes} />
+      {...attributes}
+    />
   );
 };
 

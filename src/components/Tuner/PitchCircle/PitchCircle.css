@@ -9,16 +9,16 @@
 }
 
 .pc-label-primary {
-  font-size: 32px;
+  font-size: 18px;
   fill: var(--ion-text-color);
 }
 
 .pc-label-secondary {
-  font-size: 18px;
+  font-size: 11px;
   fill: var(--ion-text-color);
 }
 
-.pc-label-check {
-  font-size: 18px;
+.pc-label-tertiary {
+  font-size: 8.5px;
   fill: var(--color-check);
 }

@@ -1,64 +1,42 @@
 import React from 'react';
+import { vec2 } from '../../../utils/maths';
 
 type PitchCircleLabelsProps = {
+  c: vec2,
   label1?: string,
   label2?: string,
-  isCheck?: boolean
+  label3?: string
 };
 
 const PitchCircleLabels: React.FC<PitchCircleLabelsProps> = ({
+  c,
   label1 = '',
   label2 = '',
-  isCheck = false
+  label3 = 'CHECK',
 }) => {
-
-  const normalDisplay = () => {
-    return (
-      <text transform="matrix(1 0 0 1 178.5 178.5)">
-        <tspan
-          className="pc-label-primary"
-          x="0" dy="0" textAnchor="middle"
-        >
-          {label1}
-        </tspan>
-        <tspan
-          className="pc-label-secondary"
-          x="0" dy="35" textAnchor="middle"
-        >
-          {label2}
-        </tspan>
-      </text>
-    )
-  }
-
-  const checkDisplay = () => {
-    return (
-      <text transform="matrix(1 0 0 1 178.5 178.5)">
-        <tspan
-          className="pc-label-primary"
-          x="0" dy="0" textAnchor="middle"
-        >
-          {label1}
-        </tspan>
-        <tspan
-          className="pc-label-check"
-          x="0" dy="-35" textAnchor="middle"
-        >
-          CHECK
-        </tspan>
-        <tspan
-          className="pc-label-secondary"
-          x="0" dy="70" textAnchor="middle"
-        >
-          {label2}
-        </tspan>
-      </text>
-    )
-  }
 
   return (
     <g id="pc-centercircle">
-      {isCheck === true ? checkDisplay() : normalDisplay()}
+      <text transform={`translate(${c.x} ${c.y})`}>
+        <tspan
+          className="pc-label-tertiary"
+          x="0" y="-22" textAnchor="middle"
+        >
+          {label3}
+        </tspan>
+        <tspan
+          className="pc-label-primary"
+          x="0" y="0" textAnchor="middle"
+        >
+          {label1}
+        </tspan>
+        <tspan
+          className="pc-label-secondary"
+          x="0" y="18" textAnchor="middle"
+        >
+          {label2}
+        </tspan>
+      </text>
     </g>
   );
 };
@@ -67,5 +45,6 @@ export default React.memo(
   PitchCircleLabels,
   (prevProps, nextProps) =>
     prevProps.label1 === nextProps.label1 &&
-    prevProps.label2 === nextProps.label2
+    prevProps.label2 === nextProps.label2 &&
+    prevProps.label3 === nextProps.label3
 );
