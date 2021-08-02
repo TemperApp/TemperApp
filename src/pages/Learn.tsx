@@ -28,7 +28,7 @@ const Learn: React.FC = () => {
     }, {
     label: "Conseils pratiques",
       routerLink: "/learn/advices",
-      src: "/assets/logotypes/logo-phys.svg",
+      src: "/assets/logotypes/logo-conseil.svg",
     },
   ]
 
