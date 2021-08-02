@@ -71,8 +71,8 @@ export const acousticBeatToStr = (
   isBps = false
 ) => {
   if (isBps) {
-    return (bps > 4)
-      ? '> 4 bps'
+    return (bps > 9)
+      ? '> 9 bps'
       : bps.toFixed(1) + ' bps';
   } else {
     const bpm = bps * 60;
