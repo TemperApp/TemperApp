@@ -110,6 +110,7 @@ const PitchCircle: React.FC<PitchCircleProps> = ({
         pause: settings.procedureSubStepDurationPause,
         unique: settings.procedureSubStepDurationUnique,
         pair: settings.procedureSubStepDurationPair,
+        octave: settings.procedureSubStepDurationOctave,
         beat: settings.procedureSubStepDurationBeat,
         noBeat: settings.procedureSubStepDurationNoBeat,
       })

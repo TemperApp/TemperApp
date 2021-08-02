@@ -177,7 +177,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
             />
             
             <SettingInput
-              name="Note (unique)"
+              name="Note (accord unique)"
               type="number"
               value={nextSettings.procedureSubStepDurationUnique}
               attributes={{ min: 0, max: 60, step: 0.1 }}
@@ -190,7 +190,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
             />
             
             <SettingInput
-              name="Note (paire)"
+              name="Note (accord paire)"
               type="number"
               value={nextSettings.procedureSubStepDurationPair}
               attributes={{ min: 0, max: 60, step: 0.1 }}
@@ -198,6 +198,19 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
                 const value = Number(e.detail.value);
                 if (value >= 0 && value <= 60)
                   set('procedureSubStepDurationPair', value);
+              }}
+              classNameInput="max-w-12"
+            />
+            
+            <SettingInput
+              name="Note (accord octave)"
+              type="number"
+              value={nextSettings.procedureSubStepDurationOctave}
+              attributes={{ min: 0, max: 60, step: 0.1 }}
+              onChange={(e) => {
+                const value = Number(e.detail.value);
+                if (value >= 0 && value <= 60)
+                  set('procedureSubStepDurationOctave', value);
               }}
               classNameInput="max-w-12"
             />

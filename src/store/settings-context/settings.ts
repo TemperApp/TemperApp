@@ -48,6 +48,9 @@ const settings : readonly AllowedSetting[] = [{
     name: 'procedureSubStepDurationPair',
     defaultValue: 1.0,
   },{
+    name: 'procedureSubStepDurationOctave',
+    defaultValue: 1.0,
+  },{
     name: 'procedureSubStepDurationBeat',
     defaultValue: 5.0,
   },{
