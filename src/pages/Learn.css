@@ -79,15 +79,17 @@ ion-button.learn-resources-btn::part(native) {
   flex-direction: column;
 }
 
+.markdown-content h3 {
+  margin: 0.7rem 0 0.5rem 0;
+}
+
 .markdown-content p {
-  margin: auto;
-  margin-top: 0.5rem;
+  margin: 0.1rem 0 0.4rem 0;
   font-family: var(--ion-family-font);
   font-style: normal !important;
   font-weight: 300 !important;
   font-size: 14px !important;
   line-height: 20px;
-  padding-bottom: 7px;
   color: var(--color-contrast) !important;
   opacity: 1 !important;
   text-align: justify;
@@ -99,10 +101,15 @@ ion-button.learn-resources-btn::part(native) {
   flex-direction: column;
 }
 
-.markdown-content p {
-  margin: auto;
-}
-
 .btn-play {
   fill: var(--color-button);
+}
+
+.markdown-content ul {
+  margin: 0;
+  padding: 0 0 0 1rem;
+}
+
+.markdown-content li {
+  list-style-type: disc;
 }
