@@ -60,25 +60,22 @@
 
 /* KEYBOARD */
 
-.keyboardKeys {
+.key {
   fill: var(--color-inner-button);
   stroke: var(--color-dark);
   stroke-width: 0.5;
-  stroke-miterlimit: 10;
 }
 
-.keyboardKeysColored {
-  fill: var(--color-check);
-  stroke: var(--color-dark);
-  stroke-width: 0.5;
-  stroke-miterlimit: 10;
+.key-black {
+  fill: var(--color-dark);
 }
 
-.keyboardKeysActive {
+.key-tuned {
   fill: var(--color-check);
-  stroke: var(--color-dark);
-  stroke-width: 0.5;
-  stroke-miterlimit: 10;
+}
+
+.key-active {
+  fill: var(--color-check);
   animation-name: keyboardNoteActive;
   animation-duration: 1s;
   animation-iteration-count: infinite;
@@ -96,28 +93,6 @@
   }
 }
 
-.keyboardBlackKeys {
-  fill: var(--color-dark);
-  stroke: var(--color-dark);
-  stroke-width: 0.5;
-  stroke-miterlimit: 10;
-}
-
-.st0 {
-  fill: var(--color-inner-button);
-  stroke: var(--color-dark);
-  stroke-width: 0.5;
-  stroke-miterlimit: 10;
-}
-.st1 {
-  fill: var(--color-contrast);
-}
-.st2 {
-  font-family: "Karla-Bold";
-}
-.st3 {
-  font-size: 14px;
-}
 
 
 .tune-header-select {

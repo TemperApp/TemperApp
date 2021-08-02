@@ -12,7 +12,7 @@ import PitchCircle from "./PitchCircle";
 
 import EqualTemperament from "../../model/Temperament/Equal";
 import { Temperament } from "../../model/Temperament/Temperament";
-import { ProcAction, Procedure } from "../../model/Procedure";
+import { Procedure } from "../../model/Procedure";
 
 import { fetchTemperamentPropsById, fetchTemperaments } from "../../engine/DataAccessor";
 import { TemperamentDBType } from "../../engine/DB";
@@ -47,7 +47,6 @@ const Tuner: React.FC<TunerProps> = ({
   const [proc, setProc] = useState<Procedure | null>(null);
   const [procStepIdx, setProcStepIdx] = useState<number>(0);
   const [procRepeatCount, setProcRepeatCount] = useState<number>(0);
-  const [keyboardColor, setKeyboardColor] = useState<Array<string>>([]);
 
 
   useEffect(() => {
@@ -92,25 +91,6 @@ const Tuner: React.FC<TunerProps> = ({
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [temperament]);
 
-  useEffect(() => {
-    let i = 0;
-    let Keyboard = [];
-    while(proc?.hasNext(i-1)){
-      const temp = proc.steps[i];
-      if(temp.action === ProcAction.TUNE_UNIQUE)
-        Keyboard.push(temp.noteX.string());
-      else {
-        if(temp.action === ProcAction.TUNE_OCTAVE || temp.action === ProcAction.TUNE_PAIR )
-          Keyboard.push(temp.noteY.string());
-        else{
-          Keyboard.push("");
-        }
-      }
-      i++;
-    }
-    setKeyboardColor(Keyboard);
-  }, [proc]);
-
   const onProcedureNext = useCallback(() => { // useCallback for TuneFooter memoizing
     setProcStepIdx(procStepIdx + 1);
     setProcRepeatCount(0);
@@ -126,8 +106,8 @@ const Tuner: React.FC<TunerProps> = ({
       
       { tuneMode === TuneMode.PROCEDURE
         ? <TunerHeaderKeyboard
-            keyboardColor = {keyboardColor}
-            procStepIdx = {procStepIdx}
+            tunedNotes = {proc ? proc.getTunedNotesAtStep(procStepIdx) : []}
+            noteToTune = {proc ? proc.getNoteToTuneAtStep(procStepIdx) : null}
           />
           
         : <TunerHeaderInputs

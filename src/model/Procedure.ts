@@ -34,6 +34,28 @@ export class Procedure {
   }
 
 
+  getNoteToTuneAtStep(stepIdx: number): Note | null {
+    const s = this.steps[stepIdx];
+    if(s.action === ProcAction.TUNE_UNIQUE)
+      return s.noteX;
+
+    if (s.action === ProcAction.TUNE_OCTAVE || s.action === ProcAction.TUNE_PAIR)
+      return s.noteY;
+
+    return null
+  }
+
+
+  getTunedNotesAtStep(stepIdx: number) {
+    let tunedNotes = [];
+    for (let i = 0; i < stepIdx; i++) {
+      const noteToTune = this.getNoteToTuneAtStep(i);
+      noteToTune && tunedNotes.push(noteToTune);
+    }
+    return tunedNotes;
+  }
+
+
   static isValid(procStr: string): boolean {
     return null !== procStr.match(/^((?:{([^}]*)})?([A-G](?:#|♯|b|♭)?(?:[0-9]|10))(?:([-:])([A-G](?:#|♯|b|♭)?(?:[0-9]|10)))?\s*(?:;|$))+\s*$/i);
   }

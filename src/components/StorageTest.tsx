@@ -38,21 +38,23 @@ const StorageTest: React.FC = () => {
 
   return (
     <IonPage className="p-4">
-      <h2>Storage</h2>
-      <button
-        className="mr-4 p-2"
-        onClick={() => (async () => store.clear())().then(() => print('Store cleared'))}
-      >
-        Clear store
-      </button>
-      <h3>Test Logs</h3>
       <div>
-        {(store.isAvailable)
-          ? logs.map((line) => (
-              <div key={count++}>{line}</div>
-            ))
-          : "Store is not available :("
-        }
+        <h2>Storage</h2>
+        <button
+          className="mr-4 p-2"
+          onClick={() => (async () => store.clear())().then(() => print('Store cleared'))}
+        >
+          Clear store
+        </button>
+        <h3>Test Logs</h3>
+        <div>
+          {(store.isAvailable)
+            ? logs.map((line) => (
+                <div key={count++}>{line}</div>
+              ))
+            : "Store is not available :("
+          }
+        </div>
       </div>
     </IonPage>
   )

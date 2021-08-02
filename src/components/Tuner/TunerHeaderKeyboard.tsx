@@ -1,81 +1,99 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { NoteAlter, Notes } from '../../model/Note/enums';
+import Note from '../../model/Note/Note';
+import SettingsContext from '../../store/settings-context';
+import { KeyboardLabels } from '../../store/settings-context/settings';
+import { equalsDeep } from '../../utils/functions';
+
+const keys = [
+  { note: Note.create(Notes.C, 3)        , x:   0   , y: 0.58, },
+  { note: Note.create(Notes.D, 3)        , x:  25.08, y: 0.58, },
+  { note: Note.create(Notes.E, 3)        , x:  50.16, y: 0.58, },
+  { note: Note.create(Notes.F, 3)        , x:  75.24, y: 0.58, },
+  { note: Note.create(Notes.G, 3)        , x: 100.32, y: 0.58, },
+  { note: Note.create(Notes.A, 3)        , x: 125.4 , y: 0.58, },
+  { note: Note.create(Notes.B, 3)        , x: 150.48, y: 0.58, },
+  { note: Note.create(Notes.C, 4)        , x: 175.56, y: 0.58, },
+  { note: Note.create(Notes.D, 4)        , x: 200.64, y: 0.58, },
+  { note: Note.create(Notes.E, 4)        , x: 225.72, y: 0.58, },
+  { note: Note.create(Notes.F, 4)        , x: 250.8 , y: 0.58, },
+  { note: Note.create(Notes.G, 4)        , x: 275.88, y: 0.58, },
+  { note: Note.create(Notes.A, 4)        , x: 300.96, y: 0.58, },
+  { note: Note.create(Notes.B, 4)        , x: 326.04, y: 0.58, },
+  { note: Note.create(Notes.C_sharp, 3)  , x:  13.76, y: 0.58, },
+  { note: Note.create(Notes.E_flat, 3)   , x: 117.06, y: 0.58, },
+  { note: Note.create(Notes.F_sharp, 3)  , x:  44.8 , y: 0.58, },
+  { note: Note.create(Notes.G_sharp, 3)  , x:  89.02, y: 0.58, },
+  { note: Note.create(Notes.B_flat, 3)   , x: 145.02, y: 0.58, },
+  { note: Note.create(Notes.C_sharp, 4)  , x: 189.41, y: 0.58, },
+  { note: Note.create(Notes.E_flat, 4)   , x: 219.93, y: 0.58, },
+  { note: Note.create(Notes.F_sharp, 4)  , x: 264.63, y: 0.58, },
+  { note: Note.create(Notes.G_sharp, 4)  , x: 292.6 , y: 0.58, },
+  { note: Note.create(Notes.B_flat, 4)   , x: 320.63, y: 0.58, },
+];
 
 type TunerHeaderKeyboardProps = {
-  keyboardColor: Array<string>,
-  procStepIdx: number
+  tunedNotes: Array<Note>,
+  noteToTune?: Note | null,
 }
 
 const TunerHeaderKeyboard: React.FC<TunerHeaderKeyboardProps> = ({
-  keyboardColor, procStepIdx
+  tunedNotes, noteToTune
 }) => {
 
-  const isColored = (note: string) => {
-    for(let i = 0; i<procStepIdx; i++){
-      if(keyboardColor[i] === note){
-        return "keyboardKeysColored";
-      }
-    }
-    if(keyboardColor[procStepIdx]=== note)
-      return "keyboardKeysActive";
-    return "keyboardKeys"
+  const settings = useContext(SettingsContext);
+
+  const color = (note: Note) => {
+    for (const tn of tunedNotes)
+      if (equalsDeep(tn, note))
+        return "key-tuned";
+
+    if (noteToTune && equalsDeep(noteToTune, note))
+      return "key-active";
+
+    return note.alter !== NoteAlter.NONE && 'key-black';
   }
 
-  const isBlackKeysColored = (note: string) => {
-    for(let i = 0; i<procStepIdx; i++){
-      if(keyboardColor[i] === note){
-        return "keyboardKeysColored";
-      }
-    }
-    if(keyboardColor[procStepIdx]=== note)
-      return "keyboardKeysActive";
-    return "keyboardBlackKeys"
-  }
+  const labels = settings.keyboardLabels === KeyboardLabels.NONE
+    ? []
+    : settings.keyboardLabels === KeyboardLabels.C3C4
+      ? ['C3', 'C4']
+      : settings.keyboardLabels === KeyboardLabels.A3A4
+        ? ['A3', 'A4']
+        : keys
+          .filter(({note}) => note.alter === NoteAlter.NONE)
+          .map(({note}) => note.string(false));
 
   return (
     <section className="px-6 pt-2 w-full max-w-lg">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 351.1 94.6">
-        <rect id="C3" y="0.58"            className={isColored("D3")} width="25.08" height="94.62"/>
-        <rect id="D3" x="25.08" y="0.58"  className={isColored("D3")} width="25.08" height="94.62"/>
-        <rect id="E3" x="50.16" y="0.58"  className={isColored("E3")} width="25.08" height="94.62"/>
-        <rect id="F3" x="75.24" y="0.58"  className={isColored("F3")} width="25.08" height="94.62"/>
-        <rect id="G3" x="100.32" y="0.58" className={isColored("G3")} width="25.08" height="94.62"/>
-        <rect id="A3" x="125.4" y="0.58"  className={isColored("A3")} width="25.08" height="94.62"/>
-        <rect id="B3" x="150.48" y="0.58" className={isColored("B3")} width="25.08" height="94.62"/>
-        <rect id="C4" x="175.56" y="0.58" className={isColored("C4")} width="25.08" height="94.62"/>
-        <rect id="D4" x="200.64" y="0.58" className={isColored("D4")} width="25.08" height="94.62"/>
-        <rect id="E4" x="225.72" y="0.58" className={isColored("E4")} width="25.08" height="94.62"/>
-        <rect id="F4" x="250.8" y="0.58"  className={isColored("F4")} width="25.08" height="94.62"/>
-        <rect id="G4" x="275.88" y="0.58" className={isColored("G4")} width="25.08" height="94.62"/>
-        <rect id="A4" x="300.96" y="0.58" className={isColored("A4")} width="25.08" height="94.62"/>
-        <rect id="B4" x="326.04" y="0.58" className={isColored("B4")} width="25.08" height="94.62"/>
-        <rect id="G3_sharp" x="117.06" y="0.58" className={isBlackKeysColored("G♯3")} width="16.67" height="56"/>
-        <rect id="G4_sharp" x="292.6" y="0.58" className={isBlackKeysColored("G♯4")} width="16.67" height="56"/>
-        <rect id="E4_flat" x="219.93" y="0.58" className={isBlackKeysColored("E♭4")} width="16.67" height="56"/>
-        <rect id="C4_sharp" x="189.41" y="0.58" className={isBlackKeysColored("C♯4")} width="16.67" height="56"/>
-        <rect id="B3_flat" x="145.02" y="0.58" className={isBlackKeysColored("B♭3")} width="16.67" height="56"/>
-        <rect id="F3_sharp" x="89.02" y="0.58" className={isBlackKeysColored("F♯3")} width="16.67" height="56"/>
-        <rect id="B4_flat" x="320.63" y="0.58" className={isBlackKeysColored("b♭4")} width="16.67" height="56"/>
-        <rect id="F4_sharp" x="264.63" y="0.58" className={isBlackKeysColored("F♯4")} width="16.67" height="56"/>
-        <rect id="E3_flat" x="44.8" y="0.58" className={isBlackKeysColored("E♭3")} width="16.67" height="56"/>
-        <rect id="C3_sharp" x="13.76" y="0.58" className={isBlackKeysColored("C♯3")} width="16.67" height="56"/>
-        <text transform="matrix(1 0 0 1 3.5442 91.4545)" className="st3 st4">C3</text>
-        <text transform="matrix(1 0 0 1 28.7934 91.4545)" className="st3 st4">D3</text>
-        <text transform="matrix(1 0 0 1 54.1743 91.4545)" className="st3 st4">E3</text>
-        <text transform="matrix(1 0 0 1 79.1915 91.4545)" className="st3 st4">F3</text>
-        <text transform="matrix(1 0 0 1 104.3668 91.4545)" className="st3 st4">G3</text>
-        <text transform="matrix(1 0 0 1 129.0335 91.4545)" className="st3 st4">A3</text>
-        <text transform="matrix(1 0 0 1 154.1673 91.4545)" className="st3 st4">B3</text>
-        <text transform="matrix(1 0 0 1 179.5006 91.4545)" className="st3 st4">C4</text>
-        <text transform="matrix(1 0 0 1 204.8343 91.4545)" className="st3 st4">D4</text>
-        <text transform="matrix(1 0 0 1 229.8711 91.4545)" className="st3 st4">E4</text>
-        <text transform="matrix(1 0 0 1 254.4959 91.4545)" className="st3 st4">F4</text>
-        <text transform="matrix(1 0 0 1 280.0529 91.4545)" className="st3 st4">G4</text>
-        <text transform="matrix(1 0 0 1 305.1549 91.4545)" className="st3 st4">A4</text>
-        <text transform="matrix(1 0 0 1 329.8343 91.4545)" className="st3 st4">B4</text>
-      </svg>
+        {
+          keys.map((k) => (
+            <g key={k.note.string(false)}>
+              <rect
+                id={`key-${k.note.string(false)}`}
+                x={k.x}
+                y={k.y}
+                className={`
+                  key
+                  ${color(k.note)}
+                `}
+                width={k.note.alter === NoteAlter.NONE ? 25.08 : 16.67}
+                height={k.note.alter === NoteAlter.NONE ? 94.62 : 56}
+              />
 
+              { labels.includes(k.note.string(false))
+                && 
+                  <text x={k.x + 3.54} y={k.y + 92.03}>
+                    { k.note.string(false) }
+                  </text>
+              }
+            </g>
+          ))
+        }
+      </svg>
     </section>
   );
 };
@@ -83,5 +101,6 @@ const TunerHeaderKeyboard: React.FC<TunerHeaderKeyboardProps> = ({
 export default React.memo(
   TunerHeaderKeyboard,
   (prevProps, nextProps) =>
-    prevProps.procStepIdx === nextProps.procStepIdx 
+    prevProps.tunedNotes === nextProps.tunedNotes &&
+    prevProps.noteToTune === nextProps.noteToTune
 );

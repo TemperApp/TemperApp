@@ -13,7 +13,7 @@ import useTemperTone from "../../hooks/useTemperTone";
 import { useStorageSQLite } from "react-data-storage-sqlite-hook/dist";
 
 import SettingsContext from "../../store/settings-context";
-import { AllowedSettingValue } from "../../store/settings-context/settings";
+import { AllowedSettingValue, KeyboardLabels } from "../../store/settings-context/settings";
 
 import { lerp } from "../../utils/maths";
 import { FilterRollOff } from "tone";
@@ -125,6 +125,22 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
             }}
           />
 
+          <SettingSelect
+            name="Noms des notes du clavier"
+            placeholder="Selectionner..."
+            options={[
+              {value: String(KeyboardLabels.NONE), label: "Aucun"},
+              {value: String(KeyboardLabels.C3C4), label: "C3 et C4"},
+              {value: String(KeyboardLabels.A3A4), label: "A3 et A4"},
+              {value: String(KeyboardLabels.ALL), label: "Tous"},
+            ]}
+            value={String(nextSettings.keyboardLabels)}
+            onChange={(e: any) => {
+              set('keyboardLabels', Number(e.detail.value));
+            }}
+            classNameSelect="min-w-24 max-w-24"
+          />
+
 
           <SettingsGroup
             title='Volume'
@@ -173,7 +189,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
                 if (value >= 0 && value <= 60)
                   set('procedureSubStepDurationPause', value);
               }}
-              classNameInput="max-w-12"
+              classNameInput="max-w-12 min-w-10"
             />
             
             <SettingInput
@@ -186,7 +202,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
                 if (value >= 0 && value <= 60)
                   set('procedureSubStepDurationUnique', value);
               }}
-              classNameInput="max-w-12"
+              classNameInput="max-w-12 min-w-10"
             />
             
             <SettingInput
@@ -199,7 +215,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
                 if (value >= 0 && value <= 60)
                   set('procedureSubStepDurationPair', value);
               }}
-              classNameInput="max-w-12"
+              classNameInput="max-w-12 min-w-10"
             />
             
             <SettingInput
@@ -212,7 +228,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
                 if (value >= 0 && value <= 60)
                   set('procedureSubStepDurationOctave', value);
               }}
-              classNameInput="max-w-12"
+              classNameInput="max-w-12 min-w-10"
             />
             
             <SettingInput
@@ -225,7 +241,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
                 if (value >= 0 && value <= 60)
                   set('procedureSubStepDurationBeat', value);
               }}
-              classNameInput="max-w-12"
+              classNameInput="max-w-12 min-w-10"
             />
             
             <SettingInput
@@ -238,7 +254,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
                 if (value >= 0 && value <= 60)
                   set('procedureSubStepDurationNoBeat', value);
               }}
-              classNameInput="max-w-12"
+              classNameInput="max-w-12 min-w-10"
             />
           </SettingsGroup>
 
@@ -280,7 +296,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
                 set('amSynthFilterRollOff', rolloff);
                 TemperTone.get().amsynthFilter.set({ rolloff: rolloff});
               }}
-              classNameSelect="w-20"
+              classNameSelect="min-w-16 max-w-16"
             />
 
           </SettingsGroup>
@@ -342,7 +358,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
                   set('amSynthEQLowFrequency', value);
                   TemperTone.get().amsynthEQ.lowFrequency.rampTo(value, 0.1);
                 }}}
-              classNameInput="max-w-20"
+              classNameInput="max-w-16 min-w-16"
             />
 
             <SettingInput
@@ -356,7 +372,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
                   set('amSynthEQHighFrequency', value);
                   TemperTone.get().amsynthEQ.highFrequency.rampTo(value, 0.1);
                 }}}
-              classNameInput="max-w-20"
+              classNameInput="max-w-16 min-w-16"
             />
           </SettingsGroup>
 
@@ -395,7 +411,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
                   set('amSynthDistortionLowFrequency', value);
                   TemperTone.get().amsynthDist.set({ distortion: value });
                 }}}
-              classNameInput="max-w-20"
+              classNameInput="max-w-20 min-w-10"
             />
 
             <SettingInput
@@ -409,7 +425,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
                   set('amSynthDistortionHighFrequency', e.detail.value);
                   TemperTone.get().amsynthDist.set({ distortion: e.detail.value });
               }}}
-              classNameInput="max-w-20"
+              classNameInput="max-w-20 min-w-10"
             />
           </SettingsGroup>
 

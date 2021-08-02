@@ -19,6 +19,14 @@ export type AllowedSetting = (
 );
 
 
+/* Settings enums */
+
+export enum KeyboardLabels {
+  NONE, C3C4, A3A4, ALL
+}
+
+/* -------------- */
+
 const settings : readonly AllowedSetting[] = [{
     name: 'darkTheme',
     defaultValue: false,
@@ -35,6 +43,9 @@ const settings : readonly AllowedSetting[] = [{
   },{
     name: 'waveTriangle',
     defaultValue: false,
+  },{
+    name: 'keyboardLabels',
+    defaultValue: KeyboardLabels.C3C4,
   },{
     name: 'masterVolume',
     defaultValue: 10,
