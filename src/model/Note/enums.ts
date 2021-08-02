@@ -42,8 +42,8 @@ export enum NotesIndex {
 export enum FifthsIndex {
   C =       0,
   G =       1,
-  A =       2,
-  D =       3,
+  D =       2,
+  A =       3,
   E =       4,
   B =       5,
   F_sharp = 6,
