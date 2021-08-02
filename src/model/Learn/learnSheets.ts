@@ -9,41 +9,51 @@ export const learnSheets: Array<LearnSheet> = [
   {
     id: "definition",
     label: "Définition",
-    content: `### Qu’est ce qu’un tempérament ?
+    content: `### Le tempérament… selon Jean-Jacques Rousseau
   > « Opération par laquelle, au moyen dʼune légère altération dans les Intervalles, faisant évanouir la différence de deux sons voisins, on les confond en un, qui, sans choquer lʼoreille, forme les Intervalles respectifs de lʼun & de lʼautre. Par cette opération lʼon simplifie lʼEchelle, en diminuant le nombre des Sons nécessaires. Sans le Tempérament, au lieu de douze Sons seulement que contient lʼOctave, il en faudroit plus de soixante pour moduler dans tous les Tons ».  
   > - J. J. Rousseau, Extrait de « Tempérament », _Dictionnaire de la musique_, 1764.
   
-  Le **tempérament musical** est l’ensemble des choix esthétiques faits au cours de l'accord d’un instrument de musique. La définition de Jean-Jacques Rousseau résume ce qu’on peut considérer comme un triple compromis que constitue un tempérament musical. Il s’agit de trouver une solution qui combine de la façon la plus satisfaisante, selon le contexte (le répertoire, les instruments concernés, etc.) : un paramètre physique et matériel (la “jouabilité” sur les instruments, sur un clavier, un manche avec des frettes, etc.), un paramètre musical (pouvoir moduler le plus librement et le plus loin possible), et un paramètre esthétique (conserver ou pas le plus possible d’intervalles purs “sans choquer l’oreille”).
-    
+  ### Qu’est-ce qu’un tempérament? Une réponse plus actuelle...
+
+  Le tempérament musical est l’ensemble des choix esthétiques faits au cours de l'accord d’un instrument de musique. La définition de Jean-Jacques Rousseau résume ce qu’on peut considérer comme un triple compromis que constitue un tempérament musical. Il s’agit de trouver une solution qui combine de la façon la plus satisfaisante, selon le contexte (le répertoire, les instruments concernés, etc.) : un paramètre physique et matériel (la “jouabilité” sur les instruments, sur un clavier, un manche avec des frettes, etc.), un paramètre musical (pouvoir moduler le plus librement et le plus loin possible), et un paramètre esthétique (conserver ou pas le plus possible d’intervalles purs “sans choquer l’oreille”).
+  
   L’accord et le tempérament concernent les instruments à sons “fixes”, c’est-à-dire ceux dont les notes sont accordées avant que l’instrumentiste joue. Il s’agit entre autres des claviers tels que le clavecin, l’orgue ou le piano.
-  
-  Il ne faut pas confondre accord et justesse : on accorde un instrument avant d’en jouer, tandis que la justesse apparaît au moment du jeu.
-  
-  Avant le XIXe siècle, ces choix esthétiques correspondaient à des usages, des modes ou des habitudes en fonction des époques, des régions et d’autres facteurs influençant la musique elle-même. Il n’y avait donc pas de “choix” proprement dit mais des bonnes et des mauvaises manières d’accorder selon le lieu, le moment et les circonstances matérielles.
-  
+
+  Il ne faut pas confondre accord et justesse : on accorde un instrument avant d’en jouer, tandis que la justesse apparaît au moment du jeu.
+
+  ### Le tempérament est-il historique ?
+
+  Avant le XIXe siècle, les choix esthétiques d’accord correspondaient à des usages, des modes ou des habitudes en fonction des époques, des régions et d’autres facteurs influençant la musique elle-même. Il n’y avait donc pas de “choix” proprement dit mais des bonnes et des mauvaises manières d’accorder selon le lieu, le moment et les circonstances matérielles.
+
+  ### L’accord : une pratique contemporaine 
+
   A l’heure où les musiciens se penchent sur des répertoires anciens, il leur faut retrouver pour chacun de ces répertoires la manière d’accorder correspondant aux usages en vogue au moment de leur composition, condition nécessaire pour se rapprocher le plus possible de  leur réalité sonore.
-  
+
   La notion de tempérament musical permet à un accordeur contemporain de rendre objectifs les critères qui faisait un bon accord pour un certain répertoire, et de donner un nom à cette manière d’accorder. Les tempéraments ont donc souvent des noms de compositeurs voire d’auteurs, des dates et des régions d’usages. Ces informations sont souvent moins absolues et véridiques que simplement utiles pour associer une technique d’accord à un répertoire. 
-  
-  L’accordeur n’a jamais une liberté totale pour chaque note d’un instrument. Des contraintes réduisent les choix qu’il peut faire et permettent de résumer un tempérament en un petit nombre d’informations : un petit nombre de valeurs numériques qui décrivent certains intervalles.
-  
-  Ces valeurs représentent le “degré de fausseté” ou “tempérament” des intervalles. Un intervalle est dit “tempéré” s’il est accordé avec un certain degré de fausseté, s’il présente donc un écart par rapport à l’intervalle “pur” (cf. “les mathématiques”).
-  
-  Le degré de fausseté d’un intervalle peut être lui-même exprimé comme un intervalle : celui qui sépare l’une des notes de l’intervalle tempéré de sa valeur pure. 
-  
+
+  ### Comment *décrire* un tempérament?
+
+  L’accordeur n’a jamais une liberté totale pour chaque note d’un instrument. Des contraintes réduisent les choix qu’il peut faire et permettent de résumer un tempérament en un petit nombre d’informations : *un petit nombre de valeurs numériques qui décrivent certains intervalles.*
+
+  Ces valeurs représentent le **degré de fausseté** ou **tempérament** des intervalles. Un intervalle est dit **tempéré** s’il est accordé avec un certain degré de fausseté, s’il présente donc un écart par rapport à l’intervalle **pur** (cf. “les mathématiques”).
+
+  Le degré de fausseté d’un intervalle peut être lui-même exprimé comme un intervalle : celui qui sépare l’une des notes de l’intervalle tempéré de sa valeur pure. 
+
   Le clavier des instruments à sons fixes contient douze notes par octave. Toute l’information décrivant un tempérament sera donc contenue dans douze valeurs. 
-  
+
   On utilise aujourd’hui des valeurs numériques, avec lesquelles il est facile de faire des recherches ou de programmer. 
-  
+
   Pour manipuler ces valeurs, il est nécessaire de comprendre les mathématiques du tempérament musical.
-  
+
   Les notes d'un clavier à 12 touches par octave comme le piano, le clavecin ou l'orgue sont reliées par un cycle de 12 quintes, et les tempéraments historiques ou plus récents pour clavier peuvent être définis comme une succession de 12 quintes de tailles différentes. Les principes sur lesquels ont été élaborés ces tempéraments ont évolué dans le temps ; un tempérament est non seulement une information précieuse sur l'évolution de la pensée théorique, mais surtout un témoignage sonore irréfutable et sans équivalent.
-    `,
+  
+  `,
   },
   {
     id: "mathematics",
     label: "Mathématiques",
-    content: `Depuis les auteurs grecs jusqu'au XIXe siècle, un intervalle est défini par un rapport de longueurs de cordes : par analogie, le rapport des sons est celui des longueurs des cordes qui les forment (ainsi le rapport mathématique est 1:2 pour l’octave, 2:3 pour la quinte, 3:4 pour la quarte, 4:5 pour la tierce majeure, 5:6 pour la tierce mineure, etc.). De nos jours, on emploie le rapport des fréquences des deux notes qui forment l'intervalle. On le nomme rapport acoustique, qui est l'inverse du rapport des longueurs. Les rapports acoustiques des intervalles simples à l'état pur sont ainsi les suivants :
+    content: `### longueurs de cordes - fréquences
+  Depuis les auteurs grecs jusqu'au XIXe siècle, un intervalle est défini par un rapport de longueurs de cordes : par analogie, le rapport des sons est celui des longueurs des cordes qui les forment (ainsi le rapport mathématique est 1:2 pour l’octave, 2:3 pour la quinte, 3:4 pour la quarte, 4:5 pour la tierce majeure, 5:6 pour la tierce mineure, etc.). De nos jours, on emploie le rapport des fréquences des deux notes qui forment l'intervalle. On le nomme rapport acoustique, qui est l'inverse du rapport des longueurs. Les rapports acoustiques des intervalles simples à l'état pur sont ainsi les suivants :
 
   $ \\small  \\text{octave : 2 } $ 
 
@@ -57,6 +67,8 @@ export const learnSheets: Array<LearnSheet> = [
     
   Ces intervalles, auxquels ont peut ajouter les intervalles complémentaires des tierces dans l'octave, à savoir la sixte mineure $(\\small  \\dfrac{8}{5})$ et la sixte majeure $(\\small \\dfrac{5}{3})$ émettent un battement perceptible si on les écarte de leur valeur pure (correspondant à l’exactitude du rapport acoustique). Le rapport acoustique est indépendant de la fréquence de la note sur laquelle on construit l’intervalle. Pour obtenir la quinte d’une note quelconque, il faudra toujours multiplier la fréquence de  cette note par $ \\small  \\dfrac{3}{2}$.
     
+  ### Manipuler les intervalles à l’aide des mathématiques
+  
   De la même manière qu’on ajoute les intervalles sur un clavier en élevant successivement une note d’un intervalle puis d’un autre, on peut calculer le rapport acoustique qui en résulte : le rapport acoustique de la somme de deux intervalles est le produit des rapports acoustiques des deux intervalles.
   
   Ce principe s'illustre par la complémentarité des deux tierces dans la quinte :
@@ -79,11 +91,23 @@ export const learnSheets: Array<LearnSheet> = [
   $\\small \\Rightarrow  \\dfrac{4}{3} $
   $\\small \\div \\dfrac{5}{4} = \\dfrac{16}{15} $
 
+  ### Construire une gamme à l’aide des mathématiques
+
+  Pour construire les douze notes de la gamme, on commence par une fréquence de départ quelconque $f_{1}$. On élève cette note de douze quinte successivement =$$f_{1} \\underbrace{\\times \\frac{3}{2} \\times \\frac{3}{2} ...}_{12 \\times } = f_{1} \\times \\left( \\frac{3}{2}\\right)^{12}$$
+
+  On obtient la douzième fréquence $f_{12}$. Si on est parti de Do, on a obtenu toutes les fréquences jusqu’à… si# bien sûr! En effet, puisqu’on est monté en quintes pures, la dernière note n’est pas exactement à l’unisson de la première. Pour les comparer, on abaisse la douzième note de 7 octaves : $$f^\\prime_{12}=\\frac{f_{12}}{2^{7}}$$ Puis on calcul l’intervalle entre ces deux notes presque à l’unisson, et on obtient le petit intervalle appelé comma pythagoricien : 
+  
+  $$ \\Large C_{p}=\\frac{f^\\prime_{12}}{f_{1}} = \\frac{3^{12}}{2^{19}} $$
+
+  ### Diviser un intervalle? 
+
   Enfin le rapport acoustique correspondant à la division d’un intervalle en n intervalles égaux se calcule en prenant sa racine n-ième : C’est l’opération qui consiste à répartir le comma pythagoricien sur les douze quintes, qu’on abaisse toutes d’un petit intervalle dont la valeur est $\\small \\sqrt[12]{C_{p}}$. De même dans le tempérament mésotonique usuel, la tierce majeure est constituée de deux tons égaux dont le rapport acoustique est $ \\small \\sqrt{\\frac{5}{4}}$.
   
-  La somme d'intervalles purs (qui, à l'audition, sont dénués de battement) entraîne la production de petits intervalles appelés commas qui affectent la pureté voire la jouabilité d'autres intervalles. Tempérer un intervalle, c'est l'éloigner de son état de pureté afin d'amoindrir voire annuler l'effet de ces commas.
-  
-  Par extension, un tempérament est une façon d'organiser ces déviations de la pureté dans une échelle donnée.
+  ### Pureté et tempérament
+
+  Le rapport acoustique correspondant à la division d’un intervalle en n intervalles égaux se calcule en prenant sa racine n-ième : C’est l’opération qui consiste par exemple à répartir le comma pythagoricien sur les douze quintes, qu’on abaisse toutes d’un petit intervalle dont la valeur est $\sqrt[12]{C_{p}}$. De même dans le tempérament mésotonique usuel, la tierce majeure est constituée de deux tons égaux dont le rapport acoustique est $\\sqrt{\\frac{5}{4}}$.
+
+  ### Les commas
 
   TemperApp utilise les commas syntonique et pythagoricien :
 
@@ -99,28 +123,59 @@ export const learnSheets: Array<LearnSheet> = [
 
   $$ \\dfrac{C_{p}}{12} \\approx \\dfrac{C_{s}}{11} $$
 
+  ### Représentation mathématique des intervalles usuels : les quintes
+
+  Les mathématiques représentent par des équations simples le geste de l’accordeur. Pour décrire une quinte tempérée, le mathématicien (comme l’accordeur) part d’une quinte pure, et écrit la fréquence en Hz de la note Sol par rapport à la fréquence de Do $$ \\textrm{Sol} = \\frac{3}{2} \\times \\textrm{Do}$$ La fréquence du sol est donc plus haute que ce que cherche l’accordeur. Il faut *l’abaisser* d’une fraction de comma. Supposons que l’accordeur souhaite une quinte au tempérament égal : il faut l’abaisser d’un douzième de comma pythagoricien. Comme tous les intervalles, le comma pythagoricien peut se diviser en prenant sa **racine** : $$\\sqrt[12]{C_{p}}$$
+  Une autre écriture de cette racine permet plus de clarté : $$\\sqrt[12]{C_{p}}=C_{p}^{{}^{\\frac{1}{12}}}$$
+  L’équation qui donne la fréquence du Sol par rapport au Do est donc $$\\textrm{Sol} = \\frac{3}{2} \\times \\textrm{Do} \\times {C_{p}}^{-\\frac{1}{12}}$$
+  Le signe “-” indique que le sol est **abaissé** de la fraction de comma. Sur le cycle des quintes, cette équation sera abrégée en $-1/12$
+
+  ### Représentation mathématique des intervalles usuels : les tierces
+
+  On associe habituellement les tierces au comma *syntonique* c’est-à-dire la différence entre la tierce majeure obtenue par quatre quintes pures (dite pythagoricienne) et la tierce pure. Le mathématicien représente donc les tierces tempérées à l’aide d’un exposant de comma syntonique plutôt que de comma pythagoricien, bien que les deux soient possibles. Or il se trouve que le onzième de comma syntonique un intervalle très proche du douzième de comma pythagoricien : $$ \\frac{C_{p}}{12} \\approx \\frac{C_{s}}{11} $$ On représente donc mathématiquement les tierces à l’aide de cette unité.
+  Procédons comme avec les quintes. Pour représenter une tierce majeure “vallotti” on commence par représenter sa valeur pure : $$\\textrm{Mi}=\\textrm{Do} \\times \\frac{5}{4}$$ Puis on prend 3 onzièmes de comma syntonique $$C_{s}^{\\frac{3}{11}}$$
+  Et on *monte* notre Mi pur de cet intervalle : $$\\textrm{Mi} = \\textrm{Do} \\times \\frac{5}{4} \\times C_{s}^{\\frac{3}{11}}$$
+  Sur le visuel TemperApp, on écrira simplement 3/11. Le tempérament égal pour une tierce vaut 7/11.
+
   `,
   },
   {
     id: "physics",
     label: "Physique",
-    content: `Une corde pincée ou frappée vibre à certaines fréquences qui dépendent de sa tension, de sa masse par unité de longueur, de son diamètre et d’autres paramètres physiques. Les règles de calculs des vibrations s’appliquent de la même manière pour les tuyaux sonores.
+    content: `### Vibration des cordes et des tubes
     
+  Une corde pincée ou frappée vibre à certaines fréquences qui dépendent de sa tension, de sa masse par unité de longueur, de son diamètre et d’autres paramètres physiques. Les règles de calculs des vibrations s’appliquent de la même manière pour les tuyaux sonores.
+    
+  ### Modes de vibration
+
   Lors de la vibration, plusieurs fréquences se superposent : une corde vibre sur toute sa longueur, mais chacune de ses subdivisions en 2, 3 et jusqu’à une infinité de parties vibrent aussi, à des fréquences plus élevées et à des amplitudes plus faibles. On nomme ces vibrations les “partiels”. 
   
+  ### L'unisson
+
   Lorsque deux cordes vibrent à la même fréquence, leurs vibrations se cumulent, il s’agit d’un unisson.
   
   Si l’on les désaccorde très légèrement, leurs vibrations se cumulent puis s’annulent alternativement. Cet unisson faux crée ce que l’on perçoit comme un battement. La fréquence de ce battement est la différence entre les deux fréquences de l’unisson faux. 
   
+  ### Pureté d’un intervalle = unisson de partiels 
+
   Cet unisson peut se produire entre les fréquences fondamentales de deux cordes, mais aussi entre ses fréquences partielles (ou harmoniques).
   
   Entre une corde vibrant à $ \\small 200 \\textrm{ Hz} $ et une corde vibrant une quinte plus haut à $ \\small 300 \\textrm{ Hz} $ il existe un unisson : le troisième partiel de la première corde vibre à $ \\small 600 \\textrm{ Hz} $ , à l’unisson du deuxième partiel de la deuxième corde.
   
+  ### Les battements
+
   Si l’on désaccorde la seconde corde à $ \\small 301 \\textrm{  Hz} $, on crée un unisson faux entre ces deux sons partiels : le premier vibre à $ \\small 600 \\textrm{ Hz} $  et le second à $ \\small 602 \\textrm{ Hz} $ . On percevra un battement à la fréquence de $ \\small 2 \\textrm{ Hz} $  (soit 2 battements par seconde).
   
   Les battements dépendent de la fréquence des notes sur laquelle on construit les intervalles.
   
+  ### Le rapport entre les battements
+
   Si la tierce  $ \\small  do_{2}-mi_{2}$ bat à $ \\small 2 \\textrm{ Hz} $  et qu’on tempère la tierce $ \\small  sol_{2}-si_{2}$ de la même quantité de comma, le battement de $ \\small  sol-si$ sera littéralement une quinte au dessus du battement de  $ \\small  do-mi$ soit $ \\small \\dfrac{3}{2} \\times 2 = 3 \\textrm{ Hz}  $. La quinte est ici l’intervalle qui sépare les deux intervalles tempérés.
+
+  ### Le tempérament égal
+
+  Le tempérament égal est une  norme européenne en vogue depuis le début du XIXe siècle. Il s’est imposé progressivement en dehors de la musique savante et de ses frontières d’origine. Aujourd’hui il est la norme dans la facture instrumentale et dans les musiques savantes autant que populaires. Toujours lié à cet héritage occidental récent, il coexiste avec d’autres normes dans des espaces culturels différents. 
+  Dans le tempérament égal, les douze quintes sont diminuées d’un douzième de comma pythagoricien. Les notes enharmoniques ont la même fréquence. L’intervalle séparant deux notes est constant. 
 
   ### Les systèmes mésotoniques 
 
@@ -157,9 +212,31 @@ export const learnSheets: Array<LearnSheet> = [
     `,
   },
   {
-    id: "history",
-    label: "Histoire",
-    content: ``,
-  },
+    id: "advices",
+    label: "Conseils Pratiques",
+    content: `### Accorder un clavecin, les gestes élémentaires
+    
+  Accorder un clavecin c’est savoir :
 
+  - tenir une clé d’accord
+
+  - accorder un intervalle pure : unisson, octave, quinte, quarte, tierce
+
+  - tempérer une tierce à un battement ou une fraction de comma particuliers. (Cas particulier de la tierce Fa-La : sa vitesse de battement par seconde  est directement calculable à partir de la quantité de comma répartie dans ses quatre quintes. Ex. vallotti : 4x1/6 = 2/3. 1 - 12/11*2/3 = 1 - 8/11 = 3/11. La tierce Fa-La de Vallotti est donc tempérée à 3/11 de Cs et bat à 3/sec.
+  
+  - répartir ce tempérament dans les quatre quintes formant cette tierce
+    
+  ### Une procédure d’accord, qu’est-ce que c’est?
+  
+  C’est une succession de notes couvrant au minimum un octave appelée **partition** et permettant d’accorder un tempérament. Il existe une infinité de procédures possibles pour construire un tempérament. A commencer par la première note : théoriquement, rien n’interdit de commencer sa partition par un fa ou un ut#. Pourtant, les procédures efficaces sont peu nombreuses.  
+
+  ### Les procédures de TemperApp  
+
+  Les procédures TemperApp sont construites sur des enchaînements de gestes élémentaires. Elles sont donc faciles à apprendre : par exemple commencer par la tierce $ \\small Fa - La$ dont on peut retenir la vitesse de battement facilement ; accorder les quintes à l’intérieur de $ \\small Fa - La$ (souvent égales) ; aller au plus vite à des intervalles pures (en général à gauche de Fa) et utiliser des preuves tierces-quintes. 
+
+  Des “pop-ups” accompagnent l’utilisateur et lui expliquent les procédures. Ils contiennent toutes les informations nécessaires pour reproduire la procédure en autonomie.
+
+
+    `,
+  },
 ];
