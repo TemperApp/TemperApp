@@ -77,6 +77,8 @@ const SheetTemperament: React.FC = () => {
         />
       </section>
 
+      <section className="pb-16" />
+
       <IonButton
         id="btn-goto-tune"
         className="btn-round fixed right-4"
