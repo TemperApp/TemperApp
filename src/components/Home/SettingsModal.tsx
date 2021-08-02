@@ -461,13 +461,10 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
               le Conservatoire National Supérieur de Musique et de Danse de Paris,
             </li>
             <li className="mb-2">
-              le laboratoire "Lutheries - Acoustique - Musique" (LAM),
+              le LAM-Institut Jean le Rond d’Alembert,
             </li>
             <li className="mb-2">
               l'Institut Collegium Musicae,
-            </li>
-            <li className="mb-2">
-              l'Institut Jean le Rond d’Alembert,
             </li>
             <li className="mb-2">
               l'Institut de recherche en Musicologie (IReMus),
