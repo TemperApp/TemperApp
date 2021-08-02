@@ -69,7 +69,7 @@ const settings : readonly AllowedSetting[] = [{
     defaultValue: 1.5,
   },{
     name: 'forkVolume',
-    defaultValue: 10,
+    defaultValue: 5,
   },{
     name: 'amSynthVolume',
     defaultValue: 10,
