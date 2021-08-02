@@ -15,7 +15,6 @@ class TemperTone {
   static instance: TemperTone;
 
   cfg: TemperToneConfig = fallbackConfig;
-  isMuted: boolean = false;
 
   amsynth: Tone.AMSynth;
   amsynthDist: Tone.Distortion;
@@ -197,9 +196,8 @@ class TemperTone {
   }
 
 
-  static toggleMute(mute?: boolean): void {
-    this.get().isMuted = (mute !== undefined) ? mute : !this.get().isMuted;
-    Tone.Destination.volume.rampTo(this.get().isMuted ? -192 : -0.1, 0.05);
+  static setVolume(volume: number): void {
+    Tone.Destination.volume.rampTo(volume, 0.005);
   }
 
 

@@ -5,7 +5,7 @@ import Toggler from '../inputs/Toggler';
 
 const TunerFooter: React.FC<any> = ({ // TODO Update any
   tuneMode,
-  isMuted,
+  isMute,
   enableEnterProcedure,
   enableProcedurePrev,
   enableProcedureNext,
@@ -98,7 +98,7 @@ const TunerFooter: React.FC<any> = ({ // TODO Update any
         <IonIcon
           style={{ fontSize: "2rem" }}
           src={
-            isMuted
+            isMute
               ? "/assets/logotypes/icon-mute.svg"
               : "/assets/logotypes/icon-sound.svg"
           }
@@ -167,7 +167,7 @@ export default React.memo(
   TunerFooter,
   (prevProps, nextProps) => 
     prevProps.tuneMode === nextProps.tuneMode &&
-    prevProps.isMuted === nextProps.isMuted &&
+    prevProps.isMute === nextProps.isMute &&
     prevProps.enableEnterProcedure === nextProps.enableEnterProcedure &&
     prevProps.enableProcedurePrev === nextProps.enableProcedurePrev &&
     prevProps.enableProcedureNext === nextProps.enableProcedureNext &&

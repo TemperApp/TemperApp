@@ -13,6 +13,7 @@ import useTemperTone from "../../hooks/useTemperTone";
 import { useStorageSQLite } from "react-data-storage-sqlite-hook/dist";
 
 import SettingsContext from "../../store/settings-context";
+import GlobalStatesContext from "../../store/global-states-context";
 import { AllowedSettingValue, KeyboardLabels } from "../../store/settings-context/settings";
 
 import { lerp } from "../../utils/maths";
@@ -28,6 +29,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
   onQuit = (nextSettings: any) => { },
 }) => {
   const settings = useContext(SettingsContext);
+  const global = useContext(GlobalStatesContext);
   
   const TemperTone = useTemperTone();
   const {clear, isAvailable} = useStorageSQLite();
@@ -36,6 +38,10 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
   const [nextSettings, setNextSettings] = useState({...settings});
   const [debugMode, setDebugMode] = useState(false);
   
+  const playDemoSound = () => {
+    global.setIsTemperToneMute(false);
+    TemperTone.trigger(nextSettings.freqA4, 1);
+  }
 
   const set = (name: string, value: AllowedSettingValue) => {
     if (settings[name] === undefined) {
@@ -125,29 +131,13 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
             }}
           />
 
-          <SettingSelect
-            name="Noms des notes du clavier"
-            placeholder="Selectionner..."
-            options={[
-              {value: String(KeyboardLabels.NONE), label: "Aucun"},
-              {value: String(KeyboardLabels.C3C4), label: "C3 et C4"},
-              {value: String(KeyboardLabels.A3A4), label: "A3 et A4"},
-              {value: String(KeyboardLabels.ALL), label: "Tous"},
-            ]}
-            value={String(nextSettings.keyboardLabels)}
-            onChange={(e: any) => {
-              set('keyboardLabels', Number(e.detail.value));
-            }}
-            classNameSelect="min-w-24 max-w-24"
-          />
-
 
           <SettingsGroup
             title='Volume'
             titleAside={
               <IonButton 
                 size='small' fill='clear'
-                onClick={() => TemperTone.trigger(440, 1)}
+                onClick={playDemoSound}
               >
                 <IonIcon src={play} slot='icon-only' />
               </IonButton>
@@ -177,8 +167,34 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
 
           </SettingsGroup>
 
+          
+          <SettingsGroup title="Procédure d'accord">
 
-          <SettingsGroup title="Durées en procédure d'accord">
+            <SettingSelect
+              name="Nom des notes du clavier"
+              placeholder="Selectionner..."
+              options={[
+                {value: String(KeyboardLabels.NONE), label: "Aucune"},
+                {value: String(KeyboardLabels.C3C4), label: "C3 et C4"},
+                {value: String(KeyboardLabels.A3A4), label: "A3 et A4"},
+                {value: String(KeyboardLabels.ALL), label: "Toutes"},
+              ]}
+              value={String(nextSettings.procedurekeyboardLabels)}
+              onChange={(e: any) => {
+                set('procedurekeyboardLabels', Number(e.detail.value));
+              }}
+              classNameSelect="min-w-24 max-w-24"
+            />
+
+            <SettingToggle
+              name="Afficher les bulles d'info"
+              checked={nextSettings.procedureShowPopover}
+              value="procedureShowPopover"
+              onClick={(e: any) => set('procedureShowPopover', e.target.checked as boolean)}
+            />
+
+            <p className="pt-2 pb-2 bold"><b>Durées d'émission du son</b></p>
+
             <SettingInput
               name="Pause entre les notes"
               type="number"
@@ -264,7 +280,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
             titleAside={
               <IonButton 
                 size='small' fill='clear'
-                onClick={() => TemperTone.trigger(440, 1)}
+                onClick={playDemoSound}
               >
                 <IonIcon src={play} slot='icon-only' />
               </IonButton>
@@ -307,7 +323,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
             titleAside={
               <IonButton 
                 size='small' fill='clear'
-                onClick={() => TemperTone.trigger(440, 1)}
+                onClick={playDemoSound}
               >
                 <IonIcon src={play} slot='icon-only' />
               </IonButton>
@@ -382,7 +398,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
             titleAside={
               <IonButton 
                 size='small' fill='clear'
-                onClick={() => TemperTone.trigger(440, 1)}
+                onClick={playDemoSound}
               >
                 <IonIcon src={play} slot='icon-only' />
               </IonButton>

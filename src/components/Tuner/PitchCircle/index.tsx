@@ -1,5 +1,5 @@
 import React, { useCallback, useContext, useEffect, useReducer, useState } from 'react';
-import { IonPopover, IonToast, useIonViewWillLeave } from "@ionic/react";
+import { IonPopover, IonToast, useIonViewDidLeave } from "@ionic/react";
 
 import PitchCircleView from './View';
 
@@ -43,21 +43,24 @@ const PitchCircle: React.FC<PitchCircleProps> = ({
   
   const [showToast, setShowToast] = useState(false);
   const [toastMessage, setToastMessage] = useState('');
-  
-  useIonViewWillLeave(() => {
-    TemperTone.stop();
-    clearTimeout(timeout);
-    dispatchState({ type: BtnActions.SET_ALL_IDLE });
-  });
 
   const [btnStates, dispatchState] = useReducer(
     btnStatesReducer(tuneMode),
     mapNotesMap(BtnStates.IDLE)
   );
+  
 
-  const hasPopover = Boolean(proc && proc.steps[procStepIdx].message);
+  /* On tab leave */
+  
+  useIonViewDidLeave(() => {
+    TemperTone.stop();
+    clearTimeout(timeout);
+    dispatchState({ type: BtnActions.SET_ALL_IDLE });
+  });
 
 
+  /* Function */
+  
   const executeQueueStep = useCallback((
     queue: ProcSubStep[]
   ) => {
@@ -85,7 +88,6 @@ const PitchCircle: React.FC<PitchCircleProps> = ({
           setShowToast(true);
         }
       }
-
     }
 
     timeout = setTimeout(() => {
@@ -101,6 +103,8 @@ const PitchCircle: React.FC<PitchCircleProps> = ({
   }, [TemperTone, freqA4, temperament.deviation]);
 
 
+  /* Function */
+  
   const executeQueue = useCallback(() => {
     if (tuneMode !== TuneMode.PROCEDURE || !proc)
       return;
@@ -121,6 +125,21 @@ const PitchCircle: React.FC<PitchCircleProps> = ({
     temperament, tuneMode, settings
   ]);
 
+
+  /* Popover */
+  
+  const hasPopover = settings.procedureShowPopover
+    && proc && proc.steps[procStepIdx].message;
+
+  const [canPopoverBeOpen, setCanPopoverBeOpen] = useState(hasPopover);
+
+  useEffect(() => {
+    setCanPopoverBeOpen(true);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [procStepIdx, tuneMode]);
+
+
+  /* Function */
 
   const getLabels = useCallback((): string[] => {
     const actives = getActiveBtns(btnStates);
@@ -166,6 +185,8 @@ const PitchCircle: React.FC<PitchCircleProps> = ({
   }, [btnStates, freqA4, temperament.deviation]);
 
 
+  /* Effects */
+
   useEffect(() => {
     if (tuneMode !== TuneMode.PROCEDURE) {
       TemperTone.play(
@@ -189,17 +210,23 @@ const PitchCircle: React.FC<PitchCircleProps> = ({
     if (!hasPopover || (hasPopover && procRepeatCount > 0))
       executeQueue();
     setShowToast(false);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [
     tuneMode, freqA4, temperament,
     proc, procStepIdx, procRepeatCount,
-    executeQueue, hasPopover,
   ]);
+
+  
+  /* Render */
 
   return (
     <>
       <IonPopover
-        isOpen={hasPopover}
-        onDidDismiss={executeQueue}
+        isOpen={hasPopover && canPopoverBeOpen}
+        onDidDismiss={() => {
+          executeQueue();
+          setCanPopoverBeOpen(false);
+        }}
       >
         <p className='px-4'>
           {hasPopover && proc?.steps[procStepIdx].message}

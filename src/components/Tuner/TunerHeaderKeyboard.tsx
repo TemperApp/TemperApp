@@ -54,11 +54,11 @@ const TunerHeaderKeyboard: React.FC<TunerHeaderKeyboardProps> = ({
     return note.alter !== NoteAlter.NONE && 'key-black';
   }
 
-  const labels = settings.keyboardLabels === KeyboardLabels.NONE
+  const labels = settings.procedurekeyboardLabels === KeyboardLabels.NONE
     ? []
-    : settings.keyboardLabels === KeyboardLabels.C3C4
+    : settings.procedurekeyboardLabels === KeyboardLabels.C3C4
       ? ['C3', 'C4']
-      : settings.keyboardLabels === KeyboardLabels.A3A4
+      : settings.procedurekeyboardLabels === KeyboardLabels.A3A4
         ? ['A3', 'A4']
         : keys
           .filter(({note}) => note.alter === NoteAlter.NONE)

@@ -44,11 +44,14 @@ const settings : readonly AllowedSetting[] = [{
     name: 'waveTriangle',
     defaultValue: false,
   },{
-    name: 'keyboardLabels',
-    defaultValue: KeyboardLabels.C3C4,
-  },{
     name: 'masterVolume',
     defaultValue: 10,
+  },{
+    name: 'procedurekeyboardLabels',
+    defaultValue: KeyboardLabels.C3C4,
+  },{
+    name: 'procedureShowPopover',
+    defaultValue: true,
   },{
     name: 'procedureSubStepDurationPause',
     defaultValue: 0.2,
