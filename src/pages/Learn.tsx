@@ -32,7 +32,7 @@ const Learn: React.FC = () => {
     }, {
     label: "Glossaire TemperApp",
       routerLink: "/learn/glossaire",
-      src: "/assets/logotypes/logo-conseil.svg",
+      src: "/assets/logotypes/logo-glossaire.svg",
     },
   ]
 
