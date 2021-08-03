@@ -47,7 +47,10 @@ const SheetoubleRings: React.FC<SheetoubleRingsProps> = ({
             : mapNotesMap(temperament.cpExp5th, cpExp5thToCsExp5th)}
         />
       </SVG>
-      <div className="absolute right-4">
+      <div className="absolute flex right-4">
+        <div className="toggle-name">
+          unité des quintes : 
+        </div>
         <Toggler
           typeContentText={true}
           contentLeft="Cs"

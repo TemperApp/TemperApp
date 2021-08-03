@@ -371,3 +371,9 @@ input:invalid {
 .frac-line {
   border-top: 1px solid var(--color-contrast);
 }
+
+.toggle-name {
+  margin-top: auto;
+  margin-bottom: auto;
+  margin-right: 5px;
+}

@@ -36,7 +36,7 @@ const SheetTemperament: React.FC = () => {
         {(temperament.period !== "")? (<p className="p-long"><b>Époque</b> : {temperament.period} </p>) : ("")}
         {(temperament.geographicalArea !== "")? (<p className="p-long"><b>Aire géographique</b> : {temperament.geographicalArea} </p>) : ("")}
         {(temperament.nature !== "")? (<p className="p-long"><b>Nature</b> : {temperament.nature} </p>) : ("")}
-        {(temperament.structuralParticularity !== "")? (<p className="p-long"><b>Particularité scruturelle</b> : {temperament.structuralParticularity} </p>) : ("")}
+        {(temperament.structuralParticularity !== "")? (<p className="p-long"><b>Particularité structurelle</b> : {temperament.structuralParticularity} </p>) : ("")}
         {((temperament.commentary !== "")
           ? (<ParagraphLearn 
             titreText = "Commentaires"

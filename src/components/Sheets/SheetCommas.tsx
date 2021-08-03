@@ -70,7 +70,10 @@ const SheetCommas: React.FC<SheetCommasProps> = ({
                 />
               </SVG>
             </div>
-            <div className="absolute right-4">
+            <div className="absolute flex right-4">
+              <div className="toggle-name">
+                unité des quintes : 
+              </div>
               <Toggler
                 typeContentText={true}
                 contentLeft="Cs"
@@ -86,7 +89,7 @@ const SheetCommas: React.FC<SheetCommasProps> = ({
 
         <IonSlide className="px-1">
           <Card
-            title="Fractions de commas affectant les tierces"
+            title="fraction de comma syntonique affectant les tierces"
             classNameContent='pb-16'
             className='pb-4'
           >
