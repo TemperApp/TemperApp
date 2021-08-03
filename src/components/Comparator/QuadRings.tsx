@@ -24,16 +24,24 @@ const ComparatorQuadRings: React.FC<ComparatorQuadRingsProps> = ({
   return (
     <section className="mt-16 mx-auto pt-2 px-6 justify-center max-w-lg">
       <SVG className="ring" viewBoxSize={vbsize} >
-        <CommasRing innerR={r[0]} outerR={r[1]} c={center} is3rd commas={t2.csExp3rd} />
-        <CommasRing innerR={r[1]} outerR={r[2]} c={center} is3rd={false} commas={t2.cpExp5th} />
+        <CommasRing innerR={r[0]} outerR={r[1]} c={center} 
+          is3rd commas={t2.csExp3rd} isCp={false}
+        />
+        <CommasRing innerR={r[1]} outerR={r[2]} c={center}
+          is3rd={false} commas={t2.cpExp5th} isCp={true}
+        />
 
         <LabelsRing innerR={r[2]} outerR={r[3]} c={center}
           labels={FIFTHS.map((f) => f.string(true, false))}
           fontSize={10}
         />
 
-        <CommasRing innerR={r[3]} outerR={r[4]} c={center} is3rd commas={t1.csExp3rd} />
-        <CommasRing innerR={r[4]} outerR={r[5]} c={center} is3rd={false} commas={t1.cpExp5th} />
+        <CommasRing innerR={r[3]} outerR={r[4]} c={center}
+          is3rd commas={t1.csExp3rd} isCp={false}
+        />
+        <CommasRing innerR={r[4]} outerR={r[5]} c={center}
+          is3rd={false} commas={t1.cpExp5th} isCp={true}
+        />
       </SVG>
     </section>
   );

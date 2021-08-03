@@ -2,7 +2,7 @@ import NotesMap, { mapNotesMap } from "./Note/NotesMap";
 
 
 export const isCpExp5thValid = (cpExp5th: string): boolean => {
-  return Boolean(cpExp5thRegexMatch(cpExp5th)); 
+  return Boolean(cpcsExp5thRegexMatch(cpExp5th)); 
 }
 
 
@@ -11,7 +11,7 @@ export const isCsExp3rdValid = (csExp3rd: string): boolean => {
 }
 
 
-export const cpExp5thRegexMatch = (cpExp5th: string): RegExpMatchArray | null => {
+export const cpcsExp5thRegexMatch = (cpExp5th: string): RegExpMatchArray | null => {
   return cpExp5th.trim()
     .match(/^[+-]?0+$|^([+-])?([0-9]+)\/((?:[0-9]*)[.]?[0-9]?[0-9]+)$/);
 }
@@ -33,7 +33,7 @@ export const csExp3rdRegexMatch = (csExp3rd: string): RegExpMatchArray | null =>
  * @returns null, if parsing fails
  */
 export const cpExp5thStrToNumber = (cpExp5th: string): number | null => {
-  const match = cpExp5thRegexMatch(cpExp5th); 
+  const match = cpcsExp5thRegexMatch(cpExp5th); 
   if (!match) {
     console.warn('[Divergence]: Cannot parse cpExp5th string:', cpExp5th);
     return null;
@@ -57,7 +57,7 @@ export const cpExp5thStrToNumber = (cpExp5th: string): number | null => {
  * @returns null, if parsing fails
  */
 export const formatCpExp5thStr = (cpExp5th: string): string | null => {
-  const match = cpExp5thRegexMatch(cpExp5th);
+  const match = cpcsExp5thRegexMatch(cpExp5th);
   if (!match) {
     console.warn(`[Model]: Cannot parse cpExp5th string: ${cpExp5th}`);
     return null;
@@ -87,7 +87,7 @@ export const formatCpExp5thStr = (cpExp5th: string): string | null => {
  * @returns null, if parsing fails
  */
 export const cpExp5thToCsExp5th = (cpExp5th : string): string | null => {
-  const match = cpExp5thRegexMatch(cpExp5th);
+  const match = cpcsExp5thRegexMatch(cpExp5th);
   if (!match) {
     console.warn(`[Model]: Cannot parse cpExp5th string: ${cpExp5th}`);
     return null;
@@ -99,6 +99,38 @@ export const cpExp5thToCsExp5th = (cpExp5th : string): string | null => {
   const sign = (match[1] === "+" ? "+" : "");
   const numerator = Number(match[2]);
   const denominator = Number(match[3]) * 11/12 / numerator;
+
+  return (
+    sign + "1/"
+    + (Math.abs(denominator - Math.round(denominator)) < 0.01
+        ? (denominator).toFixed(0)
+        : (denominator).toFixed(1)
+      )
+  );
+};
+
+
+/**
+ * @param csExp5th the syntonic comma exponent as string
+ *                 with a common format of use.
+ *                 No sign provided means 'minus' (-) by default
+ * @returns the corresponding CpExp5th according to:
+ * "denominator(csExp5th) * (12/11) = denominator(cpExp5th)"
+ * @returns null, if parsing fails
+ */
+export const csExp5thToCpExp5th = (cpExp5th : string): string | null => {
+  const match = cpcsExp5thRegexMatch(cpExp5th);
+  if (!match) {
+    console.warn(`[Model]: Cannot parse csExp5th string: ${cpExp5th}`);
+    return null;
+  }
+
+  if (String(Number(match[0])) === '0')
+    return '0';
+
+  const sign = (match[1] === "+" ? "+" : "");
+  const numerator = Number(match[2]);
+  const denominator = Number(match[3]) * 12/11 / numerator;
 
   return (
     sign + "1/"

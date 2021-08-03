@@ -2,6 +2,7 @@ import {
   cpExp5thStrToNumber,
   cpExp5thToCsExp5th,
   csExp3rdStrToNumber,
+  csExp5thToCpExp5th,
   formatCpExp5thStr,
   formatCsExp3rdStr,
   freqs4,
@@ -113,18 +114,34 @@ test('isCpExp5thValid', () => {
 
 
 test('cpExp5thToCsExp5th', () => {
-  expect(cpExp5thToCsExp5th("1/12")).toEqual("1/11");
-  expect(cpExp5thToCsExp5th("-1/6")).toEqual("1/5.5");
-  expect(cpExp5thToCsExp5th("+1/0.66")).toEqual("+1/0.6");
-  expect(cpExp5thToCsExp5th("-1/4.36")).toEqual("1/4");
-  expect(cpExp5thToCsExp5th("-1/6.52")).toEqual("1/6.0");
+  expect(cpExp5thToCsExp5th("1/12"    )).toEqual("1/11"   );
+  expect(cpExp5thToCsExp5th("-1/6"    )).toEqual("1/5.5"  );
+  expect(cpExp5thToCsExp5th("+1/0.66" )).toEqual("+1/0.6" );
+  expect(cpExp5thToCsExp5th("-1/4.36" )).toEqual("1/4"    );
+  expect(cpExp5thToCsExp5th("-1/6.52" )).toEqual("1/6.0"  );
   expect(cpExp5thToCsExp5th("+1/13.19")).toEqual("+1/12.1");
-  expect(cpExp5thToCsExp5th("+1/3.3")).toEqual("+1/3.0");
-  expect(cpExp5thToCsExp5th("+1/6.61")).toEqual("+1/6.1");
-  expect(cpExp5thToCsExp5th("0")).toEqual("0");
-  expect(cpExp5thToCsExp5th("-1/5")).toEqual("1/4.6");
-  expect(cpExp5thToCsExp5th("+1/4")).toEqual("+1/3.7");
-  expect(cpExp5thToCsExp5th("-1/1")).toEqual("1/0.9");
+  expect(cpExp5thToCsExp5th("+1/3.3"  )).toEqual("+1/3.0" );
+  expect(cpExp5thToCsExp5th("+1/6.61" )).toEqual("+1/6.1" );
+  expect(cpExp5thToCsExp5th("0"       )).toEqual("0"      );
+  expect(cpExp5thToCsExp5th("-1/5"    )).toEqual("1/4.6"  );
+  expect(cpExp5thToCsExp5th("+1/4"    )).toEqual("+1/3.7" );
+  expect(cpExp5thToCsExp5th("-1/1"    )).toEqual("1/0.9"  );
+});
+
+
+test('csExp5thToCpExp5th', () => {
+  expect(csExp5thToCpExp5th("1/11"   )).toEqual("1/12"   );
+  expect(csExp5thToCpExp5th("-1/5.5" )).toEqual("1/6"    );
+  expect(csExp5thToCpExp5th("+1/0.6" )).toEqual("+1/0.7" );
+  expect(csExp5thToCpExp5th("-1/4"   )).toEqual("1/4.4"  );
+  expect(csExp5thToCpExp5th("1/6.0"  )).toEqual("1/6.5"  );
+  expect(csExp5thToCpExp5th("+1/12.1")).toEqual("+1/13.2");
+  expect(csExp5thToCpExp5th("+1/3.0" )).toEqual("+1/3.3" );
+  expect(csExp5thToCpExp5th("+1/6.1" )).toEqual("+1/6.7" );
+  expect(csExp5thToCpExp5th("0"      )).toEqual("0"      );
+  expect(csExp5thToCpExp5th("1/4.58"  )).toEqual("1/5"    );
+  expect(csExp5thToCpExp5th("+1/3.67" )).toEqual("+1/4"   );
+  expect(csExp5thToCpExp5th("-1/0.917" )).toEqual("1/1"    );
 });
 
 

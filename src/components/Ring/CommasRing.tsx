@@ -3,8 +3,8 @@ import SettingsContext from '../../store/settings-context';
 
 import Ring from './Ring';
 import { Notes } from '../../model/Note/enums';
-import { fifthQ, formatCpExp5thStr, formatCsExp3rdStr, thirdQ } from '../../model/Divergence';
-import NotesMap, { notesMapToArray, OrderBy } from '../../model/Note/NotesMap';
+import { csExp5thToCpExp5th, fifthQ, formatCpExp5thStr, formatCsExp3rdStr, thirdQ } from '../../model/Divergence';
+import NotesMap, { mapNotesMap, notesMapToArray, OrderBy } from '../../model/Note/NotesMap';
 
 import { convertFifthQualityToColor, convertThirdQualityToColor } from '../../utils/colorCircle';
 import { vec2 } from '../../utils/maths';
@@ -12,6 +12,7 @@ import { vec2 } from '../../utils/maths';
 type CommasRingProps = {
   commas: NotesMap<string>,
   is3rd: boolean,
+  isCp: boolean,
   c: vec2,
   innerR: number,
   outerR: number,
@@ -25,6 +26,7 @@ type CommasRingProps = {
 const CommasRing: React.FC<CommasRingProps> = ({
   commas,
   is3rd,
+  isCp,
   c,
   innerR,
   outerR,
@@ -40,7 +42,11 @@ const CommasRing: React.FC<CommasRingProps> = ({
     commas: NotesMap<string>,
     is3rd: boolean
   ) => {
-    const qualities = is3rd ? thirdQ(commas) : fifthQ(commas);
+    const qualities = is3rd
+      ? thirdQ(commas)
+      : isCp
+        ? fifthQ(commas)
+        : fifthQ(mapNotesMap(commas, csExp5thToCpExp5th));
     return (
       notesMapToArray(qualities, OrderBy.FIFTHS_CIRCLE)
         .map(({note}) => {
@@ -60,7 +66,7 @@ const CommasRing: React.FC<CommasRingProps> = ({
         })
       })
     )
-  }, [hasLabels, fill, settings.darkTheme]);
+  }, [isCp, hasLabels, fill, settings.darkTheme]);
 
   return (
     <Ring innerR={innerR} outerR={outerR} c={c}
@@ -79,6 +85,7 @@ export default React.memo(
   (prevProps, nextProps) => (
     prevProps.commas === nextProps.commas &&
     prevProps.is3rd === nextProps.is3rd &&
+    prevProps.isCp === nextProps.isCp &&
     prevProps.c === nextProps.c &&
     prevProps.innerR === nextProps.innerR &&
     prevProps.outerR === nextProps.outerR &&

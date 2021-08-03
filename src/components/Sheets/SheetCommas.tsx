@@ -50,7 +50,7 @@ const SheetCommas: React.FC<SheetCommasProps> = ({
               <SVG className="ring" viewBoxSize={vbsize}>
                 <CommasRing innerR={r[0]} outerR={r[1]} c={center}
                   hasLabels is3rd={false} fill={false} hasStroke={false}
-                  fontSize={9}
+                  fontSize={9} isCp={isCpMode}
                   commas={
                     isCpMode
                     ? temperament.cpExp5th
@@ -58,7 +58,7 @@ const SheetCommas: React.FC<SheetCommasProps> = ({
                 />
                 <CommasRing innerR={r[1]} outerR={r[2]} c={center}
                   hasLabels={false} is3rd={false}
-                  fontSize={9}
+                  fontSize={9} isCp={isCpMode}
                   commas={
                     isCpMode
                     ? temperament.cpExp5th
@@ -98,12 +98,12 @@ const SheetCommas: React.FC<SheetCommasProps> = ({
                 <CommasRing innerR={r[0]} outerR={r[1]} c={center}
                   hasLabels is3rd fill={false} hasStroke={false}
                   commas={temperament.csExp3rd}
-                  fontSize={9}
+                  fontSize={9} isCp={isCpMode}
                 />
                 <CommasRing innerR={r[1]} outerR={r[2]} c={center}
                   hasLabels={false} is3rd
                   commas={temperament.csExp3rd}
-                  fontSize={9}
+                  fontSize={9} isCp={isCpMode}
                 />
                 <LabelsRing innerR={r[2]} outerR={r[3]} c={center}
                   labels={FIFTHS.map((f) => f.string(true, false))}

@@ -50,12 +50,12 @@ const ComparatorComma: React.FC<ComparatorCommaProps> = ({
                   fontSize={10}
                 />
                 <CommasRing innerR={r[1]} outerR={r[2]} c={center}
-                  hasLabels is3rd={false}
+                  hasLabels is3rd={false} isCp={isCpMode}
                   commas={isCpMode ? t2.cpExp5th : mapNotesMap(t2.cpExp5th, cpExp5thToCsExp5th)}
                   fontSize={9}
                 />
                 <CommasRing innerR={r[3]} outerR={r[4]} c={center}
-                  hasLabels is3rd={false}
+                  hasLabels is3rd={false} isCp={isCpMode}
                   commas={isCpMode ? t1.cpExp5th : mapNotesMap(t1.cpExp5th, cpExp5thToCsExp5th)}
                   fontSize={9}
                 />
@@ -91,12 +91,12 @@ const ComparatorComma: React.FC<ComparatorCommaProps> = ({
                   fontSize={10}
                 />
                 <CommasRing innerR={r[1]} outerR={r[2]} c={center}
-                  hasLabels is3rd
+                  hasLabels is3rd isCp={isCpMode}
                   commas={t2.csExp3rd}
                   fontSize={9}
                 />
                 <CommasRing innerR={r[3]} outerR={r[4]} c={center}
-                  hasLabels is3rd
+                  hasLabels is3rd isCp={isCpMode}
                   commas={t1.csExp3rd}
                   fontSize={9}
                 />
