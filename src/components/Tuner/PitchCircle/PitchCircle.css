@@ -22,3 +22,31 @@
   font-size: 8.5px;
   fill: var(--color-check);
 }
+
+.popover {
+  --width: 80vw;
+  --max-width: 20rem;
+}
+
+.popover * {
+  line-height: normal;
+  font-size: 1rem;
+}
+
+.popover h1 {
+  font-size: 1.05rem;
+}
+
+.popover h2,
+.popover h3,
+.popover h4,
+.popover b,
+.popover strong {
+  font-weight: bold;
+}
+
+.popover blockquote {
+  margin: 0.4rem 0.4rem 0.4rem 0;
+  padding-left: 0.4rem;
+  border-left: solid 0.2rem #9993;
+}

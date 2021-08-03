@@ -1,6 +1,10 @@
 import React, { useCallback, useContext, useEffect, useReducer, useState } from 'react';
 import { IonPopover, IonToast, useIonViewDidLeave } from "@ionic/react";
 
+import ReactMarkdown from 'react-markdown';
+import remarkMath from 'remark-math'
+import rehypeKatex from 'rehype-katex'
+
 import PitchCircleView from './View';
 
 import { TuneMode } from '../Tuner';
@@ -227,10 +231,15 @@ const PitchCircle: React.FC<PitchCircleProps> = ({
           executeQueue();
           setCanPopoverBeOpen(false);
         }}
+        cssClass={'popover'}
       >
-        <p className='px-4'>
-          {hasPopover && proc?.steps[procStepIdx].message}
-        </p>
+        <div className='px-4'>
+          <ReactMarkdown
+            remarkPlugins={[remarkMath]}
+            rehypePlugins={[rehypeKatex]}
+            children={hasPopover && proc?.steps[procStepIdx].message}
+          />
+        </div>
       </IonPopover>
 
       {(tuneMode === TuneMode.PROCEDURE)
