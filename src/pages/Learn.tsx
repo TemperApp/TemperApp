@@ -29,6 +29,10 @@ const Learn: React.FC = () => {
     label: "Conseils pratiques",
       routerLink: "/learn/advices",
       src: "/assets/logotypes/logo-conseil.svg",
+    }, {
+    label: "Glossaire TemperApp",
+      routerLink: "/learn/glossaire",
+      src: "/assets/logotypes/logo-conseil.svg",
     },
   ]
 

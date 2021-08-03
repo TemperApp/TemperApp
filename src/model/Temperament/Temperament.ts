@@ -168,8 +168,8 @@ export const defaultTemperaments: Array<Temperament> = [
   },
   {
     idTemperament: 4,
-    name: "Rameau 1726 (b)",
-    nameFR: "Rameau 1726 (b)",
+    name: "Rameau 1726 en Sib",
+    nameFR: "Rameau 1726 en Sib",
     deviation: {
       C:       10.265,
       C_sharp:  0.578,
@@ -227,8 +227,8 @@ export const defaultTemperaments: Array<Temperament> = [
   },
   {
     idTemperament: 5,
-    name: "Rameau 1726 (#)",
-    nameFR: "Rameau 1726 (#)",
+    name: "Rameau 1726 en Do",
+    nameFR: "Rameau 1726 en Do",
     deviation: {
       C:        10.265,
       C_sharp: -13.686,
@@ -658,8 +658,8 @@ export const defaultTemperaments: Array<Temperament> = [
   },
   {
     idTemperament: 12,
-    name: "Neidhardt I",
-    nameFR: "Neidhardt I",
+    name: "Neidhardt III",
+    nameFR: "Neidhardt III",
     deviation: {
       C:        5.341,
       C_sharp:  0.000,
