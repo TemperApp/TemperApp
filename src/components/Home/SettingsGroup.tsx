@@ -18,7 +18,7 @@ const SettingsGroup: React.FC<SettingsGroupProps> = ({
         {title
           && <h4>{title}</h4>}
       </div>
-      {titleAside || null}
+      {titleAside ?? null}
     </div>
 
     <div className='w-full overflow-x-hidden'>

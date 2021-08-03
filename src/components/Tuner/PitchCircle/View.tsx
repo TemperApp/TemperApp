@@ -80,9 +80,9 @@ const PitchCircleView: React.FC<PitchCircleViewProps> = ({
 
           <PitchCircleLabels
             c={center}
-            label1={(labels && labels[0]) || ''}
-            label2={(labels && labels[1]) || ''}
-            label3={(labels && labels[2]) || ''}
+            label1={(labels && labels[0]) ?? ''}
+            label2={(labels && labels[1]) ?? ''}
+            label3={(labels && labels[2]) ?? ''}
           />
 
         </SVG>
