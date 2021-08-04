@@ -1,3 +1,23 @@
+ion-app {
+  background-color: var(--ion-background-color);
+}
+
+/* Limite width on desktop */
+
+body.plateform-desktop {
+  background-color: #292828;
+}
+
+body.plateform-desktop .fixed {
+  max-width: calc(100vh * 9 / 16);
+}
+
+body.plateform-desktop ion-app {
+  max-width: calc(100vh * 9 / 16);
+  box-shadow: 0 0 2rem #000a;
+  margin: 0 auto;
+}
+
 /* TEXTS */
 
 ion-title,
@@ -49,7 +69,7 @@ h4 {
   line-height: 19px;
   text-transform: uppercase;
   color: var(--color-contrast);
-  margin-bottom: 3%;
+  margin-bottom: 0.5rem;
 }
 
 h5 {
@@ -202,7 +222,6 @@ ion-icon.icon-grey {
 ion-select {
   box-shadow: var(--color-shadow);
   border-radius: 8px;
-  width: 40vw;
   height: 2rem;
 }
 

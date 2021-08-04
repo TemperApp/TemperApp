@@ -5,7 +5,6 @@ import { Temperament } from "../../model/Temperament/Temperament";
 import EqualTemperament from "../../model/Temperament/Equal";
 import { useParams } from "react-router";
 import { IonButton, IonIcon } from '@ionic/react';
-import ParagraphLearn from '../Learn/ParagraphLearn';
 import VideoLearn from '../Learn/VideoLearn';
 import ResourcesLearn from '../Learn/ResourcesLearn';
 import GlobalStatesContext from '../../store/global-states-context';
@@ -37,12 +36,11 @@ const SheetTemperament: React.FC = () => {
         {(temperament.geographicalArea !== "")? (<p className="p-long"><b>Aire géographique</b> : {temperament.geographicalArea} </p>) : ("")}
         {(temperament.nature !== "")? (<p className="p-long"><b>Nature</b> : {temperament.nature} </p>) : ("")}
         {(temperament.structuralParticularity !== "")? (<p className="p-long"><b>Particularité structurelle</b> : {temperament.structuralParticularity} </p>) : ("")}
-        {((temperament.commentary !== "")
-          ? (<ParagraphLearn 
-            titreText = "Commentaires"
-            contentText = {temperament.commentary}
-          />) 
-          : (""))
+        {(temperament.commentary !== "")
+          && <>
+            <h4>Commentaires</h4>
+            <p className="p-long">{temperament.commentary}</p>
+          </>
         }
       </section>
 
@@ -77,21 +75,19 @@ const SheetTemperament: React.FC = () => {
         />
       </section>
 
-      <section className="pb-16" />
-
-      <IonButton
-        id="btn-goto-tune"
-        className="btn-round fixed right-4"
-        onClick={() => global.setTunerTemperamentId(temperament.idTemperament)}
-        routerLink={`/tune`}
-      >
-        <IonIcon
-          style={{ fontSize: "3rem"} /* TODO Find a better way */}
-          src="/assets/logotypes/button-tune.svg"
-        /> 
-      </IonButton>
-
-
+      <section className="relative flex justify-end right-4 pb-16">
+        <IonButton
+          id="btn-goto-tune"
+          className="btn-round fixed"
+          onClick={() => global.setTunerTemperamentId(temperament.idTemperament)}
+          routerLink={`/tune`}
+        >
+          <IonIcon
+            style={{ fontSize: "3rem"} /* TODO Find a better way */}
+            src="/assets/logotypes/button-tune.svg"
+          /> 
+        </IonButton>
+      </section>
     </Sheet>
   );
 };

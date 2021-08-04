@@ -38,12 +38,7 @@
 }
 
 #btn-goto-tune{
-  top: calc(
-    100vh
-    - 48px
-    - 1.5rem
-    - max(56px, 9vh)
-    - var(--ion-safe-area-bottom));
+  bottom: calc(1rem);
 }
 
 

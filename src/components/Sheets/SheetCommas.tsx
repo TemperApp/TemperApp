@@ -89,7 +89,7 @@ const SheetCommas: React.FC<SheetCommasProps> = ({
 
         <IonSlide className="px-1">
           <Card
-            title="fraction de comma syntonique affectant les tierces"
+            title="fractions de comma syntonique affectant les tierces"
             classNameContent='pb-16'
             className='pb-4'
           >

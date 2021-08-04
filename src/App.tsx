@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Redirect, Route } from "react-router-dom";
 import { IonApp, IonRouterOutlet } from "@ionic/react";
 import { IonReactRouter } from "@ionic/react-router";
@@ -13,16 +13,17 @@ import {
 import Tune from "./pages/Tune";
 import Compare from "./pages/Compare";
 import Home from "./pages/Home";
+import Sheets from './pages/Sheets';
+import Learn from './pages/Learn';
 
-/* Core CSS required for Ionic components to work properly */
+import LearnSheet from './components/Learn/LearnSheet';
+import SheetTemperament from './components/Sheets/SheetTemperament';
+import StorageTest from './components/StorageTest';
+
 import "@ionic/react/css/core.css";
-
-/* Basic CSS for apps built with Ionic */
 import "@ionic/react/css/normalize.css";
 import "@ionic/react/css/structure.css";
 import "@ionic/react/css/typography.css";
-
-/* Optional CSS utils that can be commented out */
 import "@ionic/react/css/padding.css";
 import "@ionic/react/css/float-elements.css";
 import "@ionic/react/css/text-alignment.css";
@@ -30,19 +31,25 @@ import "@ionic/react/css/text-transformation.css";
 import "@ionic/react/css/flex-utils.css";
 import "@ionic/react/css/display.css";
 
-/* Theme variables */
 import "./theme/variables.css";
 import "./theme/layout/index.css";
 import "./App.css";
 
-/* Fonction Engine */
-import Sheets from './pages/Sheets';
-import LearnSheet from './components/Learn/LearnSheet';
-import Learn from './pages/Learn';
-import SheetTemperament from './components/Sheets/SheetTemperament';
-import StorageTest from './components/StorageTest';
+import { isPlatform } from '@ionic/react';
 
-const App: React.FC = () => (
+
+const App: React.FC = () => {
+
+  useEffect(() => {
+    const mobiles = ['android','iphone','ipad'];
+
+    if (isPlatform('desktop')
+      || !mobiles.includes(navigator.platform.trim())) {
+      document.body.classList.add('plateform-desktop');
+    }
+  }, []);
+  
+  return (
     <IonApp>
       <IonReactRouter>
         <IonTabs>
@@ -101,6 +108,6 @@ const App: React.FC = () => (
         </IonTabs>
       </IonReactRouter>
     </IonApp>
-);
+)};
 
 export default App;
