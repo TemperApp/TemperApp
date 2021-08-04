@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Redirect, Route } from "react-router-dom";
 import { IonApp, IonRouterOutlet } from "@ionic/react";
 import { IonReactRouter } from "@ionic/react-router";
@@ -9,8 +9,6 @@ import {
   IonIcon,
   IonLabel,
 } from "@ionic/react";
-
-import { useSQLite } from "react-sqlite-hook/dist";
 
 import Tune from "./pages/Tune";
 import Compare from "./pages/Compare";
@@ -38,48 +36,13 @@ import "./theme/layout/index.css";
 import "./App.css";
 
 /* Fonction Engine */
-import DB from './engine/DB';
 import Sheets from './pages/Sheets';
 import LearnSheet from './components/Learn/LearnSheet';
 import Learn from './pages/Learn';
 import SheetTemperament from './components/Sheets/SheetTemperament';
 import StorageTest from './components/StorageTest';
 
-/* SQLite */
-export let sqlite: any; // singleton
-
-const App: React.FC = () => {
-
-  const { echo, getPlatform, createConnection, closeConnection,
-    retrieveConnection, retrieveAllConnections, closeAllConnections,
-    addUpgradeStatement, importFromJson, getDatabaseList, isDatabase, isJsonValid, copyFromAssets,
-    isAvailable } = useSQLite();
-
-  useEffect(() => {
-    sqlite = {
-      echo,
-      getPlatform,
-      createConnection,
-      closeConnection,
-      retrieveConnection,
-      retrieveAllConnections,
-      closeAllConnections,
-      addUpgradeStatement,
-      importFromJson,
-      getDatabaseList,
-      isDatabase,
-      isJsonValid,
-      copyFromAssets,
-      isAvailable,
-    };
-
-    if (DB.isAvailable())
-      // TODO Remove on production
-      DB.init(); // TODO Add loading state to prevent user actions app during initialization
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-  return (
+const App: React.FC = () => (
     <IonApp>
       <IonReactRouter>
         <IonTabs>
@@ -138,7 +101,6 @@ const App: React.FC = () => {
         </IonTabs>
       </IonReactRouter>
     </IonApp>
-  );
-};
+);
 
 export default App;
