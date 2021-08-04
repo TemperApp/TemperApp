@@ -21,7 +21,7 @@ const TunerHeaderInputs: React.FC<TunerHeaderProps> = ({
 }) => {
 
   return (
-    <section className="px-4 pt-2 w-full tune-header-select">
+    <div className="px-4 pt-2 w-full tune-header-select">
       <IonSelect
         className="flex-grow"
         value={defaultTemperamentId}
@@ -50,7 +50,7 @@ const TunerHeaderInputs: React.FC<TunerHeaderProps> = ({
           }}
         ></IonInput>
       </div>
-    </section>
+    </div>
   );
 };
 

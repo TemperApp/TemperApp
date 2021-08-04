@@ -65,7 +65,7 @@ const TunerHeaderKeyboard: React.FC<TunerHeaderKeyboardProps> = ({
           .map(({note}) => note.string(false));
 
   return (
-    <section className="px-6 pt-2 w-full max-w-lg">
+    <div className="px-6 pt-2 w-full max-w-lg">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 351.1 94.6">
@@ -94,7 +94,7 @@ const TunerHeaderKeyboard: React.FC<TunerHeaderKeyboardProps> = ({
           ))
         }
       </svg>
-    </section>
+    </div>
   );
 };
 

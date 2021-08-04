@@ -30,7 +30,7 @@ const SheetTemperament: React.FC = () => {
       subTitle="Tempérament"
       id = {id}
     >
-      <section className="px-6">
+      <div className="px-6">
         {(temperament.theorist !== "")? (<p className="p-long"><b>Théoricien</b> : {temperament.theorist} </p>) : ("")}
         {(temperament.period !== "")? (<p className="p-long"><b>Époque</b> : {temperament.period} </p>) : ("")}
         {(temperament.geographicalArea !== "")? (<p className="p-long"><b>Aire géographique</b> : {temperament.geographicalArea} </p>) : ("")}
@@ -42,22 +42,22 @@ const SheetTemperament: React.FC = () => {
             <p className="p-long">{temperament.commentary}</p>
           </>
         }
-      </section>
+      </div>
 
-      <section className="px-6 mx-auto max-w-lg">
+      <div className="px-6 mx-auto max-w-lg">
         <Card
           title="Qualité des quintes et des tierces"
           classNameContent='pb-14'
         >
           <SheetDoubleRings temperament={temperament} />
         </Card>
-      </section>
+      </div>
             
-      <section className="mx-auto max-w-lg">
+      <div className="mx-auto max-w-lg">
         <Commas temperament={temperament} />
-      </section>
+      </div>
 
-      <section className="px-6 mx-auto max-w-lg">
+      <div className="px-6 mx-auto max-w-lg">
         {((temperament.soundReferences[0].url !== "")
           ? (temperament.soundReferences.map(e => {
             return(<VideoLearn 
@@ -73,9 +73,9 @@ const SheetTemperament: React.FC = () => {
         <ResourcesLearn 
           resourcesList={temperament.sources}
         />
-      </section>
+      </div>
 
-      <section className="relative flex justify-end right-4 pb-16">
+      <div className="relative flex justify-end right-4 pb-16">
         <IonButton
           id="btn-goto-tune"
           className="btn-round fixed"
@@ -87,7 +87,7 @@ const SheetTemperament: React.FC = () => {
             src="/assets/logotypes/button-tune.svg"
           /> 
         </IonButton>
-      </section>
+      </div>
     </Sheet>
   );
 };

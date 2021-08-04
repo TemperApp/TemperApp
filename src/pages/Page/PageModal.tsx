@@ -14,7 +14,7 @@ const PageModal: React.FC<PageModalProps> = ({
 }) => {
   return (
     <>
-      <section>
+      <div>
         <div className="pm-header h-16 px-6">
           <div className="pm-titles pb-1">
             <h3>{title}</h3>
@@ -29,10 +29,10 @@ const PageModal: React.FC<PageModalProps> = ({
           </button>
         </div>
         <hr />
-      </section>
-      <section className="pm-content h-full px-6 pt-3">
+      </div>
+      <div className="pm-content h-full px-6 pt-3">
         {children}
-      </section>
+      </div>
     </>
   );
 };

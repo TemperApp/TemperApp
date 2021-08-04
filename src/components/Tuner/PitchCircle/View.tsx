@@ -47,8 +47,8 @@ const PitchCircleView: React.FC<PitchCircleViewProps> = ({
   const r = [46, 59, 85, 100];
 
   return (
-    <section className="px-6 pt-2 w-full">
-      <section id="pitch-circle" className="max-w-lg">
+    <div className="px-6 pt-2 w-full">
+      <div id="pitch-circle" className="max-w-lg">
         <SVG className="ring" viewBoxSize={vbsize} >
 
           <CommasRing innerR={r[0]} outerR={r[1]} is3rd isCp={false}
@@ -87,8 +87,8 @@ const PitchCircleView: React.FC<PitchCircleViewProps> = ({
           />
 
         </SVG>
-      </section>
-    </section>
+      </div>
+    </div>
   );
 };
 

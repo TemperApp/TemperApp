@@ -69,7 +69,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
         title="Paramètres"
         onQuit={() => onQuit(nextSettings)}
       >
-        <section className="mt-3">
+        <div className="mt-3">
 
           <SettingToggle
             name='Thème sombre'
@@ -445,9 +445,9 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
             />
           </SettingsGroup>
 
-        </section>
+        </div>
 
-        <section className="overflow-x-hidden">
+        <div className="overflow-x-hidden">
           <h4 className="pt-6">Présentation</h4>
           <hr className="my-5" />
 
@@ -520,9 +520,9 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
             <li className="mb-1"><strong>Ludwig Chieng</strong></li>
             <li className="mb-1"><strong>Sterenn Fonseca</strong></li>
           </ul>
-        </section>
+        </div>
 
-        <section>
+        <div>
           <IonButton
             className="h-8 w-full"
             fill='clear'
@@ -557,7 +557,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
               </IonButton>
           </>}
 
-        </section>
+        </div>
 
       </PageModal>
     </>

@@ -74,13 +74,9 @@ const Sheet: React.FC<SheetProps> = ({
       </IonHeader>
 
       <IonContent className="sheet">
-        <section>
-         
-
-          <div className="pt-3">
-            {children}
-          </div>
-        </section>
+        <div className="pt-3">
+          {children}
+        </div>
       </IonContent>
     </IonPage>
   );

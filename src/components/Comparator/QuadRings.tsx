@@ -22,7 +22,7 @@ const ComparatorQuadRings: React.FC<ComparatorQuadRingsProps> = ({
   const r = [34, 45, 56, 76, 88, 100];
 
   return (
-    <section className="mt-16 mx-auto pt-2 px-6 justify-center max-w-lg">
+    <div className="mt-16 mx-auto pt-2 px-6 justify-center max-w-lg">
       <SVG className="ring" viewBoxSize={vbsize} >
         <CommasRing innerR={r[0]} outerR={r[1]} c={center} 
           is3rd commas={t2.csExp3rd} isCp={false}
@@ -43,7 +43,7 @@ const ComparatorQuadRings: React.FC<ComparatorQuadRingsProps> = ({
           is3rd={false} commas={t1.cpExp5th} isCp={true}
         />
       </SVG>
-    </section>
+    </div>
   );
 };
 
