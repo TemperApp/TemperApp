@@ -1,6 +1,6 @@
 {
   "name": "temperapp",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "private": true,
   "dependencies": {
     "@capacitor-community/sqlite": "^2.9.16",
@@ -33,7 +33,6 @@
     "react-markdown": "^6.0.2",
     "react-router": "^5.2.0",
     "react-router-dom": "^5.2.0",
-    "react-sqlite-hook": "^1.0.1",
     "rehype-katex": "^5.0.0",
     "remark-math": "^4.0.0",
     "tone": "^14.7.77",
@@ -85,5 +84,5 @@
     "react-data-storage-sqlite-hook": "^1.0.0",
     "react-scripts": "4.0.3"
   },
-  "description": "Musical instrument tuning app using Ionic"
+  "description": "Educational app for tuning musical instruments in unequal temperaments"
 }

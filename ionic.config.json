@@ -1,5 +1,5 @@
 {
-  "name": "temperapp",
+  "name": "TemperApp",
   "integrations": {
     "capacitor": {}
   },
