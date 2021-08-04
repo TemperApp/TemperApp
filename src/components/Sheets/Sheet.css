@@ -1,7 +1,4 @@
 /* TODO Refactor with PageModal */
-.sheet {
-  overflow-y: scroll;
-}
 
 .sheet > *:first-child {
   margin-top: 0;
