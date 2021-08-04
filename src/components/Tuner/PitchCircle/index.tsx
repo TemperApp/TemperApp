@@ -135,7 +135,9 @@ const PitchCircle: React.FC<PitchCircleProps> = ({
   const hasPopover = settings.procedureShowPopover
     && proc && proc.steps[procStepIdx].message;
 
-  const [canPopoverBeOpen, setCanPopoverBeOpen] = useState(hasPopover);
+  const [canPopoverBeOpen, setCanPopoverBeOpen] = useState(
+    hasPopover && tuneMode === TuneMode.PROCEDURE
+  );
 
   useEffect(() => {
     setCanPopoverBeOpen(true);
@@ -228,6 +230,8 @@ const PitchCircle: React.FC<PitchCircleProps> = ({
       <IonPopover
         isOpen={hasPopover && canPopoverBeOpen}
         onDidDismiss={() => {
+          TemperTone.stop();
+          clearTimeout(timeout);
           executeQueue();
           setCanPopoverBeOpen(false);
         }}
