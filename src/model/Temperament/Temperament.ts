@@ -224,7 +224,8 @@ export const defaultTemperaments: Array<Temperament> = [
     ],
     soundReferences: [{title: "", url:""}],
     commentary: `Le tempérament de Rameau II, ou tempérament en sib, est identique au précédent mais sa construction se fait à partir du la et non du do. Les quintes de sib à si sont diminuées d’un quart de comma syntonique. La quinte si - fa# est diminuée d’un quart de comma et augmentée d’une valeur δ. Les quatre quintes restantes se répartissent l’excédent.\bRameau cite brièvement une alternative à sa première description : « Pour que les Intervalles conservent toute la justesse possible dans les Modulations les plus usitées, il faut commencer la Partition par Si B-mol, & ne rendre pour lors les Quintes un peu plus justes, que depuis Si à Fa# ». Plusieurs commentateurs ont considéré qu'il s'agissait d'une transposition de sa première formule.
-    De nombreuses interprétations sont possible du texte de Jean-Philippe Rameau, les créateurs de TemperApp se sont mis d’accord sur cette version avec le projet d’en inclure d’autres ultérieurement`,
+
+De nombreuses interprétations sont possible du texte de Jean-Philippe Rameau, les créateurs de TemperApp se sont mis d’accord sur cette version avec le projet d’en inclure d’autres ultérieurement`,
   },
   {
     idTemperament: 5,
@@ -719,8 +720,8 @@ export const defaultTemperaments: Array<Temperament> = [
 
 {
     idTemperament: 13,
-    name: "BACH/JOBIN",
-    nameFR: "BACH/JOBIN",
+    name: "Bach/Jobin",
+    nameFR: "Bach/Jobin",
     deviation: {
       C:        10.263,
       C_sharp:  -2.933,
@@ -738,9 +739,9 @@ export const defaultTemperaments: Array<Temperament> = [
     cpExp5th: {
       F_sharp: "0",
       C_sharp: "0",
-      G_sharp: "1/20.6",
-      E_flat:  "1/20.6",
-      B_flat:  "1/20.6",
+      G_sharp: "+1/20.6",
+      E_flat:  "+1/20.6",
+      B_flat:  "+1/20.6",
       F:       "0",
       C:       "-1/4.36",
       G:       "-1/4.36",
@@ -763,7 +764,7 @@ export const defaultTemperaments: Array<Temperament> = [
       E:       "8/11",
       B:       "12/11",
     },
-    procedure: "C4;{On commence par la tierce pure Do-Mi, qu’on partage en 4 quintes égales}C4-E4;C4-G3;G3-D4;D4-A3;A3:E4;{On rajoute la quinte Mi-Si de même valeur que les précédentes en contrôlant Sol-Si réputée pure}E4-B3;B3:G3;{On accorde trois quintes pures entre Si et Sol#}B3-F#3;F#3-C#4;C#4-G#3;{la tierce Mi-Sol# doit être **tolèrable**, pour la contrôler on copie le Mi4 vers le Mi3}E4-E3;E3:G#3;{On établit Do-Fa pure}C4-F3;{On place une quinte **à peine plus grande** sur Fa-Sib puis on répartir l’exédent sur les deux autres quintes. On contrôle les tierces.}F3-Bb3;Bb3:D4;Bb3-Eb4;G3-G4;Eb4:G4;Eb4:G#3;{On recopie les octaves, et le tour est joué! }F3-F4;F#3-F#4;G#3-G#4;A3-A4;",
+    procedure: "C4;{On commence par la tierce pure Do-Mi, qu’on partage en 4 quintes égales}C4-E4;C4-G3;G3-D4;D4-A3;A3:E4;{On rajoute la quinte Mi-Si de même valeur que les précédentes en contrôlant Sol-Si réputée pure}E4-B3;B3:G3;{On accorde trois quintes pures entre Si et Sol#}B3-F#3;F#3-C#4;C#4-G#3;{la tierce Mi-Sol# doit être *tolérable*, pour la contrôler on copie le Mi4 vers le Mi3}E4-E3;E3:G#3;{On établit Do-Fa pure}C4-F3;{On place une quinte *à peine plus grande* sur Fa-Sib puis on répartit l'excédent sur les deux autres quintes. On contrôle les tierces.}F3-Bb3;Bb3:D4;Bb3-Eb4;G3-G4;Eb4:G4;Eb4:G#3;{On recopie les octaves, et le tour est joué! }F3-F4;F#3-F#4;G#3-G#4;A3-A4;",
     theorist : "Emile Jobin, Quentin Blumenroeder",
     period : "XVIIIe siècle",
     geographicalArea: "Allemagne",
