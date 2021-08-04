@@ -460,7 +460,8 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
             de rapport intervallaire.
           </p>
 
-          <h4 className="pt-6">Crédits et sources</h4>
+
+          <h4 className="pt-6">Groupe de recherche</h4>
           <hr className="my-5" />
 
           <p className="p-long">
@@ -487,7 +488,6 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
           <p className="p-long">
             Le projet bénéficie de nombreux soutiens sous la forme de ressources humaines et techniques :
           </p>
-
           <ul className="mb-0">
             <li className="mb-2">
               le Conservatoire National Supérieur de Musique et de Danse de Paris,
@@ -504,7 +504,21 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
             <li>
               et l’association ARTEMIDA.
             </li>
-            
+          </ul>
+
+
+          <h4 className="pt-6">Conception et réalisation</h4>
+          <hr className="my-5" />
+
+          <p className="p-long">
+            TemperApp a été développée par cinq étudiant·e·s en formation d'ingénieur IMAC (Image, multimédia, audiovisuel et communication) de l'École Supérieure d'Ingénieurs Paris-Est :
+          </p>
+          <ul className="my-0">
+            <li className="mb-1"><strong>Fabian Adam</strong></li>
+            <li className="mb-1"><strong>Benjamin Briere</strong></li>
+            <li className="mb-1"><strong>Daphné Chamot-Rooke</strong></li>
+            <li className="mb-1"><strong>Ludwig Chieng</strong></li>
+            <li className="mb-1"><strong>Sterenn Fonseca</strong></li>
           </ul>
         </section>
 
