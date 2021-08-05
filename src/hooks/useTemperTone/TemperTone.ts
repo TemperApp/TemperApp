@@ -24,6 +24,7 @@ class TemperTone {
   fork: Tone.Sampler;
   forkGain: Tone.Gain;
   gain: Tone.Gain;
+  gain2: Tone.Gain;
 
   freq: number = 440;
   modFreq: number = 0;
@@ -35,9 +36,13 @@ class TemperTone {
     this.gain = new Tone.Gain(1)
       .toDestination();
 
+    // Secondary Gain
+    this.gain2 = new Tone.Gain(1)
+      .connect(this.gain);
+
     // AM Synth Gain
     this.amsynthGain = new Tone.Gain(1)
-      .connect(this.gain);
+      .connect(this.gain2);
 
     // AM Synth Filter
     this.amsynthFilter = new Tone.Filter({
@@ -81,6 +86,11 @@ class TemperTone {
       urls: { A4: "fork-hit.wav", },
       baseUrl: "/assets/samples/"
     }).connect(this.forkGain);
+    
+    // On window minimize
+    document.addEventListener("visibilitychange", function() {
+      TemperTone.get().gain2.gain.rampTo(document.hidden ? 0 : 1, 0.01);
+    }, false);
   }
 
 
