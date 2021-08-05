@@ -3,6 +3,8 @@ node_js:
   - "14.16.1"
 script:
   - npm install -g firebase-tools
+  - npm install -g @ionic/cli
   - npm install
+  - ionic build --prod 
 after_success:
-  - firebase deploy --token $FIREBASE_TOKEN
+  - firebase deploy --token "$FIREBASE_TOKEN"
