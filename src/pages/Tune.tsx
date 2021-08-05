@@ -19,18 +19,35 @@ import "./Tune.css"
 const TuneModalContent: React.FC = () => (
   <>
     <h4 className="py-3">Qualité des quintes et des tierces</h4>
+
+    <strong>Un nouveau visuel : pourquoi faire?</strong>
+
     <p className="p-long">
-      Le visuel TemperApp vous permet de prévoir en un coup
-      d’oeil la sonorité de tous les accords majeurs dans
-      le tempérament sélectionné. Chaque note du cycle des
-      quintes représente la tonalité majeure correspondante.
+    A la fin de l’accord d’un clavecin, d’un orgue, etc. 
+    il est habituel d’enchaîner les accords majeurs en progressant par quinte,  et d’en écouter la <strong>couleur</strong>. 
+    Cette <i>arpeggiatta</i> de l’accordeur est la description la plus fidèle d’un tempérament : 
+    on y perçoit la qualité de chaque accord, et la manière dont celle-ci progresse par tons voisins.
+    Le visuel colorimétrique TemperApp a été développé pour reproduire ce geste de l’accordeur, 
+    en permettant de percevoir le résultat d’un tempérament <strong>au clavier</strong>
     </p>
+
+    <strong>Le visuel colorimétrique</strong>
+    <p className="p-long">
+    Le visuel TemperApp permet de prévoir en un coup d'œil la sonorité de tous les <strong>accords majeurs</strong> dans le tempérament sélectionné : 
+    Chaque note du cycle des quintes représente la <strong>tonalité majeure</strong> correspondante. 
+    La note C  représente donc l’accord de Do Majeur. Le visuel TemperApp <i>décrit</i> cet accord 
+
+    </p>
+
     <p className="p-long">
       Pour chaque accord majeur, les qualités des quintes
-      et des tierces sont représentées par une couleur. Les
-      tierces sont représentées à l’extérieur du cercle, les
-      quintes à l’intérieur.
+      et des tierces sont représentées par une couleur. Les <strong>quintes</strong> sont représentées à <strong>l’extérieur</strong> du cycle, les <strong>tierces</strong> à <strong>l’intérieur.</strong>
     </p>
+
+    <p className="p-long">
+      Plus la couleur de l’intervalle est <strong>sombre</strong>, plus celui-ci est <strong>tempéré</strong>. 
+    </p>
+
     <div className="flex justify-center items-center py-5">
       <div
         className="h-12 w-12 mr-4 rounded-full"
@@ -43,13 +60,7 @@ const TuneModalContent: React.FC = () => (
       <div
         className="mr-8"><h5>Tierces</h5></div>
     </div>
-    <p className="p-long">
-      Plus la couleur de l’intervalle est sombre, plus celui-ci est tempéré. 
-      Les intervalles au tempérament égal sont représentés avec la même couleur. 
-      Seuls les intervalles purs sont colorés en bleu. Les intervalles aux tempéraments 
-      exceptionnels (quintes élargies, tierces plus grandes que pythagorienne) 
-      sont colorés en nuances de gris. 
-    </p>
+
     <IonCard className="flex justify-center items-center w-full py-1">
       <IonCardContent className="w-full">
         <IonGrid>
@@ -118,6 +129,20 @@ const TuneModalContent: React.FC = () => (
         </IonGrid>
       </IonCardContent>
     </IonCard>
+
+    <strong>Paramètres disponibles</strong>
+
+    <p className="p-long">
+    Le visuel TemperApp a deux paramètres possibles : 
+
+    Aux <strong>thèmes</strong> clair ou sombre correspondent deux dégradés différents fonctionnant sur le même principe
+
+    L’utilisateur a la possibilité de superposer au dégradé de couleur la valeur du tempérament 
+    des intervalles en fraction de Commas (Pythagoricien pour les quintes, Syntonique pour les tierces). 
+    Pour plus d’information sur les unités utilisées par TemperApp, voir @
+
+    </p>
+
     <h4 className="py-3">Pitch pipe & battements</h4>
     <strong>TemperApp propose deux accordeurs.</strong>
     <IonGrid>
@@ -145,13 +170,28 @@ const TuneModalContent: React.FC = () => (
         <IonCol size="9">
           <p className="p-long">
             L'accordeur <strong>“par battements”</strong> émet le battement prévu d’un 
-            intervalle, sur le même principe que celui émis par 
-            l’instrument : les fréquences des harmoniques  les plus 
-            proches sont émises simultanément.
+            intervalle, de la même manière qu’il sonne à l’instrument : 
+            un son à la hauteur du premier partiel commun et d’un battement égal à la différence entre les deux partiels. 
+            <i>Un intervalle pur émet donc un son continu à la hauteur du premier partiel commun.</i> 
           </p>
         </IonCol>
       </IonRow>
     </IonGrid>
+    <h4 className="py-3">SELECTION D’UN INTERVALLE</h4>
+    
+    <p className="p-long">
+    Les intervalles disponibles dans TemperApp sont les quartes, les quintes et les tierces majeures. <br/><br/>
+
+    Pour sélectionner un intervalle, appuyez sur les notes correspondantes en respectant leur octave : <br/><br/>
+
+    une pression <strong>longue</strong> sélectionne la note à l’octave 3 (clé de fa) <br/>
+
+    une pression <strong>courte</strong> sélectionne la note à l’octave 4 (clé de sol). <br/><br/>
+
+    Lorsqu’une note est sélectionnée, l’application génère sa fréquence. Lorsqu’un intervalle est sélectionné, l’application génère immédiatement son battement !
+
+    </p>
+
     <h4 className="py-3">Procédure d'accord</h4>
     <IonGrid>
       <IonRow>
@@ -184,7 +224,7 @@ const TuneModalContent: React.FC = () => (
         l’application.
       </p>
       <p className="p-long">
-        À tout moment, vous pouvez aller à l’étape précédente, suivante ou redémarrer l'étape. 
+        A tout moment vous pouvez aller à l’étape précédente, suivante ou interrompre la procédure.
       </p>
       <div className="py-10"></div>
   </>
