@@ -65,11 +65,6 @@ ion-button.learn-resources-btn::part(native) {
   width: 90%;
 }
 
-/* TODO Refactor with PageModal */
-.learn {
-  overflow-y: scroll;
-}
-
 .learn > *:first-child {
   margin-top: 0;
 }
