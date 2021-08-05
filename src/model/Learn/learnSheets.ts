@@ -52,8 +52,6 @@ On utilise aujourd’hui des valeurs numériques, avec lesquelles il est facile 
 
 Le clavier des instruments à sons fixes contient douze notes par octave. Toute l’information décrivant un tempérament peut donc être contenue dans douze valeurs. 
 
-  
-
   > Pour manipuler ces valeurs, il est nécessaire de comprendre les mathématiques du tempérament musical.
   
   Les notes d'un clavier à 12 touches par octave comme le piano, le clavecin ou l'orgue sont reliées par un cycle de 12 quintes ou de 12 demi-tons. 
@@ -113,7 +111,7 @@ ou comme 12 valeurs affectant les demi-tons : la **table de déviation** en unit
     id: "mathematics",
     label: "Mathématiques",
     content: `### longueurs de cordes - fréquences
-  Depuis les auteurs grecs jusqu'au XIXe siècle, un intervalle est défini par un rapport de longueurs de cordes : par analogie, le rapport des sons est celui des longueurs des cordes qui les forment (ainsi le rapport mathématique est 1:2 pour l’octave, 2:3 pour la quinte, 3:4 pour la quarte, 4:5 pour la tierce majeure, 5:6 pour la tierce mineure, etc.). De nos jours, on emploie le rapport des fréquences des deux notes qui forment l'intervalle. On le nomme rapport acoustique, qui est l'inverse du rapport des longueurs. Les rapports acoustiques des intervalles simples à l'état pur sont ainsi les suivants :
+  Des auteurs grecs jusqu'au XIXe siècle, un intervalle était défini par un rapport de longueurs de cordes : le rapport des sons était celui des longueurs des cordes qui les forment (ainsi le rapport mathématique était 1:2 pour l’octave, 2:3 pour la quinte, 3:4 pour la quarte, 4:5 pour la tierce majeure, 5:6 pour la tierce mineure, etc.). De nos jours, on emploie le rapport des fréquences des deux notes qui forment l'intervalle. On le nomme rapport acoustique, et il correspond à l'inverse du rapport des longueurs. Les rapports acoustiques des intervalles simples à l'état pur sont ainsi les suivants :
 
   $ \\text{octave : 2} $
 
@@ -125,7 +123,7 @@ ou comme 12 valeurs affectant les demi-tons : la **table de déviation** en unit
 
   $ \\text{tierce mineure 6/5} $
     
-  Ces intervalles, auxquels ont peut ajouter les intervalles complémentaires des tierces dans l'octave, à savoir la sixte mineure ($8/5$) et la sixte majeure ($5/3$) émettent un battement perceptible si on les écarte de leur valeur pure (correspondant à l’exactitude du rapport acoustique). 
+ 
 
   > Le rapport acoustique est indépendant de la fréquence de la note sur laquelle on construit l’intervalle. 
 
@@ -155,13 +153,15 @@ ou comme 12 valeurs affectant les demi-tons : la **table de déviation** en unit
   
   $\\Rightarrow  4/3 \\div 5/4 = 16/15 $
 
+Dans le “glossaire” au chapitre **cent** on expliquera comment les intervalles peuvent être décrit en nombres qui s’additionnent.
+
   ### Construire une gamme à l’aide des mathématiques
 
-  Pour construire les douze notes de la gamme, on commence par une fréquence de départ quelconque $f_{1}$. On élève cette note de douze quintes successivement $$f_{1} \\underbrace{\\times \\frac{3}{2} \\times \\frac{3}{2} ...}_{12 \\times } = f_{1} \\times \\left( \\frac{3}{2}\\right)^{12}$$
+  Pour construire les douze notes de la gamme, on commence par une fréquence de départ quelconque $f_{1}$. On élève cette note de douze quintes successivement $$f_{1} \\underbrace{\\times \\frac{3}{2} \\times \\frac{3}{2} ...}_{12 \\times } = f_{1} \\times \\left( \\dfrac{3}{2}\\right)^{12}$$
 
   On obtient la douzième fréquence $f_{12}$. Si on est parti de Do, on a obtenu toutes les fréquences jusqu’à… si# bien sûr! En effet, puisqu’on est monté en quintes pures, la dernière note n’est pas exactement à l’unisson de la première. Pour les comparer, on abaisse la douzième note de 7 octaves : $$f^\\prime_{12}=\\frac{f_{12}}{2^{7}}$$ Puis on calcule l’intervalle entre ces deux notes presque à l’unisson, et on obtient le petit intervalle appelé comma pythagoricien : 
 
-  $$ \\Large C_{p}=\\frac{f^\\prime_{12}}{f_{1}} = \\frac{3^{12}}{2^{19}} $$
+  >$$ \\Large C_{p}=\\frac{f^\\prime_{12}}{f_{1}} = \\frac{3^{12}}{2^{19}} $$
 
   ### Diviser un intervalle? 
 
@@ -169,7 +169,7 @@ ou comme 12 valeurs affectant les demi-tons : la **table de déviation** en unit
   
   ### Pureté et tempérament
 
-  La somme d'intervalles purs (qui, à l'audition, sont dénués de battement) entraîne la production de petits intervalles appelés **commas** qui affectent la pureté voire la jouabilité d'autres intervalles. 
+  La somme d'intervalles purs (qui, à l'audition, sont dénués de battement, voir "physique”) entraîne la production de petits intervalles appelés **commas** qui affectent la pureté voire la jouabilité d'autres intervalles. 
   
   >Tempérer un intervalle, c'est l'éloigner de son état de pureté afin d'amoindrir voire annuler l'effet de ces commas.
   
@@ -181,7 +181,7 @@ ou comme 12 valeurs affectant les demi-tons : la **table de déviation** en unit
 
   Le comma pythagoricien  ($ \\small C_{p}$) est l’intervalle entre une note élevée de douze quintes pures et la même note élevée de 7 octaves.
 
-  > $$ C_{p} = \\dfrac{(\\dfrac{3}{2})^{12}}{2^{7}} = \\dfrac{3^{12}}{2^{19}}  $$
+  > $$ C_{p} = \\dfrac{ \\left( \\dfrac{3}{2} \\right)^{12}}{2^{7}} = \\dfrac{3^{12}}{2^{19}}  $$
 
   Le comma syntonique ($\\small C_{s}$) ou comma zarlinien est l’intervalle entre une note élevée de quatre quintes pures et la même note élevée d’une tierce majeure pure et d’une octave.
   
@@ -191,53 +191,55 @@ ou comme 12 valeurs affectant les demi-tons : la **table de déviation** en unit
 
   >$$ \\dfrac{C_{p}}{12} \\approx \\dfrac{C_{s}}{11} $$
 
+Cette valeur est souvent choisie comme unité d’intervalle (voir “glossaire”)
+
   ### Représentation mathématique des intervalles usuels : les quintes
 
-  Les mathématiques représentent par des équations simples le geste de l’accordeur. Pour décrire une quinte tempérée, le mathématicien (comme l’accordeur) part d’une quinte pure, et écrit la fréquence en Hz de la note Sol par rapport à la fréquence de Do 
+  Les mathématiques représentent par des équations simples le geste de l’accordeur. Pour décrire une quinte tempérée, le mathématicien (comme l’accordeur) part d’une quinte pure, et écrit la fréquence des notes en Hz :
   
  > $$ \\textrm{Sol} = \\dfrac{3}{2} \\times \\textrm{Do}$$ 
 
-  La fréquence du sol est donc plus haute que ce que cherche l’accordeur. Il faut *l’abaisser* d’une fraction de comma. Supposons que l’accordeur souhaite une quinte au tempérament égal : il faut l’abaisser d’un douzième de comma pythagoricien. Comme tous les intervalles, le comma pythagoricien peut se diviser en prenant sa **racine** : 
+  La fréquence du sol *pur sur Do* est donc trop haute. Il faut *l’abaisser* d’une fraction de comma. Supposons que l’accordeur souhaite une quinte au tempérament égal : il faut l’abaisser d’un douzième de comma pythagoricien. Comme tous les intervalles, le comma pythagoricien peut se diviser en prenant sa **racine** : 
   
   > $$\\sqrt[12]{C_{p}}$$
 
   Une autre écriture de cette racine permet plus de clarté : 
   
-  > $$\\sqrt[12]{C_{p}}=C_{p}^{{}^{\\frac{1}{12}}}$$
+  > $$\\sqrt[12]{C_{p}}=C_{p}^{{}^{\\tfrac{1}{12}}}$$
 
   L’équation qui donne la fréquence du Sol par rapport au Do est donc 
 
-  >$$\\textrm{Sol} = \\frac{3}{2} \\times \\textrm{Do} \\times {C_{p}}^{-\\frac{1}{12}}$$
+  >$$\\textrm{Sol} = \\dfrac{3}{2} \\times \\textrm{Do} \\times {C_{p}}^{-\\tfrac{1}{12}}$$
 
-  Le signe “-” indique que le sol est **abaissé** de la fraction de comma. Sur le cycle des quintes, cette équation sera abrégée en $1/12$. Seules les uintes grndies sont notées “+”
+  Le signe “-” indique que le sol est **abaissé** de la fraction de comma. Sur le cycle des quintes, cette équation sera abrégée en $1/12$. Seules les quintes élargies sont notées “+”
 
-  ### Représentation mathématique des intervalles usuels : les tierces
+  ### Représentation mathématique des intervalles usuels : les tierces majeures
 
-  On associe habituellement les tierces au comma **syntonique** c’est-à-dire à la différence entre la tierce majeure obtenue par quatre quintes pures (dite pythagoricienne) et la tierce pure. 
+  On associe habituellement les tierces au comma **syntonique** c’est-à-dire à la différence entre la tierce majeure obtenue par quatre quintes pures (dite pythagoricienne) et la tierce pure : 
 
 >$$Cs = \\dfrac{1}{4} \\left( \\dfrac{3}{2} \\right)^{4} \\div \\dfrac{5}{4} = \\dfrac{81}{80}$$
 
 Le mathématicien représente donc les tierces tempérées à l’aide d’un exposant de comma syntonique plutôt que de comma pythagoricien, bien que les deux soient possibles. Or il se trouve que le onzième de comma syntonique un intervalle très proche du douzième de comma pythagoricien : 
 
-$$ \\dfrac{C_{p}}{12} \\approx \\dfrac{C_{s}}{11} $$ 
+>$$ \\dfrac{C_{p}}{12} \\approx \\dfrac{C_{s}}{11} $$ 
 
 On représente donc mathématiquement les tierces à l’aide de cette unité.
   
   Procédons comme avec les quintes. Pour représenter une tierce majeure “Vallotti” on commence par représenter sa valeur pure : 
   
-  $$\\textrm{Mi}=\\textrm{Do} \\times \\frac{5}{4}$$ 
+ > $$\\textrm{Mi}=\\textrm{Do} \\times \\dfrac{5}{4}$$ 
   
   Puis on prend 3 onzièmes de comma syntonique 
   
-  $$C_{s}^{\\tfrac{3}{11}}$$
+  >$$C_{s}^{\\tfrac{3}{11}}$$
   
   Et on *monte* notre Mi pur de cet intervalle : 
   
-  >$$\\textrm{Mi} = \\textrm{Do} \\times \\dfrac{5}{4} \\times C_{s}^{\\dfrac{3}{11}}$$
+  >$$\\textrm{Mi} = \\textrm{Do} \\times \\dfrac{5}{4} \\times C_{s}^{\\tfrac{3}{11}}$$
   
   Sur le visuel TemperApp, on écrira simplement 3/11. 
 
-Une tierce du tempérament égal vaut 7/11.
+Une tierce majeure du tempérament égal vaut 7/11.
 
   `,
   },
@@ -246,7 +248,7 @@ Une tierce du tempérament égal vaut 7/11.
     label: "Physique",
     content: `### Vibration des cordes et des tubes
     
-  Une corde pincée, frappée ou frottée vibre à certaines fréquences qui dépendent de sa tension, de sa masse par unité de longueur, de son diamètre et d’autres paramètres physiques. Les règles de calcul des vibrations s’appliquent de la même manière pour les tuyaux sonores.
+  Une corde pincée, frappée ou frottée vibre à certaines fréquences qui dépendent de sa tension, de sa masse par unité de longueur, de son diamètre et d’autres paramètres physiques. Les règles de calcul des vibrations s’appliquent de la même manière aux tuyaux sonores.
     
   ### Modes de vibration
 
@@ -254,23 +256,23 @@ Une tierce du tempérament égal vaut 7/11.
   
   >On nomme ces vibrations les **partiels** ou **harmoniques**. 
   
-  ### L'unisson
+  ### Pureté d’un intervalle = unisson de partiels
 
-  Lorsque deux cordes vibrent à la même fréquence, leurs vibrations se cumulent, il s’agit d’un unisson.
-  
-  Si l’on les désaccorde très légèrement, leurs vibrations se cumulent puis s’annulent alternativement. Cet unisson faux crée ce que l’on perçoit comme un battement. La fréquence de ce battement est la différence entre les deux fréquences de l’unisson faux. 
-  
-  ### Pureté d’un intervalle = unisson de partiels 
+  Lorsque deux cordes vibrent à la même fréquence, leurs vibrations se cumulent, il s’agit d’un **unisson**.
 
-  Cet unisson peut se produire entre les fréquences fondamentales de deux cordes, mais aussi entre ses fréquences partielles (ou harmoniques).
-  
-  Entre une corde vibrant à $ \\small 200 \\textrm{ Hz} $ et une corde vibrant une quinte plus haut à $ \\small 300 \\textrm{ Hz} $ il existe un unisson : le troisième partiel de la première corde vibre à $ \\small 600 \\textrm{ Hz} $ , à l’unisson du deuxième partiel de la deuxième corde.
-  
-  
+Cet unisson peut se produire entre les fréquences fondamentales de deux notes, mais aussi entre ses fréquences partielles ou harmoniques. Un unisson entre des sons harmoniques forme un **intervalle pur**.  
 
-  ### Les battements
+Entre une corde vibrant à $ \\small 200 \\textrm{ Hz} $ et une corde vibrant une quinte plus haut à $ \\small 300 \\textrm{ Hz} $ il existe un unisson : le troisième partiel de la première corde vibre à $ \\small 600 \\textrm{ Hz} $ , à l’unisson du deuxième partiel de la deuxième corde. L’intervalle est ici une **quinte pure**.
 
->Un **battement** est un unisson faux entre deux sons harmoniques très proches.
+ ### Les battements
+
+  
+  Si l’on désaccorde très légèrement deux cordes à l’unisson, leurs vibrations se cumulent puis s’annulent alternativement : c'est un **battement**. La fréquence de ce battement est la différence entre les deux fréquences de l’unisson faux. L’unité du battement est donc le Hz.
+
+De la même manière que deux cordes en unisson faux produisent un battement, deux fréquences partielles ou harmoniques peuvent produire un battement : cela caractérise les intervalles **tempérés**. 
+    
+  
+>Le **battement** d’un intervalle est un unisson faux entre deux sons harmoniques très proches.
 
   Dans l’exemple précédent, si l’on désaccorde la seconde corde à $ \\small 301 \\textrm{  Hz} $, on crée un unisson faux entre ces deux sons partiels : le premier vibre à $ \\small 600 \\textrm{ Hz} $  et le second à $ \\small 602 \\textrm{ Hz} $ . On percevra un battement à la fréquence de $ \\small 2 \\textrm{ Hz} $  (soit 2 battements par seconde).
   
@@ -280,15 +282,19 @@ Une tierce du tempérament égal vaut 7/11.
   
   Exemple : Do-Sol. 
   
-  SH de $\\small Do_{3} : Do_{3} Do_{4} Sol_{4} Do_{5}  Mi_{5}$
+  S.H. de $\\small Do_{3} : Do_{3} - Do_{4}  - Sol_{4} -Do_{5} - Mi_{5} \\cdots $
   
-  SH de $\\small Sol_{3} : Sol_{3} Sol_{4} Ré_{5} Sol_{5} Si_{5}$
+  SH de $\\small Sol_{3} : Sol_{3} -Sol_{4} -Ré_{5}- Sol_{5} -Si_{5} \\cdots $
   
   Le premier harmonique commun est $$\\small Sol_{4}$$
   
   >La vitesse d’un battement dépend de la fréquence des notes sur laquelle est construit l’intervalle.  
   
   Car c’est la différence entre les deux valeurs. L’intervalle entre les deux, qui est un rapport (une division) lui, ne change pas.
+
+> un battement n’apparaît jamais seul : il coexiste avec une infinité de battements aux harmoniques supérieurs communs.
+
+   
 
 
   ### Le rapport entre les battements
@@ -317,6 +323,17 @@ On appelle $\\Sigma$  la somme des valeurs des quintes intérieures **en 1/12èm
 
 11-$\\Sigma$ **Hz** est la vitesse de battement de la tierce (Ex. pour Vallotti : 11-8 = 3. La tierce Fa-La de Vallotti est donc tempérée à 3/11 de Cs et bat à 3/sec à 440Hz. La valeur à 415 est donc juste en deçà. 
   
+### Cas particulier des battements : les sons résultants 
+
+Le phénomène physique du battement est  décrit par l’égalité trigonométrique suivante : 
+
+>$$\\sin (\\omega )+\\sin (\\omega ^\\prime)=2 \\cdot \\sin \\left(\\frac{\\omega +\\omega ^\\prime} 2\\right)\\cdot \\cos \\left(\\frac{\\omega -\\omega ^\\prime} 2\\right)  $$
+
+L’oreille n’interprète pas les amplitudes négatives, la fréquence des battements est donc $$\\omega -\\omega ^\\prime$$.
+
+Un battement se produit donc entre chaque paire de signaux. Dans le cas où celui-ci est très élevé, il est interprété par l’oreille comme un nouveau signal. Ainsi le battement entre le Do et le Mi d’une tierce majeure pure est un son à la double octave inférieure du Do :
+
+>$$\\dfrac{5}{4}- 1 = \\dfrac{1}{4}$$
 
 
     `,
@@ -338,9 +355,9 @@ On appelle $\\Sigma$  la somme des valeurs des quintes intérieures **en 1/12èm
 
 Puis, avec l’expérience :
 
-tempérer une quinte à un battement ou une fraction particuliers
+- tempérer une quinte à un battement ou une fraction particuliers
 
-tempérer deux quintes dans deux tempéraments différents en utilisant le “cas général” du rapport des battements.
+- tempérer deux quintes dans deux tempéraments différents en utilisant le “cas général” du rapport des battements.
     
   ### Une procédure d’accord, qu’est-ce que c’est?
   
@@ -350,15 +367,15 @@ tempérer deux quintes dans deux tempéraments différents en utilisant le “ca
 
 TemperApp propose des procédures d’accord répondant à certains critères :
 
-Les procédures TemperApp sont construites sur des enchaînements de gestes élémentaires. 
+- Les procédures TemperApp sont construites sur des enchaînements de gestes élémentaires. 
 
-La plupart des procédures commencent du La, car les créateurs de TemperApp ont souhaité qu’un débutant puisse accorder sans prendre le risque d’avoir un La “hors diapason”, ce qui pourrait gêner sur un instrument de conservatoire par exemple.
+-La plupart des procédures commencent du La, car les créateurs de TemperApp ont souhaité qu’un débutant puisse accorder sans prendre le risque d’avoir un La “hors diapason”, ce qui pourrait gêner sur un instrument de conservatoire par exemple.
  
-La tierce $ \\small Fa - La$ est en général un bon début, car on peut retenir sa vitesse de battement facilement. 
+-La tierce $ \\small Fa - La$ est en général un bon début, car on peut retenir sa vitesse de battement facilement. 
 
-On accorde souvent en premier les quintes à l’intérieur de $ \\small Fa - La$ (dont la distribution est en général simple)
+-On accorde souvent en premier les quintes à l’intérieur de $ \\small Fa - La$ (dont la distribution est en général simple)
  
-On va au plus vite à des intervalles purs (en général à gauche de Fa) et on utilise des preuves tierces-quintes.
+-On va au plus vite à des intervalles purs (en général à gauche de Fa) et on utilise des preuves tierces-quintes.
  
 
   Des “pop-ups” accompagnent l’utilisateur et lui expliquent les procédures. Ils contiennent toutes les informations nécessaires pour reproduire la procédure en autonomie.
@@ -398,7 +415,7 @@ Sur un cycle des tierces TemperApp, **F : 7/11** signifie **la tierce** $\\small
 
   En écriture mathématique et en Hz : 
   
-  $$ \\small La = Fa \\times \\frac{5}{4} \\times C_{s}^{\\frac{7}{11}}$$
+  $$ \\small La = Fa \\times \\dfrac{5}{4} \\times C_{s}^{\\tfrac{7}{11}}$$
 
   > NB : le 1/11ème de Comma syntonique est le même intervalle que le 1/12ème de Comma pythagoricien. 
 
@@ -432,6 +449,38 @@ Dans TemperApp, les battements rapides en Bpm sont décrits ainsi :
 
 Ainsi, l’accordeur peut utiliser un métronome ou retenir la vitesse en Bpm et compter 4 battements.
 
+### Le **cent** : unité des tables de déviation et des intervalles
+
+L’unité **cent ** répond à deux contraintes :
+> **1.** additionner les intervalles plutôt que les multiplier (et éviter les puissances incommensurables ou les racines n-ièmes
+
+Les intervalles étant toujours des rapports (= des divisions), leur addition et soustraction s’expriment par des multiplication et des division. Leur multiplication et leur division sont des puissances et des racines. 
+
+Pour pallier à ces problèmes de calculs, les mathématiciens utilisent depuis le 17ème siècle les **logarithmes**. A chaque nombres **x** on associe un autre nombre  **log(x)** dans une *base*, par exemple **2**. La règle est la suivante : 
+
+>$$x = 2^{\\log(x)}$$
+
+L’avantage des nombres exprimés en logarithme est que la multiplication est remplacée par l'addition, et ainsi de suite pour toutes les opérations : 
+
+>$$\\log(x \\times y) = \\log (x ) + \\log(y)$$
+>$$\\log \\left( \\dfrac{x}{y}  \\right) = \\log (x ) - \\log(y)$$
+>$$\\log(x^p) = p \\times \\log(x)$$
+>$$\\log(\\sqrt[p]{x}) = \\dfrac{1}{p} \\log(x)$$
+
+On peut donc faire tous les calculs en logarithme à l’aide d’une table de correspondance $$x \\rightarrow \\log(x)$$, et convertir le résultat obtenu en lisant la table dans l’autre sens.      
+
+>**2.** décrire les tempéraments      
+
+Pour décrire les tempéraments, les musicologues ont pris l’habitude de faire la liste des intervalles entre les fréquences des douze notes de la gamme tempérée et celles du tempérament égal. Pour les manipuler plus facilement, ils utilisent les logarithmes en les adaptant à la particularité des intervalles d’être de très petits nombres (par exemple lorsqu’il s’agit de fraction de comma).
+
+>Si X et Y  sont deux notes en Hz, leur intervalle exprimé en **cent** vaut :
+> $$1200 \\cdot \\log_2 \\left( \\dfrac{Y}{X} \\right) $$
+
+Dans cette unité :
+
+-Un demi-ton vaut 100 cent en tempérament égal
+-Un comma pythagoricien vaut environ 24 cent
+-1/12ème Cp vaut 1,955 cent.  
 
     `,
   },
