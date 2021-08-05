@@ -4,7 +4,7 @@
   "private": true,
   "dependencies": {
     "@capacitor-community/sqlite": "^2.9.16",
-    "@capacitor/android": "3.0.0",
+    "@capacitor/android": "3.1.2",
     "@capacitor/app": "1.0.0",
     "@capacitor/core": "3.0.0",
     "@capacitor/haptics": "1.0.0",

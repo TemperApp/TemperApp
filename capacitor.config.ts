@@ -1,8 +1,8 @@
 import { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
-  appId: 'temperapp',
-  appName: 'temperapp',
+  appId: 'com.temperapp',
+  appName: 'TemperApp',
   webDir: 'build',
   bundledWebRuntime: false
 };

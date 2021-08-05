@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <resources>
     <string name="app_name">TemperApp</string>
-    <string name="title_activity_main">temperapp</string>
-    <string name="package_name">temperapp</string>
-    <string name="custom_url_scheme">temperapp</string>
+    <string name="title_activity_main">TemperApp</string>
+    <string name="package_name">com.temperapp</string>
+    <string name="custom_url_scheme">com.temperapp</string>
 </resources>

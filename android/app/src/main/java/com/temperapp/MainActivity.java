@@ -1,4 +1,4 @@
-package temperapp;
+package com.temperapp;
 
 import com.getcapacitor.BridgeActivity;
 
