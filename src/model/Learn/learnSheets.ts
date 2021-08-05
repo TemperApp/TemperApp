@@ -369,13 +369,13 @@ TemperApp propose des procédures d’accord répondant à certains critères :
 
 - Les procédures TemperApp sont construites sur des enchaînements de gestes élémentaires. 
 
--La plupart des procédures commencent du La, car les créateurs de TemperApp ont souhaité qu’un débutant puisse accorder sans prendre le risque d’avoir un La “hors diapason”, ce qui pourrait gêner sur un instrument de conservatoire par exemple.
+- La plupart des procédures commencent du La, car les créateurs de TemperApp ont souhaité qu’un débutant puisse accorder sans prendre le risque d’avoir un La “hors diapason”, ce qui pourrait gêner sur un instrument de conservatoire par exemple.
  
--La tierce $ \\small Fa - La$ est en général un bon début, car on peut retenir sa vitesse de battement facilement. 
+- La tierce $ \\small Fa - La$ est en général un bon début, car on peut retenir sa vitesse de battement facilement. 
 
--On accorde souvent en premier les quintes à l’intérieur de $ \\small Fa - La$ (dont la distribution est en général simple)
+- On accorde souvent en premier les quintes à l’intérieur de $ \\small Fa - La$ (dont la distribution est en général simple)
  
--On va au plus vite à des intervalles purs (en général à gauche de Fa) et on utilise des preuves tierces-quintes.
+- On va au plus vite à des intervalles purs (en général à gauche de Fa) et on utilise des preuves tierces-quintes.
  
 
   Des “pop-ups” accompagnent l’utilisateur et lui expliquent les procédures. Ils contiennent toutes les informations nécessaires pour reproduire la procédure en autonomie.
@@ -451,7 +451,7 @@ Ainsi, l’accordeur peut utiliser un métronome ou retenir la vitesse en Bpm et
 
 ### Le **cent** : unité des tables de déviation et des intervalles
 
-L’unité **cent ** répond à deux contraintes :
+L’unité **cent** répond à deux contraintes :
 > **1.** additionner les intervalles plutôt que les multiplier (et éviter les puissances incommensurables ou les racines n-ièmes
 
 Les intervalles étant toujours des rapports (= des divisions), leur addition et soustraction s’expriment par des multiplication et des division. Leur multiplication et leur division sont des puissances et des racines. 
@@ -478,9 +478,9 @@ Pour décrire les tempéraments, les musicologues ont pris l’habitude de faire
 
 Dans cette unité :
 
--Un demi-ton vaut 100 cent en tempérament égal
--Un comma pythagoricien vaut environ 24 cent
--1/12ème Cp vaut 1,955 cent.  
+- Un demi-ton vaut 100 cent en tempérament égal
+- Un comma pythagoricien vaut environ 24 cent
+- 1/12ème Cp vaut 1,955 cent.  
 
     `,
   },
