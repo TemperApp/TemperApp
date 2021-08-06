@@ -168,8 +168,8 @@ export const defaultTemperaments: Array<Temperament> = [
   },
   {
     idTemperament: 4,
-    name: "Rameau (1726) en Sib",
-    nameFR: "Rameau (1726) en Sib",
+    name: "Rameau 1726 en Sib",
+    nameFR: "Rameau 1726 en Sib",
     deviation: {
       C:       10.265,
       C_sharp:  0.578,
