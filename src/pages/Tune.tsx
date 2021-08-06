@@ -48,17 +48,22 @@ const TuneModalContent: React.FC = () => (
       Plus la couleur de l’intervalle est <strong>sombre</strong>, plus celui-ci est <strong>tempéré</strong>. 
     </p>
 
-    <div className="flex justify-center items-center py-5">
-      <div
-        className="h-12 w-12 mr-4 rounded-full"
-        style={{ border: "2px solid var(--color-contrast)" }} />
-      <div
-        className="mr-8"><h5>Quintes</h5></div>
-      <div
-        className="h-6 w-6 mr-4 rounded-full"
-        style={{ border: "2px solid var(--color-contrast)" }} />
-      <div
-        className="mr-8"><h5>Tierces</h5></div>
+    <div className="max-w-64 mx-auto py-5 flex justify-between">
+      <div className="flex items-center mr-3">
+        <div
+          className="h-12 w-12 mr-2 rounded-full flex-shrink-0"
+          style={{ border: "2px solid var(--color-contrast)" }}
+        />
+        <span className="block m-0">Quintes</span>
+      </div>
+
+      <div className="flex items-center">
+        <div
+          className="h-6 w-6 mr-2 rounded-full flex-shrink-0"
+          style={{ border: "2px solid var(--color-contrast)" }}
+        />
+        <span className="block m-0">Tierces</span>
+      </div>
     </div>
 
     <IonCard className="flex justify-center items-center w-full py-1">
