@@ -17,7 +17,7 @@ const Waves: React.FC = () => {
 
   return (
     <>
-      <svg className="wave" viewBox="0 0 360 286" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <svg className="wave fixed" viewBox="0 0 360 286" fill="none" xmlns="http://www.w3.org/2000/svg">
         <g filter="url(#filter0_d)">
           <path d="M302 62.79C197.97 106.854 72.5 45 1 45V287H360.5V45C360.5 45 344 45 302 62.79Z" fill="url(#paint0_linear)" />
         </g>
