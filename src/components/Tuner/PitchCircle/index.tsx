@@ -135,12 +135,10 @@ const PitchCircle: React.FC<PitchCircleProps> = ({
   const hasPopover = settings.procedureShowPopover
     && proc && proc.steps[procStepIdx].message;
 
-  const [canPopoverBeOpen, setCanPopoverBeOpen] = useState(
-    hasPopover && tuneMode === TuneMode.PROCEDURE
-  );
+  const [canPopoverBeOpen, setCanPopoverBeOpen] = useState(false);
 
   useEffect(() => {
-    setCanPopoverBeOpen(true);
+    setCanPopoverBeOpen(tuneMode === TuneMode.PROCEDURE);
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [procStepIdx, tuneMode]);
 
@@ -224,6 +222,7 @@ const PitchCircle: React.FC<PitchCircleProps> = ({
 
   
   /* Render */
+  console.log('hasPopover', hasPopover, 'canPopoverBeOpen', canPopoverBeOpen)
 
   return (
     <>
