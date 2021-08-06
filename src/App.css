@@ -9,11 +9,11 @@ body.plateform-desktop {
 }
 
 body.plateform-desktop .fixed {
-  max-width: calc(100vh * 9 / 16);
+  max-width: calc(100vh * 9 / 14);
 }
 
 body.plateform-desktop ion-app {
-  max-width: calc(100vh * 9 / 16);
+  max-width: calc(100vh * 9 / 14);
   box-shadow: 0 0 2rem #000a;
   margin: 0 auto;
 }
