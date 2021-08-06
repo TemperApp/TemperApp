@@ -42,7 +42,7 @@ const settings : readonly AllowedSetting[] = [{
     defaultValue: true,
   },{
     name: 'waveTriangle',
-    defaultValue: false,
+    defaultValue: true,
   },{
     name: 'masterVolume',
     defaultValue: 10,
@@ -72,7 +72,7 @@ const settings : readonly AllowedSetting[] = [{
     defaultValue: 1.5,
   },{
     name: 'forkVolume',
-    defaultValue: 5,
+    defaultValue: 2,
   },{
     name: 'amSynthVolume',
     defaultValue: 10,

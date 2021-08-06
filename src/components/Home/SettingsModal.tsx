@@ -40,7 +40,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
   
   const playDemoSound = () => {
     global.setIsTemperToneMute(false);
-    TemperTone.trigger(nextSettings.freqA4, 1);
+    TemperTone.trigger(nextSettings.freqA4, 3);
   }
 
   const set = (name: string, value: AllowedSettingValue) => {
@@ -493,9 +493,6 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
               le Conservatoire National Supérieur de Musique et de Danse de Paris,
             </li>
             <li className="mb-2">
-              le LAM-Institut Jean le Rond d’Alembert,
-            </li>
-            <li className="mb-2">
               l'Institut Collegium Musicae,
             </li>
             <li className="mb-2">
@@ -520,6 +517,29 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
             <li className="mb-1"><strong>Ludwig Chieng</strong></li>
             <li className="mb-1"><strong>Sterenn Fonseca</strong></li>
           </ul>
+
+
+          <h4 className="pt-6">Soutenez-nous !</h4>
+          <hr className="my-5" />
+
+          <p className="p-long">
+            TemperApp est une application en cours de développement et vous pouvez y contribuer ! Vous avez des remarques, suggestions ? L’équipe est à votre écoute par <strong>mail</strong> et sur <strong>discord</strong> : 
+          </p>
+          <p className="p-long">
+            <b>Suggérer un nouveau tempérament </b>: 
+            <a href="https://discord.gg/9gekgUVQ"> https://discord.gg/9gekgUVQ</a>
+          </p>
+          <p className="p-long">
+            <b>Signaler un bug </b>: 
+            <a href="https://discord.gg/qqhnHbFK"> https://discord.gg/qqhnHbFK</a>
+          </p>
+          <p className="p-long">
+            <b>Suggérer une nouvelle fonctionnalité </b>: 
+            <a href="https://discord.gg/ZEJgfjYd"> https://discord.gg/ZEJgfjYd</a>
+          </p>
+          <p className="p-long">
+            <b>Pour toute question </b>: temperapp.dev@gmail.com
+          </p>
         </div>
 
         <div>
