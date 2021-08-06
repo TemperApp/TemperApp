@@ -29,10 +29,18 @@ const Sheet: React.FC<SheetProps> = ({
   const user = useContext(UserContext);
   const [isFavorite, setIsFavorite] = useState<Boolean>(temperamentFavorite(id.toString(), user.favorite));
 
+  useEffect(()=>{
+    setIsFavorite(temperamentFavorite(id.toString(), user.favorite));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  },[id])
+
   useEffect(() => {
+
     user.setFavorite([id]);
     let temp = [""]; 
     temp = user.favorite;
+    console.info("id : "+id);
+    console.info("favorites : "+temp);
     isFavorite?temp.push(id):(temp=temp.filter(e => (e !== id && e !== undefined && e!=="")));
     if(temp.length === 0 && temp[0] === undefined){
       user.setFavorite([])
