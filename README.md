@@ -15,7 +15,8 @@ TemperApp is the result of research work carried out by :
 * Elisa Barbessi, professor of harpsichord and music history at the CRR du Grand-Avignon,
 * Jérôme Bertier, pianist, harpsichordist and organist, professor at the conservatory of Auxerre,
 * Pierre Cazes, harpsichordist, professor of harpsichord at the CRR 93 (Aubervilliers/La Courneuve), teacher of the history, theory and practice of musical temperaments,
-* Franck Jedrzejewski, researcher at the CEA, doctorate in musicology and philosophy.
+* Franck Jedrzejewski, researcher, doctorate in musicology and philosophy,
+* Théodora Psychoyou, member of the IReMus, lecturer at Sorbonne Université (Paris).
 
 ## Preview :rocket:
 
