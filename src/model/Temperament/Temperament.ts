@@ -395,7 +395,7 @@ De nombreuses interprétations sont possible du texte de Jean-Philippe Rameau, l
       E:       "8/11",
       B:       "8/11",
     },
-    procedure: "A4;A4-A3;{on accorde les deux premières quintes pures}A3-E4;E4-B3;{la quinte Si-Fa# est tempérée à 1/4 Cp}B3-F#4;F#-C#4;C#4-G#4;G#4-Eb4;Eb4-Bb4;Bb4-Bb3;Bb3-F4;F4-F3;F4-C4;C4-G4;G4-D4;D4-A4;{vérifier que les quintes tempérées Si-Fa#, Do-Sol et Re-La ont des battements progressifs}F4-F3;F#4-F#3;G4-G3",
+    procedure: "A4;A4-A3;{on accorde les deux premières quintes pures}A3-E4;E4-B3;{la quinte Si-Fa# est tempérée à 1/4 Cp}B3-F#4;F#4-C#4;C#4-G#4;G#4-Eb4;Eb4-Bb4;Bb4-Bb3;Bb3-F4;F4-F3;F4-C4;C4-G4;G4-D4;D4-A4;{vérifier que les quintes tempérées Si-Fa#, Do-Sol et Re-La ont des battements progressifs}F4-F3;F#4-F#3;G4-G3",
     theorist : "Andreas Werckmeister (1645-1706)",
     period : "XVIIe siècle",
     geographicalArea: "Allemagne",
