@@ -278,7 +278,7 @@ De nombreuses interprétations sont possible du texte de Jean-Philippe Rameau, l
     period : "XVIIIe siècle",
     geographicalArea: "France",
     nature: "Comma syntonique",
-    structuralParticularity: "Sept quintes sont abaissées d’un quart de comma syntonique. Les autres sont augmentées de quantités variables selon des petits compléments.",
+    structuralParticularity: "Sept quintes sont abaissées d’un quart de comma syntonique. Les autres sont augmentées de quantités variables selon des petits compléments. L'élargissement des quintes augmente progressivement à gauche de la racine du tempérament. De cette manière les tierces deviennent plus fortes à mesure qu'on s'éloigne des tonalités usuelles",
     sources: [
       {author: "", book: "Wikipedia - Jean-Philippe Rameau (FR)", title: "", other: "", date: "", page: "", url: "https://fr.wikipedia.org/wiki/Jean-Philippe_Rameau"},
       {author: "Jean-Philippe Rameau,", book: "Nouveau système de musique théorique", title:"", other: "", date: "1726", page: "", url:"https://gallica.bnf.fr/ark:/12148/btv1b8623246q.image"}
