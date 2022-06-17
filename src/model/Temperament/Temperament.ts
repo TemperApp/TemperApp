@@ -717,7 +717,6 @@ De nombreuses interprétations sont possible du texte de Jean-Philippe Rameau, l
     soundReferences: [{title: "F. Couperin: Ordre 6ème de clavecin in B flat major; Magdalena Baczewska, harpsichord", url:"https://www.youtube.com/watch?v=TkIBx28KIho "}],
     commentary: "Neidhardt a composé entre 1706 et 1734 quatre traités et décrit plus de 20 tempéraments différents. Dans sa Sectio canonis harmonia (1724) Neidhardt décrit quatre tempéraments : “A mon avis, le premier tempérament est principalement pour un village, le deuxième pour une petite bourgade, le troisième pour une grande ville et le quatrième pour la Cour”. La formule souhaitée pour la cour est le tempérament égal, et les trois précédentes s'en rapprochent progressivement. Ces formules complexes et aux sonorités subtiles produisent un écart assez faible entre les tierces majeures les plus consonantes et les plus grandes.",
   },
-
 {
     idTemperament: 13,
     name: "Bach/Jobin",
@@ -776,8 +775,7 @@ De nombreuses interprétations sont possible du texte de Jean-Philippe Rameau, l
     ],
     soundReferences: [{title: "", url:""}],
     commentary: "",
-  },
-  
+  },  
   {
     idTemperament: 14,
     name: "Marpburg-beta",
@@ -844,5 +842,4 @@ De nombreuses interprétations sont possible du texte de Jean-Philippe Rameau, l
     ],
     commentary: "",
   },
-
 ];
