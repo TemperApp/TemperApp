@@ -776,10 +776,11 @@ De nombreuses interprétations sont possible du texte de Jean-Philippe Rameau, l
     soundReferences: [{title: "", url:""}],
     commentary: "",
   },  
-  {
+  
+{
     idTemperament: 14,
     name: "Marpburg-beta",
-    nameFR: "Marpburg-Beta",
+    nameFR: "Mésotonique",
     deviation: {
       C:        10.263,
       C_sharp: -13.686,
