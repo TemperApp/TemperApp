@@ -796,8 +796,8 @@ De nombreuses interprétations sont possible du texte de Jean-Philippe Rameau, l
       B:        -6.843,
     },
     cpExp5th: {
-      F_sharp: "-1/8.28",
-      C_sharp: "-1/8.28",
+      F_sharp: "+1/8.28",
+      C_sharp: "+1/8.28",
       G_sharp: "+1/8.28",
       E_flat:  "+1/8.28",
       B_flat:  "+1/8.28",
