@@ -823,7 +823,7 @@ De nombreuses interprétations sont possible du texte de Jean-Philippe Rameau, l
       E:       "8/11",
       B:       "13/11",
     },
-    procedure : "A4;A4-A3;{La tierce fa-la est pure}A3-F3;F3-F4;{On répartit les quatre quintes intérieures à fa-la de manière égale, au quart de comma syntonique}F3-C4;C4-G3;G3-G4;G4-D4;{On vérifie l’intervalle D4-G3 tempéré au quart de comma}D4-G3;A3-E4;E4-B3;B3-F#4;{On procède à l’accord des cinq quintes élargies}F#4-F#3;F#3-C#4;C#4-G#4;G#4-Eb4;Eb4-Bb3;Bb3-F4;",
+    procedure : "A4;A4-A3;{La tierce fa-la est pure}A3-F3;F3-F4;{On répartit les quatre quintes intérieures à fa-la de manière égale, au quart de comma syntonique}F3-C4;C4-G3;G3-G4;G4-D4;{On vérifie l’intervalle D4-G3 tempéré au quart de comma}D4-G3;A3-E4;E4-B3;B3-F#4;{On procède à l’accord des cinq quintes élargies}F#4-F#3;F#3-C#4;C#4-G#4;G#4-G#3;G3#-Eb4;Eb4-Bb3;Bb3-F4;",
     theorist : "Friedrich Wilhelm Marpurg (1718-1795)",
     period : "1756",
     geographicalArea: "Allemagne, France",
