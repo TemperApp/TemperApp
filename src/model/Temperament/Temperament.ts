@@ -541,8 +541,8 @@ De nombreuses interprétations sont possible du texte de Jean-Philippe Rameau, l
      },
   {
     idTemperament: 10,
-    name: "Kirnberger III (1779)",
-    nameFR: "Kirnberger III (1779)",
+    name: "Kirnberger III 1779",
+    nameFR: "Kirnberger III 1779",
     deviation: {
       C:       10.264,
       C_sharp:  0.489,
