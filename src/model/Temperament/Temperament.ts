@@ -844,8 +844,8 @@ De nombreuses interprétations sont possible du texte de Jean-Philippe Rameau, l
   
 {
     idTemperament: 15,
-    name: "Lambert-Chaumont",
-    nameFR: "Lambert-Chaumont",
+    name: "Chaumont",
+    nameFR: "Chaumont",
     deviation: {
       C:        4.190,
       C_sharp: -2.234,
@@ -889,7 +889,7 @@ De nombreuses interprétations sont possible du texte de Jean-Philippe Rameau, l
       B:       "9/11",
     },
     procedure : "",
-    theorist : "Lambert Chaumont(v.1630-1712)",
+    theorist : "Lambert Chaumont (v.1630-1712)",
     period : "1695",
     geographicalArea: "France",
     nature: "Comma syntonique",
