@@ -839,6 +839,6 @@ De nombreuses interprétations sont possible du texte de Jean-Philippe Rameau, l
       {title: "", url: ""},
       {title: "", url: ""},
     ],
-    commentary: "",
+    commentary: "Le tempérament ici proposé est décrit dans l’ouvrage Principes de clavecin, dont la première version est publiée à Berlin en 1756. Selon Marpurg il s’agit de la « meilleure des partitions inégales qui soient en usage ». Dans son traité Versuch über die musikalische Temperatur publié à Breslau en 1776, Marpurg décrit plusieurs autres tempéraments.",
   },
 ];
