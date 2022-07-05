@@ -146,7 +146,7 @@ export const defaultTemperaments: Array<Temperament> = [
       E:       "0",
       B:       "21/11",
     },
-    procedure : "A4;A4-A3;A3-F3;F3-F4;A3-C#4;C#4:F4;{on divise la tierce F-A en quatre quintes tempérées à -1/4 de Comma syntonique comma}F3-C4;C4-G3;G3-G4;G3-D4;A3:D4;{on construit les tierces pures sur les notes accordées}C4-E4;E4:A3;E4-G#4;G#4-G#3;G#3:C4;G3-B3;B3:E4;B3-Eb4;Eb4:G4;D4-F#4;F#4-F#3;F#3-Bb3;Bb3:D4;",
+    procedure : "A4;A4-A3;A3-F3;F3-F4;A3-C#4;C#4:F4;{on divise la tierce F-A en quatre quintes tempérées à -1/4 de Comma syntonique}F3-C4;C4-G3;G3-G4;G3-D4;A3:D4;{on construit les tierces pures sur les notes accordées}C4-E4;E4:A3;E4-G#4;G#4-G#3;G#3:C4;G3-B3;B3:E4;B3-Eb4;Eb4:G4;D4-F#4;F#4-F#3;F#3-Bb3;Bb3:D4;",
     theorist : "Pietro Aaron (1485-1545)",
     period : "décrit au début du XVIe siècle, on présume une utilisation dès le XVe siècle. Son application est avérée sur l'orgue pendant la première moitié du XVIIIe siècle.",
     geographicalArea: "plusieurs sources importantes en dehors de l'Italie (Praetorius, Mersenne) laissent à penser que cet accord est très tôt utilisé dans toute l'Europe.",
