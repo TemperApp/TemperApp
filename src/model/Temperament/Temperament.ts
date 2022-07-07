@@ -888,7 +888,7 @@ De nombreuses interprétations sont possible du texte de Jean-Philippe Rameau, l
       E:       "0",
       B:       "10/11",
     },
-    procedure : "A4;A4-A3;A3-F3;F3-F4;{on divise la tierce Fa-La en quatre quintes tempérées à -1/4 de Comma syntonique}F3-C4;C4-G3;G3-G4;G4-D4;A3:D4;{on construit les tierces pures sur les notes accordées}C4-E4;G3-B3;D4-F#4;F#4-F#3;A3-C#4;E4-G#4;G#4-G#3;{on accorde les quintes Sib-Fa et Mib-Sib. Pour cela on accord Sib-Fa d’abord pur, ensuite on tempère en comparant avec la quinte La-Mi et Si-Fa# déjà accordées}Bb3-F4;{pour accorder Mib-Sib on procède en accordant la quarte Sib-Mib plus petite que pure, étant la quinte plus grande}Bb3-Eb4;{comparer avec La-Re et Si-Mi}G#3:Eb4;",
+    procedure : "A4;A4-A3;A3-F3;F3-F4;{on divise la tierce Fa-La en quatre quintes tempérées à -1/4 de Comma syntonique}F3-C4;C4-G3;G3-G4;G4-D4;A3:D4;{on construit les tierces pures sur les notes accordées}C4-E4;G3-B3;D4-F#4;F#4-F#3;A3-C#4;E4-G#4;G#4-G#3;{on accorde les quintes Sib-Fa et Mib-Sib. Pour cela on accord Sib-Fa d’abord pur, ensuite on tempère en comparant avec la quinte La-Mi et Si-Fa# déjà accordées}F4-Bb3;{pour accorder Mib-Sib on procède en accordant la quarte Sib-Mib plus petite que pure, étant la quinte plus grande}Bb3-Eb4;{comparer avec La-Re et Si-Mi}G#3:Eb4;",
     theorist : "Lambert Chaumont (v.1630-1712)",
     period : "1695",
     geographicalArea: "France",
