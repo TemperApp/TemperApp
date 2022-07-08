@@ -273,7 +273,7 @@ De nombreuses interprétations sont possible du texte de Jean-Philippe Rameau, l
       E:       "1/11",
       B:       "7/11",
     },
-    procedure: "A4;A4-A3;A3-C#4;{On répartit les quatre quintes intérieures à La-Do# de manière égale, au quart de comma syntonique}A3-E4;E4-B3;B3-F#4;F#4-F#3;F#3:C#4;{On construit les tierces pures restantes du tempérament}F#4-D4;B3-G3;G3-G4;E4-C4;C4:E4;{On élargit les quintes Do#-Sol# et Fa-Do}C#4-G#4;C4-F3;F3-F4;{On élargit progressivement les quintes à gauche du Fa}F4-Bb3;Bb3-Eb4;Eb4-G#3;Eb4:G#4;",
+    procedure: "A4;A4-A3;A3-C#4;{On répartit les quatre quintes intérieures à La-Do# de manière égale, au quart de comma syntonique}A3-E4;E4-B3;B3-F#4;F#4-F#3;F#3:C#4;{On construit les tierces pures restantes du tempérament}F#4-D4;B3-G3;G3-G4;E4-C4;{On élargit les quintes Do#-Sol# et Fa-Do}C#4-G#4;C4-F3;F3-F4;{On élargit progressivement les quintes à gauche du Fa}F4-Bb3;Bb3-Eb4;Eb4-G#3;Eb4:G#4;",
     theorist : "Jean-Philippe Rameau (1683-1764)",
     period : "XVIIIe siècle",
     geographicalArea: "France",
