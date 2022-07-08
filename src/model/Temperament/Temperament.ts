@@ -273,7 +273,7 @@ De nombreuses interprétations sont possible du texte de Jean-Philippe Rameau, l
       E:       "1/11",
       B:       "7/11",
     },
-    procedure: "A4;A4-A3;A3-C#;{Nous allons diviser la tierce La3-Do#4 en quatre quintes égales à -1/4Cs, vous pouvez accorder à l’oreille et contrôler avec la suite de la procédure};A3-E4;E4-B3;B3-F#3;F#3-C#4;F#3-F#4;{Nous allons construire des tierces pures inférieures en parcourant le cycle vers les bémols};F#4-D4;B3-G3;E4-C4;{A partir du Do et vers les bémols, les quintes sont progressivement élargies, les quartes rétrécies. Nous commençons par construire Fa3 et vérifier que la quinte Fa-Do à environ +1/12Cs}A3-F3;F3:C4;F3-Bb3;Bb3-Eb4;{Même si elle est atténuée, Sol#-Mib reste notre “loup”, ici tempérée à env. +1/3Cs, nous allons donc finir cette procédure en revenant à Do# et en accordant Do#-Sol# à -1/6Cs. La quinte du loup sera donc bien le résultat de l’accord. Attention! C#-G# est affaiblie et non élargie}C#4-G#3;G#3:Eb4;F3-F4;G3-G4;G#3-G#4;",
+    procedure: "A4;A4-A3;A3-C#4;{On répartit les quatre quintes intérieures à La-Do# de manière égale, au quart de comma syntonique}A3-E4;E4-B3;B3-F#4;F#4:C#4;{On construit les tierces pures restantes du tempérament}F#4-D4;B3-G3;G3-G4;E4-C4;{On vérifie que la tierce Do-Mi est pure}C4:E4;{On élargit les quintes Do#-Sol# et Fa-Do}C#4-G#4;C4-F4;F4-F3{On élargit progressivement les quintes à gauche du Fa}F3-Bb3;Bb3-Eb4;Eb4:G#4",
     theorist : "Jean-Philippe Rameau (1683-1764)",
     period : "XVIIIe siècle",
     geographicalArea: "France",
