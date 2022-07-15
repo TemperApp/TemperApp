@@ -844,8 +844,8 @@ De nombreuses interprétations sont possible du texte de Jean-Philippe Rameau, l
   
 {
     idTemperament: 15,
-    name: "Chaumont 1/5 Cs",
-    nameFR: "Chaumont 1/5 Cs",
+    name: "Chaumont 1/5",
+    nameFR: "Chaumont 1/5",
     deviation: {
       C:        7.037,
       C_sharp: -9.385,
