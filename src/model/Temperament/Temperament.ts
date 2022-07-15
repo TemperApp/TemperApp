@@ -1276,7 +1276,7 @@ De nombreuses interprétations sont possible du texte de Jean-Philippe Rameau, l
     theorist : "",
     period : "",
     geographicalArea: "",
-    nature: "Comma syntonique",
+    nature: "Comma pythagoricien",
     structuralParticularity: "",
     sources: [
       {author: "", book: "", title: "", other: "", date: "", page: "", url: ""},
