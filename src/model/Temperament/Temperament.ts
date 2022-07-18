@@ -168,8 +168,8 @@ export const defaultTemperaments: Array<Temperament> = [
   },
   {
     idTemperament: 4,
-    name: "Rameau 1726 en Sib",
-    nameFR: "Rameau 1726 en Sib",
+    name: "Rameau en Sib 1726",
+    nameFR: "Rameau en Sib 1726",
     deviation: {
       C:       10.265,
       C_sharp:  0.578,
@@ -229,8 +229,8 @@ De nombreuses interprétations sont possible du texte de Jean-Philippe Rameau, l
   },
   {
     idTemperament: 5,
-    name: "Rameau 1726 en Do",
-    nameFR: "Rameau 1726 en Do",
+    name: "Rameau en Do 1726",
+    nameFR: "Rameau en Do 1726",
     deviation: {
       C:        10.265,
       C_sharp: -13.686,
@@ -660,8 +660,8 @@ De nombreuses interprétations sont possible du texte de Jean-Philippe Rameau, l
   },
   {
     idTemperament: 12,
-    name: "Neidhardt Grosse Stadt (1724)",
-    nameFR: "Neidhardt Grosse Stadt (1724)",
+    name: "Neidhardt Grosse Stadt 1724",
+    nameFR: "Neidhardt Grosse Stadt 1724",
     deviation: {
       C:        5.865,
       C_sharp:  1.955,
