@@ -888,7 +888,7 @@ De nombreuses interprétations sont possible du texte de Jean-Philippe Rameau, l
       E:       "2/11",
       B:       "9/11",
     },
-    procedure : "A4;A4-A3;{On tempère la tierce Fa-La à 2/11 de comma soit 2 battements par secondes}A3-F3;{Chaumont propose la procédure d’accord suivante à partir du Fa3}F3-F4;{on divise la tierce Fa-La en quatre quintes tempérées à -1/5 de comma}F3-C4;C4-C3;C3-G3;G3-G4;G3-D4;D4-D3;D3:A3;{on vérifie l’accord de Fa majeur}A3-E4;E4-E3;{on vérifie l’accord de Do majeur}E3-B3;{on vérifie l’accord de Sol majeur};{Ici Chaumont propose d'accorder le Si à l'octave grave, nous agissons à l’octave supérieure}B3-F#4;F#4-F#3;{on vérifie l’accord de Re majeur}F#3-C#4;{on vérifie l’accord de La majeur}C#4-C#3;C#3-G#4;{on vérifie l’accord de Mi majeur}F4-Bb3;Bb3-Eb4;",
+    procedure : "A4;A4-A3;{On tempère la tierce Fa-La à 2/11 de comma soit 2 battements par secondes}A3-F3;{Chaumont propose la procédure d’accord suivante à partir du Fa}F3-F4;{on divise la tierce Fa-La en quatre quintes tempérées à -1/5 de comma}F3-C4;C4-C3;C3-G3;G3-G4;G3-D4;D4-D3;D3:A3;{on vérifie l’accord de Fa majeur}A3-E4;E4-E3;{on vérifie l’accord de Do majeur}E3-B3;{on vérifie l’accord de Sol majeur. Ensuite Chaumont propose d'accorder le Si à l'octave grave, nous agissons à l’octave supérieure}B3-F#4;F#4-F#3;{on vérifie l’accord de Re majeur}F#3-C#4;{on vérifie l’accord de La majeur}C#4-C#3;C#3-G#4;{on vérifie l’accord de Mi majeur}F4-Bb3;Bb3-Eb4;",
     theorist : "Lambert Chaumont (v.1630-1712)",
     period : "1695",
     geographicalArea: "France",
