@@ -888,7 +888,7 @@ De nombreuses interprétations sont possible du texte de Jean-Philippe Rameau, l
       E:       "2/11",
       B:       "9/11",
     },
-    procedure : "A4;A4-A3;{On tempère la tierce Fa-La à 2/11 de comma soit 2 battements par secondes}A3-F3;{Chaumont propose la procédure d’accord suivante à partir du Fa3}F3-F4;{on divise la tierce Fa-La en quatre quintes tempérées à -1/5 de Comma}F3-C4;C4-C3;C3-G3;G3-G4;G3-D4;D4-D3;D3:A3;{on vérifie l’accord de Fa majeur}A3-E4;E4-E3{on vérifie l’accord de Do majeur}E3-E4;{on vérifie l’accord de Sol majeur}B3-B2;B2-F#3;{on vérifie l’accord de Re majeur}F#3-F#4;F#3-C#4;{on vérifie l’accord de La majeur}C#4-C#3;C#3-G#4;{on vérifie l’accord de Mi majeur};",
+    procedure : "A4;A4-A3;{On tempère la tierce Fa-La à 2/11 de comma soit 2 battements par secondes}A3-F3;{Chaumont propose la procédure d’accord suivante à partir du Fa3}F3-F4;{on divise la tierce Fa-La en quatre quintes tempérées à -1/5 de Comma}F3-C4;C4-C3;C3-G3;G3-G4;G3-D4;D4-D3;D3:A3;{on vérifie l’accord de Fa majeur}A3-E4;E4-E3{on vérifie l’accord de Do majeur}E3-E4;{on vérifie l’accord de Sol majeur};E3-B3{Ici Chaumont propose d'accorder le Si à l'octave grave, nous agissons directement sur la quarte}B3-F#3;{on vérifie l’accord de Re majeur}F#3-F#4;F#3-C#4;{on vérifie l’accord de La majeur}C#4-C#3;C#3-G#4;{on vérifie l’accord de Mi majeur};",
     theorist : "Lambert Chaumont (v.1630-1712)",
     period : "1695",
     geographicalArea: "France",
