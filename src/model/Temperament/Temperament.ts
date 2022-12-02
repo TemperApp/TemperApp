@@ -779,8 +779,8 @@ De nombreuses interprétations sont possible du texte de Jean-Philippe Rameau, l
   
 {
     idTemperament: 14,
-    name: "Marpburg 1756",
-    nameFR: "Marpburg 1756",
+    name: "Marpurg 1756",
+    nameFR: "Marpurg 1756",
     deviation: {
       C:        10.264,
       C_sharp: -5.474,
