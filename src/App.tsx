@@ -56,6 +56,8 @@ const App: React.FC = () => {
     if (isMobile(window.navigator).apple.device === true) {
       setIos(true);
     }
+    
+    console.log("THIS UPDATE IS WORKING");
   }, []);
 
   return (
