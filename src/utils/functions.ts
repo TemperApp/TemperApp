@@ -6,7 +6,7 @@ const mergeDeepTogether = <T,>(target: T, source: DeepPartial<T>) => {
     const k = key as keyof T;
     if (source[k] && typeof source[k] === 'object')
       Object.assign(
-        source[k],
+        source[k] as any,
         mergeDeep(target[k], source[k]!)
       )
   }
