@@ -5,6 +5,7 @@
     rgba(255, 192, 159, 1) 47%,
     rgba(255, 224, 177, 1) 100%
   );
+  --tempapp-secondary-color: #2ea39b;
   --tempapp-color-rgb: 255, 192, 159;
   --tempapp-color-contrast: #233c3a;
   --tempapp-color-contrast-rgb: 0, 0, 0;
@@ -41,4 +42,11 @@ body.dark {
   --padding-bottom: 1.5em;
   --border-radius: 8px;
   letter-spacing: -0.02em;
+}
+
+.btn-primary.secondary {
+  min-width: 80px;
+  margin-bottom: 10px;
+  filter: invert() brightness(1.4) saturate(0.7);
+  opacity: 0.8;
 }

@@ -17,6 +17,7 @@ const EqualTemperament = {
     {name: "", url: ""},
   ],
   period : "",
+  periodNum: -1,
   geographicalArea: "",
   nature: "",
   structuralParticularity: "",

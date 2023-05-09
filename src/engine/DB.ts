@@ -5,6 +5,7 @@ export type TemperamentDBType = {
   name: string,
   nameFR: string,
   period : string,
+  periodNum: number,
   theorist : string,
   geographicalArea: string,
   nature: string,

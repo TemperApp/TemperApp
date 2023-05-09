@@ -28,7 +28,7 @@ const TunerHeaderInputs: React.FC<TunerHeaderProps> = ({
         placeholder="Tempérament"
         onIonChange={onTemperamentChange}
       >
-        {temperamentsList.sort(ascendingOrder).map((t: TemperamentDBType) => (
+        {temperamentsList.sort(ascendingOrder('name')).map((t: TemperamentDBType) => (
           <IonSelectOption key={t.idTemperament} value={t.idTemperament}>
             {t.nameFR}
           </IonSelectOption>

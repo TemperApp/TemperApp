@@ -10,6 +10,7 @@ export type Temperament = {
   csExp3rd: NotesMap<string>;
   procedure: string;
   period: string;
+  periodNum: number;
   theorist: string;
   geographicalArea: string;
   nature: string;
@@ -87,6 +88,7 @@ export const defaultTemperaments: Array<Temperament> = [
       'A4;A4-A3;{On tempère la tierce Fa-La à 3/11 Cs soit 3 battements par secondes}A3-F3;{On répartit le tempérament de Fa-La de manière égale dans les quatre quintes intérieurs}F3-C4;C4-G3;G3-D4;{La quatrième quinte sert de “preuve”}D4:A3;{on accorde les quintes pures à gauche de Fa}F3-Bb3;Bb3-Eb4;Eb4-G#3;G#3-C#4;{La tierce La-Do# sert de preuve, elle bat comme dans le tempérament égal }C#4:A3;{On accorde les deux dernières quintes pures}C#4-F#3;F#3-B3;{On accorde le Mi de manière à ce que La-Mi  soit tempérée autant que Mi-Si. Leurs battements sont dans le rapport 3/2}B3-E4;E4:A3;{On recopie les notes entre Fa4 et Sol#4}F3-F4;F#3-F#4;G3-G4;G#3-G#4;',
     theorist: 'Francesco Vallotti (1697-1780)',
     period: 'XVIIIe siècle',
+    periodNum: 1700,
     geographicalArea: 'Italie du Nord',
     nature: '1/6 de comma pythagoricien',
     structuralParticularity:
@@ -204,6 +206,7 @@ export const defaultTemperaments: Array<Temperament> = [
     theorist: 'Pietro Aaron (1485-1545)',
     period:
       "décrit au début du XVIe siècle, on présume une utilisation dès le XVe siècle. Son application est avérée sur l'orgue pendant la première moitié du XVIIIe siècle.",
+    periodNum: 1500,
     geographicalArea:
       "plusieurs sources importantes en dehors de l'Italie (Praetorius, Mersenne) laissent à penser que cet accord est très tôt utilisé dans toute l'Europe.",
     nature: 'Comma syntonique',
@@ -317,6 +320,7 @@ export const defaultTemperaments: Array<Temperament> = [
       'A4;A4-A3;A3-F3;{On divise la tierce F3-A3 en quatre quintes à -¼Cs }F3-C4;C4-G3;G3-D4;D4:A3;{On construit les tierces pures du tempérament}D4-Bb3;C4-E4;G3-B3;{On élargit progressivement les quintes à gauche du Sib}Bb3-Eb4;Eb4-G#3;G#3-C#4;{Même si elle est atténuée, F#-C# reste notre “loup”, ici tempérée à env. +1/3Cs, nous allons donc finir cette procédure en revenant à Si et en accordant B-F# à -1/6Cs. La quinte du loup sera donc bien le résultat de l’accord. Attention! B-F# est affaiblie et non élargie}B3-F#3;F3-F4;F#3-F#4;G3-G4;G#3-G#4;',
     theorist: 'Jean-Philippe Rameau (1683-1764)',
     period: 'XVIIIe siècle',
+    periodNum: 1700,
     geographicalArea: 'France',
     nature: 'Comma syntonique',
     structuralParticularity:
@@ -396,6 +400,7 @@ De nombreuses interprétations sont possible du texte de Jean-Philippe Rameau, l
       'A4;A4-A3;A3-C#4;{On répartit les quatre quintes intérieures à La-Do# de manière égale, au quart de comma syntonique}A3-E4;E4-B3;B3-F#4;F#4-F#3;F#3:C#4;{On construit les tierces pures restantes du tempérament}F#4-D4;B3-G3;G3-G4;E4-C4;{On élargit les quintes Do#-Sol# et Fa-Do}C#4-G#4;C4-F3;F3-F4;{On élargit progressivement les quintes à gauche du Fa}F4-Bb3;Bb3-Eb4;Eb4-G#3;Eb4:G#4;',
     theorist: 'Jean-Philippe Rameau (1683-1764)',
     period: 'XVIIIe siècle',
+    periodNum: 1700,
     geographicalArea: 'France',
     nature: 'Comma syntonique',
     structuralParticularity:
@@ -475,6 +480,7 @@ De nombreuses interprétations sont possible du texte de Jean-Philippe Rameau, l
     theorist:
       'Herbert Anton Kellner (1936-2003) - Jean-Sébastien Bach (1685-1750)',
     period: 'XVIIIe-XIXe siècles',
+    periodNum: 1700,
     geographicalArea: 'Allemagne',
     nature: 'Comma pythagoricien',
     structuralParticularity:
@@ -568,6 +574,7 @@ De nombreuses interprétations sont possible du texte de Jean-Philippe Rameau, l
       'A4;A4-A3;{on accorde les deux premières quintes pures}A3-E4;E4-B3;{la quinte Si-Fa# est tempérée à 1/4 Cp}B3-F#4;F#4-C#4;C#4-G#4;G#4-Eb4;Eb4-Bb4;Bb4-Bb3;Bb3-F4;F4-F3;F4-C4;C4-G4;G4-D4;D4:A4;{vérifier que les quintes tempérées Si-Fa#, Do-Sol et Re-La ont des battements progressifs}F4-F3;F#4-F#3;G4-G3;',
     theorist: 'Andreas Werckmeister (1645-1706)',
     period: 'XVIIe siècle',
+    periodNum: 1600,
     geographicalArea: 'Allemagne',
     nature: 'Comma pythagoricien',
     structuralParticularity:
@@ -673,6 +680,7 @@ De nombreuses interprétations sont possible du texte de Jean-Philippe Rameau, l
       'A4;A4-A3;A3-F3;F3-Bb3;Bb3-Eb4;Eb4-Eb3;Eb3-G3;F3-C4;C4:G3;G3-D4;D4:A3;A3-E4;E4:C3;E4-E3;E3-B3;G3:B3;B3-F#3;F#3-C#4;C#4:A3;C#4-G#3;G#3:Eb4;F3-F4;F#3-F#4;G3-G4;G#3-G#4;',
     theorist: 'Andreas Werckmeister (1645-1706)',
     period: 'XVIIe siècle',
+    periodNum: 1600,
     geographicalArea: 'Allemagne',
     nature: 'Comma pythagoricien',
     structuralParticularity:
@@ -787,6 +795,7 @@ De nombreuses interprétations sont possible du texte de Jean-Philippe Rameau, l
     theorist:
       'Attribué à Pythagore (env. 580-av. 495 av JC) - Henri Arnault de Zwolle (vers 1400-1466)',
     period: 'Moyen Age',
+    periodNum: 1400,
     geographicalArea: 'Europe',
     nature: 'Comma pythagoricien',
     structuralParticularity:
@@ -898,6 +907,7 @@ De nombreuses interprétations sont possible du texte de Jean-Philippe Rameau, l
       "A4;A4-A3;{Pour Kirnberger III, le plus simple est d’accorder pure la tierce F3-A3 que l’on divise en quatre quintes égales à -¼Cs puis C4-E4 pure et enfin de réaccorder F3 comme quinte pure sous C4. L’application ne permettant pas de revenir sur une note déjà accordée, on propose d’accorder F3 directement à sa valeur de tierce à tempérée à 4/11 Cs sous A3. L'utilisateur peut utiliser cette procédure comme preuve}A3-F3;F3-C4;C4-E4;E4:A3;{division de C4-E4 en quatre quintes égales à -¼Cs }C4-G3;G3-D4;D4:A3;{4 quintes pures à gauche de F puis 2 à droite de E résultent en F#-C# au tempérament égal à -1/12Cp}F3-Bb3;Bb3-Eb4;Eb4-G#3;G#3-C#4;E4-B3;B3-F#3;F#3:C#4;F3-F4;F#3-F#4;G3-G4;G#3-G#4;",
     theorist: 'Johann Philipp Kirnberger (1721-1783)',
     period: 'XVIIIe siècle',
+    periodNum: 1700,
     geographicalArea: 'Allemagne',
     nature: 'Comma syntonique',
     structuralParticularity:
@@ -985,6 +995,7 @@ De nombreuses interprétations sont possible du texte de Jean-Philippe Rameau, l
       'A4;A4-A3;A3-F3;F3-C4;C4-G3;G3-D4;D4:A3;{On alterne simplement l’accord d’une quinte et la preuve de sa tierce inférieure}A3-E4;E4:C4;E4-B3;B3:G3;{On construit maintenant F# et Bb. Les Tierces Bb-D et D-F# étant tempérées de la même manière, leurs battements seront dans le rapport 4/5}B3-F#4;F#4:D4;F3-Bb3;Bb3:D4;Bb3-Eb4;Eb4-G#3;G#3-C#4;{La Tierce A-C# est au tempérament égal à +7/11 Cs}C#4:A3;C#4:F4;F4-F3;G3-G4;G#3-G#4;',
     theorist: 'Jérôme BERTIER (1986-)',
     period: 'XVIII',
+    periodNum: 1700,
     geographicalArea: 'Allemagne',
     nature: 'Comma pythagoricien',
     structuralParticularity:
@@ -1063,6 +1074,7 @@ De nombreuses interprétations sont possible du texte de Jean-Philippe Rameau, l
       'A4;{pour accorder Neidhardt III, on peut partir d’une tierce Fa-La “Vallotti” et revenir sur le Fa après avoir distribué les quintes. TemperApp ne permettant pas encore de revenir sur une note déjà accordée, nous commencerons par Fa-La directement tempérée à 5/11Cs}A4-A3;A3-F3;{Fa-Do pure, puis on accorde la tierce Do-Mi qui nous permettra de contrôler notre Fa initial}F3-C4;C4-E4;E4:A4;{3 quintes au 1/6ème Cp}C4-G3;G3-D4;D4:A4;{la quarte Mi-La bat 4:3 contre la quinte Ré-La}E4:A4;{On accorde Mi-Sol#, Mi-Si pure puis 3 quintes égales  }E4-E3;E3-G#3;E4-B3;B3-F#4;F#4-C#4;C#4:G#3;{on redescend depuis Fa en contrôlant tierces}F3-Bb3;Bb3:D4;Bb3-Eb4;G3-G4;Eb4:G4;Eb4:G#3;',
     theorist: 'Johann Georg Neidhardt (1685-1739)',
     period: 'XVIIIe siècle',
+    periodNum: 1700,
     geographicalArea: 'Allemagne',
     nature: 'Comma pythagoricien',
     structuralParticularity:
@@ -1147,6 +1159,7 @@ De nombreuses interprétations sont possible du texte de Jean-Philippe Rameau, l
       "C4;{On commence par la tierce pure Do-Mi, qu’on partage en 4 quintes égales}C4-E4;C4-G3;G3-D4;D4-A3;A3:E4;{On rajoute la quinte Mi-Si de même valeur que les précédentes en contrôlant Sol-Si réputée pure}E4-B3;B3:G3;{On accorde trois quintes pures entre Si et Sol#}B3-F#3;F#3-C#4;C#4-G#3;{la tierce Mi-Sol# doit être *tolérable*, pour la contrôler on copie le Mi4 vers le Mi3}E4-E3;E3:G#3;{On établit Do-Fa pure}C4-F3;{On place une quinte *à peine plus grande* sur Fa-Sib puis on répartit l'excédent sur les deux autres quintes. On contrôle les tierces.}F3-Bb3;Bb3:D4;Bb3-Eb4;G3-G4;Eb4:G4;Eb4:G#3;{On recopie les octaves, et le tour est joué! }F3-F4;F#3-F#4;G#3-G#4;A3-A4;",
     theorist: 'Emile Jobin, Quentin Blumenroeder',
     period: 'XVIIIe siècle',
+    periodNum: 1700,
     geographicalArea: 'Allemagne',
     nature: 'Comma syntonique',
     structuralParticularity:
@@ -1225,6 +1238,7 @@ De nombreuses interprétations sont possible du texte de Jean-Philippe Rameau, l
       'A4;A4-A3;{La tierce fa-la est pure}A3-F3;F3-F4;{On répartit les quatre quintes intérieures à fa-la de manière égale, au quart de comma syntonique}F3-C4;C4-G3;G3-G4;G4-D4;{On vérifie l’intervalle D4-G3 tempéré au quart de comma}D4-G3;A3-E4;E4-B3;B3-F#4;F#4-F#3;{On procède à l’accord des cinq quintes élargies}F#3-C#4;C#4-G#3;G#3-G#4;G#4-Eb4;Eb4-Bb3;Bb3-F4;',
     theorist: 'Friedrich Wilhelm Marpurg (1718-1795)',
     period: '1756',
+    periodNum: 1756,
     geographicalArea: 'Allemagne, France',
     nature: 'Comma syntonique',
     structuralParticularity:
@@ -1309,6 +1323,7 @@ De nombreuses interprétations sont possible du texte de Jean-Philippe Rameau, l
       "A4;A4-A3;{On tempère la tierce Fa-La à 2/11 de comma soit 2 battements par secondes}A3-F3;{Chaumont propose la procédure d’accord suivante à partir du Fa}F3-F4;{on divise la tierce Fa-La en quatre quintes tempérées à -1/5 de comma}F3-C4;C4-C3;C3-G3;G3-G4;G3-D4;D4-D3;D3:A3;{on vérifie l’accord de Fa majeur}A3-E4;E4-E3;{on vérifie l’accord de Do majeur}E3-B3;{on vérifie l’accord de Sol majeur. Ensuite Chaumont propose d'accorder le Si à l'octave grave, nous agissons à l’octave supérieure}B3-F#4;F#4-F#3;{on vérifie l’accord de Re majeur}F#3-C#4;{on vérifie l’accord de La majeur}C#4-C#3;C#3-G#3;G#3-G#4;{on vérifie l’accord de Mi majeur}F4-Bb3;Bb3-Eb4;Eb4-Eb3;",
     theorist: 'Lambert Chaumont (v.1630-1712)',
     period: '1695',
+    periodNum: 1695,
     geographicalArea: 'France',
     nature: 'Comma syntonique',
     structuralParticularity: '',
@@ -1381,6 +1396,7 @@ De nombreuses interprétations sont possible du texte de Jean-Philippe Rameau, l
     procedure: '',
     theorist: 'Martini (1706-1784)',
     period: '',
+    periodNum: 1750,
     geographicalArea: 'Italie',
     nature: 'Comma syntonique',
     structuralParticularity: '',
@@ -1453,6 +1469,7 @@ De nombreuses interprétations sont possible du texte de Jean-Philippe Rameau, l
     procedure: '',
     theorist: 'Giordano Riccati (1709-1790)',
     period: '',
+    periodNum: 1750,
     geographicalArea: 'Italie',
     nature: 'Comma syntonique',
     structuralParticularity: '',
@@ -1524,6 +1541,7 @@ De nombreuses interprétations sont possible du texte de Jean-Philippe Rameau, l
     procedure: '',
     theorist: '',
     period: '',
+    periodNum: 1750,
     geographicalArea: '',
     nature: 'Comma pythagoricien',
     structuralParticularity: '',

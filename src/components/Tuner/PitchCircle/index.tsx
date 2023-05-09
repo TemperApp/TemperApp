@@ -222,8 +222,6 @@ const PitchCircle: React.FC<PitchCircleProps> = ({
 
   
   /* Render */
-  console.log('hasPopover', hasPopover, 'canPopoverBeOpen', canPopoverBeOpen)
-
   return (
     <>
       <IonPopover
