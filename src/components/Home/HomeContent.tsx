@@ -4,6 +4,7 @@ import Collapse, { Panel } from 'rc-collapse';
 import collapseMotion from '../../utils/collapseMotion';
 import { IonButton, IonGrid, IonRow, IonCol } from '@ionic/react';
 import { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 import '../App/Collapse.css';
 import '../App/ButtonTemper.css';
@@ -31,6 +32,7 @@ const HomeContent: React.FC = () => {
   const [temperamentsSort, setTemperamentsSort] = useState<
     'NAME_DESC' | 'NAME_ASC' | 'PERIOD_ASC' | 'PERIOD_DESC'
   >('NAME_ASC');
+  const { t } = useTranslation();
 
   useEffect(() => {
     (async () => {
@@ -44,12 +46,12 @@ const HomeContent: React.FC = () => {
   const items = [
     {
       key: '0',
-      label: 'Mes favoris',
+      label: t('favoriteTemperamentsLabel'),
       elements: favoriteTemperaments,
     },
     {
       key: '1',
-      label: 'Tous les tempéraments',
+      label: t('allTemperamentsLabel'),
       elements: famousTemperaments,
     },
   ];
@@ -120,7 +122,7 @@ const HomeContent: React.FC = () => {
                   onClick={sortTemperamentByName('NAME_ASC')}
                   size="small"
                 >
-                  A-Z ⬆
+                  {t('filters.nameAsc')}
                 </IonButton>
                 <IonButton
                   className="btn-primary secondary"
@@ -128,7 +130,7 @@ const HomeContent: React.FC = () => {
                   onClick={sortTemperamentByName('NAME_DESC')}
                   size="small"
                 >
-                  A-Z ⬇
+                  {t('filters.nameDesc')}
                 </IonButton>
                 <IonButton
                   className="btn-primary secondary"
@@ -136,7 +138,7 @@ const HomeContent: React.FC = () => {
                   onClick={sortTemperamentByPeriod('PERIOD_ASC')}
                   size="small"
                 >
-                  Période ⬆
+                  {t('filters.periodAsc')}
                 </IonButton>
                 <IonButton
                   className="btn-primary secondary"
@@ -144,7 +146,7 @@ const HomeContent: React.FC = () => {
                   onClick={sortTemperamentByPeriod('PERIOD_DESC')}
                   size="small"
                 >
-                  Période ⬇
+                  {t('filters.periodDesc')}
                 </IonButton>
               </IonCol>
             </IonRow>

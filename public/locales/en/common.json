@@ -1,0 +1,18 @@
+{
+  "filters": {
+    "nameAsc": "A-Z ⬆",
+    "nameDesc": "A-Z ⬇",
+    "periodAsc": "Period ⬆",
+    "periodDesc": "Period ⬇"
+  },
+  "tabs": {
+    "tune": "tune",
+    "compare": "compare",
+    "home": "home",
+    "about": "about",
+    "learn": "learn"
+  },
+  "activeSoundWarning": "First of all, please click here to enable sound on your device.",
+  "favoriteTemperamentsLabel": "My starred temperaments",
+  "allTemperamentsLabel": "All the temperaments"
+}

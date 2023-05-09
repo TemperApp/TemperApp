@@ -1,0 +1,18 @@
+{
+  "filters": {
+    "nameAsc": "A-Z ⬆",
+    "nameDesc": "A-Z ⬇",
+    "periodAsc": "Période ⬆",
+    "periodDesc": "Période ⬇"
+  },
+  "tabs": {
+    "tune": "accorder",
+    "compare": "comparer",
+    "home": "accueil",
+    "about": "fiches",
+    "learn": "apprendre"
+  },
+  "activeSoundWarning": "Avant toute chose, merci de cliquer ici afin d'autoriser le son sur votre appareil.",
+  "favoriteTemperamentsLabel": "Mes tempéraments favoris§",
+  "allTemperamentsLabel": "Tous les tempéraments"
+}

@@ -48,7 +48,7 @@ const Comparator: React.FC = () => {
               value={idTemperament1} placeholder="Tempérament"
               onIonChange={e => setIdTemperament1(e.detail.value)}
               >
-              {temperamentsList.sort(ascendingOrder).map((t: TemperamentDBType) =>
+              {temperamentsList.sort(ascendingOrder('name')).map((t: TemperamentDBType) =>
                 <IonSelectOption key={t.idTemperament} value={t.idTemperament}>
                   {t.nameFR}
                 </IonSelectOption>
@@ -76,7 +76,7 @@ const Comparator: React.FC = () => {
               value={idTemperament2} placeholder="Tempérament"
               onIonChange={e => setIdTemperament2(e.detail.value)}
             >
-              {temperamentsList.sort(ascendingOrder).map((t: TemperamentDBType) =>
+              {temperamentsList.sort(ascendingOrder('name')).map((t: TemperamentDBType) =>
                 <IonSelectOption key={t.idTemperament} value={t.idTemperament}>
                   {t.nameFR}
                 </IonSelectOption>

@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, Suspense } from 'react';
 import { Redirect, Route } from 'react-router-dom';
 import { IonApp, IonRouterOutlet } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
+import { useTranslation } from 'react-i18next';
 import {
   IonTabs,
   IonTabBar,
@@ -40,11 +41,96 @@ import { isPlatform } from '@ionic/react';
 import isMobile from 'ismobilejs';
 import * as Tone from 'tone';
 
+import './i18n';
+
+const WarningModal = ({ onClick }: { onClick: () => void }) => {
+  const { t } = useTranslation();
+  return (
+    <button
+      onClick={onClick}
+      style={{
+        zIndex: 3000,
+        position: 'absolute',
+        fontSize: '2em',
+        width: '100vw',
+        height: '100vh',
+        color: 'white',
+        background: 'rgba(0, 0, 0, 0.8)',
+      }}
+    >
+      {t('activeSoundWarning')}
+    </button>
+  );
+};
+
+const Main = () => {
+  const { t } = useTranslation();
+  return (
+    <>
+      <IonTabs>
+        <IonRouterOutlet>
+          <Route exact path="/tune" render={() => <Tune />} />
+          <Route exact path="/compare" render={() => <Compare />} />
+          <Route exact path="/home" render={() => <Home />} />
+          <Route exact path="/sheets" render={() => <Sheets />} />
+          <Route exact path="/learn" render={() => <Learn />} />
+
+          <Route path="/sheets/temperament/:id" component={SheetTemperament} />
+          <Route path="/learn/:id" component={LearnSheet} />
+
+          <Route exact path="/storage" children={<StorageTest />} />
+
+          <Redirect exact from="/" to="/home" />
+        </IonRouterOutlet>
+        <IonTabBar slot="bottom">
+          <IonTabButton className="ion-no-padding" tab="tune" href="/tune">
+            <IonIcon
+              src="/assets/logotypes/icon-diapason-grey.svg"
+              className="icon-grey h-6 w-6"
+            />
+            <IonLabel>{t('tabs.tune')}</IonLabel>
+          </IonTabButton>
+          <IonTabButton
+            className="ion-no-padding"
+            tab="compare"
+            href="/compare"
+          >
+            <IonIcon
+              src="/assets/logotypes/icon-compare-grey.svg"
+              className="icon-grey h-6 w-6"
+            />
+            <IonLabel>{t('tabs.compare')}</IonLabel>
+          </IonTabButton>
+          <IonTabButton className="ion-no-padding" tab="home" href="/home">
+            <IonIcon
+              src="/assets/logotypes/icon-home-grey.svg"
+              className="icon-grey h-6 w-6"
+            ></IonIcon>
+            <IonLabel>{t('tabs.home')}</IonLabel>
+          </IonTabButton>
+          <IonTabButton className="ion-no-padding" tab="sheets" href="/sheets">
+            <IonIcon
+              src="/assets/logotypes/icon-fiches-grey.svg"
+              className="icon-grey h-6 w-6"
+            />
+            <IonLabel>{t('tabs.about')}</IonLabel>
+          </IonTabButton>
+          <IonTabButton className="ion-no-padding" tab="learn" href="/learn">
+            <IonIcon
+              src="/assets/logotypes/icon-apprendre-grey.svg"
+              className="icon-grey h-6 w-6"
+            />
+            <IonLabel>{t('tabs.learn')}</IonLabel>
+          </IonTabButton>
+        </IonTabBar>
+      </IonTabs>
+    </>
+  );
+};
 
 const App: React.FC = () => {
   const [isIos, setIos] = useState<boolean>(false);
   const [warningHidden, hideWarning] = useState<boolean>(false);
-
 
   useEffect(() => {
     const mobiles = ['android', 'iphone', 'ipad'];
@@ -59,92 +145,21 @@ const App: React.FC = () => {
   }, []);
 
   return (
-    <>
+    <Suspense fallback="loading">
       {isIos && !warningHidden && (
-        <button
-          onClick={() => { Tone.start(); hideWarning(true); }}
-          style={{
-            zIndex: 3000,
-            position: 'absolute',
-            fontSize: '2em',
-            width: '100vw',
-            height: '100vh',
-            color: 'white',
-            background: 'rgba(0, 0, 0, 0.8)',
-          }}>
-          Avant toute chose, merci de cliquer ici afin d'autoriser le son sur votre appareil.
-        </button>
+        <WarningModal
+          onClick={() => {
+            Tone.start();
+            hideWarning(true);
+          }}
+        />
       )}
       <IonApp>
         <IonReactRouter>
-          <IonTabs>
-            <IonRouterOutlet>
-              <Route exact path="/tune" render={() => <Tune />} />
-              <Route exact path="/compare" render={() => <Compare />} />
-              <Route exact path="/home" render={() => <Home />} />
-              <Route exact path="/sheets" render={() => <Sheets />} />
-              <Route exact path="/learn" render={() => <Learn />} />
-
-              <Route
-                path="/sheets/temperament/:id"
-                component={SheetTemperament}
-              />
-              <Route path="/learn/:id" component={LearnSheet} />
-
-              <Route exact path="/storage" children={<StorageTest />} />
-
-              <Redirect exact from="/" to="/home" />
-            </IonRouterOutlet>
-
-            <IonTabBar slot="bottom">
-              <IonTabButton className="ion-no-padding" tab="tune" href="/tune">
-                <IonIcon
-                  src="/assets/logotypes/icon-diapason-grey.svg"
-                  className="icon-grey h-6 w-6"
-                />
-                <IonLabel>Accorder</IonLabel>
-              </IonTabButton>
-              <IonTabButton
-                className="ion-no-padding"
-                tab="compare"
-                href="/compare">
-                <IonIcon
-                  src="/assets/logotypes/icon-compare-grey.svg"
-                  className="icon-grey h-6 w-6"
-                />
-                <IonLabel>Comparer</IonLabel>
-              </IonTabButton>
-              <IonTabButton className="ion-no-padding" tab="home" href="/home">
-                <IonIcon
-                  src="/assets/logotypes/icon-home-grey.svg"
-                  className="icon-grey h-6 w-6"></IonIcon>
-                <IonLabel>Accueil</IonLabel>
-              </IonTabButton>
-              <IonTabButton
-                className="ion-no-padding"
-                tab="sheets"
-                href="/sheets">
-                <IonIcon
-                  src="/assets/logotypes/icon-fiches-grey.svg"
-                  className="icon-grey h-6 w-6"
-                />
-                <IonLabel>Fiches</IonLabel>
-              </IonTabButton>
-              <IonTabButton
-                className="ion-no-padding"
-                tab="learn"
-                href="/learn">
-                <IonIcon
-                  src="/assets/logotypes/icon-apprendre-grey.svg"
-                  className="icon-grey h-6 w-6"
-                />
-                <IonLabel>Apprendre</IonLabel>
-              </IonTabButton>
-            </IonTabBar>
-          </IonTabs>
+          <Main />
         </IonReactRouter>
       </IonApp>
-    </>
+    </Suspense>
   );
 };
 
