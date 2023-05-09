@@ -7,9 +7,9 @@ i18n
   .use(initReactI18next)
   .init({
     fallbackLng: 'en',
-    ns: 'common',
+    ns: ['common', 'learn'],
     defaultNS: 'common',
-    // debug: true,
+    debug: true,
     interpolation: {
       escapeValue: false,
     },

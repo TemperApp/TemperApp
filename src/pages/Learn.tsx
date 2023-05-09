@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import {
   IonPage,
   IonContent,
@@ -6,66 +6,65 @@ import {
   IonButton,
   IonIcon,
   IonLabel,
-} from "@ionic/react";
-import PageHeader from "./Page/PageHeader";
-import './Learn.css'
+} from '@ionic/react';
+import { useTranslation } from 'react-i18next';
+import PageHeader from './Page/PageHeader';
+import './Learn.css';
 
 const Learn: React.FC = () => {
-
+  const { t } = useTranslation('learn');
   const items = [
     {
-      label: "Définition",
-      routerLink: "/learn/definition",
-      src: "/assets/logotypes/logo-def.svg",
-    }, {
-      label: "Mathématiques",
-      routerLink: "/learn/mathematics",
-      src: "/assets/logotypes/logo-maths.svg",
-    }, {
-      label: "Physique",
-      routerLink: "/learn/physics",
-      src: "/assets/logotypes/logo-phys.svg",
-    }, {
-    label: "Conseils pratiques",
-      routerLink: "/learn/advices",
-      src: "/assets/logotypes/logo-conseil.svg",
-    }, {
-    label: "Glossaire TemperApp",
-      routerLink: "/learn/glossaire",
-      src: "/assets/logotypes/logo-glossaire.svg",
+      label: t('categories.definitions'),
+      routerLink: '/learn/definition',
+      src: '/assets/logotypes/logo-def.svg',
     },
-  ]
+    {
+      label: t('categories.maths'),
+      routerLink: '/learn/mathematics',
+      src: '/assets/logotypes/logo-maths.svg',
+    },
+    {
+      label: t('categories.physics'),
+      routerLink: '/learn/physics',
+      src: '/assets/logotypes/logo-phys.svg',
+    },
+    {
+      label: t('categories.tips'),
+      routerLink: '/learn/advices',
+      src: '/assets/logotypes/logo-conseil.svg',
+    },
+    {
+      label: t('categories.glossary'),
+      routerLink: '/learn/glossaire',
+      src: '/assets/logotypes/logo-glossaire.svg',
+    },
+  ];
 
   return (
     <IonPage>
       <IonHeader className="ion-no-border page-header">
-        <PageHeader
-          mainTitle="Apprendre"
-        />
+        <PageHeader mainTitle={(() => t('pageTitle'))()} />
       </IonHeader>
 
       <IonContent scrollY={true}>
-
         {items.map(({ label, routerLink, src }, idx) => (
           <IonButton
             key={idx}
             className="h-28 item-btn"
             expand="full"
             fill="clear"
-            style={{ "--ripple-color": "var(--color-contrast)" }}
+            style={{ '--ripple-color': 'var(--color-contrast)' }}
             routerLink={routerLink}
           >
             <div className="flex w-full items-center justify-start">
-              <IonIcon className="ml-8 item-icon" 
-                src={src}
-              />
+              <IonIcon className="ml-8 item-icon" src={src} />
               <IonLabel className="pl-6 item-label">
                 <h3>{label}</h3>
               </IonLabel>
             </div>
           </IonButton>
         ))}
-
       </IonContent>
     </IonPage>
   );
