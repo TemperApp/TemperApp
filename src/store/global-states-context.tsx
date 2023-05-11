@@ -4,15 +4,15 @@ import useTemperTone from '../hooks/useTemperTone';
 const GlobalStatesContext = React.createContext({
   isTemperToneMute: true,
   setIsTemperToneMute: (v: boolean) => {},
-  tunerTemperamentId: 1,
-  setTunerTemperamentId: (v: number) => {},
+  tunerTemperamentId: 'Equal',
+  setTunerTemperamentId: (v: string) => {},
 });
 
 export const GlobalStatesContextProvider: React.FC = ({ children }) => {
 
   const TemperTone = useTemperTone();
 
-  const [tunerTemperamentId, setTunerTemperamentId] = useState(1);
+  const [tunerTemperamentId, setTunerTemperamentId] = useState('Equal');
   const [isTemperToneMute, setIsTemperToneMute] = useState(true);
 
   useEffect(() => {

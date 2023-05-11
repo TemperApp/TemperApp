@@ -1,4 +1,4 @@
-import { TemperamentDBType } from '../engine/DB';
+import { Temperament } from '../model/Temperament/Temperament';
 
 export const temperamentFavorite = (id: string, user: string[]) => {
   return user.includes(id);
@@ -6,7 +6,7 @@ export const temperamentFavorite = (id: string, user: string[]) => {
 
 export const ascendingOrder =
   (property: 'periodNum' | 'name') =>
-  (a: TemperamentDBType, b: TemperamentDBType) => {
+  (a: Temperament, b: Temperament) => {
     if (a[property] < b[property]) {
       return -1;
     }
@@ -18,6 +18,6 @@ export const ascendingOrder =
 
 export const descendingOrder =
   (property: 'periodNum' | 'name') =>
-  (a: TemperamentDBType, b: TemperamentDBType) => {
+  (a: Temperament, b: Temperament) => {
     return ascendingOrder(property)(a, b) * -1;
   };

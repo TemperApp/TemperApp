@@ -1,28 +1,27 @@
-import React, { useEffect, useState } from "react";
-import { IonContent, IonHeader, IonPage } from "@ionic/react";
-import { useHistory, useParams } from "react-router";
-import PageHeader from "../../pages/Page/PageHeader";
+import React, { useEffect, useState } from 'react';
+import { IonContent, IonHeader, IonPage } from '@ionic/react';
+import { useHistory, useParams } from 'react-router';
+import PageHeader from '../../pages/Page/PageHeader';
 
 import ReactMarkdown from 'react-markdown';
-import remarkMath from 'remark-math'
-import rehypeKatex from 'rehype-katex'
-import 'katex/dist/katex.min.css' // `rehype-katex` does not import the CSS for you
-import { fetchLearnSheetById } from "../../engine/DataAccessor";
+import remarkMath from 'remark-math';
+import rehypeKatex from 'rehype-katex';
+import 'katex/dist/katex.min.css'; // `rehype-katex` does not import the CSS for you
+import { useTranslation } from 'react-i18next';
 
 const LearnSheet: React.FC = () => {
   let { id } = useParams<any>();
+  const { t } = useTranslation('learn');
 
   const history = useHistory();
-  const [md, setMd] = useState('')
-  const [title, setTitle] = useState('')
+  const [md, setMd] = useState('');
+  const [title, setTitle] = useState('');
 
   useEffect(() => {
-    (async () => {
-      const temp = await fetchLearnSheetById(id);
-      setMd(temp.content);
-      setTitle(temp.label);
-    })();
-  }, [id])
+    const data: { label: string; content: string } = t(`sheets.${id}` as any, { returnObjects: true });
+    setMd(data.content);
+    setTitle(data.label);
+  }, [t, id]);
 
   return (
     <IonPage>
@@ -36,13 +35,11 @@ const LearnSheet: React.FC = () => {
 
       <IonContent className="learn">
         <div className="px-6 py-2 markdown-content">
-
           <ReactMarkdown
             remarkPlugins={[remarkMath]}
             rehypePlugins={[rehypeKatex]}
             children={md}
           />
-
         </div>
       </IonContent>
     </IonPage>
@@ -57,5 +54,3 @@ export default React.memo(
 );
 */
 export default LearnSheet;
-
-

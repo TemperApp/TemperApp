@@ -7,7 +7,7 @@ i18n
   .use(initReactI18next)
   .init({
     fallbackLng: 'en',
-    ns: ['common', 'learn'],
+    ns: ['common', 'learn', 'temperaments'],
     defaultNS: 'common',
     debug: true,
     interpolation: {

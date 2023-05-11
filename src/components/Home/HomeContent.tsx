@@ -9,7 +9,6 @@ import { useTranslation } from 'react-i18next';
 import '../App/Collapse.css';
 import '../App/ButtonTemper.css';
 import Waves from './Waves';
-import { TemperamentDBType } from '../../engine/DB';
 import ArrowCollapseSVG from '../Sheets/ArrowCollapseSVG';
 import { fetchTemperaments } from '../../engine/DataAccessor';
 import {
@@ -19,29 +18,24 @@ import {
 } from '../../utils/favorite';
 import UserContext from '../../store/user-context';
 import GlobalStatesContext from '../../store/global-states-context';
+import { Temperament } from '../../model/Temperament/Temperament';
 
 const HomeContent: React.FC = () => {
   const global = useContext(GlobalStatesContext);
   const user = useContext(UserContext);
-  const [favoriteTemperaments, setMyTemperaments] = useState<
-    TemperamentDBType[]
-  >([]);
-  const [famousTemperaments, setFamousTemperaments] = useState<
-    TemperamentDBType[]
-  >([]);
+  const [favoriteTemperaments, setMyTemperaments] = useState<Temperament[]>([]);
+  const [famousTemperaments, setFamousTemperaments] = useState<Temperament[]>(
+    []
+  );
   const [temperamentsSort, setTemperamentsSort] = useState<
     'NAME_DESC' | 'NAME_ASC' | 'PERIOD_ASC' | 'PERIOD_DESC'
   >('NAME_ASC');
   const { t } = useTranslation();
 
   useEffect(() => {
-    (async () => {
-      setMyTemperaments(await fetchTemperaments());
-    })();
-    (async () => {
-      setFamousTemperaments(await fetchTemperaments());
-    })();
-  }, []);
+    setMyTemperaments(fetchTemperaments(t));
+    setFamousTemperaments(fetchTemperaments(t));
+  }, [t]);
 
   const items = [
     {
@@ -78,29 +72,24 @@ const HomeContent: React.FC = () => {
           <IonGrid>
             <IonRow>
               {items[0].elements
-                .filter((t: TemperamentDBType) =>
-                  t.nameFR.normalize('NFD').replace(/[\u0300-\u036f]/g, '')
-                )
+                // .filter((t: Temperament) =>
+                //   t.nameFR.normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+                // )
                 .sort(ascendingOrder('name'))
                 .filter(
-                  (t: TemperamentDBType) =>
-                    temperamentFavorite(
-                      t.idTemperament.toString(),
-                      user.favorite
-                    ) === true
+                  (t: Temperament) =>
+                    temperamentFavorite(t.id.toString(), user.favorite) === true
                 )
-                .map((t: TemperamentDBType) => (
-                  <IonCol size="6" key={t.idTemperament}>
+                .map((t: Temperament) => (
+                  <IonCol size="6" key={t.id}>
                     <IonButton
                       className="btn-primary"
                       expand="block"
                       color="temperapp"
-                      onClick={() =>
-                        global.setTunerTemperamentId(t.idTemperament)
-                      }
+                      onClick={() => global.setTunerTemperamentId(t.id)}
                       routerLink={`/tune`}
                     >
-                      {t.nameFR}
+                      {t.name}
                     </IonButton>
                   </IonCol>
                 ))}
@@ -152,9 +141,9 @@ const HomeContent: React.FC = () => {
             </IonRow>
             <IonRow>
               {items[1].elements
-                .filter((t: TemperamentDBType) =>
-                  t.nameFR.normalize('NFD').replace(/[\u0300-\u036f]/g, '')
-                )
+                // .filter((t: Temperament) =>
+                //   t.nameFR.normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+                // )
                 .sort((a, b) => {
                   switch (temperamentsSort) {
                     case 'PERIOD_DESC':
@@ -168,18 +157,16 @@ const HomeContent: React.FC = () => {
                       return ascendingOrder('name')(a, b);
                   }
                 })
-                .map((t: TemperamentDBType) => (
-                  <IonCol size="6" key={t.idTemperament}>
+                .map((t: Temperament) => (
+                  <IonCol size="6" key={t.id}>
                     <IonButton
                       className="btn-primary ion-text-wrap"
                       expand="block"
                       color="temperapp"
-                      onClick={() =>
-                        global.setTunerTemperamentId(t.idTemperament)
-                      }
+                      onClick={() => global.setTunerTemperamentId(t.id)}
                       routerLink={`/tune`}
                     >
-                      {t.nameFR}
+                      {t.name}
                     </IonButton>
                   </IonCol>
                 ))}

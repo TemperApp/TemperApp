@@ -36,7 +36,7 @@ const Learn: React.FC = () => {
     },
     {
       label: t('categories.glossary'),
-      routerLink: '/learn/glossaire',
+      routerLink: '/learn/glossary',
       src: '/assets/logotypes/logo-glossaire.svg',
     },
   ];

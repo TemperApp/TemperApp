@@ -1,50 +1,48 @@
-import Note from "./Note/Note";
+import Note from './Note/Note';
 
 export enum ProcAction {
   TUNE_UNIQUE = 'tune unique',
   TUNE_PAIR = 'tune pair',
   TUNE_OCTAVE = 'tune octave',
   CHECK = 'check',
-};
+}
 
-export type ProcStep = {
-  action: ProcAction.TUNE_UNIQUE,
-  message?: string,
-  noteX: Note,
-} | {
-  action: Exclude<ProcAction, ProcAction.TUNE_UNIQUE>,
-  message?: string,
-  noteX: Note,
-  noteY: Note,
-};
-
+export type ProcStep =
+  | {
+      action: ProcAction.TUNE_UNIQUE;
+      message?: string;
+      noteX: Note;
+    }
+  | {
+      action: Exclude<ProcAction, ProcAction.TUNE_UNIQUE>;
+      message?: string;
+      noteX: Note;
+      noteY: Note;
+    };
 
 export class Procedure {
-
   steps: ProcStep[] = [];
-
 
   hasNext(idx: number): boolean {
     return idx < this.steps.length - 1;
   }
 
-
   hasPrev(idx: number): boolean {
     return idx > 0;
   }
 
-
   getNoteToTuneAtStep(stepIdx: number): Note | null {
     const s = this.steps[stepIdx];
-    if(s.action === ProcAction.TUNE_UNIQUE)
-      return s.noteX;
+    if (s.action === ProcAction.TUNE_UNIQUE) return s.noteX;
 
-    if (s.action === ProcAction.TUNE_OCTAVE || s.action === ProcAction.TUNE_PAIR)
+    if (
+      s.action === ProcAction.TUNE_OCTAVE ||
+      s.action === ProcAction.TUNE_PAIR
+    )
       return s.noteY;
 
-    return null
+    return null;
   }
-
 
   getTunedNotesAtStep(stepIdx: number) {
     let tunedNotes = [];
@@ -55,11 +53,18 @@ export class Procedure {
     return tunedNotes;
   }
 
-
   static isValid(procStr: string): boolean {
-    return null !== procStr.match(/^((?:{([^}]*)})?([A-G](?:#|♯|b|♭)?(?:[0-9]|10))(?:([-:])([A-G](?:#|♯|b|♭)?(?:[0-9]|10)))?\s*(?:;|$))+\s*$/i);
+    // TODO: CHECK IF IT'S NORMAL
+    if (!procStr) {
+      return false;
+    }
+    return (
+      null !==
+      procStr.match(
+        /^((?:{([^}]*)})?([A-G](?:#|♯|b|♭)?(?:[0-9]|10))(?:([-:])([A-G](?:#|♯|b|♭)?(?:[0-9]|10)))?\s*(?:;|$))+\s*$/i
+      )
+    );
   }
-
 
   static parse(procStr: string): Procedure | null {
     let res = new Procedure();
@@ -67,7 +72,8 @@ export class Procedure {
       console.warn('[Procedure]: procedure string is invalid:', procStr);
       return null;
     }
-    const regexMatch = /(?:{([^}]*)})?([A-G](?:#|♯|b|♭)?(?:[0-9]|10))(?:([-:])([A-G](?:#|♯|b|♭)?(?:[0-9]|10)))?\s*(?=;|$)/gi
+    const regexMatch =
+      /(?:{([^}]*)})?([A-G](?:#|♯|b|♭)?(?:[0-9]|10))(?:([-:])([A-G](?:#|♯|b|♭)?(?:[0-9]|10)))?\s*(?=;|$)/gi;
     const matches = procStr.matchAll(regexMatch);
 
     let match = matches.next();
@@ -83,21 +89,24 @@ export class Procedure {
         if (interval % 12 === 0) {
           res.steps.push({
             action: ProcAction.TUNE_OCTAVE,
-            message, noteX, noteY,
+            message,
+            noteX,
+            noteY,
           });
         } else {
           res.steps.push({
-            action: (separator) === '-' ? ProcAction.TUNE_PAIR : ProcAction.CHECK,
-            message, noteX, noteY,
+            action: separator === '-' ? ProcAction.TUNE_PAIR : ProcAction.CHECK,
+            message,
+            noteX,
+            noteY,
           });
         }
-
       } else if (noteX) {
         res.steps.push({
           action: ProcAction.TUNE_UNIQUE,
-          message, noteX,
+          message,
+          noteX,
         });
-
       } else {
         console.warn('[Procedure]: parse failed: ', match.value[0]);
       }
@@ -105,5 +114,4 @@ export class Procedure {
     }
     return res;
   }
-
-};
+}

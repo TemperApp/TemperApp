@@ -7,7 +7,7 @@ import React, { useContext, useEffect, useState } from 'react';
 
 import '../App/Collapse.css';
 import '../App/ButtonTemper.css';
-import { TemperamentDBType } from '../../engine/DB';
+import { Temperament } from '../../model/Temperament/Temperament';
 import ArrowCollapseSVG from './ArrowCollapseSVG';
 import { fetchTemperaments } from '../../engine/DataAccessor';
 import UserContext from '../../store/user-context';
@@ -16,29 +16,27 @@ import {
   descendingOrder,
   temperamentFavorite,
 } from '../../utils/favorite';
+import { useTranslation } from 'react-i18next';
 
-const sort = (tmpmts: TemperamentDBType[]) => {
+const sort = (tmpmts: Temperament[]) => {
   return tmpmts.sort((t1, t2) => {
-    const name1 = t1.nameFR.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
-    const name2 = t2.nameFR.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+    const name1 = t1.name;
+    const name2 = t2.name;
     return name1 < name2 ? -1 : name1 > name2 ? 1 : 0;
   });
 };
 
 const SheetsMenu: React.FC = () => {
   const user = useContext(UserContext);
-  const [favoriteTemperaments, setMyTemperaments] = useState<
-    TemperamentDBType[]
-  >([]);
-  const [temperamentsList, setTemperamentsList] = useState<TemperamentDBType[]>(
-    []
-  );
+  const [favoriteTemperaments, setMyTemperaments] = useState<Temperament[]>([]);
+  const [temperamentsList, setTemperamentsList] = useState<Temperament[]>([]);
   const [temperamentsSort, setTemperamentsSort] = useState<
     'NAME_DESC' | 'NAME_ASC' | 'PERIOD_ASC' | 'PERIOD_DESC'
   >('NAME_ASC');
 
   const [searchText, setSearchText] = useState('');
   const [request, setRequest] = useState<RegExp>(RegExp('([A-z])\\w+', 'i'));
+  const { t } = useTranslation();
 
   const sortTemperamentByName = (sort: 'NAME_DESC' | 'NAME_ASC') => () =>
     setTemperamentsSort(sort);
@@ -46,13 +44,11 @@ const SheetsMenu: React.FC = () => {
     setTemperamentsSort(sort);
 
   useEffect(() => {
-    (async () => {
-      setMyTemperaments(sort(await fetchTemperaments()));
-    })();
-    (async () => {
-      setTemperamentsList(sort(await fetchTemperaments()));
-    })();
-  }, []);
+    const temperaments = sort(fetchTemperaments(t));
+    // 🤔 why dupes?
+    setMyTemperaments(temperaments);
+    setTemperamentsList(temperaments);
+  }, [t]);
 
   useEffect(() => {
     if (searchText !== '') {
@@ -106,30 +102,27 @@ const SheetsMenu: React.FC = () => {
           <IonGrid>
             <IonRow>
               {items[0].elements
-                .filter(
-                  (t: TemperamentDBType) =>
-                    t.nameFR
-                      .normalize('NFD')
-                      .replace(/[\u0300-\u036f]/g, '')
-                      .search(request) !== -1
-                )
+                // .filter(
+                //   (t: Temperament) =>
+                //     t.nameFR
+                //       .normalize('NFD')
+                //       .replace(/[\u0300-\u036f]/g, '')
+                //       .search(request) !== -1
+                // )
                 .sort(ascendingOrder('name'))
                 .filter(
-                  (t: TemperamentDBType) =>
-                    temperamentFavorite(
-                      t.idTemperament.toString(),
-                      user.favorite
-                    ) === true
+                  (temperament: Temperament) =>
+                    temperamentFavorite(temperament.id, user.favorite) === true
                 )
-                .map((t: TemperamentDBType) => (
-                  <IonCol size="6" key={t.idTemperament}>
+                .map((temperament: Temperament) => (
+                  <IonCol size="6" key={temperament.id}>
                     <IonButton
                       className="btn-primary"
                       expand="block"
                       color="temperapp"
-                      routerLink={`/sheets/temperament/${t.idTemperament}`}
+                      routerLink={`/sheets/temperament/${temperament.id}`}
                     >
-                      {t.nameFR}
+                      {temperament.name}
                     </IonButton>
                   </IonCol>
                 ))}
@@ -181,13 +174,13 @@ const SheetsMenu: React.FC = () => {
             </IonRow>
             <IonRow>
               {items[1].elements
-                .filter(
-                  (t: TemperamentDBType) =>
-                    t.nameFR
-                      .normalize('NFD')
-                      .replace(/[\u0300-\u036f]/g, '')
-                      .search(request) !== -1
-                )
+                // .filter(
+                //   (t: Temperament) =>
+                //     t.nameFR
+                //       .normalize('NFD')
+                //       .replace(/[\u0300-\u036f]/g, '')
+                //       .search(request) !== -1
+                // )
                 .sort((a, b) => {
                   switch (temperamentsSort) {
                     case 'PERIOD_DESC':
@@ -201,15 +194,15 @@ const SheetsMenu: React.FC = () => {
                       return ascendingOrder('name')(a, b);
                   }
                 })
-                .map((t: TemperamentDBType) => (
-                  <IonCol size="6" key={t.idTemperament}>
+                .map((temperament: Temperament) => (
+                  <IonCol size="6" key={temperament.id}>
                     <IonButton
                       className="btn-primary ion-text-wrap"
                       expand="block"
                       color="temperapp"
-                      routerLink={`/sheets/temperament/${t.idTemperament}`}
+                      routerLink={`/sheets/temperament/${temperament.id}`}
                     >
-                      {t.nameFR}
+                      {temperament.name}
                     </IonButton>
                   </IonCol>
                 ))}

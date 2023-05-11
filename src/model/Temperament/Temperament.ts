@@ -1,16 +1,18 @@
 import NotesMap from '../Note/NotesMap';
 import EqualTemperament from './Equal';
 
-export type Temperament = {
-  idTemperament: number;
-  name: string;
-  nameFR: string;
+export type TemperamentData = {
+  id: string;
   deviation: NotesMap<number>;
   cpExp5th: NotesMap<string>;
   csExp3rd: NotesMap<string>;
+  periodNum: number;
+};
+
+export type TemperamentTexts = {
+  name: string;
   procedure: string;
   period: string;
-  periodNum: number;
   theorist: string;
   geographicalArea: string;
   nature: string;
@@ -19,6 +21,8 @@ export type Temperament = {
   soundReferences: Array<DataSound>;
   commentary: string;
 };
+
+export type Temperament = TemperamentData & TemperamentTexts;
 
 export type DataSources = {
   author: string;
@@ -36,12 +40,11 @@ export type DataSound = {
   url: string;
 };
 
-export const defaultTemperaments: Array<Temperament> = [
+export const defaultTemperaments: Array<TemperamentData> = [
   EqualTemperament,
   {
-    idTemperament: 2,
-    name: 'Vallotti',
-    nameFR: 'Vallotti',
+    id: 'Vallotti',
+    periodNum: 1700,
     deviation: {
       C: 5.865,
       C_sharp: 0.0,
@@ -84,81 +87,10 @@ export const defaultTemperaments: Array<Temperament> = [
       E: '+9/11',
       B: '+11/11',
     },
-    procedure:
-      'A4;A4-A3;{On tempère la tierce Fa-La à 3/11 Cs soit 3 battements par secondes}A3-F3;{On répartit le tempérament de Fa-La de manière égale dans les quatre quintes intérieurs}F3-C4;C4-G3;G3-D4;{La quatrième quinte sert de “preuve”}D4:A3;{on accorde les quintes pures à gauche de Fa}F3-Bb3;Bb3-Eb4;Eb4-G#3;G#3-C#4;{La tierce La-Do# sert de preuve, elle bat comme dans le tempérament égal }C#4:A3;{On accorde les deux dernières quintes pures}C#4-F#3;F#3-B3;{On accorde le Mi de manière à ce que La-Mi  soit tempérée autant que Mi-Si. Leurs battements sont dans le rapport 3/2}B3-E4;E4:A3;{On recopie les notes entre Fa4 et Sol#4}F3-F4;F#3-F#4;G3-G4;G#3-G#4;',
-    theorist: 'Francesco Vallotti (1697-1780)',
-    period: 'XVIIIe siècle',
-    periodNum: 1700,
-    geographicalArea: 'Italie du Nord',
-    nature: '1/6 de comma pythagoricien',
-    structuralParticularity:
-      'Six quintes tempérées au 1/6 de comma pythagoricien relient les notes naturelles, les six autres sont pures.',
-    sources: [
-      {
-        author: '',
-        book: 'Wikipedia - Temperament de Vallotti (FR)',
-        title: '',
-        other: '',
-        date: '',
-        page: '',
-        url: 'https://fr.wikipedia.org/wiki/Temp%C3%A9rament_de_Vallotti',
-      },
-      {
-        author: '',
-        book: 'Wikipedia - Francesco Vallotti (FR) ',
-        title: '',
-        other: '',
-        date: '',
-        page: '',
-        url: 'https://fr.wikipedia.org/wiki/Francesco_Antonio_Vallotti',
-      },
-      {
-        author: '',
-        book: 'Wikipedia - Francesco Vallotti (EN) ',
-        title: '',
-        other: '',
-        date: '',
-        page: '',
-        url: 'https://en.wikipedia.org/wiki/Francesco_Antonio_Vallotti',
-      },
-      {
-        author: 'Francesco Antonio Vallotti',
-        book: 'Trattato della musica moderna',
-        title: '',
-        other: 'inédit du temps de Vallotti. Zanini',
-        date: '1950',
-        page: '',
-        url: '',
-      },
-      {
-        author: 'Barbieri, Patrizio,',
-        book: "Acustica accordatura e temperamento nell'illuminismo veneto.",
-        title: '',
-        other: " Insituto di Paleografia Musicale, Torre d'Orfeo, Roma",
-        date: '1987',
-        page: '',
-        url: '',
-      },
-    ],
-    soundReferences: [
-      {
-        title:
-          'Francesco Antonio Vallotti (1697-1780) Lamentazioni del Profeta',
-        url: 'https://www.youtube.com/watch?v=TDCpdNOJC5s',
-      },
-      {
-        title:
-          'Francesco A. Vallotti: Lezione II per il Venerdì Santo for alto, violoncello obbligato & b.c.',
-        url: 'https://www.youtube.com/watch?v=hw1O5t_Rrhg',
-      },
-    ],
-    commentary:
-      "Nous proposons la lecture la plus partagée bien que certainement simplifiée de l'accord de Vallotti qui répartit lui-même le comma syntonique, selon la théorie italienne du XVIIIe siècle. L'accroissement des tierces majeures est parfaitement équilibré vers les dièses et vers les bémols.",
   },
   {
-    idTemperament: 3,
-    name: 'Meantone 1/4 G#Eb',
-    nameFR: 'Mésotonique',
+    id: 'Meantone',
+    periodNum: 1500,
     deviation: {
       C: 10.263,
       C_sharp: -13.686,
@@ -201,79 +133,10 @@ export const defaultTemperaments: Array<Temperament> = [
       E: '0',
       B: '21/11',
     },
-    procedure:
-      'A4;A4-A3;A3-F3;F3-F4;A3-C#4;C#4:F4;{on divise la tierce F-A en quatre quintes tempérées à -1/4 de Comma syntonique}F3-C4;C4-G3;G3-G4;G3-D4;A3:D4;{on construit les tierces pures sur les notes accordées}C4-E4;E4:A3;E4-G#4;G#4-G#3;G#3:C4;G3-B3;B3:E4;B3-Eb4;Eb4:G4;D4-F#4;F#4-F#3;F#3-Bb3;Bb3:D4;',
-    theorist: 'Pietro Aaron (1485-1545)',
-    period:
-      "décrit au début du XVIe siècle, on présume une utilisation dès le XVe siècle. Son application est avérée sur l'orgue pendant la première moitié du XVIIIe siècle.",
-    periodNum: 1500,
-    geographicalArea:
-      "plusieurs sources importantes en dehors de l'Italie (Praetorius, Mersenne) laissent à penser que cet accord est très tôt utilisé dans toute l'Europe.",
-    nature: 'Comma syntonique',
-    structuralParticularity:
-      "11 quintes sont diminuées d'un quart de comma syntonique. La douzième, l'intervalle résiduel entre sol# et mib, excède la valeur pure. Le système mésotonique classique produit huit tierces majeures pures. Chaque octave comporte 2 tierces pures et un intervalle résiduel (une quarte diminuée), excédant d’un comma enharmonique (2 ÷ (5/4)^3 = 41,05¢).",
-    sources: [
-      {
-        author: '',
-        book: 'Wikipedia - Temperament Mésotonique (FR)',
-        title: '',
-        other: '',
-        date: '',
-        page: '',
-        url: 'https://fr.wikipedia.org/wiki/Temp%C3%A9rament_m%C3%A9sotonique',
-      },
-      {
-        author: '',
-        book: 'Wikipedia - Pietro Aaron (FR)',
-        title: '',
-        other: '',
-        date: '',
-        page: '',
-        url: 'https://fr.wikipedia.org/wiki/Pietro_Aaron',
-      },
-      {
-        author: 'Pietro Aaron',
-        book: 'Toscanello de la musica',
-        title: '',
-        other: ', Venise',
-        date: '1523',
-        page: '',
-        url: 'https://imslp.org/wiki/Thoscanello_de_la_musica_(Aron,_Pietro)',
-      },
-      {
-        author: 'Lindley, Mark.',
-        book: 'Proceedings of the Royal Musical Association 102',
-        title: 'Fifteenth-Century Evidence for Meantone Temperament',
-        other: "Torre d'Orfeo, Roma",
-        date: '1976',
-        page: ', p. 37-51',
-        url: '',
-      },
-    ],
-    soundReferences: [
-      {
-        title: 'MA Cavazzoni : Ricercar III L Tamminga San Petronio Bologna',
-        url: 'https://www.youtube.com/watch?v=KHlne0rAnTg',
-      },
-      {
-        title: 'L’accord mésotonique réalisé sur l’instrument',
-        url: 'http://blog-clavicorde-lie.ch/laccord-mesotonique-realise-sur-linstrument/',
-      },
-      {
-        title: 'Pietro Aron 1/4 Syntonic Meantone Temperament',
-        url: 'https://www.youtube.com/watch?v=jcAIh1V2Zz8',
-      },
-      {
-        title: 'Pietro Aron (1480- dopo il 1545) - Io non posso più durare a 4',
-        url: 'https://www.youtube.com/watch?v=e83oOCnH_3w',
-      },
-    ],
-    commentary: '',
   },
   {
-    idTemperament: 4,
-    name: 'Rameau en Sib 1726',
-    nameFR: 'Rameau en Sib 1726',
+    id: 'RameauSiB',
+    periodNum: 1700,
     deviation: {
       C: 10.265,
       C_sharp: 0.578,
@@ -316,44 +179,10 @@ export const defaultTemperaments: Array<Temperament> = [
       E: '13/11',
       B: '17/11',
     },
-    procedure:
-      'A4;A4-A3;A3-F3;{On divise la tierce F3-A3 en quatre quintes à -¼Cs }F3-C4;C4-G3;G3-D4;D4:A3;{On construit les tierces pures du tempérament}D4-Bb3;C4-E4;G3-B3;{On élargit progressivement les quintes à gauche du Sib}Bb3-Eb4;Eb4-G#3;G#3-C#4;{Même si elle est atténuée, F#-C# reste notre “loup”, ici tempérée à env. +1/3Cs, nous allons donc finir cette procédure en revenant à Si et en accordant B-F# à -1/6Cs. La quinte du loup sera donc bien le résultat de l’accord. Attention! B-F# est affaiblie et non élargie}B3-F#3;F3-F4;F#3-F#4;G3-G4;G#3-G#4;',
-    theorist: 'Jean-Philippe Rameau (1683-1764)',
-    period: 'XVIIIe siècle',
-    periodNum: 1700,
-    geographicalArea: 'France',
-    nature: 'Comma syntonique',
-    structuralParticularity:
-      'Sept quintes sont abaissées d’un quart de comma syntonique. Les autres sont augmentées de quantités variables selon des petits compléments.',
-    sources: [
-      {
-        author: '',
-        book: 'Wikipedia - Jean-Philippe Rameau (FR)',
-        title: '',
-        other: '',
-        date: '',
-        page: '',
-        url: 'https://fr.wikipedia.org/wiki/Jean-Philippe_Rameau',
-      },
-      {
-        author: 'Jean-Philippe Rameau,',
-        book: 'Nouveau système de musique théorique',
-        title: '',
-        other: '',
-        date: '1726',
-        page: '',
-        url: 'https://gallica.bnf.fr/ark:/12148/btv1b8623246q.image',
-      },
-    ],
-    soundReferences: [{ title: '', url: '' }],
-    commentary: `Le tempérament de Rameau II, ou tempérament en sib, est identique au précédent mais sa construction se fait à partir du la et non du do. Les quintes de sib à si sont diminuées d’un quart de comma syntonique. La quinte si - fa# est diminuée d’un quart de comma et augmentée d’une valeur δ. Les quatre quintes restantes se répartissent l’excédent.\bRameau cite brièvement une alternative à sa première description : « Pour que les Intervalles conservent toute la justesse possible dans les Modulations les plus usitées, il faut commencer la Partition par Si B-mol, & ne rendre pour lors les Quintes un peu plus justes, que depuis Si à Fa# ». Plusieurs commentateurs ont considéré qu'il s'agissait d'une transposition de sa première formule.
-
-De nombreuses interprétations sont possible du texte de Jean-Philippe Rameau, les créateurs de TemperApp se sont mis d’accord sur cette version avec le projet d’en inclure d’autres ultérieurement`,
   },
   {
-    idTemperament: 5,
-    name: 'Rameau en Do 1726',
-    nameFR: 'Rameau en Do 1726',
+    id: 'RameauDo',
+    periodNum: 1700,
     deviation: {
       C: 10.265,
       C_sharp: -13.686,
@@ -396,43 +225,10 @@ De nombreuses interprétations sont possible du texte de Jean-Philippe Rameau, l
       E: '1/11',
       B: '7/11',
     },
-    procedure:
-      'A4;A4-A3;A3-C#4;{On répartit les quatre quintes intérieures à La-Do# de manière égale, au quart de comma syntonique}A3-E4;E4-B3;B3-F#4;F#4-F#3;F#3:C#4;{On construit les tierces pures restantes du tempérament}F#4-D4;B3-G3;G3-G4;E4-C4;{On élargit les quintes Do#-Sol# et Fa-Do}C#4-G#4;C4-F3;F3-F4;{On élargit progressivement les quintes à gauche du Fa}F4-Bb3;Bb3-Eb4;Eb4-G#3;Eb4:G#4;',
-    theorist: 'Jean-Philippe Rameau (1683-1764)',
-    period: 'XVIIIe siècle',
-    periodNum: 1700,
-    geographicalArea: 'France',
-    nature: 'Comma syntonique',
-    structuralParticularity:
-      "Sept quintes sont abaissées d’un quart de comma syntonique. Les autres sont augmentées de quantités variables selon des petits compléments. L'élargissement des quintes augmente progressivement à gauche de la racine du tempérament. De cette manière les tierces deviennent plus fortes à mesure qu'on s'éloigne des tonalités usuelles",
-    sources: [
-      {
-        author: '',
-        book: 'Wikipedia - Jean-Philippe Rameau (FR)',
-        title: '',
-        other: '',
-        date: '',
-        page: '',
-        url: 'https://fr.wikipedia.org/wiki/Jean-Philippe_Rameau',
-      },
-      {
-        author: 'Jean-Philippe Rameau,',
-        book: 'Nouveau système de musique théorique',
-        title: '',
-        other: '',
-        date: '1726',
-        page: '',
-        url: 'https://gallica.bnf.fr/ark:/12148/btv1b8623246q.image',
-      },
-    ],
-    soundReferences: [{ title: '', url: '' }],
-    commentary:
-      'Jean-Philippe Rameau a longuement étudié les problèmes théoriques de la musique. Il a proposé deux tempéraments, l’un “pour avantager les tonalités avec bémols”, dans lesquels les sept quintes sont diminuées d’un quart de comma (Nouveau système de musique théorique, Paris, 1726). Les cinq quintes restantes se répartissent l’excédent. \b Comme la plupart des descriptions des tempéraments français (ou tempérament ordinaire), celle de Rameau est imprécise et sujette à interprétation.\b Le problème d’interprétation qui se pose est de savoir sur quelles quintes s’effectue cette répartition. On se demande aussi si la répartition linéaire doit s’effectuer sur quatre ou cinq quintes. Dans le premier tempérament, les notes vont de quinte en quinte de do à mi dièse. C’est pourquoi, on l’appelle aussi tempérament en do. La partition est citée par plusieurs auteurs. ',
   },
   {
-    idTemperament: 6,
-    name: 'Bach/Kellner',
-    nameFR: 'Bach/Kellner',
+    id: 'BachKellner',
+    periodNum: 1700,
     deviation: {
       C: 8.211,
       C_sharp: -1.564,
@@ -475,59 +271,10 @@ De nombreuses interprétations sont possible du texte de Jean-Philippe Rameau, l
       E: '9/11',
       B: '9/11',
     },
-    procedure:
-      'A4;A4-A3;A3-F3;F3-C4;{Les quatre quintes composant C-E sont tempérées à -⅕ Cp, on propose d’accorder Do4-Mi4 et de vérifier d’emblée le battement la3-mi4, puis d’accorder les trois quintes restantes do-sol-ré-la}C4-E4;E4:A3;C4-G3;G3-D4;D4:A3;{Les quintes sont pures à gauche de Fa}F3-Bb3;Bb3-Eb4;Eb4-G#3;G#3-C#4;C#4-F#3;{Pour finir, la quinte pure mi-si résulte en une quinte si-fa# tempérée à -⅕Cp }E4-B3;B3:F#3;F3-F4;F#3-F#4;G3-G4;G#3-G#4;',
-    theorist:
-      'Herbert Anton Kellner (1936-2003) - Jean-Sébastien Bach (1685-1750)',
-    period: 'XVIIIe-XIXe siècles',
-    periodNum: 1700,
-    geographicalArea: 'Allemagne',
-    nature: 'Comma pythagoricien',
-    structuralParticularity:
-      'Cinq quintes sont abaissées d’un 1/5  de comma pythagoricien, les 7 autres sont pures.',
-    sources: [
-      {
-        author: '',
-        book: 'Harpischords (EN)',
-        title: '',
-        other: '',
-        date: '',
-        page: '',
-        url: 'https://www.hpschd.nu/index.html?nav/nav-4.html&t/welcome.html&https://www.hpschd.nu/tech/tmp/kellner.html',
-      },
-      {
-        author: '',
-        book: 'Wikipedia - Jean-Sébastien Bach (FR)',
-        title: '',
-        other: '',
-        date: '',
-        page: '',
-        url: 'https://fr.wikipedia.org/wiki/Jean-S%C3%A9bastien_Bach',
-      },
-      {
-        author: 'Herbert Anton Kellner,',
-        book: 'The Tuning of my Harpsichord Verlag Das Musikinstrument,',
-        title: '',
-        other: 'Frankfurt am Main',
-        date: '1980',
-        page: '',
-        url: '',
-      },
-    ],
-    soundReferences: [
-      { title: 'Kellner', url: 'https://www.youtube.com/watch?v=rHvI4Fh-lNY' },
-      {
-        title: 'Concert de la passion - Les Idées heureuses',
-        url: 'https://www.youtube.com/watch?v=dNibEXPBA_w',
-      },
-    ],
-    commentary:
-      'Nous ne savons pas quel tempérament utilisait Jean-Sébastien Bach et quel était donc son clavier “bien tempéré”. Des musicologues théoriciens du XXe siècle ont formulé plusieurs propositions : Herbert Kelletat (1960), Herbert Kellner (1980), Bradley Lehman (2005). Herbert Kellner (1980), partant de données symboliques et numériques tirées des œuvres de J. S. Bach, propose un tempérament assez proche de Werckmeister. Une de ses particularités est que la quinte do-sol bat à la même vitesse que la tierce do-mi.',
   },
   {
-    idTemperament: 7,
-    name: 'Werckmeister III',
-    nameFR: 'Werckmeister III',
+    id: 'WerckmeisterIII',
+    periodNum: 1600,
     deviation: {
       C: 11.73,
       C_sharp: 1.955,
@@ -570,70 +317,10 @@ De nombreuses interprétations sont possible du texte de Jean-Philippe Rameau, l
       E: '8/11',
       B: '8/11',
     },
-    procedure:
-      'A4;A4-A3;{on accorde les deux premières quintes pures}A3-E4;E4-B3;{la quinte Si-Fa# est tempérée à 1/4 Cp}B3-F#4;F#4-C#4;C#4-G#4;G#4-Eb4;Eb4-Bb4;Bb4-Bb3;Bb3-F4;F4-F3;F4-C4;C4-G4;G4-D4;D4:A4;{vérifier que les quintes tempérées Si-Fa#, Do-Sol et Re-La ont des battements progressifs}F4-F3;F#4-F#3;G4-G3;',
-    theorist: 'Andreas Werckmeister (1645-1706)',
-    period: 'XVIIe siècle',
-    periodNum: 1600,
-    geographicalArea: 'Allemagne',
-    nature: 'Comma pythagoricien',
-    structuralParticularity:
-      'Quatre quintes sont diminuées d’un quart de comma pythagoricien. Les huit autres quintes sont pures.',
-    sources: [
-      {
-        author: '',
-        book: 'Wikipedia - Temperament Werckmeister (EN)',
-        title: '',
-        other: '',
-        date: '',
-        page: '',
-        url: 'https://en.wikipedia.org/wiki/Werckmeister_temperament',
-      },
-      {
-        author: '',
-        book: 'Wikipedia - Andreas Werckmeister (FR)',
-        title: '',
-        other: '',
-        date: '',
-        page: '',
-        url: 'https://fr.wikipedia.org/wiki/Andreas_Werckmeister',
-      },
-      {
-        author: '',
-        book: 'Wikipedia - Andreas Werckmeister (EN)',
-        title: '',
-        other: '',
-        date: '',
-        page: '',
-        url: 'https://en.wikipedia.org/wiki/Andreas_Werckmeister',
-      },
-      {
-        author: 'Andreas Werckmeister,',
-        book: 'Musikalische Temperatur',
-        title: '',
-        other: '',
-        date: '1691',
-        page: '',
-        url: 'https://imslp.org/wiki/Musicalische_Temperatur_(Werckmeister%2C_Andreas)',
-      },
-      {
-        author: 'Andreas Werckmeister,',
-        book: 'Orgel Probe',
-        title: '',
-        other: '',
-        date: '',
-        page: '1681',
-        url: 'https://imslp.org/wiki/Orgel-Probe_(Werckmeister,_Andreas) ',
-      },
-    ],
-    soundReferences: [{ title: '', url: '' }],
-    commentary:
-      "Très tôt appelé le tempérament de Werckmeister, c'est l'archétype du tempérament d'esthétique allemande. Il est encore cité par Türk en 1809 comme un bon tempérament inégal. C'est le premier tempérament inégal circulant qui ait été décrit : les plus grandes tierces majeures sont pythagoriciennes, à la limite prescrite par Werckmeister pour que toutes les tonalités puissent être jouées.",
   },
   {
-    idTemperament: 8,
-    name: 'Werckmeister V',
-    nameFR: 'Werckmeister V',
+    id: 'WerckmeisterV',
+    periodNum: 1600,
     deviation: {
       C: 0.0,
       C_sharp: -3.91,
@@ -676,79 +363,10 @@ De nombreuses interprétations sont possible du texte de Jean-Philippe Rameau, l
       E: '5/11',
       B: '8/11',
     },
-    procedure:
-      'A4;A4-A3;A3-F3;F3-Bb3;Bb3-Eb4;Eb4-Eb3;Eb3-G3;F3-C4;C4:G3;G3-D4;D4:A3;A3-E4;E4:C3;E4-E3;E3-B3;G3:B3;B3-F#3;F#3-C#4;C#4:A3;C#4-G#3;G#3:Eb4;F3-F4;F#3-F#4;G3-G4;G#3-G#4;',
-    theorist: 'Andreas Werckmeister (1645-1706)',
-    period: 'XVIIe siècle',
-    periodNum: 1600,
-    geographicalArea: 'Allemagne',
-    nature: 'Comma pythagoricien',
-    structuralParticularity:
-      'Andreas Werckmeister (1645-1706) a publié son Musikalische Temperatur en 1691. Le troisième tempérament de Werckmeister est décrit comme le cinquième dans Orgel Probe, que Werckmeister a publié en 1681. Dans ce système, cinq quintes sont diminuées d’un quart de comma pythagoricien, une quinte est augmentée d’un quart de comma pythagoricien. Six quintes sont pures. Le système n’a aucune tierce pure.',
-    sources: [
-      {
-        author: '',
-        book: 'Wikipedia - Temperament Werckmeister (EN)',
-        title: '',
-        other: '',
-        date: '',
-        page: '',
-        url: 'https://en.wikipedia.org/wiki/Werckmeister_temperament',
-      },
-      {
-        author: '',
-        book: 'Wikipedia - Andreas Werckmeister (FR)',
-        title: '',
-        other: '',
-        date: '',
-        page: '',
-        url: 'https://fr.wikipedia.org/wiki/Andreas_Werckmeister',
-      },
-      {
-        author: '',
-        book: 'Wikipedia - Andreas Werckmeister (EN)',
-        title: '',
-        other: '',
-        date: '',
-        page: '',
-        url: 'https://en.wikipedia.org/wiki/Andreas_Werckmeister',
-      },
-      {
-        author: 'Andreas Werckmeister,',
-        book: 'Musikalische Temperatur',
-        title: '',
-        other: '',
-        date: '1691',
-        page: '',
-        url: 'https://imslp.org/wiki/Musicalische_Temperatur_(Werckmeister%2C_Andreas)',
-      },
-      {
-        author: 'Andreas Werckmeister,',
-        book: 'Orgel Probe',
-        title: '',
-        other: '',
-        date: '',
-        page: '1681',
-        url: 'https://imslp.org/wiki/Orgel-Probe_(Werckmeister,_Andreas) ',
-      },
-    ],
-    soundReferences: [
-      {
-        title: 'Werckmeister III',
-        url: 'https://www.youtube.com/watch?v=kAlnr5nmHC8',
-      },
-      {
-        title: 'J S Bach BWV 565 (I) Temperament: Werckmeister III',
-        url: 'https://www.youtube.com/watch?v=CeaGCYsy6iU',
-      },
-    ],
-    commentary:
-      "Ce tempérament circulant présente sur les tonalités avec peu d'altérations des tierces majeures plus grandes qu'en Werckmeister I (III).",
   },
   {
-    idTemperament: 9,
-    name: 'Pythagorean G#Eb',
-    nameFR: 'Pythagoricien G#Eb',
+    id: 'Pythagorean',
+    periodNum: 1400,
     deviation: {
       C: -5.865,
       C_sharp: 7.82,
@@ -791,76 +409,10 @@ De nombreuses interprétations sont possible du texte de Jean-Philippe Rameau, l
       E: '11/11',
       B: '-1/11',
     },
-    procedure: '',
-    theorist:
-      'Attribué à Pythagore (env. 580-av. 495 av JC) - Henri Arnault de Zwolle (vers 1400-1466)',
-    period: 'Moyen Age',
-    periodNum: 1400,
-    geographicalArea: 'Europe',
-    nature: 'Comma pythagoricien',
-    structuralParticularity:
-      'Dans l’accord pythagoricien, toutes les quintes sont pures sauf une, appelée la quinte du loup. Selon le choix de l’accord, ici sol#-mi bémol, la quinte “sol# -mi b” est diminuée d’un comma pythagoricien.',
-    sources: [
-      {
-        author: '',
-        book: 'Wikipedia - Accord Pythagoricien (FR)',
-        title: '',
-        other: '',
-        date: '',
-        page: '',
-        url: 'https://fr.wikipedia.org/wiki/Accord_pythagoricien',
-      },
-      {
-        author: '',
-        book: 'Wikipedia - Pythagore (FR)',
-        title: '',
-        other: '',
-        date: '',
-        page: '',
-        url: 'https://fr.wikipedia.org/wiki/Pythagore',
-      },
-      {
-        author: '',
-        book: 'Wikipedia - Henri Arnault de Zwolle (FR)',
-        title: '',
-        other: '',
-        date: '',
-        page: '',
-        url: 'https://fr.wikipedia.org/wiki/Henri_Arnault_de_Zwolle',
-      },
-      {
-        author: 'Henri Arnault de Zwolle,',
-        book: 'Descriptio instrumenti cujusdam astronomici,',
-        title: '',
-        other: '',
-        date: 'entre 1436 et 1461',
-        page: '',
-        url: 'https://gallica.bnf.fr/ark:/12148/btv1b90725989/f134.item.r=7295',
-      },
-      {
-        author: 'Donald H. Boalch,',
-        book: 'Makers of the harpsichord and clavichord 1440-1840, ',
-        title: '',
-        other: 'Oxford, Oxford University Press,',
-        date: '1974',
-        page: '',
-        url: '',
-      },
-    ],
-    soundReferences: [
-      {
-        title:
-          'Kleines harmonisches Labyrinth in fünf Stimmungen (Temperaturen)',
-        url: 'https://www.youtube.com/watch?v=mgEL3N55fwI',
-      },
-    ],
-    commentary:
-      "C'est l'échelle de référence pour l'intonation jusqu'à la Renaissance. Son adaptation au clavier nécessite de décider de la place de la quinte du loup. Conventionnellement, elle est mise entre sol# et mib.\bPour privilégier les modulations dans les tonalités voisines en conservant des quintes pures, il suffit de choisir un accord des quintes de sorte que la quinte du loup ne soit jamais jouée. Si les modulations parcourent tout le spectre des tonalités, il faudrait envisager deux accords de clavecin ou un système adaptatif.",
   },
   {
-    idTemperament: 10,
-    name: 'Kirnberger III 1779',
-    nameFR: 'Kirnberger III 1779',
+    id: 'Kirnberger',
+    periodNum: 1700,
     deviation: {
       C: 10.264,
       C_sharp: 0.489,
@@ -903,52 +455,10 @@ De nombreuses interprétations sont possible du texte de Jean-Philippe Rameau, l
       E: '10/11',
       B: '10/11',
     },
-    procedure:
-      "A4;A4-A3;{Pour Kirnberger III, le plus simple est d’accorder pure la tierce F3-A3 que l’on divise en quatre quintes égales à -¼Cs puis C4-E4 pure et enfin de réaccorder F3 comme quinte pure sous C4. L’application ne permettant pas de revenir sur une note déjà accordée, on propose d’accorder F3 directement à sa valeur de tierce à tempérée à 4/11 Cs sous A3. L'utilisateur peut utiliser cette procédure comme preuve}A3-F3;F3-C4;C4-E4;E4:A3;{division de C4-E4 en quatre quintes égales à -¼Cs }C4-G3;G3-D4;D4:A3;{4 quintes pures à gauche de F puis 2 à droite de E résultent en F#-C# au tempérament égal à -1/12Cp}F3-Bb3;Bb3-Eb4;Eb4-G#3;G#3-C#4;E4-B3;B3-F#3;F#3:C#4;F3-F4;F#3-F#4;G3-G4;G#3-G#4;",
-    theorist: 'Johann Philipp Kirnberger (1721-1783)',
-    period: 'XVIIIe siècle',
-    periodNum: 1700,
-    geographicalArea: 'Allemagne',
-    nature: 'Comma syntonique',
-    structuralParticularity:
-      'Dans le tempérament de Kirnberger III, quatre quintes sont diminuées d’un quart de comma syntonique, une quinte est diminuée du schisma restant (de sorte que les diminutions correspondent au comma pythagoricien). Les sept autres quintes sont pures.',
-    sources: [
-      {
-        author: '',
-        book: 'Wikipedia - Temperament Kirnberger (EN)',
-        title: '',
-        other: '',
-        date: '',
-        page: '',
-        url: 'https://en.wikipedia.org/wiki/Kirnberger_temperament',
-      },
-      {
-        author: '',
-        book: 'Wikipedia - Johann Philipp Kirnberger (FR)',
-        title: '',
-        other: '',
-        date: '',
-        page: '',
-        url: 'https://fr.wikipedia.org/wiki/Johann_Philipp_Kirnberger',
-      },
-      {
-        author: 'J.Ph. Kirnberger,',
-        book: 'Die Kunst des reinen Satzes',
-        title: '',
-        other: '',
-        date: '1771, 1779',
-        page: '',
-        url: 'https://imslp.org/wiki/Die_Kunst_des_reinen_Satzes_in_der_Musik_(Kirnberger%2C_Johann_Philipp)',
-      },
-    ],
-    soundReferences: [{ title: '', url: '' }],
-    commentary:
-      'Kirnberger a proposé trois tempéraments différents dans lesquels il répartit le comma syntonique sur une, deux ou quatre quintes. La particularité de ses solutions est qu’elles répartissent indépendamment le schisma sur une quinte.\b Plus précisément, après avoir décrit deux formules : la première qui laisse le comma syntonique non réparti sur la quinte ré-la, et la seconde qui le partage sur ré-la et la-mi, Kirnberger propose en 1779, dans une lettre à J. N. Forkel, un troisième tempérament dans lequel la répartition se fait sur les quatre quintes entre do et mi.',
   },
   {
-    idTemperament: 11,
-    name: "Bertier 'elliptical'",
-    nameFR: "Bertier 'elliptique'",
+    id: 'Bertier',
+    periodNum: 2000,
     deviation: {
       C: 5.341,
       C_sharp: 0.0,
@@ -991,43 +501,10 @@ De nombreuses interprétations sont possible du texte de Jean-Philippe Rameau, l
       E: '9/11',
       B: '10/11',
     },
-    procedure:
-      'A4;A4-A3;A3-F3;F3-C4;C4-G3;G3-D4;D4:A3;{On alterne simplement l’accord d’une quinte et la preuve de sa tierce inférieure}A3-E4;E4:C4;E4-B3;B3:G3;{On construit maintenant F# et Bb. Les Tierces Bb-D et D-F# étant tempérées de la même manière, leurs battements seront dans le rapport 4/5}B3-F#4;F#4:D4;F3-Bb3;Bb3:D4;Bb3-Eb4;Eb4-G#3;G#3-C#4;{La Tierce A-C# est au tempérament égal à +7/11 Cs}C#4:A3;C#4:F4;F4-F3;G3-G4;G#3-G#4;',
-    theorist: 'Jérôme BERTIER (1986-)',
-    period: 'XVIII',
-    periodNum: 1700,
-    geographicalArea: 'Allemagne',
-    nature: 'Comma pythagoricien',
-    structuralParticularity:
-      'Le tempérament Elliptique est un “bien-tempéré” théorique dans lequel les tierces majeures sont progressivement plus tempérées de Do Majeur à Fa#Majeur, et symétriquement. Une tonalité à 3# aura la même qualité de tierce qu’une tonalité à 3 bémols. Ce tempérament met en valeur le rapport entre les couleurs tonales utilisé notamment par J.S Bach dans le Clavier Bien Tempéré. C’est une version “lissée” du premier tempérament de Thomas Young.',
-    sources: [
-      {
-        author: '',
-        book: 'Academia - Tempérament Elliptique (FR)',
-        title: '',
-        other: '',
-        date: '',
-        page: '',
-        url: 'https://www.academia.edu/10807733/The_Elliptical_Temperament',
-      },
-      {
-        author: 'Lindley, Mark',
-        book: 'A quest for Bach’s ideal style of organ temperament',
-        title: '',
-        other:
-          ' in M. Lustig, ed., Stimmungen im 17. und 18.Jahrhundert, Michaelstein, ',
-        date: '1997',
-        page: '',
-        url: 'https://www.academia.edu/1134176/A_quest_for_Bach_s_ideal_style_of_organ_temperament',
-      },
-    ],
-    soundReferences: [{ title: '', url: '' }],
-    commentary: '',
   },
   {
-    idTemperament: 12,
-    name: 'Neidhardt Grosse Stadt 1724',
-    nameFR: 'Neidhardt Grosse Stadt 1724',
+    id: 'Neidhardt',
+    periodNum: 1700,
     deviation: {
       C: 5.865,
       C_sharp: 1.955,
@@ -1070,49 +547,10 @@ De nombreuses interprétations sont possible du texte de Jean-Philippe Rameau, l
       E: '8/11',
       B: '8/11',
     },
-    procedure:
-      'A4;{pour accorder Neidhardt III, on peut partir d’une tierce Fa-La “Vallotti” et revenir sur le Fa après avoir distribué les quintes. TemperApp ne permettant pas encore de revenir sur une note déjà accordée, nous commencerons par Fa-La directement tempérée à 5/11Cs}A4-A3;A3-F3;{Fa-Do pure, puis on accorde la tierce Do-Mi qui nous permettra de contrôler notre Fa initial}F3-C4;C4-E4;E4:A4;{3 quintes au 1/6ème Cp}C4-G3;G3-D4;D4:A4;{la quarte Mi-La bat 4:3 contre la quinte Ré-La}E4:A4;{On accorde Mi-Sol#, Mi-Si pure puis 3 quintes égales  }E4-E3;E3-G#3;E4-B3;B3-F#4;F#4-C#4;C#4:G#3;{on redescend depuis Fa en contrôlant tierces}F3-Bb3;Bb3:D4;Bb3-Eb4;G3-G4;Eb4:G4;Eb4:G#3;',
-    theorist: 'Johann Georg Neidhardt (1685-1739)',
-    period: 'XVIIIe siècle',
-    periodNum: 1700,
-    geographicalArea: 'Allemagne',
-    nature: 'Comma pythagoricien',
-    structuralParticularity:
-      'Neidhardt décrit quatre tempéraments : “A mon avis, le premier tempérament est principalement pour un village, le deuxième pour une petite bourgade, le troisième pour une grande ville et le quatrième pour la Cour” [J. G. Neidhart, Sectio canonis harmonia, p 20].Le premier tempérament de Neidhart “Für ein Dorf ” (pour un village) possède quatre quintes pures et quatre quintes tempérées. Le troisième tempérament de Neidhardt “Für ein grosse Stadt” (pour une grande ville) à trois quintes pures , six quintes tempérées au sixième ou au douzième de comma pythagoricien.',
-    sources: [
-      {
-        author: '',
-        book: 'Wikipedia - Johann Georg Neidhardt (DE)',
-        title: '',
-        other: '',
-        date: '',
-        page: '',
-        url: ' https://de.wikipedia.org/wiki/Johann_Georg_Neidhardt',
-      },
-      {
-        author: 'Johann Georg Neidhardt,',
-        book: 'Sectio canonis harmonia',
-        title: '',
-        other: '',
-        date: '1724',
-        page: '',
-        url: 'https://imslp.org/wiki/Sectio_canonis_harmonici_(Neidhardt,_Johann_Georg)',
-      },
-    ],
-    soundReferences: [
-      {
-        title:
-          'F. Couperin: Ordre 6ème de clavecin in B flat major; Magdalena Baczewska, harpsichord',
-        url: 'https://www.youtube.com/watch?v=TkIBx28KIho ',
-      },
-    ],
-    commentary:
-      "Neidhardt a composé entre 1706 et 1734 quatre traités et décrit plus de 20 tempéraments différents. Dans sa Sectio canonis harmonia (1724) Neidhardt décrit quatre tempéraments : “A mon avis, le premier tempérament est principalement pour un village, le deuxième pour une petite bourgade, le troisième pour une grande ville et le quatrième pour la Cour”. La formule souhaitée pour la cour est le tempérament égal, et les trois précédentes s'en rapprochent progressivement. Ces formules complexes et aux sonorités subtiles produisent un écart assez faible entre les tierces majeures les plus consonantes et les plus grandes.",
   },
   {
-    idTemperament: 13,
-    name: 'Bach/Jobin',
-    nameFR: 'Bach/Jobin',
+    id: 'BachJobin',
+    periodNum: 1700,
     deviation: {
       C: 10.263,
       C_sharp: -2.933,
@@ -1155,43 +593,11 @@ De nombreuses interprétations sont possible du texte de Jean-Philippe Rameau, l
       E: '8/11',
       B: '12/11',
     },
-    procedure:
-      "C4;{On commence par la tierce pure Do-Mi, qu’on partage en 4 quintes égales}C4-E4;C4-G3;G3-D4;D4-A3;A3:E4;{On rajoute la quinte Mi-Si de même valeur que les précédentes en contrôlant Sol-Si réputée pure}E4-B3;B3:G3;{On accorde trois quintes pures entre Si et Sol#}B3-F#3;F#3-C#4;C#4-G#3;{la tierce Mi-Sol# doit être *tolérable*, pour la contrôler on copie le Mi4 vers le Mi3}E4-E3;E3:G#3;{On établit Do-Fa pure}C4-F3;{On place une quinte *à peine plus grande* sur Fa-Sib puis on répartit l'excédent sur les deux autres quintes. On contrôle les tierces.}F3-Bb3;Bb3:D4;Bb3-Eb4;G3-G4;Eb4:G4;Eb4:G#3;{On recopie les octaves, et le tour est joué! }F3-F4;F#3-F#4;G#3-G#4;A3-A4;",
-    theorist: 'Emile Jobin, Quentin Blumenroeder',
-    period: 'XVIIIe siècle',
-    periodNum: 1700,
-    geographicalArea: 'Allemagne',
-    nature: 'Comma syntonique',
-    structuralParticularity:
-      'Solution proposée par Emile Jobin au problème de l’interprétation du motif arboré par le frontispice de l’édition de 1722 du clavier bien tempéré',
-    sources: [
-      {
-        author: '',
-        book: 'Emile Jobin : article paru dans la revue du Conservatoire de Paris',
-        title: '',
-        other: '',
-        date: '',
-        page: '',
-        url: ' https://larevue.conservatoiredeparis.fr/index.php?id=1859',
-      },
-      {
-        author: 'Johann Georg Neidhardt,',
-        book: 'Sectio canonis harmonia',
-        title: '',
-        other: '',
-        date: '1724',
-        page: '',
-        url: 'https://imslp.org/wiki/Sectio_canonis_harmonici_(Neidhardt,_Johann_Georg)',
-      },
-    ],
-    soundReferences: [{ title: '', url: '' }],
-    commentary: '',
   },
 
   {
-    idTemperament: 14,
-    name: 'Marpurg 1756',
-    nameFR: 'Marpurg 1756',
+    id: 'Marpurg',
+    periodNum: 1756,
     deviation: {
       C: 10.264,
       C_sharp: -5.474,
@@ -1234,49 +640,10 @@ De nombreuses interprétations sont possible du texte de Jean-Philippe Rameau, l
       E: '8/11',
       B: '13/11',
     },
-    procedure:
-      'A4;A4-A3;{La tierce fa-la est pure}A3-F3;F3-F4;{On répartit les quatre quintes intérieures à fa-la de manière égale, au quart de comma syntonique}F3-C4;C4-G3;G3-G4;G4-D4;{On vérifie l’intervalle D4-G3 tempéré au quart de comma}D4-G3;A3-E4;E4-B3;B3-F#4;F#4-F#3;{On procède à l’accord des cinq quintes élargies}F#3-C#4;C#4-G#3;G#3-G#4;G#4-Eb4;Eb4-Bb3;Bb3-F4;',
-    theorist: 'Friedrich Wilhelm Marpurg (1718-1795)',
-    period: '1756',
-    periodNum: 1756,
-    geographicalArea: 'Allemagne, France',
-    nature: 'Comma syntonique',
-    structuralParticularity:
-      'Quatre tierces sont pures, sept quintes sont tempérées au quart de comma syntonique, les cinq quintes restantes sont plus grandes que pures.',
-    sources: [
-      {
-        author: 'Friedrich Wilhelm Marpurg',
-        book: 'Principes de clavecin',
-        title: '',
-        other: '',
-        date: '1756',
-        page: '',
-        url: 'https://imslp.org/wiki/Anleitung_zum_Clavierspielen_(Marpurg%2C_Friedrich_Wilhelm)',
-      },
-      {
-        author: 'Friedrich Wilhelm Marpurg',
-        book: 'Versuch über die musikalische Temperatur',
-        title: '',
-        other: '',
-        date: '1776',
-        page: '',
-        url: 'https://imslp.org/wiki/Versuch_%C3%BCber_die_musikalische_Temperatur_(Marpurg%2C_Friedrich_Wilhelm)',
-      },
-    ],
-    soundReferences: [
-      { title: '', url: '' },
-      { title: '', url: '' },
-      { title: '', url: '' },
-      { title: '', url: '' },
-    ],
-    commentary:
-      'Le tempérament ici proposé est décrit dans l’ouvrage Principes de clavecin, dont la première version est publiée à Berlin en 1756. Selon Marpurg il s’agit de la « meilleure des partitions inégales qui soient en usage ». Dans son traité Versuch über die musikalische Temperatur publié à Breslau en 1776, Marpurg décrit plusieurs autres tempéraments.',
   },
-
   {
-    idTemperament: 15,
-    name: 'Chaumont 1/5',
-    nameFR: 'Chaumont 1/5',
+    id: 'Chaumont',
+    periodNum: 1695,
     deviation: {
       C: 7.037,
       C_sharp: -9.385,
@@ -1319,38 +686,10 @@ De nombreuses interprétations sont possible du texte de Jean-Philippe Rameau, l
       E: '2/11',
       B: '9/11',
     },
-    procedure:
-      "A4;A4-A3;{On tempère la tierce Fa-La à 2/11 de comma soit 2 battements par secondes}A3-F3;{Chaumont propose la procédure d’accord suivante à partir du Fa}F3-F4;{on divise la tierce Fa-La en quatre quintes tempérées à -1/5 de comma}F3-C4;C4-C3;C3-G3;G3-G4;G3-D4;D4-D3;D3:A3;{on vérifie l’accord de Fa majeur}A3-E4;E4-E3;{on vérifie l’accord de Do majeur}E3-B3;{on vérifie l’accord de Sol majeur. Ensuite Chaumont propose d'accorder le Si à l'octave grave, nous agissons à l’octave supérieure}B3-F#4;F#4-F#3;{on vérifie l’accord de Re majeur}F#3-C#4;{on vérifie l’accord de La majeur}C#4-C#3;C#3-G#3;G#3-G#4;{on vérifie l’accord de Mi majeur}F4-Bb3;Bb3-Eb4;Eb4-Eb3;",
-    theorist: 'Lambert Chaumont (v.1630-1712)',
-    period: '1695',
-    periodNum: 1695,
-    geographicalArea: 'France',
-    nature: 'Comma syntonique',
-    structuralParticularity: '',
-    sources: [
-      {
-        author: 'Lambert Chaumont',
-        book: "Pièces d'orgue dans les huit tons, Huy, 1695",
-        title: '',
-        other: '',
-        date: '1695',
-        page: '',
-        url: 'https://imslp.org/wiki/Pi%C3%A8ces_d%E2%80%99orgue_sur_les_8_tons_(Chaumont%2C_Lambert)',
-      },
-    ],
-    soundReferences: [
-      { title: '', url: '' },
-      { title: '', url: '' },
-      { title: '', url: '' },
-      { title: '', url: '' },
-    ],
-    commentary: '',
   },
-
   {
-    idTemperament: 16,
-    name: 'Martini',
-    nameFR: 'Martini',
+    id: 'Martini',
+    periodNum: 1750,
     deviation: {
       C: 10.264,
       C_sharp: 6.842,
@@ -1393,37 +732,10 @@ De nombreuses interprétations sont possible du texte de Jean-Philippe Rameau, l
       E: '10/11',
       B: '11/11',
     },
-    procedure: '',
-    theorist: 'Martini (1706-1784)',
-    period: '',
-    periodNum: 1750,
-    geographicalArea: 'Italie',
-    nature: 'Comma syntonique',
-    structuralParticularity: '',
-    sources: [
-      {
-        author: 'Padre Martini',
-        book: '',
-        title: '',
-        other: '',
-        date: '',
-        page: '',
-        url: '',
-      },
-    ],
-    soundReferences: [
-      { title: '', url: '' },
-      { title: '', url: '' },
-      { title: '', url: '' },
-      { title: '', url: '' },
-    ],
-    commentary: '',
   },
-
   {
-    idTemperament: 17,
-    name: 'Riccati',
-    nameFR: 'Riccati',
+    id: 'Riccati',
+    periodNum: 1750,
     deviation: {
       C: 5.521,
       C_sharp: -3.681,
@@ -1466,36 +778,10 @@ De nombreuses interprétations sont possible du texte de Jean-Philippe Rameau, l
       E: '6/11',
       B: '13/11',
     },
-    procedure: '',
-    theorist: 'Giordano Riccati (1709-1790)',
-    period: '',
-    periodNum: 1750,
-    geographicalArea: 'Italie',
-    nature: 'Comma syntonique',
-    structuralParticularity: '',
-    sources: [
-      {
-        author: 'Giordano Riccati',
-        book: '',
-        title: '',
-        other: '',
-        date: '',
-        page: '',
-        url: '',
-      },
-    ],
-    soundReferences: [
-      { title: '', url: '' },
-      { title: '', url: '' },
-      { title: '', url: '' },
-      { title: '', url: '' },
-    ],
-    commentary: '',
   },
   {
-    idTemperament: 18,
-    name: 'Bendeler I',
-    nameFR: 'Bendeler I',
+    id: 'Bendeler',
+    periodNum: 1750,
     deviation: {
       C: 9.775,
       C_sharp: 0,
@@ -1538,30 +824,5 @@ De nombreuses interprétations sont possible du texte de Jean-Philippe Rameau, l
       E: '7/11',
       B: '7/11',
     },
-    procedure: '',
-    theorist: '',
-    period: '',
-    periodNum: 1750,
-    geographicalArea: '',
-    nature: 'Comma pythagoricien',
-    structuralParticularity: '',
-    sources: [
-      {
-        author: '',
-        book: '',
-        title: '',
-        other: '',
-        date: '',
-        page: '',
-        url: '',
-      },
-    ],
-    soundReferences: [
-      { title: '', url: '' },
-      { title: '', url: '' },
-      { title: '', url: '' },
-      { title: '', url: '' },
-    ],
-    commentary: '',
   },
 ];

@@ -1,16 +1,16 @@
 import React from 'react';
 import { IonInput, IonSelect, IonSelectOption } from '@ionic/react';
-import { TemperamentDBType } from '../../engine/DB';
 import { ascendingOrder } from '../../utils/favorite';
 import { FREQ_A4_MAX, FREQ_A4_MIN } from '../../model/Note/a4';
+import { Temperament } from '../../model/Temperament/Temperament';
 
 type TunerHeaderProps = {
-  defaultTemperamentId: number,
-  defaultFreqA4: number,
-  temperamentsList: TemperamentDBType[],
-  onTemperamentChange: (e: any) => void,
-  onFreqA4Change: (e: any) => void,
-}
+  defaultTemperamentId: string;
+  defaultFreqA4: number;
+  temperamentsList: Temperament[];
+  onTemperamentChange: (e: any) => void;
+  onFreqA4Change: (e: any) => void;
+};
 
 const TunerHeaderInputs: React.FC<TunerHeaderProps> = ({
   defaultTemperamentId,
@@ -19,7 +19,6 @@ const TunerHeaderInputs: React.FC<TunerHeaderProps> = ({
   onTemperamentChange,
   onFreqA4Change,
 }) => {
-
   return (
     <div className="px-4 pt-2 w-full tune-header-select">
       <IonSelect
@@ -28,11 +27,13 @@ const TunerHeaderInputs: React.FC<TunerHeaderProps> = ({
         placeholder="Tempérament"
         onIonChange={onTemperamentChange}
       >
-        {temperamentsList.sort(ascendingOrder('name')).map((t: TemperamentDBType) => (
-          <IonSelectOption key={t.idTemperament} value={t.idTemperament}>
-            {t.nameFR}
-          </IonSelectOption>
-        ))}
+        {temperamentsList
+          .sort(ascendingOrder('name'))
+          .map((temperament: Temperament) => (
+            <IonSelectOption key={temperament.id} value={temperament.id}>
+              {temperament.name}
+            </IonSelectOption>
+          ))}
       </IonSelect>
       <div className="ml-4 flex items-center flex-shrink-0">
         <span>A4 (Hz)</span>
