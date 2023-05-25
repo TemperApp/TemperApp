@@ -6,9 +6,10 @@ import { DataSources } from '../../model/Temperament/Temperament';
 
 type resourcesProps = {
   resourcesList: Array<DataSources>,
+  title: string,
 }
 
-const ResourcesLearn: React.FC<resourcesProps> = ({ resourcesList }) => {
+const ResourcesLearn: React.FC<resourcesProps> = ({ resourcesList, title }) => {
 
   const completeTitle = (r: DataSources) => {
     if({author: "Lindley, Mark", book: "A quest for Bach’s ideal style of organ temperament", title:"", other: " in M. Lustig, ed., Stimmungen im 17. und 18.Jahrhundert, Michaelstein, ", date: "1997", page: "", url:"https://www.academia.edu/1134176/A_quest_for_Bach_s_ideal_style_of_organ_temperament"})
@@ -38,7 +39,7 @@ const ResourcesLearn: React.FC<resourcesProps> = ({ resourcesList }) => {
 
   return (
     <div className="LearnResources">
-      <h4 className="TitleParagraphLearn py-3">Ressources</h4>
+      <h4 className="TitleParagraphLearn py-3">{title}</h4>
       {resourcesList.map((r, idx) => {
         let longTitle = completeTitle(r);
         let btn = buttonWithLink(r,idx);

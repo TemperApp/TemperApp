@@ -465,7 +465,6 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
 
           <h4 className="pt-6">{t('researchGroup')}</h4>
           <hr className="my-5" />
-
           <p
             dangerouslySetInnerHTML={{
               __html: t('researchGroupContent', { escape: false }),
@@ -474,63 +473,19 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
 
           <h4 className="pt-6">{t('conception')}</h4>
           <hr className="my-5" />
-
-          <p className="p-long">
-            TemperApp a été développée par cinq étudiant·e·s en formation
-            d'ingénieur IMAC (Image, multimédia, audiovisuel et communication)
-            de l'École Supérieure d'Ingénieurs Paris-Est :
-          </p>
-          <ul className="my-0">
-            <li className="mb-1">
-              <strong>Fabian Adam</strong>
-            </li>
-            <li className="mb-1">
-              <strong>Benjamin Briere</strong>
-            </li>
-            <li className="mb-1">
-              <strong>Daphné Chamot-Rooke</strong>
-            </li>
-            <li className="mb-1">
-              <strong>Ludwig Chieng</strong>
-            </li>
-            <li className="mb-1">
-              <strong>Sterenn Fonseca</strong>
-            </li>
-          </ul>
+          <p
+            dangerouslySetInnerHTML={{
+              __html: t('conceptionContent', { escape: false }),
+            }}
+          ></p>
 
           <h4 className="pt-6">{t('helpUs')}</h4>
           <hr className="my-5" />
-
-          <p className="p-long">
-            TemperApp est une application en cours de développement et vous
-            pouvez y contribuer ! Vous avez des remarques, suggestions ?
-            L’équipe est à votre écoute par <strong>mail</strong> et sur{' '}
-            <strong>discord</strong> :
-          </p>
-          <p className="p-long">
-            <b>Suggérer un nouveau tempérament </b>:
-            <a href="https://discord.gg/9gekgUVQ">
-              {' '}
-              https://discord.gg/9gekgUVQ
-            </a>
-          </p>
-          <p className="p-long">
-            <b>Signaler un bug </b>:
-            <a href="https://discord.gg/qqhnHbFK">
-              {' '}
-              https://discord.gg/qqhnHbFK
-            </a>
-          </p>
-          <p className="p-long">
-            <b>Suggérer une nouvelle fonctionnalité </b>:
-            <a href="https://discord.gg/ZEJgfjYd">
-              {' '}
-              https://discord.gg/ZEJgfjYd
-            </a>
-          </p>
-          <p className="p-long">
-            <b>Pour toute question </b>: temperapp.dev@gmail.com
-          </p>
+          <p
+            dangerouslySetInnerHTML={{
+              __html: t('helpUsContent', { escape: false }),
+            }}
+          ></p>
         </div>
 
         <div>

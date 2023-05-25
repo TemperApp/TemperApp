@@ -7,10 +7,12 @@ import tuner from '../public/locales/en/tuner.json';
 import comparator from '../public/locales/en/comparator.json';
 import settings from '../public/locales/en/settings.json';
 import sheets from '../public/locales/en/sheets.json';
+import temper from '../public/locales/en/temper.json';
 
 interface I18nNamespaces {
   common: typeof common;
   temperaments: typeof temperaments;
+  temper: typeof temper;
   sheets: typeof sheets;
   settings: typeof settings;
   comparator: typeof comparator;

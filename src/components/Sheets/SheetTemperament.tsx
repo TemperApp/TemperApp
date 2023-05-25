@@ -13,7 +13,7 @@ import SheetDoubleRings from './SheetDoubleRings';
 import { useTranslation } from 'react-i18next';
 
 const SheetTemperament: React.FC = () => {
-  const { t } = useTranslation('temperaments');
+  const { t } = useTranslation(['temperaments', 'temper']);
   const global = useContext(GlobalStatesContext);
   const { id } = useParams<{ id: string }>();
   const [temperament, setTemperament] = useState<Temperament>(
@@ -25,39 +25,44 @@ const SheetTemperament: React.FC = () => {
   }, [t, id]);
 
   return (
-    <Sheet mainTitle={temperament.name} subTitle="Tempérament" id={id}>
+    <Sheet
+      mainTitle={temperament.name}
+      subTitle={t('pageTitle', { ns: 'temper' })}
+      id={id}
+    >
       <div className="px-6">
         {temperament.theorist !== '' ? (
           <p className="p-long">
-            <b>Théoricien</b> : {temperament.theorist}{' '}
+            <b>{t('theorist', { ns: 'temper' })}</b> : {temperament.theorist}{' '}
           </p>
         ) : (
           ''
         )}
         {temperament.period !== '' ? (
           <p className="p-long">
-            <b>Époque</b> : {temperament.period}{' '}
+            <b>{t('period', { ns: 'temper' })}</b> : {temperament.period}{' '}
           </p>
         ) : (
           ''
         )}
         {temperament.geographicalArea !== '' ? (
           <p className="p-long">
-            <b>Aire géographique</b> : {temperament.geographicalArea}{' '}
+            <b>{t('geographicalArea', { ns: 'temper' })}</b> :{' '}
+            {temperament.geographicalArea}{' '}
           </p>
         ) : (
           ''
         )}
         {temperament.nature !== '' ? (
           <p className="p-long">
-            <b>Nature</b> : {temperament.nature}{' '}
+            <b>{t('nature', { ns: 'temper' })}</b> : {temperament.nature}{' '}
           </p>
         ) : (
           ''
         )}
         {temperament.structuralParticularity !== '' ? (
           <p className="p-long">
-            <b>Particularité structurelle</b> :{' '}
+            <b>{t('structuralParticularity', { ns: 'temper' })}</b> :{' '}
             {temperament.structuralParticularity}{' '}
           </p>
         ) : (
@@ -65,7 +70,7 @@ const SheetTemperament: React.FC = () => {
         )}
         {temperament.commentary !== '' && (
           <>
-            <h4>Commentaires</h4>
+            <h4>{t('commentary', { ns: 'temper' })}</h4>
             <p className="p-long">{temperament.commentary}</p>
           </>
         )}
@@ -73,7 +78,7 @@ const SheetTemperament: React.FC = () => {
 
       <div className="px-6 mx-auto max-w-lg">
         <Card
-          title="Qualité des quintes et des tierces"
+          title={t('fifthsAndThirdsQuality', { ns: 'temper' })}
           classNameContent="pb-14"
         >
           <SheetDoubleRings temperament={temperament} />
@@ -99,16 +104,17 @@ const SheetTemperament: React.FC = () => {
               );
             })
           : ''}
-        <ResourcesLearn resourcesList={temperament.sources} />
+        <ResourcesLearn
+          resourcesList={temperament.sources}
+          title={t('resources', { ns: 'temper' })}
+        />
       </div>
 
       <div className="relative flex justify-end right-4 pb-16">
         <IonButton
           id="btn-goto-tune"
           className="btn-round fixed"
-          onClick={() =>
-            global.setTunerTemperamentId(temperament.id)
-          }
+          onClick={() => global.setTunerTemperamentId(temperament.id)}
           routerLink={`/tune`}
         >
           <IonIcon

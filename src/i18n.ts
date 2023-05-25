@@ -12,6 +12,7 @@ i18n
       'learn',
       'temperaments',
       'tuner',
+      'temper',
       'comparator',
       'settings',
       'sheets',
