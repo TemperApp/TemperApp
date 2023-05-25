@@ -65,7 +65,7 @@ const ComparatorComma: React.FC<ComparatorCommaProps> = ({
             </div>
             <div className="absolute flex right-4">
               <div className="toggle-name">
-                unité des quintes : 
+                {t('fifthsUnit')} : 
               </div>
               <Toggler
                 typeContentText={true}

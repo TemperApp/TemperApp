@@ -22,7 +22,7 @@ const ComparatorModalLegendSVG: React.FC = () => {
       <text
         className="color-legend-theme"
         x="144" y="103"
-        font-size="1.3rem"
+        fontSize="1.3rem"
         textAnchor="middle"
       >
         TEMPÉRAMENT 1
@@ -30,7 +30,7 @@ const ComparatorModalLegendSVG: React.FC = () => {
       <text
         className="color-legend-theme"
         x="374" y="103"
-        font-size="1.3rem"
+        fontSize="1.3rem"
         textAnchor="middle"
       >
         TEMPÉRAMENT 2
@@ -68,14 +68,14 @@ const ComparatorModalLegendSVG: React.FC = () => {
       <text
         className="color-legend-theme"
         x="371" y="180"
-        font-size="1.25rem"
+        fontSize="1.25rem"
       >
         TIERCES
       </text>
       <text
         className="color-legend-theme"
         x="373" y="420"
-        font-size="1.25rem"
+        fontSize="1.25rem"
       >
         QUINTES
       </text>
