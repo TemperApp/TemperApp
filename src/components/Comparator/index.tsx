@@ -37,7 +37,7 @@ const Comparator: React.FC = () => {
   const [temperamentsList, setTemperamentsList] = useState<Array<Temperament>>(
     []
   );
-  const { t } = useTranslation();
+  const { t } = useTranslation(['temperaments', 'comparator']);
 
   useEffect(() => {
     const temperaments = fetchTemperaments(t);
@@ -96,7 +96,7 @@ const Comparator: React.FC = () => {
             <IonSelect
               className="w-full"
               value={idTemperament2}
-              placeholder="Tempérament"
+              placeholder={t('temper', {ns: 'comparator'})}
               onIonChange={(e) => setIdTemperament2(e.detail.value)}
             >
               {temperamentsList

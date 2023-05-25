@@ -4,15 +4,19 @@ import {
   IonContent,
   IonHeader,
 } from "@ionic/react";
+import { useTranslation } from 'react-i18next';
+
 import PageHeader from "./Page/PageHeader";
 import SheetsList from "../components/Sheets/SheetsList";
 
 const Sheets: React.FC = () => {
+  const { t } = useTranslation('sheets');
+
   return (
     <IonPage>
       <IonHeader className="ion-no-border page-header">
         <PageHeader
-          mainTitle="Fiches"
+          mainTitle={t('pageTitle')}
         />
       </IonHeader>
 

@@ -21,9 +21,9 @@ import './Tuner.css';
 import { useTranslation } from 'react-i18next';
 
 export enum TuneMode {
-  BEATS = 'Battements', // TODO Find a better way to print text
+  BEATS = 'Beats', // TODO Find a better way to print text
   PITCHPIPE = 'Pitch pipe',
-  PROCEDURE = 'Procédure',
+  PROCEDURE = 'Procedure',
 }
 
 type TunerProps = {
@@ -34,7 +34,7 @@ type TunerProps = {
 const Tuner: React.FC<TunerProps> = ({ setMainTitle, setSubTitle }) => {
   const settings = useContext(SettingsContext);
   const global = useContext(GlobalStatesContext);
-  const { t } = useTranslation('temperaments');
+  const { t } = useTranslation(['temperaments', 'tuner']);
 
   const [tuneMode, setTuneMode] = useState(TuneMode.BEATS);
   const [temperament, setTemperament] = useState<Temperament>(
@@ -52,13 +52,13 @@ const Tuner: React.FC<TunerProps> = ({ setMainTitle, setSubTitle }) => {
 
   useEffect(() => {
     if (tuneMode === TuneMode.PROCEDURE) {
-      setSubTitle("Procédure d'accord");
+      setSubTitle(t('procedureTitle', { ns: 'tuner' }));
       setMainTitle(temperament.name);
     } else {
-      setSubTitle('Accordeur');
+      setSubTitle(t('beatsTitle', { ns: 'tuner' }));
       setMainTitle(tuneMode);
     }
-  }, [tuneMode, setSubTitle, setMainTitle, temperament.name]);
+  }, [t, tuneMode, setSubTitle, setMainTitle, temperament.name]);
 
   useEffect(() => {
     setTemperamentsList(fetchTemperaments(t));

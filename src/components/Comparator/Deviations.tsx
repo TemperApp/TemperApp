@@ -1,5 +1,7 @@
 import React from "react";
 import { IonCol, IonGrid, IonRow } from "@ionic/react";
+import { useTranslation } from 'react-i18next';
+
 
 import Card from "../Card";
 import { Temperament } from "../../model/Temperament/Temperament";
@@ -15,16 +17,18 @@ type DeviationsProps = {
 const Deviations: React.FC<DeviationsProps> = ({
   t1, t2
 }) => {
+  const { t } = useTranslation('comparator');
+
   return (
     <div className="px-6 mx-auto max-w-lg">
-      <Card title='Déviations par rapport au tempérament égal'>
+      <Card title={t('deviationsFromEqual')}>
         <IonGrid>
           <IonRow className="justify-end items-end">
             <IonCol size="5.25" offset="1.25">
-              <strong>{t1.nameFR}</strong>
+              <strong>{t1.name}</strong>
             </IonCol>
             <IonCol size="5.25">
-              <strong>{t2.nameFR}</strong>
+              <strong>{t2.name}</strong>
             </IonCol>
           </IonRow>
 

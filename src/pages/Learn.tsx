@@ -44,7 +44,7 @@ const Learn: React.FC = () => {
   return (
     <IonPage>
       <IonHeader className="ion-no-border page-header">
-        <PageHeader mainTitle={(() => t('pageTitle'))()} />
+        <PageHeader mainTitle={t('pageTitle')} />
       </IonHeader>
 
       <IonContent scrollY={true}>

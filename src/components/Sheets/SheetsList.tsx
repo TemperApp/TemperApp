@@ -71,12 +71,12 @@ const SheetsMenu: React.FC = () => {
   const items = [
     {
       key: '0',
-      label: 'Mes Favoris',
+      label: t('favoriteTemperamentsLabel'),
       elements: favoriteTemperaments,
     },
     {
       key: '1',
-      label: 'Tous les tempéraments',
+      label: t('allTemperamentsLabel'),
       elements: temperamentsList,
     },
   ];
@@ -144,7 +144,7 @@ const SheetsMenu: React.FC = () => {
                   onClick={sortTemperamentByName('NAME_ASC')}
                   size="small"
                 >
-                  A-Z ⬆
+                  {t('filters.nameAsc')}
                 </IonButton>
                 <IonButton
                   className="btn-primary secondary"
@@ -152,7 +152,7 @@ const SheetsMenu: React.FC = () => {
                   onClick={sortTemperamentByName('NAME_DESC')}
                   size="small"
                 >
-                  A-Z ⬇
+                  {t('filters.nameDesc')}
                 </IonButton>
                 <IonButton
                   className="btn-primary secondary"
@@ -160,7 +160,7 @@ const SheetsMenu: React.FC = () => {
                   onClick={sortTemperamentByPeriod('PERIOD_ASC')}
                   size="small"
                 >
-                  Période ⬆
+                  {t('filters.periodAsc')}
                 </IonButton>
                 <IonButton
                   className="btn-primary secondary"
@@ -168,7 +168,7 @@ const SheetsMenu: React.FC = () => {
                   onClick={sortTemperamentByPeriod('PERIOD_DESC')}
                   size="small"
                 >
-                  Période ⬇
+                  {t('filters.periodDesc')}
                 </IonButton>
               </IonCol>
             </IonRow>

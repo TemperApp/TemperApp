@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { IonContent, IonHeader, IonModal, IonPage } from "@ionic/react";
+import { useTranslation } from 'react-i18next';
+
 import "./Compare.css";
 import Comparator from "../components/Comparator";
 import PageHeader from "./Page/PageHeader";
@@ -34,19 +36,20 @@ const CompareModalContent: React.FC = () => (
 
 const Compare: React.FC = () => {
   const [showModal, setShowModal] = useState(false);
+  const { t } = useTranslation('comparator');
 
   return (
     <IonPage>
       <IonHeader className="ion-no-border page-header">
         <PageHeader
-          mainTitle="Comparateur"
+          mainTitle={t('pageTitle')}
           onShowModal={() => setShowModal(true)}
         />
       </IonHeader>
 
       <IonModal isOpen={showModal} cssClass="modal-fullscreen page-header">
         <PageModal
-          title="Aide · Comparateur"
+          title={t('modalTitle')}
           onQuit={() => setShowModal(false)}
         >
           <CompareModalContent />

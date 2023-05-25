@@ -1,81 +1,91 @@
-import React, { useContext, useState } from "react";
-import { IonButton, IonIcon } from "@ionic/react";
+import React, { useContext, useState } from 'react';
+import { IonButton, IonIcon } from '@ionic/react';
+import { useTranslation } from 'react-i18next';
 import { play, bug } from 'ionicons/icons';
 
-import PageModal from "../../pages/Page/PageModal";
-import SettingToggle from "../inputs/SettingToggle";
-import SettingSelect from "../inputs/SettingSelect";
-import SettingInput from "../inputs/SettingInput";
-import SettingsGroup from "./SettingsGroup";
-import SettingRange from "../inputs/SettingRange";
+import PageModal from '../../pages/Page/PageModal';
+import SettingToggle from '../inputs/SettingToggle';
+import SettingSelect from '../inputs/SettingSelect';
+import SettingInput from '../inputs/SettingInput';
+import SettingsGroup from './SettingsGroup';
+import SettingRange from '../inputs/SettingRange';
 
-import useTemperTone from "../../hooks/useTemperTone";
-import { useStorageSQLite } from "react-data-storage-sqlite-hook/dist";
+import useTemperTone from '../../hooks/useTemperTone';
+import { useStorageSQLite } from 'react-data-storage-sqlite-hook/dist';
 
-import SettingsContext from "../../store/settings-context";
-import GlobalStatesContext from "../../store/global-states-context";
-import { AllowedSettingValue, KeyboardLabels } from "../../store/settings-context/settings";
+import SettingsContext from '../../store/settings-context';
+import GlobalStatesContext from '../../store/global-states-context';
+import {
+  AllowedSettingValue,
+  KeyboardLabels,
+} from '../../store/settings-context/settings';
 
-import { lerp } from "../../utils/maths";
-import { FilterRollOff } from "tone";
-import { FREQ_A4_MAX, FREQ_A4_MIN } from "../../model/Note/a4";
-
+import { lerp } from '../../utils/maths';
+import { FilterRollOff } from 'tone';
+import { FREQ_A4_MAX, FREQ_A4_MIN } from '../../model/Note/a4';
 
 type SettingsModalProps = {
-  onQuit: (e: any) => void,
+  onQuit: (e: any) => void;
 };
 
 export const SettingsModal: React.FC<SettingsModalProps> = ({
-  onQuit = (nextSettings: any) => { },
+  onQuit = (nextSettings: any) => {},
 }) => {
   const settings = useContext(SettingsContext);
   const global = useContext(GlobalStatesContext);
-  
-  const TemperTone = useTemperTone();
-  const {clear, isAvailable} = useStorageSQLite();
-  const store = {clear, isAvailable};
+  const { t } = useTranslation('settings');
 
-  const [nextSettings, setNextSettings] = useState({...settings});
+  const TemperTone = useTemperTone();
+  const { clear, isAvailable } = useStorageSQLite();
+  const store = { clear, isAvailable };
+
+  const [nextSettings, setNextSettings] = useState({ ...settings });
   const [debugMode, setDebugMode] = useState(false);
-  
+
   const playDemoSound = () => {
     global.setIsTemperToneMute(false);
     TemperTone.trigger(nextSettings.freqA4, 3);
-  }
+  };
 
   const set = (name: string, value: AllowedSettingValue) => {
     if (settings[name] === undefined) {
-      console.error('[SettingsModal]: Cannot update settings: unknown setting name:', name);
+      console.error(
+        '[SettingsModal]: Cannot update settings: unknown setting name:',
+        name
+      );
       return;
     }
     setNextSettings((prevNextSettings: any) => ({
-      ...prevNextSettings, [name]: value,
+      ...prevNextSettings,
+      [name]: value,
     }));
   };
-  
+
   const setImmediatly = (name: string, value: AllowedSettingValue) => {
     if (settings[name] === undefined) {
-      console.error('[SettingsModal]: Cannot update settings: unknown setting name:', name);
+      console.error(
+        '[SettingsModal]: Cannot update settings: unknown setting name:',
+        name
+      );
       return;
     }
-    const settingSetter = settings[`set${name.charAt(0).toUpperCase()}${name.slice(1)}`]; // e.g.: settings.setDarkTheme
+    const settingSetter =
+      settings[`set${name.charAt(0).toUpperCase()}${name.slice(1)}`]; // e.g.: settings.setDarkTheme
     settingSetter(value);
     set(name, value);
   };
-  
+
   return (
     <>
-      <PageModal
-        title="Paramètres"
-        onQuit={() => onQuit(nextSettings)}
-      >
+      <PageModal title={t('pageTitle')} onQuit={() => onQuit(nextSettings)}>
         <div className="mt-3">
-
           <SettingToggle
-            name='Thème sombre'
+            name={t('theme')}
             checked={settings.darkTheme}
             value="darktheme"
-            onClick={(e: any) => setImmediatly('darkTheme', e.target.checked as boolean)}
+            onClick={(e: any) =>
+              setImmediatly('darkTheme', e.target.checked as boolean)
+            }
           />
 
           {/*
@@ -96,7 +106,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
             value={nextSettings.freqA4}
             attributes={{
               min: String(FREQ_A4_MIN),
-              max: String(FREQ_A4_MAX)
+              max: String(FREQ_A4_MAX),
             }}
             onChange={(e) => {
               const value = Number(e.detail.value);
@@ -107,77 +117,78 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
           />
 
           <SettingToggle
-            name='Battements par seconde'
+            name={t('beatsPerSecond')}
             checked={nextSettings.isBps}
             value="isBps"
             onClick={(e: any) => set('isBps', e.target.checked as boolean)}
           />
 
           <SettingToggle
-            name='Accordeur afficher commas'
+            name={t('showCommasInTuner')}
             checked={nextSettings.tunerShowCommas}
             value="tunerShowCommas"
-            onClick={(e: any) => set('tunerShowCommas', e.target.checked as boolean)}
+            onClick={(e: any) =>
+              set('tunerShowCommas', e.target.checked as boolean)
+            }
           />
 
           <SettingToggle
-            name="Forme d'onde triangle"
+            name={t('triangleSoundwave')}
             checked={nextSettings.waveTriangle}
             value="triangle"
             onClick={(e: any) => {
               const waveTriangle = e.target.checked as boolean;
               set('waveTriangle', waveTriangle);
-              TemperTone.get().amsynth.oscillator.type = (waveTriangle) ? 'triangle' : 'sine';
+              TemperTone.get().amsynth.oscillator.type = waveTriangle
+                ? 'triangle'
+                : 'sine';
             }}
           />
 
-
           <SettingsGroup
-            title='Volume'
+            title={t('volume')}
             titleAside={
-              <IonButton 
-                size='small' fill='clear'
-                onClick={playDemoSound}
-              >
-                <IonIcon src={play} slot='icon-only' />
+              <IonButton size="small" fill="clear" onClick={playDemoSound}>
+                <IonIcon src={play} slot="icon-only" />
               </IonButton>
             }
           >
             <SettingRange
-              name="Onde périodique"
+              name={t('periodicWave')}
               attributes={{ min: 0, max: 10, step: 1 }}
               value={nextSettings.amSynthVolume}
               onChange={(e) => {
                 set('amSynthVolume', e.detail.value);
-                TemperTone.get().amsynthGain.gain.rampTo(lerp(0, 10, 0, 1, e.detail.value));
+                TemperTone.get().amsynthGain.gain.rampTo(
+                  lerp(0, 10, 0, 1, e.detail.value)
+                );
               }}
               classNameIonRange="max-w-32"
             />
-        
+
             <SettingRange
-              name="Diapason"
+              name={t('diapason')}
               attributes={{ min: 0, max: 10, step: 1 }}
               value={nextSettings.forkVolume}
               onChange={(e) => {
                 set('forkVolume', e.detail.value);
-                TemperTone.get().forkGain.gain.rampTo(lerp(0, 10, 0, 1, e.detail.value));
+                TemperTone.get().forkGain.gain.rampTo(
+                  lerp(0, 10, 0, 1, e.detail.value)
+                );
               }}
               classNameIonRange="max-w-32"
             />
-
           </SettingsGroup>
 
-          
-          <SettingsGroup title="Procédure d'accord">
-
+          <SettingsGroup title={t('chordProcedure')}>
             <SettingSelect
-              name="Nom des notes du clavier"
-              placeholder="Selectionner..."
+              name={t('keyboardNoteNames')}
+              placeholder={t('select')}
               options={[
-                {value: String(KeyboardLabels.NONE), label: "Aucune"},
-                {value: String(KeyboardLabels.C3C4), label: "C3 et C4"},
-                {value: String(KeyboardLabels.A3A4), label: "A3 et A4"},
-                {value: String(KeyboardLabels.ALL), label: "Toutes"},
+                { value: String(KeyboardLabels.NONE), label: t('none') },
+                { value: String(KeyboardLabels.C3C4), label: t('C3C4') },
+                { value: String(KeyboardLabels.A3A4), label: t('A3A4') },
+                { value: String(KeyboardLabels.ALL), label: t('all') },
               ]}
               value={String(nextSettings.procedurekeyboardLabels)}
               onChange={(e: any) => {
@@ -187,16 +198,20 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
             />
 
             <SettingToggle
-              name="Afficher les bulles d'info"
+              name={t('showTooltips')}
               checked={nextSettings.procedureShowPopover}
               value="procedureShowPopover"
-              onClick={(e: any) => set('procedureShowPopover', e.target.checked as boolean)}
+              onClick={(e: any) =>
+                set('procedureShowPopover', e.target.checked as boolean)
+              }
             />
 
-            <p className="pt-2 pb-2 bold"><b>Durées d'émission du son</b></p>
+            <p className="pt-2 pb-2 bold">
+              <b>{t('soundEmissionDuration')}</b>
+            </p>
 
             <SettingInput
-              name="Pause entre les notes"
+              name={t('pauseBetweenNotes')}
               type="number"
               value={nextSettings.procedureSubStepDurationPause}
               attributes={{ min: 0, max: 60, step: 0.1 }}
@@ -207,9 +222,9 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
               }}
               classNameInput="max-w-12 min-w-10"
             />
-            
+
             <SettingInput
-              name="Note (accord unique)"
+              name={t('noteSingleChord')}
               type="number"
               value={nextSettings.procedureSubStepDurationUnique}
               attributes={{ min: 0, max: 60, step: 0.1 }}
@@ -220,9 +235,9 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
               }}
               classNameInput="max-w-12 min-w-10"
             />
-            
+
             <SettingInput
-              name="Note (accord paire)"
+              name={t('noteDoubleChord')}
               type="number"
               value={nextSettings.procedureSubStepDurationPair}
               attributes={{ min: 0, max: 60, step: 0.1 }}
@@ -233,9 +248,9 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
               }}
               classNameInput="max-w-12 min-w-10"
             />
-            
+
             <SettingInput
-              name="Note (accord octave)"
+              name={t('noteOctaveChord')}
               type="number"
               value={nextSettings.procedureSubStepDurationOctave}
               attributes={{ min: 0, max: 60, step: 0.1 }}
@@ -246,9 +261,9 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
               }}
               classNameInput="max-w-12 min-w-10"
             />
-            
+
             <SettingInput
-              name="Battement"
+              name={t('beat')}
               type="number"
               value={nextSettings.procedureSubStepDurationBeat}
               attributes={{ min: 0, max: 60, step: 0.1 }}
@@ -259,9 +274,9 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
               }}
               classNameInput="max-w-12 min-w-10"
             />
-            
+
             <SettingInput
-              name="Absence de battement"
+              name={t('noBeat')}
               type="number"
               value={nextSettings.procedureSubStepDurationNoBeat}
               attributes={{ min: 0, max: 60, step: 0.1 }}
@@ -274,64 +289,57 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
             />
           </SettingsGroup>
 
-
           <SettingsGroup
-            title='Filtre passe-bas'
+            title={t('lowPassFilter')}
             titleAside={
-              <IonButton 
-                size='small' fill='clear'
-                onClick={playDemoSound}
-              >
-                <IonIcon src={play} slot='icon-only' />
+              <IonButton size="small" fill="clear" onClick={playDemoSound}>
+                <IonIcon src={play} slot="icon-only" />
               </IonButton>
             }
           >
             <SettingRange
-              name="Fréquence"
+              name={t('frequency')}
               attributes={{ min: 100, max: 4000, step: 50 }}
               value={nextSettings.amSynthFilterFrequency}
               onChange={(e) => {
                 set('amSynthFilterFrequency', e.detail.value);
-                TemperTone.get().amsynthFilter.frequency.rampTo(e.detail.value, 0.1);
+                TemperTone.get().amsynthFilter.frequency.rampTo(
+                  e.detail.value,
+                  0.1
+                );
               }}
               classNameIonRange="max-w-44"
             />
 
             <SettingSelect
-              name="Rolloff (dB/octave)"
-              placeholder="Selectionner..."
+              name={t('rolloff')}
+              placeholder={t('select')}
               options={[
-                {value: "-12", label: "-12"},
-                {value: "-24", label: "-24"},
-                {value: "-48", label: "-48"},
-                {value: "-96", label: "-96"},
+                { value: '-12', label: '-12' },
+                { value: '-24', label: '-24' },
+                { value: '-48', label: '-48' },
+                { value: '-96', label: '-96' },
               ]}
               value={String(nextSettings.amSynthFilterRollOff)}
               onChange={(e) => {
                 const rolloff = Number(e.detail.value) as FilterRollOff;
                 set('amSynthFilterRollOff', rolloff);
-                TemperTone.get().amsynthFilter.set({ rolloff: rolloff});
+                TemperTone.get().amsynthFilter.set({ rolloff: rolloff });
               }}
               classNameSelect="min-w-16 max-w-16"
             />
-
           </SettingsGroup>
 
-
           <SettingsGroup
-            title='Égaliseur audio'
+            title={t('equalizer')}
             titleAside={
-              <IonButton 
-                size='small' fill='clear'
-                onClick={playDemoSound}
-              >
-                <IonIcon src={play} slot='icon-only' />
+              <IonButton size="small" fill="clear" onClick={playDemoSound}>
+                <IonIcon src={play} slot="icon-only" />
               </IonButton>
             }
           >
-
             <SettingRange
-              name="Low (dB)"
+              name={t('lowFrequencies')}
               attributes={{ min: -96, max: 0, step: 3 }}
               value={nextSettings.amSynthEQLow}
               onChange={(e) => {
@@ -342,7 +350,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
             />
 
             <SettingRange
-              name="Mid (dB)"
+              name={t('midFrequencies')}
               attributes={{ min: -96, max: 0, step: 3 }}
               value={nextSettings.amSynthEQMid}
               onChange={(e) => {
@@ -353,7 +361,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
             />
 
             <SettingRange
-              name="High (dB)"
+              name={t('highFrequencies')}
               attributes={{ min: -96, max: 0, step: 3 }}
               value={nextSettings.amSynthEQHigh}
               onChange={(e) => {
@@ -364,7 +372,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
             />
 
             <SettingInput
-              name="Low/Mid (Hz)"
+              name={t('lowMidBreakpoint')}
               type="number"
               attributes={{ min: 10, max: 22000, step: 1 }}
               value={nextSettings.amSynthEQLowFrequency}
@@ -373,12 +381,13 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
                 if (value >= 10 && value <= 22000) {
                   set('amSynthEQLowFrequency', value);
                   TemperTone.get().amsynthEQ.lowFrequency.rampTo(value, 0.1);
-                }}}
+                }
+              }}
               classNameInput="max-w-16 min-w-16"
             />
 
             <SettingInput
-              name="Mid/High (Hz)"
+              name={t('midHighbreakpoint')}
               type="number"
               attributes={{ min: 10, max: 22000, step: 1 }}
               value={nextSettings.amSynthEQHighFrequency}
@@ -387,37 +396,35 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
                 if (value >= 10 && value <= 22000) {
                   set('amSynthEQHighFrequency', value);
                   TemperTone.get().amsynthEQ.highFrequency.rampTo(value, 0.1);
-                }}}
+                }
+              }}
               classNameInput="max-w-16 min-w-16"
             />
           </SettingsGroup>
 
-
           <SettingsGroup
-            title='Distorsion audio'
+            title={t('audioDistortion')}
             titleAside={
-              <IonButton 
-                size='small' fill='clear'
-                onClick={playDemoSound}
-              >
-                <IonIcon src={play} slot='icon-only' />
+              <IonButton size="small" fill="clear" onClick={playDemoSound}>
+                <IonIcon src={play} slot="icon-only" />
               </IonButton>
             }
           >
-        
             <SettingRange
-              name="Quantité"
+              name={t('quantity')}
               attributes={{ min: 0, max: 1, step: 0.05, pin: false }}
               value={nextSettings.amSynthDistortionAmount}
               onChange={(e) => {
                 set('amSynthDistortionAmount', e.detail.value);
-                TemperTone.get().amsynthDist.set({ distortion: e.detail.value });
+                TemperTone.get().amsynthDist.set({
+                  distortion: e.detail.value,
+                });
               }}
               classNameIonRange="max-w-36"
             />
 
             <SettingInput
-              name="Distortion max fréquence"
+              name={t('maxFrequencyDistortion')}
               type="number"
               attributes={{ min: 10, max: 22000, step: 1 }}
               value={nextSettings.amSynthDistortionLowFrequency}
@@ -426,12 +433,13 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
                 if (value >= 100 && value <= 500) {
                   set('amSynthDistortionLowFrequency', value);
                   TemperTone.get().amsynthDist.set({ distortion: value });
-                }}}
+                }
+              }}
               classNameInput="max-w-20 min-w-10"
             />
 
             <SettingInput
-              name="Distortion min fréquence"
+              name={t('minFrequencyDistortion')}
               type="number"
               attributes={{ min: 10, max: 22000, step: 1 }}
               value={nextSettings.amSynthDistortionHighFrequency}
@@ -439,103 +447,86 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
                 const value = Number(e.detail.value);
                 if (value >= 100 && value <= 500) {
                   set('amSynthDistortionHighFrequency', e.detail.value);
-                  TemperTone.get().amsynthDist.set({ distortion: e.detail.value });
-              }}}
+                  TemperTone.get().amsynthDist.set({
+                    distortion: e.detail.value,
+                  });
+                }
+              }}
               classNameInput="max-w-20 min-w-10"
             />
           </SettingsGroup>
-
         </div>
 
         <div className="overflow-x-hidden">
-          <h4 className="pt-6">Présentation</h4>
+          <h4 className="pt-6">{t('presentation')}</h4>
+          <hr className="my-5" />
+
+          <p className="p-long">{t('presentationContent')}</p>
+
+          <h4 className="pt-6">{t('researchGroup')}</h4>
+          <hr className="my-5" />
+
+          <p
+            dangerouslySetInnerHTML={{
+              __html: t('researchGroupContent', { escape: false }),
+            }}
+          ></p>
+
+          <h4 className="pt-6">{t('conception')}</h4>
           <hr className="my-5" />
 
           <p className="p-long">
-            TemperApp est une application à destination des musicien·ne·s,
-            qui a pour vocation la réactualisation de la pratique de
-            l’accord et des tempéraments anciens. Elle constitue un outil
-            scientifique et pédagogique favorisant l’apprentissage de
-            l’accord à l’oreille, dont le principe se base sur la notion
-            de rapport intervallaire.
-          </p>
-
-
-          <h4 className="pt-6">Groupe de recherche</h4>
-          <hr className="my-5" />
-
-          <p className="p-long">
-            TemperApp est issue du travail de recherche réalisé par :
-          </p>
-          <p className="p-long">
-            <strong>Elisa Barbessi</strong>, professeur de clavecin et histoire de la musique au CRR du Grand-Avignon,
-            à l’initiative du projet. Doctorante à l’université Sorbonne, membre d’IReMus, Elisa est
-            directrice artistique d’ARTEMIDA.
-          </p>
-          <p className="p-long">
-            <strong>Jérôme Bertier</strong>, pianiste, claveciniste et organiste, professeur au conservatoire d’Auxerre.
-          </p>
-          <p className="p-long">
-            <strong>Pierre Cazes</strong>, claveciniste. Il enseigne au CNSMDP l'histoire, la théorie et la pratique des tempéraments ainsi que la basse continue. Il est professeur de clavecin au CRR93 (Aubervilliers/La Courneuve).
-          </p>
-          <p className="p-long">
-            <strong>Franck Jedrzejewski</strong>, chercheur au CEA, docteur habilité en musicologie et philosophie. Ancien Vice-président du Collège International de Philosophie, a publié une vingtaine d'ouvrages.
-          </p>
-          <p className="p-long">
-            <strong>Théodora Psychoyou</strong>, IReMus - Sorbonne Université.
-          </p>
-
-          <p className="p-long">
-            Le projet bénéficie de nombreux soutiens sous la forme de ressources humaines et techniques :
-          </p>
-          <ul className="mb-0">
-            <li className="mb-2">
-              le Conservatoire National Supérieur de Musique et de Danse de Paris,
-            </li>
-            <li className="mb-2">
-              l'Institut Collegium Musicae,
-            </li>
-            <li className="mb-2">
-              l'Institut de recherche en Musicologie (IReMus),
-            </li>
-            <li>
-              et l’association ARTEMIDA.
-            </li>
-          </ul>
-
-
-          <h4 className="pt-6">Conception et réalisation</h4>
-          <hr className="my-5" />
-
-          <p className="p-long">
-            TemperApp a été développée par cinq étudiant·e·s en formation d'ingénieur IMAC (Image, multimédia, audiovisuel et communication) de l'École Supérieure d'Ingénieurs Paris-Est :
+            TemperApp a été développée par cinq étudiant·e·s en formation
+            d'ingénieur IMAC (Image, multimédia, audiovisuel et communication)
+            de l'École Supérieure d'Ingénieurs Paris-Est :
           </p>
           <ul className="my-0">
-            <li className="mb-1"><strong>Fabian Adam</strong></li>
-            <li className="mb-1"><strong>Benjamin Briere</strong></li>
-            <li className="mb-1"><strong>Daphné Chamot-Rooke</strong></li>
-            <li className="mb-1"><strong>Ludwig Chieng</strong></li>
-            <li className="mb-1"><strong>Sterenn Fonseca</strong></li>
+            <li className="mb-1">
+              <strong>Fabian Adam</strong>
+            </li>
+            <li className="mb-1">
+              <strong>Benjamin Briere</strong>
+            </li>
+            <li className="mb-1">
+              <strong>Daphné Chamot-Rooke</strong>
+            </li>
+            <li className="mb-1">
+              <strong>Ludwig Chieng</strong>
+            </li>
+            <li className="mb-1">
+              <strong>Sterenn Fonseca</strong>
+            </li>
           </ul>
 
-
-          <h4 className="pt-6">Soutenez-nous !</h4>
+          <h4 className="pt-6">{t('helpUs')}</h4>
           <hr className="my-5" />
 
           <p className="p-long">
-            TemperApp est une application en cours de développement et vous pouvez y contribuer ! Vous avez des remarques, suggestions ? L’équipe est à votre écoute par <strong>mail</strong> et sur <strong>discord</strong> : 
+            TemperApp est une application en cours de développement et vous
+            pouvez y contribuer ! Vous avez des remarques, suggestions ?
+            L’équipe est à votre écoute par <strong>mail</strong> et sur{' '}
+            <strong>discord</strong> :
           </p>
           <p className="p-long">
-            <b>Suggérer un nouveau tempérament </b>: 
-            <a href="https://discord.gg/9gekgUVQ"> https://discord.gg/9gekgUVQ</a>
+            <b>Suggérer un nouveau tempérament </b>:
+            <a href="https://discord.gg/9gekgUVQ">
+              {' '}
+              https://discord.gg/9gekgUVQ
+            </a>
           </p>
           <p className="p-long">
-            <b>Signaler un bug </b>: 
-            <a href="https://discord.gg/qqhnHbFK"> https://discord.gg/qqhnHbFK</a>
+            <b>Signaler un bug </b>:
+            <a href="https://discord.gg/qqhnHbFK">
+              {' '}
+              https://discord.gg/qqhnHbFK
+            </a>
           </p>
           <p className="p-long">
-            <b>Suggérer une nouvelle fonctionnalité </b>: 
-            <a href="https://discord.gg/ZEJgfjYd"> https://discord.gg/ZEJgfjYd</a>
+            <b>Suggérer une nouvelle fonctionnalité </b>:
+            <a href="https://discord.gg/ZEJgfjYd">
+              {' '}
+              https://discord.gg/ZEJgfjYd
+            </a>
           </p>
           <p className="p-long">
             <b>Pour toute question </b>: temperapp.dev@gmail.com
@@ -545,40 +536,39 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
         <div>
           <IonButton
             className="h-8 w-full"
-            fill='clear'
-            size='small'
+            fill="clear"
+            size="small"
             style={{ opacity: 0.35, color: 'var(--color-contrast' }}
             onClick={() => setDebugMode(!debugMode)}
           >
-            {debugMode && 
+            {debugMode && (
               <div className="w-full text-left">
-                <IonIcon className='mr-2' src={bug}/>
-                <span>
-                  Options de debug
-                </span>
+                <IonIcon className="mr-2" src={bug} />
+                <span>Options de debug</span>
               </div>
-            }
+            )}
           </IonButton>
 
-          { debugMode && store.isAvailable 
-            && <>
+          {debugMode && store.isAvailable && (
+            <>
               <IonButton
-                fill='clear' color='danger'
+                fill="clear"
+                color="danger"
                 onClick={() => store.clear()}
               >
                 Réinitialiser le stockage local
               </IonButton>
               <IonButton
-                fill='clear' color='danger'
+                fill="clear"
+                color="danger"
                 routerLink={'/storage'}
                 onClick={onQuit}
               >
                 Accéder au StorageTest
               </IonButton>
-          </>}
-
+            </>
+          )}
         </div>
-
       </PageModal>
     </>
   );

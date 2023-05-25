@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { IonSlides, IonSlide } from "@ionic/react";
+import { useTranslation } from 'react-i18next';
 
 import Toggler from "../inputs/Toggler";
 import Card from "../Card";
@@ -28,6 +29,7 @@ const ComparatorComma: React.FC<ComparatorCommaProps> = ({
   t1,
   t2,
 }) => {
+  const { t } = useTranslation('comparator');
   const [isCpMode, setCpMode] = useState<boolean>(true);
   const vbsize = { x: 200 + 5, y: 200 + 5};
   const center = { x: vbsize.x / 2, y: vbsize.y / 2};
@@ -39,7 +41,7 @@ const ComparatorComma: React.FC<ComparatorCommaProps> = ({
       <IonSlides pager={true} options={slideOpts} className="px-5 max-w-lg max-h-lg">
         <IonSlide className="px-1">
           <Card
-            title="Fractions de commas affectant les quintes"
+            title={t('fifthCommas')}
             classNameContent='pb-16'
             className='pb-4'
           >
