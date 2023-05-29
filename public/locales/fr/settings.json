@@ -1,5 +1,5 @@
 {
-  "pageTitle": "Settings",
+  "pageTitle": "Paramètres",
   "theme": "Dark theme",
   "beatsPerSecond": "Beats per Second",
   "showCommasInTuner": "Show Commas in Tuner",
@@ -10,7 +10,7 @@
   "chordProcedure": "Chord Procedure",
   "keyboardNoteNames": "Keyboard Note Names",
   "select": "Select...",
-  "language": "Language",
+  "language": "Langue",
   "none": "None",
   "C3C4": "C3 and C4",
   "A3A4": "A3 and A4",

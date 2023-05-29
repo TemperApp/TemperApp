@@ -29,9 +29,14 @@ const Home: React.FC = () => {
           />
         </div>
         <IonIcon
-          className="absolute top-0 right-0 mt-4 px-5 h-9 w-9"
+          className="absolute top-0 right-0 mt-4 px-5 h-9 w-9 cover"
           onClick={() => setShowModal(true)}
           src="assets/logotypes/icon-settings.svg"
+        />
+        <IonIcon
+          className="absolute top-12 right-0 mt-4 px-5 w-9"
+          onClick={() => setShowModal(true)}
+          src="assets/logotypes/flag.svg"
         />
       </IonHeader>
 

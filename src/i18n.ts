@@ -18,7 +18,7 @@ i18n
       'sheets',
     ],
     defaultNS: 'common',
-    debug: true,
+    debug: false,
     interpolation: {
       escapeValue: false,
     },

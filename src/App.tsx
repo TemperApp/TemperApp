@@ -1,8 +1,10 @@
-import React, { useEffect, useState, Suspense } from 'react';
+import React, { useEffect, useContext, useState, Suspense } from 'react';
 import { Redirect, Route } from 'react-router-dom';
 import { IonApp, IonRouterOutlet } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
 import { useTranslation } from 'react-i18next';
+import SettingsContext from "./store/settings-context";
+
 import {
   IonTabs,
   IonTabBar,
@@ -42,6 +44,7 @@ import isMobile from 'ismobilejs';
 import * as Tone from 'tone';
 
 import './i18n';
+import i18n from './i18n';
 
 const WarningModal = ({ onClick }: { onClick: () => void }) => {
   const { t } = useTranslation();
@@ -65,6 +68,13 @@ const WarningModal = ({ onClick }: { onClick: () => void }) => {
 
 const Main = () => {
   const { t } = useTranslation();
+  const settings = useContext(SettingsContext);
+
+  useEffect(() => {
+    const languages = ['en', 'fr'];
+    i18n.changeLanguage(languages[settings.language as any || 0]);
+  }, [settings]);
+
   return (
     <>
       <IonTabs>

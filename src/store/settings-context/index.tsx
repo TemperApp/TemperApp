@@ -68,8 +68,9 @@ export const SettingsContextProvider: React.FC = ({ children }) => {
     // Synchronize setting state with the value in the store
     const syncState = () => {
       (async () => {
-        if (await store.isKey(name))
+        if (await store.isKey(name)) {
           setState(JSON.parse((await store.getItem(name))!));
+        }
       })();
     }
 

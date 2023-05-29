@@ -18,11 +18,13 @@ import GlobalStatesContext from '../../store/global-states-context';
 import {
   AllowedSettingValue,
   KeyboardLabels,
+  Languages,
 } from '../../store/settings-context/settings';
 
 import { lerp } from '../../utils/maths';
 import { FilterRollOff } from 'tone';
 import { FREQ_A4_MAX, FREQ_A4_MIN } from '../../model/Note/a4';
+import i18n from '../../i18n';
 
 type SettingsModalProps = {
   onQuit: (e: any) => void;
@@ -32,6 +34,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
   onQuit = (nextSettings: any) => {},
 }) => {
   const settings = useContext(SettingsContext);
+  console.log(settings);
   const global = useContext(GlobalStatesContext);
   const { t } = useTranslation('settings');
 
@@ -79,6 +82,22 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
     <>
       <PageModal title={t('pageTitle')} onQuit={() => onQuit(nextSettings)}>
         <div className="mt-3">
+          <SettingSelect
+            name={t('language')}
+            placeholder={t('select')}
+            options={[
+              { value: String(Languages.ENGLISH) as any, label: 'English' },
+              { value: String(Languages.FRENCH) as any, label: 'Français' },
+            ]}
+            value={String(nextSettings.language)}
+            onChange={(e: any) => {
+              set('language', Number(e.detail.value));
+              const languages = ['en', 'fr'];
+              i18n.changeLanguage(languages[Number(e.detail.value) || 0])
+            }}
+            classNameSelect="w-40"
+          />
+
           <SettingToggle
             name={t('theme')}
             checked={settings.darkTheme}
@@ -87,18 +106,6 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
               setImmediatly('darkTheme', e.target.checked as boolean)
             }
           />
-
-          {/*
-          <SettingSelect
-            name='Langue'
-            placeholder="Selectionner..."
-            options={[
-              {value: "fr", label: 'Français'},
-            ]}
-            value="fr"
-            classNameSelect="w-40"
-          />
-          */}
 
           <SettingInput
             name="A4 (Hz)"
