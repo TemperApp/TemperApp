@@ -32,6 +32,7 @@ export const fetchTemperaments = (
         deviation: temp.deviation,
         cpExp5th: temp.cpExp5th,
         csExp3rd: temp.csExp3rd,
+        csExpMin3rd: temp.csExpMin3rd,
         periodNum: temp.periodNum,
         period: transGetter(t, temp.id, 'period') as string,
         name: transGetter(t, temp.id, 'name') as string,

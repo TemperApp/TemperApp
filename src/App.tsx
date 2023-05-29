@@ -113,7 +113,7 @@ const Main = () => {
               src="/assets/logotypes/icon-fiches-grey.svg"
               className="icon-grey h-6 w-6"
             />
-            <IonLabel>{t('tabs.about')}</IonLabel>
+            <IonLabel>{t('tabs.sheets')}</IonLabel>
           </IonTabButton>
           <IonTabButton className="ion-no-padding" tab="learn" href="/learn">
             <IonIcon

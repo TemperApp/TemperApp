@@ -11,7 +11,8 @@ import { vec2 } from '../../utils/maths';
 
 type CommasRingProps = {
   commas: NotesMap<string>,
-  is3rd: boolean,
+  is3rd?: boolean,
+  isMin3rd?: boolean,
   isCp: boolean,
   c: vec2,
   innerR: number,
@@ -26,6 +27,7 @@ type CommasRingProps = {
 const CommasRing: React.FC<CommasRingProps> = ({
   commas,
   is3rd,
+  isMin3rd,
   isCp,
   c,
   innerR,
@@ -40,7 +42,8 @@ const CommasRing: React.FC<CommasRingProps> = ({
 
   const formatData = useCallback((
     commas: NotesMap<string>,
-    is3rd: boolean
+    is3rd: boolean,
+    isMin3rd: boolean,
   ) => {
     const qualities = is3rd
       ? thirdQ(commas)
@@ -60,7 +63,7 @@ const CommasRing: React.FC<CommasRingProps> = ({
           label: label !== '0' ? label : '',
           fill: fill 
             ? is3rd 
-              ? convertThirdQualityToColor(qualities[n], settings.darkTheme)
+              ? convertThirdQualityToColor(qualities[n], settings.darkTheme, isMin3rd)
               : convertFifthQualityToColor(qualities[n], settings.darkTheme)
             : 'transparent',
         })
@@ -70,7 +73,7 @@ const CommasRing: React.FC<CommasRingProps> = ({
 
   return (
     <Ring innerR={innerR} outerR={outerR} c={c}
-      data={formatData(commas, is3rd)}
+      data={formatData(commas, !!is3rd, !!isMin3rd)}
       hasStroke={hasStroke}
       fontSize={fontSize}
       attributesSector={{ attributesText: { style: {
