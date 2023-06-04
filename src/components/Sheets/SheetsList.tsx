@@ -35,7 +35,7 @@ const SheetsMenu: React.FC = () => {
   >('NAME_ASC');
 
   const [searchText, setSearchText] = useState('');
-  const [request, setRequest] = useState<RegExp>(RegExp('([A-z])\\w+', 'i'));
+  const [, setRequest] = useState<RegExp>(RegExp('([A-z])\\w+', 'i'));
   const { t } = useTranslation();
 
   const sortTemperamentByName = (sort: 'NAME_DESC' | 'NAME_ASC') => () =>

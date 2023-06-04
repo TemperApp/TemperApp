@@ -1,5 +1,3 @@
-import i18n from 'i18next';
-
 export type Setting<T> = {
   name: string;
   defaultValue: T;
