@@ -62,7 +62,7 @@ const CommasRing: React.FC<CommasRingProps> = ({
           return ({
           label: label !== '0' ? label : '',
           fill: fill 
-            ? is3rd 
+            ? is3rd || isMin3rd
               ? convertThirdQualityToColor(qualities[n], settings.darkTheme, isMin3rd)
               : convertFifthQualityToColor(qualities[n], settings.darkTheme)
             : 'transparent',
