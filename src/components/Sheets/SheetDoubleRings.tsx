@@ -9,7 +9,6 @@ import { Temperament } from '../../model/Temperament/Temperament';
 import Toggler from '../inputs/Toggler';
 import { mapNotesMap } from '../../model/Note/NotesMap';
 import { cpExp5thToCsExp5th } from '../../model/Divergence';
-import { useTranslation } from 'react-i18next';
 
 type SheetoubleRingsProps = {
   temperament: Temperament,
@@ -18,7 +17,6 @@ type SheetoubleRingsProps = {
 const SheetoubleRings: React.FC<SheetoubleRingsProps> = ({
   temperament,
 }) => {
-  const { t } = useTranslation('comparator');
   const [isCpMode, setCpMode] = useState<boolean>(true);
   const [isMaj3, setMaj3] = useState<boolean>(true);
 

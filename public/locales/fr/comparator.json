@@ -1,11 +1,11 @@
 {
-  "pageTitle": "Comparator",
-  "modalTitle": "Help • Comparator",
-  "modalSubTitle": "How to compare?",
-  "temper": "Temper",
-  "fifthsUnit": "Fifths Unit",
-  "fifthCommas": "Commas fractions acting on Fifths",
-  "deviationsFromEqual": "Deviations from Equal Temperament",
-  "howToCompareTop": "You can compare two temperaments to quickly visualize the the difference in purity of thirds and fifths. The fifths are represented on the outside and thirds on the inside. <br><br> The first temperament selected is located on the inside and the second on the outside, both of which can be exchanged at any time.",
-  "howToCompareBottom": "We can compare the fractions of commas affecting fifths by changing the unit  between syntonic comma and Pythagorean comma, as well as those affecting thirds. <br><br> The deviation table shows the number of divergences."
+  "pageTitle": "Comparateur",
+  "modalTitle": "Aide • Comparateur",
+  "modalSubTitle": "Comment comparer ?",
+  "temper": "Tempérament",
+  "fifthsUnit": "Unité des quintes",
+  "fifthCommas": "Fractions de commas affectant les quintes",
+  "deviationsFromEqual": "Déviation au Tempérament Égal",
+  "howToCompareTop": "On peut comparer les fractions de commas affectant les quintes en changeant l'unité entre comma syntonique et comma pythagoricien, ainsi que celles affectant les tierces. ",
+  "howToCompareBottom": "Le tableau de déviation permet de visualiser le nombre de divergence. "
 }

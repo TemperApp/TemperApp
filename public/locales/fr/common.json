@@ -2,8 +2,8 @@
   "filters": {
     "nameAsc": "A-Z ⬆",
     "nameDesc": "A-Z ⬇",
-    "periodAsc": "Period ↑",
-    "periodDesc": "Period ↓"
+    "periodAsc": "Période ↑",
+    "periodDesc": "Période ↓"
   },
   "tabs": {
     "tune": "accorder",
@@ -13,6 +13,6 @@
     "learn": "apprendre"
   },
   "activeSoundWarning": "Avant toute chose, merci de cliquer ici afin d'autoriser le son sur votre appareil.",
-  "favoriteTemperamentsLabel": "Mes tempéraments favoris§",
+  "favoriteTemperamentsLabel": "Mes tempéraments favoris",
   "allTemperamentsLabel": "Tous les tempéraments"
 }
