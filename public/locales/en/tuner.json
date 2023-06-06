@@ -2,7 +2,7 @@
   "fifths": "Fifths",
   "thirds": "Thirds",
   "beatsTitle": "Tuner",
-  "procedureTitle": "Chord Process",
+  "procedureTitle": "Tuning procedure",
   "modalTitle": "Help • Tuner",
   "modalSubTitle1": "Fifths and Thirds Quality",
   "modalIncipit1": "Why a new graphic representation?",
@@ -17,7 +17,7 @@
   "modalContent3.5": "L'accordeur <strong>“par battements”</strong> émet le battement prévu d’un intervalle, de la même manière qu’il sonne à l’instrument : un son à la hauteur du premier partiel commun et d’un battement égal à la différence entre les deux partiels. <i>Un intervalle pur émet donc un son continu à la hauteur du premier partiel commun.</i>",
   "modalSubTitle4": "Selection of an Interval",
   "modalContent4": "Les intervalles disponibles dans TemperApp sont les quartes, les quintes et les tierces majeures.<br><br>Pour sélectionner un intervalle, appuyez sur les notes correspondantes en respectant leur octave :<br><br>une pression <strong>longue</strong> sélectionne la note à l’octave 3 (clé de fa)<br>une pression <strong>courte</strong> sélectionne la note à l’octave 4 (clé de sol).<br><br>Lorsqu’une note est sélectionnée, l’application génère sa fréquence. Lorsqu’un intervalle est sélectionné, l’application génère immédiatement son battement !",
-  "modalSubTitle5": "Chord Procedure",
+  "modalSubTitle5": "Tuning procedure",
   "modalContent5": "TemperApp vous accompagne dans l’accord de votre instrument. Pour chaque tempérament, l’application vous propose une procédure d’accord.",
   "modalContent5.5": "<p class=\"p-long\">À chaque étape vous êtes invité·e à accorder une note qui <strong>clignotera</strong>sur un affichage clavier.</p><p class=\"p-long\">Cette note sera accordée comme un intervalle sur une note déjà accordée.</p><p class=\"p-long\">Le battement de l’intervalle est affiché au centre du cercle et généré par l’application.</p><p class=\"p-long\">A tout moment vous pouvez aller à l’étape précédente, suivante ou interrompre la procédure.</p>",
   "centralCard": {
