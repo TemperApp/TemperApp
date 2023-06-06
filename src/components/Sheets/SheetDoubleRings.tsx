@@ -20,6 +20,8 @@ const SheetoubleRings: React.FC<SheetoubleRingsProps> = ({
 }) => {
   const { t } = useTranslation('comparator');
   const [isCpMode, setCpMode] = useState<boolean>(true);
+  const [isMaj3, setMaj3] = useState<boolean>(true);
+
   const vbsize = { x: 200 + 2, y: 200 + 2};
   const center = { x: vbsize.x / 2, y: vbsize.y / 2};
   const r = [56, 70, 86, 100];
@@ -32,7 +34,7 @@ const SheetoubleRings: React.FC<SheetoubleRingsProps> = ({
     <>
       <SVG className="ring" viewBoxSize={vbsize} >
         <CommasRing innerR={r[0]} outerR={r[1]} c={center}
-          is3rd commas={temperament.csExp3rd}
+          is3rd commas={!isMaj3 ? temperament.csExp3rd : temperament.csExpMin3rd as any}
           hasLabels isCp={isCpMode}
         />
 
@@ -49,10 +51,7 @@ const SheetoubleRings: React.FC<SheetoubleRingsProps> = ({
             : mapNotesMap(temperament.cpExp5th, cpExp5thToCsExp5th)}
         />
       </SVG>
-      <div className="absolute flex right-4">
-        <div className="toggle-name">
-          {t('fifthsUnit')} : 
-        </div>
+      <div className="flex ion-justify-content-between">
         <Toggler
           typeContentText={true}
           contentLeft="Cs"
@@ -61,6 +60,15 @@ const SheetoubleRings: React.FC<SheetoubleRingsProps> = ({
           conditionRight={isCpMode}
           onClickLeft={() => setCpMode(false)}
           onClickRight={() => setCpMode(true)}
+        />
+        <Toggler
+          typeContentText={true}
+          contentLeft="M3"
+          contentRight="m3"
+          conditionLeft={!isMaj3}
+          conditionRight={isMaj3}
+          onClickLeft={() => setMaj3(false)}
+          onClickRight={() => setMaj3(true)}
         />
       </div>
     </>

@@ -45,7 +45,7 @@ const CommasRing: React.FC<CommasRingProps> = ({
     is3rd: boolean,
     isMin3rd: boolean,
   ) => {
-    const qualities = is3rd
+    const qualities = is3rd || isMin3rd
       ? thirdQ(commas)
       : isCp
         ? fifthQ(commas)
@@ -56,7 +56,7 @@ const CommasRing: React.FC<CommasRingProps> = ({
           const n = note as Notes;
           const label = !hasLabels
           ? ''
-          : (is3rd
+          : (is3rd || isMin3rd
             ? formatCsExp3rdStr(commas[n])
             : formatCpExp5thStr(commas[n]));
           return ({
