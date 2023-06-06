@@ -110,217 +110,222 @@ export const convertThirdQualityToColor = (
 ) => {
   if (quality === null) {
     if (isDarkTheme) {
-      return '#B9B9B9';
+      return '#4A7370';
     }
-    return '#B9B9B9';
+    return '#6D9693';
   }
-  const value = Math.max(Math.min(Math.floor(Math.abs(quality)), 20), -1);
-  console.log(quality, value);
 
+  const value = Math.max(Math.min(Math.floor(Math.abs(quality)), 20), -1);
+
+  // DARK THEME
   if (isDarkTheme) {
     if (quality < 0.005 && quality > -0.005) return '#f5fbfb';
 
+    // MINOR THIDS
     if (isMin3rd) {
       switch (value) {
         case -1:
-          return '#cfe2f3'; // handle value between -1 and -0.005
+          return "#B9B9B9"; // handle value between -1 and -0.005
         case 0:
-          return '#cfe2f3'; // handle value between 0.005 and 1
+          return "#B9B9B9"; // handle value between 0.005 and 1
         case 1:
-          return '#fff2cc';
+          return "#FBDDF6";
         case 2:
-          return '#fff2cc';
+          return "#FAD3F3";
         case 3:
-          return '#ffe598';
+          return "#F8C9F1";
         case 4:
-          return '#ffe598';
+          return "#F7BBED";
         case 5:
-          return '#ffd966';
+          return "#F5B1EA";
         case 6:
-          return '#ffd966';
+          return "#F4A8E8";
         case 7:
-          return '#f6b26b';
+          return "#F39EE5";
         case 8:
-          return '#e69138';
+          return "#EF7FDD";
         case 9:
-          return '#e69138';
+          return "#EE76DB";
         case 10:
-          return '#cc0000';
+          return "#E65CD3";
         case 11:
-          return '#cc0000';
+          return "#E149CD";
         case 12:
-          return '#cc0000';
+          return "#C939BF";
         case 13:
-          return '#851f0d';
+          return "#BC41BB";
         case 14:
-          return '#851f0d';
+          return "#B248B8";
         case 15:
-          return '#434343';
+          return "#A64FB5";
         case 16:
-          return '#434343';
+          return "#9C5DB7";
         case 17:
-          return '#434343';
+          return "#906CB9";
         case 18:
-          return '#434343';
+          return "#8A73BA";
         case 19:
-          return '#434343';
+          return "#8679BB";
         case 20:
-          return '#434343';
+          return "#817FBC";
         default:
-          return '#cfe2f3';
+          return "#758EBE";
       }
     }
 
+    // MAJOR THIRDS
     switch (value) {
       case -1:
-        return '#cfe2f3'; // handle value between -1 and -0.005
+        return "#B9B9B9"; // handle value between -1 and -0.005
       case 0:
-        return '#cfe2f3'; // handle value between 0.005 and 1
+        return "#FBDDF6"; // handle value between 0.005 and 1
       case 1:
-        return '#fff2cc';
+        return "#FAD3F3";
       case 2:
-        return '#fff2cc';
+        return "#F8C9F1";
       case 3:
-        return '#ffe598';
+        return "#F7BBED";
       case 4:
-        return '#ffe598';
+        return "#F5B1EA";
       case 5:
-        return '#ffd966';
+        return "#F4A8E8";
       case 6:
-        return '#ffd966';
+        return "#F39EE5";
       case 7:
-        return '#f6b26b';
+        return "#EF7FDD";
       case 8:
-        return '#f6b26b';
+        return "#EE76DB";
       case 9:
-        return '#e69138';
+        return "#E65CD3";
       case 10:
-        return '#cc0000';
+        return "#E149CD";
       case 11:
-        return '#cc0000';
+        return "#C939BF";
       case 12:
-        return '#851f0d';
+        return "#BC41BB";
       case 13:
-        return '#851f0d';
+        return "#B248B8";
       case 14:
-        return '#434343';
+        return "#A64FB5";
       case 15:
-        return '#434343';
+        return "#9C5DB7";
       case 16:
-        return '#434343';
+        return "#906CB9";
       case 17:
-        return '#434343';
+        return "#8A73BA";
       case 18:
-        return '#434343';
+        return "#8679BB";
       case 19:
-        return '#434343';
+        return "#817FBC";
       case 20:
-        return '#434343';
+        return "#758EBE";
       default:
-        return '#cfe2f3';
+        return "#B9B9B9";
     }
   }
 
-  // light theme
+  // LIGHT THEME
   if (quality < 0.005 && quality > -0.005) return '#f5fbfb';
 
+  // MINOR THIRDS
   if (isMin3rd) {
     switch (value) {
       case -1:
-        return '#cfe2f3'; // handle value between -1 and -0.005
+        return "#B9B9B9"; // handle value between -1 and -0.005
       case 0:
-        return '#cfe2f3'; // handle value between 0.005 and 1
+        return "#B9B9B9"; // handle value between 0.005 and 1
       case 1:
-        return '#fff2cc';
+        return "#F8F3E4";
       case 2:
-        return '#fff2cc';
+        return "#FAECD1";
       case 3:
-        return '#ffe598';
+        return "#FFDDA7";
       case 4:
-        return '#ffe598';
+        return "#FFC984";
       case 5:
-        return '#ffd966';
+        return "#FFBB75";
       case 6:
-        return '#ffd966';
+        return "#FFAA6B";
       case 7:
-        return '#f6b26b';
+        return "#FF8B57";
       case 8:
-        return '#e69138';
+        return "#FF8352";
       case 9:
-        return '#e69138';
+        return "#FF7E4F";
       case 10:
-        return '#cc0000';
+        return "#FF7A4C";
       case 11:
-        return '#cc0000';
+        return "#FF6C44";
       case 12:
-        return '#cc0000';
+        return "#FF603C";
       case 13:
-        return '#851f0d';
+        return "#FF5535";
       case 14:
-        return '#851f0d';
+        return "#FF492E";
       case 15:
-        return '#434343';
+        return "#FB423C";
       case 16:
-        return '#434343';
+        return "#F63B4B";
       case 17:
-        return '#434343';
+        return "#F03060";
       case 18:
-        return '#434343';
+        return "#E9307D";
       case 19:
-        return '#434343';
+        return "#D32E77";
       case 20:
-        return '#434343';
+        return "#B92C70";
       default:
-        return '#cfe2f3';
+        return "#9D2A68";
     }
   }
 
+  // MAJOR THIRDS
   switch (value) {
     case -1:
-      return '#cfe2f3'; // handle value between -1 and -0.005
+      return "#B9B9B9"; // handle value between -1 and -0.005
     case 0:
-      return '#cfe2f3'; // handle value between 0.005 and 1
+      return "#F8F3E4"; // handle value between 0.005 and 1
     case 1:
-      return '#fff2cc';
+      return "#FAECD1";
     case 2:
-      return '#fff2cc';
+      return "#FFDDA7";
     case 3:
-      return '#ffe598';
+      return "#FFC984";
     case 4:
-      return '#ffe598';
+      return "#FFBB75";
     case 5:
-      return '#ffd966';
+      return "#FFAA6B";
     case 6:
-      return '#ffd966';
+      return "#FF8B57";
     case 7:
-      return '#f6b26b';
+      return "#FF8352";
     case 8:
-      return '#f6b26b';
+      return "#FF7E4F";
     case 9:
-      return '#e69138';
+      return "#FF7A4C";
     case 10:
-      return '#cc0000';
+      return "#FF6C44";
     case 11:
-      return '#cc0000';
+      return "#FF603C";
     case 12:
-      return '#851f0d';
+      return "#FF5535";
     case 13:
-      return '#851f0d';
+      return "#FF492E";
     case 14:
-      return '#434343';
+      return "#FB423C";
     case 15:
-      return '#434343';
+      return "#F63B4B";
     case 16:
-      return '#434343';
+      return "#F03060";
     case 17:
-      return '#434343';
+      return "#E9307D";
     case 18:
-      return '#434343';
+      return "#D32E77";
     case 19:
-      return '#434343';
+      return "#B92C70";
     case 20:
-      return '#434343';
+      return "#9D2A68";
     default:
-      return '#cfe2f3';
+      return "#B9B9B9";
   }
 };

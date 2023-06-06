@@ -2,8 +2,8 @@
   "filters": {
     "nameAsc": "A-Z ⬆",
     "nameDesc": "A-Z ⬇",
-    "periodAsc": "Période ⬆",
-    "periodDesc": "Période ⬇"
+    "periodAsc": "Period ↑",
+    "periodDesc": "Period ↓"
   },
   "tabs": {
     "tune": "accorder",

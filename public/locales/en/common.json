@@ -1,9 +1,9 @@
 {
   "filters": {
-    "nameAsc": "A-Z ⬆",
-    "nameDesc": "A-Z ⬇",
-    "periodAsc": "Period ⬆",
-    "periodDesc": "Period ⬇"
+    "nameAsc": "A-Z ↑",
+    "nameDesc": "A-Z ↓",
+    "periodAsc": "Period ↑",
+    "periodDesc": "Period ↓"
   },
   "tabs": {
     "tune": "tune",
