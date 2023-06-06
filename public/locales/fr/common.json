@@ -1,7 +1,7 @@
 {
   "filters": {
-    "nameAsc": "A-Z ⬆",
-    "nameDesc": "A-Z ⬇",
+    "nameAsc": "A-Z ↑",
+    "nameDesc": "A-Z ↓",
     "periodAsc": "Période ↑",
     "periodDesc": "Période ↓"
   },
