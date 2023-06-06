@@ -9,7 +9,7 @@
     "tune": "accorder",
     "compare": "comparer",
     "home": "accueil",
-    "sheet": "fiches",
+    "sheets": "fiches",
     "learn": "apprendre"
   },
   "activeSoundWarning": "Avant toute chose, merci de cliquer ici afin d'autoriser le son sur votre appareil.",
