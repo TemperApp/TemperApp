@@ -8,8 +8,8 @@
   "commentary": "Commentaires",
   "fifthsAndThirdsQuality": "Qualité des quintes et des tierces",
   "fifthsUnit": "Unités des quintes",
-  "fifthCommas": "Fraction de comma affectant les quintes",
-  "thirdsCommas": "Fraction de comma affectant les tierces majeures",
-  "minorThirdsCommas": "Fraction de comma affectant les tierces mineures",
-  "resources": "Resources"
+  "fifthCommas": "Fractions de comma affectant les quintes",
+  "thirdsCommas": "Fractions de comma affectant les tierces majeures",
+  "minorThirdsCommas": "Fractions de comma affectant les tierces mineures",
+  "resources": "Ressources"
 }
