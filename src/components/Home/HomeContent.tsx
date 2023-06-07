@@ -103,7 +103,7 @@ const HomeContent: React.FC = () => {
           headerClass="rc-collapse-header"
         >
           <IonGrid>
-            <IonRow>
+            <IonRow class="ion-justify-content-around">
               <IonCol>
                 <IonButton
                   className="btn-primary secondary"
