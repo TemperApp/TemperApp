@@ -103,7 +103,7 @@ const HomeContent: React.FC = () => {
           headerClass="rc-collapse-header"
         >
           <IonGrid>
-            <Ion-Row class="ion-justify-content-around">
+            <IonRow>
               <IonCol>
                 <IonButton
                   className="btn-primary secondary"
@@ -138,7 +138,7 @@ const HomeContent: React.FC = () => {
                   {t('filters.periodDesc')}
                 </IonButton>
               </IonCol>
-            </Ion-Row>
+            </IonRow>
             <IonRow>
               {items[1].elements
                 // .filter((t: Temperament) =>
