@@ -102,6 +102,21 @@ export const defaultTemperaments: Array<TemperamentData> = [
       E: '-5/11',
       B: '-5/11',
     },
+    //blabla  
+    graph:{
+      data: [
+        {label:'F C G', x:'-1/6', y:'3/11'},
+        {label:'D', x: '-1/6', y: '5/11'},
+        {label:'A', x: '-1/6', y: '7/11'},
+        {label:'E', x: '-1/6', y: '9/11'},
+        {label:'H F# C#', x: 'Pure', y: '11/11'},
+        {label:'G#', x: 'Pure', y: '9/11'},
+        {label:'Eb', x: 'Pure', y: '7/11'},
+        {label:'Bb', x: 'Pure', y: '5/11'},
+        ],
+      scaleX:['-1/5','-1/6','-1/12','Pure'],
+      scaleY:['','3/11','5/11','7/11','9/11','11/11'],
+    },
   },
   {
     id: 'Meantone',
