@@ -7,5 +7,5 @@
   "fifthCommas": "Fractions de commas affectant les quintes",
   "deviationsFromEqual": "Déviation au Tempérament Égal",
   "howToCompareTop": "On peut comparer les fractions de commas affectant les quintes en changeant l'unité entre comma syntonique et comma pythagoricien, ainsi que celles affectant les tierces. ",
-  "howToCompareBottom": "Le tableau de déviation permet de visualiser le nombre de divergence. "
+  "howToCompareBottom": "La table de déviation liste les déviation des notes par rapport au tempérament égal. Ici la note La (A) prise comme référence, a pour déviation 0 "
 }
