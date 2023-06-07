@@ -8,7 +8,6 @@ export type TemperamentData = {
   csExp3rd: NotesMap<string>;
   csExpMin3rd?: NotesMap<string>;
   periodNum: number;
-  graph: string;
 };
 
 export type TemperamentTexts = {
