@@ -142,18 +142,18 @@ xAxis.call(d3.axisBottom(x).tickValues(x.domain().filter((d, i) => ![0, 2, 4, 6,
     // legend
     svg
       .append('text')
-      .attr('x', width  - margin.right) // Position horizontale du label (au milieu de l'axe X)
+      .attr('x', width  + margin.right) // Position horizontale du label (au milieu de l'axe X)
       .attr('y', height /2 ) // Position verticale du label (juste en dessous de l'axe X)
       .attr('text-anchor', 'middle') // Alignement du texte au milieu
-.attr('transform', `rotate(-90, ${width - margin.right}, ${height / 2})`) //rotate
-      .text(('graphAxeYLabel')); // Texte du label
+.attr('transform', `rotate(-90, ${width + margin.right}, ${height / 2})`) //rotate
+      .text(('Tierces ->')); // Texte du label
     
     svg
       .append('text')
       .attr('x', width / 2) // Position horizontale du label (au milieu de l'axe X)
       .attr('y', height + margin.top + 35) // Position verticale du label (juste en dessous de l'axe X)
       .attr('text-anchor', 'middle') // Alignement du texte au milieu
-      .text(t('graphAxeXLabel')); // Texte du label
+      .text(t('<- Quintes')); // Texte du label
   }, 
             [temperament, t]);
   
