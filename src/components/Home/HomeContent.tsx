@@ -103,8 +103,8 @@ const HomeContent: React.FC = () => {
           headerClass="rc-collapse-header"
         >
           <IonGrid>
-            <IonRow class="ion-justify-content-around">
-              <IonCol>
+            <IonRow>
+              <IonCol class="flex ion-justify-content-around">
                 <IonButton
                   className="btn-primary secondary"
                   color="temperapp"
