@@ -118,8 +118,8 @@ export const defaultTemperaments: Array<TemperamentData> = [
         { label: 'Eb', x: 'Pure', y: '7/11' },
         { label: 'Bb', x: 'Pure', y: '5/11' },
       ],
-      scaleX: ['-1/5', '-1/6', '-1/12', 'Pure', ''],
-      scaleY: ['', '3/11', '5/11', '7/11', '9/11', '11/11', ''],
+      scaleX: ['-1/5', '-1/6','-1/8, '-1/12', 'Pure', ' '],
+      scaleY: ['3/11', '5/11', '7/11', '9/11', '11/11', ' '],
     },
   },
   {
