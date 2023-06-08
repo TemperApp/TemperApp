@@ -403,6 +403,21 @@ export const defaultTemperaments: Array<TemperamentData> = [
       E: '-4/11',
       B: '-6/11',
     },
+    graph: {
+      data: [
+        { label: 'F# C# G#', x: 'Pure', y: '11/11' },
+        { label: 'Eb', x: 'Pure', y: '9/11' },
+        { label: 'Bb', x: 'Pure', y: '6/11' },
+        { label: 'F', x: 'Pure', y: '4/11' },
+        { label: 'C', x: '-1/5 Cp', y: '+1/11 Cs' },
+        { label: 'G D', x: '-1/5 Cp', y: '4/11' },
+        { label: 'A', x: '-1/5 Cp', y: '6/11' },
+        { label: 'E', x: 'Pure', y: '9/11' },
+        { label: 'B', x: '-1/5 Cp', y: '9/11' },  { label: '', x: 'Pure', y: '11/11' },
+      ],
+      scaleX: ['','-1/5 Cp','a','Pure','b'],
+      scaleY: ['','+1/11 Cs',' ','  ', '4/11','   ', '6/11','    ','      ', '9/11','       ', '11/11', ' '],
+    },
   },
   {
     id: 'WerckmeisterIII',
