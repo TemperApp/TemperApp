@@ -55,7 +55,7 @@ const SheetGraph: React.FC<SheetGraphProps> = ({ temperament }) => {
 const x = d3.scalePoint().domain(scaleX).range([0, width]);
 const xAxis = svg.append('g').attr('transform', 'translate(0,' + height + ')');
 
-xAxis.call(d3.axisBottom(x).tickValues(x.domain().filter((d, i) => ![0, 2, 4].includes(i))));
+xAxis.call(d3.axisBottom(x).tickValues(x.domain().filter((d, i) => ![0, 2, 4, 6, 8, 10].includes(i))));
    
     // Add Y axis
     const y = d3.scalePoint().domain(scaleY).range([height, 0]);
