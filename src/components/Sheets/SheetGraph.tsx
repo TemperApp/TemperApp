@@ -44,20 +44,18 @@ const SheetGraph: React.FC<SheetGraphProps> = ({ temperament }) => {
       return;
     }
     const svg = d3
-      .select('#my_dataviz')
-      .append('svg')
-      .attr('width', width + margin.left + margin.right)
-      .attr('height', height + margin.top + margin.bottom)
-      .append('g')
-      .attr('transform', 'translate(' + margin.left + ',' + margin.top + ')');
-    
-    //Read the data
-    const x = d3.scalePoint().domain(scaleX).range([0, width]);
-    svg
-      .append('g')
-      .attr('transform', 'translate(0,' + height + ')')
-      .call(d3.axisBottom(x));
+  .select('#my_dataviz')
+  .append('svg')
+  .attr('width', width + margin.left + margin.right)
+  .attr('height', height + margin.top + margin.bottom)
+  .append('g')
+  .attr('transform', 'translate(' + margin.left + ',' + margin.top + ')');
 
+// Read the data
+const x = d3.scalePoint().domain(scaleX).range([0, width]);
+const xAxis = svg.append('g').attr('transform', 'translate(0,' + height + ')');
+
+xAxis.call(d3.axisBottom(x).tickValues(x.domain().filter((d, i) => ![0, 2, 4].includes(i))));
    
     // Add Y axis
     const y = d3.scalePoint().domain(scaleY).range([height, 0]);
