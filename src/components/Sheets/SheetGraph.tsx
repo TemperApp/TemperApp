@@ -104,7 +104,8 @@ xAxis.call(d3.axisBottom(x).tickValues(x.domain().filter((d, i) => ![0, 2, 4, 6,
       .attr('y', (d) => (y(d.y) as any) - 10)
       .text((d) => d.label)
       .style('fill', labelFontColor)
-      .style('font-size', labelFontSize);
+      .style('font-size', labelFontSize)
+      .style('font-weight', 'bold');
 
     // Fonction pour détecter les collisions entre les labels et les lignes
     function checkCollision(label: any, path: any) {
