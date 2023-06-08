@@ -27,7 +27,7 @@ const SheetGraph: React.FC<SheetGraphProps> = ({ temperament }) => {
       return null;
     }
     const { data, scaleX, scaleY } = temperament.graph;
-    const labelFontSize = 10;
+    const labelFontSize = 12;
     const labelFontColor = 'black';
     const pointSize = 6;
     const pointColor = 'black';
