@@ -254,7 +254,7 @@ export const defaultTemperaments: Array<TemperamentData> = [
     graph: {
       data: [
         { label: 'Bb F C G', x: '-1/4', y: '' },
-        { label: 'D', x: '-1/4', y: '1/11' },
+        { label: 'D', x: '-1/4', y: '+1/11 Cs' },
         { label: 'A', x: '-1/4', y: '7/11' },
         { label: 'E', x: '-1/4', y: '13/11' },
         { label: 'B', x: '-1/6', y: '17/11' },
