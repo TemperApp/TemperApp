@@ -55,17 +55,13 @@ const SheetGraph: React.FC<SheetGraphProps> = ({ temperament }) => {
     const tickValuesToRemove = [0,2,4]; // Specify the indices of the tick values to remove
     
     //Read the data
-    const x = d3.scalePoint().domain(scaleX).range([0, width]);
+    const xAxis = d3.scalePoint().domain(scaleX).range([0, width]);
     svg
       .append('g')
       .attr('transform', 'translate(0,' + height + ')')
       .call(d3.axisBottom(x));
 
     
-    const xAxis = svg
-  .append('g')
-  .attr('transform', 'translate(0,' + height + ')')
-  .call(d3.axisBottom(x));
 
 // Remove tick values at specified indices
 xAxis
