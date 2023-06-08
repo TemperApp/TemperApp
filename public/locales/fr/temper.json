@@ -8,6 +8,8 @@
   "commentary": "Commentaires",
   "fifthsAndThirdsQuality": "Qualité des quintes et des tierces",
   "fifthsUnit": "Unités des quintes",
+  "graphTitle": "Représentation graphique",
+  "graphAxeXLabel": "Label de l'axe X",
   "fifthCommas": "Fractions de comma affectant les quintes",
   "thirdsCommas": "Fractions de comma affectant les tierces majeures",
   "minorThirdsCommas": "Fractions de comma affectant les tierces mineures",

@@ -1,3 +1,4 @@
+// @ts-nocheck (no way to figure how to type the line 91)
 import React, { useEffect } from 'react';
 import { IonSlides, IonSlide } from '@ionic/react';
 import { useTranslation } from 'react-i18next';
@@ -21,30 +22,20 @@ const SheetGraph: React.FC<SheetGraphProps> = ({ temperament }) => {
   const { t } = useTranslation('temper');
 
   useEffect(() => {
-    // DUMMY DATA
-    const labelFontSize = 16;
+    console.log(temperament);
+    if (!temperament.graph) {
+      return null;
+    }
+    const { data, scaleX, scaleY } = temperament.graph;
+    const labelFontSize = 10;
     const labelFontColor = 'black';
-    const pointSize = 5;
-    const pointColor = 'steelblue';
-    const pathColor = 'rgba(0, 0, 0, 0.296)';
-    const pathWidth = 3;
-
-    // ICI TU PEUX CHANGER LA VALEUR DES POINTS
-    // rajoute '//' pour commenter une ligne, et change le label par la valeur de ton choix si plusieurs notes : 'A / B / Bb' par exemple
-    const data = [
-      { label: 'C', x: '-1/6', y: '' },
-      { label: 'G D', x: '-1/6', y: '5/11' },
-      { label: 'A', x: '-1/12', y: '7/11' },
-      { label: 'E', x: '-1/12', y: '9/11' },
-      { label: 'H F# C#', x: 'Pure', y: '11/11' },
-      { label: 'G#', x: '+1/12', y: '9/11' },
-      { label: 'Eb', x: '+1/12', y: '7/11' },
-      { label: 'Bb', x: '+1/6', y: '5/11' },
-      { label: 'F', x: 'Pure', y: '3/11' },
-    ];
+    const pointSize = 6;
+    const pointColor = 'black';
+    const pathColor = 'rgba(0, 0, 0, 0.5)';
+    const pathWidth = 2;
 
     // set the dimensions and margins of the graph
-    const margin = { top: 10, right: 0, bottom: 20, left: 10 },
+    const margin = { top: 20, right: 30, bottom: 60, left: 10 },
       width = 300 - margin.left - margin.right,
       height = 400 - margin.top - margin.bottom;
 
@@ -61,22 +52,17 @@ const SheetGraph: React.FC<SheetGraphProps> = ({ temperament }) => {
       .attr('transform', 'translate(' + margin.left + ',' + margin.top + ')');
 
     //Read the data
-    var x = d3
-      .scalePoint()
-      .domain(['-1/4', '-1/6', '-1/8', '-1/12', 'Pure', '+1/12', '+1/6', ''])
-      .range([0, width]);
+    const x = d3.scalePoint().domain(scaleX).range([0, width]);
     svg
       .append('g')
       .attr('transform', 'translate(0,' + height + ')')
       .call(d3.axisBottom(x));
 
     // Add Y axis
-    var y = d3
-      .scalePoint()
-      .domain(['', '1/11', '3/11', '5/11', '7/11', '9/11', '11/11', '13/11'])
-      .range([height, 0]);
+    const y = d3.scalePoint().domain(scaleY).range([height, 0]);
 
-    svg.append('g')
+    svg
+      .append('g')
       .attr('transform', `translate(${x('Pure')})`)
       .call(d3.axisLeft(y));
 
@@ -87,7 +73,13 @@ const SheetGraph: React.FC<SheetGraphProps> = ({ temperament }) => {
       .attr('fill', 'none')
       .attr('stroke', pathColor)
       .attr('stroke-width', pathWidth)
-      .attr('d', d3.line().x((d) => x(d.x)).y((d) => y(d.y)));
+      .attr(
+        'd',
+        d3
+          .line()
+          .x((d) => x(d.x))
+          .y((d) => y(d.y))
+      );
 
     // Add dots
     svg
@@ -95,32 +87,74 @@ const SheetGraph: React.FC<SheetGraphProps> = ({ temperament }) => {
       .selectAll('dot')
       .data(data)
       .enter()
-      .append('circle')
-      .attr('cx', (d) => x(d.x) as any)
-      .attr('cy', (d) => y(d.y) as any)
-      .attr('r', pointSize)
+      .append('rect')
+      .attr('x', (d) => (x(d.x) as any) - pointSize / 2)
+      .attr('y', (d) => (y(d.y) as any) - pointSize / 2)
+      .attr('width', pointSize)
+      .attr('height', pointSize)
       .style('fill', pointColor);
 
     // labels
+    const labels = svg
+      .append('g')
+      .selectAll('dot')
+      .data(data)
+      .enter()
+      .append('text')
+      .attr('x', (d) => (x(d.x) as any) + 10)
+      .attr('y', (d) => (y(d.y) as any) - 10)
+      .text((d) => d.label)
+      .style('fill', labelFontColor)
+      .style('font-size', labelFontSize);
+
+    // Fonction pour détecter les collisions entre les labels et les lignes
+    function checkCollision(label: any, path: any) {
+      const labelBBox = label.node().getBBox();
+      const lineBBox = path.node().getBBox();
+
+      return (
+        labelBBox.x + labelBBox.width > lineBBox.x &&
+        labelBBox.x < lineBBox.x + lineBBox.width &&
+        labelBBox.y + labelBBox.height > lineBBox.y &&
+        labelBBox.y < lineBBox.y + lineBBox.height
+      );
+    }
+
+    // Ajustement des positions des labels pour éviter les collisions avec les lignes
+    labels.each(function (label: any) {
+      const currentLabel = d3.select(this);
+      let collision = false;
+
+      // Vérification des collisions avec les lignes
+      svg.selectAll('path').each(function () {
+        const currentLine = d3.select(this);
+        if (checkCollision(currentLabel, currentLine)) {
+          collision = true;
+          return false; // Sortir de la boucle each()
+        }
+      });
+
+      // Ajustement de la position du label en cas de collision
+      if (collision) {
+        currentLabel.attr('x', +currentLabel.attr('x') - 20); // Ajustez la position en fonction de vos besoins
+      }
+    });
+
+    // legend
     svg
-    .append('g')
-    .selectAll('dot')
-    .data(data)
-    .enter()
-    .append('text')
-    .attr('x', (d) => x(d.x) as any + 10)
-    .attr('y', (d) => y(d.y) as any - 10)
-    .text((d) => d.label)
-    .style('fill', labelFontColor)
-    .style('font-size', labelFontSize);
-  }, [temperament]);
+      .append('text')
+      .attr('x', width / 2) // Position horizontale du label (au milieu de l'axe X)
+      .attr('y', height + margin.top + 35) // Position verticale du label (juste en dessous de l'axe X)
+      .attr('text-anchor', 'middle') // Alignement du texte au milieu
+      .text(t('graphAxeXLabel')); // Texte du label
+  }, [temperament, t]);
 
   return (
     <>
       <IonSlides pager={true} options={slideOpts} className="px-5 max-w-lg">
         <IonSlide className="px-1">
           <Card
-            title={t('fifthCommas')}
+            title={t('graphTitle')}
             classNameContent="pb-16"
             className="pb-4"
           >

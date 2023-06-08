@@ -90,9 +90,12 @@ const SheetTemperament: React.FC = () => {
         <Commas temperament={temperament} />
       </div>
 
-      <div className="mx-auto max-w-lg">
-        <Graph temperament={temperament} />
-      </div>
+      {!!temperament.graph && (
+        <div className="mx-auto max-w-lg">
+          <Graph temperament={temperament} />
+        </div>
+      )}
+
       <div className="px-6 mx-auto max-w-lg">
         {temperament.soundReferences[0].url !== ''
           ? temperament.soundReferences.map((e) => {

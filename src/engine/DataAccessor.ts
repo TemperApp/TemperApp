@@ -33,6 +33,7 @@ export const fetchTemperaments = (
         cpExp5th: temp.cpExp5th,
         csExp3rd: temp.csExp3rd,
         csExpMin3rd: temp.csExpMin3rd,
+        graph: temp.graph || null,
         procedure: transGetter(t, temp.id, 'procedure') as string,
         periodNum: temp.periodNum,
         period: transGetter(t, temp.id, 'period') as string,
