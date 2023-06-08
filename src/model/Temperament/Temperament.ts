@@ -182,6 +182,15 @@ export const defaultTemperaments: Array<TemperamentData> = [
       E: '-3/11',
       B: '-3/11',
     },
+    graph: {
+      data: [
+        { label: 'Eb Bb F C G D A E', x: '-1/4 Cs', y: '' },
+        { label: 'B F# C#', x: '-1/4 Cs', y: '21/11' },
+        { label: 'G#', x: '+1,65 Cs', y: '21/11' },
+      ],
+      scaleX: ['','-1/4 Cs','   ','Pure','    ','+1,65 Cs'],
+      scaleY: ['','7/11 = TE', '11/11 = Pyth.', '21/11', ' '],
+    },
   },
   {
     id: 'RameauSiB',
