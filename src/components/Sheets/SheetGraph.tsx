@@ -51,27 +51,14 @@ const SheetGraph: React.FC<SheetGraphProps> = ({ temperament }) => {
       .append('g')
       .attr('transform', 'translate(' + margin.left + ',' + margin.top + ')');
     
-    //Removing ticks? (erase 1 line)
-    const tickValuesToRemove = [0,2,4]; // Specify the indices of the tick values to remove
-    
     //Read the data
-    const xAxis = d3.scalePoint().domain(scaleX).range([0, width]);
+    const x = d3.scalePoint().domain(scaleX).range([0, width]);
     svg
       .append('g')
       .attr('transform', 'translate(0,' + height + ')')
       .call(d3.axisBottom(x));
 
-    
-
-// Remove tick values at specified indices
-xAxis
-  .selectAll('.tick')
-  .filter((d, i) => tickValuesToRemove.includes(i))
-  .remove();
-
-// Remove first and last ticks
-xAxis.select('.tick:first-of-type').remove();
-xAxis.select('.tick:last-of-type').remove();
+   
     // Add Y axis
     const y = d3.scalePoint().domain(scaleY).range([height, 0]);
 
