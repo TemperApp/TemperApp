@@ -6,6 +6,7 @@ const EqualTemperament = {
   cpExp5th: mapNotesMap('-1/12'),
   csExp3rd: mapNotesMap('+7/11'),
   csExpMin3rd: mapNotesMap('-8/11'),
+  graph: [{ label: '', x: '', y: ''}],
   periodNum: -1,
 };
 

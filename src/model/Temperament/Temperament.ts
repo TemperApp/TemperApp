@@ -7,6 +7,7 @@ export type TemperamentData = {
   cpExp5th: NotesMap<string>;
   csExp3rd: NotesMap<string>;
   csExpMin3rd?: NotesMap<string>;
+  graph: { label: string; x: string; y: string}[];
   periodNum: number;
 };
 

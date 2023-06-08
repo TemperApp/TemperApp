@@ -24,6 +24,7 @@
     "@types/react-router": "^5.1.11",
     "@types/react-router-dom": "^5.1.7",
     "capacitor-data-storage-sqlite": "^3.0.1",
+    "d3": "^7.8.5",
     "i18next": "^22.4.15",
     "i18next-http-backend": "^2.2.0",
     "ionicons": "^5.4.0",
@@ -84,6 +85,7 @@
   },
   "devDependencies": {
     "@capacitor/cli": "3.0.0",
+    "@types/d3": "^7.4.0",
     "cordova-res": "^0.15.3",
     "react-data-storage-sqlite-hook": "^1.0.0",
     "react-scripts": "4.0.3"
