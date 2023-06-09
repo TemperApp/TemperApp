@@ -50,7 +50,7 @@ export const defaultTemperaments: Array<TemperamentData> = [
   EqualTemperament,
   {
     id: 'Vallotti',
-    periodNum: 1700,
+    periodNum: 1722,
     deviation: {
       C: 5.865,
       C_sharp: 0.0,
@@ -194,7 +194,7 @@ export const defaultTemperaments: Array<TemperamentData> = [
   },
   {
     id: 'RameauSiB',
-    periodNum: 1700,
+    periodNum: 1720,
     deviation: {
       C: 10.265,
       C_sharp: 0.578,
@@ -270,7 +270,7 @@ export const defaultTemperaments: Array<TemperamentData> = [
   },
   {
     id: 'RameauDo',
-    periodNum: 1700,
+    periodNum: 1720,
     deviation: {
       C: 10.265,
       C_sharp: -13.686,
@@ -346,7 +346,7 @@ export const defaultTemperaments: Array<TemperamentData> = [
   },
   {
     id: 'BachKellner',
-    periodNum: 1700,
+    periodNum: 1730,
     deviation: {
       C: 8.211,
       C_sharp: -1.564,
@@ -421,7 +421,7 @@ export const defaultTemperaments: Array<TemperamentData> = [
   },
   {
     id: 'WerckmeisterIII',
-    periodNum: 1600,
+    periodNum: 1691,
     deviation: {
       C: 11.73,
       C_sharp: 1.955,
@@ -496,7 +496,7 @@ export const defaultTemperaments: Array<TemperamentData> = [
   },
   {
     id: 'WerckmeisterV',
-    periodNum: 1600,
+    periodNum: 1691,
     deviation: {
       C: 0.0,
       C_sharp: -3.91,
@@ -630,7 +630,7 @@ export const defaultTemperaments: Array<TemperamentData> = [
   },
   {
     id: 'Kirnberger',
-    periodNum: 1700,
+    periodNum: 1779,
     deviation: {
       C: 10.264,
       C_sharp: 0.489,
@@ -689,8 +689,8 @@ export const defaultTemperaments: Array<TemperamentData> = [
     },
   },
   {
-    id: 'Bertier',
-    periodNum: 2000,
+    id: 'Bertier Elliptique',
+    periodNum: 1740,
     deviation: {
       C: 5.341,
       C_sharp: 0.0,
@@ -750,7 +750,7 @@ export const defaultTemperaments: Array<TemperamentData> = [
   },
   {
     id: 'Neidhardt',
-    periodNum: 1700,
+    periodNum: 1732,
     deviation: {
       C: 5.865,
       C_sharp: 1.955,
@@ -809,8 +809,8 @@ export const defaultTemperaments: Array<TemperamentData> = [
     },
   },
   {
-    id: 'BachJobin',
-    periodNum: 1700,
+    id: 'Bach/Jobin',
+    periodNum: 1750,
     deviation: {
       C: 10.263,
       C_sharp: -2.933,
@@ -1085,7 +1085,7 @@ export const defaultTemperaments: Array<TemperamentData> = [
   },
   {
     id: 'Bendeler',
-    periodNum: 1750,
+    periodNum: 1690,
     deviation: {
       C: 9.775,
       C_sharp: 0,
