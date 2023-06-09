@@ -555,14 +555,14 @@ export const defaultTemperaments: Array<TemperamentData> = [
     },
     graph: {
       data: [
-        { label: 'FaM RéM LaM', x: '-1/4 Cp', y: '5/11 Cs' },
+        { label: 'FaM RéM LaM', x: '-1/4 Cp', y: '5/11' },
         { label: 'DoM SolM MiM', x: 'Pure', y: '5/11' },
         { label: 'SiM', x: 'Pure', y: '8/11' },
         { label: 'B', x: '-1/4 Cp', y: '8/11' },
         { label: 'Fa#M', x: '-1/4 Cp', y: '8/11' },
         { label: 'RébM', x: '-1/4 Cp', y: '11/11' }, 
         { label: 'LabM', x: '+1/4', y: '11/11' }, 
-        { label: '', x: '-1/4 Cp', y: '+2/11 Cs' },
+        { label: '', x: '-1/4 Cp', y: '5/11' },
       ],
       scaleX: ['','-1/4 Cp','a','Pure','b','+1/4'],
       scaleY: ['','+2/11 Cs', '5/11', '8/11','Π', ' '],
