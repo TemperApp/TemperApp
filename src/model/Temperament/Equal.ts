@@ -6,7 +6,7 @@ const EqualTemperament = {
   cpExp5th: mapNotesMap('-1/12'),
   csExp3rd: mapNotesMap('+7/11'),
   csExpMin3rd: mapNotesMap('-8/11'),
-  periodNum: -1,
+  periodNum: 1800,
 };
 
 export const fifthEqualQ = (): NotesMap<number|null> => (mapNotesMap(-1));
