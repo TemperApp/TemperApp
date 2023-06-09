@@ -698,7 +698,7 @@ export const defaultTemperaments: Array<TemperamentData> = [
     },
   },
   {
-    id: 'Bertier Elliptique',
+    id: 'Bertier',
     periodNum: 1740,
     deviation: {
       C: 5.341,
@@ -818,7 +818,7 @@ export const defaultTemperaments: Array<TemperamentData> = [
     },
   },
   {
-    id: 'Bach/Jobin',
+    id: 'BachJobin',
     periodNum: 1750,
     deviation: {
       C: 10.263,
