@@ -627,6 +627,15 @@ export const defaultTemperaments: Array<TemperamentData> = [
       E: '-11/11',
       B: '-11/11',
     },
+    graph: {
+      data: [
+        { label: 'Eb Bb F C G D A E', x: 'Pure', y: '11/11 = Pyth.' },
+        { label: 'B F# C#', x: 'Pure', y: '-1/11' },
+        { label: 'G#', x: '-1 Cp', y: '-1/11' },
+      ],
+      scaleX: ['','-1 Cp','a',' ','b','Pure','c'],
+      scaleY: ['-1/11','','//', '11/11 = Pyth.', ' '],
+    },			
   },
   {
     id: 'Kirnberger',
