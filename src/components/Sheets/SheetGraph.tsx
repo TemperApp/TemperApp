@@ -63,7 +63,7 @@ xAxis.call(d3.axisBottom(x).tickValues(x.domain().filter((d, i) => ![0, 2, 4, 6,
     svg
       .append('g')
       .attr('transform', `translate(${x('Pure')})`)
-      .call(d3.axisLeft(y));
+      .call(d3.axisRight(y));
 
     // paths
     svg
