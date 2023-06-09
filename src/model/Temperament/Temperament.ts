@@ -1216,7 +1216,7 @@ export const defaultTemperaments: Array<TemperamentData> = [
         { label: 'B F# C#', x: '-1/12', y: '13/11' },
         { label: 'G#', x: '+5/12', y: '          ' },
         { label: 'Eb', x: '-1/12', y: '5/11' },
-        { label: 'Bb', x: '-1/12', y: '     ' },
+        { label: 'Bb', x: '-1/12', y: '    ' },
         { label: '', x: '-1/6 Cp', y: '3/11' },
       ],
       scaleX: ['','-1/6 Cp','a','-1/8','b','-1/12','C','Pure','D','+5/12'],
