@@ -775,7 +775,7 @@ export const defaultTemperaments: Array<TemperamentData> = [
     },
     graph: {
       data: [
-        { label: 'C', x: '-1/7', y: '3/11' },
+        { label: 'C', x: '-1/7', y: '    ' },
         { label: 'G', x: '-1/6 Cp', y: '    ' },
         { label: 'D', x: '-1/6 Cp', y: '5/11' },
         { label: 'A', x: '-1/7', y: '7/11' },
@@ -790,7 +790,7 @@ export const defaultTemperaments: Array<TemperamentData> = [
         { label: '', x: '-1/7', y: '3/11' },
       ],
       scaleX: ['','-1/6 Cp','a','-1/7','b','-1/10','c','-1/17','d','Pure','e'],
-      scaleY: ['','1/11','  ','3/11','    ', '5/11','      ', '7/11','        ','9/11','          ', '11/11', ],
+      scaleY: ['','3/11','    ', '5/11','      ', '7/11','        ','9/11','          ', '11/11', ],
     },
   },
   {
