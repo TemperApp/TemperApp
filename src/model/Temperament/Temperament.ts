@@ -833,6 +833,22 @@ export const defaultTemperaments: Array<TemperamentData> = [
       E: '-6/11',
       B: '-8/11',
     },
+    graph: {
+      data: [
+        { label: 'C', x: '-1/6 Cp', y: '4/11' },
+        { label: 'G', x: '-1/6 Cp', y: '4/11' },
+        { label: 'D', x: '-1/6 Cp', y: '      ' },
+        { label: 'A B', x: '-1/12', y: '8/11' },
+        { label: 'E', x: 'Pure', y: '8/11' },
+        { label: ' ', x: '-1/12', y: '8/11' },
+        { label: 'F# C#', x: '-1/12', y: '        ' },
+        { label: 'G#', x: 'Pure', y: '        ' }, 
+        { label: 'Eb', x: 'Pure', y: '      ' },  { label: 'Bb', x: '-1/12', y: '    ' },  { label: 'F', x: '-1/12', y: '4/11' },
+        { label: '', x: '-1/6Cp', y: '4/11' },
+      ],
+      scaleX: ['a','-1/6 Cp','b','-1/12','c','Pure','e'],
+      scaleY: ['','2/11 Cs','  ','4/11', '    ','6/11','      ', '8/11', '        ', '10/11','          ', '11/11','            '],
+    },
   },
   {
     id: 'BachJobin',
