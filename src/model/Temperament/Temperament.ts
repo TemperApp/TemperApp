@@ -1083,6 +1083,20 @@ export const defaultTemperaments: Array<TemperamentData> = [
       E: '-4/11',
       B: '-4/11',
     },
+    graph: {
+      data: [
+        { label: 'F C G D A E', x: '-1/5 Cs', y: '2/11' },
+        { label: 'B', x: '-1/5 Cs', y: '9/11' },
+        { label: 'F#', x: '-1/5 Cs', y: '13/11' },
+        { label: 'C#', x: '-1/4 Cs', y: '17/11' },
+        { label: 'G# C#', x: '+1/2', y: '17/11' },
+        { label: 'Eb', x: '+1/8', y: '9/11' },
+        { label: 'Bb', x: '+1/8', y: '6/11' },
+        { label: '', x: '-1/5 Cs', y: '2/11' },
+      ],
+      scaleX: ['','-1/5 Cs','a','Pure','c','+1/8','d','+1/2'],
+      scaleY: ['','2/11', '6/11','9/11', '13/11','17/11' ],
+    },
   },
   {
     id: 'Martini',
@@ -1130,6 +1144,8 @@ export const defaultTemperaments: Array<TemperamentData> = [
       B: '11/11',
     },
     csExpMin3rd: undefined,
+    
+    
   },
   {
     id: 'Riccati',
