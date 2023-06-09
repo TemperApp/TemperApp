@@ -705,7 +705,7 @@ export const defaultTemperaments: Array<TemperamentData> = [
         { label: 'E B', x: 'Pure', y: '          ' },
         { label: 'F#', x: '-1/11', y: '          ' },
         { label: 'C# G#', x: 'Pure', y: '11/11' },
-        { label: 'Eb', x: 'Pure', y: '8/11' }, 
+        { label: 'Eb', x: 'Pure', y: '        ' }, 
         { label: 'Bb', x: 'Pure', y: '5/11' },  
         { label: 'F', x: 'Pure', y: '3/11' },
         { label: '', x: '-1/4 Cs', y: '' },
