@@ -779,7 +779,7 @@ export const defaultTemperaments: Array<TemperamentData> = [
         { label: 'G', x: '-1/6 Cp', y: '    ' },
         { label: 'D', x: '-1/6 Cp', y: '5/11' },
         { label: 'A', x: '-1/7', y: '7/11' },
-        { label: 'E', x: '-1/9', y: '9/11' },
+        { label: 'E', x: '-1/10', y: '9/11' },
         { label: 'B', x: '-1/17', y: '          ' },
         { label: 'F#', x: 'd', y: '11/11' },
         { label: 'C#', x: 'Pure', y: '          ' },
