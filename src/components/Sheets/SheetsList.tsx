@@ -137,7 +137,7 @@ const SheetsMenu: React.FC = () => {
         >
           <IonGrid>
             <IonRow>
-              <IonCol>
+              <IonCol class="ion-align-self-center">
                 <IonButton
                   className="btn-primary secondary"
                   color="temperapp"
