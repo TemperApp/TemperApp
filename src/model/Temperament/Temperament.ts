@@ -911,6 +911,23 @@ export const defaultTemperaments: Array<TemperamentData> = [
       E: '-3/11',
       B: '-3/11',
     },
+    graph: {
+      data: [
+        { label: 'C G', x: '-1/4 Cs', y: '' },
+        { label: 'D', x: '-1/4 Cs', y: '3/11' },
+        { label: 'A', x: '-1/4 Cs', y: '5/11' },
+        { label: 'E', x: '-1/4 Cs', y: '        ' },
+        { label: 'B F#', x: 'Pure', y: '            ' },
+        { label: 'C#', x: 'Pure', y: '13/11' },
+        { label: 'G#', x: '+1/19', y: '13/11' },
+        { label: 'Eb', x: '+1/19', y: '9/11' },
+        { label: 'Bb', x: '+1/19', y:'      ' },
+        { label: 'F', x: 'Pure', y: '3/11' },
+        { label: '', x: '-1/4 Cs', y: '' },
+      ],
+      scaleX: ['','-1/4 Cs','a','-1/6','b','-1/12','c','Pure','d','+1/19','e'],
+      scaleY: ['','3/11','    ', '5/11','      ', '7/11','        ','9/11','          ', '11/11','            ', '13/11', ],
+    },
   },
 
   {
