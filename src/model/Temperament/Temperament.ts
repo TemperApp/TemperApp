@@ -1192,16 +1192,31 @@ export const defaultTemperaments: Array<TemperamentData> = [
       E: '6/11',
       B: '13/11',
     },
+     csExpMin3rd: {
+      F_sharp: '-4/11',
+      C_sharp: '-4/11',
+      G_sharp: '-4/11',
+      E_flat: '-12/11',
+      B_flat: '-15/11',
+      F: '19/11',
+      C: '12/11',
+      G: '-8/11',
+      D: '-4/11',
+      A: '-4/11',
+      E: '-4/11',
+      B: '-4/11',
+    },
     
     graph: {
       data: [
         { label: 'F C G', x: '-1/6 Cp', y: '3/11' },
         { label: 'D', x: '-1/6 Cp', y: '    ' },
         { label: 'A', x: '-1/6 Cp', y: '5/11' },
-        { label: 'E', x: '-1/7', y: '      ' },
+        { label: 'E', x: '-1/6 Cp', y: '      ' },
         { label: 'B F# C#', x: '-1/12', y: '13/11' },
         { label: 'G#', x: '+5/12', y: '          ' },
-        { label: 'Eb', x: '-1/12', y: '5/11' },{ label: 'Bb', x: '-1/12', y: '     ' },
+        { label: 'Eb', x: '-1/12', y: '5/11' },
+        { label: 'Bb', x: '-1/12', y: '     ' },
         { label: '', x: '-1/6 Cp', y: '' },
       ],
       scaleX: ['','-1/6 Cp','a','-1/8','b','-1/12','C','Pure','D','+5/12'],
@@ -1210,7 +1225,7 @@ export const defaultTemperaments: Array<TemperamentData> = [
     
   
     
-    csExpMin3rd: undefined,
+   
   },
   {
     id: 'Bendeler',
