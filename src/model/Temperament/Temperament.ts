@@ -1008,6 +1008,21 @@ export const defaultTemperaments: Array<TemperamentData> = [
       E: '-3/11',
       B: '-3/11',
     },
+    graph: {
+      data: [
+        { label: 'F C G D', x: '-1/4 Cs', y: '' },
+        { label: 'A', x: '-1/4 Cs', y: '4/11' },
+        { label: 'E', x: '-1/4 Cs', y: '8/11' },
+        { label: 'B', x: '-1/4 Cs', y: '13/11' },
+        { label: 'F# C#', x: '+1/8', y: '17/11' },
+        { label: 'G#', x: '+1/8', y: '13/11' },
+        { label: 'Eb', x: '+1/8', y: '8/11' },
+        { label: 'Bb', x: '+1/8', y:'4/11' },
+        { label: '', x: '-1/4 Cs', y: '' },
+      ],
+      scaleX: ['','-1/4 Cs','a','-1/8','B','Pure','c','+1/8','d'],
+      scaleY: ['','4/11', '8/11', '13/11','17/11' ],
+    },
   },
   {
     id: 'Chaumont',
