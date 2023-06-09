@@ -696,6 +696,23 @@ export const defaultTemperaments: Array<TemperamentData> = [
       E: '-3/11',
       B: '-5/11',
     },
+    graph: {
+      data: [
+        { label: 'C', x: '-1/4 Cs', y: '' },
+        { label: 'G', x: '-1/4 Cs', y: '3/11' },
+        { label: 'D', x: '-1/4 Cs', y: '5/11' },
+        { label: 'A', x: '-1/4 Cs', y: '7/11' },
+        { label: 'E B', x: 'Pure', y: '          ' },
+        { label: 'F#', x: '-1/11', y: '          ' },
+        { label: 'C# G#', x: 'Pure', y: '11/11' },
+        { label: 'Eb', x: 'Pure', y: '8/11' }, 
+        { label: 'Bb', x: 'Pure', y: '5/11' },  
+        { label: 'F', x: 'Pure', y: '3/11' },
+        { label: '', x: '-1/4 Cs', y: '' },
+      ],
+      scaleX: ['a','-1/4 Cs','b','-1/6','c','-1/11','d','Pure','e'],
+      scaleY: ['','1/11 Cs','  ','3/11', '    ','5/11','      ', '7/11', '        ', '9/11','          ', '11/11','            '],
+    },
   },
   {
     id: 'Bertier',
