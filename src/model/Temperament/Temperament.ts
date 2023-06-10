@@ -1143,8 +1143,37 @@ export const defaultTemperaments: Array<TemperamentData> = [
       E: '10/11',
       B: '11/11',
     },
-    csExpMin3rd: undefined,
     
+    csExpMin3rd: {
+      F_sharp: '-13/11',
+      C_sharp: '-13/11',
+      G_sharp: '-13/11',
+      E_flat: '-3/11',
+      B_flat: '-3/11',
+      F: '-13/11',
+      C: '-13/11',
+      G: '-13/11',
+      D: '-3/11',
+      A: '-3/11',
+      E: '-3/11',
+      B: '-3/11',
+    },
+    
+    graph: {
+      data: [
+        { label: 'F C G F#', x: '-1/4 Cs', y: '' },
+        { label: 'D C# G# Eb', x: '-1/4 Cs', y: '11/11' },
+        { label: 'A E', x: '-1/4 Cs', y: '10/11' }, 
+        { label: '', x: '-1/4 Cs', y: '11/11' }, 
+        { label: 'B', x: '~ +3/4 Cs', y: '' }, 
+        { label: '', x: '-1/4 Cs', y: '' },
+        { label: '', x: '-1/4 Cs', y: '11/11' },
+        { label: 'Bb', x: '~ +3/4 Cs', y: '10/11' },
+        { label: '', x: '-1/4 Cs', y: '' },
+      ],
+      scaleX: ['','-1/4 Cs','a',' ','b','Pure','c','~ +3/4 Cs' ],
+      scaleY: ['-1/11','//', '10/11','11/11 = Pyth.', ' '],
+    },
     
   },
   {
