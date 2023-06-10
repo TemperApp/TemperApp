@@ -1319,11 +1319,11 @@ export const defaultTemperaments: Array<TemperamentData> = [
     graph: {
       data: [
         { label: 'C', x: '-1/3 Cp', y: '3/11' },
-        { label: 'G', x: '-1/3 Cp', y: '7/11' },
-        { label: 'D A E', x: 'Pure', y: '7/11' },
-        { label: 'B', x: '-1/3 Cp', y: '7/11' },
+        { label: 'G B', x: '-1/3 Cp', y: '7/11' },
+        { label: 'D A E Eb', x: 'Pure', y: '7/11' },
+        { label: '', x: '-1/3 Cp', y: '7/11' },
         { label: 'F# C# G#', x: 'Pure', y: '11/11' },
-        { label: 'Eb', x: 'Pure', y: '7/11' },
+        { label: '', x: 'Pure', y: '7/11' },
         { label: 'Bb F', x: 'Pure', y: '3/11' },
         { label: '', x: '-1/3 Cp', y: '3/11' },
       ],
