@@ -159,20 +159,20 @@ xAxis.call(d3.axisBottom(x).tickValues(x.domain().filter((d, i) => ![0, 2, 4, 6,
             [temperament, t]);
   
   
-//<Card line 167 </Card> line 175 and > line 171
+// line 167  line 175 and  line 171
   return (
     <>
       <IonSlides pager={true} options={slideOpts} className="px-5 max-w-lg">
         <IonSlide className="px-1">
-          
+          <Card
             title={t('graphTitle')}
             classNameContent="pb-16"
             className="pb-4"
-          
+          >
             <div className="max-w-lg max-h-lg">
               <div id="my_dataviz" />
             </div>
-          
+          </Card>
         </IonSlide>
       </IonSlides>
     </>
