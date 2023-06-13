@@ -30,7 +30,7 @@ const SheetGraph: React.FC<SheetGraphProps> = ({ temperament }) => {
     const labelFontSize = 12;
     const labelFontColor = 'black';
     const pointSize = 6;
-    const pointColor = 'black';
+    const pointColor = "temperapp";
     const pathColor = 'rgba(0, 0, 0, 0.5)';
     const pathWidth = 2;
 
