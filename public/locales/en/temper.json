@@ -11,8 +11,8 @@
   "graphTitle": "Triads quality in Major keys",
   "graphAxeXLabel": "← Fifths",
   "graphAxeYLabel": "Thirds →",
-  "fifthCommas": "Commas fractions acting on Fifths",
-  "thirdsCommas": "Commas fractions acting on Major Thirds",
-  "minorThirdsCommas": "Commas fractions acting on Minor Thirds",
+  "fifthCommas": "Comma fractions acting on Fifths",
+  "thirdsCommas": "Comma fractions acting on Major Thirds",
+  "minorThirdsCommas": "Comma fractions acting on Minor Thirds",
   "resources": "Resources"
 }
