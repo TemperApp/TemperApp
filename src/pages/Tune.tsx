@@ -127,6 +127,26 @@ const TuneModalContent: React.FC = () => {
       <strong>{t('modalIncipit2')}</strong>
       <div dangerouslySetInnerHTML={{__html: t('modalContent2')}} />
 
+      <strong>{t('modalIncipit6')}</strong>
+      <div dangerouslySetInnerHTML={{__html: t('modalContent6')}} />
+      <IonGrid>
+        <IonCol>
+          <IonRow>
+          <IonIcon
+      src="/assets/logotypes/icon-diagram.svg"
+      style={{
+        width: '500px',
+        height: '500px',
+        }}
+        >
+      </IonIcon>
+          </IonRow>
+        </IonCol>
+      </IonGrid>
+      
+
+
+
       <h4 className="py-3">{t('modalSubTitle3')}</h4>
       <strong>{t('modalIncipit3')}</strong>
       <IonGrid>

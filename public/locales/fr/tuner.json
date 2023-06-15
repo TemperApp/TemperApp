@@ -20,6 +20,8 @@
   "modalSubTitle5": "Procédure d'accord",
   "modalContent5": "TemperApp vous accompagne dans l’accord de votre instrument. Pour chaque tempérament, l’application vous propose une procédure d’accord.",
   "modalContent5.5": "<p class=\"p-long\">À chaque étape vous êtes invité·e à accorder une note qui <strong>clignotera</strong>sur un affichage clavier.</p><p class=\"p-long\">Cette note sera accordée comme un intervalle sur une note déjà accordée.</p><p class=\"p-long\">Le battement de l’intervalle est affiché au centre du cercle et généré par l’application.</p><p class=\"p-long\">A tout moment vous pouvez aller à l’étape précédente, suivante ou interrompre la procédure.</p>",
+  "modalIncipit6": "Diagramme",
+  "modalContent6": "<p class=\"p-long\">Temperapp vous propose un diagramme innovant, où les accords majeurs sont représentés avec deux coordonnées : en abscisse le tempérament de la quinte, et en ordonnée le tempérament de la tierce majeure. Les triades représentées dans le coin inférieur gauche du diagramme ont leur tierce plutôt pure et leur quinte plutôt tempérée (en général autour de Do Majeur). A l'opposé du graphique, les quintes sont plutôt pure et les tierces plutôt tempérées, en général autour de Fa# Majeur. Ainsi, vous pouvez immédiatement voir la couleur de chaque accord majeur du tempérament et identifier sa structure, à savoir s'il évolue de manière plutôt abrupte ou au contraire plutôt lisse.  En particulier, vous pouvez identifier les tonalités dont les accords majeurs sont tempérés de la même manière.  </p>",
   "centralCard": {
     "excessivelyTempered": "Excessivement tempérée",
     "veryTempered": "Très tempérée",

@@ -7,5 +7,5 @@
   "fifthCommas": "Commas fractions acting on Fifths",
   "deviationsFromEqual": "Deviations from Equal Temperament",
   "howToCompareTop": "You can compare two temperaments to quickly visualize the the difference in purity of thirds and fifths. The fifths are represented on the outside and thirds on the inside. <br><br> The first temperament selected is located on the inside and the second on the outside, both of which can be exchanged at any time.",
-  "howToCompareBottom": "We can compare the fractions of commas affecting fifths by changing the unit  between syntonic comma and Pythagorean comma, as well as those affecting thirds. <br><br> The deviation table shows the number of divergences."
+  "howToCompareBottom": "We can compare the fractions of commas affecting fifths by changing the unit  between syntonic comma and Pythagorean comma, as well as those affecting thirds. <br><br> The deviation table shows the deviation in cent according to equal temperament based on A."
 }
