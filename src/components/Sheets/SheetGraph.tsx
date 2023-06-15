@@ -1,7 +1,8 @@
 // @ts-nocheck (no way to figure how to type the line 91)
-import React, { useEffect } from 'react';
+import React, { useEffect, useContext } from 'react';
 import { IonSlides, IonSlide } from '@ionic/react';
 import { useTranslation } from 'react-i18next';
+import SettingsContext from '../../store/settings-context';
 
 import * as d3 from 'd3';
 
@@ -20,6 +21,7 @@ const slideOpts = {
 
 const SheetGraph: React.FC<SheetGraphProps> = ({ temperament }) => {
   const { t } = useTranslation('temper');
+  const settings = useContext(SettingsContext);
 
   useEffect(() => {
     if (!temperament.graph) {
@@ -27,10 +29,10 @@ const SheetGraph: React.FC<SheetGraphProps> = ({ temperament }) => {
     }
     const { data, scaleX, scaleY } = temperament.graph;
     const labelFontSize = 12;
-    const labelFontColor = 'black';
+    const labelFontColor = settings.darkTheme ? 'white' : 'black';
     const pointSize = 6;
-    const pointColor = 'temperapp';
-    const pathColor = 'rgba(0, 0, 0, 0.5)';
+    const pointColor = settings.darkTheme ? 'white' : 'temperapp';
+    const pathColor = settings.darkTheme ? 'white' : 'rgba(0, 0, 0, 0.5)';
     const pathWidth = 2;
 
     // set the dimensions and margins of the graph
@@ -155,15 +157,18 @@ const SheetGraph: React.FC<SheetGraphProps> = ({ temperament }) => {
       .attr('y', height / 2) // Position verticale du label (juste en dessous de l'axe X)
       .attr('text-anchor', 'middle') // Alignement du texte au milieu
       .attr('transform', `rotate(-90, ${width + margin.right}, ${height / 2})`) //rotate
-      .text(t('graphAxeYLabel')); // Texte du label
+      .text(t('graphAxeYLabel'))
+      .style('fill', labelFontColor);
+    // Texte du label
 
     svg
       .append('text')
       .attr('x', width / 2) // Position horizontale du label (au milieu de l'axe X)
       .attr('y', height + margin.top + 35) // Position verticale du label (juste en dessous de l'axe X)
       .attr('text-anchor', 'middle') // Alignement du texte au milieu
-      .text(t('graphAxeXLabel')); // Texte du label
-  }, [temperament, t]);
+      .text(t('graphAxeXLabel')) // Texte du label
+      .style('fill', labelFontColor);
+  }, [temperament, t, settings.darkTheme]);
 
   // line 167  line 175 and  line 171
   return (
