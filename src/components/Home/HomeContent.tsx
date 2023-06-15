@@ -6,6 +6,8 @@ import { IonButton, IonGrid, IonRow, IonCol } from '@ionic/react';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
+import SettingsContext from '../../store/settings-context';
+
 import '../App/Collapse.css';
 import '../App/ButtonTemper.css';
 import Waves from './Waves';
@@ -22,6 +24,8 @@ import { Temperament } from '../../model/Temperament/Temperament';
 
 const HomeContent: React.FC = () => {
   const global = useContext(GlobalStatesContext);
+  const settings = useContext(SettingsContext);
+
   const user = useContext(UserContext);
   const [favoriteTemperaments, setMyTemperaments] = useState<Temperament[]>([]);
   const [famousTemperaments, setFamousTemperaments] = useState<Temperament[]>(
@@ -107,7 +111,9 @@ const HomeContent: React.FC = () => {
               <IonCol class="flex ion-justify-content-around">
                 <IonButton
                   className="btn-primary secondary"
-                  color="temperapp"
+                  color={
+                    settings.darkTheme ? 'temperapp-darktheme' : 'temperapp'
+                  }
                   onClick={sortTemperamentByName('NAME_ASC')}
                   size="small"
                 >
@@ -115,7 +121,9 @@ const HomeContent: React.FC = () => {
                 </IonButton>
                 <IonButton
                   className="btn-primary secondary"
-                  color="temperapp"
+                  color={
+                    settings.darkTheme ? 'temperapp-darktheme' : 'temperapp'
+                  }
                   onClick={sortTemperamentByName('NAME_DESC')}
                   size="small"
                 >
@@ -123,7 +131,9 @@ const HomeContent: React.FC = () => {
                 </IonButton>
                 <IonButton
                   className="btn-primary secondary"
-                  color="temperapp"
+                  color={
+                    settings.darkTheme ? 'temperapp-darktheme' : 'temperapp'
+                  }
                   onClick={sortTemperamentByPeriod('PERIOD_ASC')}
                   size="small"
                 >
@@ -131,7 +141,9 @@ const HomeContent: React.FC = () => {
                 </IonButton>
                 <IonButton
                   className="btn-primary secondary"
-                  color="temperapp"
+                  color={
+                    settings.darkTheme ? 'temperapp-darktheme' : 'temperapp'
+                  }
                   onClick={sortTemperamentByPeriod('PERIOD_DESC')}
                   size="small"
                 >

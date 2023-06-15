@@ -11,6 +11,20 @@
   --tempapp-color-contrast-rgb: 0, 0, 0;
   --tempapp-color-shade: #ffc09f;
   --tempapp-color-tint: #ffc09f;
+  
+  /* dark theme */
+  --tempapp-darktheme-color: linear-gradient(
+    90deg,
+    rgba(143, 201, 248, 0.9) 0%,
+    rgb(255, 252, 159) 47%,
+    rgb(182, 255, 177) 100%
+  );
+  --tempapp-darktheme-secondary-color: #2ea39b;
+  --tempapp-darktheme-color-rgb: 255, 192, 159;
+  --tempapp-darktheme-color-contrast: #233c3a;
+  --tempapp-darktheme-color-contrast-rgb: 0, 0, 0;
+  --tempapp-darktheme-color-shade: #ffc09f;
+  --tempapp-darktheme-color-tint: #ffc09f;
 }
 
 body.dark {
@@ -36,6 +50,15 @@ body.dark {
   --ion-color-tint: var(--tempapp-color-tint);
 }
 
+.ion-color-temperapp-darktheme {
+  --ion-color-base: var(--tempapp-darktheme-color);
+  --ion-color-base-rgb: var(--tempapp-darktheme-color-rgb);
+  --ion-color-contrast: var(--tempapp-darktheme-color-contrast);
+  --ion-color-contrast-rgb: var(--tempapp-darktheme-color-contrast-rgb);
+  --ion-color-shade: var(--tempapp-darktheme-color-shade);
+  --ion-color-tint: var(--tempapp-darktheme-color-tint);
+}
+
 .btn-primary {
   text-transform: capitalize;
   --padding-top: 1.5em;
@@ -47,6 +70,6 @@ body.dark {
 .btn-primary.secondary {
   min-width: 80px;
   margin-bottom: 10px;
-  filter: invert() brightness(1.4) saturate(0.7);
-  opacity: 0.8;
+  /* filter: invert() brightness(1.4) saturate(0.7); */
+  /* opacity: 0.8; */
 }

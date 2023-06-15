@@ -5,6 +5,8 @@ import collapseMotion from '../../utils/collapseMotion';
 import { IonButton, IonGrid, IonRow, IonCol, IonSearchbar } from '@ionic/react';
 import React, { useContext, useEffect, useState } from 'react';
 
+import SettingsContext from '../../store/settings-context';
+
 import '../App/Collapse.css';
 import '../App/ButtonTemper.css';
 import { Temperament } from '../../model/Temperament/Temperament';
@@ -28,6 +30,8 @@ const sort = (tmpmts: Temperament[]) => {
 
 const SheetsMenu: React.FC = () => {
   const user = useContext(UserContext);
+  const settings = useContext(SettingsContext);
+
   const [favoriteTemperaments, setMyTemperaments] = useState<Temperament[]>([]);
   const [temperamentsList, setTemperamentsList] = useState<Temperament[]>([]);
   const [temperamentsSort, setTemperamentsSort] = useState<
@@ -140,7 +144,9 @@ const SheetsMenu: React.FC = () => {
               <IonCol class="flex ion-justify-content-around">
                 <IonButton
                   className="btn-primary secondary"
-                  color="temperapp"
+                  color={
+                    settings.darkTheme ? 'temperapp-darktheme' : 'temperapp'
+                  }
                   onClick={sortTemperamentByName('NAME_ASC')}
                   size="small"
                 >
@@ -148,7 +154,9 @@ const SheetsMenu: React.FC = () => {
                 </IonButton>
                 <IonButton
                   className="btn-primary secondary"
-                  color="temperapp"
+                  color={
+                    settings.darkTheme ? 'temperapp-darktheme' : 'temperapp'
+                  }
                   onClick={sortTemperamentByName('NAME_DESC')}
                   size="small"
                 >
@@ -156,7 +164,9 @@ const SheetsMenu: React.FC = () => {
                 </IonButton>
                 <IonButton
                   className="btn-primary secondary"
-                  color="temperapp"
+                  color={
+                    settings.darkTheme ? 'temperapp-darktheme' : 'temperapp'
+                  }
                   onClick={sortTemperamentByPeriod('PERIOD_ASC')}
                   size="small"
                 >
@@ -164,7 +174,9 @@ const SheetsMenu: React.FC = () => {
                 </IonButton>
                 <IonButton
                   className="btn-primary secondary"
-                  color="temperapp"
+                  color={
+                    settings.darkTheme ? 'temperapp-darktheme' : 'temperapp'
+                  }
                   onClick={sortTemperamentByPeriod('PERIOD_DESC')}
                   size="small"
                 >
