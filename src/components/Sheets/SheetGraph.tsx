@@ -22,7 +22,6 @@ const SheetGraph: React.FC<SheetGraphProps> = ({ temperament }) => {
   const { t } = useTranslation('temper');
 
   useEffect(() => {
-    console.log(temperament);
     if (!temperament.graph) {
       return null;
     }
@@ -30,7 +29,7 @@ const SheetGraph: React.FC<SheetGraphProps> = ({ temperament }) => {
     const labelFontSize = 12;
     const labelFontColor = 'black';
     const pointSize = 6;
-    const pointColor = "temperapp";
+    const pointColor = 'temperapp';
     const pathColor = 'rgba(0, 0, 0, 0.5)';
     const pathWidth = 2;
 
@@ -39,24 +38,33 @@ const SheetGraph: React.FC<SheetGraphProps> = ({ temperament }) => {
       width = 300 - margin.left - margin.right,
       height = 400 - margin.top - margin.bottom;
 
-    // // append the svg object to the body of the page
+    // append the svg object to the body of the page
     if (document.querySelector('#my_dataviz>svg')) {
-      return;
+      document.querySelector('#my_dataviz').innerHTML = '';
     }
+
     const svg = d3
-  .select('#my_dataviz')
-  .append('svg')
-  .attr('width', width + margin.left + margin.right)
-  .attr('height', height + margin.top + margin.bottom)
-  .append('g')
-  .attr('transform', 'translate(' + margin.left + ',' + margin.top + ')');
+      .select('#my_dataviz')
+      .append('svg')
+      .attr('width', width + margin.left + margin.right)
+      .attr('height', height + margin.top + margin.bottom)
+      .append('g')
+      .attr('transform', 'translate(' + margin.left + ',' + margin.top + ')');
 
-// Read the data
-const x = d3.scalePoint().domain(scaleX).range([0, width]);
-const xAxis = svg.append('g').attr('transform', 'translate(0,' + height + ')');
+    // Read the data
+    const x = d3.scalePoint().domain(scaleX).range([0, width]);
+    const xAxis = svg
+      .append('g')
+      .attr('transform', 'translate(0,' + height + ')');
 
-xAxis.call(d3.axisBottom(x).tickValues(x.domain().filter((d, i) => ![0, 2, 4, 6, 8, 10].includes(i))));
-   
+    xAxis.call(
+      d3
+        .axisBottom(x)
+        .tickValues(
+          x.domain().filter((d, i) => ![0, 2, 4, 6, 8, 10].includes(i))
+        )
+    );
+
     // Add Y axis
     const y = d3.scalePoint().domain(scaleY).range([height, 0]);
 
@@ -143,23 +151,21 @@ xAxis.call(d3.axisBottom(x).tickValues(x.domain().filter((d, i) => ![0, 2, 4, 6,
     // legend
     svg
       .append('text')
-      .attr('x', width  + margin.right) // Position horizontale du label (au milieu de l'axe X)
-      .attr('y', height /2 ) // Position verticale du label (juste en dessous de l'axe X)
+      .attr('x', width + margin.right) // Position horizontale du label (au milieu de l'axe X)
+      .attr('y', height / 2) // Position verticale du label (juste en dessous de l'axe X)
       .attr('text-anchor', 'middle') // Alignement du texte au milieu
-.attr('transform', `rotate(-90, ${width + margin.right}, ${height / 2})`) //rotate
+      .attr('transform', `rotate(-90, ${width + margin.right}, ${height / 2})`) //rotate
       .text(t('graphAxeYLabel')); // Texte du label
-    
+
     svg
       .append('text')
       .attr('x', width / 2) // Position horizontale du label (au milieu de l'axe X)
       .attr('y', height + margin.top + 35) // Position verticale du label (juste en dessous de l'axe X)
       .attr('text-anchor', 'middle') // Alignement du texte au milieu
       .text(t('graphAxeXLabel')); // Texte du label
-  }, 
-            [temperament, t]);
-  
-  
-// line 167  line 175 and  line 171
+  }, [temperament, t]);
+
+  // line 167  line 175 and  line 171
   return (
     <>
       <IonSlides pager={true} options={slideOpts} className="px-5 max-w-lg">
