@@ -14,10 +14,10 @@
   
   /* dark theme */
   --tempapp-darktheme-color: linear-gradient(
-    90deg,
-    rgba(143, 201, 248, 0.9) 0%,
-    rgb(255, 252, 159) 47%,
-    rgb(182, 255, 177) 100%
+    284.08deg,
+    #45cbc7 -17.13%,
+    #2ea39b 15.16%,
+    #a3719d 92.68%
   );
   --tempapp-darktheme-secondary-color: #2ea39b;
   --tempapp-darktheme-color-rgb: 255, 192, 159;
@@ -70,6 +70,8 @@ body.dark {
 .btn-primary.secondary {
   min-width: 80px;
   margin-bottom: 10px;
-  /* filter: invert() brightness(1.4) saturate(0.7); */
+  font-weight: bold;
+  text-underline-offset: 100;
+  /*filter: invert() brightness(1.4) saturate(0.7); */
   /* opacity: 0.8; */
 }
