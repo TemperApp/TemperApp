@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next';
 
 import Card from "../Card";
 import { Temperament } from "../../model/Temperament/Temperament";
-import { FIFTHS } from "../../model/Note/sequences";
+import { FIFTHS, SEMITONES } from "../../model/Note/sequences";
 
 import "./Comparator.css";
 
@@ -32,7 +32,7 @@ const Deviations: React.FC<DeviationsProps> = ({
             </IonCol>
           </IonRow>
 
-          {FIFTHS.map((note, idx) => (
+          {SEMITONES.map((note, idx) => (
             <IonRow
               key={idx}
               className={`justify-end items-end ${idx % 2 && 'color-gradient-bg'}`}
