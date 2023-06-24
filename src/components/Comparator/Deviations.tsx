@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next';
 
 import Card from "../Card";
 import { Temperament } from "../../model/Temperament/Temperament";
-import { FIFTHS, SEMITONES } from "../../model/Note/sequences";
+import { SEMITONES } from "../../model/Note/sequences";
 
 import "./Comparator.css";
 
