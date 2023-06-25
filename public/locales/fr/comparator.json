@@ -6,6 +6,6 @@
   "fifthsUnit": "Unité des quintes",
   "fifthCommas": "Fractions de commas affectant les quintes",
   "deviationsFromEqual": "Déviation au Tempérament Égal",
-  "howToCompareTop": "On peut comparer les fractions de commas affectant les quintes en changeant l'unité entre comma syntonique et comma pythagoricien, ainsi que celles affectant les tierces. ",
-  "howToCompareBottom": "La table de déviation liste les déviation des notes par rapport au tempérament égal. Ici la note La (A) prise comme référence, a pour déviation 0 "
+  "howToCompareTop": "On peut comparer les fractions de commas affectant les quintes en changeant l'unité entre comma syntonique et comma pythagoricien, ainsi que celles affectant les tierces. Le premier tempérament est représenté à l'exterieur du cycle des quintes, le second à l'intérieur. Les deux tempéraments peuvent être échangés grâce à la double flèche ",
+  "howToCompareBottom": "Vous pouvez changer l'unité de représentation du tempérament des quintes entre le comma pythagoricien (Cp) et le comma syntonique (Cs). La table de déviation liste les déviation des notes par rapport au tempérament égal. Ici la note La (A) prise comme référence, a pour déviation 0 "
 }

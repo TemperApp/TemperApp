@@ -30,7 +30,7 @@ export enum Languages {
 const settings: readonly AllowedSetting[] = [
   {
     name: 'language',
-    defaultValue: Languages.ENGLISH,
+    defaultValue: Languages.FRENCH,
   },
   {
     name: 'darkTheme',

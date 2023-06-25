@@ -86,8 +86,8 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
             name={t('language')}
             placeholder={t('select')}
             options={[
-              { value: String(Languages.ENGLISH) as any, label: 'English' },
               { value: String(Languages.FRENCH) as any, label: 'Français' },
+              { value: String(Languages.ENGLISH) as any, label: 'English' },
             ]}
             value={String(nextSettings.language)}
             onChange={(e: any) => {
