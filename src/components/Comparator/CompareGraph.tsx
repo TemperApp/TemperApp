@@ -106,7 +106,7 @@ const xaxis = d3.axisBottom(x)
 .tickFormat( function (d) {
 if (d<0)
 {return "-1/" + -1/d}
-else if (d==0)
+else if (d===0)
   {return "Pure"}
 else if (d>0)
   {return d.toFixed(2)}
@@ -129,7 +129,7 @@ svg
 const yaxis = d3.axisRight(y)
   .tickValues(yValues)
   .tickFormat( function (d) {
-    if (d==0)
+    if (d===0)
       {return ""}
     else 
       {return 11*d + "/11"}
@@ -145,7 +145,7 @@ svg.append('g')
 
 
 // paths
-const paths = svg
+svg
   .append('path')
   .datum(data1)
   .attr('fill', 'none')
@@ -153,7 +153,7 @@ const paths = svg
   .attr('stroke-width', pathWidth)
   .attr('d', d3.line().x((d) => x(d.x)).y((d) => y(d.y)));
 
-  const paths2 = svg
+ svg
   .append('path')
   .datum(data2)
   .attr('fill', 'none')
@@ -188,7 +188,7 @@ const paths = svg
       .style('fill', pointColor2);
 
     // labels
-    const labels = svg
+   svg
       .append('g')
       .selectAll('dot')
       .data(data1)
@@ -201,7 +201,7 @@ const paths = svg
       .style('font-size', labelFontSize)
       .style('font-weight', 'bold');
 
-      const labels2 = svg
+   svg
       .append('g')
       .selectAll('dot')
       .data(data2)
