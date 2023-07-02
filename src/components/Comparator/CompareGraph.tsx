@@ -53,8 +53,6 @@ const CompareGraph: React.FC<CompareGraphProps> = ({ t1, t2 }) => {
     const data1 = dataA.map(item => ({ ...item, x: eval(item.x), y: eval(item.y) }));
     const data2 = dataB.map(item => ({ ...item, x: eval(item.x), y: eval(item.y) })); */
 
-    console.log(data1)
-    console.log(data2)
 // Read the data
 
 const x1values =  data1.map(item => item.x).filter((value, index, self) => self.indexOf(value) === index);
@@ -71,11 +69,14 @@ const scaleY12 = [...y1values, ...y2values, 0, 1];
 
 //eval values
 
-const xValues = scaleX12.map(item => eval(item));
-const yValues = scaleY12.map(item => eval(item)).filter(num => {
+const xValues = scaleX12 ;
+const yValues = scaleY12.filter(num => {
   const fraction = num * 11;
   return Number.isInteger(fraction);
 });
+
+console.log(scaleX12, xValues)
+console.log(scaleY12, yValues)
 
 
 // create min and max values

@@ -191,7 +191,7 @@ const SheetGraph: React.FC<SheetGraphProps> = ({ temperament }) => {
     if (document.querySelector('#my_dataviz2>svg')) {
       document.querySelector('#my_dataviz2').innerHTML = '';
     }
-    const data1 = dataA.map(item => ({ ...item, x: eval(item.x), y: eval(item.y) }));
+    const data1 = dataA;
     
     console.log(data1)
 // Read the data
@@ -207,8 +207,8 @@ const scaleY1 = [...y1values, 0, 1];
 
 //eval values
 
-const xValues = scaleX1.map(item => eval(item));
-const yValues = scaleY1.map(item => eval(item)).filter(num => {
+const xValues = scaleX1 ;
+const yValues = scaleY1.filter(num => {
   const fraction = num * 11;
   return Number.isInteger(fraction);
 });
@@ -243,7 +243,7 @@ const xaxis = d3.axisBottom(x)
 .tickFormat( function (d) {
 if (d<0)
 {return "-1/" + -1/d}
-else if (d==0)
+else if (d === 0)
   {return "Pure"}
 else if (d>0)
   {return d.toFixed(2)}
@@ -265,7 +265,7 @@ svg
 const yaxis = d3.axisRight(y)
   .tickValues(yValues)
   .tickFormat( function (d) {
-    if (d==0)
+    if (d === 0)
       {return ""}
     else 
       {return 11*d + "/11"}
@@ -279,7 +279,7 @@ svg.append('g')
   .call(yaxis);
 
     // paths
-const paths = svg
+svg
 .append('path')
 .datum(data1)
 .attr('fill', 'none')
