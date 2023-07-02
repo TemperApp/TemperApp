@@ -28,8 +28,8 @@ const CompareGraph: React.FC<CompareGraphProps> = ({ t1, t2 }) => {
     if (!t1.graph || !t2.graph) {
       return null;
     }
-    const dataA = t1.graph.data;
-    const dataB = t2.graph.data;
+    const data1 = t1.graph.data;
+    const data2 = t2.graph.data;
     const labelFontSize = 12;
     const labelFontColor = settings.darkTheme ? 'rgba(232, 109, 213, 1)' : 'black';
     const pointSize = 6;
@@ -49,9 +49,9 @@ const CompareGraph: React.FC<CompareGraphProps> = ({ t1, t2 }) => {
     if (document.querySelector('#my_dataviz>svg')) {
       document.querySelector('#my_dataviz').innerHTML = '';
     }
-
+/* 
     const data1 = dataA.map(item => ({ ...item, x: eval(item.x), y: eval(item.y) }));
-    const data2 = dataB.map(item => ({ ...item, x: eval(item.x), y: eval(item.y) }));
+    const data2 = dataB.map(item => ({ ...item, x: eval(item.x), y: eval(item.y) })); */
 
     console.log(data1)
     console.log(data2)
@@ -187,33 +187,22 @@ svg
       .attr('height', pointSize)
       .style('fill', pointColor2);
 
-    // labels
-   svg
-      .append('g')
-      .selectAll('dot')
-      .data(data1)
-      .enter()
-      .append('text')
-      .attr('x', (d) => (x(d.x) as any) + 10)
-      .attr('y', (d) => (y(d.y) as any) - 10)
-      .text((d) => d.label)
-      .style('fill', labelFontColor)
-      .style('font-size', labelFontSize)
-      .style('font-weight', 'bold');
+/* labels */
+      const combinedData = data1.concat(data2);
 
-   svg
-      .append('g')
-      .selectAll('dot')
-      .data(data2)
-      .enter()
-      .append('text')
-      .attr('x', (d) => (x(d.x) as any) + 10)
-      .attr('y', (d) => (y(d.y) as any) - 10)
-      .text((d) => d.label)
-      .style('fill', labelFontColor2)
-      .style('font-size', labelFontSize)
-      .style('font-weight', 'bold');
-
+// Crée les labels en utilisant le tableau combiné
+const labels = svg
+  .append('g')
+  .selectAll('dot')
+  .data(combinedData)
+  .enter()
+  .append('text')
+  .attr('x', (d) => (x(d.x) as any) + 10)
+  .attr('y', (d) => (y(d.y) as any) - 10)
+  .text((d) => d.label)
+  .style('fill', (d) => (d.hasOwnProperty('labelFontColor2') ? labelFontColor2 : labelFontColor))
+  .style('font-size', labelFontSize)
+  .style('font-weight', 'bold');
 
     // Fonction pour détecter les collisions entre les labels et les lignes
     function checkCollision(label: any, path: any) {
@@ -229,24 +218,24 @@ svg
     }
 
     // Ajustement des positions des labels pour éviter les collisions avec les lignes
-    labels.each(function (label: any) {
-      const currentLabel = d3.select(this);
-      let collision = false;
+labels.each(function (label: any) {
+  const currentLabel = d3.select(this);
+  let collision = false;
 
-      // Vérification des collisions avec les lignes
-      svg.selectAll('path').each(function () {
-        const currentLine = d3.select(this);
-        if (checkCollision(currentLabel, currentLine)) {
-          collision = true;
-          return false; // Sortir de la boucle each()
-        }
-      });
+  // Vérification des collisions avec les lignes
+  svg.selectAll('path').each(function () {
+    const currentLine = d3.select(this);
+    if (checkCollision(currentLabel, currentLine)) {
+      collision = true;
+      return false; // Sortir de la boucle each()
+    }
+  });
 
-      // Ajustement de la position du label en cas de collision
-      if (collision) {
-        currentLabel.attr('x', +currentLabel.attr('x') - 20); // Ajustez la position en fonction de vos besoins
-      }
-    });
+  // Ajustement de la position du label en cas de collision
+  if (collision) {
+    currentLabel.attr('x', +currentLabel.attr('x') - 20); // Ajustez la position en fonction de vos besoins
+  }
+});
 
     // legend
     svg
