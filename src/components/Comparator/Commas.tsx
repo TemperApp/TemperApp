@@ -82,7 +82,7 @@ const ComparatorComma: React.FC<ComparatorCommaProps> = ({
 
         <IonSlide className="px-1">
           <Card
-            title="Fractions de commas affectant les tierces"
+            title={t('thirdCommas')}
             classNameContent='pb-16'
             className='pb-4'
           >

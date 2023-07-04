@@ -1,14 +1,16 @@
 // @ts-nocheck (no way to figure how to type the line 91)
 import { IonSlide, IonSlides } from '@ionic/react';
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import SettingsContext from '../../store/settings-context';
+import Toggler from "../inputs/Toggler";
 
 import * as d3 from 'd3';
 
 import Card from '../Card';
 
 import { Temperament } from '../../model/Temperament/Temperament';
+
 
 type CompareGraphProps = {
   t1: Temperament,
@@ -23,22 +25,25 @@ const slideOpts = {
 const CompareGraph: React.FC<CompareGraphProps> = ({ t1, t2 }) => {
   const { t } = useTranslation('temper');
   const settings = useContext(SettingsContext);
+  const [isCpMode, setCpMode] = useState<boolean>(true);
 
   useEffect(() => {
     if (!t1.graph || !t2.graph) {
       return null;
     }
-    const data1 = t1.graph.data;
-    const data2 = t2.graph.data;
+
+    const dataA = t1.graph.data;
+    const dataB = t2.graph.data;
+    const Commagraph = isCpMode === true ? 12 : 11;
     const labelFontSize = 12;
     const labelFontColor = settings.darkTheme ? 'rgba(232, 109, 213, 1)' : 'black';
     const pointSize = 6;
     const pointColor = settings.darkTheme ? 'rgba(232, 109, 213, 0.5)' : 'temperapp';
     const pathColor = settings.darkTheme ? 'rgba(232, 109, 213, 0.4)' : 'rgba(0, 0, 0, 0.4)';
     const pathWidth = 2;
-    const labelFontColor2 = settings.darkTheme ? 'rgba(255,255, 255, 1)' : 'rgba(248, 143, 143, 1)';
-    const pointColor2 = settings.darkTheme ? 'rgba(255,255, 255, 1)' : 'rgba(248, 143, 143, 1)';
-    const pathColor2 = settings.darkTheme ? 'rgba(255,255, 255, 1)' : 'rgba(248, 143, 143, 1)';
+    const labelFontColor2 = settings.darkTheme ? 'rgba(255,255, 255, 1)' : 'rgba(46, 163, 155, 1)';
+    const pointColor2 = settings.darkTheme ? 'rgba(255,255, 255, 1)' : 'rgba(46, 163, 155, 1)';
+    const pathColor2 = settings.darkTheme ? 'rgba(255,255, 255, 1)' : 'rgba(46, 163, 155, 0.4)';
 
     // set the dimensions and margins of the graph
     const margin = { top: 20, right: 30, bottom: 60, left: 10 },
@@ -49,13 +54,20 @@ const CompareGraph: React.FC<CompareGraphProps> = ({ t1, t2 }) => {
     if (document.querySelector('#my_dataviz>svg')) {
       document.querySelector('#my_dataviz').innerHTML = '';
     }
-/* 
-    const data1 = dataA.map(item => ({ ...item, x: eval(item.x), y: eval(item.y) }));
-    const data2 = dataB.map(item => ({ ...item, x: eval(item.x), y: eval(item.y) })); */
 
-// Read the data
+    
+    const Commat1 = t1.graph.commabase === 'Cp' ? 12 : 11;
+    const Commat2 = t2.graph.commabase === 'Cp' ? 12 : 11;
+ 
+    const data1 = dataA.map(item => ({ ...item, x: item.x * (Commat1/Commagraph), y: eval(item.y) }));
+    const data2 = dataB.map(item => ({ ...item, x: item.x * (Commat2/Commagraph), y: eval(item.y) })); 
 
-const x1values =  data1.map(item => item.x).filter((value, index, self) => self.indexOf(value) === index);
+    console.log(Commagraph)
+    console.log(Commat1)
+
+
+
+const x1values =  data1.map(item => item.x ).filter((value, index, self) => self.indexOf(value) === index);
 const x2values =  data2.map(item => item.x).filter((value, index, self) => self.indexOf(value) === index);
  
 const y1values = data1.map(item => item.y).filter((value, index, self) => self.indexOf(value) === index);
@@ -81,7 +93,7 @@ console.log(scaleY12, yValues)
 
 // create min and max values
 
-const minValueX = Math.min(...xValues)-0.01;
+const minValueX = Math.min(...xValues)*1.1;
 const maxValueX = Math.max(...xValues)-(1/10)*minValueX;
 const minValueY = Math.min(...yValues)
 const maxValueY = Math.max(...yValues)
@@ -106,7 +118,7 @@ const xaxis = d3.axisBottom(x)
 .tickValues(xValues)
 .tickFormat( function (d) {
 if (d<0)
-{return "-1/" + -1/d}
+{return '-1/' + new Intl.NumberFormat("en", {maximumFractionDigits: 1}).format(-1/d)}
 else if (d===0)
   {return "Pure"}
 else if (d>0)
@@ -290,7 +302,7 @@ labels2.each(function (label: any) {
 
   // Ajustement de la position du label en cas de collision
   if (collision) {
-    currentLabel.attr('x', +currentLabel.attr('x') + 20); // Ajustez la position en fonction de vos besoins
+    currentLabel.attr('x', +currentLabel.attr('x') - 10); // Ajustez la position en fonction de vos besoins
   }
 });
 
@@ -310,13 +322,16 @@ function checkLabelCollision(label: any, otherLabels: any) {
         labelBBox.y + labelBBox.height > otherLabelBBox.y &&
         labelBBox.y < otherLabelBBox.y + otherLabelBBox.height
       ) {
-        collision = true;
+        currentLabel.attr('y', +currentLabel.attr('y') - 20);
         return false; // Sortir de la boucle each()
       }
     }
+
+
   });
 
   return collision;
+
 }
     // legend
     svg
@@ -336,7 +351,8 @@ function checkLabelCollision(label: any, otherLabels: any) {
       .attr('text-anchor', 'middle') // Alignement du texte au milieu
       .text(t('graphAxeXLabel')) // Texte du label
       .style('fill', labelFontColor);
-  }, [t1, t2, t, settings.darkTheme]);
+
+  }, [t1, t2, t, settings.darkTheme, isCpMode]);
 
   // line 167  line 175 and  line 171
   return (
@@ -348,9 +364,23 @@ function checkLabelCollision(label: any, otherLabels: any) {
             classNameContent="pb-16"
             className="pb-4"
           >
+            
             <div className="max-w-lg max-h-lg">
               <div id="my_dataviz" />
             </div>
+            <div className="absolute flex right-4">
+              
+              <Toggler
+                typeContentText={true}
+                contentLeft="Cs"
+                contentRight="Cp"
+                conditionLeft={!isCpMode}
+                conditionRight={isCpMode}
+                onClickLeft={() => setCpMode(false)}
+                onClickRight={() => setCpMode(true)}
+              />
+            </div>
+              
           </Card>
         </IonSlide>
       </IonSlides>

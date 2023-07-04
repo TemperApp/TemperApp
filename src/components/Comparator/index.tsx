@@ -19,6 +19,7 @@ import ComparatorQuadRings from './QuadRings';
 import ComparatorCommas from './Commas';
 import ComparatorDeviations from './Deviations';
 import ComparatorGraph from './CompareGraph'
+import SheetGraph from '../Sheets/SheetGraph';
 
 import EqualTemperament from '../../model/Temperament/Equal';
 import { Temperament } from '../../model/Temperament/Temperament';
@@ -117,9 +118,10 @@ const Comparator: React.FC = () => {
       <ComparatorCommas t1={temperament1} t2={temperament2} />
 
       <ComparatorDeviations t1={temperament1} t2={temperament2} />
+      {idTemperament1 == idTemperament2 ? <SheetGraph temperament={temperament1}/> : 
 
       <ComparatorGraph t1={temperament1} t2={temperament2} />
-
+      }
       
     </>
   );
