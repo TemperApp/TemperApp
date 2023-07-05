@@ -43,7 +43,6 @@ const Comparator: React.FC = () => {
 
   useEffect(() => {
     const temperaments = fetchTemperaments(t);
-    console.log(temperaments);
     setTemperamentsList(temperaments);
   }, [t]);
 

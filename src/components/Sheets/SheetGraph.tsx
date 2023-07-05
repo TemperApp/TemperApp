@@ -47,7 +47,6 @@ const SheetGraph: React.FC<SheetGraphProps> = ({ temperament }) => {
     }
     const data1 = dataA;
     
-    console.log(data1)
 // Read the data
 
 const x1values =  data1.map(item => item.x).filter((value, index, self) => self.indexOf(value) === index);
