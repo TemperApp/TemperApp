@@ -59,8 +59,8 @@ const CompareGraph: React.FC<CompareGraphProps> = ({ t1, t2 }) => {
     const Commat1 = t1.graph.commabase === 'Cp' ? 12 : 11;
     const Commat2 = t2.graph.commabase === 'Cp' ? 12 : 11;
  
-    const data1 = dataA.map(item => ({ ...item, x: item.x * (Commat1/Commagraph), y: eval(item.y) }));
-    const data2 = dataB.map(item => ({ ...item, x: item.x * (Commat2/Commagraph), y: eval(item.y) })); 
+    const data1 = dataA.map(item => ({ ...item, x: item.x * (Commat1/Commagraph), y: item.y }));
+    const data2 = dataB.map(item => ({ ...item, x: item.x * (Commat2/Commagraph), y: item.y })); 
 
     console.log(Commagraph)
     console.log(Commat1)

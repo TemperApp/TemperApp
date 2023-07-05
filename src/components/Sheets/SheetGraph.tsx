@@ -9,7 +9,7 @@ import * as d3 from 'd3';
 import Card from '../Card';
 
 import { Temperament } from '../../model/Temperament/Temperament';
-import { SSL_OP_NO_TLSv1_1 } from 'constants';
+
 
 type SheetGraphProps = {
   temperament: Temperament;
