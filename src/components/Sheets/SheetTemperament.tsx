@@ -9,7 +9,7 @@ import ResourcesLearn from '../Learn/ResourcesLearn';
 import GlobalStatesContext from '../../store/global-states-context';
 import Card from '../Card';
 import Commas from './SheetCommas';
-import Graph from './SheetGraph';
+import SheetGraph from './SheetGraph';
 import SheetDoubleRings from './SheetDoubleRings';
 import { useTranslation } from 'react-i18next';
 
@@ -90,11 +90,11 @@ const SheetTemperament: React.FC = () => {
         <Commas temperament={temperament} />
       </div>
 
-      {!!temperament.graph && (
+      
         <div className="mx-auto max-w-lg">
-          <Graph temperament={temperament} />
+          <SheetGraph temperament={temperament} />
         </div>
-      )}
+      
 
       <div className="px-6 mx-auto max-w-lg">
         {temperament.soundReferences[0].url !== ''

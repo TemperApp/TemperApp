@@ -42,8 +42,8 @@ const SheetGraph: React.FC<SheetGraphProps> = ({ temperament }) => {
       height = 400 - margin.top - margin.bottom;
 
     // append the svg object to the body of the page
-    if (document.querySelector('#my_dataviz2>svg')) {
-      document.querySelector('#my_dataviz2').innerHTML = '';
+    if (document.querySelector('#my_dataviz>svg')) {
+      document.querySelector('#my_dataviz').innerHTML = '';
     }
     const data1 = dataA;
     
@@ -75,7 +75,7 @@ const minValueY = Math.min(...yValues);
 const maxValueY = Math.max(...yValues)+0.01;
 
     const svg = d3
-      .select('#my_dataviz2')
+      .select('#my_dataviz')
       .append('svg')
       .attr('width', width + margin.left + margin.right)
       .attr('height', height + margin.top + margin.bottom)
@@ -231,7 +231,7 @@ svg
             className="pb-4"
           >
             <div className="max-w-lg max-h-lg">
-              <div id="my_dataviz2" />
+              <div id="my_dataviz" />
             </div>
           </Card>
         </IonSlide>

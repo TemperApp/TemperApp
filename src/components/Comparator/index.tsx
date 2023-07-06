@@ -117,8 +117,8 @@ const Comparator: React.FC = () => {
       <ComparatorCommas t1={temperament1} t2={temperament2} />
 
       <ComparatorDeviations t1={temperament1} t2={temperament2} />
-      {idTemperament1 === idTemperament2 ? (<SheetGraph temperament={temperament1}/>) : 
 
+      {idTemperament1 === idTemperament2 ? (<SheetGraph temperament={temperament1}/>) : 
       (<ComparatorGraph t1={temperament1} t2={temperament2} />)
       }
       
