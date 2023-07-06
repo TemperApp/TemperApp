@@ -65,14 +65,27 @@ export const SettingsContextProvider: React.FC = ({ children }) => {
       callback2(state);
     };
 
+    const [isStoreReady, setStoreReady] = useState(false);
+
+    useEffect(() => {
+      if (store.isAvailable) {
+        (async () => {
+          await store.openStore({});
+          setStoreReady(true);
+        })();
+      }
+    }, []);
+
     // Synchronize setting state with the value in the store
     const syncState = () => {
-      (async () => {
-        if (await store.isKey(name)) {
-          setState(JSON.parse((await store.getItem(name))!));
-        }
-      })();
-    }
+      if (isStoreReady) {
+        (async () => {
+          if (await store.isKey(name)) {
+            setState(JSON.parse((await store.getItem(name))!));
+          }
+        })();
+      }
+    };
 
     return {
       name: name,

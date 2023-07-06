@@ -57,7 +57,7 @@ const y1values = data1.map(item => item.y).filter((value, index, self) => self.i
 const scaleX1 = [...x1values, 0];
 const scaleY1 = [...y1values, 0, 1];
 
-
+console.log(temperament.graph)
 //eval values
 
 const xValues = scaleX1 ;
@@ -94,14 +94,14 @@ const x = d3
 const xaxis = d3.axisBottom(x)
 .tickValues(xValues)
 .tickFormat( function (d) {
-if (d<0)
-{return "-1/" + -1/d}
-else if (d === 0)
-  {return "Pure"}
-else if (d>0)
-  {return d.toFixed(2)}
-
-})
+  if (d<0)
+  {return '-1/' + new Intl.NumberFormat("en", {maximumFractionDigits: 1}).format(-1/d)}
+  else if (d===0)
+    {return "Pure"}
+  else if (d>0)
+    {return d.toFixed(2)}
+  
+  })
 .tickSizeOuter(0);
 svg
   .append('g')

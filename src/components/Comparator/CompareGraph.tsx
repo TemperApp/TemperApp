@@ -51,8 +51,8 @@ const CompareGraph: React.FC<CompareGraphProps> = ({ t1, t2 }) => {
       height = 400 - margin.top - margin.bottom;
 
     // append the svg object to the body of the page
-    if (document.querySelector('#my_dataviz>svg')) {
-      document.querySelector('#my_dataviz').innerHTML = '';
+    if (document.querySelector('#my_dataviz2>svg')) {
+      document.querySelector('#my_dataviz2').innerHTML = '';
     }
 
     
@@ -100,7 +100,7 @@ const maxValueY = Math.max(...yValues)
 
 
 const svg = d3
-.select('#my_dataviz')
+.select('#my_dataviz2')
 .append('svg')
 .attr('width', width + margin.left + margin.right)
 .attr('height', height + margin.top + margin.bottom)
@@ -366,7 +366,7 @@ function checkLabelCollision(label: any, otherLabels: any) {
           >
             
             <div className="max-w-lg max-h-lg">
-              <div id="my_dataviz" />
+              <div id="my_dataviz2" />
             </div>
             <div className="absolute flex right-4">
               
