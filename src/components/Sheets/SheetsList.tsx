@@ -118,18 +118,20 @@ const SheetsMenu: React.FC = () => {
                   (temperament: Temperament) =>
                     temperamentFavorite(temperament.id, user.favorite) === true
                 )
-                .map((temperament: Temperament) => (
-                  <IonCol size="6" key={temperament.id}>
-                    <IonButton
-                      className="btn-primary"
-                      expand="block"
-                      color="temperapp"
-                      routerLink={`/sheets/temperament/${temperament.id}`}
-                    >
-                      {temperament.name}
-                    </IonButton>
-                  </IonCol>
-                ))}
+                .map((temperament: Temperament) => {
+                  return (
+                    <IonCol size="6" key={temperament.id}>
+                      <IonButton
+                        className="btn-primary"
+                        expand="block"
+                        color="temperapp"
+                        routerLink={`/sheets/temperament/${temperament.id}`}
+                      >
+                        {temperament.name}
+                      </IonButton>
+                    </IonCol>
+                  );
+                })}
             </IonRow>
           </IonGrid>
         </Panel>
