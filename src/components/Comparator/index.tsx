@@ -118,9 +118,10 @@ const Comparator: React.FC = () => {
 
       <ComparatorDeviations t1={temperament1} t2={temperament2} />
 
-      {idTemperament1 === idTemperament2 ? (<SheetGraph temperament={temperament1} forceReload={new Date()} />) : 
-      (<ComparatorGraph t1={temperament1} t2={temperament2} forceReload={new Date()} />)
-      }
+      {idTemperament1 === idTemperament2 
+        ? (<SheetGraph temperament={temperament1} forceReload={new Date()} />) 
+        : (<ComparatorGraph t1={temperament1} t2={temperament2} forceReload={new Date()} />)
+        }
       
     </>
   );
