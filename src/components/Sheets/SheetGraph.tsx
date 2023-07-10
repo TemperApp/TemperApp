@@ -13,6 +13,7 @@ import { Temperament } from '../../model/Temperament/Temperament';
 
 type SheetGraphProps = {
   temperament: Temperament;
+  forceReload?: any;
 };
 
 const slideOpts = {
@@ -20,7 +21,7 @@ const slideOpts = {
   speed: 400,
 };
 
-const SheetGraph: React.FC<SheetGraphProps> = ({ temperament }) => {
+const SheetGraph: React.FC<SheetGraphProps> = ({ temperament, forceReload }) => {
   const { t } = useTranslation('temper');
   const settings = useContext(SettingsContext);
 
@@ -218,7 +219,7 @@ svg
       .attr('text-anchor', 'middle') // Alignement du texte au milieu
       .text(t('graphAxeXLabel') + ' (' + temperament.graph.commabase +')') // Texte du label
       .style('fill', labelFontColor);
-  }, [temperament, t, settings.darkTheme]);
+  }, [temperament, t, settings.darkTheme, forceReload]);
 
   // line 167  line 175 and  line 171
   return (

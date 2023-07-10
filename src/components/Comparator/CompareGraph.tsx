@@ -15,6 +15,7 @@ import { Temperament } from '../../model/Temperament/Temperament';
 type CompareGraphProps = {
   t1: Temperament,
   t2: Temperament,
+  forceReload?: any,
 };
 
 const slideOpts = {
@@ -22,7 +23,7 @@ const slideOpts = {
   speed: 400,
 };
 
-const CompareGraph: React.FC<CompareGraphProps> = ({ t1, t2 }) => {
+const CompareGraph: React.FC<CompareGraphProps> = ({ t1, t2, forceReload }) => {
   const { t } = useTranslation('temper');
   const settings = useContext(SettingsContext);
   const [isCpMode, setCpMode] = useState<boolean>(true);
@@ -352,7 +353,7 @@ function checkLabelCollision(label: any, otherLabels: any) {
       .text(t('graphAxeXLabel')) // Texte du label
       .style('fill', labelFontColor);
 
-  }, [t1, t2, t, settings.darkTheme, isCpMode]);
+  }, [t1, t2, t, settings.darkTheme, isCpMode, forceReload]);
 
   // line 167  line 175 and  line 171
   return (
