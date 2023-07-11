@@ -19,7 +19,7 @@ import ComparatorQuadRings from './QuadRings';
 import ComparatorCommas from './Commas';
 import ComparatorDeviations from './Deviations';
 import ComparatorGraph from './CompareGraph'
-import SheetGraph from '../Sheets/SheetGraph';
+
 
 import EqualTemperament from '../../model/Temperament/Equal';
 import { Temperament } from '../../model/Temperament/Temperament';
