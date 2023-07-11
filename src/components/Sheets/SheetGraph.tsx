@@ -30,195 +30,193 @@ const SheetGraph: React.FC<SheetGraphProps> = ({ temperament, forceReload }) => 
 
 
   useEffect(() => {
-    if (!temperament.graph) {
-      return null;
-    }
-  const dataA = temperament.graph.data;
-  const labelFontSize = 12;
-  const labelFontColor = settings.darkTheme ? 'white' : 'black';
-  const pointSize = 6;
-  const pointColor = settings.darkTheme ? 'white' : 'temperapp';
-  const pathColor = settings.darkTheme ? 'white' : 'rgba(0, 0, 0, 0.5)';
-  const pathWidth = 2;
-
-    // set the dimensions and margins of the graph
-  const margin = { top: 20, right: 30, bottom: 60, left: 10 },
-      width = 300 - margin.left - margin.right,
-      height = 400 - margin.top - margin.bottom;
-
-    // append the svg object to the body of the page
-  if (document.querySelector('#my_dataviz>svg')) {
+    if (document.querySelector('#my_dataviz>svg')) {
       document.querySelector('#my_dataviz').innerHTML = '';
     }
-    const data1 = dataA;
-    
-// Read the data
+      const dataA = temperament.graph.data;
+      const labelFontSize = 12;
+      const labelFontColor = settings.darkTheme ? 'white' : 'black';
+      const pointSize = 6;
+      const pointColor = settings.darkTheme ? 'white' : 'temperapp';
+      const pathColor = settings.darkTheme ? 'white' : 'rgba(0, 0, 0, 0.5)';
+      const pathWidth = 2;
 
-    const x1values =  data1.map(item => item.x).filter((value, index, self) => self.indexOf(value) === index);
+        // set the dimensions and margins of the graph
+      const margin = { top: 20, right: 30, bottom: 60, left: 10 },
+          width = 300 - margin.left - margin.right,
+          height = 400 - margin.top - margin.bottom;
 
-    const y1values = data1.map(item => item.y).filter((value, index, self) => self.indexOf(value) === index);
+        // append the svg object to the body of the page
 
-    //concat x1+x2 / y1+y2 in one array and add 0
-    const scaleX1 = [...x1values, 0];
-    const scaleY1 = [...y1values, 0, 1];
+        const data1 = dataA;
 
-    console.log(temperament.graph)
-    //eval values
+          //     Read the data
 
-    const xValues = scaleX1 ;
-    const yValues = scaleY1.filter(num => {
-      const fraction = num * 11;
-      return Number.isInteger(fraction);
-    });
+        const x1values =  data1.map(item => item.x).filter((value, index, self) => self.indexOf(value) === index);
 
+        const y1values = data1.map(item => item.y).filter((value, index, self) => self.indexOf(value) === index);
 
-    // create min and max values
+        //concat x1+x2 / y1+y2 in one array and add 0
+        const scaleX1 = [...x1values, 0];
+        const scaleY1 = [...y1values, 0, 1];
 
-    const minValueX = Math.min(...xValues)-0.01;
-    const maxValueX = Math.max(...xValues)-(1/10)*minValueX;
-    const minValueY = Math.min(...yValues);
-    const maxValueY = Math.max(...yValues)+0.01;
+        console.log(temperament.graph)
+        //eval values
 
-    const svg = d3
-      .select('#my_dataviz')
-      .append('svg')
-      .attr('width', width + margin.left + margin.right)
-      .attr('height', height + margin.top + margin.bottom)
-      .append('g')
-      .attr('transform', 'translate(' + margin.left + ',' + margin.top + ')');
-
-        // Read the data
-
-    /* axe X */
-
-    const x = d3
-    .scaleLinear()
-    .domain([minValueX, maxValueX])
-    .range([0, width])
-
-    const xaxis = d3.axisBottom(x)
-    .tickValues(xValues)
-    .tickFormat( function (d) {
-      if (d<0)
-      {return '-1/' + new Intl.NumberFormat("en", {maximumFractionDigits: 1}).format(-1/d)}
-      else if (d===0)
-        {return "Pure"}
-      else if (d>0)
-        {return d.toFixed(2)}
-
-      })
-    .tickSizeOuter(0);
-    svg
-      .append('g')
-      .attr('transform', 'translate(0,' + height + ')')
-      .call(xaxis);
-    
-        // Add Y axis
-    const y = d3
-      .scaleLinear()
-      .domain([minValueY, maxValueY])
-      .range([height, 0])
-    
-    
-    const yaxis = d3.axisRight(y)
-      .tickValues(yValues)
-      .tickFormat( function (d) {
-        if (d === 0)
-          {return ""}
-        else 
-          {return 11*d + "/11"}
-
-        })
-      .tickSizeOuter(0);
-      
-      
-    svg.append('g')
-      .attr('transform', `translate(${x('0')})`)
-      .call(yaxis);
-      
-        // paths
-    svg.append('path')
-      .datum(data1)
-      .attr('fill', 'none')
-      .attr('stroke', pathColor)
-      .attr('stroke-width', pathWidth)
-      .attr('d', d3.line().x((d) => x(d.x)).y((d) => y(d.y)));
-      
-    svg.append('g')
-      .selectAll('dot')
-      .data(data1)
-      .enter()
-      .append('rect')
-      .attr('x', (d) => (x(d.x) as any) - pointSize / 2)
-      .attr('y', (d) => (y(d.y) as any) - pointSize / 2)
-      .attr('width', pointSize)
-      .attr('height', pointSize)
-      .style('fill', pointColor);
-      
-      
-         // labels
-    const labels = svg
-      .append('g')
-      .selectAll('dot')
-      .data(data1)
-      .enter()
-      .append('text')
-      .attr('x', (d) => (x(d.x) as any) + 10)
-      .attr('y', (d) => (y(d.y) as any) - 10)
-      .text((d) => d.label)
-      .style('fill', labelFontColor)
-      .style('font-size', labelFontSize)
-      .style('font-weight', 'bold');
-      
-        // Fonction pour détecter les collisions entre les labels et les lignes
-    function checkCollision(label: any, path: any) {
-          const labelBBox = label.node().getBBox();
-          const lineBBox = path.node().getBBox();
-    
-          return (
-            labelBBox.x + labelBBox.width > lineBBox.x &&
-            labelBBox.x < lineBBox.x + lineBBox.width &&
-            labelBBox.y + labelBBox.height > lineBBox.y &&
-            labelBBox.y < lineBBox.y + lineBBox.height
-          );
-        }
-      
-        // Ajustement des positions des labels pour éviter les collisions avec les lignes
-    labels.each(function (label: any) {
-          const currentLabel = d3.select(this);
-          let collision = false;
-    
-          // Vérification des collisions avec les lignes
-    svg.selectAll('path').each(function () {
-            const currentLine = d3.select(this);
-            if (checkCollision(currentLabel, currentLine)) {
-              collision = true;
-              return false; // Sortir de la boucle each()
-            }
-          });
-        
-          // Ajustement de la position du label en cas de collision
-    if (collision) {
-            currentLabel.attr('x', +currentLabel.attr('x') - 20); // Ajustez la position en fonction de vos besoins
-          }
+        const xValues = scaleX1 ;
+        const yValues = scaleY1.filter(num => {
+          const fraction = num * 11;
+          return Number.isInteger(fraction);
         });
       
-        // legend
-    svg.append('text')
-        .attr('x', width + margin.right) // Position horizontale du label (au milieu de l'axe X)
-        .attr('y', height / 2) // Position verticale du label (juste en dessous de l'axe X)
-        .attr('text-anchor', 'middle') // Alignement du texte au milieu
-        .attr('transform', `rotate(-90, ${width + margin.right}, ${height / 2})`) //rotate
-        .text(t('graphAxeYLabel'))
-        .style('fill', labelFontColor);
-        // Texte du label
       
-    svg.append('text')
-        .attr('x', width / 2) // Position horizontale du label (au milieu de l'axe X)
-        .attr('y', height + margin.top + 35) // Position verticale du label (juste en dessous de l'axe X)
-        .attr('text-anchor', 'middle') // Alignement du texte au milieu
-        .text(t('graphAxeXLabel') + ' (' + temperament.graph.commabase +')') // Texte du label
-        .style('fill', labelFontColor);
+        // create min and max values
+      
+        const minValueX = Math.min(...xValues)-0.01;
+        const maxValueX = Math.max(...xValues)-(1/10)*minValueX;
+        const minValueY = Math.min(...yValues);
+        const maxValueY = Math.max(...yValues)+0.01;
+      
+        const svg = d3
+          .select('#my_dataviz')
+          .append('svg')
+          .attr('width', width + margin.left + margin.right)
+          .attr('height', height + margin.top + margin.bottom)
+          .append('g')
+          .attr('transform', 'translate(' + margin.left + ',' + margin.top + ')');
+      
+            // Read the data
+      
+        /* axe X */
+      
+        const x = d3
+        .scaleLinear()
+        .domain([minValueX, maxValueX])
+        .range([0, width])
+      
+        const xaxis = d3.axisBottom(x)
+        .tickValues(xValues)
+        .tickFormat( function (d) {
+          if (d<0)
+          {return '-1/' + new Intl.NumberFormat("en", {maximumFractionDigits: 1}).format(-1/d)}
+          else if (d===0)
+            {return "Pure"}
+          else if (d>0)
+            {return d.toFixed(2)}
+        
+          })
+        .tickSizeOuter(0);
+        svg
+          .append('g')
+          .attr('transform', 'translate(0,' + height + ')')
+          .call(xaxis);
+        
+            // Add Y axis
+        const y = d3
+          .scaleLinear()
+          .domain([minValueY, maxValueY])
+          .range([height, 0])
+        
+        
+        const yaxis = d3.axisRight(y)
+          .tickValues(yValues)
+          .tickFormat( function (d) {
+            if (d === 0)
+              {return ""}
+            else 
+              {return 11*d + "/11"}
+          
+            })
+          .tickSizeOuter(0);
+          
+          
+        svg.append('g')
+          .attr('transform', `translate(${x('0')})`)
+          .call(yaxis);
+          
+            // paths
+        svg.append('path')
+          .datum(data1)
+          .attr('fill', 'none')
+          .attr('stroke', pathColor)
+          .attr('stroke-width', pathWidth)
+          .attr('d', d3.line().x((d) => x(d.x)).y((d) => y(d.y)));
+          
+        svg.append('g')
+          .selectAll('dot')
+          .data(data1)
+          .enter()
+          .append('rect')
+          .attr('x', (d) => (x(d.x) as any) - pointSize / 2)
+          .attr('y', (d) => (y(d.y) as any) - pointSize / 2)
+          .attr('width', pointSize)
+          .attr('height', pointSize)
+          .style('fill', pointColor);
+          
+          
+             // labels
+        const labels = svg
+          .append('g')
+          .selectAll('dot')
+          .data(data1)
+          .enter()
+          .append('text')
+          .attr('x', (d) => (x(d.x) as any) + 10)
+          .attr('y', (d) => (y(d.y) as any) - 10)
+          .text((d) => d.label)
+          .style('fill', labelFontColor)
+          .style('font-size', labelFontSize)
+          .style('font-weight', 'bold');
+          
+            // Fonction pour détecter les collisions entre les labels et les lignes
+        function checkCollision(label: any, path: any) {
+              const labelBBox = label.node().getBBox();
+              const lineBBox = path.node().getBBox();
+        
+              return (
+                labelBBox.x + labelBBox.width > lineBBox.x &&
+                labelBBox.x < lineBBox.x + lineBBox.width &&
+                labelBBox.y + labelBBox.height > lineBBox.y &&
+                labelBBox.y < lineBBox.y + lineBBox.height
+              );
+            }
+          
+            // Ajustement des positions des labels pour éviter les collisions avec les lignes
+        labels.each(function (label: any) {
+              const currentLabel = d3.select(this);
+              let collision = false;
+        
+              // Vérification des collisions avec les lignes
+        svg.selectAll('path').each(function () {
+                const currentLine = d3.select(this);
+                if (checkCollision(currentLabel, currentLine)) {
+                  collision = true;
+                  return false; // Sortir de la boucle each()
+                }
+              });
+            
+              // Ajustement de la position du label en cas de collision
+        if (collision) {
+                currentLabel.attr('x', +currentLabel.attr('x') - 20); // Ajustez la position en fonction de vos besoins
+              }
+            });
+          
+            // legend
+        svg.append('text')
+            .attr('x', width + margin.right) // Position horizontale du label (au milieu de l'axe X)
+            .attr('y', height / 2) // Position verticale du label (juste en dessous de l'axe X)
+            .attr('text-anchor', 'middle') // Alignement du texte au milieu
+            .attr('transform', `rotate(-90, ${width + margin.right}, ${height / 2})`) //rotate
+            .text(t('graphAxeYLabel'))
+            .style('fill', labelFontColor);
+            // Texte du label
+          
+        svg.append('text')
+            .attr('x', width / 2) // Position horizontale du label (au milieu de l'axe X)
+            .attr('y', height + margin.top + 35) // Position verticale du label (juste en dessous de l'axe X)
+            .attr('text-anchor', 'middle') // Alignement du texte au milieu
+            .text(t('graphAxeXLabel') + ' (' + temperament.graph.commabase +')') // Texte du label
+            .style('fill', labelFontColor);
   }, [temperament, t, settings.darkTheme, forceReload]);
 
   // line 167  line 175 and  line 171
