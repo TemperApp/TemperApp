@@ -9,9 +9,9 @@ const EqualTemperament = {
   periodNum: 1800,
   graph: {
     data: [
-      { label: 'All Keys', x: '-1/12 Cp', y: '7/11' },
+      { label: 'All Keys', x: -1/12, y: 7/11 },
     ],
-    scaleX: ['','-1/6',' ','-1/8','  ','-1/12 Cp','   ','Pure','    '],
+    commabase: 'Cp',
     scaleY: ['','+3/11 Cs', '5/11', '7/11', '9/11', '11/11', ' '],
   },
 };

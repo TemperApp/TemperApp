@@ -18,6 +18,8 @@ import {
 import ComparatorQuadRings from './QuadRings';
 import ComparatorCommas from './Commas';
 import ComparatorDeviations from './Deviations';
+import ComparatorGraph from './CompareGraph'
+
 
 import EqualTemperament from '../../model/Temperament/Equal';
 import { Temperament } from '../../model/Temperament/Temperament';
@@ -41,7 +43,6 @@ const Comparator: React.FC = () => {
 
   useEffect(() => {
     const temperaments = fetchTemperaments(t);
-    console.log(temperaments);
     setTemperamentsList(temperaments);
   }, [t]);
 
@@ -116,6 +117,9 @@ const Comparator: React.FC = () => {
       <ComparatorCommas t1={temperament1} t2={temperament2} />
 
       <ComparatorDeviations t1={temperament1} t2={temperament2} />
+
+      <ComparatorGraph t1={temperament1} t2={temperament2} forceReload={new Date()} />
+      
     </>
   );
 };
