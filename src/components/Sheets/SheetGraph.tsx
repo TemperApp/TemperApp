@@ -9,6 +9,7 @@ import * as d3 from 'd3';
 import Card from '../Card';
 
 import { Temperament } from '../../model/Temperament/Temperament';
+import { convertThirdQualityToColor } from '../../utils/colorCircle';
 
 
 type SheetGraphProps = {
@@ -77,6 +78,8 @@ const SheetGraph: React.FC<SheetGraphProps> = ({ temperament, forceReload }) => 
         const minValueY = Math.min(...yValues);
         const maxValueY = Math.max(...yValues)+0.01;
       
+        
+
         const svg = d3
           .select('#my_dataviz')
           .append('svg')
@@ -167,6 +170,36 @@ const SheetGraph: React.FC<SheetGraphProps> = ({ temperament, forceReload }) => 
           .style('fill', labelFontColor)
           .style('font-size', labelFontSize)
           .style('font-weight', 'bold');
+        
+        const yValuescolors = []
+        for (var i = 0; i<= 11*maxValueY; i++) {yValuescolors.push(i)}
+
+        console.log(y(0), y(1/11))
+
+        svg.append('g')
+                    .selectAll('rect')
+                    .data(yValuescolors)
+                    .enter()
+                      .append('rect')
+                      .attr('y', function(d){return y(d/11);})
+                      .attr('width', width)
+                      .attr('height', y(0)-y(1/11))
+                      .attr('fill', function(d){return convertThirdQualityToColor(d, settings.darkTheme);})
+                      .attr('fill-opacity', .2);
+
+        svg.append('g')
+            .selectAll('rect')
+            .data(yValuescolors)
+            .enter()
+              .append('rect')
+              .attr('y', function(d){return y(d/11);})
+              .attr('width', 10)
+              .attr('height', y(0)-y(1/11))
+              .attr('x', width + margin.right - 10)
+              .attr('fill', function(d){return convertThirdQualityToColor(d, settings.darkTheme);})
+              .attr('fill-opacity', .2);
+
+         
           
             // Fonction pour détecter les collisions entre les labels et les lignes
         function checkCollision(label: any, path: any) {
@@ -217,6 +250,7 @@ const SheetGraph: React.FC<SheetGraphProps> = ({ temperament, forceReload }) => 
             .attr('text-anchor', 'middle') // Alignement du texte au milieu
             .text(t('graphAxeXLabel') + ' (' + temperament.graph.commabase +')') // Texte du label
             .style('fill', labelFontColor);
+            
   }, [temperament, t, settings.darkTheme, forceReload]);
 
   // line 167  line 175 and  line 171

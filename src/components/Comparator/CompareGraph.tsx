@@ -10,6 +10,7 @@ import * as d3 from 'd3';
 import Card from '../Card';
 
 import { Temperament } from '../../model/Temperament/Temperament';
+import {  convertThirdQualityToColor } from '../../utils/colorCircle';
 
 
 type CompareGraphProps = {
@@ -416,6 +417,45 @@ const CompareGraph: React.FC<CompareGraphProps> = ({ t1, t2, forceReload }) => {
             .style('font-size', labelFontSize)
             .style('font-weight', 'bold');
           
+
+
+        const yValuescolors = []
+        for (var i = 0; i<= 11*maxValueY; i++) {yValuescolors.push(i)}
+
+        /* const xValuescolors = []
+        for (var i = Math.min(...xValues)*Commagraph*12 ; i <= Math.max(...xValues)*Commagraph*12; i++) {xValuescolors.push(i)}
+        
+        console.log(xValues)
+        console.log(xValuescolors)
+        console.log(yValuescolors) */
+        
+
+        console.log(y(0), y(1/11))
+
+        svg.append('g')
+            .selectAll('rect')
+            .data(yValuescolors)
+            .enter()
+              .append('rect')
+              .attr('y', function(d){return y(d/11);})
+              .attr('width', 10)
+              .attr('height', y(0)-y(1/11))
+              .attr('x', width + margin.right - 10)
+              .attr('fill', function(d){return convertThirdQualityToColor(d, settings.darkTheme);})
+              .attr('fill-opacity', .2);
+
+       /*  svg.append('g')
+        .selectAll('rect')
+        .data(xValuescolors)
+        .enter()
+              .append('rect')
+              .attr('x', function(d){return x(d/Commagraph);})
+              .attr('height', 10)
+              .attr('width', x(1/Commagraph)-x(0))
+              .attr('y', height + margin.bottom - 10)
+              .attr('fill', function(d){return convertFifthQualityToColor(d, settings.darkTheme);})
+              .attr('fill-opacity', .2); */
+
           
           
            // Fonction pour détecter les collisions entre les labels et les lignes
@@ -565,6 +605,7 @@ const CompareGraph: React.FC<CompareGraphProps> = ({ t1, t2, forceReload }) => {
                 conditionRight={isCpMode}
                 onClickLeft={() => setCpMode(false)}
                 onClickRight={() => setCpMode(true)}
+                
               />
             </div>
               
