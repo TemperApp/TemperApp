@@ -39,12 +39,12 @@
   },
   "Vallotti": {
     "name": "Vallotti",
-    "procedure": "A4;A4-A3;{On tempère la tierce Fa-La à 3/11 Cs soit 3 battements par secondes}A3-F3;{On répartit le tempérament de Fa-La de manière égale dans les quatre quintes intérieurs}F3-C4;C4-G3;G3-D4;{La quatrième quinte sert de “preuve”}D4:A3;{on accorde les quintes pures à gauche de Fa}F3-Bb3;Bb3-Eb4;Eb4-G#3;G#3-C#4;{La tierce La-Do# sert de preuve, elle bat comme dans le tempérament égal }C#4:A3;{On accorde les deux dernières quintes pures}C#4-F#3;F#3-B3;{On accorde le Mi de manière à ce que La-Mi  soit tempérée autant que Mi-Si. Leurs battements sont dans le rapport 3/2}B3-E4;E4:A3;{On recopie les notes entre Fa4 et Sol#4}F3-F4;F#3-F#4;G3-G4;G#3-G#4;",
+    "procedure": "A4;A4-A3;{F-A third is tempered 3/11 Cs i.e 3 bps}A3-F3;{The temperament of F-A (2/3 pyth. comma) is spread onto the inner fifths}F3-C4;C4-G3;G3-D4;{The last fifth is “proof” that the 2/3 Cp has been spread correctly}D4:A3;{Tune pure turning to the left around the fifths circle}F3-Bb3;Bb3-Eb4;Eb4-G#3;G#3-C#4;{A-C# is another proof : it should beat as in Equal Temperament}C#4:A3;{Tune pure the nex two fifths}C#4-F#3;F#3-B3;{Tune E so that A-E is equally tempered as E-B, both beat in the ratio 3:2}B3-E4;E4:A3;{Copy octaves between F4 and G#4}F3-F4;F#3-F#4;G3-G4;G#3-G#4;",
     "theorist": "Francesco Vallotti (1697-1780)",
-    "period": "XVIIIe siècle",
-    "geographicalArea": "Italie du Nord",
-    "nature": "1/6 de comma pythagoricien",
-    "structuralParticularity": "Six quintes tempérées au 1/6 de comma pythagoricien relient les notes naturelles, les six autres sont pures.",
+    "period": "18th century",
+    "geographicalArea": "Northern Italy",
+    "nature": "1/6 pyth. comma",
+    "structuralParticularity": "Six fifths are tempered 1/6th pyth. Comma (Cp) and relate natural notes. The rest is pure.",
     "sources": [
       {
         "author": "",
@@ -102,16 +102,16 @@
         "url": "https://www.youtube.com/watch?v=hw1O5t_Rrhg"
       }
     ],
-    "commentary": "Nous proposons la lecture la plus partagée bien que certainement simplifiée de l'accord de Vallotti qui répartit lui-même le comma syntonique, selon la théorie italienne du XVIIIe siècle. L'accroissement des tierces majeures est parfaitement équilibré vers les dièses et vers les bémols."
+    "commentary": "We present here the most commonly used version of Vallotti, although himself would have tuned using the synonic comma (according to the theory in 18th century italy) and therefore F-Bb would be tempered 1/11Cs= 1/12Cp. Major thirds are increasingly more tempered along the fifths circle and perfectly balanced between sharp and flat tones"
   },
   "Meantone": {
     "name": "Meantone 1/4 G#Eb",
-    "procedure": "A4;A4-A3;A3-F3;F3-F4;A3-C#4;C#4:F4;{on divise la tierce F-A en quatre quintes tempérées à -1/4 de Comma syntonique}F3-C4;C4-G3;G3-G4;G3-D4;A3:D4;{on construit les tierces pures sur les notes accordées}C4-E4;E4:A3;E4-G#4;G#4-G#3;G#3:C4;G3-B3;B3:E4;B3-Eb4;Eb4:G4;D4-F#4;F#4-F#3;F#3-Bb3;Bb3:D4;",
+    "procedure": "A4;A4-A3;A3-F3;F3-F4;A3-C#4;C#4:F4;{We divide the F-A third equally in four fifth tempered 1/4th Syntonic Comme }F3-C4;C4-G3;G3-G4;G3-D4;A3:D4;{We build pure thirds on previously tune notes}C4-E4;E4:A3;E4-G#4;G#4-G#3;G#3:C4;G3-B3;B3:E4;B3-Eb4;Eb4:G4;D4-F#4;F#4-F#3;F#3-Bb3;Bb3:D4;",
     "theorist": "Pietro Aaron (1485-1545)",
-    "period": "décrit au début du XVIe siècle, on présume une utilisation dès le XVe siècle. Son application est avérée sur l'orgue pendant la première moitié du XVIIIe siècle.",
-    "geographicalArea": "plusieurs sources importantes en dehors de l'Italie (Praetorius, Mersenne) laissent à penser que cet accord est très tôt utilisé dans toute l'Europe.",
+    "period": "described at the beginning of the 16th century, it is presumed that it was used as early as the 15th century. Its application is proven on the organ during the first half of the 18th century.",
+    "geographicalArea": "several important sources outside Italy (Praetorius, Mersenne) suggest that this tuning system was used very early throughout Europe.",
     "nature": "Comma syntonique",
-    "structuralParticularity": "11 quintes sont diminuées d'un quart de comma syntonique. La douzième, l'intervalle résiduel entre sol# et mib, excède la valeur pure. Le système mésotonique classique produit huit tierces majeures pures. Chaque octave comporte 2 tierces pures et un intervalle résiduel (une quarte diminuée), excédant d’un comma enharmonique (2 ÷ (5/4)^3 = 41,05¢).",
+    "structuralParticularity": "11 fifths are diminished by a quarter of a syntonic comma. The twelfth, the residual interval between G# and Eb, exceeds the pure value. The classical meantone system produces eight pure major thirds. Each octave has 2 pure thirds and a residual interval (a diminished fourth), exceeding by an enharmonic comma (2 ÷ (5/4)^3 = 41,05¢).",
     "sources": [
       {
         "author": "",
@@ -172,12 +172,12 @@
   },
   "RameauSiB": {
     "name": "Rameau en Sib 1726",
-    "procedure": "A4;A4-A3;A3-F3;{On divise la tierce F3-A3 en quatre quintes à -¼Cs }F3-C4;C4-G3;G3-D4;D4:A3;{On construit les tierces pures du tempérament}D4-Bb3;C4-E4;G3-B3;{On élargit progressivement les quintes à gauche du Sib}Bb3-Eb4;Eb4-G#3;G#3-C#4;{Même si elle est atténuée, F#-C# reste notre “loup”, ici tempérée à env. +1/3Cs, nous allons donc finir cette procédure en revenant à Si et en accordant B-F# à -1/6Cs. La quinte du loup sera donc bien le résultat de l’accord. Attention! B-F# est affaiblie et non élargie}B3-F#3;F3-F4;F#3-F#4;G3-G4;G#3-G#4;",
+    "procedure": "A4;A4-A3;A3-F3;{We divide the third F3-A3 into four fifths at -¼Cs}F3-C4;C4-G3;G3-D4;D4:A3;{We build pure thirds along the previously tuned notes}D4-Bb3;C4-E4;G3-B3;{We gradually widen the fifths to the left of the Bb}Bb3-Eb4;Eb4-G#3;G#3-C#4;{Even if it is attenuated, F#-C# remains our “wolf”, here tempered to approx. +1/3Cs, so we'll finish this procedure by going back to B and tuning B-F# to -1/6Cs. The wolf fifth will therefore be the result of the tuning. Attention! B-F# is weakened and not enlarged}B3-F#3;F3-F4;F#3-F#4;G3-G4;G#3-G#4;",
     "theorist": "Jean-Philippe Rameau (1683-1764)",
     "period": "XVIIIe siècle",
     "geographicalArea": "France",
     "nature": "Comma syntonique",
-    "structuralParticularity": "Sept quintes sont abaissées d’un quart de comma syntonique. Les autres sont augmentées de quantités variables selon des petits compléments.",
+    "structuralParticularity": "Seven fifths are lowered by a quarter syntonic comma. The others are increased by varying amounts according to small additions.",
     "sources": [
       {
         "author": "",
@@ -199,7 +199,7 @@
       }
     ],
     "soundReferences": [{ "title": "", "url": "" }],
-    "commentary": "Le tempérament de Rameau II, ou tempérament en sib, est identique au précédent mais sa construction se fait à partir du la et non du do. Les quintes de sib à si sont diminuées d’un quart de comma syntonique. La quinte si - fa# est diminuée d’un quart de comma et augmentée d’une valeur δ. Les quatre quintes restantes se répartissent l’excédent.\bRameau cite brièvement une alternative à sa première description : « Pour que les Intervalles conservent toute la justesse possible dans les Modulations les plus usitées, il faut commencer la Partition par Si B-mol, & ne rendre pour lors les Quintes un peu plus justes, que depuis Si à Fa# ». Plusieurs commentateurs ont considéré qu'il s'agissait d'une transposition de sa première formule.\n\nDe nombreuses interprétations sont possible du texte de Jean-Philippe Rameau, les créateurs de TemperApp se sont mis d’accord sur cette version avec le projet d’en inclure d’autres ultérieurement"
+    "commentary": "The temperament of Rameau II, or temperament in Bb, is identical to the previous one but its construction is done from A and not from C. Fifths from Bb to B are diminished by a quarter of a syntonic comma. The fifth B - F# is diminished by a quarter of a comma and increased by a value δ. The remaining four fifths divide the excess between them. \bRameau \b briefly quotes an alternative to his first description: “For the Intervals to retain all possible accuracy in the most commonly used Modulations, the Score must begin with B B-mol, & only maketh the Fifths a little more just from B to F#“. Several commentators considered that it was a transposition of its first formula.\n\nMany interpretations are possible of the text of Jean-Philippe Rameau, the creators of TemperApp agreed on this version with the plan to include others later"
   },
   "RameauDo": {
     "name": "Rameau en Do 1726",
