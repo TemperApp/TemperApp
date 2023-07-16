@@ -7,7 +7,7 @@ export const convertFifthQualityToColor = (
 
     if (quality < 0.005 && quality > -0.005) return '#f5fbfb';
 
-    switch (Math.max(Math.min(Math.floor(quality), 7), -12)) {
+    switch (Math.max(Math.min(Math.floor(Math.sqrt(quality*quality)*quality), 7), -12)) {
       case -12:
         return '#8587C6';
       case -11:
@@ -57,7 +57,7 @@ export const convertFifthQualityToColor = (
 
   if (quality < 0.005 && quality > -0.005) return '#f5fbfb';
 
-  switch (Math.max(Math.min(Math.floor(quality), 7), -12)) {
+  switch (Math.max(Math.min(Math.floor(Math.sqrt(quality*quality)*quality), 7), -12)) {
     case -12:
       return '#9D2A68';
     case -11:

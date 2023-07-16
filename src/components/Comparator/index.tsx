@@ -26,6 +26,7 @@ import { Temperament } from '../../model/Temperament/Temperament';
 import { ascendingOrder } from '../../utils/favorite';
 
 import './Comparator.css';
+import SheetGraph from '../Sheets/SheetGraph';
 
 const Comparator: React.FC = () => {
   const [idTemperament1, setIdTemperament1] = useState<string>('Equal');
@@ -117,8 +118,9 @@ const Comparator: React.FC = () => {
       <ComparatorCommas t1={temperament1} t2={temperament2} />
 
       <ComparatorDeviations t1={temperament1} t2={temperament2} />
-
-      <ComparatorGraph t1={temperament1} t2={temperament2} forceReload={new Date()} />
+      {temperament1.name === temperament2.name? <SheetGraph temperament={temperament1} divId={'sheet'} />
+      :
+      <ComparatorGraph t1={temperament1} t2={temperament2} divId={'compare'} />}
       
     </>
   );

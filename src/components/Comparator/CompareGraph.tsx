@@ -11,13 +11,12 @@ import Card from '../Card';
 
 import { Temperament } from '../../model/Temperament/Temperament';
 import {  convertFifthQualityToColor, convertThirdQualityToColor } from '../../utils/colorCircle';
-import { fifthQ } from '../../model/Divergence';
 
 
 type CompareGraphProps = {
   t1: Temperament,
   t2: Temperament,
-  forceReload?: any,
+  divId: string
 };
 
 const slideOpts = {
@@ -25,204 +24,23 @@ const slideOpts = {
   speed: 400,
 };
 
-const CompareGraph: React.FC<CompareGraphProps> = ({ t1, t2, forceReload }) => {
+const CompareGraph: React.FC<CompareGraphProps> = ({ t1, t2, divId }) => {
   const { t } = useTranslation('temper');
   const settings = useContext(SettingsContext);
   const [isCpMode, setCpMode] = useState<boolean>(true);
 
   useEffect(() => {
 
-    if (document.querySelector('#my_dataviz2>svg')) {
-      document.querySelector('#my_dataviz2').innerHTML = '';
+    d3.select('#my_dataviz2')
+    .attr("id", [divId])
+    if (document.querySelector('#'+divId+'>svg')) {
+      document.querySelector('#'+divId).innerHTML = '';
     }
 
-      if (t1 === t2) {
-        const dataA = t1.graph.data;
-        const labelFontSize = 12;
-        const labelFontColor = settings.darkTheme ? 'white' : 'black';
-        const pointSize = 6;
-        const pointColor = settings.darkTheme ? 'white' : 'temperapp';
-        const pathColor = settings.darkTheme ? 'white' : 'rgba(0, 0, 0, 0.5)';
-        const pathWidth = 2;
-        
-          // set the dimensions and margins of the graph
-        const margin = { top: 20, right: 30, bottom: 60, left: 10 },
-          width = 300 - margin.left - margin.right,
-          height = 400 - margin.top - margin.bottom;
       
-        // append the svg object to the body of the page
       
-        
+      
 
-        //     Read the data
-      
-        const x1values =  dataA.map(item => item.x).filter((value, index, self) => self.indexOf(value) === index);
-      
-        const y1values = dataA.map(item => item.y).filter((value, index, self) => self.indexOf(value) === index);
-      
-        //concat x1+x2 / y1+y2 in one array and add 0
-        const scaleX1 = [...x1values, 0];
-        const scaleY1 = [...y1values, 0, 1];
-      
-        console.log(t1.graph)
-        //eval values
-      
-        const xValues = scaleX1 ;
-        const yValues = scaleY1.filter(num => {
-          const fraction = num * 11;
-          return Number.isInteger(fraction);
-        });
-      
-      
-        // create min and max values
-      
-        const minValueX = Math.min(...xValues)-0.01;
-        const maxValueX = Math.max(...xValues)-(1/10)*minValueX;
-        const minValueY = Math.min(...yValues);
-        const maxValueY = Math.max(...yValues)+0.01;
-      
-        const svg = d3
-          .select('#my_dataviz2')
-          .append('svg')
-          .attr('width', width + margin.left + margin.right)
-          .attr('height', height + margin.top + margin.bottom)
-          .append('g')
-          .attr('transform', 'translate(' + margin.left + ',' + margin.top + ')');
-      
-            // Read the data
-      
-        /* axe X */
-      
-        const x = d3
-        .scaleLinear()
-        .domain([minValueX, maxValueX])
-        .range([0, width])
-      
-        const xaxis = d3.axisBottom(x)
-        .tickValues(xValues)
-        .tickFormat( function (d) {
-          if (d<0)
-          {return '-1/' + new Intl.NumberFormat("en", {maximumFractionDigits: 1}).format(-1/d)}
-          else if (d===0)
-            {return "Pure"}
-          else if (d>0)
-            {return d.toFixed(2)}
-        
-          })
-        .tickSizeOuter(0);
-        svg
-          .append('g')
-          .attr('transform', 'translate(0,' + height + ')')
-          .call(xaxis);
-        
-            // Add Y axis
-        const y = d3
-          .scaleLinear()
-          .domain([minValueY, maxValueY])
-          .range([height, 0])
-        
-        
-        const yaxis = d3.axisRight(y)
-          .tickValues(yValues)
-          .tickFormat( function (d) {
-            if (d === 0)
-              {return ""}
-            else 
-              {return 11*d + "/11"}
-          
-            })
-          .tickSizeOuter(0);
-          
-          
-        svg.append('g')
-          .attr('transform', `translate(${x('0')})`)
-          .call(yaxis);
-          
-            // paths
-        svg.append('path')
-          .datum(dataA)
-          .attr('fill', 'none')
-          .attr('stroke', pathColor)
-          .attr('stroke-width', pathWidth)
-          .attr('d', d3.line().x((d) => x(d.x)).y((d) => y(d.y)));
-          
-        svg.append('g')
-          .selectAll('dot')
-          .data(dataA)
-          .enter()
-          .append('rect')
-          .attr('x', (d) => (x(d.x) as any) - pointSize / 2)
-          .attr('y', (d) => (y(d.y) as any) - pointSize / 2)
-          .attr('width', pointSize)
-          .attr('height', pointSize)
-          .style('fill', pointColor);
-          
-          
-             // labels
-        const labels = svg
-          .append('g')
-          .selectAll('dot')
-          .data(dataA)
-          .enter()
-          .append('text')
-          .attr('x', (d) => (x(d.x) as any) + 10)
-          .attr('y', (d) => (y(d.y) as any) - 10)
-          .text((d) => d.label)
-          .style('fill', labelFontColor)
-          .style('font-size', labelFontSize)
-          .style('font-weight', 'bold');
-          
-            // Fonction pour détecter les collisions entre les labels et les lignes
-        function checkCollision(label: any, path: any) {
-              const labelBBox = label.node().getBBox();
-              const lineBBox = path.node().getBBox();
-        
-              return (
-                labelBBox.x + labelBBox.width > lineBBox.x &&
-                labelBBox.x < lineBBox.x + lineBBox.width &&
-                labelBBox.y + labelBBox.height > lineBBox.y &&
-                labelBBox.y < lineBBox.y + lineBBox.height
-              );
-            }
-          
-            // Ajustement des positions des labels pour éviter les collisions avec les lignes
-        labels.each(function (label: any) {
-              const currentLabel = d3.select(this);
-              let collision = false;
-        
-              // Vérification des collisions avec les lignes
-        svg.selectAll('path').each(function () {
-                const currentLine = d3.select(this);
-                if (checkCollision(currentLabel, currentLine)) {
-                  collision = true;
-                  return false; // Sortir de la boucle each()
-                }
-              });
-            
-              // Ajustement de la position du label en cas de collision
-          if (collision) {
-                currentLabel.attr('x', +currentLabel.attr('x') - 20); // Ajustez la position en fonction de vos besoins
-              }
-            });
-          
-            // legend
-        svg.append('text')
-            .attr('x', width + margin.right) // Position horizontale du label (au milieu de l'axe X)
-            .attr('y', height / 2) // Position verticale du label (juste en dessous de l'axe X)
-            .attr('text-anchor', 'middle') // Alignement du texte au milieu
-            .attr('transform', `rotate(-90, ${width + margin.right}, ${height / 2})`) //rotate
-            .text(t('graphAxeYLabel'))
-            .style('fill', labelFontColor);
-            // Texte du label
-          
-        svg.append('text')
-            .attr('x', width / 2) // Position horizontale du label (au milieu de l'axe X)
-            .attr('y', height + margin.top + 35) // Position verticale du label (juste en dessous de l'axe X)
-            .attr('text-anchor', 'middle') // Alignement du texte au milieu
-            .text(t('graphAxeXLabel') + ' (' + t1.graph.commabase +')') // Texte du label
-            .style('fill', labelFontColor);
-      }
-      
           const dataAbis = t1.graph.data;
           const dataB = t2.graph.data;
           const Commagraph = isCpMode === true ? 12 : 11;
@@ -289,7 +107,7 @@ const CompareGraph: React.FC<CompareGraphProps> = ({ t1, t2, forceReload }) => {
         
         
           const svg = d3
-            .select('#my_dataviz2')
+            .select('#'+divId)
               .append('svg')
                 .attr('width', width + margin.left + margin.right)
                 .attr('height', height + margin.top + margin.bottom)
@@ -581,8 +399,9 @@ const CompareGraph: React.FC<CompareGraphProps> = ({ t1, t2, forceReload }) => {
               .attr('text-anchor', 'middle') // Alignement du texte au milieu
               .text(t('graphAxeXLabel')) // Texte du label
               .style('fill', labelFontColor);
+      
 
-  }, [t1, t2, t, settings.darkTheme, isCpMode, forceReload]);
+  }, [t1, t2, t, settings.darkTheme, isCpMode, divId]);
 
   // line 167  line 175 and  line 171
   return (

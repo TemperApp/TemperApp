@@ -92,7 +92,7 @@ const SheetTemperament: React.FC = () => {
 
       
         <div className="mx-auto max-w-lg">
-          <SheetGraph temperament={temperament} forceReload={new Date()} />
+          <SheetGraph temperament={temperament} divId={'sheetinsheets'} />
         </div>
       
 

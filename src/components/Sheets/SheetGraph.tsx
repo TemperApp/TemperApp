@@ -14,7 +14,7 @@ import { convertThirdQualityToColor } from '../../utils/colorCircle';
 
 type SheetGraphProps = {
   temperament: Temperament,
-  forceReload?: any,
+  divId: string,
 };
 
 const slideOpts = {
@@ -24,15 +24,19 @@ const slideOpts = {
 
 
 
-const SheetGraph: React.FC<SheetGraphProps> = ({ temperament, forceReload }) => {
+const SheetGraph: React.FC<SheetGraphProps> = ({ temperament, forceReload, divId }) => {
   const { t } = useTranslation('temper');
   const settings = useContext(SettingsContext);
   
 
 
   useEffect(() => {
-    if (document.querySelector('#my_dataviz>svg')) {
-      document.querySelector('#my_dataviz').innerHTML = '';
+
+    d3.select('#my_dataviz')
+    .attr("id", [divId])
+    
+    if (document.querySelector('#'+divId+'>svg')) {
+      document.querySelector('#'+divId).innerHTML = '';
     }
       const dataA = temperament.graph.data;
       const labelFontSize = 12;
@@ -81,7 +85,7 @@ const SheetGraph: React.FC<SheetGraphProps> = ({ temperament, forceReload }) => 
         
 
         const svg = d3
-          .select('#my_dataviz')
+          .select('#'+divId)
           .append('svg')
           .attr('width', width + margin.left + margin.right)
           .attr('height', height + margin.top + margin.bottom)
@@ -251,7 +255,7 @@ const SheetGraph: React.FC<SheetGraphProps> = ({ temperament, forceReload }) => 
             .text(t('graphAxeXLabel') + ' (' + temperament.graph.commabase +')') // Texte du label
             .style('fill', labelFontColor);
             
-  }, [temperament, t, settings.darkTheme, forceReload]);
+  }, [temperament, t, settings.darkTheme, forceReload, divId]);
 
   // line 167  line 175 and  line 171
   return (
