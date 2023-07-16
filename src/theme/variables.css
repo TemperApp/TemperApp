@@ -64,7 +64,7 @@ http://ionicframework.com/docs/theming/ */
   --legend-gradient-fifth: linear-gradient(0.01deg, #6D9693 0.01%, #BFDDDB 17.22%, #CCE9E7 22.65%, #F5FBFB 25.82%, #F5FBFB 31.71%, #FF8352 34.66%, #FF7A4C 41.45%, #FF6F46 48.02%, #FF623E 53.45%, #FF5435 59.34%, #FF321F 65.9%, #FB3230 72.92%, #ED306A 83.57%, #C32D69 93.98%, #9D2A68 101.67%);
   --legend-gradient-third: linear-gradient(180deg, #F5FBFB 0%, #F8F3E4 3.93%, #FAECD1 7.16%, #FFDDA7 11.86%, #FFC984 18.28%, #FFBB75 23.08%, #FFAA6B 27.39%, #FF8B57 32.99%, #FF8352 38.15%, #FF7E4F 42.89%, #FF7A4C 47.41%, #FF6C44 52.36%, #FF603C 56.88%, #FF5535 60.97%, #FF492E 65.38%, #FB423C 69.58%, #F63B4B 73.88%, #F03060 79.87%, #E9307D 85.08%, #D32E77 89.38%, #B92C70 94.55%, #9D2A68 100%);
 
-  --quinte-color-12: #9D2A68;
+  --quinte-color-12: 'black';
   --quinte-color-11: #C32D69;
   --quinte-color-10: #D72F6A;
   --quinte-color-9: #ED306A;

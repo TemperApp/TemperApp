@@ -20,7 +20,7 @@ const ComparatorQuadRings: React.FC<ComparatorQuadRingsProps> = ({
   const vbsize = { x: 200 + 5, y: 200 + 5};
   const center = { x: vbsize.x / 2, y: vbsize.y / 2};
   const r = [34, 45, 56, 76, 88, 100];
-
+console.log(t2.cpExp5th)
   return (
     <div className="mt-16 mx-auto pt-2 px-6 justify-center max-w-lg">
       <SVG className="ring" viewBoxSize={vbsize} >

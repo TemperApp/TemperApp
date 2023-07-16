@@ -10,7 +10,8 @@ import * as d3 from 'd3';
 import Card from '../Card';
 
 import { Temperament } from '../../model/Temperament/Temperament';
-import {  convertThirdQualityToColor } from '../../utils/colorCircle';
+import {  convertFifthQualityToColor, convertThirdQualityToColor } from '../../utils/colorCircle';
+import { fifthQ } from '../../model/Divergence';
 
 
 type CompareGraphProps = {
@@ -422,12 +423,14 @@ const CompareGraph: React.FC<CompareGraphProps> = ({ t1, t2, forceReload }) => {
         const yValuescolors = []
         for (var i = 0; i<= 11*maxValueY; i++) {yValuescolors.push(i)}
 
-        /* const xValuescolors = []
-        for (var i = Math.min(...xValues)*Commagraph*12 ; i <= Math.max(...xValues)*Commagraph*12; i++) {xValuescolors.push(i)}
+         const xValuescolors = []
+        for (var j = Math.min(...xValues)*Commagraph*12 ; j <= Math.max(...xValues)*Commagraph*12; j++) {xValuescolors.push(j)}
         
+        console.log(convertFifthQualityToColor(-1/4), convertFifthQualityToColor(-4))
+        console.log(Math.min(...xValues), Math.max(...xValues))
         console.log(xValues)
         console.log(xValuescolors)
-        console.log(yValuescolors) */
+        console.log(yValuescolors) 
         
 
         console.log(y(0), y(1/11))
